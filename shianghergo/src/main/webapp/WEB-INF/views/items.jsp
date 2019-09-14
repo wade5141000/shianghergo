@@ -39,7 +39,7 @@
 </head>
 <body>
 <a href="cart">進購物車</a>
-
+<a href="orderlist">我的訂單 </a>
 <c:forEach var="item" items="${items}">
 <div style="border:1px solid;margin:5px;padding:3px;">
 

@@ -66,6 +66,7 @@ span{
 </script>
 </head>
 <body>
+<a href="orderlist">我的訂單 </a>
 	<table border="1">
 		<tr>
 			<td>品名</td>
@@ -89,6 +90,6 @@ span{
 		</c:forEach>
 	</table>
 	<h2>total:<span id="total">${total}</span></h2>
-	<button>確認結帳</button>
+	<a href="addorder">加入訂單</a>
 </body>
 </html>
