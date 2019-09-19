@@ -37,8 +37,10 @@ public class ExcelAndWord extends HttpServlet {
 		//---------------------------------------------------------------------------------
 		
 		try {
-			Workbook wb = Workbook.getWorkbook(new File("C:\\Project\\workspace\\jspExercise\\src\\main\\webapp\\resources\\template.xls"));
-			WritableWorkbook wwb = Workbook.createWorkbook(new File("C:\\Project\\workspace\\jspExercise\\src\\main\\webapp\\resources\\output_test.xls"), wb);
+			
+//			Workbook wb = Workbook.getWorkbook(new File("C:\\Project\\workspace\\jspExercise\\src\\main\\webapp\\resources\\template.xls"));
+			Workbook wb = Workbook.getWorkbook(new File("C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\resources\\template.xls"));
+			WritableWorkbook wwb = Workbook.createWorkbook(new File("C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\resources\\output_test.xls"), wb);
 			WritableSheet sheet = wwb.getSheet(0);
 			WritableFont writeFont = new WritableFont(WritableFont.ARIAL, 12, WritableFont.BOLD);
 			WritableCellFormat writeFormat = new WritableCellFormat(writeFont);

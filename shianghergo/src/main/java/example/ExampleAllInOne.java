@@ -234,7 +234,7 @@ public class ExampleAllInOne {
 	
 	public static String genAioCheckOutOneTime(){
 		AioCheckOutOneTime obj = new AioCheckOutOneTime();
-		obj.setMerchantTradeNo("testComptyr7008");
+		obj.setMerchantTradeNo("teswerr7008");
 		obj.setMerchantTradeDate("2017/01/01 08:05:23");
 		obj.setTotalAmount("50");
 		obj.setTradeDesc("test Description");

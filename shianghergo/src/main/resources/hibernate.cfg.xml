@@ -34,5 +34,10 @@
 		<!-- 3. 宣告程式使用的永續類別 -->
 		<mapping class="com.shianghergo.model.CartBean" />
 		<mapping class="com.shianghergo.model.ItemBean" />
+		<mapping class="com.shianghergo.model.GroupsBean" />
+		<mapping class="com.shianghergo.model.Groups_ItemBean" />
+		<mapping class="com.shianghergo.model.GroupsOrderBean" />
+		<mapping class="com.shianghergo.model.GroupsOrderDetailBean" />
+		<mapping class="com.shianghergo.model.PlaceBean" />
 	</session-factory>
 </hibernate-configuration>

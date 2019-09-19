@@ -8,10 +8,11 @@
 </head>
 <body>
 <ul>
-<li> <a href="ECPayInputForm.jsp">綠界支付</a> </li>
 <li> <a href="productfile.do">下載訂購單</a> </li>
-<li> <a href="showitem">測試購物車</a> </li>
+<li> <a href="showitem">商品列表</a> </li>
 <li> <a href="cart">進購物車</a> </li>
+<li> <a href="showgroups">團購列表</a> </li>
+
 </ul>
 <form action="uploadimg" method="post" enctype="multipart/form-data">
 	name:<input type = text name ="name"><br>
