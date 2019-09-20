@@ -12,6 +12,7 @@
 <li> <a href="showitem">商品列表</a> </li>
 <li> <a href="cart">進購物車</a> </li>
 <li> <a href="showgroups">團購列表</a> </li>
+<li> <a href="showmap">Google Map</a> </li>
 
 </ul>
 <form action="uploadimg" method="post" enctype="multipart/form-data">

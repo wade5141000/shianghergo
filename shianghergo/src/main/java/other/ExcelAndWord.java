@@ -26,7 +26,7 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
 
-@WebServlet("/productfile.do")
+//@WebServlet("/productfile.do")
 public class ExcelAndWord extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

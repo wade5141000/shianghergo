@@ -197,4 +197,6 @@ public class StoreProcessController {
 		return "detail";
 	}
 	
+	
+	
 }
