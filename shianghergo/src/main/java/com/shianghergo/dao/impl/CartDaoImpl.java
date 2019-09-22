@@ -19,7 +19,7 @@ public class CartDaoImpl implements CartDao{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public void saveToCart(ItemBean ib,Long member_id) {
+	public void saveToCart(ItemBean ib,Integer member_id) {
 		Session session = factory.getCurrentSession();
 		
 		String hql = "from CartBean c where c.member_id = :id";
@@ -47,7 +47,7 @@ public class CartDaoImpl implements CartDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<CartBean> getCartItems(Long member_id) {
+	public List<CartBean> getCartItems(Integer member_id) {
 		Session session = factory.getCurrentSession();
 		String hql = "from CartBean c where c.member_id = :id";
 		List<CartBean> list = session.createQuery(hql).setParameter("id", member_id).getResultList();
@@ -55,14 +55,14 @@ public class CartDaoImpl implements CartDao{
 	}
 
 	@Override
-	public CartBean getCartBeanById(Long cart_id) {
+	public CartBean getCartBeanById(Integer cart_id) {
 		Session session = factory.getCurrentSession();
 		CartBean cb = session.get(CartBean.class, cart_id);
 		return cb;
 	}
 	
 	@Override
-	public int deleteCartBeanById(Long cart_id) {
+	public int deleteCartBeanById(Integer cart_id) {
 		Session session = factory.getCurrentSession();
 		CartBean cb = session.get(CartBean.class, cart_id);
 		int reduce = (int) (cb.getAmount()*cb.getPrice());

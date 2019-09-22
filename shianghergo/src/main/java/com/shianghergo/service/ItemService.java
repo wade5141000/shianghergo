@@ -7,5 +7,5 @@ import com.shianghergo.model.ItemBean;
 public interface ItemService {
 	
 	List<ItemBean> getAllItems();
-	ItemBean getItemById(Long id);
+	ItemBean getItemById(Integer id);
 }

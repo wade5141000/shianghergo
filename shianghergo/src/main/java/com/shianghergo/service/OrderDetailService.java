@@ -6,5 +6,5 @@ import com.shianghergo.model.OrderDetailBean;
 
 public interface OrderDetailService {
 	
-	List<OrderDetailBean> getOrderDetail(Long id);
+	List<OrderDetailBean> getOrderDetail(Integer id);
 }

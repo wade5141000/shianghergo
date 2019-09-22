@@ -18,19 +18,19 @@ public class OrderServiceImpl implements OrderService{
 
 	@Transactional
 	@Override
-	public List<OrderBean> getOrderBeanByMemeber(Long member_id) {
+	public List<OrderBean> getOrderBeanByMemeber(Integer member_id) {
 		return dao.getOrderBeanByMemeber(member_id);
 	}
 
 	@Transactional
 	@Override
-	public Long addOrder(Long member_id) {
+	public Integer addOrder(Integer member_id) {
 		return dao.addOrder(member_id);
 	}
 
 	@Override
 	@Transactional
-	public void updateStatus(Long order_id) {
+	public void updateStatus(Integer order_id) {
 		dao.updateStatus(order_id);
 	}
 

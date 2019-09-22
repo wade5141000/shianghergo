@@ -1,4 +1,4 @@
-package _00_init.util;
+package init.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,9 +20,9 @@ import javax.xml.bind.DatatypeConverter;
 public class GlobalService {
 
 	public static final int RECORDS_PER_PAGE = 2;
-	public static final String SYSTEM_NAME = "雅君網路購物商城";
+	public static final String SYSTEM_NAME = "饗合購";
 	public static final int IMAGE_FILENAME_LENGTH = 20;
-	public static final String JNDI_DB_NAME = "java:comp/env/jdbc/BookDataSQLver";
+	public static final String JNDI_DB_NAME = "java:comp/env/jdbc/JSPDB";
 	public static final String KEY = "KittySnoopyMicky"; // 16, 24, 32
 	public static final int ORDER_AMOUNT_LIMIT = 10000;
 	public String getSystemName() { // systemName  ${SYSTEM.systemName}

@@ -10,11 +10,11 @@ import javax.persistence.Table;
 @Table(name="order_info")
 public class OrderBean {
 	
-	private Long id;
-	private Long member_id;
-	private Long store_id;
+	private Integer id;
+	private Integer member_id;
+	private Integer store_id;
 	private Integer item_count;
-	private Long price;
+	private Integer price;
 	private String order_time;
 	private String payment;
 	private String pay_time;
@@ -22,22 +22,22 @@ public class OrderBean {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Long getMember_id() {
+	public Integer getMember_id() {
 		return member_id;
 	}
-	public void setMember_id(Long member_id) {
+	public void setMember_id(Integer member_id) {
 		this.member_id = member_id;
 	}
-	public Long getStore_id() {
+	public Integer getStore_id() {
 		return store_id;
 	}
-	public void setStore_id(Long store_id) {
+	public void setStore_id(Integer store_id) {
 		this.store_id = store_id;
 	}
 	public Integer getItem_count() {
@@ -46,10 +46,10 @@ public class OrderBean {
 	public void setItem_count(Integer item_count) {
 		this.item_count = item_count;
 	}
-	public Long getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(Long price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	public String getOrder_time() {

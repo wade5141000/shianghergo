@@ -18,7 +18,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<OrderDetailBean> getOrderDetail(Long id) {
+	public List<OrderDetailBean> getOrderDetail(Integer id) {
 		Session session = factory.getCurrentSession();
 		String hql = "from OrderDetailBean d where d.order_id = :id";
 		List<OrderDetailBean> list = session.createQuery(hql).setParameter("id", id).getResultList();

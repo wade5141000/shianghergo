@@ -16,11 +16,11 @@ public class MapController {
 	@Autowired
 	PlaceService placeService;
 	
-	@RequestMapping("showmap")
+	@RequestMapping("wade/showmap")
 	public String showMap(Model model) {
 		List<PlaceBean> list = placeService.getAllPlace();
 		model.addAttribute("items",list);
 		System.out.println(list.get(0).getLongitude());
-		return "googleMap";
+		return "wade/googleMap";
 	}
 }

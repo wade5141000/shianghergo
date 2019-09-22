@@ -28,10 +28,25 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	@Override
-	public ItemBean getItemById(Long id) {
+	public ItemBean getItemById(Integer id) {
 		Session session = factory.getCurrentSession();
 		ItemBean ib = session.get(ItemBean.class, id);
 		return ib;
+	}
+	
+	@Override
+	public void deleteItem(Integer id) {
+		
+		Session session = factory.getCurrentSession();
+	
+		String hql = "FROM ItemBean where id =:id";
+		
+		ItemBean one = session.get(ItemBean.class,id);
+		
+		System.out.println(one);
+		
+		session.delete(one);
+
 	}
 	
 	

@@ -19,7 +19,7 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 	
 	@Override
 	@Transactional
-	public List<OrderDetailBean> getOrderDetail(Long id) {
+	public List<OrderDetailBean> getOrderDetail(Integer id) {
 		return dao.getOrderDetail(id);
 	}
 

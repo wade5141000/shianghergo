@@ -19,25 +19,25 @@ public class CartServiceImpl implements CartService{
 
 	@Override
 	@Transactional
-	public void saveToCart(ItemBean ib,Long member_id) {
+	public void saveToCart(ItemBean ib,Integer member_id) {
 		dao.saveToCart(ib,member_id);
 	}
 
 	@Override
 	@Transactional
-	public List<CartBean> getCartItems(Long member_id) {
+	public List<CartBean> getCartItems(Integer member_id) {
 		return dao.getCartItems(member_id);
 	}
 	
 	@Override
 	@Transactional
-	public CartBean getCartBeanById(Long cart_id) {
+	public CartBean getCartBeanById(Integer cart_id) {
 		return dao.getCartBeanById(cart_id);
 	}
 	
 	@Override
 	@Transactional
-	public CartBean updateCartBeanById(Long cart_id,String type) {
+	public CartBean updateCartBeanById(Integer cart_id,String type) {
 		CartBean cb = dao.getCartBeanById(cart_id);
 		if(type.equals("1")) {
 			cb.setAmount(cb.getAmount()+1);
@@ -49,7 +49,7 @@ public class CartServiceImpl implements CartService{
 	
 	@Override
 	@Transactional
-	public int deleteCartBeanById(Long cart_id) {
+	public int deleteCartBeanById(Integer cart_id) {
 		int reduce = dao.deleteCartBeanById(cart_id);
 		return reduce;
 	}

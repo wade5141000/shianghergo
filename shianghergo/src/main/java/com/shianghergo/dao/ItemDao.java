@@ -7,5 +7,6 @@ import com.shianghergo.model.ItemBean;
 public interface ItemDao {
 	
 	List<ItemBean> getAllItems();
-	ItemBean getItemById(Long id);
+	ItemBean getItemById(Integer id);
+	void deleteItem(Integer id);
 }

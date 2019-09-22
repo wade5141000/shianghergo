@@ -1,0 +1,15 @@
+.item {
+	margin-top: 20px;
+	margin-left: 310px;
+	border: 1px solid black;
+	display: block;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.title{
+	text-align: center;
+    boder:1px solid black;
+
+
+}

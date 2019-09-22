@@ -11,38 +11,38 @@ import javax.persistence.Table;
 @Table(name="cart")
 public class CartBean {
 	
-	private Long id;
-	private Long item_id;
-	private Long member_id;
-	private Long store_id;
+	private Integer id;
+	private Integer item_id;
+	private Integer member_id;
+	private Integer store_id;
 	private String name;
-	private Long price;
+	private Integer price;
 	private Integer amount;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Long getItem_id() {
+	public Integer getItem_id() {
 		return item_id;
 	}
-	public void setItem_id(Long item_id) {
+	public void setItem_id(Integer item_id) {
 		this.item_id = item_id;
 	}
-	public Long getMember_id() {
+	public Integer getMember_id() {
 		return member_id;
 	}
-	public void setMember_id(Long member_id) {
+	public void setMember_id(Integer member_id) {
 		this.member_id = member_id;
 	}
-	public Long getStore_id() {
+	public Integer getStore_id() {
 		return store_id;
 	}
-	public void setStore_id(Long store_id) {
+	public void setStore_id(Integer store_id) {
 		this.store_id = store_id;
 	}
 	public String getName() {
@@ -51,10 +51,10 @@ public class CartBean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Long getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(Long price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	public Integer getAmount() {

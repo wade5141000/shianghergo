@@ -45,15 +45,15 @@ public class StoreProcessController {
 	public String list(Model model,HttpServletRequest re) {
 		List<ItemBean> list = itemService.getAllItems();
 		model.addAttribute("items", list);
-		re.getSession(true).setAttribute("member_id", 10004l);
+		re.getSession(true).setAttribute("member_id", 10004);
 		return "items";
 	}
 	
 	@RequestMapping("gocart")
-	public void gocart(@RequestParam("id") Long id,HttpServletResponse rp,HttpServletRequest re) {
+	public void gocart(@RequestParam("id") Integer id,HttpServletResponse rp,HttpServletRequest re) {
 		
 		ItemBean ib = itemService.getItemById(id);
-		cartService.saveToCart(ib,(long)(re.getSession().getAttribute("member_id")));
+		cartService.saveToCart(ib,(int)(re.getSession().getAttribute("member_id")));
 		try {
 			rp.getWriter().write("");
 		} catch (IOException e) {
@@ -63,7 +63,7 @@ public class StoreProcessController {
 	
 	@RequestMapping("updatecart")
 	public void updatecart(HttpServletResponse rp,HttpServletRequest re) {
-		long mId = (long)(re.getSession().getAttribute("member_id"));
+		int mId = (int)(re.getSession().getAttribute("member_id"));
 		List<CartBean> list = cartService.getCartItems(mId);
 		ObjectMapper mapper = new ObjectMapper();
 		String result = "";
@@ -80,7 +80,7 @@ public class StoreProcessController {
 	
 	@RequestMapping("cart")
 	public String cart(Model model,HttpServletRequest re) {
-		long mId = (long)(re.getSession().getAttribute("member_id"));
+		int mId = (int)(re.getSession().getAttribute("member_id"));
 		List<CartBean> list = cartService.getCartItems(mId);
 		model.addAttribute("cartitems",list);
 		long total = 0;
@@ -96,7 +96,7 @@ public class StoreProcessController {
 		// long mId = (long)(re.getSession().getAttribute("member_id"));
 		// 拿到一個物品
 		int total = Integer.parseInt(re.getParameter("total"));
-		long id = Long.parseLong(re.getParameter("id"));
+		int id = Integer.parseInt((re.getParameter("id")));
 		String type = re.getParameter("type");
 		CartBean cb = cartService.updateCartBeanById(id, type);
 		int newAmount = cb.getAmount();
@@ -105,7 +105,7 @@ public class StoreProcessController {
 		}else if(type.equals("2")) {
 			total -= cb.getPrice();
 		}
-		long totala =cb.getPrice()*newAmount;
+		int totala =cb.getPrice()*newAmount;
 		String result = total+","+newAmount+","+id+","+totala;
 		System.out.println(result);
 		try {
@@ -117,7 +117,7 @@ public class StoreProcessController {
 	
 	@RequestMapping("delete")
 	public void delete(HttpServletRequest re,HttpServletResponse rp) {
-		long id = Long.parseLong(re.getParameter("id"));
+		int id = Integer.parseInt((re.getParameter("id")));
 		int reduce = cartService.deleteCartBeanById(id);
 		try {
 			rp.getWriter().write(String.valueOf(reduce));
@@ -127,7 +127,7 @@ public class StoreProcessController {
 	}
 	
 	@RequestMapping("order/{orderid}")
-	public String order(@PathVariable("orderid") Long order_id,Model model,HttpServletRequest re,HttpServletResponse rp) {
+	public String order(@PathVariable("orderid") Integer order_id,Model model,HttpServletRequest re,HttpServletResponse rp) {
 		AllInOne all = new AllInOne("");
 		AioCheckOutOneTime obj = new AioCheckOutOneTime();
 		int rdn = (int) (Math.random() * 100000);
@@ -172,14 +172,14 @@ public class StoreProcessController {
 	
 	@RequestMapping("orderlist")
 	public String orderList(Model model,HttpServletRequest re) {
-		long mId = (long)(re.getSession().getAttribute("member_id"));
+		int mId = (int)(re.getSession().getAttribute("member_id"));
 		List<OrderBean> list = orderService.getOrderBeanByMemeber(mId);
 		model.addAttribute("orders",list);
 		return "myorderlist";
 	}
 	
 	@RequestMapping("orderdetail/{id}")
-	public String orderDetail(@PathVariable("id") Long id,Model model,HttpServletRequest re) {
+	public String orderDetail(@PathVariable("id") Integer id,Model model,HttpServletRequest re) {
 		List<OrderDetailBean> list = orderDetailService.getOrderDetail(id);
 		model.addAttribute("details",list);
 		model.addAttribute("order_id",id);
@@ -189,8 +189,8 @@ public class StoreProcessController {
 	@RequestMapping("addorder")
 	public String addOrder(Model model,HttpServletRequest re) {
 		
-		long mId = (long)re.getSession().getAttribute("member_id");
-		long order_id = orderService.addOrder(mId);
+		int mId = (int)re.getSession().getAttribute("member_id");
+		int order_id = orderService.addOrder(mId);
 		List<OrderDetailBean> list = orderDetailService.getOrderDetail(order_id);
 		model.addAttribute("details",list);
 		model.addAttribute("order_id",order_id);

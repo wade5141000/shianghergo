@@ -6,12 +6,12 @@ import com.shianghergo.model.CartBean;
 import com.shianghergo.model.ItemBean;
 
 public interface CartService {
-	void saveToCart(ItemBean ib,Long member_id);
+	void saveToCart(ItemBean ib,Integer member_id);
 	
-	List<CartBean> getCartItems(Long member_id);
+	List<CartBean> getCartItems(Integer member_id);
 	
-	CartBean getCartBeanById(Long cart_id);
+	CartBean getCartBeanById(Integer cart_id);
 	
-	CartBean updateCartBeanById(Long cart_id,String type);
-	int deleteCartBeanById(Long cart_id);
+	CartBean updateCartBeanById(Integer cart_id,String type);
+	int deleteCartBeanById(Integer cart_id);
 }

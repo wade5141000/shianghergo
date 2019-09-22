@@ -22,7 +22,7 @@ public class OrderDaoImpl implements OrderDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<OrderBean> getOrderBeanByMemeber(Long member_id) {
+	public List<OrderBean> getOrderBeanByMemeber(Integer member_id) {
 		Session session = factory.getCurrentSession();
 		String hql = "from OrderBean o where o.member_id = :id";
 		List<OrderBean> list = session.createQuery(hql).setParameter("id", member_id).getResultList();
@@ -31,12 +31,12 @@ public class OrderDaoImpl implements OrderDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Long addOrder(Long member_id) {
+	public Integer addOrder(Integer member_id) {
 		Session session = factory.getCurrentSession();
 		String hql = "from CartBean c where c.member_id = :id";
 		List<CartBean> list = session.createQuery(hql).setParameter("id", member_id).getResultList();
 		OrderBean ob = new OrderBean();
-		long total = 0;
+		int total = 0;
 		for(int i=0;i<list.size();i++) {
 			CartBean cb = list.get(i);
 			total += cb.getPrice()*cb.getAmount();
@@ -49,7 +49,7 @@ public class OrderDaoImpl implements OrderDao {
 		SimpleDateFormat fd = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		String time = fd.format(new Date());
 		ob.setOrder_time(time);
-		long id = (long) session.save(ob);
+		int id = (int) session.save(ob);
 		for(int i=0;i<list.size();i++) {
 			CartBean cb = list.get(i);
 			OrderDetailBean od = new OrderDetailBean();
@@ -67,7 +67,7 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	@Override
-	public void updateStatus(Long order_id) {
+	public void updateStatus(Integer order_id) {
 		Session session = factory.getCurrentSession();
 		OrderBean ob = session.get(OrderBean.class, order_id);
 		ob.setStatus(1);

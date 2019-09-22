@@ -1,5 +1,4 @@
-
-package _00_init.util;
+package init.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;

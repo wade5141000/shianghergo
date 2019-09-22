@@ -7,9 +7,9 @@ import com.shianghergo.model.ItemBean;
 
 public interface CartDao {
 	
-	void saveToCart(ItemBean ib,Long member_id);
-	List<CartBean> getCartItems(Long member_id);
+	void saveToCart(ItemBean ib,Integer member_id);
+	List<CartBean> getCartItems(Integer member_id);
 	
-	CartBean getCartBeanById(Long cart_id);
-	int deleteCartBeanById(Long cart_id);
+	CartBean getCartBeanById(Integer cart_id);
+	int deleteCartBeanById(Integer cart_id);
 }

@@ -24,7 +24,7 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	@Transactional
-	public ItemBean getItemById(Long id) {
+	public ItemBean getItemById(Integer id) {
 		return dao.getItemById(id);
 	}
 

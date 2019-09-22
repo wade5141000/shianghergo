@@ -1,4 +1,4 @@
-package _00_init.util;
+package init.util;
 
 import java.io.BufferedReader;
 import java.io.File;
