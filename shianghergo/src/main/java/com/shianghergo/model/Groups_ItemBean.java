@@ -25,8 +25,6 @@ public class Groups_ItemBean implements Serializable {
 	private String  detail;
 	private Integer price;
 	private Blob    image;
-	private Integer groups_id;
-//	private Integer groups_id;
 	private GroupsBean groupsBean;
 	
 	private MultipartFile  productImage;
@@ -44,71 +42,48 @@ public class Groups_ItemBean implements Serializable {
 		
 	}
 
-	
-
-	public Groups_ItemBean(Integer id, String name, String detail, Integer price, Blob image,Integer groups_id,  GroupsBean groupsBean) {
+	public Groups_ItemBean(Integer id, String name, String detail, Integer price, Blob image, GroupsBean groupsBean) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.detail = detail;
 		this.price = price;
-		this.groups_id=groups_id;
-		this.groupsBean=groupsBean;
-		
-;
+//		this.groups_id=groups_id;
+		this.groupsBean = groupsBean;
 	}
-
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getId() {
 		return id;
 	}
-
-
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
 
 	public String getName() {
 		return name;
 	}
 
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
 
 	public String getDetail() {
 		return detail;
 	}
 
-
-
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-
-
 
 	public Integer getPrice() {
 		return price;
 	}
 
-
-
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
 
-		
-	
 	public Blob getImage() {
 		return image;
 	}
@@ -123,22 +98,14 @@ public class Groups_ItemBean implements Serializable {
 		return groupsBean;
 	}
 
-
-
 	public void setGroupsBean(GroupsBean groupsBean) {
 		this.groupsBean = groupsBean;
 	}
 
-
-
-
-
-	
-
-	
-
-
-
-
+	@Override
+	public String toString() {
+		return "Groups_ItemBean [id=" + id + ", name=" + name + ", detail=" + detail + ", price=" + price + ", image="
+				+ image + "]";
+	}
 	
 }

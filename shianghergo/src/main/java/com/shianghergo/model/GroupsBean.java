@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,36 +21,39 @@ public class GroupsBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private Integer member_id;
+//	private Integer member_id;
 	private String start_time;
 	private String end_time;
 	private String status;
 	private String name;
 	private String detail; // 團購商品說明
 	private String payment;// 付款方式
-
+	private MemberBean memberBean;
+	private Set<PlaceBean> place = new LinkedHashSet<>();
+	
+	
 	private Set<Groups_ItemBean> groupsitem = new LinkedHashSet<>();
 	
 	public GroupsBean(Integer id, Integer member_id, String start_time, String end_time, String status, String name,
-			String detail, String payment) { // String category
+			String detail, String payment, MemberBean memberBean) { // String category
 		super();
 		this.id = id;
-		this.member_id=member_id;
+//		this.member_id=member_id;
 		this.start_time = start_time;
 		this.end_time = end_time;
 		this.status = status;
 		this.name = name;
 		this.detail = detail;
 		this.payment = payment;
+		this.memberBean = memberBean;
 //		this.category = category;
 
 	}
 
 	@Override
 	public String toString() {
-		return "GroupsBean [id=" + id + ", member_id=" + member_id + ", start_time=" + start_time + ", end_time="
-				+ end_time + ", status=" + status + ", name=" + name + ", detail=" + detail + ", payment=" + payment
-				+ ", groupsitem=" + groupsitem + "]";
+		return "GroupsBean [id=" + id + ", start_time=" + start_time + ", end_time=" + end_time + ", status=" + status
+				+ ", name=" + name + ", detail=" + detail + ", payment=" + payment + ", groupsitem=" + groupsitem + "]";
 	}
 
 	public GroupsBean() {
@@ -67,31 +72,34 @@ public class GroupsBean implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name = "member_id")
+	public MemberBean getMemberBean() {
+		return memberBean;
+	}
+
+	public void setMemberBean(MemberBean memberBean) {
+		this.memberBean = memberBean;
+	}
 
 	@OneToMany(mappedBy = "groupsBean", fetch = FetchType.EAGER) // 一對多
-	public Set<Groups_ItemBean> getGroups_Itembean() {
+	public Set<Groups_ItemBean> getGroupsitem() {
 		return groupsitem;
 	}
 
-	public void setGroups_Itembean(Set<Groups_ItemBean> groupsitem) {
+	public void setGroupsitem(Set<Groups_ItemBean> groupsitem) {
 		this.groupsitem = groupsitem;
-
-//	@ManyToOne(cascade=CascadeType.ALL)
-//	@JoinColumn(name="FK_Member_id")
-
 	}
-
-	public Integer getMember_id() {
-		return member_id;
-	}
-
-	public void setMember_id(Integer member_id) {
-		this.member_id = member_id;
-	}
-
-
-
 	
+	@OneToMany(mappedBy = "groupsBean", fetch = FetchType.EAGER) // 一對多
+	public Set<PlaceBean> getPlace() {
+		return place;
+	}
+
+	public void setPlace(Set<PlaceBean> place) {
+		this.place = place;
+	}
 
 	public String getStart_time() {
 		return start_time;

@@ -45,7 +45,15 @@
 		</tr>
 	</table>
 	<hr>
-	<h1><a href="leopard/login">登入(家翔)</a></h1>
+	<h1 style="text-align: center"><a href="leopard/login">登入(家翔)</a></h1>
+	<hr>
+	<h1 style="text-align: center">MVC Exercise(士權)</h1>
+	<table border="1" style="margin: 0px auto;">
+		<tr height="52" bgcolor="lightblue" align="center">
+			<td width="350"><p align="left" /> <a href="admin">登入</a><br></td>
+		</tr>
+	</table>
+	<hr>
 
 </body>
 </html>
