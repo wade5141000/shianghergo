@@ -23,8 +23,8 @@
 				<form:input type="text" id="name" name="name" path="name" />
 			</div>
 			<div class="item">
-<!-- 				<label for="start_time" class="item-label">開始時間:</label> -->
-<%-- 				<form:input type="text" id="start_time" name="start_time" path="start_time"  />  --%>
+				<!-- 				<label for="start_time" class="item-label">開始時間:</label> -->
+				<%-- 				<form:input type="text" id="start_time" name="start_time" path="start_time"  />  --%>
 				<input type="hidden" name="start_time" value="${now}" />
 			</div>
 			<div class="item">
@@ -38,6 +38,17 @@
 				<label for="status" class="item-label">狀態:</label>
 				<form:input type="text" id="status" name="status" path="status" />
 			</div>
+			
+			<div class='col-lg-10'>
+			<label for="status" class="item-label">分類:</label>
+				<form:select path="categoryBean">
+					<form:option value="-1">
+								請挑選
+							</form:option>
+					<form:options items="${categoryList }" />
+				</form:select>
+			</div>
+
 			<div class="item">
 				<label for="detail" class="item-label">商品說明:</label>
 				<form:textarea style="width:300px;height:300px" id="detail"
@@ -47,7 +58,7 @@
 				<label for="payment" class="item-label">付款方式:</label>
 				<form:input type="text" id="payment" name="payment" path="payment" />
 			</div>
-		
+
 
 			<input type="submit" value="下一步" id="regForm">
 		</fieldset>

@@ -78,7 +78,7 @@
 					name="payment" /></td>
 			</tr>
 
-<!-- 		</table> -->
+		</table>
 <!-- 		<table> -->
 
 			<!-- 		<h2>商品資訊</h2> -->
