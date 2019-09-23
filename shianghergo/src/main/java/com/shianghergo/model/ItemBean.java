@@ -3,8 +3,8 @@
 import java.io.Serializable;
 import java.sql.Blob;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,7 +39,21 @@ public class ItemBean implements Serializable {
     private StoreBean storeBean;
     @JsonIgnore
     private MultipartFile productImage;
-    @XmlTransient
+    
+    private CategoryBean categoryBean;
+    
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    public CategoryBean getCategoryBean() {
+		return categoryBean;
+	}
+
+	public void setCategoryBean(CategoryBean categoryBean) {
+		this.categoryBean = categoryBean;
+	}
+
+	@XmlTransient
     @Transient
     public MultipartFile getProductImage() {
     	return productImage;

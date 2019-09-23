@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
@@ -30,22 +31,93 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shianghergo.exception.ProductNotFoundException;
+import com.shianghergo.model.GroupsBean;
+import com.shianghergo.model.GroupsCartBean;
+import com.shianghergo.model.GroupsOrderBean;
+import com.shianghergo.model.GroupsOrderDetailBean;
 import com.shianghergo.model.ItemBean;
+import com.shianghergo.model.MemberBean;
+import com.shianghergo.model.OrderBean;
+import com.shianghergo.model.OrderDetailBean;
+import com.shianghergo.model.StoreBean;
+import com.shianghergo.service.MemberService;
 import com.shianghergo.service.ProductService;
 
-
-
+@Transactional
+@SessionAttributes("loginOK")
 @Controller
 public class ProductController {
 	@Autowired
 	ProductService service;
+	
+	@Autowired
+	MemberService memberService;
 
 	@Autowired
 	ServletContext context;
+	
+	// -------------------以下聖捷--------------------
+	
+	@RequestMapping(value = "/Member002")
+	public String getMyOrderList(@ModelAttribute("loginOK")MemberBean mb, Model model,StoreBean sb) {
+		System.out.println("MemberBean mb++"+mb);
+		List<OrderBean> list = memberService.getMemberOrders(mb.getId());
+		String[] list2 = new String[list.size()];
+		for(int i=0 ; i<list.size();i++) {
+			StoreBean store = service.getStoreById(list.get(i).getStore_id());
+			list2[i] = store.getName();
+		}
+		model.addAttribute("MyOrderList",list);//service.getorderById(ob.getId())
+		model.addAttribute("it",list2);
+		System.out.println("getMyOrderList裡的list:"+list);
+		return "Member002";
+	}
+	@RequestMapping(value = "/Member003")
+	public String getMyGroupsList(@ModelAttribute("loginOK")MemberBean mb, Model model) {
+		List<GroupsBean> list = memberService.getMemberGroups(mb.getId());
+		model.addAttribute("MyGroupsList",list);
+		return "Member003";
+	}
+	@RequestMapping("/getMyOrderListD")
+	public String getMyOrderListD(@RequestParam("order_id")Integer order_id, Model model) {
+		List<OrderDetailBean> list = memberService.getMemberOrdersD(order_id);
+		System.out.println("order_id::"+order_id);
+		System.out.println("getMyOrderListD()裡的="+list);
+		model.addAttribute("MyOrderListD",list);
+		return "Member002_1";
+	}
+	
+	@RequestMapping("/getMyGroupsListD")
+	public String getMyGroupsListD(@RequestParam("groups_id")Integer groups_id, Model model) {
+		List<GroupsCartBean> list = memberService.getGroupsOrdersD(groups_id);
+		System.out.println("getMyGroupsListD()裡的="+list);
+		model.addAttribute("MyGroupsListD",list);
+		return "Member003_1";
+	}
+	
+	@RequestMapping("/getMyGOrderListD")
+	public String getMyGOrderListD(@RequestParam("groups_order_info_id")Integer groups_order_info_id, Model model) {
+		List<GroupsOrderDetailBean> list = memberService.getGOrderD(groups_order_info_id);
+		System.out.println("getMyGOrderListD()裡的="+list);
+		model.addAttribute("MyGroupsListD",list);
+		return "Member004_1";
+	}
+	
+	@RequestMapping(value = "/Member004")
+	public String getMyGroupsOrderList(@ModelAttribute("loginOK")MemberBean mb, Model model) {
+		List<GroupsOrderBean> list = memberService.getMemberGroupsOrders(mb.getId());
+		model.addAttribute("MyGroupsOrderList",list);
+		System.out.println("參與的"+list);
+		return "Member004";
+	}
+	
+	
+	//-------------------------以下浩瑜----------------------
 	
 	@RequestMapping("/hao/products")
 	public String list(Model model) {

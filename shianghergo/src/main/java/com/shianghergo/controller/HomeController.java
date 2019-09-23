@@ -26,28 +26,37 @@ import jxl.write.WritableWorkbook;
 
 @Controller
 public class HomeController {
+	
+	@RequestMapping("/goRegisterPage")
+	public String goRegisterPage() {
+		//model.addAttribute("title", "登入");
+		return "register";
+	}
+	
+	//------------------------- 以上聖捷
 
 	@RequestMapping(value = { "/", "/index" })
 	public String index() {
 		return "index";
 	}
 	
-	// 顯示 index 的圖片
-	@RequestMapping("showimg")
-	public void showimg(OutputStream op, HttpServletRequest rq, HttpServletResponse rp) {
-		String path = "/WEB-INF/views/res/static/img/hot3.png";
-		rp.setContentType("image");
-		
-		try (InputStream is = rq.getServletContext().getResourceAsStream(path);){
-			byte[] b = new byte[1024];
-			int len;
-			while ((len = is.read(b)) != -1) {
-				op.write(b,0,len);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//  顯示 index 的圖片
+//	@RequestMapping("showimg")
+//	public void showimg(OutputStream op, HttpServletRequest rq, HttpServletResponse rp) {
+//		String path = "/WEB-INF/views/res/static/img/hot3.png";
+//		rp.setContentType("image");
+//		
+//		try (InputStream is = rq.getServletContext().getResourceAsStream(path);){
+//			byte[] b = new byte[1024];
+//			int len;
+//			while ((len = is.read(b)) != -1) {
+//				op.write(b,0,len);
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
+	
 	// Excel未完成
 	@RequestMapping("/productfile.do")
 	public void CreateExcel(HttpServletRequest request,HttpServletResponse response) {
@@ -104,5 +113,7 @@ public class HomeController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
+	
 }

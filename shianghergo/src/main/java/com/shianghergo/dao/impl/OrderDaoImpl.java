@@ -3,6 +3,7 @@ package com.shianghergo.dao.impl;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.shianghergo.dao.OrderDao;
 import com.shianghergo.model.CartBean;
+import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.OrderBean;
 import com.shianghergo.model.OrderDetailBean;
 
@@ -50,6 +52,16 @@ public class OrderDaoImpl implements OrderDao {
 		String time = fd.format(new Date());
 		ob.setOrder_time(time);
 		int id = (int) session.save(ob);
+		
+		// 把訂單加到member
+		MemberBean mb = session.get(MemberBean.class, member_id);
+		Set<OrderBean> orders = mb.getOrders();
+		orders.add(ob);
+		mb.setOrders(orders);
+		
+		// 購物車加到detail和訂單內
+		
+		Set<OrderDetailBean> detail = ob.getOrderDetail();
 		for(int i=0;i<list.size();i++) {
 			CartBean cb = list.get(i);
 			OrderDetailBean od = new OrderDetailBean();
@@ -60,7 +72,10 @@ public class OrderDaoImpl implements OrderDao {
 			od.setAmount(cb.getAmount());
 			od.setPrice(cb.getPrice());
 			session.save(od);
+			detail.add(od);
 		}
+		ob.setOrderDetail(detail);
+		
 		String hql2 = "delete CartBean where member_id = :mid";
 		session.createQuery(hql2).setParameter("mid", member_id).executeUpdate();
 		return id;

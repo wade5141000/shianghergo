@@ -2,7 +2,9 @@ package com.shianghergo.model;
 
 import java.io.Serializable;
 import java.sql.Blob;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,13 +30,12 @@ public class MemberBean implements Serializable {
 	private String account;
 	private String password;
 	private String name;
-
 	private String address;
 	private String email;
 	private String phone;
 	private Integer status;
 	private String birthday;
-	private String register_Time;
+	private Timestamp register_Time;
 	private String fileName;//使用者傳入圖檔名
 	private Blob coverImage;//二進位
 	//	private MultipartFile image;//前端圖	
@@ -42,6 +43,8 @@ public class MemberBean implements Serializable {
 	//private String code;// 激活码
 	private MultipartFile image;
 	private Set<GroupsBean> groups = new LinkedHashSet<>();
+	private Set<OrderBean> orders = new HashSet<>();
+	private Set<GroupsOrderBean> groupOrders = new HashSet<>();
 	
 	@OneToMany(mappedBy="memberBean",fetch = FetchType.EAGER)
 	public Set<GroupsBean> getGroupsbean() {
@@ -57,22 +60,7 @@ public class MemberBean implements Serializable {
 	private List<Report_MemberBean> list = new ArrayList<>();
 	
 	public MemberBean(Integer id, String account, String password, String name, String address, String email,
-			String phone, Integer status, String birthday, String register_Time, String fileName) {
-		super();
-		this.id = id;
-		this.account = account;
-		this.password = password;
-		this.name = name;
-		this.address = address;
-		this.email = email;
-		this.phone = phone;
-		this.status = status;
-		this.birthday = birthday;
-		this.register_Time = register_Time;
-		this.fileName = fileName;
-	}
-	public MemberBean(Integer id, String account, String password, String name, String address, String email,
-			String phone, String birthday, String register_Time, String fileName, Blob coverImage,MultipartFile image,Integer status) {
+			String phone, String birthday, Timestamp register_Time, String fileName, Blob coverImage,MultipartFile image,Integer status) {
 		super();
 		this.id = id;
 		this.account = account;
@@ -143,10 +131,10 @@ public class MemberBean implements Serializable {
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	public String getRegister_Time() {
+	public Timestamp getRegister_Time() {
 		return register_Time;
 	}
-	public void setRegister_Time(String registerTime) {
+	public void setRegister_Time(Timestamp registerTime) {
 		this.register_Time = registerTime;
 	}
 	public String getFileName() {
@@ -173,8 +161,9 @@ public class MemberBean implements Serializable {
 	@Override
 	public String toString() {
 		return "MemberBean [id=" + id + ", account=" + account + ", password=" + password + ", name=" + name
-				+ ", address=" + address + ", email=" + email + ", phone=" + phone + ", status=" + status
-				+ ", birthday=" + birthday + ", register_Time=" + register_Time + ", fileName=" + fileName + "]";
+				+ ", address=" + address + ", email=" + email + ", phone=" + phone + ", birthday=" + birthday
+				+ ", register_Time=" + register_Time + ", fileName=" + fileName + ", coverImage=" + coverImage
+				+ ", image=" + image + ", status=" + status + "]";
 	}
 
 	@XmlTransient
@@ -185,6 +174,27 @@ public class MemberBean implements Serializable {
 
 	public void setImage(MultipartFile image) {
 		this.image = image;
+	}
+	
+	
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name="member_id")
+	public Set<OrderBean> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<OrderBean> orders) {
+		this.orders = orders;
+	}
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name="member_id")
+	public Set<GroupsOrderBean> getGroupOrders() {
+		return groupOrders;
+	}
+
+	public void setGroupOrders(Set<GroupsOrderBean> groupOrders) {
+		this.groupOrders = groupOrders;
 	}
 
 	

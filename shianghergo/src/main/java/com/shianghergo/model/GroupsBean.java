@@ -20,6 +20,7 @@ import javax.persistence.Table;
 public class GroupsBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+
 	private Integer id;
 //	private Integer member_id;
 	private String start_time;
@@ -34,6 +35,20 @@ public class GroupsBean implements Serializable {
 	
 	private Set<Groups_ItemBean> groupsitem = new LinkedHashSet<>();
 	
+	private CategoryBean categoryBean;
+	
+	
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "category_id")
+	public CategoryBean getCategoryBean() {
+		return categoryBean;
+	}
+
+	public void setCategoryBean(CategoryBean categoryBean) {
+		this.categoryBean = categoryBean;
+	}
+
 	public GroupsBean(Integer id, Integer member_id, String start_time, String end_time, String status, String name,
 			String detail, String payment, MemberBean memberBean) { // String category
 		super();

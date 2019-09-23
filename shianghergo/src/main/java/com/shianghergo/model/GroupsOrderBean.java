@@ -1,5 +1,7 @@
 package com.shianghergo.model;
 
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -14,8 +16,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="groups_order_info")
-public class GroupsOrderBean {
+public class GroupsOrderBean implements Serializable{
 		    		  
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Integer member_id;
 	private Integer groups_id;
@@ -27,8 +30,7 @@ public class GroupsOrderBean {
 	private String payment;
 //	private Integer place_id;
 	
-	private Set<GroupsOrderDetailBean> orderDetail;
-	
+	private Set<GroupsOrderDetailBean> orderDetail = new HashSet<>();
 	
 	private PlaceBean place;
 	
@@ -97,8 +99,8 @@ public class GroupsOrderBean {
 		this.payment = payment;
 	}
 	
-	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name="groups_order_info_id")
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "groups_order_info_id")
 	public Set<GroupsOrderDetailBean> getOrderDetail() {
 		return orderDetail;
 	}

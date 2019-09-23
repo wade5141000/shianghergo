@@ -16,6 +16,7 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
@@ -93,5 +94,23 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	}
 	
 	// 浩瑜下
+	
+	// 聖捷上
+	
+	//攔截器
+    @Bean MyIntercptor myIntercptor(){
+        return new MyIntercptor();
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        super.addInterceptors(registry);
+        //定義攔截甚麼請求 
+       registry.addInterceptor(myIntercptor()).addPathPatterns("/user/**");
+       registry.addInterceptor(myIntercptor()).addPathPatterns("/user/**");
+    }
+    
+    
+	// 聖捷下
 	
 }

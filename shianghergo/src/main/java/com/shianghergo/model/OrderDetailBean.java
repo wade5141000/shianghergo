@@ -1,5 +1,7 @@
 package com.shianghergo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +10,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="order_detail")
-public class OrderDetailBean {
+public class OrderDetailBean implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Integer order_id;
 	private Integer store_id;

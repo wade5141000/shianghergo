@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="../res/static/css/main.css">
   <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
   <script type="text/javascript" src="../res/layui/layui.js"></script>
@@ -16,12 +20,12 @@
     <div class="site-nav w1200">
       <p class="sn-back-home">
         <i class="layui-icon layui-icon-home"></i>
-        <a href="#">首頁</a>
+        <a href="index.jsp">首頁</a>
       </p>
       <div class="sn-quick-menu">
       	<div class="login"><a >註冊</a></div>
-        <div class="login"><a href="login.html">登入</a></div>
-        <div class="sp-cart"><a href="shopcart.html">購物車</a><span>2</span></div>
+        <div class="login"><a href="login.jsp">登入</a></div>
+        <div class="sp-cart"><a href="shopcart.jsp">購物車</a><span>2</span></div>
       </div>
     </div>
   </div>
@@ -31,17 +35,17 @@
     <div class="headerLayout w1200">
       <div class="headerCon">
         <h1 class="mallLogo">
-          <a href="#">
-            <img src="../res/static/img/logo.png">
+          <a href="index.jsp">
+            <img src="../res/static/img/logo4.png" width="100" height="100">
           </a>
         </h1>
         <div class="mallSearch">
-          <form action="" class="layui-form" novalidate>
-            <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="請輸入需要的商品">
-            <button class="layui-btn" lay-submit lay-filter="formDemo">
+        <form action='<c:url value="/Search.controller" />' method="get"  class="layui-form" novalidate>
+            <input type="text" name="title" value="${param.title}" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="請輸入需要的商品" >
+            <button class="layui-btn" lay-submit lay-filter="formDemo" type="submit">
                 <i class="layui-icon layui-icon-search"></i>
             </button>
-            <input type="hidden" name="" value="">
+            <input type="submit" name="" value="">
           </form>
         </div>
       </div>
@@ -54,34 +58,51 @@
       <div class="inner-cont0">
         <div class="inner-cont1 w1200">
           <div class="inner-cont2">
-            <a href="commodity.html" class="active">所有商品</a>
-            <a href="buytoday.html">今日團購</a>
-            <a href="information.html">母嬰資訊</a>
+            <a href="commodity.jsp" class="active">所有商品</a>
+            <a href="buytoday.jsp">今日團購</a>
           </div>
         </div>
       </div>
     </div>
     
-    <div class="category-con">
-      
-      <div class="category-banner">
-        <div class="w1200">
-          <img src="../res/static/img/banner1.jpg">
-        </div>
-      </div>
-    </div>
-    
-    
-    
+       <div id="myCarousel" class="carousel slide">
+	
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>   
+	
+	<div class="carousel-inner">
+		<div class="item active">
+			<a href="A.jsp" title="GO"><img src="../res/static/img/1.png" alt="First slide" style="width:100%"></a>
+		</div>
+		<div class="item">
+			<a href="B.jsp" title="GO"><img src="../res/static/img/2.png" alt="Second slide"style="width:100%"></a>
+		</div>
+		<div class="item">
+			<a href="C.jsp" title="GO"><img src="../res/static/img/3.png" alt="Third slide" style="width:100%"></a>
+		</div>
+	</div>
+	
+	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div> 
     <div class="product-cont w1200" id="product-cont">
       <div class="product-item product-item1 layui-clear">
         <div class="left-title">
-          <h4><i>1F</i></h4>
+          <h4><i>食</i></h4>
           <img src="../res/static/img/icon_gou.png">
-          <h5>寶寶服飾</h5>
+          <h5>人氣美食</h5>
         </div>
         <div class="right-cont">
-          <a href="javascript:;" class="top-img"><img src="../res/static/img/img12.jpg" alt=""></a>
+          <a href="javascript:;" class="top-img"><img src="../res/static/img/food1.png" alt=""></a>
           <div class="img-box">
             <a href="javascript:;"><img src="../res/static/img/s_img7.jpg"></a>
             <a href="javascript:;"><img src="../res/static/img/s_img8.jpg"></a>
@@ -93,12 +114,12 @@
       </div>
       <div class="product-item product-item2 layui-clear">
         <div class="left-title">
-          <h4><i>2F</i></h4>
+          <h4><i>衣</i></h4>
           <img src="../res/static/img/icon_gou.png">
-          <h5>奶粉輔食</h5>
+          <h5>秋冬潮流</h5>
         </div>
         <div class="right-cont">
-          <a href="javascript:;" class="top-img"><img src="../res/static/img/img12.jpg" alt=""></a>
+          <a href="javascript:;" class="top-img"><img src="../res/static/img/cloth1.png" alt=""></a>
           <div class="img-box">
             <a href="javascript:;"><img src="../res/static/img/s_img7.jpg"></a>
             <a href="javascript:;"><img src="../res/static/img/s_img8.jpg"></a>

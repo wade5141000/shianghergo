@@ -5,6 +5,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="../res/static/css/main.css">
   <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
   <script type="text/javascript" src="../res/layui/layui.js"></script>
@@ -17,11 +20,11 @@
     <div class="site-nav w1200">
       <p class="sn-back-home">
         <i class="layui-icon layui-icon-home"></i>
-        <a href="#">首頁</a>
+        <a href=index.jsp>首頁</a>
       </p>
       <div class="sn-quick-menu">
-        <div class="login"><a href="login.html">登入</a></div>
-        <div class="sp-cart"><a href="shopcart.html">購物車</a><span>2</span></div>
+        <div class="login"><a href="login.jsp">登入</a></div>
+        <div class="sp-cart"><a href="shopcart.jsp">購物車</a><span>2</span></div>
       </div>
     </div>
   </div>
@@ -32,8 +35,8 @@
     <div class="headerLayout w1200">
       <div class="headerCon">
         <h1 class="mallLogo">
-          <a href="#">
-            <img src="../res/static/img/logo.png">
+          <a href="index.jsp">
+            <img src="../res/static/img/logo4.png" width="100" height="100">
           </a>
         </h1>
         <div class="mallSearch">
@@ -54,18 +57,42 @@
         <div class="inner-cont0">
           <div class="inner-cont1 w1200">
             <div class="inner-cont2">
-              <a href="commodity.html" class="active">所有商品</a>
-              <a href="buytoday.html">今日團購</a>
-              <a href="information.html">母嬰資訊</a>
+              <a href="commodity.jsp" class="active">所有商品</a>
+<a href="buytoday.jsp" class="active">今日團購</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="banner-box">
-        <div class="banner"></div>
-      </div>
-    </div>
-  </div>
+      
+        <div id="myCarousel" class="carousel slide">
+	
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>   
+	
+	<div class="carousel-inner">
+		<div class="item active">
+			<a href="A.jsp" title="GO"><img src="../res/static/img/1.png" alt="First slide" style="width:100%"></a>
+		</div>
+		<div class="item">
+			<a href="B.jsp" title="GO"><img src="../res/static/img/2.png" alt="Second slide"style="width:100%"></a>
+		</div>
+		<div class="item">
+			<a href="C.jsp" title="GO"><img src="../res/static/img/3.png" alt="Third slide" style="width:100%"></a>
+		</div>
+	</div>
+	
+	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div>
 
 
   <div class="content content-nav-base commodity-content">

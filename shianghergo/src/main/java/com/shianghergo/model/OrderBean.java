@@ -1,15 +1,24 @@
 package com.shianghergo.model;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="order_info")
-public class OrderBean {
+public class OrderBean implements Serializable {
 	
+	
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Integer member_id;
 	private Integer store_id;
@@ -19,6 +28,7 @@ public class OrderBean {
 	private String payment;
 	private String pay_time;
 	private Integer status;
+	private Set<OrderDetailBean> orderDetail = new HashSet<>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -75,6 +85,15 @@ public class OrderBean {
 	}
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+	
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "order_id")
+	public Set<OrderDetailBean> getOrderDetail() {
+		return orderDetail;
+	}
+	public void setOrderDetail(Set<OrderDetailBean> orderDetail) {
+		this.orderDetail = orderDetail;
 	}
 	
 	

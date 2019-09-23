@@ -1,5 +1,7 @@
 package com.shianghergo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,10 +10,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "message")
-public class MessageBean {
+public class MessageBean implements Serializable{
 
-	
-
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String contents;
 	private String time;
@@ -19,6 +20,22 @@ public class MessageBean {
 	private Integer member_id;
 	private Integer target;
 	private String title;
+	
+	public MessageBean(Integer id, Integer member_id, Integer target, String title, String contents, String time,
+			Integer status) {
+		super();
+		this.id = id;
+		this.member_id = member_id;
+		this.target = target;
+		this.title = title;
+		this.contents = contents;
+		this.time = time;
+		this.status = status;
+	}
+	
+	public MessageBean() {
+		
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

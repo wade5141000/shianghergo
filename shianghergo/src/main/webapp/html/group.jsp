@@ -17,11 +17,11 @@
     <div class="site-nav w1200">
       <p class="sn-back-home">
         <i class="layui-icon layui-icon-home"></i>
-        <a href="#">首頁</a>
+        <a href="index.jsp">首頁</a>
       </p>
       <div class="sn-quick-menu">
-        <div class="login"><a href="login.html">登入</a></div>
-        <div class="sp-cart"><a href="shopcart.html">購物車</a><span>2</span></div>
+        <div class="login"><a href="login.jsp">登入</a></div>
+        <div class="sp-cart"><a href="shopcart.jsp">購物車</a><span>2</span></div>
       </div>
     </div>
   </div>
@@ -32,10 +32,9 @@
     <div class="headerLayout w1200">
       <div class="headerCon">
         <h1 class="mallLogo">
-          <a href="#">
-            <img src="../res/static/img/logo.png">
+          <a href="index.jsp">
+            <img src="../res/static/img/logo4.png" width="100" height="100">
           </a>
-        </h1>
         <div class="mallSearch">
           <form action="" class="layui-form" novalidate>
             <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="請輸入需要的商品">
@@ -54,9 +53,9 @@
         <div class="inner-cont0">
           <div class="inner-cont1 w1200">
             <div class="inner-cont2">
-              <a href="commodity.html">所有商品</a>
-              <a href="buytoday.html" class="active">今日團購</a>
-              <a href="information.html">母嬰資訊</a>
+              <a href="commodity.jsp">所有商品</a>
+              <a href="buytoday.jsp" class="active">今日團購</a>
+              <a href="information.jsp">母嬰資訊</a>
             </div>
           </div>
         </div>

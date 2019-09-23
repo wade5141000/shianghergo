@@ -44,13 +44,13 @@ public class GroupsController {
 
 //	int temp = 0;
 
-	@RequestMapping("/admin")
+	@RequestMapping("/frank/admin")
 	public String login() {
 		return "frank/admin";
 	}
 
 	// ----------------登入---------------
-	@RequestMapping("/login")
+	@RequestMapping("/frank/login")
 	public String login(Model model, String account) {
 		String hql = "select id FROM MemberBean where account =:account";
 		Session session = factory.openSession();
@@ -63,7 +63,7 @@ public class GroupsController {
 	}
 
 	// --------------------取的開團表單----------------------
-	@RequestMapping(value = "/Groups1", method = RequestMethod.GET)
+	@RequestMapping(value = "/frank/Groups1", method = RequestMethod.GET)
 	public String getAddNewProductForm(Model model) {
 		GroupsBean gb = new GroupsBean();
 		
@@ -80,7 +80,7 @@ public class GroupsController {
 	}
 
 	// -------------------------開團 並把會員member_id 放入------------
-	@RequestMapping(value = "/Groups1", method = RequestMethod.POST)
+	@RequestMapping(value = "/frank/Groups1", method = RequestMethod.POST)
 	public String processAddNewProductForm(Model model, @ModelAttribute("groupsBean") GroupsBean gb,
 			BindingResult result, HttpServletRequest request, @ModelAttribute("mid") Integer member_id) {
 //		String[] suppressedFields = result.getSuppressedFields();
@@ -129,7 +129,7 @@ public class GroupsController {
 //		temp = gb.getId();
 //		return "redirect:/item?id=" + id;
 	
-		return "redirect:/showgroup?gid=" + id;
+		return "redirect:/frank/showgroup?gid=" + id;
 	}
 	// return "forward:/anotherFWD": 轉發(forward)給能夠匹配給 /anotherFWD的控制器方法
 	// 將與下一棒的程式共用同一個請求物件
@@ -140,7 +140,7 @@ public class GroupsController {
 	
 
 	// ----------------新增商品取的表單-----------------------
-	@RequestMapping(value = "/additem", method = RequestMethod.GET)
+	@RequestMapping(value = "/frank/additem", method = RequestMethod.GET)
 	public String AddNewGroupsItemForm(@RequestParam("gid") Integer gid, Model model) {
 		System.out.println("測試" + gid);
 		Groups_ItemBean gib = new Groups_ItemBean();
@@ -154,7 +154,7 @@ public class GroupsController {
 	}
 	
 	// -----------------------新增商品------------------
-	@RequestMapping(value = "/additem", method = RequestMethod.POST)
+	@RequestMapping(value = "/frank/additem", method = RequestMethod.POST)
 	public String AddNewGroupsIteForm(@RequestParam("gid") Integer gid,
 			@ModelAttribute("groupsitemBean") Groups_ItemBean gib, GroupsBean gb) {
 
@@ -162,7 +162,7 @@ public class GroupsController {
 
 		service.addGroupsItem(gib, gid);
 
-		return "redirect:/showgroup?gid=" + gid;
+		return "redirect:/frank/showgroup?gid=" + gid;
 	}
 	
 	
@@ -201,7 +201,7 @@ public class GroupsController {
 
 	
 	// ----------------新增地址-----------------------
-	@RequestMapping(value = "/addplace", method = RequestMethod.GET)
+	@RequestMapping(value = "/frank/addplace", method = RequestMethod.GET)
 	public String AddNewPlaceForm(@RequestParam("gid") Integer gidd, Model model, HttpServletRequest rq) {
 		System.out.println("測試" + gidd);
 		PlaceBean pb = new PlaceBean();
@@ -215,7 +215,7 @@ public class GroupsController {
 	}
 
 	// -----------------------新增地址------------------
-	@RequestMapping(value = "/addplace", method = RequestMethod.POST)
+	@RequestMapping(value = "/frank/addplace", method = RequestMethod.POST)
 	public String AddNewPlaceForm(@RequestParam("gid") Integer gid, @ModelAttribute("placeBean") PlaceBean pb,
 			GroupsBean gb) {
 
@@ -223,7 +223,7 @@ public class GroupsController {
 
 		service.addPlace(pb, gid);
 
-		return "redirect:/showgroup?gid=" + gid;
+		return "redirect:/frank/showgroup?gid=" + gid;
 	}
 
 	
@@ -270,7 +270,7 @@ public class GroupsController {
 	
 	
 //--------------------團購列表---------------------------
-	@RequestMapping("/groups")
+	@RequestMapping("/frank/groups")
 	public String list(Model model) {
 		List<GroupsBean> list = service.getAllGroups();
 		model.addAttribute("groups", list);
@@ -278,7 +278,7 @@ public class GroupsController {
 	}
 
 //-------------------------某一個團購頁面---------------------------
-	@RequestMapping("/group") // 查詢單一產品
+	@RequestMapping("/frank/group") // 查詢單一產品
 	public String getGroupsById(@RequestParam("id") Integer id, @RequestParam("mid") Integer mid, Model model,
 			Integer groups_id, GroupsBean gb) {
 		System.out.println("id: " + id);
@@ -299,7 +299,7 @@ public class GroupsController {
 	}
 
 	// -----------------查詢所有商品(測試用)-----------------
-	@RequestMapping("/queryByGroups_id") // 查詢單一產品
+	@RequestMapping("/frank/queryByGroups_id") // 查詢單一產品
 	public String getAllGroups_idList(Model model) {
 		List<Groups_ItemBean> list = service.getAllGroups_item();
 		model.addAttribute("groups_idList", list);
@@ -307,7 +307,7 @@ public class GroupsController {
 	}
 	
 	// -------------------團主資料------------------
-	@RequestMapping("/memberdata") // 查詢單一產品
+	@RequestMapping("/frank/memberdata") // 查詢單一產品
 	public String getMemberById(@RequestParam("mmid") Integer mmid, Model model) {
 
 		System.out.println("member mid:  " + mmid);
@@ -318,7 +318,7 @@ public class GroupsController {
 	}
 
 	// -----------------------------我開的團------------------------------
-	@RequestMapping("/mygroups") // 查詢單一產品
+	@RequestMapping("/frank/mygroups") // 查詢單一產品
 	public String getAllGroupsListByMember(Model model, GroupsBean gb, @ModelAttribute("mid") Integer member_id) {
 
 		model.addAttribute("mygroups", service.getAllGroupsByMember(member_id));
@@ -326,7 +326,7 @@ public class GroupsController {
 	}
 
 	// ---------------------------某一團的詳細資料--------------------------
-	@RequestMapping("/showgroup")
+	@RequestMapping("/frank/showgroup")
 	public String getALLGroupById(@RequestParam("gid") Integer gid, Model model, GroupsBean gb) {
 
 		model.addAttribute("updategroup", service.getGroupById(gid)); // 取團的資料
@@ -335,7 +335,7 @@ public class GroupsController {
 	}
 
 	// ------------------------修改團的表單-----------------
-	@RequestMapping(value = "/updatetogroup", method = RequestMethod.GET)
+	@RequestMapping(value = "/frank/updatetogroup", method = RequestMethod.GET)
 	public String updatetogroups(@RequestParam("gid") Integer gid, Model model, GroupsBean gb) {
 
 		model.addAttribute("updategroup", service.getGroupById(gid));
@@ -345,7 +345,7 @@ public class GroupsController {
 	}
 
 	// ---------------------修改團的資料-----------------
-	@RequestMapping(value = "/updatetogroup", method = RequestMethod.POST)
+	@RequestMapping(value = "/frank/updatetogroup", method = RequestMethod.POST)
 	public String updatetogroups(@RequestParam("name") String name, @RequestParam("end_time") String end_time,
 			@RequestParam("detail") String detail, @RequestParam("payment") String payment,
 			@RequestParam("id") Integer id) {
@@ -359,11 +359,11 @@ public class GroupsController {
 
 		service.updategroups(gb);
 
-		return "redirect:/showgroup?gid=" + id;
+		return "redirect:/frank/showgroup?gid=" + id;
 	}
 
 	// -----------------------修改地址的表單-------------------
-	@RequestMapping(value = "/updatetoplace", method = RequestMethod.GET)
+	@RequestMapping(value = "/frank/updatetoplace", method = RequestMethod.GET)
 	public String updatetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model,
 			GroupsBean gb) {
 
@@ -374,7 +374,7 @@ public class GroupsController {
 	}
 
 	// ---------------------修改地址的資料-----------------
-	@RequestMapping(value = "/updatetoplace", method = RequestMethod.POST)
+	@RequestMapping(value = "/frank/updatetoplace", method = RequestMethod.POST)
 	public String updatetoplace(@RequestParam("gid") Integer gid, @RequestParam("address") String address,
 			@RequestParam("time") String time, @RequestParam("pid") Integer pid) {
 
@@ -385,11 +385,11 @@ public class GroupsController {
 
 		service.updateplace(pb);
 
-		return "redirect:/showgroup?gid=" + gid;
+		return "redirect:/frank/showgroup?gid=" + gid;
 	}
 
 	// -----------------------修改商品的表單-------------------
-	@RequestMapping(value = "/updatetogroup_item", method = RequestMethod.GET)
+	@RequestMapping(value = "/frank/updatetogroup_item", method = RequestMethod.GET)
 	public String updatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("iid") Integer iid, Model model,
 			GroupsBean gb) {
 
@@ -400,7 +400,7 @@ public class GroupsController {
 	}
 
 	// ---------------------修改商品的資料-----------------
-	@RequestMapping(value = "/updatetogroup_item", method = RequestMethod.POST)
+	@RequestMapping(value = "/frank/updatetogroup_item", method = RequestMethod.POST)
 	public String updatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("name") String name,
 			@RequestParam("detail") String detail, @RequestParam("price") Integer price,
 			@RequestParam("iid") Integer iid) {
@@ -413,11 +413,11 @@ public class GroupsController {
 
 		service.updateitem(ib);
 
-		return "redirect:/showgroup?gid=" + gid;
+		return "redirect:/frank/showgroup?gid=" + gid;
 	}
 
 	// ----------------------刪除商品---------------------------
-	@RequestMapping(value = "/deletetogroup_item")
+	@RequestMapping(value = "/frank/deletetogroup_item")
 	public String deletetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("iid") Integer iid, Model model) {
 
 //			service.deletegitemById(iid);
@@ -428,11 +428,11 @@ public class GroupsController {
 //			Session session = factory.getCurrentSession();		
 //			session.delete(service.getGroup_ItemById(iid));
 
-		return "redirect:/showgroup?gid=" + gid;
+		return "redirect:/frank/showgroup?gid=" + gid;
 	}
 
 	// -----------------------刪除地址------------------------
-	@RequestMapping(value = "/deletetoplace")
+	@RequestMapping(value = "/frank/deletetoplace")
 	public String deletetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model) {
 
 //			service.deletegitemById(iid);
@@ -443,14 +443,14 @@ public class GroupsController {
 //			Session session = factory.getCurrentSession();		
 //			session.delete(service.getGroup_ItemById(iid));
 
-		return "redirect:/showgroup?gid=" + gid;
+		return "redirect:/frank/showgroup?gid=" + gid;
 	}
 
 
 		
 
 	// ------------------單獨修改一欄資料-------------
-	@RequestMapping("/updatename") // 查詢單一產品
+	@RequestMapping("/frank/updatename") // 查詢單一產品
 	public void upda(HttpServletResponse rp, HttpServletRequest rq) {
 
 		String name = rq.getParameter("name");

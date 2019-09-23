@@ -1,5 +1,7 @@
 package com.shianghergo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,15 +10,31 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="groups_order_detail")
-public class GroupsOrderDetailBean {
+public class GroupsOrderDetailBean implements Serializable{
 
 	
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Integer groups_order_info_id;
 	private Integer groups_item_id;
 	private String name;
 	private Integer amount;
 	private Integer price;
+	
+	public GroupsOrderDetailBean(Integer id, Integer groups_order_info_id, Integer groups_item_id, String name,
+			Integer amount, Integer price) {
+		super();
+		this.id = id;
+		this.groups_order_info_id = groups_order_info_id;
+		this.groups_item_id = groups_item_id;
+		this.name = name;
+		this.amount = amount;
+		this.price = price;
+	}
+	
+	public GroupsOrderDetailBean() {
+		
+	}
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

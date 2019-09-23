@@ -2,8 +2,8 @@ package com.shianghergo.dao.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,6 +14,7 @@ import com.shianghergo.dao.GroupsOrderDao;
 import com.shianghergo.model.GroupsCartBean;
 import com.shianghergo.model.GroupsOrderBean;
 import com.shianghergo.model.GroupsOrderDetailBean;
+import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
 
 @Repository
@@ -37,6 +38,7 @@ public class GroupsOrderDaoImpl implements GroupsOrderDao{
 		ob.setPayment("面交");
 		PlaceBean pb = session.get(PlaceBean.class, pId);
 		ob.setPlace(pb);
+		
 		int total = 0;
 		String hql = "from GroupsCartBean c where c.member_id = :id";
 		List<GroupsCartBean> list = session.createQuery(hql).setParameter("id", member_id).getResultList();
@@ -46,9 +48,16 @@ public class GroupsOrderDaoImpl implements GroupsOrderDao{
 		ob.setPrice(total);
 		int oId = (int)session.save(ob);
 		
+		// 把訂單加到member
+		MemberBean mb = session.get(MemberBean.class, member_id);
+		Set<GroupsOrderBean> groupOrders = mb.getGroupOrders();
+		groupOrders.add(ob);
+		mb.setGroupOrders(groupOrders);
 		
-		// 加入detail
-		HashSet<GroupsOrderDetailBean> set = new HashSet<GroupsOrderDetailBean>();
+		
+		// 購物車加到detail和訂單內
+		
+		Set<GroupsOrderDetailBean> set = ob.getOrderDetail();
 		for(GroupsCartBean cb : list) {
 			GroupsOrderDetailBean od = new GroupsOrderDetailBean();
 			od.setAmount(cb.getAmount());

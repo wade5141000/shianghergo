@@ -17,11 +17,11 @@
     <div class="site-nav w1200">
       <p class="sn-back-home">
         <i class="layui-icon layui-icon-home"></i>
-        <a href="#">首页</a>
+        <a href="index.jsp">首页</a>
       </p>
       <div class="sn-quick-menu">
-        <div class="login"><a href="login.html">登录</a></div>
-        <div class="sp-cart"><a href="shopcart.html">购物车</a><span>2</span></div>
+        <div class="login"><a href="login.jsp">登录</a></div>
+        <div class="sp-cart"><a href="shopcart.jsp">购物车</a><span>2</span></div>
       </div>
     </div>
   </div>
@@ -32,8 +32,8 @@
     <div class="headerLayout w1200">
       <div class="headerCon">
         <h1 class="mallLogo">
-          <a href="#" title="母婴商城">
-            <img src="../res/static/img/logo.png">
+          <a href="index.jsp">
+            <img src="../res/static/img/logo4.png" width="100" height="100">
           </a>
         </h1>
         <div class="mallSearch">
@@ -55,10 +55,9 @@
       <div class="inner-cont0">
         <div class="inner-cont1 w1200">
           <div class="inner-cont2">
-            <a href="commodity.html" class="active">所有商品</a>
-            <a href="buytoday.html">今日团购</a>
-            <a href="information.html">母婴资讯</a>
-            <a href="about.html">关于我们</a>
+            <a href="../html/commodity.jsp" class="active">所有商品</a>
+            <a href="buytoday.jsp">今日团购</a>
+            <a href="about.jsp">关于我们</a>
           </div>
         </div>
       </div>

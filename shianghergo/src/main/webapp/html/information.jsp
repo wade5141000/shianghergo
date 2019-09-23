@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +18,11 @@
     <div class="site-nav w1200">
       <p class="sn-back-home">
         <i class="layui-icon layui-icon-home"></i>
-        <a href="#">首頁</a>
+        <a href="index.jsp">首頁</a>
       </p>
       <div class="sn-quick-menu">
-        <div class="login"><a href="login.html">登入</a></div>
-        <div class="sp-cart"><a href="shopcart.html">購物車</a><span>2</span></div>
+        <div class="login"><a href="login.jsp">登入</a></div>
+        <div class="sp-cart"><a href="shopcart.jsp">購物車</a><span>2</span></div>
       </div>
     </div>
   </div>
@@ -32,18 +33,18 @@
     <div class="headerLayout w1200">
       <div class="headerCon">
         <h1 class="mallLogo">
-          <a href="#">
-            <img src="../res/static/img/logo.png">
+          <a href="index.jsp">
+            <img src="../res/static/img/logo4.png" width="100" height="100">
           </a>
         </h1>
         <div class="mallSearch">
-          <form action="" class="layui-form" novalidate>
-            <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="請輸入需要的商品">
-            <button class="layui-btn" lay-submit lay-filter="formDemo">
-                <i class="layui-icon layui-icon-search"></i>
-            </button>
-            <input type="hidden" name="" value="">
-          </form>
+	        <form action='<c:url value="/Search.controller" />' method="get"  class="layui-form" novalidate>
+	            <input type="text" name="title" value="${param.title}" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="請輸入需要的商品" >
+	            <button class="layui-btn" lay-submit lay-filter="formDemo" type="submit">
+	                <i class="layui-icon layui-icon-search"></i>
+	            </button>
+	            <input type="submit" name="" value="">
+	        </form>
         </div>
       </div>
     </div>
@@ -54,15 +55,14 @@
         <div class="inner-cont0">
           <div class="inner-cont1 w1200">
             <div class="inner-cont2">
-              <a href="commodity.html">所有商品</a>
-              <a href="buytoday.html">今日團購</a>
-              <a href="information.html" class="active">母嬰資訊</a>
+              <a href="commodity.jsp">所有商品</a>
+              <a href="buytoday.jsp">今日團購</a>
             </div>
           </div>
         </div>
       </div>
       <div class="banner-box">
-        <div class="banner"></div>
+<!--         <div class="banner"></div> -->
       </div>
     </div>
   </div>
@@ -70,168 +70,15 @@
   <div class="content content-nav-base information-content">
     <div class="info-list-box">
       <div class="info-list w1200">
-        <div class="item-box layui-clear" id="list-cont">
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new1.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new2.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new1.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new2.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new1.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new2.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new1.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new2.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new1.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new2.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new1.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new2.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new1.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new2.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new1.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="img">
-              <img src="../res/static/img/new2.jpg" alt="">
-            </div>
-            <div class="text">
-              <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-              <p class="data">2016-12-24 16:33:26</p>
-              <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-            </div>
-          </div>
-        </div>
+			<div class="SearchDiv">
+				<c:forEach varStatus="stVar" var="anSearch" items="${searchList}">
+					<p>${anSearch.name}</p>
+					<p>${anSearch.price}</p>
+					<p>${anSearch.detail}</p>
+				</c:forEach>
+			</div>
+      		     
+
         <div id="demo0" style="text-align: center;"></div>
       </div>
     </div>
