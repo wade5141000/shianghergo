@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,15 +49,15 @@
 	<br />
 	<br />
 	<!-- action对应一个action标签，id对应提交时的对应关系 -->
-	<form id="saveForm" action="updatetogroup" method="post" >
+	<form:form id="saveForm" action="updatetogroup" method="post"
+		enctype="multipart/form-data" modelAttribute="upgroupsBean">
 		<input type="hidden" name="id" value="${updategroup.id}" />
 		<h2>團資訊</h2>
 		<table style="font-size: :16px">
 			<tr>
 				<td>標題：</td>
 				<td><input type="text" value="${updategroup.name }" name="name" /></td>
-				<%-- 			<td id="name">${updategroup.name}</td> --%>
-				<%-- 			<td id="btn"><button id="n_u_btn" onclick="chan(this,${updategroup.id})">修改</button></td> --%>
+
 			</tr>
 			<tr>
 				<td>開始時間：</td>
@@ -85,28 +86,19 @@
 			</tr>
 			<tr>
 				<td>付款方式：</td>
-				<td><input type="text" value="${updategroup.payment }"
-					name="payment" /></td>
+				<td><input type="checkbox" name="payment" value="1">面交付款<br>
+					<input type="checkbox" name="payment" value="2">銀行匯款<br>
+
+				</td>
+			</tr>
+
+			<tr>
+				<td>圖片:</td>
+				<td><input type="file" id="productImage" name="productImage" /></td>
+
 			</tr>
 
 		</table>
-		<!-- 		<table> -->
-
-		<!-- 		<h2>商品資訊</h2> -->
-		<!-- 		<table style="font-size: :16px"> -->
-		<!-- 			<tr> -->
-		<!-- 				<td>商品名稱：</td> -->
-		<%-- 				<td><input type="text" value="${updategroup.groupsitem.name }" name="name" /></td> --%>
-		<!-- 			</tr> -->
-		<!-- 			<tr> -->
-		<!-- 				<td>商品說明：</td> -->
-		<%-- 				<td><input type="text" value="${updategroup.groupsitem.detail }"name="detail" /></td> --%>
-		<!-- 			</tr> -->
-		<!-- 			<tr> -->
-		<!-- 			<tr> -->
-		<!-- 				<td>價格：</td> -->
-		<%-- 				<td><input type="text" value="${updategroup.groupsitem.price }"	name="price" /></td> --%>
-		<!-- 			</tr> -->
 
 		<tr>
 
@@ -114,7 +106,7 @@
 				href="javascript:history.go(-1)">取消 </a>
 		</tr>
 
-	</form>
+	</form:form>
 	<%-- 	<c:forEach var="place" items="${updategroup.place}"> --%>
 	<!-- 			<tr> -->
 	<!-- 			<td>地址:</td> -->

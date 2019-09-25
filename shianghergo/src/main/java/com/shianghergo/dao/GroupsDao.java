@@ -30,7 +30,7 @@ public interface GroupsDao {
 	List<PlaceBean> getPlaceByGroups_id(Integer groups_id);
 	void addPlace(PlaceBean pb);
 	List<GroupsBean> getAllGroupsByMember(Integer member_id);
-	void updategroups(GroupsBean gb,Integer category_id );
+	void updategroups(GroupsBean gb);
 	void updateName(String name, Integer id);
 	PlaceBean getPlaceById(Integer pid);
 	void updateplace(PlaceBean pb);

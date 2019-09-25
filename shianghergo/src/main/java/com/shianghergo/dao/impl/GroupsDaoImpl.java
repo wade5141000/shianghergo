@@ -112,8 +112,12 @@ public class GroupsDaoImpl implements GroupsDao {
 	public GroupsBean getGroupById(int groupId) {
 		Session session = factory.getCurrentSession();
 		GroupsBean gb = session.get(GroupsBean.class, groupId);
+		if(gb == null)
+			throw new ProductNotFoundException("商品編號:" + groupId + "找不到");
 		return gb;
 	}
+	
+
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -178,19 +182,21 @@ public class GroupsDaoImpl implements GroupsDao {
 	}
 
 	@Override
-	public void updategroups(GroupsBean gb,Integer category_id) {
+	public void updategroups(GroupsBean gb) {
 
 		Session session = factory.getCurrentSession();
-		GroupsBean x = session.get(GroupsBean.class, gb.getId());
+//		GroupsBean x = session.get(GroupsBean.class, gb.getId());
 		
-		CategoryBean y = getCategoryById(category_id);
+//		CategoryBean y = getCategoryById(category_id);
+//		x.setCategoryBean(y);
 //		gb.setCategoryBean(y);
 		
-		x.setName(gb.getName());
-		x.setEnd_time(gb.getEnd_time());
-		x.setDetail(gb.getDetail());
-		x.setPayment(gb.getPayment());
-		x.setCategoryBean(y);
+//		x.setName(gb.getName());
+//		x.setEnd_time(gb.getEnd_time());
+//		x.setDetail(gb.getDetail());
+//		x.setPayment(gb.getPayment());
+		session.update(gb);
+		
 		return;
 	}
 

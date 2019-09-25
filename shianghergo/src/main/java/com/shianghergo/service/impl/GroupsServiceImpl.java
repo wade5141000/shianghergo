@@ -90,7 +90,36 @@ public class GroupsServiceImpl implements GroupsService{
 	@Transactional
 	@Override
 	public void updategroups(GroupsBean gb,Integer category_id ) {
-		dao.updategroups(gb,category_id);
+		
+		
+		CategoryBean y = dao.getCategoryById(category_id);
+		GroupsBean ogb = dao.getGroupsById(gb.getId());
+		ogb.setName(gb.getName());
+		ogb.setEnd_time(gb.getEnd_time());
+		ogb.setDetail(gb.getDetail());
+		ogb.setPayment(gb.getPayment());	
+		ogb.setCategoryBean(y);
+//		x.setName(gb.getName());
+//		x.setEnd_time(gb.getEnd_time());
+//		x.setDetail(gb.getDetail());
+//		x.setPayment(gb.getPayment());
+		
+		
+		
+		
+		if(gb.getImage()!=null) {
+			
+			ogb.setImage(gb.getImage());
+		}
+		
+		if (gb.getId() != null)
+			dao.updategroups(ogb);
+		
+		
+		
+		
+		
+		
 	}
 	@Transactional
 	@Override

@@ -15,7 +15,7 @@
 	<H1>開團瞜 !!</H1>
 	<HR>
 	<form:form action="Groups1" method="POST" id="regForm"
-		modelAttribute="groupsBean">
+		modelAttribute="groupsBean" enctype="multipart/form-data">
 		<fieldset>
 			<legend>開團</legend>
 			<div class="item">
@@ -33,20 +33,21 @@
 					path="end_time" />
 			</div>
 			<div class="form-group">
-					<label for="categoryBean" class="item-label">分類:</label>
-					<div class='col-lg-10'>
-						<form:select path="categoryBean" name="categoryBean">
-							<c:forEach var="categorys" items="${category}" >
+				<label for="categoryBean" class="item-label">分類:</label>
+				<div class='col-lg-10'>
+					<form:select path="categoryBean" name="categoryBean">
+						<c:forEach var="categorys" items="${category}">
 							<option value="${categorys.id}">${categorys.name}</option>
-						
-							</c:forEach>
-						</form:select>
-					</div>
+
+						</c:forEach>
+					</form:select>
 				</div>
-			
+			</div>
+
 			<div class="item">
-				
-				<input type="hidden" id="status" name="status" path="status" value="1" />
+
+				<input type="hidden" id="status" name="status" path="status"
+					value="1" />
 			</div>
 
 
@@ -56,8 +57,15 @@
 					name="detail" path="detail" />
 			</div>
 			<div class="item">
-				<label for="payment" class="item-label">付款方式:</label>
-				<form:input type="text" id="payment" name="payment" path="payment" />
+				<label for="payment" class="item-label">付款方式:</label><br>
+<%-- 				<form:input type="text" id="payment" name="payment" path="payment" /> --%>
+				 <input type="checkbox" name="payment" value="1">面交付款<br>
+  				 <input type="checkbox" name="payment" value="2">銀行匯款<br>
+				
+			</div>
+			<div class="item">
+				<label for="productImage" class="item-label">上傳圖片:</label>
+				<form:input type="file" id="productImage" name="productImage" path="productImage" required="required"/>
 			</div>
 
 

@@ -103,51 +103,49 @@ public class GroupsController {
 	public String processAddNewProductForm(Model model, @ModelAttribute("groupsBean") GroupsBean gb,
 			BindingResult result, HttpServletRequest request, @ModelAttribute("mid") Integer member_id,
 			@RequestParam("categoryBean") Integer category_id) {
-//		String[] suppressedFields = result.getSuppressedFields();
-//		if (suppressedFields.length > 0) {
-//			throw new RuntimeException("嘗試傳入不允許的欄位: " + 
-//		    StringUtils.arrayToCommaDelimitedString(suppressedFields));
-//		}
 
-//		MultipartFile productImage = bb.getProductImage();
-//		String originalFilename = productImage.getOriginalFilename();
-//		bb.setFileName(originalFilename);
-//		
-//		String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
-//		String rootDirectory = context.getRealPath("/");
-//		//  建立Blob物件，交由 Hibernate 寫入資料庫
-//		if (productImage != null && !productImage.isEmpty() ) {
-//			try {
-//				byte[] b = productImage.getBytes();
-//				Blob blob = new SerialBlob(b);
-//				bb.setCoverImage(blob);
-//			} catch(Exception e) {
-//				e.printStackTrace();
-//				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
-//			}
-//		}
-//		java.util.Date d = new java.util.Date();
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH時mm分ss秒 SSS毫秒");
-//		String start_time = sdf.format(d);
-//		model.addAttribute("now",start_time);
-//		
-//		System.out.println(start_time);
+		String[] suppressedFields = result.getSuppressedFields();
+		if (suppressedFields.length > 0) {
+			throw new RuntimeException("嘗試傳入不允許的欄位:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
+		}
+		System.out.println("有沒有阿~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		MultipartFile productImage = gb.getProductImage();
+		String originalFilename = productImage.getOriginalFilename();
+		System.out.println(originalFilename);
+//		gib.setFileName(originalFilename);
+		String ext = ".jpg";
+		String rootDirectory = context.getRealPath("/");
+
+		if (productImage != null && !productImage.isEmpty()) {
+			byte[] b;
+			try {
+				b = productImage.getBytes();
+				Blob blob = new SerialBlob(b);
+				gb.setImage(blob);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+			}
+		}
+
+		
 		Integer id = service.addGroups(gb, member_id,category_id);
 		System.out.println("-----------------------------");
 		System.out.println(id);
 
-		// 將上傳的檔案移到指定的資料夾
-//		try {
-//			File imageFolder = new File(rootDirectory, "images");
-//			if (!imageFolder.exists()) imageFolder.mkdirs();
-//			File file = new File(imageFolder, bb.getBookId() + ext);
-//			productImage.transferTo(file);
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//			throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
-//		}
-//		temp = gb.getId();
-//		return "redirect:/item?id=" + id;
+		try {
+			File imageFolder = new File(rootDirectory, "images");
+			if (!imageFolder.exists())
+				imageFolder.mkdirs();
+			File file = new File(imageFolder, gb.getId() + ext);
+			productImage.transferTo(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
+		}
+		
+		
+		
 
 		return "redirect:/frank/showgroup?gid=" + id;
 	}
@@ -231,7 +229,7 @@ public class GroupsController {
 		return "redirect:/frank/showgroup?gid=" + gid;
 	}
 
-	
+	//--------------------------------取商品圖片---------------------------------
 	@RequestMapping(value = "/frank/getPicture/{id}", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getPicture(HttpServletRequest resp, @PathVariable Integer id) {
 		String filePath = "C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\images\\hello.png";
@@ -267,6 +265,47 @@ public class GroupsController {
 		ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
 		return responseEntity;
 	}
+	
+	//--------------------------------取團圖片---------------------------------
+		@RequestMapping(value = "/frank/getgroupPicture/{id}", method = RequestMethod.GET)
+		public ResponseEntity<byte[]> getgroupPicture(HttpServletRequest resp, @PathVariable Integer id) {
+			String filePath = "C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\images\\hello.png";
+			byte[] media = null;
+			HttpHeaders headers = new HttpHeaders();
+			String filename = "1.png";
+			int len = 0;
+			System.out.println("---------------------------------------------------");
+			GroupsBean bean =  service.getGroupById(id);
+			if (bean != null) {
+				Blob blob = bean.getImage();
+//				filename = bean.getFileName();
+				if (blob != null) {
+					try {
+						len = (int) blob.length();
+						media = blob.getBytes(1, len);
+					} catch (SQLException e) {
+						throw new RuntimeException("ProductController的getPicture()發生SQLException:" + e.getMessage());
+					}
+				} else {
+					media = toByteArray(filePath);
+					filename = filePath;
+				}
+			} else {
+				media = toByteArray(filePath);
+				filename = filePath;
+			}
+			headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+			String mimeType = context.getMimeType(filename);
+			MediaType mediaType = MediaType.valueOf(mimeType);
+			System.out.println("mediaType = " + mediaType);
+			headers.setContentType(mediaType);
+			ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+			return responseEntity;
+		}
+	
+	
+	
+	
 	private byte[] toByteArray(String filePath) {
 		byte[] b = null;
 		String realPath = context.getRealPath(filePath);
@@ -453,10 +492,13 @@ public class GroupsController {
 
 	// ------------------------修改團的表單-----------------
 	@RequestMapping(value = "/frank/updatetogroup", method = RequestMethod.GET)
-	public String updatetogroups(@RequestParam("gid") Integer gid, Model model, GroupsBean gb) {
+	public String updatetogroups(@RequestParam("gid") Integer gid, Model model) {
 		List<CategoryBean> list =service.getCategoryList();
 		model.addAttribute("category",list );
 		model.addAttribute("updategroup", service.getGroupById(gid));
+		GroupsBean gb = new GroupsBean();
+
+		model.addAttribute("upgroupsBean", gb);
 
 		return "frank/updategroup";
 
@@ -466,16 +508,37 @@ public class GroupsController {
 	@RequestMapping(value = "/frank/updatetogroup", method = RequestMethod.POST)
 	public String updatetogroups(@RequestParam("name") String name, @RequestParam("end_time") String end_time,
 			@RequestParam("detail") String detail, @RequestParam("payment") String payment,
-			@RequestParam("id") Integer id,@RequestParam("categoryBean") Integer category_id) {
+			@RequestParam("id") Integer id,@RequestParam("categoryBean") Integer category_id,
+			@ModelAttribute("upgroupsBean") GroupsBean gb,BindingResult result, HttpServletRequest request) {
+			
+		if (gb.getProductImage() != null) {
+			MultipartFile productImage = gb.getProductImage();
+			String originalFilename = productImage.getOriginalFilename();
+		System.out.println("1111111111111111111111111111111111111111111111111111111111111111");
 
-		GroupsBean gb = new GroupsBean();
+			if (productImage != null && !productImage.isEmpty()) {
+				String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
+				String rootDirectory = context.getRealPath("/");
+				System.out.println("2222222222222222222222222222222222222222222222222222222");
+				byte[] b;
+				try {
+					b = productImage.getBytes();
+					Blob blob = new SerialBlob(b);
+					gb.setImage(blob);
+				} catch (Exception e) {
+					e.printStackTrace();
+					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+				}
+			}
+		}
+		gb.setId(id);
 		
 
-		gb.setName(name);
-		gb.setEnd_time(end_time);
-		gb.setDetail(detail);
-		gb.setPayment(payment);
-		gb.setId(id);
+//		gb.setName(name);
+//		gb.setEnd_time(end_time);
+//		gb.setDetail(detail);
+//		gb.setPayment(payment);
+//		gb.setId(id);
 			
 		service.updategroups(gb,category_id);
 
@@ -484,32 +547,7 @@ public class GroupsController {
 
 
 
-	// -----------------------修改地址的表單-------------------
-	@RequestMapping(value = "/frank/updatetoplace", method = RequestMethod.GET)
-	public String updatetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model,
-			GroupsBean gb) {
-
-		model.addAttribute("updateplace", service.getPlaceById(pid));
-
-		return "frank/updateplace";
-
-	}
-
-	// ---------------------修改地址的資料-----------------
-	@RequestMapping(value = "/frank/updatetoplace", method = RequestMethod.POST)
-	public String updatetoplace(@RequestParam("gid") Integer gid, @RequestParam("address") String address,
-			@RequestParam("time") String time, @RequestParam("pid") Integer pid) {
-
-		PlaceBean pb = new PlaceBean();
-		pb.setAddress(address);
-		pb.setTime(time);
-		pb.setId(pid);
-
-		service.updateplace(pb);
-
-		return "redirect:/frank/showgroup?gid=" + gid;
-	}
-
+	
 	// -----------------------修改商品的表單-------------------
 	@RequestMapping(value = "/frank/updatetogroup_item", method = RequestMethod.GET)
 	public String updatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("iid") Integer iid, Model model,
@@ -518,48 +556,12 @@ public class GroupsController {
 
 		model.addAttribute("upgroupsitemBean", gib);
 		model.addAttribute("updategitem", service.getGroup_ItemById(iid));
-System.out.println("fuckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+
 		return "frank/updategroup_item";
 
 	}
 
 	// ---------------------修改商品的資料-----------------
-//	@RequestMapping(value = "/frank/updatetogroup_item", method = RequestMethod.POST)
-//	public String updatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("name") String name,
-//			@RequestParam("detail") String detail, @RequestParam("price") Integer price,
-//			@RequestParam("iid") Integer iid,Groups_ItemBean ib) {
-//
-//			System.out.println("hellllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllo");
-////		if (ib.getProductImage() != null) {
-//			MultipartFile productImage = ib.getProductImage();
-////			String originalFilename = productImage.getOriginalFilename();
-////			ib.setFileName(originalFilename);
-//			
-//			if (productImage != null || !productImage.isEmpty()) {
-//				System.out.println("hellllllllllllllllllllllllllllllllo");
-//				byte[] b;
-//				try {
-//					b = productImage.getBytes();
-//					Blob blob = new SerialBlob(b);
-//					ib.setImage(blob);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
-//				}
-//			}
-//	
-//		ib.setName(name);
-//		ib.setDetail(detail);
-//		ib.setPrice(price);
-//		ib.setId(iid);
-//		
-//	
-//		
-//		service.updateitem(ib);
-//
-//		return "redirect:/frank/showgroup?gid=" + gid ;
-//	}
-
 	@RequestMapping(value = "/frank/updatetogroup_item", method = RequestMethod.POST)
 	public String updatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("name") String name,
 			@RequestParam("detail") String detail, @RequestParam("price") Integer price,
@@ -593,7 +595,32 @@ System.out.println("fuckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
 	}
 
 	
-	
+	// -----------------------修改地址的表單-------------------
+		@RequestMapping(value = "/frank/updatetoplace", method = RequestMethod.GET)
+		public String updatetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model,
+				GroupsBean gb) {
+
+			model.addAttribute("updateplace", service.getPlaceById(pid));
+
+			return "frank/updateplace";
+
+		}
+
+		// ---------------------修改地址的資料-----------------
+		@RequestMapping(value = "/frank/updatetoplace", method = RequestMethod.POST)
+		public String updatetoplace(@RequestParam("gid") Integer gid, @RequestParam("address") String address,
+				@RequestParam("time") String time, @RequestParam("pid") Integer pid) {
+
+			PlaceBean pb = new PlaceBean();
+			pb.setAddress(address);
+			pb.setTime(time);
+			pb.setId(pid);
+
+			service.updateplace(pb);
+
+			return "redirect:/frank/showgroup?gid=" + gid;
+		}
+
 	
 	
 	
