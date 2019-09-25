@@ -514,30 +514,98 @@ public class GroupsController {
 	@RequestMapping(value = "/frank/updatetogroup_item", method = RequestMethod.GET)
 	public String updatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("iid") Integer iid, Model model,
 			GroupsBean gb) {
+		Groups_ItemBean gib = new Groups_ItemBean();
 
+		model.addAttribute("upgroupsitemBean", gib);
 		model.addAttribute("updategitem", service.getGroup_ItemById(iid));
-
+System.out.println("fuckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
 		return "frank/updategroup_item";
 
 	}
 
 	// ---------------------修改商品的資料-----------------
+//	@RequestMapping(value = "/frank/updatetogroup_item", method = RequestMethod.POST)
+//	public String updatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("name") String name,
+//			@RequestParam("detail") String detail, @RequestParam("price") Integer price,
+//			@RequestParam("iid") Integer iid,Groups_ItemBean ib) {
+//
+//			System.out.println("hellllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllo");
+////		if (ib.getProductImage() != null) {
+//			MultipartFile productImage = ib.getProductImage();
+////			String originalFilename = productImage.getOriginalFilename();
+////			ib.setFileName(originalFilename);
+//			
+//			if (productImage != null || !productImage.isEmpty()) {
+//				System.out.println("hellllllllllllllllllllllllllllllllo");
+//				byte[] b;
+//				try {
+//					b = productImage.getBytes();
+//					Blob blob = new SerialBlob(b);
+//					ib.setImage(blob);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+//				}
+//			}
+//	
+//		ib.setName(name);
+//		ib.setDetail(detail);
+//		ib.setPrice(price);
+//		ib.setId(iid);
+//		
+//	
+//		
+//		service.updateitem(ib);
+//
+//		return "redirect:/frank/showgroup?gid=" + gid ;
+//	}
+
 	@RequestMapping(value = "/frank/updatetogroup_item", method = RequestMethod.POST)
 	public String updatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("name") String name,
 			@RequestParam("detail") String detail, @RequestParam("price") Integer price,
-			@RequestParam("iid") Integer iid) {
+			@RequestParam("iid") Integer iid,@ModelAttribute("upgroupsitemBean") Groups_ItemBean ib) {
 
-		Groups_ItemBean ib = new Groups_ItemBean();
-		ib.setName(name);
-		ib.setDetail(detail);
-		ib.setPrice(price);
-		ib.setId(iid);
+			System.out.println("hellllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllo");
+//		if (ib.getProductImage() != null) {
+			if (ib.getProductImage() != null) {
+				MultipartFile productImage = ib.getProductImage();
+				String originalFilename = productImage.getOriginalFilename();
+			
 
-		service.updateitem(ib);
+				if (productImage != null && !productImage.isEmpty()) {
+					String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
+					String rootDirectory = context.getRealPath("/");
+					byte[] b;
+					try {
+						b = productImage.getBytes();
+						Blob blob = new SerialBlob(b);
+						ib.setImage(blob);
+					} catch (Exception e) {
+						e.printStackTrace();
+						throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+					}
+				}
+			}
+			ib.setId(iid);
+			service.updateitem(ib);
 
-		return "redirect:/frank/showgroup?gid=" + gid;
+		return "redirect:/frank/showgroup?gid=" + gid ;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// ----------------------刪除商品---------------------------
 	@RequestMapping(value = "/frank/deletetogroup_item")
 	public String deletetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("iid") Integer iid, Model model) {
@@ -569,22 +637,22 @@ public class GroupsController {
 	}
 
 	// ------------------單獨修改一欄資料-------------
-	@RequestMapping("/frank/updatename") // 查詢單一產品
-	public void upda(HttpServletResponse rp, HttpServletRequest rq) {
-
-		String name = rq.getParameter("name");
-		Integer id = Integer.parseInt(rq.getParameter("id"));
-		System.out.println("name----------" + name);
-		System.out.println("id----------" + id);
-
-		service.updateName(name, id);
-		try {
-			PrintWriter out = rp.getWriter();
-			out.write(name);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	@RequestMapping("/frank/updatename") // 查詢單一產品
+//	public void upda(HttpServletResponse rp, HttpServletRequest rq) {
+//
+//		String name = rq.getParameter("name");
+//		Integer id = Integer.parseInt(rq.getParameter("id"));
+//		System.out.println("name----------" + name);
+//		System.out.println("id----------" + id);
+//
+//		service.updateName(name, id);
+//		try {
+//			PrintWriter out = rp.getWriter();
+//			out.write(name);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	@RequestMapping("Ngroup")
 	public String Ngroup() {
 		return "frank/Ngroup";

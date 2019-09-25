@@ -223,11 +223,14 @@ public class GroupsDaoImpl implements GroupsDao {
 	@Override
 	public void updateitem(Groups_ItemBean ib) {
 		Session session = factory.getCurrentSession();
-		Groups_ItemBean x = session.get(Groups_ItemBean.class, ib.getId());
-		x.setName(ib.getName());
-		x.setDetail(ib.getDetail());
-		x.setPrice(ib.getPrice());
-
+//		Groups_ItemBean x = session.get(Groups_ItemBean.class, ib.getId());
+//	
+		
+//		x.setName(ib.getName());
+//		x.setDetail(ib.getDetail());
+//		x.setPrice(ib.getPrice());
+//		x.setImage(ib.getImage());
+		session.update(ib);
 		return;
 
 	}

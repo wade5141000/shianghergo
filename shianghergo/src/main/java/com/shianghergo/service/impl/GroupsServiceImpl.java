@@ -107,7 +107,21 @@ public class GroupsServiceImpl implements GroupsService{
 	}
 	@Override
 	public void updateitem(Groups_ItemBean ib) {
-		dao.updateitem(ib);
+		Groups_ItemBean oib = dao.getGroup_ItemById(ib.getId());
+		oib.setName(ib.getName());
+		oib.setDetail(ib.getDetail());
+		oib.setPrice(ib.getPrice());
+		oib.setDetail(ib.getDetail());		
+		
+		if(ib.getImage()!=null) {
+			
+			oib.setImage(ib.getImage());
+		}
+		
+		if (ib.getId() != null)
+			dao.updateitem(oib);
+		
+		
 	}
 	@Override
 	public Groups_ItemBean getGroup_ItemById(Integer iid) {
