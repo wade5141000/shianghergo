@@ -48,7 +48,7 @@
 	<br />
 	<br />
 	<!-- action对应一个action标签，id对应提交时的对应关系 -->
-	<form id="saveForm" action="updatetogroup" method="post">
+	<form id="saveForm" action="updatetogroup" method="post" >
 		<input type="hidden" name="id" value="${updategroup.id}" />
 		<h2>團資訊</h2>
 		<table style="font-size: :16px">
@@ -65,12 +65,23 @@
 			<tr>
 			<tr>
 				<td>結束時間：</td>
-				<td><input type="text" value="${updategroup.end_time }"
+				<td><input type="date" value="${updategroup.end_time }"
 					name="end_time" /></td>
 			</tr>
+
+			<tr>
+				<td>分類:</td>
+				<td><select name="categoryBean">
+						<c:forEach var="categorys" items="${category}">
+
+							<option value="${categorys.id}">${categorys.name}</option>
+						</c:forEach>
+				</select></td>
+			</tr>
+
 			<tr>
 				<td>說明：</td>
-				<td><textarea  name="detail">${updategroup.detail }</textarea></td>
+				<td><textarea name="detail">${updategroup.detail }</textarea></td>
 			</tr>
 			<tr>
 				<td>付款方式：</td>
@@ -79,30 +90,30 @@
 			</tr>
 
 		</table>
-<!-- 		<table> -->
+		<!-- 		<table> -->
 
-			<!-- 		<h2>商品資訊</h2> -->
-			<!-- 		<table style="font-size: :16px"> -->
-			<!-- 			<tr> -->
-			<!-- 				<td>商品名稱：</td> -->
-			<%-- 				<td><input type="text" value="${updategroup.groupsitem.name }" name="name" /></td> --%>
-			<!-- 			</tr> -->
-			<!-- 			<tr> -->
-			<!-- 				<td>商品說明：</td> -->
-			<%-- 				<td><input type="text" value="${updategroup.groupsitem.detail }"name="detail" /></td> --%>
-			<!-- 			</tr> -->
-			<!-- 			<tr> -->
-			<!-- 			<tr> -->
-			<!-- 				<td>價格：</td> -->
-			<%-- 				<td><input type="text" value="${updategroup.groupsitem.price }"	name="price" /></td> --%>
-			<!-- 			</tr> -->
+		<!-- 		<h2>商品資訊</h2> -->
+		<!-- 		<table style="font-size: :16px"> -->
+		<!-- 			<tr> -->
+		<!-- 				<td>商品名稱：</td> -->
+		<%-- 				<td><input type="text" value="${updategroup.groupsitem.name }" name="name" /></td> --%>
+		<!-- 			</tr> -->
+		<!-- 			<tr> -->
+		<!-- 				<td>商品說明：</td> -->
+		<%-- 				<td><input type="text" value="${updategroup.groupsitem.detail }"name="detail" /></td> --%>
+		<!-- 			</tr> -->
+		<!-- 			<tr> -->
+		<!-- 			<tr> -->
+		<!-- 				<td>價格：</td> -->
+		<%-- 				<td><input type="text" value="${updategroup.groupsitem.price }"	name="price" /></td> --%>
+		<!-- 			</tr> -->
 
-			<tr>
+		<tr>
 
-				<td align="right"><input type="submit" value="更新" /> <a
-					href="javascript:history.go(-1)">取消 </a>
-			</tr>
-		
+			<td align="right"><input type="submit" value="更新" /> <a
+				href="javascript:history.go(-1)">取消 </a>
+		</tr>
+
 	</form>
 	<%-- 	<c:forEach var="place" items="${updategroup.place}"> --%>
 	<!-- 			<tr> -->

@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "groups")
@@ -30,6 +31,7 @@ public class GroupsBean implements Serializable {
 	private String detail; // 團購商品說明
 	private String payment;// 付款方式
 	private MemberBean memberBean;
+
 	private Set<PlaceBean> place = new LinkedHashSet<>();
 	
 	
@@ -61,7 +63,7 @@ public class GroupsBean implements Serializable {
 		this.detail = detail;
 		this.payment = payment;
 		this.memberBean = memberBean;
-//		this.category = category;
+
 
 	}
 

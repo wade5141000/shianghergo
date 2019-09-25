@@ -31,23 +31,24 @@
 				<label for="end_time" class="item-label">截止時間:</label>
 				<form:input type="date" id="end_time" name="end_time"
 					path="end_time" />
-
-
 			</div>
-			<div class="item">
-				<label for="status" class="item-label">狀態:</label>
-				<form:input type="text" id="status" name="status" path="status" />
-			</div>
+			<div class="form-group">
+					<label for="categoryBean" class="item-label">分類:</label>
+					<div class='col-lg-10'>
+						<form:select path="categoryBean" name="categoryBean">
+							<c:forEach var="categorys" items="${category}" >
+							<option value="${categorys.id}">${categorys.name}</option>
+						
+							</c:forEach>
+						</form:select>
+					</div>
+				</div>
 			
-			<div class='col-lg-10'>
-			<label for="status" class="item-label">分類:</label>
-				<form:select path="categoryBean">
-					<form:option value="-1">
-								請挑選
-							</form:option>
-					<form:options items="${categoryList }" />
-				</form:select>
+			<div class="item">
+				
+				<input type="hidden" id="status" name="status" path="status" value="1" />
 			</div>
+
 
 			<div class="item">
 				<label for="detail" class="item-label">商品說明:</label>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,6 +48,12 @@ float: left;
 				<td>${updategroup.end_time }</td>
 			</tr>
 			<tr>
+				<td>分類：</td>
+				<td>${updategroup.categoryBean.name }</td>
+			</tr>
+			
+			
+			<tr>
 				<td>說明：</td>
 				<td>${updategroup.detail }</td>
 			</tr>
@@ -69,10 +76,15 @@ float: left;
 			<a href="<c:url value='mygroups'/> ">完成 </a>
 			</div>
 			<c:forEach var="item" items="${updategroup.groupsitem}">
-				<div class="gd1" style="width: 250px; height: 200px;">
+				<div class="gd1" style="width: 300px; height: 250px;">
+				<div>
+				<img width='100' height='100' src="<c:url value='/frank/getPicture/${item.id }' />"/>
+					</div>
 					<p>地址:${item.name}</p>
 					<p>說明:${item.detail}</p>
 					<p>價格:${item.price}</p>
+					
+					
 					<a href="updatetogroup_item?gid=${updategroup.id}&iid=${item.id}">修改</a>
 					<a href="deletetogroup_item?gid=${updategroup.id}&iid=${item.id}">刪除</a>
 				</div>

@@ -11,17 +11,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.shianghergo.dao.GroupsDao;
+import com.shianghergo.exception.ProductNotFoundException;
+import com.shianghergo.model.CategoryBean;
 import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
 
 @Repository
-public class GroupsDaoImpl implements GroupsDao{
-	
+public class GroupsDaoImpl implements GroupsDao {
+
 	@Autowired
 	SessionFactory factory;
-	
 
 	@Override
 	public Set<Groups_ItemBean> getGroupItemsById(Integer group_id) {
@@ -31,8 +32,8 @@ public class GroupsDaoImpl implements GroupsDao{
 		GroupsBean gb = session.get(GroupsBean.class, group_id);
 		return gb.getGroupsitem();
 	}
-	
-	//------------以下士權---------------
+
+	// ------------以下士權---------------
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<GroupsBean> getAllGroups() {
@@ -45,12 +46,15 @@ public class GroupsDaoImpl implements GroupsDao{
 	}
 
 	@Override
-	public Integer addGroups(GroupsBean group, Integer member_id) {
+	public Integer addGroups(GroupsBean group, Integer member_id ,Integer category_id) {
 		Session session = factory.getCurrentSession();
-		MemberBean x = getMemberById(member_id);
+		MemberBean x = getMemberById(member_id);	
 		group.setMemberBean(x);
-		Integer id = (Integer) session.save(group);
+		CategoryBean y = getCategoryById(category_id);
+		group.setCategoryBean(y);
 		
+		Integer id = (Integer) session.save(group);
+
 		Set<GroupsBean> set = new HashSet<GroupsBean>();
 		set = x.getGroupsbean();//
 		set.add(group);
@@ -69,30 +73,23 @@ public class GroupsDaoImpl implements GroupsDao{
 		Set<Groups_ItemBean> set = new HashSet<Groups_ItemBean>();
 		set = gb.getGroupsitem();
 		set.add(groupsitem);
-		 gb.setGroupsitem(set);
+		gb.setGroupsitem(set);
 	}
 
-	
 	@Override
 	public void addPlace(PlaceBean pb) {
 		Session session = factory.getCurrentSession();
 		GroupsBean x = pb.getGroupsBean();
 		GroupsBean gb = getGroupsById(x.getId());
-		
+
 		session.save(pb);
 		Set<PlaceBean> set = new HashSet<PlaceBean>();
 		set = gb.getPlace();
 		set.add(pb);
 		gb.setPlace(set);
-		
-	}
-	
 
-	
-	
-	
-	
-	
+	}
+
 	@Override
 	public GroupsBean getGroupsById(int groupsId) {
 		GroupsBean gb = null;
@@ -102,11 +99,6 @@ public class GroupsDaoImpl implements GroupsDao{
 		return gb;
 	}
 
-	
-	
-	
-	
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<GroupsBean> getGroupsList() {
@@ -151,7 +143,17 @@ public class GroupsDaoImpl implements GroupsDao{
 		MemberBean mb = session.get(MemberBean.class, memberid);
 		return mb;
 	}
+	@Override
+	public CategoryBean getCategoryById(Integer category_id) {
 
+		Session session = factory.getCurrentSession();
+		CategoryBean cb = session.get(CategoryBean.class, category_id);
+		return cb;
+	}
+
+	
+	
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PlaceBean> getPlaceByGroups_id(Integer groups_id) {
@@ -162,11 +164,11 @@ public class GroupsDaoImpl implements GroupsDao{
 		System.out.println("66666" + list);
 		return list;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<GroupsBean> getAllGroupsByMember(Integer member_id) {
-		
+
 		String hql = "FROM GroupsBean WHERE member_id=:member_id";
 		List<GroupsBean> list = new ArrayList<>();
 		Session session = factory.getCurrentSession();
@@ -175,24 +177,22 @@ public class GroupsDaoImpl implements GroupsDao{
 		return list;
 	}
 
-	
-	
-
 	@Override
-	public void updategroups(GroupsBean gb ) {
-		
+	public void updategroups(GroupsBean gb,Integer category_id) {
+
 		Session session = factory.getCurrentSession();
-		GroupsBean x = session.get(GroupsBean.class,gb.getId());
+		GroupsBean x = session.get(GroupsBean.class, gb.getId());
+		
+		CategoryBean y = getCategoryById(category_id);
+//		gb.setCategoryBean(y);
+		
 		x.setName(gb.getName());
 		x.setEnd_time(gb.getEnd_time());
 		x.setDetail(gb.getDetail());
 		x.setPayment(gb.getPayment());
-		
-
-		
+		x.setCategoryBean(y);
 		return;
 	}
-
 
 	@Override
 	public void updateName(String name, Integer id) {
@@ -206,73 +206,72 @@ public class GroupsDaoImpl implements GroupsDao{
 		Session session = factory.getCurrentSession();
 		PlaceBean pb = session.get(PlaceBean.class, pid);
 		return pb;
-		
-	
+
 	}
 
 	@Override
 	public void updateplace(PlaceBean pb) {
 		Session session = factory.getCurrentSession();
-		PlaceBean x = session.get(PlaceBean.class,pb.getId());
+		PlaceBean x = session.get(PlaceBean.class, pb.getId());
 		x.setAddress(pb.getAddress());
 		x.setTime(pb.getTime());
-	
-	
 
-		
 		return;
-		
+
 	}
 
 	@Override
 	public void updateitem(Groups_ItemBean ib) {
 		Session session = factory.getCurrentSession();
-		Groups_ItemBean x = session.get(Groups_ItemBean.class,ib.getId());
+		Groups_ItemBean x = session.get(Groups_ItemBean.class, ib.getId());
 		x.setName(ib.getName());
 		x.setDetail(ib.getDetail());
 		x.setPrice(ib.getPrice());
-		
-	
+
 		return;
-		
+
 	}
 
 	@Override
 	public Groups_ItemBean getGroup_ItemById(Integer iid) {
-		
+
 		Session session = factory.getCurrentSession();
 		Groups_ItemBean ib = session.get(Groups_ItemBean.class, iid);
+		if(ib == null)
+			throw new ProductNotFoundException("商品編號:" + iid + "找不到");
 		return ib;
 	}
 
 	@Override
 	public void deletegitemById(Integer iid) {
-		
+
 //		Session session = factory.getCurrentSession();
 //		Groups_ItemBean gib = new Groups_ItemBean(iid);
 //		
 //		
 //		session.delete(gib);
-		Session session = factory.getCurrentSession();		
+		Session session = factory.getCurrentSession();
 		session.delete(getGroup_ItemById(iid));
-		
-		
+
 	}
 
 	@Override
 	public void deletetoplace(Integer pid) {
-		Session session = factory.getCurrentSession();		
+		Session session = factory.getCurrentSession();
 		session.delete(getPlaceById(pid));
-		
+
 	}
 
+	@Override
+	public List<CategoryBean> getCategoryList() {
+		String hql = "FROM CategoryBean";
+		Session session = factory.getCurrentSession();
+		List<CategoryBean> list = new ArrayList<>();
+		list = session.createQuery(hql).getResultList();
+		return list;
+	}
 
-
-
-
-
-
-
+	
 //	@Override
 //	public Groups_ItemBean getGroup_ItemByGroups_id(Integer groups_id) {
 //		Session session = factory.getCurrentSession();
@@ -281,4 +280,3 @@ public class GroupsDaoImpl implements GroupsDao{
 //	}
 
 }
-	

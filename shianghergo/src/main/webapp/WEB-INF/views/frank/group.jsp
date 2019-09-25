@@ -55,7 +55,10 @@
 			</div><br><br><br>
 			<div style="height:180px;" >
 				<c:forEach var="item" items="${groups_id}">
-					<div class="gd1" style="width: 250px;height:200px;">
+					<div class="gd1" style="width: 250px;height:250px;">
+					<div>
+				<img width='100' height='100' src="<c:url value='/frank/getPicture/${item.id }' />"/>
+					</div>
 						<p>商品名稱:${item.name}</p>
 						<p>商品說明:${item.detail}</p>
 						<p>商品價格:${item.price}</p>

@@ -61,6 +61,7 @@
 	<table border="1" style="margin: 0px auto;">
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="left" /> <a href="frank/admin">登入</a><br></td>
+			<td width="350"><p align="left" /> <a href="Ngroup">測試</a><br></td>
 		</tr>
 	</table>
 	<hr>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shianghergo.dao.GroupsDao;
+import com.shianghergo.model.CategoryBean;
 import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
@@ -35,8 +36,8 @@ public class GroupsServiceImpl implements GroupsService{
 	//-----------------以下士權--------------
 	@Transactional
 	@Override
-	public Integer addGroups(GroupsBean gb, Integer member_id ) {
-		return  dao.addGroups(gb,member_id);
+	public Integer addGroups(GroupsBean gb, Integer member_id,Integer category_id ) {
+		return  dao.addGroups(gb,member_id,category_id);
 	}
 	@Transactional
 	@Override
@@ -88,8 +89,8 @@ public class GroupsServiceImpl implements GroupsService{
 	}
 	@Transactional
 	@Override
-	public void updategroups(GroupsBean gb) {
-		dao.updategroups(gb);
+	public void updategroups(GroupsBean gb,Integer category_id ) {
+		dao.updategroups(gb,category_id);
 	}
 	@Transactional
 	@Override
@@ -120,4 +121,14 @@ public class GroupsServiceImpl implements GroupsService{
 	public void deletetoplace(Integer pid) {
 		dao.deletetoplace(pid);
 	}
+
+	@Override
+	public List<CategoryBean> getCategoryList() {
+		
+		return dao.getCategoryList();
+	}
+
+
+
+	
 }
