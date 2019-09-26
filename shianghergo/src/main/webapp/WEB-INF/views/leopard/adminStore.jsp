@@ -16,6 +16,52 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 
 </head>
+
+
+
+<script>
+function Notification()
+  {
+  var r=confirm("是否要警告")
+  if (r==true)
+    {
+	  alert('警告成功');
+    }
+  else
+    {
+	  alert('警告取消');
+    }
+  }
+
+function stop()
+{
+var r=confirm("是否要停權")
+if (r==true)
+  {
+	  alert('停權成功');
+  }
+else
+  {
+	  alert('停權取消');
+  }
+}
+
+function recovery()
+{
+var r=confirm("是否恢復權限")
+if (r==true)
+  {
+	  alert('恢復權限成功');
+  }
+else
+  {
+	  alert('恢復權限取消');
+  }
+}
+
+</script>
+
+
 <style>
 * {
 	font-family: 微軟正黑體;
@@ -79,7 +125,7 @@
 					<td>
 						<form action="reportStore" method="POST">
 							<input type=hidden value="${Stores.id}" name="target">
-							<button type="submit" class="btn btn-info">檢舉</button>
+							<button type="submit" class="btn btn-info" >檢舉</button>
 
 						</form>
 					</td>
@@ -87,13 +133,13 @@
 					<td>
 						<form action="NotificationStore" method="POST">
 							<input type=hidden value="${Stores.id}" name="target">
-							<button type="submit" class="btn btn-warning">警告</button>
+							<button type="submit" class="btn btn-warning" onclick="Notification()">警告</button>
 						</form>
 					</td>
 					<td>
 						<form action="stopStore" method="POST">
 							<input type=hidden value="${Stores.id}" name="target">
-							<button type="submit" class="btn btn-danger">停權</button>
+							<button type="submit" class="btn btn-danger" onclick="stop()">停權</button>
 						</form>
 					</td>
 
@@ -102,7 +148,7 @@
 
 						<form action="recoveryStore" method="POST">
 							<input type=hidden value="${Stores.id}" name="target">
-							<button type="submit" class="btn btn-success">恢復權限</button>
+							<button type="submit" class="btn btn-success" onclick="recovery()">恢復權限</button>
 						</form>
 
 					</td>

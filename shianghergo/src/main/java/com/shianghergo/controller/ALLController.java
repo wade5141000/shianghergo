@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.shianghergo.model.Category_ReportBean;
@@ -395,9 +396,7 @@ public class ALLController {
 	
 	@RequestMapping("leopard/evaluationitem2")
 	public String evaluationitem2(comment_item ci ,Integer member_id) {
-
-		System.out.println(ci);
-		
+	
 		service.savecomment_Item(ci, member_id);
 
 		return "leopard/adminIn";

@@ -17,7 +17,26 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
+<script>
+function  delete777()
+  {
+  var r=confirm("是否要下架")
+  if (r==true)
+    {
+	  alert('下架成功');
+    }
+  else
+    {
+	  alert('下架取消');
+    }
+  }
+
+
+</script>
+
+
 </head>
+
 <style>
 * {
 	font-family: 微軟正黑體;
@@ -87,7 +106,7 @@
 <td>
 				<form action="deletel" method="POST">
 					<input type=hidden value="${items.id}" name="id"> 
-					 <button type="submit" class="btn btn-info">下架</button>
+					 <button type="submit" class="btn btn-info" onclick="delete777()">下架</button>
 				</form>
 			</td>
 			

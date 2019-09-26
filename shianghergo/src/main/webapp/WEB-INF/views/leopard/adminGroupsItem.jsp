@@ -14,7 +14,22 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script>
+function  delete777()
+  {
+  var r=confirm("是否要下架")
+  if (r==true)
+    {
+	  alert('下架成功');
+    }
+  else
+    {
+	  alert('下架取消');
+    }
+  }
 
+
+</script>
 </head>
 <style>
 * {
@@ -73,7 +88,7 @@
 						<td>
 							<form action="deletel1" method="POST">
 								<input type=hidden value="${groups_items.id}" name="id">
-							 <button type="submit" class="btn btn-info">下架</button>
+							 <button type="submit" class="btn btn-info" onclick="delete777()">下架</button>
 							</form>
 
 						</td>
