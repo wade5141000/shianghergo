@@ -5,9 +5,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="../res/static/css/main.css">
-  <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
-  <script type="text/javascript" src="../res/layui/layui.js"></script>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/static/css/main.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/layui/css/layui.css">
+  <script type="text/javascript" src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 </head>
@@ -33,7 +33,7 @@
       <div class="headerCon">
         <h1 class="mallLogo">
           <a href="index.jsp">
-            <img src="../res/static/img/logo4.png" width="100" height="100">
+            <img src="${pageContext.request.contextPath}/res/static/img/logo4.png" width="100" height="100">
           </a>
         <div class="mallSearch">
           <form action="" class="layui-form" novalidate>
@@ -121,7 +121,7 @@
             <div class="cont-list layui-clear" id="list-cont">
               <div class="item">
                 <div class="img">
-                  <a href="javascript:;"><img src="../res/static/img/paging_img1.jpg"></a>
+                  <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/paging_img1.jpg"></a>
                 </div>
                 <div class="text">
                   <p class="title">森系小清新四件套</p>
@@ -133,7 +133,7 @@
               </div>
               <div class="item">
                 <div class="img">
-                  <a href="javascript:;"><img src="../res/static/img/paging_img2.jpg"></a>
+                  <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/paging_img2.jpg"></a>
                 </div>
                 <div class="text">
                   <p class="title">森系小清新四件套</p>
@@ -145,7 +145,7 @@
               </div>
               <div class="item">
                 <div class="img">
-                  <a href="javascript:;"><img src="../res/static/img/paging_img3.jpg"></a>
+                  <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/paging_img3.jpg"></a>
                 </div>
                 <div class="text">
                   <p class="title">森系小清新四件套</p>

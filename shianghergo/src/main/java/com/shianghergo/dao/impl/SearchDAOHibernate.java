@@ -1,4 +1,4 @@
-package com.shianghergo.model.dao;
+package com.shianghergo.dao.impl;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -10,8 +10,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.shianghergo.dao.SearchDAO;
 import com.shianghergo.model.SearchBean;
-import com.shianghergo.model.SearchDAO;
+
 
 @Repository
 public class SearchDAOHibernate implements SearchDAO {

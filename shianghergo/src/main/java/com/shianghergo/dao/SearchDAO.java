@@ -1,7 +1,9 @@
-package com.shianghergo.model;
+package com.shianghergo.dao;
 
 import java.math.BigDecimal;
 import java.util.List;
+
+import com.shianghergo.model.SearchBean;
 
 public interface SearchDAO {
 

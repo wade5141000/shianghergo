@@ -1,15 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<title>index</title>
 </head>
 <body>
+<!-- <h5><a href="test">index</a></h5> -->
+<!-- <h5><a href="test1">buytoday</a></h5> -->
+<!-- <h5><a href="test2">commodity</a></h5> -->
+<!-- <h5><a href="test3">detail</a></h5> -->
+<!-- <h5><a href="test4">group</a></h5> -->
+<!-- <h5><a href="test5">information</a></h5> -->
+<!-- <h5><a href="test6">login</a></h5> -->
+<h5><a href="cart">shopcart</a></h5>
 <table border='1' style="border-collapse:collapse">
 <tr>
-<td style="padding:10px"><a href="productfile.do">下載訂購單</a></td>
+<td style="padding:10px"><a href="productfile.s">商店下載訂購單</a></td>
 <td style="padding:10px"><a href="showitem">商品列表</a></td>
 </tr>
 <tr>
@@ -17,8 +33,8 @@
 <td style="padding:10px"><a href="showgroups">團購列表</a></td>
 </tr>
 <tr>
-<td style="padding:10px"> <a href="wade/showmap">Google Map</a></td>
-<td style="padding:10px"><p>---</p></td>
+<td style="padding:10px"> <a href="showmap">Google Map</a></td>
+<td style="padding:10px"><a href="productfile.g">團下載訂購單</a></td>
 </tr>
 </table>
 
@@ -59,6 +75,17 @@
 	<hr>
 <div>
 </div>
+<hr>
+<jsp:include page="../top.jsp" />
+<hr>
+奕鴻
+<form action='<c:url value="/Search.controller" />' method="get"  class="layui-form" novalidate>
+            <input type="text" name="title" value="${param.title}" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="請輸入需要的商品" >
+            <button class="layui-btn" lay-submit lay-filter="formDemo" type="submit">
+                <i class="layui-icon layui-icon-search"></i>
+            </button>
+            <input type="submit" name="" value="">
+          </form>
 
 </body>
 </html>
