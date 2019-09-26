@@ -32,7 +32,6 @@ public class GroupsBean implements Serializable {
 	private MemberBean memberBean;
 	private Set<PlaceBean> place = new LinkedHashSet<>();
 	
-	
 	private Set<Groups_ItemBean> groupsitem = new LinkedHashSet<>();
 	
 	private CategoryBean categoryBean;

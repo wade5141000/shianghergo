@@ -1,5 +1,6 @@
 package com.shianghergo.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,13 +10,14 @@ import org.springframework.stereotype.Service;
 
 import com.shianghergo.dao.MemberDao;
 import com.shianghergo.model.GroupsBean;
-import com.shianghergo.model.GroupsCartBean;
 import com.shianghergo.model.GroupsOrderBean;
 import com.shianghergo.model.GroupsOrderDetailBean;
+import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.MessageBean;
 import com.shianghergo.model.OrderBean;
 import com.shianghergo.model.OrderDetailBean;
+import com.shianghergo.model.PlaceBean;
 import com.shianghergo.model.StoreBean;
 import com.shianghergo.service.MemberService;
 
@@ -42,6 +44,10 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void saveMember(MemberBean mb) {
+		java.util.Date d = new java.util.Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String timeNow = sdf.format(d);
+		mb.setRegister_Time(timeNow);
 		dao.saveMember(mb);
 	}
 
@@ -121,7 +127,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public  List<GroupsCartBean> getGroupsOrdersD(Integer groups_id) {
+	public List<Groups_ItemBean> getGroupsOrdersD(Integer groups_id) {
 		return dao.getGroupsOrdersD(groups_id);
 	}
 
@@ -131,21 +137,40 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void saveMessage(MessageBean MesgB,Integer member_id,Integer target) {
+	public void saveMessage(MessageBean MesgB,MemberBean mb,Integer target) {
 		MesgB.setTarget(target);
-		MesgB.setMember_id(member_id);
+		MesgB.setMemberBean(mb);
+		java.util.Date d = new java.util.Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String timeNow = sdf.format(d);
+		MesgB.setTime(timeNow);
 		dao.saveMessage(MesgB);
 		
 	}
 
 	@Override
-	public List<MessageBean> getMyMessage(Integer member_id) {
-		return dao.getMyMessage(member_id);
+	public List<MessageBean> MyMessage(Integer member_id) {
+		return dao.MyMessage(member_id);
 	}
 
 	@Override
 	public MessageBean getMessageByMemberId(Integer member_id) {
 		return dao.getMessageByMemberId(member_id);
+	}
+
+	@Override
+	public List<GroupsOrderBean> getGroupsPerson(Integer id) {
+		return dao.getGroupsPerson(id);
+	}
+
+	@Override
+	public List<PlaceBean> getMyPlaceByid(Integer id) {
+		return dao.getMyPlaceByid(id);
+	}
+
+	@Override
+	public List<MessageBean> getMyMessage(Integer target) {
+		return dao.getMyMessage(target);
 	}
 
 //	@Override

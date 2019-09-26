@@ -35,7 +35,7 @@ public class MemberBean implements Serializable {
 	private String phone;
 	private Integer status;
 	private String birthday;
-	private Timestamp register_Time;
+	private String register_Time;
 	private String fileName;//使用者傳入圖檔名
 	private Blob coverImage;//二進位
 	//	private MultipartFile image;//前端圖	
@@ -45,6 +45,7 @@ public class MemberBean implements Serializable {
 	private Set<GroupsBean> groups = new LinkedHashSet<>();
 	private Set<OrderBean> orders = new HashSet<>();
 	private Set<GroupsOrderBean> groupOrders = new HashSet<>();
+	private Set<MessageBean> message = new HashSet<>();
 	
 	@OneToMany(mappedBy="memberBean",fetch = FetchType.EAGER)
 	public Set<GroupsBean> getGroupsbean() {
@@ -59,8 +60,18 @@ public class MemberBean implements Serializable {
 	@JoinColumn(name="fk_member_id")
 	private List<Report_MemberBean> list = new ArrayList<>();
 	
+	
+	@OneToMany(mappedBy="memberBean",fetch=FetchType.EAGER)
+	public Set<MessageBean> getMessage() {
+		return message;
+	}
+
+	public void setMessage(Set<MessageBean> message) {
+		this.message = message;
+	}
+
 	public MemberBean(Integer id, String account, String password, String name, String address, String email,
-			String phone, String birthday, Timestamp register_Time, String fileName, Blob coverImage,MultipartFile image,Integer status) {
+			String phone, String birthday, String register_Time, String fileName, Blob coverImage,MultipartFile image,Integer status) {
 		super();
 		this.id = id;
 		this.account = account;
@@ -131,10 +142,10 @@ public class MemberBean implements Serializable {
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	public Timestamp getRegister_Time() {
+	public String getRegister_Time() {
 		return register_Time;
 	}
-	public void setRegister_Time(Timestamp registerTime) {
+	public void setRegister_Time(String registerTime) {
 		this.register_Time = registerTime;
 	}
 	public String getFileName() {

@@ -41,7 +41,7 @@ public class LoginController {
 			return "MemberDL";
 		}
 
-		return "login";
+		return "loginNew";
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.GET)
@@ -53,7 +53,7 @@ public class LoginController {
 			return "MemberDL";
 		}
 
-		return "login";
+		return "loginNew";
 	}
 
 //	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -107,7 +107,7 @@ public class LoginController {
 //		if(mb.getAccount().equals(account) && mb.getPassword().equals(password)) {
 //			return "MemberDL";
 //		}
-		return "login";
+		return "loginNew";
 
 	}
 
@@ -138,7 +138,7 @@ public class LoginController {
 //		session.invalidate();
 //		return "redirect:index";
 		sessionStatus.setComplete();
-		return "login";
+		return "loginNew";
 	}
 
 }

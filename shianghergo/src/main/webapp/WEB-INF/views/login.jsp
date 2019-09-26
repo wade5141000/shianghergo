@@ -11,6 +11,15 @@
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/res/static/css/main.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/res/layui/css/layui.css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <title>login</title>
 <script type=“text/javascript”></script>
 <script>
@@ -184,9 +193,9 @@ label.valid {
 						class="item-text" placeholder="請輸入密碼" tip="長度需6-16個字" />
 				</div>
 				<div class="item">
-					<input type="submit" value="提交" class="item-submit"> <input
-						type="reset" value="重填" name="cancel" id="cancel"> <a
-						href="goRegisterPage"><input type="button" value="加入會員" /></a>
+					<input type="submit" value="提交" class="item-submit"> 
+					<input type="reset" value="重填" name="cancel" id="cancel"> 
+					<a href="goRegisterPage"><input type="button" value="加入會員" /></a>
 				</div>
 			</fieldset>
 		</form>

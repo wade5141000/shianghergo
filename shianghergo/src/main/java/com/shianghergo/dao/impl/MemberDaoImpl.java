@@ -13,13 +13,14 @@ import org.springframework.stereotype.Repository;
 import com.shianghergo.dao.MemberDao;
 import com.shianghergo.exception.UserException;
 import com.shianghergo.model.GroupsBean;
-import com.shianghergo.model.GroupsCartBean;
 import com.shianghergo.model.GroupsOrderBean;
 import com.shianghergo.model.GroupsOrderDetailBean;
+import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.MessageBean;
 import com.shianghergo.model.OrderBean;
 import com.shianghergo.model.OrderDetailBean;
+import com.shianghergo.model.PlaceBean;
 import com.shianghergo.model.StoreBean;
 
 
@@ -250,10 +251,10 @@ public class MemberDaoImpl implements MemberDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<GroupsCartBean> getGroupsOrdersD(Integer groups_id) {
-		String hql = "FROM GroupsDetailBean WHERE groups_id=:groups_id";
+	public List<Groups_ItemBean> getGroupsOrdersD(Integer groups_id) {
+		String hql = "FROM Groups_ItemBean WHERE groups_id=:groups_id";
 		Session session = factory.getCurrentSession();
-		List<GroupsCartBean> list = session.createQuery(hql).setParameter("groups_id", groups_id).getResultList();
+		List<Groups_ItemBean> list = session.createQuery(hql).setParameter("groups_id", groups_id).getResultList();
 		return list;
 	}
 
@@ -274,10 +275,19 @@ public class MemberDaoImpl implements MemberDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<MessageBean> getMyMessage(Integer member_id) {
+	public List<MessageBean> MyMessage(Integer member_id) {
 		String hql = "FROM MessageBean WHERE member_id=:id ";
 		Session session = factory.getCurrentSession();
 		List<MessageBean> list = session.createQuery(hql).setParameter("id", member_id).getResultList();
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MessageBean> getMyMessage(Integer target) {
+		String hql = "FROM MessageBean WHERE target=:id ";
+		Session session = factory.getCurrentSession();
+		List<MessageBean> list = session.createQuery(hql).setParameter("id", target).getResultList();
 		return list;
 	}
 
@@ -288,6 +298,24 @@ public class MemberDaoImpl implements MemberDao {
 		if (mb == null)
 			throw new UserException("編號:" + member_id + "找不到");
 		return mb;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<GroupsOrderBean> getGroupsPerson(Integer id) {
+		String hql = "FROM GroupsOrderBean WHERE groups_id=:id";
+		Session session = factory.getCurrentSession();
+		List<GroupsOrderBean> list = session.createQuery(hql).setParameter("id", id).getResultList();
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PlaceBean> getMyPlaceByid(Integer id) {
+		String hql = "FROM PlaceBean WHERE id=:id";
+		Session session = factory.getCurrentSession();
+		List<PlaceBean> list = session.createQuery(hql).setParameter("id", id).getResultList();
+		return list;
 	}
 	
 	

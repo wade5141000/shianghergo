@@ -37,14 +37,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.shianghergo.exception.ProductNotFoundException;
 import com.shianghergo.model.GroupsBean;
-import com.shianghergo.model.GroupsCartBean;
 import com.shianghergo.model.GroupsOrderBean;
 import com.shianghergo.model.GroupsOrderDetailBean;
+import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.OrderBean;
 import com.shianghergo.model.OrderDetailBean;
+import com.shianghergo.model.PlaceBean;
 import com.shianghergo.model.StoreBean;
+import com.shianghergo.service.GroupsService;
 import com.shianghergo.service.MemberService;
 import com.shianghergo.service.ProductService;
 
@@ -64,16 +66,16 @@ public class ProductController {
 	// -------------------以下聖捷--------------------
 	
 	@RequestMapping(value = "/Member002")
-	public String getMyOrderList(@ModelAttribute("loginOK")MemberBean mb, Model model,StoreBean sb) {
+	public String getMyOrderList(@ModelAttribute("loginOK")MemberBean mb, Model model) {
 		System.out.println("MemberBean mb++"+mb);
 		List<OrderBean> list = memberService.getMemberOrders(mb.getId());
-		String[] list2 = new String[list.size()];
-		for(int i=0 ; i<list.size();i++) {
-			StoreBean store = service.getStoreById(list.get(i).getStore_id());
-			list2[i] = store.getName();
-		}
+//		String[] list2 = new String[list.size()];
+//		for(int i=0 ; i<list.size();i++) {
+//			StoreBean store = service.getStoreById(list.get(i).getStore_id());
+//			list2[i] = store.getName();
+//		}
 		model.addAttribute("MyOrderList",list);//service.getorderById(ob.getId())
-		model.addAttribute("it",list2);
+//		model.addAttribute("it",list2);
 		System.out.println("getMyOrderList裡的list:"+list);
 		return "Member002";
 	}
@@ -93,8 +95,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/getMyGroupsListD")
-	public String getMyGroupsListD(@RequestParam("groups_id")Integer groups_id, Model model) {
-		List<GroupsCartBean> list = memberService.getGroupsOrdersD(groups_id);
+	public String getMyGroupsListD(@RequestParam("groups_id")Integer groups_id, Model model,GroupsBean GB) {
+		List<Groups_ItemBean> list = memberService.getGroupsOrdersD(groups_id);
+		System.out.println(groups_id);
 		System.out.println("getMyGroupsListD()裡的="+list);
 		model.addAttribute("MyGroupsListD",list);
 		return "Member003_1";
@@ -114,6 +117,23 @@ public class ProductController {
 		model.addAttribute("MyGroupsOrderList",list);
 		System.out.println("參與的"+list);
 		return "Member004";
+	}
+	
+	@RequestMapping(value = "/getMyGroupsPerson")
+	public String getMyGroupsPerson(@RequestParam("groups_id")Integer groups_id, Model model) {
+		List<GroupsOrderBean> list = memberService.getGroupsPerson(groups_id);
+		model.addAttribute("getMyGroupsPerson",list);
+		//System.out.println("參與的"+list);
+		return "Member003_2";
+	}
+	
+	@RequestMapping(value = "/getMyGroupsplace")
+	public String getMyPlace(@RequestParam("place_id")Integer place_id, Model model,GroupsOrderBean GOB) {
+		List<PlaceBean> list = memberService.getMyPlaceByid(GOB.getPlace().getId());
+		System.out.println("getMyPlace++:"+list);
+		model.addAttribute("getMyPlace",list);
+		//System.out.println("參與的"+list);
+		return "Member003_3";
 	}
 	
 	

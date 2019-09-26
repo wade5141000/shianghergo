@@ -21,7 +21,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<title>我參與的合購團明細</title>
+<title>我的面交地點</title>
 <style type="text/css">
 .table1 {
 	border: 1px solid #ddd;
@@ -37,23 +37,18 @@ thead {
 	<table border="1" class="layui-table">
 
 		<tr id='borderA' height='50' >
-			<th id='borderA'  align="center">${loginOK.name}的商品明細</th>
+			<th id='borderA'  align="center">面交地點</th>
 		</tr>
 		<tr id='borderA' height='36' >
-			<th id='borderA'>訂單編號</th>
-			<th id='borderA'>商品編號</th>
-			<th id='borderA'>商品名稱</th>
-			<th id='borderA'>數量</th>
-			<th id='borderA'>價格</th>
+			<th id='borderA'>地點編號</th>
+			<th id='borderA'>地址</th>
+			<th id='borderA'>時間</th>
 		</tr>
-		<c:forEach var="anGOrderD"  items="${MyGroupsListD}">
+		<c:forEach var="Myplace"  items="${getMyPlace}">
 			<TR id='borderA' height='30'>
-			<TD id='borderA' width="86" align="center">${anGOrderD.groups_order_info_id}</TD>
-			<TD id='borderA' width="80" align="right">${anGOrderD.groups_item_id}</TD>
-			<TD id='borderA' width="100" align="center">${anGOrderD.name}</TD>
-			<TD id='borderA' width="100" align="left">&nbsp;${anGOrderD.amount}</TD>				
-			<TD id='borderA' width="80" align="right">${anGOrderD.price}</TD>
-			
+			<TD id='borderA' width="100" align="center">${Myplace.id}</TD>
+			<TD id='borderA' width="100" align="center">${Myplace.address}</TD>
+			<TD id='borderA' width="100" align="center">${Myplace.time}</TD>				
 		</TR>
 		</c:forEach>
 		

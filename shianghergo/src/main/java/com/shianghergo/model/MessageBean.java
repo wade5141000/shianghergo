@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,24 +19,36 @@ public class MessageBean implements Serializable{
 	private String contents;
 	private String time;
 	private Integer status;
-	private Integer member_id;
+	//private Integer member_id;
 	private Integer target;
 	private String title;
-	
-	public MessageBean(Integer id, Integer member_id, Integer target, String title, String contents, String time,
-			Integer status) {
+	private MemberBean memberBean;
+
+	public MessageBean(Integer id, String contents, String time, Integer status, Integer target, String title,
+			MemberBean memberBean) {
 		super();
 		this.id = id;
-		this.member_id = member_id;
-		this.target = target;
-		this.title = title;
 		this.contents = contents;
 		this.time = time;
 		this.status = status;
+		this.target = target;
+		this.title = title;
+		this.memberBean = memberBean;
 	}
-	
+
 	public MessageBean() {
 		
+	}
+	
+	
+	@ManyToOne
+	@JoinColumn(name="member_id")
+	public MemberBean getMemberBean() {
+		return memberBean;
+	}
+
+	public void setMemberBean(MemberBean memberBean) {
+		this.memberBean = memberBean;
 	}
 
 	@Id
@@ -47,13 +61,13 @@ public class MessageBean implements Serializable{
 		this.id = id;
 	}
 	
-	public Integer getMember_id() {
-		return member_id;
-	}
-
-	public void setMember_id(Integer member_id) {
-		this.member_id = member_id;
-	}
+//	public Integer getMember_id() {
+//		return member_id;
+//	}
+//
+//	public void setMember_id(Integer member_id) {
+//		this.member_id = member_id;
+//	}
 
 	public Integer getTarget() {
 		return target;

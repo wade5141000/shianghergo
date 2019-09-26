@@ -37,6 +37,18 @@ public class MemberController {
 	public String MemberDL() {
 		return "MemberDL";
 	}
+	
+	@RequestMapping("/goMember001")
+	public String aboutMe() {
+		return "Member001";
+	}
+	
+	@RequestMapping("/MemberIndex")
+	public String MemberIndex() {
+		return "MemberIndex";
+	}
+	
+	
 
 //	@RequestMapping(value = "/goRegisterPage", method = RequestMethod.GET)
 //	@ResponseBody
@@ -132,7 +144,7 @@ public class MemberController {
 ////			e.printStackTrace();
 ////			throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
 ////		}
-		return "RegisterSuccess";
+		return "Member001";
 
 	}	
 	//跳转到添加页面
@@ -177,7 +189,7 @@ public class MemberController {
     	model.addAttribute("loginOK",mb);
     	//model.addAttribute("loginOK",service.queryMember(String.valueOf(rq.getSession().getAttribute("id"))));
     	//System.out.println("mian()"+model);
-        return "MemberDL";
+        return "Member001";
     }
 
 
