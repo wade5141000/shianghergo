@@ -50,12 +50,12 @@ white-space: nowrap;
 	<h2 class="pp"><a href="<spring:url value='group?id=${group.id}&mid=${group.memberBean.id}'/>"/>${group.name}</h2>
 	<p>團主: ${group.memberBean.id}</p>
 	<p>團主: ${group.memberBean.name}</p>
-	
+	<a href="group/${group.id}">我要跟團</a>
 	<p class="pp">說明: ${group.detail}</p>
 	<p>截止時間: ${group.end_time}</p>
 	
 				<div>
-				<img width='300' height='250' src="<c:url value='/frank/getgroupPicture/${group.id }' />"/>
+<%-- 				<img width='300' height='250' src="<c:url value='/frank/getgroupPicture/${group.id }' />"/> --%>
 					</div>
 	<form action="<spring:url value='group?id=${group.id}'/>">
 	<input type="hidden" value="${group.id}" name="target"/>
