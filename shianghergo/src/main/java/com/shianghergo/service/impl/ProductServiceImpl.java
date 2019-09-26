@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shianghergo.dao.ProductDao;
+import com.shianghergo.model.CategoryBean;
 import com.shianghergo.model.ItemBean;
 import com.shianghergo.model.StoreBean;
 import com.shianghergo.service.ProductService;
@@ -31,8 +32,8 @@ public class ProductServiceImpl implements ProductService {
 
 	@Transactional
 	@Override
-	public void addProduct(ItemBean product) {
-		dao.addProduct(product);
+	public void addProduct(ItemBean product,Integer category_id) {
+		dao.addProduct(product, category_id);
 	}
 
 	@Transactional
@@ -49,23 +50,27 @@ public class ProductServiceImpl implements ProductService {
 
 	@Transactional
 	@Override
-	public List<String> getAllCategories() {
+	public List<CategoryBean> getAllCategories() {
 		return dao.getAllCategories();
 	}
 
 	@Transactional
 	@Override
-	public void updateItem(ItemBean product) {
+	public void updateItem(ItemBean product,Integer category_id) {
 		ItemBean oldItemBean = dao.getProductById(product.getId());
 		oldItemBean.setName(product.getName());
-		oldItemBean.setCategory(product.getCategory());
+		oldItemBean.setCategory_id(product.getCategory_id());
 		oldItemBean.setReserve(product.getReserve());
 		oldItemBean.setPrice(product.getPrice());
-		oldItemBean.setDetail(product.getDetail());
-		oldItemBean.setFileName(product.getFileName());
-		oldItemBean.setCoverImage(product.getCoverImage());
+		oldItemBean.setDetail(product.getDetail());		
+		
+		if(product.getCoverImage()!=null) {
+			oldItemBean.setFileName(product.getFileName());
+			oldItemBean.setCoverImage(product.getCoverImage());
+		}
+		
 		if (product.getId() != null)
-			dao.updateItem(oldItemBean);
+			dao.updateItem(oldItemBean, category_id);
 		else
 			System.out.println("product.id = null !!");
 	}
