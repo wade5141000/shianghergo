@@ -70,6 +70,9 @@ thead {
 			</tr>
 		</tbody>
 	</table>
-	<br />
+	
+	<div>
+	<img  width="600" height="450" alt="" src="<c:url value='getmemberPicture/${loginOK.id}'/>"/>
+	</div>
 </body>
 </html>

@@ -113,6 +113,8 @@ position:fixed;
 				<li class="layui-nav-item"><a _href="shianghergo/../Member004"><cite>我參與的合購</cite></a></li>
 				<li class="layui-nav-item"><a _href="getMyMessage"><cite>我的留言板</cite></a></li>
 				<li class="layui-nav-item"><a _href="MyMessage"><cite>寄件備份</cite></a></li>
+				<li class="layui-nav-item"><a _href="hao/buildStore"><cite>我要開店</cite></a></li>
+				
 			</ul>
 		</div>
 	</div>
