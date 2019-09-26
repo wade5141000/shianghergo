@@ -84,5 +84,16 @@ public class StoreDaoImpl implements StoreDao {
 		return list;
 	}
 	
-	
+    //9/25新增 恢復商店權限
+	@Override
+	public void recoveryStore(Integer target) {
+
+		Session session = factory.getCurrentSession();
+
+		String hql = "FROM StoreBean where id=:id";
+
+		StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("id", target).getSingleResult();
+        
+		sb.setStatus(1);
+	}
 }

@@ -18,24 +18,25 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
 <script>
-
-// $.ajax(		
-// 		{	
-// 			type:'POST',	
-// 			url:'deletel',
-// 			success: function (response){}		
-// 		}
-		
-// 		);
-
-
+function  delete777()
+  {
+  var r=confirm("是否要下架")
+  if (r==true)
+    {
+	  alert('下架成功');
+    }
+  else
+    {
+	  alert('下架取消');
+    }
+  }
 
 
 </script>
 
 
-
 </head>
+
 <style>
 * {
 	font-family: 微軟正黑體;
@@ -88,8 +89,8 @@
 						<th>商品數量</th>
 						<th>商品價錢</th>
 						<th>商品介紹</th>
-				        <th></th>
-				
+				       	<th></th>
+				  	    <th></th>
 					</tr>
 				</thead>
 						<td>${items.name}</td>
@@ -105,10 +106,11 @@
 <td>
 				<form action="deletel" method="POST">
 					<input type=hidden value="${items.id}" name="id"> 
-					 <button type="submit" class="btn btn-info">下架</button>
+					 <button type="submit" class="btn btn-info" onclick="delete777()">下架</button>
 				</form>
-				</td>
-				<td>
+			</td>
+			
+			<td>
 					<form action="evaluationItem1" method="POST">
 						<input type=hidden value="${items.id}" name="item_id"> 
 				    <button type="submit" class="btn btn-success">評價</button> 
