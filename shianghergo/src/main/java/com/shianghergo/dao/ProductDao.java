@@ -2,6 +2,7 @@ package com.shianghergo.dao;
 
 import java.util.List;
 
+import com.shianghergo.model.CategoryBean;
 import com.shianghergo.model.ItemBean;
 import com.shianghergo.model.StoreBean;
 
@@ -11,14 +12,16 @@ public interface ProductDao {
 	
 	public ItemBean getProductById(int productId);
 	
-	void addProduct(ItemBean product);
+	void addProduct(ItemBean product,Integer category_id);
 	StoreBean getStoreById(int store_id);
 	List<StoreBean> getStoreList();
 
-	List<String> getAllCategories();
+	List<CategoryBean> getAllCategories();
 
-	int updateItem(ItemBean product);
+	int updateItem(ItemBean product, Integer category_id);
 
 	int deleteProduct(int id);
+
+	CategoryBean getCategoryById(Integer category_id);
 	
 }

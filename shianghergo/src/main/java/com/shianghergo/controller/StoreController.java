@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
@@ -15,12 +16,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.StoreBean;
 import com.shianghergo.service.StoreService;
 
-
+@Transactional
+@SessionAttributes("loginOK")
 @Controller
 public class StoreController {
 	@Autowired
@@ -30,9 +34,10 @@ public class StoreController {
 	ServletContext context;
 	
 	@RequestMapping(value = "/hao/buildStore", method = RequestMethod.GET)
-	public String getAddNewProductForm(Model model) {
+	public String getAddNewProductForm(Model model, @ModelAttribute("loginOK")MemberBean mb) {
 		StoreBean sb = new StoreBean();
 		model.addAttribute("storeBean", sb);
+		model.addAttribute("memberBean", mb);
 		return "hao/buildStore";
 	}
 

@@ -36,6 +36,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shianghergo.exception.ProductNotFoundException;
+import com.shianghergo.model.CategoryBean;
 import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.GroupsCartBean;
 import com.shianghergo.model.GroupsOrderBean;
@@ -136,64 +137,69 @@ public class ProductController {
 	public String getUpdateProductForm(@RequestParam("id") Integer id, Model model) {
 		model.addAttribute("product", service.getProductById(id));
 		ItemBean bb = new ItemBean();
+		List<CategoryBean> list =service.getAllCategories();
 		model.addAttribute("itemBean", bb);
+		model.addAttribute("category", list);
 		return "hao/productUpdate";
 	}
 	
 	@RequestMapping(value = "/hao/product/Update", method = RequestMethod.POST)
-	public String getUpdateProductForm(@RequestParam(value = "id",required = false)Integer id, @ModelAttribute("itemBean") ItemBean bb, BindingResult result, HttpServletRequest request) {
+	public String getUpdateProductForm(@RequestParam(value = "id",required = false)Integer id, 
+			@RequestParam("categoryBean") Integer category_id,
+			@ModelAttribute("itemBean") ItemBean bb, BindingResult result, HttpServletRequest request) {
 //		String[] suppressedFields = result.getSuppressedFields();
 //		if (suppressedFields.length > 0) {
 //			throw new RuntimeException("嘗試傳入不允許的欄位:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
 //		}
-		MultipartFile productImage = bb.getProductImage();
-		String originalFilename = productImage.getOriginalFilename();
-		bb.setFileName(originalFilename);
+		if (bb.getProductImage() != null) {
+			MultipartFile productImage = bb.getProductImage();
+			String originalFilename = productImage.getOriginalFilename();
+			bb.setFileName(originalFilename);
 
-		String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
-		String rootDirectory = context.getRealPath("/");
-
-		if (productImage != null && !productImage.isEmpty()) {
-			byte[] b;
-			try {
-				b = productImage.getBytes();
-				Blob blob = new SerialBlob(b);
-				bb.setCoverImage(blob);
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+			if (productImage != null && !productImage.isEmpty()) {
+				String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
+				String rootDirectory = context.getRealPath("/");
+				byte[] b;
+				try {
+					b = productImage.getBytes();
+					Blob blob = new SerialBlob(b);
+					bb.setCoverImage(blob);
+				} catch (Exception e) {
+					e.printStackTrace();
+					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+				}
 			}
 		}
+		System.out.println(category_id);
 		bb.setId(id);
-		service.updateItem(bb);
+		service.updateItem(bb,category_id);
 
-		try {
-			File imageFolder = new File(rootDirectory, "images");
-			if (!imageFolder.exists())
-				imageFolder.mkdirs();
-			File file = new File(imageFolder, bb.getId() + ext);
-			productImage.transferTo(file);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
-		}
-		
+//		try {
+//			File imageFolder = new File(rootDirectory, "images");
+//			if (!imageFolder.exists())
+//				imageFolder.mkdirs();
+//			File file = new File(imageFolder, bb.getId() + ext);
+//			productImage.transferTo(file);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
+//		}
+
 		return "redirect:/hao/products";
 	}
 	
 	@RequestMapping(value = "/hao/products/add", method = RequestMethod.GET)
 	public String getAddNewProductForm(Model model) {
 		ItemBean bb = new ItemBean();
+		List<CategoryBean> list =service.getAllCategories();
 		model.addAttribute("itemBean", bb);
+		model.addAttribute("category", list);
 		return "hao/addProduct";
 	}
 
 	@RequestMapping(value = "/hao/products/add", method = RequestMethod.POST)
-	public String getAddNewProductForm(@ModelAttribute("itemBean") ItemBean bb, BindingResult result, HttpServletRequest request) {
-		String[] suppressedFields = result.getSuppressedFields();
-		if (suppressedFields.length > 0) {
-			throw new RuntimeException("嘗試傳入不允許的欄位:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
-		}
+	public String getAddNewProductForm(@ModelAttribute("itemBean") ItemBean bb, BindingResult result, 
+			@RequestParam("categoryBean") Integer category_id, HttpServletRequest request) {
 
 		MultipartFile productImage = bb.getProductImage();
 		String originalFilename = productImage.getOriginalFilename();
@@ -214,7 +220,7 @@ public class ProductController {
 			}
 		}
 
-		service.addProduct(bb);
+		service.addProduct(bb, category_id);
 
 		try {
 			File imageFolder = new File(rootDirectory, "images");
@@ -239,13 +245,13 @@ public class ProductController {
 	}
 	
 	@ModelAttribute("categoryList")
-	public List<String> getCategoryList() {
+	public List<CategoryBean> getCategoryList() {
 		return service.getAllCategories();
 	}
 
 	@InitBinder
 	public void whiteListing(WebDataBinder binder) {
-		binder.setAllowedFields("name", "category", "store_id", "reserve", "price", "detail", "productImage");
+		binder.setAllowedFields("name", "category_id", "store_id", "reserve", "price", "detail", "productImage");
 	}
 
 	
