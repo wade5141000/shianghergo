@@ -13,14 +13,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
 <title>成功新增會員</title>
+<script type="text/javascript">     
+function countDown(secs,surl){     
+//alert(surl);     
+var jumpTo = document.getElementById('jumpTo');
+jumpTo.innerHTML=secs;  
+if(--secs>0){     
+     setTimeout("countDown("+secs+",'"+surl+"')",1000);     
+     }     
+else{       
+     location.href=surl;     
+     }     
+}     
+</script> 
 </head>
 <body>
-<!-- 引入共同的頁首 -->
-<jsp:include page="top.jsp" />
 <div class='center'>
 </div>
-<Font color='blue' >親愛的${ acountKey }您好，您的輸入資料已經處理完畢</font>
-<p/>感謝您登入系統，請開始使用本系統<p/>
+<Font color='blue' >親愛的${ loginOK.name }您好，您的輸入資料已經處理完畢</font>
+<span id="jumpTo">5</span>秒后自动跳转到會員中心
+<script type="text/javascript">countDown(5,'/MemberDL');</script>
 
 </body>
 </html>

@@ -9,6 +9,15 @@
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/res/static/css/main.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/res/layui/css/layui.css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <head>
 <meta charset="UTF-8">
 <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
@@ -25,7 +34,7 @@ thead {
 </style>
 </head>
 <body >
-	<table border="1" class="table1">
+	<table border="1" class="layui-table">
 
 		<tr id='borderA' height='50' >
 			<th id='borderA'  align="center">${loginOK.name}的商品明細</th>

@@ -5,6 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,7 +43,7 @@ public class StoreBean implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	@OneToMany(mappedBy="storeBean")
+	@OneToMany(mappedBy="storeBean",fetch = FetchType.EAGER)
 	public Set<ItemBean> getItems() {
 		return items;
 	}

@@ -30,4 +30,22 @@ public class GroupsCartServiceImpl implements GroupsCartService{
 		return dao.addToCart(mId, ib);
 	}
 
+	@Override
+	@Transactional
+	public int deleteCartBeanById(Integer cart_id) {
+		return dao.deleteCartBeanById(cart_id);
+	}
+
+	@Override
+	@Transactional
+	public GroupsCartBean updateCartBeanById(Integer cart_id,String type) {
+		GroupsCartBean cb = dao.getGroupsCartBeanById(cart_id);
+		if(type.equals("1")) {
+			cb.setAmount(cb.getAmount()+1);
+		}else if(type.equals("2")) {
+			cb.setAmount(cb.getAmount()-1);
+		}
+		return cb;
+	}
+
 }

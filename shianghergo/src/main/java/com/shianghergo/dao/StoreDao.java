@@ -20,4 +20,6 @@ public interface StoreDao {
 	Integer getStoreId(Integer target);
 	
 	public boolean checkStoreExist(Integer member_id);
+
+	void recoveryStore(Integer target);
 }

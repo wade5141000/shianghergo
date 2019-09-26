@@ -6,31 +6,14 @@
 <html>
 <head>
 <script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/wade/css/detail.css">
 <meta charset="UTF-8">
 <title>detail</title>
-<style>
-table {
-	margin: 10px;
-	padding: 10px;
-	border-collapse: collapse;
-}
-
-tr{ 
-	margin:10px;
- 	padding:10px; 
- } 
-
-td{  
- 	margin:10px; 
- 	padding:10px; 
- } 
-span{
- 	padding:5px;
- }
-</style>
 </head>
 <body>
-<h2>您的訂單明細，編號${order_id}</h2>
+<div><h2>您的訂單明細，編號${order_id}</h2></div>
+
+
 <h2><a href="order/${order_id}">立刻結帳</a></h2>
 <h4><a href="http://localhost:8080/shianghergo/orderlist">回訂單列表</a></h4>
 <table border="1">

@@ -13,15 +13,14 @@ import com.shianghergo.exception.ProductNotFoundException;
 import com.shianghergo.model.ItemBean;
 import com.shianghergo.model.StoreBean;
 
-
 @Repository
 public class StoreDaoImpl implements StoreDao {
 	@Autowired
 	SessionFactory factory;
-	
+
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<StoreBean> getAllStores(){
+	public List<StoreBean> getAllStores() {
 		String hql = "FROM StoreBean";
 		Session session = null;
 		List<StoreBean> list = new ArrayList<>();
@@ -29,7 +28,7 @@ public class StoreDaoImpl implements StoreDao {
 		list = session.createQuery(hql).getResultList();
 		return list;
 	}
-	
+
 	@Override
 	public void buildStore(StoreBean sb) {
 		Session session = factory.getCurrentSession();
@@ -37,7 +36,7 @@ public class StoreDaoImpl implements StoreDao {
 //		sb.setMemberBean(cb);
 		session.save(sb);
 	}
-	
+
 	@Override
 	public StoreBean getStoreById(int id) {
 		Session session = factory.getCurrentSession();
@@ -45,7 +44,7 @@ public class StoreDaoImpl implements StoreDao {
 		cb = session.get(StoreBean.class, id);
 		return cb;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<StoreBean> getStoreList() {
@@ -54,7 +53,7 @@ public class StoreDaoImpl implements StoreDao {
 		List<StoreBean> list = session.createQuery(hql).getResultList();
 		return list;
 	}
-	
+
 	@Override
 	public int updateStore(StoreBean sb) {
 		int count = 0;
@@ -63,26 +62,27 @@ public class StoreDaoImpl implements StoreDao {
 		count++;
 		return count;
 	}
+
 	@Override
 	public void saveStoreIdToStop(Integer target) {
 
 		Session session = factory.getCurrentSession();
 
-		
 		String hql = "FROM StoreBean where id=:id";
 
 		StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("id", target).getSingleResult();
 		sb.setStatus(2);
 	}
+
 	@Override
 	public Integer getStoreId(Integer target) {
 
 		String hql = "select id FROM StoreBean where member_id=:member_id";
-		
+
 		Session session = factory.getCurrentSession();
-		
-		Integer list = (Integer) session.createQuery(hql).setParameter("member_id",target).getSingleResult();
-		
+
+		Integer list = (Integer) session.createQuery(hql).setParameter("member_id", target).getSingleResult();
+
 		return list;
 	}
 
@@ -90,11 +90,22 @@ public class StoreDaoImpl implements StoreDao {
 	public boolean checkStoreExist(Integer member_id) {
 		Session session = factory.getCurrentSession();
 		StoreBean sb = session.get(StoreBean.class, member_id);
-		if(sb == null)
+		if (sb == null)
 			return false;
 		else
 			return true;
 	}
-	
-	
+
+	// 9/25新增 恢復商店權限
+	@Override
+	public void recoveryStore(Integer target) {
+
+		Session session = factory.getCurrentSession();
+
+		String hql = "FROM StoreBean where id=:id";
+
+		StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("id", target).getSingleResult();
+
+		sb.setStatus(1);
+	}
 }

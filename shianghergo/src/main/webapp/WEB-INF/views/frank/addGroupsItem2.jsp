@@ -12,7 +12,8 @@
 </head>
 <body>
 
-	<form:form action="additem" method="POST" modelAttribute="groupsitemBean" >
+	<form:form action="additem" method="POST"
+		modelAttribute="groupsitemBean" enctype="multipart/form-data">
 		<fieldset>
 			<legend>新增商品上架</legend>
 			<input type="hidden" name="gid" value="${gid}" />
@@ -26,8 +27,15 @@
 			</div>
 			<div class="item">
 				<label for="price" class="item-label">價格:</label>
-				<form:input type="text" id="price" name="price" path="price" />
+				<form:input type="text" id="price" name="price" path="price" required="required" />
 			</div>
+			<div class="item">
+				<label for="productImage" class="item-label">上傳圖片:</label>
+				<form:input type="file" id="productImage" name="productImage" path="productImage" required="required"/>
+			</div>
+
+
+
 			<input type="submit" value="新增商品">
 		</fieldset>
 	</form:form>

@@ -58,17 +58,30 @@ public class MessageController {
 	}
 	
 	@RequestMapping("/saveMessage")
-	public String saveMessage(@RequestParam(value = "member_id") Integer member_id,@RequestParam(value = "target") Integer target,Model model,MessageBean MesgB) {
-		service.saveMessage(MesgB,member_id,target);
-		return "redirect:/MyMessage";
+	public String saveMessage(@ModelAttribute("loginOK")MemberBean mb,@RequestParam(value = "target") Integer target,Model model,MessageBean MesgB) {
+		service.saveMessage(MesgB,mb,target);
+		return "redirect:/getMyMessage";
 	}
 	
-	@RequestMapping("/MyMessage")
-	public String getMyMessage(MessageBean MesgB,Model model,@ModelAttribute("loginOK")MemberBean mb) {
+	@RequestMapping("/MyMessage")//寄件備份
+	public String getMessage(MessageBean MesgB,Model model,@ModelAttribute("loginOK")MemberBean mb) {
 		Integer mid = mb.getId();
-		model.addAttribute("MyMessage", service.getMyMessage(mid));
+		model.addAttribute("MyMessage", service.MyMessage(mid));
 //		System.out.println(":"+list);
 		return "MyMessage";
 	}
+	
+	@RequestMapping("/getMyMessage")//誰留言給我
+	public String getMyMessage(MessageBean MesgB,Model model,@ModelAttribute("loginOK")MemberBean mb) {
+		model.addAttribute("getMyMessage", service.getMyMessage(mb.getId()));//根據target
+		System.out.println("誰留言給我::"+service.getMyMessage(mb.getId()));
+//		model.addAttribute("tmb",service.getMemberById(MesgB.getMemberBean().getId()));
+		//System.out.println("tmb       :"+ service.getMemberById(MesgB.getMemberBean().getId()));
+		return "getMyMessage";
+	}
+	
+	
+	
+	
 
 }

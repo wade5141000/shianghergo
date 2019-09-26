@@ -1,9 +1,9 @@
 package com.shianghergo.model;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +14,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "groups")
@@ -29,9 +35,14 @@ public class GroupsBean implements Serializable {
 	private String name;
 	private String detail; // 團購商品說明
 	private String payment;// 付款方式
+	private Blob image;
 	private MemberBean memberBean;
-	private Set<PlaceBean> place = new LinkedHashSet<>();
+
 	
+	@JsonIgnore
+	private MultipartFile productImage;
+	
+	private Set<PlaceBean> place = new LinkedHashSet<>();
 	
 	private Set<Groups_ItemBean> groupsitem = new LinkedHashSet<>();
 	
@@ -39,6 +50,23 @@ public class GroupsBean implements Serializable {
 	
 	
 	
+	public Blob getImage() {
+		return image;
+	}
+
+	public void setImage(Blob image) {
+		this.image = image;
+	}
+	@XmlTransient
+	@Transient
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id")
 	public CategoryBean getCategoryBean() {
@@ -61,7 +89,7 @@ public class GroupsBean implements Serializable {
 		this.detail = detail;
 		this.payment = payment;
 		this.memberBean = memberBean;
-//		this.category = category;
+
 
 	}
 

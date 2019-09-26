@@ -25,7 +25,7 @@ public class GroupsOrderDaoImpl implements GroupsOrderDao{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Integer addOrder(Integer member_id,Integer gId,Integer pId) {
+	public Integer addOrder(Integer member_id,Integer gId) {
 		Session session = factory.getCurrentSession();
 		
 		// 加入訂單
@@ -35,9 +35,9 @@ public class GroupsOrderDaoImpl implements GroupsOrderDao{
 		ob.setStatus(1);
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		ob.setTime(sf.format(new Date()));
-		ob.setPayment("面交");
-		PlaceBean pb = session.get(PlaceBean.class, pId);
-		ob.setPlace(pb);
+//		ob.setPayment("面交");
+//		PlaceBean pb = session.get(PlaceBean.class, pId);
+//		ob.setPlace(pb);
 		
 		int total = 0;
 		String hql = "from GroupsCartBean c where c.member_id = :id";
@@ -72,6 +72,29 @@ public class GroupsOrderDaoImpl implements GroupsOrderDao{
 		String hql2 = "delete GroupsCartBean where member_id = :mid";
 		session.createQuery(hql2).setParameter("mid", member_id).executeUpdate();
 		return oId;
+	}
+
+	@Override
+	public GroupsOrderBean getGroupsOrderById(Integer id) {
+		Session session = factory.getCurrentSession();
+		return session.get(GroupsOrderBean.class, id);
+	}
+
+	@Override
+	public GroupsOrderBean addOrderForm(Integer oId, String name, String phone, String pay, Integer place_id) {
+		Session session = factory.getCurrentSession();
+		GroupsOrderBean ob = session.get(GroupsOrderBean.class, oId);
+		ob.setName(name);
+		ob.setPayment(pay);
+		ob.setPhone(phone);
+		PlaceBean pb = session.get(PlaceBean.class, place_id);
+		ob.setPlace(pb);
+		
+		Set<GroupsOrderBean> set = pb.getGroupsOrder();
+		set.add(ob);
+		pb.setGroupsOrder(set);
+		
+		return ob;
 	}
 
 }
