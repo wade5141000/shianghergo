@@ -8,6 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>group</title>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/static/css/main.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/layui/css/layui.css">
+  <script type="text/javascript" src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
+
+
 <style>
 .gd1 {
 	background-color: yellow;
