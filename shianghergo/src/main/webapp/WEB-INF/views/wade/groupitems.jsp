@@ -19,7 +19,6 @@ function addGroupCart(item_id,groups_id){
 			}else{
 				alert("不可添加其他團商品");
 			}
-			
 		},
 	})
 }

@@ -39,14 +39,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.shianghergo.model.CategoryBean;
 import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
-
+import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
 import com.shianghergo.service.GroupsService;
 
 
 
 @Controller
-@SessionAttributes(value = "mid")
+@SessionAttributes("loginOK")
 
 public class GroupsController {
 
@@ -101,7 +101,7 @@ public class GroupsController {
 	// -------------------------開團 並把會員member_id 放入------------
 	@RequestMapping(value = "/frank/Groups1", method = RequestMethod.POST)
 	public String processAddNewProductForm(Model model, @ModelAttribute("groupsBean") GroupsBean gb,
-			BindingResult result, HttpServletRequest request, @ModelAttribute("mid") Integer member_id,
+			BindingResult result, HttpServletRequest request, @ModelAttribute("loginOK")MemberBean member,
 			@RequestParam("categoryBean") Integer category_id) {
 
 		String[] suppressedFields = result.getSuppressedFields();
@@ -129,7 +129,7 @@ public class GroupsController {
 		}
 
 		
-		Integer id = service.addGroups(gb, member_id,category_id);
+		Integer id = service.addGroups(gb, member.getId(),category_id);
 		System.out.println("-----------------------------");
 		System.out.println(id);
 
@@ -433,16 +433,16 @@ public class GroupsController {
 
 //-------------------------某一個團購頁面---------------------------
 	@RequestMapping("/frank/group") // 查詢單一產品
-	public String getGroupsById(@RequestParam("id") Integer id, @RequestParam("mid") Integer mid, Model model,
+	public String getGroupsById(@RequestParam("id") Integer id, @ModelAttribute("loginOK")MemberBean member, Model model,
 			Integer groups_id, GroupsBean gb) {
 		System.out.println("id: " + id);
-		System.out.println("mid:  " + mid);
+		System.out.println("mid:  " + member.getId());
 
 		model.addAttribute("group", service.getGroupById(id)); // 取團的資料
 
 		model.addAttribute("groups_id", service.getGroupsItemByGroups_id(gb.getId())); // 取商品的資料
 
-		model.addAttribute("member_id", service.getMemberById(mid)); // 取會員的資料
+		model.addAttribute("member_id", service.getMemberById(member.getId())); // 取會員的資料
 
 		model.addAttribute("place", service.getPlaceByGroups_id(gb.getId())); // 取地址的資料
 
@@ -475,9 +475,9 @@ public class GroupsController {
 
 	// -----------------------------我開的團------------------------------
 	@RequestMapping("/frank/mygroups") // 查詢單一產品
-	public String getAllGroupsListByMember(Model model, GroupsBean gb, @ModelAttribute("mid") Integer member_id) {
+	public String getAllGroupsListByMember(Model model, GroupsBean gb,@ModelAttribute("loginOK")MemberBean member) {
 
-		model.addAttribute("mygroups", service.getAllGroupsByMember(member_id));
+		model.addAttribute("mygroups", service.getAllGroupsByMember(member.getId()));
 		return "frank/mygroups";
 	}
 
