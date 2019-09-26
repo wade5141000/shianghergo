@@ -32,7 +32,6 @@
     </div>
   </div>
 
-
   <div class="header">
     <div class="headerLayout w1200">
       <div class="headerCon">

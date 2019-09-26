@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,9 +27,10 @@ public class Groups_ItemBean implements Serializable {
 	private Integer price;
 	private Blob    image;
 	private GroupsBean groupsBean;
+//	private String  	fileName;
 	
 	private MultipartFile  productImage;
-
+	@XmlTransient
 	@Transient
 	public MultipartFile getProductImage() {
 		return productImage;
@@ -50,6 +52,8 @@ public class Groups_ItemBean implements Serializable {
 		this.price = price;
 //		this.groups_id=groups_id;
 		this.groupsBean = groupsBean;
+		this.image = image;
+		 	
 	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
