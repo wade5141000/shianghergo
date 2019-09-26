@@ -25,7 +25,7 @@ public class ItemBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer 	id ;
 	private String  	name;
-	private Integer  	category_id;
+	private String  	category;
 	private Integer  	store_id;
 	private Integer  	reserve;
 	private Integer  	price;
@@ -39,12 +39,12 @@ public class ItemBean implements Serializable {
     private StoreBean storeBean;
     @JsonIgnore
     private MultipartFile productImage;
-  
+    
     private CategoryBean categoryBean;
     
-//	@ManyToOne(cascade=CascadeType.ALL)
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="category_id") 
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
     public CategoryBean getCategoryBean() {
 		return categoryBean;
 	}
@@ -63,12 +63,12 @@ public class ItemBean implements Serializable {
     	this.productImage = productImage;
     }
     
-	public ItemBean(Integer id, String name, Integer category_id, 
+	public ItemBean(Integer id, String name, String category, 
 			Integer store_id, Integer reserve, Integer price, 
 			String detail, Blob coverImage, String fileName) {
 		this.id = id;
 		this.name = name;
-		this.category_id = category_id;
+		this.category = category;
 		this.store_id = store_id;
 		this.reserve = 0;
 		this.price = price;
@@ -77,12 +77,12 @@ public class ItemBean implements Serializable {
 		this.fileName = fileName;
 	}
 	
-	public ItemBean(Integer id, String name, Integer category_id, 
+	public ItemBean(Integer id, String name, String category, 
 			Integer store_id, Integer reserve, Integer price, 
-			String detail, Blob coverImage, String fileName, StoreBean storeBean, CategoryBean categoryBean) {
+			String detail, Blob coverImage, String fileName, StoreBean storeBean) {
 		this.id = id;
 		this.name = name;
-		this.category_id = category_id;
+		this.category = category;
 		this.store_id = store_id;
 		this.reserve = reserve;
 		this.price = price;
@@ -90,7 +90,6 @@ public class ItemBean implements Serializable {
 		this.coverImage = coverImage;
 		this.fileName = fileName;
 		this.storeBean = storeBean;
-		this.categoryBean = categoryBean;
 	}
 	
 	public ItemBean() {
@@ -155,13 +154,13 @@ public class ItemBean implements Serializable {
 	public void setCoverImage(Blob coverImage) {
 		this.coverImage = coverImage;
 	}
-	@Transient
-	public Integer getCategory_id() {
-		return category_id;
+	
+	public String getCategory() {
+		return category;
 	}
 
-	public void setCategory_id(Integer category_id) {
-		this.category_id = category_id;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	@Transient
 	public Integer getStore_id() {
@@ -186,9 +185,5 @@ public class ItemBean implements Serializable {
 
 	public void setReserve(Integer reserve) {
 		this.reserve = reserve;
-	}
-	
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 }

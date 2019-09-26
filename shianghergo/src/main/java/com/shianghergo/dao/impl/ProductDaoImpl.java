@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.shianghergo.dao.ProductDao;
 import com.shianghergo.exception.ProductNotFoundException;
-import com.shianghergo.model.CategoryBean;
 import com.shianghergo.model.ItemBean;
 import com.shianghergo.model.StoreBean;
 
@@ -40,12 +39,10 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public void addProduct(ItemBean product,Integer category_id) {
+	public void addProduct(ItemBean product) {
 		Session session = factory.getCurrentSession();
-		CategoryBean y = getCategoryById(category_id);
 		StoreBean cb = getStoreById(product.getStore_id());
 		product.setStoreBean(cb);
-		product.setCategoryBean(y);
 		session.save(product);
 	}
 
@@ -67,35 +64,21 @@ public class ProductDaoImpl implements ProductDao {
 	}
 	
 	@Override
-	public List<CategoryBean> getAllCategories() {
-		String hql = "FROM CategoryBean";
+	public List<String> getAllCategories() {
+		String hql = "SELECT DISTINCT i.category FROM ItemBean i";
 		Session session = factory.getCurrentSession();
-		List<CategoryBean> list = new ArrayList<>();
+		List<String> list = new ArrayList<>();
 		list = session.createQuery(hql).getResultList();
 		return list;
 	}
 	
 	@Override
-	public int updateItem(ItemBean product, Integer category_id) {
+	public int updateItem(ItemBean product) {
 		int count = 0;
-		
 		Session session = factory.getCurrentSession();
-		ItemBean x = session.get(ItemBean.class, product.getId());
-		
-		CategoryBean y = getCategoryById(category_id);
-		x.setCategoryBean(y);	
-		
 		session.update(product);
 		count++;
 		return count;
-	}
-	
-	@Override
-	public CategoryBean getCategoryById(Integer category_id) {
-
-		Session session = factory.getCurrentSession();
-		CategoryBean cb = session.get(CategoryBean.class, category_id);
-		return cb;
 	}
 	
 	@Override
