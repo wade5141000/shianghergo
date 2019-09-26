@@ -22,6 +22,9 @@ public interface MemberDao {
 
 	Integer loginMember(String account);
 
+	//--新增的 復原會員權限 家翔// 9/24
+		public void recoveryMember(Integer target);
+
 	// 以下 聖捷
 
 	MemberBean checkIDPassword(String userId, String password);// 檢查使用者在登入時輸入的帳號與密碼是否正確。

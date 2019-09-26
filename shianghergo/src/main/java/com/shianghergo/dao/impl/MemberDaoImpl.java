@@ -318,7 +318,21 @@ public class MemberDaoImpl implements MemberDao {
 		return list;
 	}
 	
+	//--------------新增功能(復原會員權限) 9/25 家翔-----------------------
 	
+	
+		public void recoveryMember(Integer target) {
+
+			Session session = factory.getCurrentSession();
+
+			String hql = "FROM  MemberBean where id=:id";
+
+			MemberBean mb = (MemberBean) session.createQuery(hql).setParameter("id", target).getSingleResult();
+
+			mb.setStatus(1);
+		
+		}
+
 	
 	
 }

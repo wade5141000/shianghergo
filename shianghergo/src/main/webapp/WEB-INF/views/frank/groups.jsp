@@ -53,14 +53,15 @@ white-space: nowrap;
 	
 	<p class="pp">說明: ${group.detail}</p>
 	<p>截止時間: ${group.end_time}</p>
-	<div style="width:300px;height:300px">
-	<img width:50px;height:50px src="<c:url value='getPicture/{group.groupId}'/>"/>
 	
+				<div>
+				<img width='300' height='250' src="<c:url value='/frank/getgroupPicture/${group.id }' />"/>
+					</div>
 	<form action="<spring:url value='group?id=${group.id}'/>">
 	<input type="hidden" value="${group.id}" name="target"/>
 
 	</form>
-	</div>
+
 	
 	</div>
 	

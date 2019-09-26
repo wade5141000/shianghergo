@@ -19,7 +19,6 @@
 <style>
 * {
 	font-family: 微軟正黑體;
-   
 }
 
 .adminlogin {
@@ -30,25 +29,22 @@
 	color: white;
 }
 
-.container{
-
-font-size: 300px;
+.container {
+	font-size: 300px;
 }
 
-.back{
-
-color:rgba(0,0,0,0.04);
-
-font-size: 400px;
+.back {
+	color: rgba(0, 0, 0, 0.04);
+	font-size: 300px;
+    margin-left:330px;
 }
-
 </style>
 
 <body>
 
 
 	<div class="navbar navbar-inverse">
-		<h1 class="title">商品管理</h1>
+		<h1 class="title">管理員</h1>
 		<span class="adminlogin"><a href="login"
 			class="btn btn-default navbar-btn">管理員登入</a></span>
 
@@ -59,7 +55,7 @@ font-size: 400px;
 			<li role="presentation"><a href="member.do">會員管理</a></li>
 			<li role="presentation"><a href="store.do">商店管理</a></li>
 			<li role="presentation"><a href="showItem">商品管理</a></li>
-			<li role="presentation" ><a href="showGroups_item">團購商品管理</a></li>
+			<li role="presentation"><a href="showGroups_item">團購商品管理</a></li>
 			<li role="presentation"><a href="showVM.do">違規處理-會員</a></li>
 			<li role="presentation"><a href="showVS.do">違規處理-商店</a></li>
 
@@ -67,10 +63,17 @@ font-size: 400px;
 
 	</div>
 
+
+
+
+
+	<div class="jumbotron">
+		<h1>管理員登入成功</h1>
 	
-        <div class="container">
-        <h1 class="back">admin</h1>
-        </div>
+		</div>
+	
+	<div class="back">admin</div>
+	
 
 
 </body>

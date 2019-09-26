@@ -53,6 +53,10 @@ public class CategoryBean implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	@Override
+	public String toString() {
+		return "CategoryBean [id=" + id + ", name=" + name + ", items=" + items + ", groups=" + groups + "]";
+	}
 	
 	
 	

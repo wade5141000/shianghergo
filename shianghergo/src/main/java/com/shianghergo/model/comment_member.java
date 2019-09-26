@@ -13,7 +13,6 @@ public class comment_member {
 	private Integer id;
 	private Integer member_id;
 	private Integer target;
-	private Integer item_id;
 	private String  time;
 	private String  contents;
 	private Integer score;
@@ -34,14 +33,6 @@ public class comment_member {
 
 	public void setMember_id(Integer member_id) {
 		this.member_id = member_id;
-	}
-
-	public Integer getItem_id() {
-		return item_id;
-	}
-
-	public void setItem_id(Integer item_id) {
-		this.item_id = item_id;
 	}
 
 	public String getTime() {
@@ -78,8 +69,10 @@ public class comment_member {
 
 	@Override
 	public String toString() {
-		return "comment_member [id=" + id + ", member_id=" + member_id + ", target=" + target + ", item_id=" + item_id
-				+ ", time=" + time + ", contents=" + contents + ", score=" + score + "]";
+		return "comment_member [id=" + id + ", member_id=" + member_id + ", target=" + target + ", time=" + time
+				+ ", contents=" + contents + ", score=" + score + "]";
 	}
+
+	
 	
 }

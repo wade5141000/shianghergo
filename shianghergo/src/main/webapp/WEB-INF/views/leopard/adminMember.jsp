@@ -15,6 +15,52 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 
+
+
+<script>
+function Notification()
+  {
+  var r=confirm("是否要警告")
+  if (r==true)
+    {
+	  alert('警告成功');
+    }
+  else
+    {
+	  alert('警告取消');
+    }
+  }
+
+function stop()
+{
+var r=confirm("是否要停權")
+if (r==true)
+  {
+	  alert('停權成功');
+  }
+else
+  {
+	  alert('停權取消');
+  }
+}
+
+function recovery()
+{
+var r=confirm("是否恢復權限")
+if (r==true)
+  {
+	  alert('恢復權限成功');
+  }
+else
+  {
+	  alert('恢復權限取消');
+  }
+}
+
+</script>
+
+
+
 </head>
 <style>
 * {
@@ -28,15 +74,13 @@
 .title {
 	color: white;
 }
-
 </style>
 
 <body>
 
 	<div class="navbar navbar-inverse">
 		<h1 class="title">會員管理</h1>
-		<span class="adminlogin">
-		<a href="login"
+		<span class="adminlogin"> <a href="login"
 			class="btn btn-default navbar-btn">管理員登入</a></span>
 
 		<ul class="nav nav-pills">
@@ -52,10 +96,10 @@
 	</div>
 
 	<div class="content">
-		
+
 		<div class="container">
-			
-			
+
+
 			<table class="table table-striped">
 				<c:forEach var='members' items='${Member}'>
 
@@ -67,6 +111,9 @@
 							<th>會員電話</th>
 							<th>會員生日</th>
 							<th>會員住址</th>
+						    <th>會員狀態</th>
+							<th></th>
+							<th></th>
 							<th></th>
 							<th></th>
 							<th></th>
@@ -81,23 +128,23 @@
 					<td>${members.phone}</td>
 					<td>${members.birthday}</td>
 					<td>${members.address}</td>
-
+	                <td>${members.status}</td>
 
 					<td>
 						<form action="reportMember" method="POST">
 							<input type=hidden value="${members.id}" name="target">
-							<button type="submit" class="btn btn-info">檢舉</button>
+							<button type="submit" class="btn btn-info" >檢舉</button>
 						</form>
 
 					</td>
 
 					<td>
 
-						<form action="messageMember" method="POST">
+						<form action="NotificationMember" method="POST">
 							<input type=hidden value="${members.id}" name="target">
-							<button type="submit" class="btn btn-warning">警告</button>
-
-
+							<button type="submit" class="btn btn-warning" onclick="Notification()">警告</button>
+                              
+                              
 						</form>
 
 					</td>
@@ -106,10 +153,25 @@
 
 						<form action="stopMember" method="POST">
 							<input type=hidden value="${members.id}" name="target">
-							<button type="submit" class="btn btn-danger">停權</button>
+							<button type="submit" class="btn btn-danger" onclick="stop()">停權</button>
 						</form>
 
 					</td>
+
+					<td>
+
+						<form action="recoveryMember" method="POST">
+							<input type=hidden value="${members.id}" name="target">
+							<button type="submit" class="btn btn-success"  onclick="recovery()">恢復權限</button>
+						</form>
+
+					</td>
+
+
+
+
+
+
 
 					<td>
 
