@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,29 +82,30 @@
 			<div class="commod-cont w1200 layui-clear">
 				<div class="left-nav">
 
-					<div class="list-box">
-						<dl>
+				<ul class="layui-nav layui-nav-tree" lay-filter="test">
+<!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+  <li class="layui-nav-item layui-nav-itemed">
+    <a href="javascript:;">默认展开</a>
+    <dl class="layui-nav-child">
+      <dd><a href="javascript:;">选项1</a></dd>
+      <dd><a href="javascript:;">选项2</a></dd>
+      <dd><a href="">跳转</a></dd>
+    </dl>
+  </li>
+  <li class="layui-nav-item">
+    <a href="javascript:;">解决方案</a>
+    <dl class="layui-nav-child">
+      <dd><a href="">移动模块</a></dd>
+      <dd><a href="">后台模版</a></dd>
+      <dd><a href="">电商平台</a></dd>
+    </dl>
+  </li>
+  <li class="layui-nav-item"><a href="">产品</a></li>
+  <li class="layui-nav-item"><a href="">大数据</a></li>
+</ul>
 
-							<dt>所有商品</dt>
 
-						</dl>
-   
-						<dl>
-							<dt>團購美食</dt>
 
-						</dl>
-						<dl>
-							<dt>保養美妝</dt>
-
-						</dl>
-						<dl>
-							<dt>服飾配件</dt>
-
-						</dl>
-						<dl>
-							<dt>育兒親子</dt>
-
-						</dl>
 						<!--             <dl> -->
 						<!--              <dt>孕妈专区</dt> -->
 
@@ -112,7 +114,7 @@
 				</div>
 				<div class="right-cont-wrap">
 					<div class="right-cont">
-					
+
 						<div class="cont-list layui-clear" id="list-cont">
 							<div class="item">
 								<div class="img">
