@@ -17,10 +17,11 @@ public interface StoreDao {
 	int updateStore(StoreBean sb);
 	
 	void saveStoreIdToStop(Integer target);
-	
 	Integer getStoreId(Integer target);
 	
-	//--新增的 復原會員權限 家翔// 9/25
-		public void recoveryStore(Integer target);
-	
+	public boolean checkStoreExist(Integer member_id);
+
+	void recoveryStore(Integer target);
+
+	StoreBean getStoreByMember_Id(Integer member_id);
 }
