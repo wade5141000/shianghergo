@@ -43,6 +43,7 @@ thead {
 			<th id='borderA'>合購團編</th>
 <!-- 			<th id='borderA'>合購團名</th> -->
 <!-- 			<th id='borderA'>電話</th> -->
+			<th id='borderA'>團編</th>
 			<th id='borderA'>總金額</th>
 			<th id='borderA'>時間</th>
 			<th id='borderA'>付款方式</th>
@@ -59,6 +60,7 @@ thead {
 			</TD>
 <%-- 			<TD id='borderA'  align="center">${MyGOL.name}</TD> --%>
 <%-- 			<TD id='borderA'  align="center">${MyGOL.phone}</TD> --%>
+			<TD id='borderA'  align="center">${MyGOL.groups_id}</TD>
 			<TD id='borderA'  align="center">&nbsp;${MyGOL.price}</TD>
 			<TD id='borderA'  align="center">${MyGOL.time}</TD>
 			<TD id='borderA'  align="center">&nbsp;${MyGOL.payment}</TD>
