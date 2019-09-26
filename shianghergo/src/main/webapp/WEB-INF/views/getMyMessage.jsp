@@ -19,9 +19,9 @@
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <head>
-<meta charset="UTF-8">
 <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<title>我參與的合購團明細</title>
+<meta charset="UTF-8">
+<title>我的留言</title>
 <style type="text/css">
 .table1 {
 	border: 1px solid #ddd;
@@ -34,26 +34,29 @@ thead {
 </style>
 </head>
 <body >
-	<table border="1" class="layui-table">
+	<table class="layui-table">
 
 		<tr id='borderA' height='50' >
-			<th id='borderA'  align="center">${loginOK.name}的商品明細</th>
+			<th id='borderA'  align="center">誰給我的留言</th>
 		</tr>
 		<tr id='borderA' height='36' >
-			<th id='borderA'>訂單編號</th>
-			<th id='borderA'>商品編號</th>
-			<th id='borderA'>商品名稱</th>
-			<th id='borderA'>數量</th>
-			<th id='borderA'>價格</th>
-		</tr>
-		<c:forEach var="anGOrderD"  items="${MyGroupsListD}">
+			<th id='borderA'>留言編號</th>
+			<th id='borderA'>誰留言給我</th>
+			<th id='borderA'>標題</th>
+			<th id='borderA'>內容	</th>
+			<th id='borderA'>時間</th>
+		</tr>							  
+		<c:forEach var="gMyMesg"  items="${getMyMessage}">
 			<TR id='borderA' height='30'>
-			<TD id='borderA' width="86" align="center">${anGOrderD.groups_order_info_id}</TD>
-			<TD id='borderA' width="80" align="right">${anGOrderD.groups_item_id}</TD>
-			<TD id='borderA' width="100" align="center">${anGOrderD.name}</TD>
-			<TD id='borderA' width="100" align="left">&nbsp;${anGOrderD.amount}</TD>				
-			<TD id='borderA' width="80" align="right">${anGOrderD.price}</TD>
-			
+			<TD id='borderA'  align="center">&nbsp;${gMyMesg.id}</TD>
+			<TD id='borderA'  align="center">
+			    <a  href="<c:url value='sendMemberMessage?target=${gMyMesg.memberBean.id}' />">
+				    ${gMyMesg.memberBean.name}
+			    </a>
+			</TD>
+			<TD id='borderA'  align="center">${gMyMesg.title}</TD>
+			<TD id='borderA'  align="center">&nbsp;${gMyMesg.contents}</TD>
+			<TD id='borderA'  align="center">${gMyMesg.time}</TD>				
 		</TR>
 		</c:forEach>
 		

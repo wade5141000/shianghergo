@@ -1,7 +1,8 @@
-ï»¿<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=BIG5"
+    pageEncoding="BIG5"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE HTML >
+    
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,27 +13,12 @@
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
-<title>æˆåŠŸæ–°å¢æœƒå“¡</title>
-<script type="text/javascript">     
-function countDown(secs,surl){     
-//alert(surl);     
-var jumpTo = document.getElementById('jumpTo');
-jumpTo.innerHTML=secs;  
-if(--secs>0){     
-     setTimeout("countDown("+secs+",'"+surl+"')",1000);     
-     }     
-else{       
-     location.href=surl;     
-     }     
-}     
-</script> 
+<title>µn¤J²§±`</title>
 </head>
 <body>
-<div class='center'>
-</div>
-<Font color='blue' >è¦ªæ„›çš„${ loginOK.name }æ‚¨å¥½ï¼Œæ‚¨çš„è¼¸å…¥è³‡æ–™å·²ç¶“è™•ç†å®Œç•¢</font>
-<span id="jumpTo">5</span>ç§’åè‡ªåŠ¨è·³è½¬åˆ°æœƒå“¡ä¸­å¿ƒ
-<script type="text/javascript">countDown(5,'/MemberDL');</script>
+<!-- ¤Ş¤J¦@¦Pªº­¶­º -->
+
+<h1>·|­û«á»O­º­¶</h1>
 
 </body>
 </html>

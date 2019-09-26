@@ -21,7 +21,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<title>我參與的合購團明細</title>
+<title>我建立合購團明細</title>
 <style type="text/css">
 .table1 {
 	border: 1px solid #ddd;
@@ -37,24 +37,39 @@ thead {
 	<table border="1" class="layui-table">
 
 		<tr id='borderA' height='50' >
-			<th id='borderA'  align="center">${loginOK.name}的商品明細</th>
+			<th id='borderA'  align="center">團員資料</th>
 		</tr>
 		<tr id='borderA' height='36' >
-			<th id='borderA'>訂單編號</th>
-			<th id='borderA'>商品編號</th>
-			<th id='borderA'>商品名稱</th>
-			<th id='borderA'>數量</th>
-			<th id='borderA'>價格</th>
+			<th id='borderA'>會員id</th>
+			<th id='borderA'>會員姓名</th>
+			<th id='borderA'>會員電話</th>
+			<th id='borderA'>金額</th>
+			<th id='borderA'>付款時間</th>
+			<th id='borderA'>付款方式</th>
+			<th id='borderA'>面交地點</th>
+			<th id='borderA'>面交時間</th>
 		</tr>
-		<c:forEach var="anGOrderD"  items="${MyGroupsListD}">
+		<c:forEach var="MyGP"  items="${getMyGroupsPerson}">
 			<TR id='borderA' height='30'>
-			<TD id='borderA' width="86" align="center">${anGOrderD.groups_order_info_id}</TD>
-			<TD id='borderA' width="80" align="right">${anGOrderD.groups_item_id}</TD>
-			<TD id='borderA' width="100" align="center">${anGOrderD.name}</TD>
-			<TD id='borderA' width="100" align="left">&nbsp;${anGOrderD.amount}</TD>				
-			<TD id='borderA' width="80" align="right">${anGOrderD.price}</TD>
+			<TD id='borderA'  align="center">
+			    <a  href="<c:url value='sendMemberMessage?target=${MyGP.member_id}' />">
+				    ${MyGP.member_id}<br><span class="layui-badge">連絡他</span>
+			    </a>
+			</TD>
+			<TD id='borderA' width="100" align="center">${MyGP.name}</TD>
+<%-- 			<TD id='borderA' width="100" align="center">${MyGP.name}</TD> --%>
+			<TD id='borderA' width="100" align="center">${MyGP.phone}</TD>				
+			<TD id='borderA' width="100" align="center">${MyGP.price}</TD>
+			<TD id='borderA' width="100" align="center">${MyGP.time}</TD> 
+			<TD id='borderA' width="100" align="center">${MyGP.payment}</TD>
+			<TD id='borderA' width="100" align="center">${MyGP.place.address}</TD>
+			<TD id='borderA' width="100" align="center">${MyGP.place.time}</TD>
 			
-		</TR>
+			
+<!-- 			<TD id='borderA' width="100" align="center"><a -->
+<%-- 					href="<c:url value='getMyGroupsplace?place_id=${MyGP.place.id}' />"> --%>
+<%-- 						${MyGP.place.id} </a></TD> --%>
+<!-- 		</TR> -->
 		</c:forEach>
 		
 	</TABLE>
