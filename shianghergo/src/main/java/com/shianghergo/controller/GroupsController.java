@@ -127,7 +127,10 @@ public class GroupsController {
 				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
 			}
 		}
-
+		 if(gb.getPayment().length() !=1) {
+			 gb.setPayment("3");
+		 }
+		
 		
 		Integer id = service.addGroups(gb, member_id,category_id);
 		System.out.println("-----------------------------");
@@ -428,7 +431,8 @@ public class GroupsController {
 	public String list(Model model) {
 		List<GroupsBean> list = service.getAllGroups();
 		model.addAttribute("groups", list);
-		return "frank/groups";
+//		return "frank/groups";
+		return "frank/Ngroup";
 	}
 
 //-------------------------某一個團購頁面---------------------------
@@ -540,6 +544,10 @@ public class GroupsController {
 //		gb.setPayment(payment);
 //		gb.setId(id);
 			
+		
+		 if(gb.getPayment().length() !=1) {
+			 gb.setPayment("3");
+		 }
 		service.updategroups(gb,category_id);
 
 		return "redirect:/frank/showgroup?gid=" + id;
@@ -680,7 +688,7 @@ public class GroupsController {
 //			e.printStackTrace();
 //		}
 //	}
-	@RequestMapping("Ngroup")
+	@RequestMapping("/frank/Ngroup")
 	public String Ngroup() {
 		return "frank/Ngroup";
 	}
