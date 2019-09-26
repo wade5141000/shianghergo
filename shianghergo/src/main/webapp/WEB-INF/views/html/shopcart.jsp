@@ -5,9 +5,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="../res/static/css/main.css">
-  <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
-  <script type="text/javascript" src="../res/layui/layui.js"></script>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/static/css/main.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/layui/css/layui.css">
+  <script type="text/javascript" src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 </head>
@@ -33,7 +33,7 @@
       <div class="headerCon">
         <h1 class="mallLogo">
           <a href="index.jsp">
-            <img src="../res/static/img/logo4.png" width="100" height="100">
+            <img src="${pageContext.request.contextPath}/res/static/img/logo4.png" width="100" height="100">
           </a>
         </h1>
         <div class="mallSearch">
@@ -55,7 +55,7 @@
       <div class="inner-cont0">
         <div class="inner-cont1 w1200">
           <div class="inner-cont2">
-            <a href="../html/commodity.jsp" class="active">所有商品</a>
+            <a href="${pageContext.request.contextPath}/html/commodity.jsp" class="active">所有商品</a>
             <a href="buytoday.jsp">今日团购</a>
             <a href="about.jsp">关于我们</a>
           </div>
@@ -114,7 +114,7 @@
             </li>
             <li class="th th-item">
               <div class="item-cont">
-                <a href="javascript:;"><img src="../res/static/img/paging_img1.jpg" alt=""></a>
+                <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/paging_img1.jpg" alt=""></a>
                 <div class="text">
                   <div class="title">宝宝T恤棉质小衫</div>
                   <p><span>粉色</span>  <span>130</span>cm</p>
@@ -148,7 +148,7 @@
             </li>
             <li class="th th-item">
               <div class="item-cont">
-                <a href="javascript:;"><img src="../res/static/img/paging_img2.jpg" alt=""></a>
+                <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/paging_img2.jpg" alt=""></a>
                 <div class="text">
                   <div class="title">宝宝T恤棉质小衫</div>
                   <p><span>粉色</span>  <span>130</span>cm</p>
@@ -182,7 +182,7 @@
             </li>
             <li class="th th-item">
               <div class="item-cont">
-                <a href="javascript:;"><img src="../res/static/img/paging_img3.jpg" alt=""></a>
+                <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/paging_img3.jpg" alt=""></a>
                 <div class="text">
                   <div class="title">宝宝T恤棉质小衫</div>
                   <p><span>粉色</span>  <span>130</span>cm</p>

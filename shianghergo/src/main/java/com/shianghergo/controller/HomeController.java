@@ -40,6 +40,48 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping("oldindex")
+	public String oldIndex() {
+		return "wade/index";
+	}
+	
+	// 前端測試
+	
+	@RequestMapping("/test")
+	public String Test() {
+		return "html/index";
+	}
+	@RequestMapping("/test1")
+	public String Test1() {
+		return "html/buytoday";
+	}
+	@RequestMapping("/test2")
+	public String Test2() {
+		return "html/commodity";
+	}
+	@RequestMapping("/test3")
+	public String Test3() {
+		return "html/details";
+	}
+	@RequestMapping("/test4")
+	public String Test4() {
+		return "html/group";
+	}
+	@RequestMapping("/test5")
+	public String Test5() {
+		return "html/information";
+	}
+	@RequestMapping("/test6")
+	public String Test6() {
+		return "html/login";
+	}
+//	@RequestMapping("/test7")
+//	public String Test7() {
+//		return "shopcart";
+//	}
+	
+	// 前端測試尾端
+	
 //  顯示 index 的圖片
 //	@RequestMapping("showimg")
 //	public void showimg(OutputStream op, HttpServletRequest rq, HttpServletResponse rp) {
@@ -57,63 +99,5 @@ public class HomeController {
 //		}
 //	}
 	
-	// Excel未完成
-	@RequestMapping("/productfile.do")
-	public void CreateExcel(HttpServletRequest request,HttpServletResponse response) {
-		try {
-//			Workbook wb = Workbook.getWorkbook(new File("C:\\Project\\workspace\\jspExercise\\src\\main\\webapp\\resources\\template.xls"));
-			Workbook wb = Workbook.getWorkbook(new File("C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\resources\\template.xls"));
-			WritableWorkbook wwb = Workbook.createWorkbook(new File("C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\resources\\output_test.xls"), wb);
-			WritableSheet sheet = wwb.getSheet(0);
-			WritableFont writeFont = new WritableFont(WritableFont.ARIAL, 12, WritableFont.BOLD);
-			WritableCellFormat writeFormat = new WritableCellFormat(writeFont);
-			writeFormat.setAlignment(Alignment.CENTRE);
-			writeFormat.setVerticalAlignment(VerticalAlignment.CENTRE);
-			writeFormat.setBorder(Border.LEFT, BorderLineStyle.THIN, Colour.BLACK);
-			writeFormat.setBorder(Border.RIGHT, BorderLineStyle.THIN, Colour.BLACK);
-			writeFormat.setBorder(Border.TOP, BorderLineStyle.THIN, Colour.BLACK);
-			writeFormat.setBorder(Border.BOTTOM, BorderLineStyle.THIN, Colour.BLACK);
-			for(int i=4;i<=10;i++) {
-				for(int j=3;j<=4;j++) {
-					if(j%2==1) {
-						String x = "商品"+(i-3);
-						Label label = new Label(i,j,x,writeFormat);
-						sheet.addCell(label);
-					}else {
-						int price = 50;
-						Label label = new Label(i,j,String.valueOf(price*2*i),writeFormat);
-						sheet.addCell(label);
-					}
-					
-				}
-			}
-			wwb.write();
-			wwb.close();
-			wb.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		//---------------------------------------------------------------------------------
-		OutputStream out;
-		try {
-			out = response.getOutputStream();
-//			response.setContentType("application/vnd.ms-excel");
-			FileInputStream fis = new FileInputStream(new File("C:\\Project\\workspace\\jspExercise\\src\\main\\webapp\\resources\\output_test.xls"));
-			response.reset();
-//			response.setContentType("bin");
-			response.setContentType("application/octet-stream; charset=iso-8859-1;");
-			response.setHeader("content-disposition","attachment; filename="+"test_from_download.xls");
-			byte[] b = new byte[1000];
-			int len;
-			while( (len=fis.read(b)) > 0) {
-				out.write(b,0,len);
-			}
-			fis.close();
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
 	
 }

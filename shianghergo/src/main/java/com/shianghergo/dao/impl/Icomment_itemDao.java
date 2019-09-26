@@ -26,7 +26,7 @@ public class Icomment_itemDao implements comment_itemDao {
 
 		Date date = new Date();
 
-		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd/ HH:mm");
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
 		ci.setMember_id(member_id);
 

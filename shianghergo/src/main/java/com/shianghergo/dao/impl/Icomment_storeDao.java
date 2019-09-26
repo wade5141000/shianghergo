@@ -26,7 +26,7 @@ public class Icomment_storeDao implements comment_storeDao {
 	
 		Date date = new Date();
 
-		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd/ HH:mm");
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
 		cs.setMember_id(member_id);
 

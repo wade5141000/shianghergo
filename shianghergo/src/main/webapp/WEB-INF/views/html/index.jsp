@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="../res/static/css/main.css">
-  <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
-  <script type="text/javascript" src="../res/layui/layui.js"></script>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/static/css/main.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/layui/css/layui.css">
+  <script type="text/javascript" src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 </head>
@@ -36,7 +36,7 @@
       <div class="headerCon">
         <h1 class="mallLogo">
           <a href="index.jsp">
-            <img src="../res/static/img/logo4.png" width="100" height="100">
+            <img src="${pageContext.request.contextPath}/res/static/img/logo4.png" width="100" height="100">
           </a>
         </h1>
         <div class="mallSearch">
@@ -75,13 +75,13 @@
 	
 	<div class="carousel-inner">
 		<div class="item active">
-			<a href="A.jsp" title="GO"><img src="../res/static/img/1.png" alt="First slide" style="width:100%"></a>
+			<a href="A.jsp" title="GO"><img src="${pageContext.request.contextPath}/res/static/img/1.png" alt="First slide" style="width:100%"></a>
 		</div>
 		<div class="item">
-			<a href="B.jsp" title="GO"><img src="../res/static/img/2.png" alt="Second slide"style="width:100%"></a>
+			<a href="B.jsp" title="GO"><img src="${pageContext.request.contextPath}/res/static/img/2.png" alt="Second slide"style="width:100%"></a>
 		</div>
 		<div class="item">
-			<a href="C.jsp" title="GO"><img src="../res/static/img/3.png" alt="Third slide" style="width:100%"></a>
+			<a href="C.jsp" title="GO"><img src="${pageContext.request.contextPath}/res/static/img/3.png" alt="Third slide" style="width:100%"></a>
 		</div>
 	</div>
 	
@@ -98,34 +98,34 @@
       <div class="product-item product-item1 layui-clear">
         <div class="left-title">
           <h4><i>食</i></h4>
-          <img src="../res/static/img/icon_gou.png">
+          <img src="${pageContext.request.contextPath}/res/static/img/icon_gou.png">
           <h5>人氣美食</h5>
         </div>
         <div class="right-cont">
-          <a href="javascript:;" class="top-img"><img src="../res/static/img/food1.png" alt=""></a>
+          <a href="javascript:;" class="top-img"><img src="${pageContext.request.contextPath}/res/static/img/food1.png" alt=""></a>
           <div class="img-box">
-            <a href="javascript:;"><img src="../res/static/img/s_img7.jpg"></a>
-            <a href="javascript:;"><img src="../res/static/img/s_img8.jpg"></a>
-            <a href="javascript:;"><img src="../res/static/img/s_img9.jpg"></a>
-            <a href="javascript:;"><img src="../res/static/img/s_img10.jpg"></a>
-            <a href="javascript:;"><img src="../res/static/img/s_img11.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img7.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img8.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img9.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img10.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img11.jpg"></a>
           </div>
         </div>
       </div>
       <div class="product-item product-item2 layui-clear">
         <div class="left-title">
           <h4><i>衣</i></h4>
-          <img src="../res/static/img/icon_gou.png">
+          <img src="${pageContext.request.contextPath}/res/static/img/icon_gou.png">
           <h5>秋冬潮流</h5>
         </div>
         <div class="right-cont">
-          <a href="javascript:;" class="top-img"><img src="../res/static/img/cloth1.png" alt=""></a>
+          <a href="javascript:;" class="top-img"><img src="${pageContext.request.contextPath}/res/static/img/cloth1.png" alt=""></a>
           <div class="img-box">
-            <a href="javascript:;"><img src="../res/static/img/s_img7.jpg"></a>
-            <a href="javascript:;"><img src="../res/static/img/s_img8.jpg"></a>
-            <a href="javascript:;"><img src="../res/static/img/s_img9.jpg"></a>
-            <a href="javascript:;"><img src="../res/static/img/s_img10.jpg"></a>
-            <a href="javascript:;"><img src="../res/static/img/s_img11.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img7.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img8.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img9.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img10.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img11.jpg"></a>
           </div>
         </div>
       </div>
@@ -137,52 +137,52 @@
         <h4>這裡下面顯示團購商家</h4>
         <div class="product-item-box layui-clear">
           <div class="list-item">
-            <a href="javascript:;"><img src="../res/static/img/more1.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more1.jpg"></a>
             <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
             <span>￥100.00</span>
           </div>
           <div class="list-item">
-            <a href="javascript:;"><img src="../res/static/img/more2.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more2.jpg"></a>
             <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
             <span>￥100.00</span>
           </div>
           <div class="list-item">
-            <a href="javascript:;"><img src="../res/static/img/more3.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more3.jpg"></a>
             <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
             <span>￥100.00</span>
           </div>
           <div class="list-item">
-            <a href="javascript:;"><img src="../res/static/img/more1.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more1.jpg"></a>
             <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
             <span>￥100.00</span>
           </div>
           <div class="list-item">
-            <a href="javascript:;"><img src="../res/static/img/more2.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more2.jpg"></a>
             <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
             <span>￥100.00</span>
           </div>
           <div class="list-item">
-            <a href="javascript:;"><img src="../res/static/img/more3.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more3.jpg"></a>
             <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
             <span>￥100.00</span>
           </div>
           <div class="list-item">
-            <a href="javascript:;"><img src="../res/static/img/more1.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more1.jpg"></a>
             <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
             <span>￥100.00</span>
           </div>
           <div class="list-item">
-            <a href="javascript:;"><img src="../res/static/img/more2.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more2.jpg"></a>
             <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
             <span>￥100.00</span>
           </div>
           <div class="list-item">
-            <a href="javascript:;"><img src="../res/static/img/more3.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more3.jpg"></a>
             <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
             <span>￥100.00</span>
           </div>
           <div class="list-item">
-            <a href="javascript:;"><img src="../res/static/img/more1.jpg"></a>
+            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more1.jpg"></a>
             <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
             <span>￥100.00</span>
           </div>

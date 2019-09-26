@@ -7,80 +7,29 @@
 <head>
 <script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <meta charset="UTF-8">
+
 <title>cart</title>
-<style>
-table {
-	margin: 10px;
-	padding: 10px;
-	border-collapse: collapse;
-}
-
-tr{ 
-	margin:10px;
- 	padding:10px; 
- } 
-
-td{  
- 	margin:10px; 
- 	padding:10px; 
- } 
-span{
- 	padding:5px;
- }
-</style>
-<script>
-
-	function changeAmount(id,types){
-		if($("#"+id).text()==1 && types ==2){
-			alert("商品數量不可低於1")
-		}else{
-			var total2 = $("#total").text();
-			$.ajax({
-				url:"changeAmount?id="+id+"&type="+types+"&total="+total2,
-				type:"get",
-				success:function(data){
-					list = data.split(",");
-					$("#total").text(list[0]);
-					$("#"+list[2]).html(list[1]);
-					$("#"+id+"a").text(list[3]);
-				},
-			})
-		}
-	}
-	
-	function deletetr(it,id){
-		if(confirm("是否刪除商品?")){
-			$.ajax({
-				url:"delete?id="+id,
-				type:"get",
-				success:function(data){
-					$(it.parentNode.parentNode).remove();
-					$("#total").text($("#total").text()-data);
-				},
-			})
-			
-		}
-		
-	}
-
-</script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/wade/css/cart.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/res/wade/js/cart.js"></script>
 </head>
 <body>
-<a href="orderlist">我的訂單 </a>
-	<table border="1">
+<div class="cartdiv">
+	<table class="tb">
 		<tr>
-			<td>品名</td>
-			<td>數量</td>
-			<td>單價</td>
-			<td>小計</td>
-			<td>操作</td>
+			<th></th>
+			<th>品名</th>
+			<th>數量</th>
+			<th>單價</th>
+			<th>小計</th>
+			<th>操作</th>
 		</tr>
 		<c:forEach var="item" items="${cartitems}">
 		<tr>
+			<td><img src="<c:url value='wade/getPicture/${item.item_id}' />" width="50px" height="50px"></td>
 			<td>${item.name}</td>
-			<td><span id="${item.id}">${item.amount}</span><button onclick="changeAmount(${item.id},1)">+</button>&nbsp;&nbsp;<button onclick="changeAmount(${item.id},2)">-</button></td>
+			<td><button class="btn1" onclick="changeAmount(${item.id},2)">-</button ><span id="${item.id}">${item.amount}</span><button onclick="changeAmount(${item.id},1)" class="btn2">+</button>&nbsp;&nbsp;</td>
 			<td>${item.price}</td>
-			<td><span id="${item.id}a"></span></td>
+			<td><span id="${item.id}a" style="color:red;"></span></td>
 			<td><button onclick="deletetr(this,${item.id})">刪除</button></td>
 			<script>
 				var a = ${item.price} * ${item.amount};
@@ -88,8 +37,14 @@ span{
 			</script>
 		</tr>
 		</c:forEach>
+		<tr><td/><td/><td/><td/>
+		<td><span class="total">Total:</span><span id="total" class="total" style="color:red;">${total}</span></td>
+		<td><a href="addorder">加入訂單</a></td>
+		</tr>
 	</table>
-	<h2>total:<span id="total">${total}</span></h2>
-	<a href="addorder">加入訂單</a>
+	<a href="index">回首頁 </a>
+	</div>
+	
+	
 </body>
 </html>

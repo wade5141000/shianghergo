@@ -6,9 +6,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="../res/static/css/main.css">
-  <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
-  <script type="text/javascript" src="../res/layui/layui.js"></script>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/static/css/main.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/layui/css/layui.css">
+  <script type="text/javascript" src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 </head>
@@ -34,7 +34,7 @@
       <div class="headerCon">
         <h1 class="mallLogo">
           <a href="index.jsp">
-            <img src="../res/static/img/logo4.png" width="100" height="100">
+            <img src="${pageContext.request.contextPath}/res/static/img/logo4.png" width="100" height="100">
           </a>
         </h1>
         <div class="mallSearch">

@@ -1,0 +1,46 @@
+.tb {
+	padding: 10px;
+	border-collapse: collapse;
+	margin:auto;
+	margin-bottom:30px;
+	border: 1px solid #111111;
+	width:800px;
+}
+
+.total{
+	font-size:20px;
+	font-weight:bold;
+}
+
+ .btn1{
+ 	margin-right:10px;
+ }
+ .btn2{
+ 	margin-left:10px;
+ }
+
+ th{
+ margin:10px; 
+ 	padding:10px;
+ } 
+tr{ 
+	margin:10px;
+ 	padding:10px; 
+ 	border: 1px solid #111111;
+ } 
+
+td{  
+ 	margin:10px; 
+ 	padding:10px; 
+ } 
+span{
+ 	padding:5px;
+ }
+ 
+ .cartdiv{
+	margin:50px auto;
+	padding:0px;
+	width:800px;
+ 	text-align: center;
+/*  	background-color:#FFAC55; */
+ }

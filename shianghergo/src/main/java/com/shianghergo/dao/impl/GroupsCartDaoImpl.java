@@ -59,4 +59,19 @@ public class GroupsCartDaoImpl implements GroupsCartDao{
 		}
 		return 1;
 	}
+
+	@Override
+	public int deleteCartBeanById(Integer cart_id) {
+		Session session = factory.getCurrentSession();
+		GroupsCartBean cb = session.get(GroupsCartBean.class, cart_id);
+		int reduce = (int) (cb.getAmount()*cb.getPrice());
+		session.delete(cb);
+		return reduce;
+	}
+
+	@Override
+	public GroupsCartBean getGroupsCartBeanById(Integer id) {
+		Session session = factory.getCurrentSession();
+		return session.get(GroupsCartBean.class, id);
+	}
 }

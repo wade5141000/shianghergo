@@ -5,9 +5,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="../res/static/css/main.css">
-  <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
-  <script type="text/javascript" src="../res/layui/layui.js"></script>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/static/css/main.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/layui/css/layui.css">
+  <script type="text/javascript" src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 </head>
@@ -33,7 +33,7 @@
       <div class="headerCon">
         <h1 class="mallLogo">
           <a href="index.jsp">
-            <img src="../res/static/img/logo4.png" width="100" height="100">
+            <img src="${pageContext.request.contextPath}/res/static/img/logo4.png" width="100" height="100">
           </a>
         </h1>
         <div class="mallSearch">
@@ -74,7 +74,7 @@
     <div class="data-cont-wrap w1200" style="margin-top:20px;">
       <div class="product-intro layui-clear">
         <div class="preview-wrap">
-          <a href="javascript:;"><img src="../res/static/img/details_img1.jpg"></a>
+          <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/details_img1.jpg"></a>
         </div>
         <div class="itemInfo-wrap">
           <div class="itemInfo">
@@ -103,27 +103,27 @@
           <h4>热销推荐</h4>
           <div class="item-list">
             <div class="item">
-              <img src="../res/static/img/details_img2.jpg">
+              <img src="${pageContext.request.contextPath}/res/static/img/details_img2.jpg">
               <p><span>可爱宝宝粉色连体秋裤</span><span class="pric">￥99.00</span></p>
             </div>
             <div class="item">
-              <img src="../res/static/img/details_img2.jpg">
+              <img src="${pageContext.request.contextPath}/res/static/img/details_img2.jpg">
               <p><span>可爱宝宝粉色连体秋裤</span><span class="pric">￥99.00</span></p>
             </div>
             <div class="item">
-              <img src="../res/static/img/details_img2.jpg">
+              <img src="${pageContext.request.contextPath}/res/static/img/details_img2.jpg">
               <p><span>可爱宝宝粉色连体秋裤</span><span class="pric">￥99.00</span></p>
             </div>
             <div class="item">
-              <img src="../res/static/img/details_img2.jpg">
+              <img src="${pageContext.request.contextPath}/res/static/img/details_img2.jpg">
               <p><span>可爱宝宝粉色连体秋裤</span><span class="pric">￥99.00</span></p>
             </div>
             <div class="item">
-              <img src="../res/static/img/details_img2.jpg">
+              <img src="${pageContext.request.contextPath}/res/static/img/details_img2.jpg">
               <p><span>可爱宝宝粉色连体秋裤</span><span class="pric">￥99.00</span></p>
             </div>
             <div class="item">
-              <img src="../res/static/img/details_img2.jpg">
+              <img src="${pageContext.request.contextPath}/res/static/img/details_img2.jpg">
               <p><span>可爱宝宝粉色连体秋裤</span><span class="pric">￥99.00</span></p>
             </div>
           </div>
@@ -131,7 +131,7 @@
         <div class="detail">
           <h4>详情</h4>
           <div class="item">
-            <img src="../res/static/img/details_imgbig.jpg">
+            <img src="${pageContext.request.contextPath}/res/static/img/details_imgbig.jpg">
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-package com.shianghergo.model;
+package com.shianghergo.service;
 
 import java.util.List;
 
@@ -6,6 +6,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.shianghergo.dao.SearchDAO;
+import com.shianghergo.model.SearchBean;
 
 @Service
 @Transactional
@@ -17,8 +20,8 @@ public class SearchService {
 		return searchDAO.findAll();
     }
     
-    public List<SearchBean> findSearchByName(String Member_Id) {
-		return searchDAO.findSearchByName(Member_Id);
+    public List<SearchBean> findSearchByName(String name) {
+		return searchDAO.findSearchByName(name);
 
 	}
 }
