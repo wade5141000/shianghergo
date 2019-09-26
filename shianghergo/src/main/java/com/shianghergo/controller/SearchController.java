@@ -35,4 +35,8 @@ public class SearchController {
 //呼叫view
 			return "eric/information";
 	}
+	@RequestMapping("/eric/a")
+	public String methoda() {
+		return "/eric/a";
+	}
 }

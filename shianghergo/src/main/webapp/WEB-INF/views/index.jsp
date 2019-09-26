@@ -76,13 +76,13 @@
 	
 	<div class="carousel-inner">
 		<div class="item active">
-			<a href="A.jsp" title="GO"><img src="${pageContext.request.contextPath}/res/static/img/1.png" alt="First slide" style="width:100%"></a>
+			<a href="${pageContext.request.contextPath}/eric/a" title="GO"><img src="${pageContext.request.contextPath}/res/static/img/1.png" alt="First slide" style="width:100%"></a>
 		</div>
 		<div class="item">
-			<a href="B.jsp" title="GO"><img src="${pageContext.request.contextPath}/res/static/img/2.png" alt="Second slide"style="width:100%"></a>
+			<a href="b.jsp" title="GO"><img src="${pageContext.request.contextPath}/res/static/img/2.png" alt="Second slide"style="width:100%"></a>
 		</div>
 		<div class="item">
-			<a href="C.jsp" title="GO"><img src="${pageContext.request.contextPath}/res/static/img/3.png" alt="Third slide" style="width:100%"></a>
+			<a href="c.jsp" title="GO"><img src="${pageContext.request.contextPath}/res/static/img/3.png" alt="Third slide" style="width:100%"></a>
 		</div>
 	</div>
 	
