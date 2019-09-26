@@ -62,11 +62,11 @@
 						<th>商品名稱</th>
 						<th>商品介紹</th>
 						<th>商品價錢</th>
-						<th></th>
+				        <th></th>
 					</tr>
 					</thead>
 					
-					<td>${groups_items.groupsBean.id}</td>
+					    <td>${groups_items.groupsBean.id}</td>
 						<td>${groups_items.name}</td>
 						<td>${groups_items.detail}</td>
 						<td>${groups_items.price}</td>

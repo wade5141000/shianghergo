@@ -7,13 +7,13 @@ import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.MessageBean;
+import com.shianghergo.model.NotificationBean;
 import com.shianghergo.model.Report_MemberBean;
 import com.shianghergo.model.Report_StoreBean;
 import com.shianghergo.model.StoreBean;
 import com.shianghergo.model.comment_item;
 import com.shianghergo.model.comment_member;
 import com.shianghergo.model.comment_store;
-
 
 public interface GBDBService {
 
@@ -34,7 +34,7 @@ public interface GBDBService {
 	public void stopMessageBean(MessageBean msg, Integer target);
 
 	public List<Report_MemberBean> getAll();
-	
+
 	Integer loginMember(String account);
 
 	public void saveReport(Report_MemberBean report);
@@ -59,6 +59,21 @@ public interface GBDBService {
 
 	public void savecomment_store(comment_store cs, Integer member_id);
 
-	public void savecomment_Item(comment_item ci ,Integer member_id);
+	public void savecomment_Item(comment_item ci, Integer member_id);
+
+	// --新增的 復原會員權限---// 9/25
+	public void recoveryMember(Integer target);
+
+	// --新增的 復原會員權限---// 9/25
+	public void recoveryStore(Integer target);
+
+	// --新增的 message改為NotificationBean---// 9/25 /警告
+	public void caveatNotification(NotificationBean notification, Integer target);
+
+	// --新增的 message改為NotificationBean---// 9/25 /停權
+	public void stopNotification(NotificationBean notification, Integer target);
 	
+	// --新增的 message改為NotificationBean---// 9/25 /恢復權限
+	public void recoveryNotification(NotificationBean notification, Integer target);
+
 }

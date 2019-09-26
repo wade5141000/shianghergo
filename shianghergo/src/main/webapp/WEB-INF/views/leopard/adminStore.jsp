@@ -43,72 +43,87 @@
 		<ul class="nav nav-pills">
 			<li role="presentation"><a href="member.do">會員管理</a></li>
 			<li role="presentation" class="active"><a href="store.do">商店管理</a></li>
-			<li role="presentation" ><a href="showItem">商品管理</a></li>
-			<li role="presentation" ><a href="showGroups_item">團購商品管理</a></li>
+			<li role="presentation"><a href="showItem">商品管理</a></li>
+			<li role="presentation"><a href="showGroups_item">團購商品管理</a></li>
 			<li role="presentation"><a href="showVM.do">違規處理-會員</a></li>
 			<li role="presentation"><a href="showVS.do">違規處理-商店</a></li>
 
 		</ul>
 
 	</div>
-<div class="content">
-	<div class="container">
-		<table class="table table-striped">	
-			<c:forEach var='Stores' items='${Store}'>
-				<thead>
-					<tr>
-						<th>商店名稱</th>
-						<th>商店ID</th>
-						<th>商店會員ID</th>
-						<th>商店介紹</th>
-						<th>狀態</th>
-				        <th></th>
-						<th></th>
-						<th></th>
-					    <th></th>
-					</tr>
-				</thead>
-				 
-						<td>${Stores.name}</td>
-						<td>${Stores.id}</td>
-						<td>${Stores.member_id}</td>
-						<td>${Stores.detail}</td>
-						<td>${Stores.status}</td>
-					
-				<td>
-					<form action="reportStore" method="POST">
-						<input type=hidden value="${Stores.id}" name="target"> 
-						   <button type="submit" class="btn btn-info">檢舉</button>   
+	<div class="content">
+		<div class="container">
+			<table class="table table-striped">
+				<c:forEach var='Stores' items='${Store}'>
+					<thead>
+						<tr>
+							<th>商店名稱</th>
+							<th>商店ID</th>
+							<th>商店會員ID</th>
+							<th>商店介紹</th>
+							<th>狀態</th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
 
-					</form>
-			</td>
-						
-						<td>
-					<form action="messageMember" method="POST">
-						<input type=hidden value="${Stores.id}" name="target"> 
-					  <button type="submit" class="btn btn-warning">警告</button>   
-					</form>
-				</td>
-						<td>
-					<form action="stopStore" method="POST">
-						<input type=hidden value="${Stores.id}" name="target">
-					   <button type="submit" class="btn btn-danger">停權 </button> 
-					</form>
-				</td>
-						<td>
+					<td>${Stores.name}</td>
+					<td>${Stores.id}</td>
+					<td>${Stores.member_id}</td>
+					<td>${Stores.detail}</td>
+					<td>${Stores.status}</td>
 
-					<form action="evaluationStore1" method="POST">
-						<input type=hidden value="${Stores.id}" name="Store_id"> 
-							<button type="submit" class="btn btn-success">評價</button>   
-					</form>
-				
-</td>
-				
-		
-			</c:forEach>
+					<td>
+						<form action="reportStore" method="POST">
+							<input type=hidden value="${Stores.id}" name="target">
+							<button type="submit" class="btn btn-info">檢舉</button>
 
-</table>
-	</div>
+						</form>
+					</td>
+
+					<td>
+						<form action="NotificationStore" method="POST">
+							<input type=hidden value="${Stores.id}" name="target">
+							<button type="submit" class="btn btn-warning">警告</button>
+						</form>
+					</td>
+					<td>
+						<form action="stopStore" method="POST">
+							<input type=hidden value="${Stores.id}" name="target">
+							<button type="submit" class="btn btn-danger">停權</button>
+						</form>
+					</td>
+
+
+					<td>
+
+						<form action="recoveryStore" method="POST">
+							<input type=hidden value="${Stores.id}" name="target">
+							<button type="submit" class="btn btn-success">恢復權限</button>
+						</form>
+
+					</td>
+
+
+
+
+					<td>
+
+						<form action="evaluationStore1" method="POST">
+							<input type=hidden value="${Stores.id}" name="Store_id">
+							<button type="submit" class="btn btn-success">評價</button>
+						</form>
+
+					</td>
+
+
+				</c:forEach>
+
+			</table>
+		</div>
 	</div>
 </body>
 </html>

@@ -12,7 +12,6 @@ public class comment_store {
 	private Integer id;
 	private Integer store_id;
 	private Integer member_id;
-	private Integer item_id;
 	private String time;
 	private String contents;
 	private Integer score;
@@ -32,12 +31,7 @@ public class comment_store {
 	public void setMember_id(Integer member_id) {
 		this.member_id = member_id;
 	}
-	public Integer getItem_id() {
-		return item_id;
-	}
-	public void setItem_id(Integer item_id) {
-		this.item_id = item_id;
-	}
+	
 	public String getTime() {
 		return time;
 	}
@@ -65,8 +59,9 @@ public class comment_store {
 	}
 	@Override
 	public String toString() {
-		return "comment_store [id=" + id + ", store_id=" + store_id + ", member_id=" + member_id + ", item_id="
-				+ item_id + ", time=" + time + ", contents=" + contents + ", score=" + score + "]";
+		return "comment_store [id=" + id + ", store_id=" + store_id + ", member_id=" + member_id + ", time=" + time
+				+ ", contents=" + contents + ", score=" + score + "]";
 	}
+	
 
 }

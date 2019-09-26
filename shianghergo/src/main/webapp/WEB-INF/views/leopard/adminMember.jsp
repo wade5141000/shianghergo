@@ -28,15 +28,13 @@
 .title {
 	color: white;
 }
-
 </style>
 
 <body>
 
 	<div class="navbar navbar-inverse">
 		<h1 class="title">會員管理</h1>
-		<span class="adminlogin">
-		<a href="login"
+		<span class="adminlogin"> <a href="login"
 			class="btn btn-default navbar-btn">管理員登入</a></span>
 
 		<ul class="nav nav-pills">
@@ -52,10 +50,10 @@
 	</div>
 
 	<div class="content">
-		
+
 		<div class="container">
-			
-			
+
+
 			<table class="table table-striped">
 				<c:forEach var='members' items='${Member}'>
 
@@ -67,6 +65,9 @@
 							<th>會員電話</th>
 							<th>會員生日</th>
 							<th>會員住址</th>
+						    <th>會員狀態</th>
+							<th></th>
+							<th></th>
 							<th></th>
 							<th></th>
 							<th></th>
@@ -81,7 +82,7 @@
 					<td>${members.phone}</td>
 					<td>${members.birthday}</td>
 					<td>${members.address}</td>
-
+	                <td>${members.status}</td>
 
 					<td>
 						<form action="reportMember" method="POST">
@@ -93,11 +94,11 @@
 
 					<td>
 
-						<form action="messageMember" method="POST">
+						<form action="NotificationMember" method="POST">
 							<input type=hidden value="${members.id}" name="target">
 							<button type="submit" class="btn btn-warning">警告</button>
-
-
+                              
+                              
 						</form>
 
 					</td>
@@ -110,6 +111,21 @@
 						</form>
 
 					</td>
+
+					<td>
+
+						<form action="recoveryMember" method="POST">
+							<input type=hidden value="${members.id}" name="target">
+							<button type="submit" class="btn btn-success">恢復權限</button>
+						</form>
+
+					</td>
+
+
+
+
+
+
 
 					<td>
 
