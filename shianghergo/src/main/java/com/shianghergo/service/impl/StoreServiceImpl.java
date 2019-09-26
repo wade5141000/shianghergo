@@ -59,5 +59,11 @@ public class StoreServiceImpl implements StoreService {
 		return result;
 	}
 
+	@Transactional
+	@Override
+	public StoreBean getStoreByMember_Id(Integer member_id) {
+		return dao.getStoreByMember_Id(member_id);
+	}
+
 	
 }

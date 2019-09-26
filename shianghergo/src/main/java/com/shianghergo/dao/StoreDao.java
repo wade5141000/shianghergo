@@ -22,4 +22,6 @@ public interface StoreDao {
 	public boolean checkStoreExist(Integer member_id);
 
 	void recoveryStore(Integer target);
+
+	StoreBean getStoreByMember_Id(Integer member_id);
 }

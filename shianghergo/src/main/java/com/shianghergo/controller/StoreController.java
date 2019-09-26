@@ -29,22 +29,23 @@ import com.shianghergo.service.StoreService;
 public class StoreController {
 	@Autowired
 	StoreService service;
-	
+
 	@Autowired
 	ServletContext context;
-	
+
 	@RequestMapping(value = "/hao/buildStore", method = RequestMethod.GET)
-	public String getAddNewProductForm(Model model, @ModelAttribute("loginOK")MemberBean mb) {
+	public String getAddNewProductForm(Model model,
+			@ModelAttribute("loginOK") MemberBean mb) {
 		StoreBean sb = new StoreBean();
 		model.addAttribute("storeBean", sb);
 		model.addAttribute("memberBean", mb);
-		
+		model.addAttribute("store", service.getStoreByMember_Id(mb.getId()));
 		System.out.println(mb.getId());
-		
-		if(!service.checkStoreExist(mb.getId()))
+
+		if (!service.checkStoreExist(mb.getId()))
 			return "hao/buildStore";
 		else
-			return "hao/store?id=" + mb.getId();
+			return "/hao/store";
 	}
 
 	@RequestMapping(value = "/hao/buildStore", method = RequestMethod.POST)
@@ -55,19 +56,19 @@ public class StoreController {
 		if (suppressedFields.length > 0) {
 			throw new RuntimeException("嘗試傳入不允許的欄位:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
 		}
-		
-		if(sb.getMember_id()!=null&&sb.getName()!=null&&sb.getDetail()!=null) {
+
+		if (sb.getMember_id() != null && sb.getName() != null && sb.getDetail() != null) {
 			redirectAttributes.addFlashAttribute("name", sb.getName());
 			redirectAttributes.addFlashAttribute("success", "註冊成功");
 			sb.setStatus(1);
 			service.buildStore(sb);
 			return "redirect:/";
-		}else {
+		} else {
 			redirectAttributes.addFlashAttribute("error", "註冊失敗");
 			return "redirect:/hao/buildStore";
 		}
 	}
-	
+
 	@RequestMapping(value = "/hao/store/Update", method = RequestMethod.GET)
 	public String getUpdateStoreForm(@RequestParam("id") Integer id, Model model) {
 		model.addAttribute("store", service.getStoreById(id));
@@ -75,27 +76,29 @@ public class StoreController {
 		model.addAttribute("storeBean", bb);
 		return "hao/storeUpdate";
 	}
-	
+
 	@RequestMapping(value = "/hao/store/Update", method = RequestMethod.POST)
-	public String getUpdateStoreForm(@RequestParam(value = "id",required = false)Integer id, @ModelAttribute("storeBean") StoreBean bb, BindingResult result, HttpServletRequest request) {
+	public String getUpdateStoreForm(@RequestParam(value = "id", required = false) Integer id,
+			@ModelAttribute("storeBean") StoreBean bb, BindingResult result, HttpServletRequest request) {
 //		String[] suppressedFields = result.getSuppressedFields();
 //		if (suppressedFields.length > 0) {
 //			throw new RuntimeException("嘗試傳入不允許的欄位:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
 //		}
-		
-		bb.setId(id);;
+
+		bb.setId(id);
+		;
 		service.updateStore(bb);
-		
+
 		return "redirect:/hao/stores";
 	}
-	
+
 	@RequestMapping("/hao/stores")
 	public String list(Model model) {
 		List<StoreBean> list = service.getAllStores();
 		model.addAttribute("stores", list);
 		return "hao/stores";
 	}
-	
+
 	@RequestMapping("/hao/store")
 	public String getProductsById(@RequestParam("id") Integer id, Model model) {
 		model.addAttribute("store", service.getStoreById(id));

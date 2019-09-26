@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.shianghergo.dao.StoreDao;
 import com.shianghergo.exception.ProductNotFoundException;
 import com.shianghergo.model.ItemBean;
+import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.StoreBean;
 
 @Repository
@@ -89,11 +90,19 @@ public class StoreDaoImpl implements StoreDao {
 	@Override
 	public boolean checkStoreExist(Integer member_id) {
 		Session session = factory.getCurrentSession();
-		StoreBean sb = session.get(StoreBean.class, member_id);
-		if (sb == null)
-			return false;
-		else
-			return true;
+		boolean exist = false;
+		String hql = "FROM StoreBean where member_id=:member_id";
+		try {
+			StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("member_id", member_id).uniqueResult();
+
+			if (sb.getMember_id() != null) {
+				exist = true;
+			}
+		} catch (RuntimeException ex) {
+			exist = false;
+		}
+		System.out.println("exist=" + exist);
+		return exist;// 回傳true則帳號不能使用
 	}
 
 	// 9/25新增 恢復商店權限
@@ -107,5 +116,14 @@ public class StoreDaoImpl implements StoreDao {
 		StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("id", target).getSingleResult();
 
 		sb.setStatus(1);
+	}
+
+	@Override
+	public StoreBean getStoreByMember_Id(Integer member_id) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM StoreBean where member_id=:member_id";
+		StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("member_id", member_id).getSingleResult();
+		
+		return sb;
 	}
 }
