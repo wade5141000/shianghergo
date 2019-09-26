@@ -18,4 +18,6 @@ public interface StoreDao {
 	
 	void saveStoreIdToStop(Integer target);
 	Integer getStoreId(Integer target);
+	
+	public boolean checkStoreExist(Integer member_id);
 }

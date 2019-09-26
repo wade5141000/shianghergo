@@ -52,5 +52,12 @@ public class StoreServiceImpl implements StoreService {
 		dao.updateStore(oldStoreBean);
 	}
 
+	@Transactional
+	@Override
+	public boolean checkStoreExist(Integer member_id) {
+		boolean result = dao.checkStoreExist(member_id); 
+		return result;
+	}
+
 	
 }

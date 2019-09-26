@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.shianghergo.dao.StoreDao;
+import com.shianghergo.exception.ProductNotFoundException;
+import com.shianghergo.model.ItemBean;
 import com.shianghergo.model.StoreBean;
 
 
@@ -82,6 +84,16 @@ public class StoreDaoImpl implements StoreDao {
 		Integer list = (Integer) session.createQuery(hql).setParameter("member_id",target).getSingleResult();
 		
 		return list;
+	}
+
+	@Override
+	public boolean checkStoreExist(Integer member_id) {
+		Session session = factory.getCurrentSession();
+		StoreBean sb = session.get(StoreBean.class, member_id);
+		if(sb == null)
+			return false;
+		else
+			return true;
 	}
 	
 	

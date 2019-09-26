@@ -38,7 +38,13 @@ public class StoreController {
 		StoreBean sb = new StoreBean();
 		model.addAttribute("storeBean", sb);
 		model.addAttribute("memberBean", mb);
-		return "hao/buildStore";
+		
+		System.out.println(mb.getId());
+		
+		if(!service.checkStoreExist(mb.getId()))
+			return "hao/buildStore";
+		else
+			return "hao/store?id=" + mb.getId();
 	}
 
 	@RequestMapping(value = "/hao/buildStore", method = RequestMethod.POST)
