@@ -39,4 +39,8 @@ public class SearchController {
 	public String methoda() {
 		return "/eric/a";
 	}
+	@RequestMapping("/eric/b")
+		public String methodb() {
+			return "/eric/b";
+	}
 }
