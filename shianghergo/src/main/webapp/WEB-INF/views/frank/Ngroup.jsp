@@ -99,7 +99,7 @@
            <c:forEach var="group" items="${groups}">
               <div class="item">
                 <div class="img">
-                <a href="<spring:url value='group?id=${group.id}&mid=${group.memberBean.id}'/>">
+                <a href="<spring:url value='group?gid=${group.id}'/>">
                   <img width='275' height='250' src="<c:url value='/frank/getgroupPicture/${group.id }' />">
                 </a>
                 </div>

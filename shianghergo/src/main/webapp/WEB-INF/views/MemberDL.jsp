@@ -49,7 +49,7 @@ position:fixed;
 	<div class="site-nav-bg">
 		<div class="site-nav w1200">
 			<p class="sn-back-home">
-				<i class="layui-icon layui-icon-home"></i> <a href="index.jsp">首页</a>
+				<i class="layui-icon layui-icon-home"></i> <a href="index">首页</a>
 			</p>
 			<div class="sn-quick-menu">
 				<div class="login">
