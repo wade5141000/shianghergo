@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shianghergo.model.MemberBean;
+import com.shianghergo.model.NotificationBean;
 import com.shianghergo.model.StoreBean;
 import com.shianghergo.service.StoreService;
 
@@ -40,7 +41,6 @@ public class StoreController {
 		model.addAttribute("storeBean", sb);
 		model.addAttribute("memberBean", mb);
 		model.addAttribute("store", service.getStoreByMember_Id(mb.getId()));
-		System.out.println(mb.getId());
 
 		if (!service.checkStoreExist(mb.getId()))
 			return "hao/buildStore";
@@ -86,7 +86,6 @@ public class StoreController {
 //		}
 
 		bb.setId(id);
-		;
 		service.updateStore(bb);
 
 		return "redirect:/hao/stores";
@@ -103,5 +102,16 @@ public class StoreController {
 	public String getProductsById(@RequestParam("id") Integer id, Model model) {
 		model.addAttribute("store", service.getStoreById(id));
 		return "hao/store";
+	}
+	
+	@RequestMapping("/hao/closeStore")
+	public String closeStore(@RequestParam("id") Integer id ,Model model) {
+		StoreBean sb = new StoreBean();
+		sb.setId(id);
+		sb.setStatus(3);
+		service.updateStore(sb);
+		
+		model.addAttribute("store", service.getStoreById(id));
+		return "/hao/store";
 	}
 }

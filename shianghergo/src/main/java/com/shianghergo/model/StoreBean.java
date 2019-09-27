@@ -75,14 +75,6 @@ public class StoreBean implements Serializable {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-
-	public Integer getUrl() {
-		return status;
-	}
-
-	public void setUrl(Integer status) {
-		this.status = status;
-	}
 	
 	public Integer getStatus() {
 		return status;
