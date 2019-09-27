@@ -38,7 +38,7 @@
 <body>
 	<div class="layui-body" style="padding-left: 160px">
 		<!-- 内容主体区域 -->
-		<form id="saveForm" action="updateMember.do" method="post" class="layui-form">
+		<form id="saveForm" action="updateMember.do" method="post" class="layui-form"  enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${Member.id}" /> <input
 				type="hidden" name="account" value="${Member.account}" />
 			<table class="layui-form" style="font-size: :16px">
@@ -69,6 +69,11 @@
 					<td>地址：</td>
 					<td><input type="text" value="${Member.address }"
 						name="address" class="layui-input" /></td>
+				</tr>
+				<tr>
+					<td>更換大頭照：</td>
+					<td><input type="file" 
+						name="image" class="layui-input" /></td>
 				</tr>
 			</table>
 				<div class="layui-btn-group">

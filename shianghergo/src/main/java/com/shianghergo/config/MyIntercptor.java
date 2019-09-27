@@ -12,19 +12,19 @@ import com.shianghergo.exception.UserException;
 
 public class MyIntercptor extends HandlerInterceptorAdapter {
 	 @Override
-	    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
+	    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handle) throws Exception {
 	        System.out.println("before");
 	      //创建session
 			HttpSession session =request.getSession();
 			
 			//无需登录，允许访问的地址
-			String[] allowUrls =new String[]{"toLogin","login"};
+			String[] allowUrls =new String[]{"/goRegisterPage","/login","/js","/css","/images","/image"};
 				
 			//获取请求地址
 			String url =request.getRequestURL().toString();
 			
 			//获得session中的用户
-			 Object user = session.getAttribute("loginOK");
+			   Object user = session.getAttribute("loginOK");
 			 System.out.println("获得session中的用户:"+user);
 			
 			for (String strUrl : allowUrls) {
@@ -32,6 +32,7 @@ public class MyIntercptor extends HandlerInterceptorAdapter {
 				{
 					return true;
 				}
+				System.out.println("攔截已放行");
 			}
 			
 			if(user ==null)
@@ -41,8 +42,6 @@ public class MyIntercptor extends HandlerInterceptorAdapter {
 			}
 			//重定向
 			response.sendRedirect(request.getContextPath()+"/login");
-				
-
 	        return true;
 	    }//进入Handler方法之前执行。可以用于身份认证、身份授权。比如如果认证没有通过表示用户没有登陆，需要此方法拦截不再往下执行（return false），否则就放行（return true）。
 
