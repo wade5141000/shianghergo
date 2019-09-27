@@ -73,6 +73,7 @@ else
 
 .title {
 	color: white;
+	text-align:center;
 }
 </style>
 
@@ -81,7 +82,7 @@ else
 	<div class="navbar navbar-inverse">
 		<h1 class="title">商店管理</h1>
 		<span class="adminlogin"><a href="login"
-			class="btn btn-default navbar-btn">管理員登入</a></span>
+			class="btn btn-default navbar-btn">切換管理員</a></span>
 
 
 

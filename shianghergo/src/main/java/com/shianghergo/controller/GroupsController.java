@@ -684,4 +684,30 @@ public class GroupsController {
 	public String Ngroup() {
 		return "frank/Ngroup";
 	}
+
+	
+	
+	
+	//轉開團輸入欄  --927新增
+		@RequestMapping("leopard/searchGroups")
+		public String searchGroups() {
+			
+		    return"leopard/SearchGroups";
+			
+		}
+	
+	//顯示開團列表 --927新增
+	@RequestMapping("leopard/showGroups")
+	public String showGroups(String name , Model model) {
+		
+	    List<GroupsBean> list = service.searchToGroups(name);
+		
+	    model.addAttribute("Groups",list);
+	    	
+		return "leopard/showSearchGroups";
+		
+		
+	}
+
+
 }

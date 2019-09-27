@@ -64,5 +64,12 @@ margin-top: 50px;
 
 	</form>
 </div>
+
+<a href="searchGroups">搜尋開團</a>
+
+
+
+
+
 </body>
 </html>

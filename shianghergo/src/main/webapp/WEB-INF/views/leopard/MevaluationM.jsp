@@ -36,7 +36,7 @@
 		if (flag == true) {
 			for (let i = 0; i < n; i++) {
 
-				document.images[i - 1 + 1].src = '${pageContext.request.contextPath}/resources/images/chngstar.gif'
+				document.images[i - 1 + 7].src = '${pageContext.request.contextPath}/resources/images/chngstar.gif'
 
 			}
 
@@ -49,7 +49,7 @@
 
 			for (let i = 0; i < 5; i++) {
 
-				document.images[i - 1 + 1].src = "${pageContext.request.contextPath}/resources/images/star.gif"
+				document.images[i - 1 + 7].src = "${pageContext.request.contextPath}/resources/images/star.gif"
 
 			}
 		}
@@ -63,8 +63,8 @@
 
 		for (let i = 0; i < n; i++) {
 
-			document.images[i - 1 + 1].src = "${pageContext.request.contextPath}/resources/images/chngstar.gif"
-			document.getElementById("str").innerHTML = "是否要給" + (i + 1) + "分";
+			document.images[i - 1 + 7].src = "${pageContext.request.contextPath}/resources/images/chngstar.gif"
+			document.getElementById("str").innerHTML = "是否要給"+(i + 1)+"分";
 			document.getElementById("score").value = i + 1;
 		}
 
@@ -117,14 +117,14 @@
 
 
 	<div class="alert alert-success" role="alert">我是上方導覽列</div>
-	<!-- 		<div class="a"> -->
+		
+<div class="a">
 
-	<!-- 			<img class="c1" -->
-	<%-- 				src="${pageContext.request.contextPath}/resources/images/777.jpg"> --%>
-	<!-- 			<img class="c1" -->
-	<%-- 				src="${pageContext.request.contextPath}/resources/images/888.jpg"> --%>
-	<!-- 		</div> -->
-
+			<img class="c1"
+				src="${pageContext.request.contextPath}/resources/images/777.jpg">
+			<img class="c1"
+				src="${pageContext.request.contextPath}/resources/images/888.jpg">
+		</div>
 	<div class="b">
 		<div class="alert alert-danger" role="alert">
 			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -132,26 +132,20 @@
 		</div>
 
 
+				1.干貝 <img class="s1"
+					src="${pageContext.request.contextPath}/resources/images/111.jpg">
+				<hr>
 
+				2.酥炸花枝圈 <img class="s1"
+					src="${pageContext.request.contextPath}/resources/images/222.jpg">
+				<hr>
 
-
-
-
-
-		<!-- 				1.干貝 <img class="i1" -->
-		<%-- 					src="${pageContext.request.contextPath}/resources/images/111.jpg"> --%>
-		<!-- 				<hr> -->
-
-		<!-- 				2.酥炸花枝圈 <img class="i1" -->
-		<%-- 					src="${pageContext.request.contextPath}/resources/images/222.jpg"> --%>
-		<!-- 				<hr> -->
-
-		<!-- 				3.懷舊排骨<img class="i1" -->
-		<%-- 					src="${pageContext.request.contextPath}/resources/images/333.jpg"> --%>
-		<!-- 				<hr> -->
-		<!-- 				4.酥脆麥克雞塊<img class="i1" -->
-		<%-- 					src="${pageContext.request.contextPath}/resources/images/444.jpg"> --%>
-		<!-- 				<hr> -->
+				3.懷舊排骨<img class="s1"
+					src="${pageContext.request.contextPath}/resources/images/333.jpg">
+				<hr>
+				4.酥脆麥克雞塊<img class="s1"
+					src="${pageContext.request.contextPath}/resources/images/444.jpg">
+				<hr>
 
 
 
@@ -159,50 +153,41 @@
 
 	<div class="content">
 
-		<form action="evaluationMember2" method="POST">
+			<form action="evaluationMember2" method="POST">
 
 		<!--使用者會員ID -->
 		<input type=hidden value="${member_id}" name="member_id">
 		<!--被評價的會員ID -->
 		<input type=hidden value="${target}" name="target">
 
-		<!-- 						<div> -->
-		<!-- 							<img class="c1" -->
-		<%-- 								src="${pageContext.request.contextPath}/resources/images/555.png">要幫我評五顆星唷! --%>
-
-
-		<!-- 							<img class="i1" -->
-		<%-- 								src="${pageContext.request.contextPath}/resources/images/chngstar.gif"> --%>
-		<!-- 						</div> -->
 
 
 
-
-		<div class="alert alert-success" role="alert">評分</div>
-
+			<div class="alert alert-success" role="alert">評分</div>
 
 
-		<img
-			src="${pageContext.request.contextPath}/resources/images/star.gif"
-			id="star1" class="s1"> <img
-			src="${pageContext.request.contextPath}/resources/images/star.gif"
-			id="star2" class="s1"> <img
-			src="${pageContext.request.contextPath}/resources/images/star.gif"
-			id="star3" class="s1"> <img
-			src="${pageContext.request.contextPath}/resources/images/star.gif"
-			id="star4" class="s1"> <img
-			src="${pageContext.request.contextPath}/resources/images/star.gif"
-			id="star5" class="s1">
-		<div>
-			<span class="c1" id="str"></span>
-		</div>
-		<hr>
-		<div class="alert alert-success" role="alert">給予評語</div>
-		<input type=hidden value="1" name="score" id="score">
-		<textarea name="contents" rows="5" cols="45"></textarea>
-		<hr>
 
-		<button type="submit" class="btn btn-success">送出評分</button>
+			<img
+				src="${pageContext.request.contextPath}/resources/images/star.gif"
+				id="star1" class="s1"> <img
+				src="${pageContext.request.contextPath}/resources/images/star.gif"
+				id="star2" class="s1"> <img
+				src="${pageContext.request.contextPath}/resources/images/star.gif"
+				id="star3" class="s1"> <img
+				src="${pageContext.request.contextPath}/resources/images/star.gif"
+				id="star4" class="s1"> <img
+				src="${pageContext.request.contextPath}/resources/images/star.gif"
+				id="star5" class="s1">
+		<div> 
+				<span class="c1" id="str"></span>
+			</div>
+			<hr>
+			<div class="alert alert-success" role="alert">給予評語</div>
+			<input type=hidden value="1" name="score" id="score">
+			<textarea name="contents" rows="5" cols="45"></textarea>
+			<hr>
+
+			<button type="submit" class="btn btn-success">送出評分</button>
 
 		</form>
 	</div>
