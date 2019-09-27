@@ -731,7 +731,6 @@ public class GroupsController {
 	    List<GroupsBean> list = service.searchToGroups(name);
 		
 	    model.addAttribute("Groups",list);
-	    	
 		return "leopard/showSearchGroups";
 		
 		
