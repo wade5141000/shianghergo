@@ -106,8 +106,9 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         super.addInterceptors(registry);
         //定義攔截甚麼請求 
-       registry.addInterceptor(myIntercptor()).addPathPatterns("/user/**");
-       registry.addInterceptor(myIntercptor()).addPathPatterns("/user/**");
+       registry.addInterceptor(myIntercptor()).addPathPatterns("/login.do");
+       System.out.println("攔截已請求");
+//       registry.addInterceptor(myIntercptor()).addPathPatterns("/");
     }
     
     

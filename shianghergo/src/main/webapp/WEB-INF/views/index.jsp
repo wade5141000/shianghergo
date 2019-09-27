@@ -25,7 +25,7 @@
       </p>
       <div class="sn-quick-menu">
       	<div class="login"><a href="oldindex">舊index</a></div>
-      	<div class="login"><a >註冊</a></div>
+      	<div class="login"><a href="goRegisterPage">註冊</a></div>
         <div class="login"><a href="login">登入</a></div>
         <div class="sp-cart"><a href="cart">購物車</a><span>2</span></div>
       </div>

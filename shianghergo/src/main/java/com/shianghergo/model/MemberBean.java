@@ -169,13 +169,13 @@ public class MemberBean implements Serializable {
 	public void setCoverImage(Blob coverImage) {
 		this.coverImage = coverImage;
 	}
-	@Override
-	public String toString() {
-		return "MemberBean [id=" + id + ", account=" + account + ", password=" + password + ", name=" + name
-				+ ", address=" + address + ", email=" + email + ", phone=" + phone + ", birthday=" + birthday
-				+ ", register_Time=" + register_Time + ", fileName=" + fileName + ", coverImage=" + coverImage
-				+ ", image=" + image + ", status=" + status + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "MemberBean [id=" + id + ", account=" + account + ", password=" + password + ", name=" + name
+//				+ ", address=" + address + ", email=" + email + ", phone=" + phone + ", birthday=" + birthday
+//				+ ", register_Time=" + register_Time + ", fileName=" + fileName + ", coverImage=" + coverImage
+//				+ ", image=" + image + ", status=" + status + "]";
+//	}
 
 	@XmlTransient
 	@Transient

@@ -33,7 +33,7 @@ public class LoginController {
 //		return "login";
 //	}
 
-	@RequestMapping(value = "MemberDL", method = RequestMethod.GET)
+	@RequestMapping(value = "/MemberDL", method = RequestMethod.GET)
 	public String welcome(HttpServletRequest request) {
 		// TODO 判断有无session，有直接到首页
 		if (request.getSession().getAttribute("account") != null
@@ -44,7 +44,7 @@ public class LoginController {
 		return "loginNew";
 	}
 
-	@RequestMapping(value = "login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String toLogin(HttpServletRequest request) {
 
 		// TODO 判断有无session，有直接到首页
@@ -138,6 +138,7 @@ public class LoginController {
 //		session.invalidate();
 //		return "redirect:index";
 		sessionStatus.setComplete();
+		System.out.println("logout已執行");
 		return "loginNew";
 	}
 
