@@ -27,6 +27,7 @@
 
 .title {
 	color: white;
+	text-align:center;
 }
 </style>
 
@@ -35,7 +36,7 @@
 	<div class="navbar navbar-inverse">
 		<h1 class="title">違規處理-會員</h1>
 		<span class="adminlogin"><a href="login"
-			class="btn btn-default navbar-btn">管理員登入</a></span>
+			class="btn btn-default navbar-btn">切換管理員</a></span>
 
 
 

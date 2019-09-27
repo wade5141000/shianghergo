@@ -378,7 +378,7 @@ label.valid {
 				</div>
 				<div class="item">
 					<label for="image" class="item-label">大頭照:</label>
-					<form:input type="file" id="image" name="filename" path=""
+					<form:input type="file" id="image" name="image" path="image"
 						class="item-file" placeholder="" autocomplete="off" tip="" />
 				</div>
 				<div class="layui-btn-container">

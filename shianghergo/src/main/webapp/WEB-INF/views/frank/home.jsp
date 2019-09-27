@@ -19,6 +19,7 @@
 			<td width="350"><p align="left" /> <a href="Groups1">我要開團</a><br>
 			<td width="350"><p align="left" /> <a href="queryByGroups_id">查詢商品</a><br>
 			<td width="350"><p align="left" /> <a href="mygroups">我的團</a><br>
+			<td width="350"><p align="left" /> <a href="Ngroup">測試套版</a><br>
 		
 			</td>
 			

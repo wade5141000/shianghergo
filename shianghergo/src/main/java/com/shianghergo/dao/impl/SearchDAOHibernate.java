@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.shianghergo.dao.SearchDAO;
+import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.SearchBean;
 
 
@@ -46,7 +47,5 @@ public class SearchDAOHibernate implements SearchDAO {
 //		System.out.println("有近findOrdersByName ==>list="+list);
 	return list;
 	}
-
-
 
 }
