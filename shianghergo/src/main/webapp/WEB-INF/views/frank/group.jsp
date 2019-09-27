@@ -29,8 +29,6 @@
 <script>
 
 function addGroupCart(item_id,groups_id){
-	alert("item=" + item_id);
-	alert("group=" + groups_id);
 	$.ajax({
 		url:"../addtocart?itemid="+item_id+"&gid="+groups_id,
 		type:"get",
