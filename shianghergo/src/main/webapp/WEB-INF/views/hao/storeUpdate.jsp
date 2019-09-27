@@ -7,7 +7,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css">
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 <title>商家修改</title>
+<script>
+	function close() {
+		var r = confirm("是否關閉商店")
+		if (r == true) {
+			alert('成功關閉商店');
+		} else {
+			alert('取消關閉商店');
+		}
+	}
+</script>
 </head>
 <body>
 	<section>
@@ -40,7 +58,7 @@
 					<label class='control-label col-lg-2 col-lg-2' for="detail">
 						商店介紹 </label>
 					<div class='col-lg-10'>
-						<form:input id="detail" path="detail" type='text'
+						<form:input id="detail" path="detail" type='text' style="width:400px;height:120px;"
 							class='form:input-large' value='${store.detail }' />
 					</div>
 				</div>
@@ -51,8 +69,13 @@
 							value="確認修改" />
 					</div>
 				</div>
+
 			</fieldset>
 		</form:form>
+		<form action="closeStore" method="POST">
+			<input type=hidden value="${store.id}" name="id">
+			<button type="submit" class="btn btn-success" onclick="close()">關閉商店</button>
+		</form>
 	</section>
 </body>
 </html>
