@@ -288,4 +288,19 @@ public class GroupsDaoImpl implements GroupsDao {
 //		return gib;
 //	}
 
+	
+	// 9/27  新增搜查開團
+		@Override
+		public List<GroupsBean> searchToGroups(String name) {
+			
+			String hql = "from GroupsBean Where name LIKE '%"+ name +"%'";
+			
+			Session session = factory.getCurrentSession();
+			
+			@SuppressWarnings("unchecked")
+			List<GroupsBean> data  = session.createQuery(hql).getResultList();
+			
+			return data;
+		}
+	
 }
