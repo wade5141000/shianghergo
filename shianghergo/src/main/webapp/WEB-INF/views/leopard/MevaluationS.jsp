@@ -36,7 +36,7 @@
 		if (flag == true) {
 			for (let i = 0; i < n; i++) {
 
-				document.images[i - 1 + 1].src = '${pageContext.request.contextPath}/resources/images/chngstar.gif'
+				document.images[i - 1 + 7].src = '${pageContext.request.contextPath}/resources/images/chngstar.gif'
 
 			}
 
@@ -49,7 +49,7 @@
 
 			for (let i = 0; i < 5; i++) {
 
-				document.images[i - 1 + 1].src = "${pageContext.request.contextPath}/resources/images/star.gif"
+				document.images[i - 1 + 7].src = "${pageContext.request.contextPath}/resources/images/star.gif"
 
 			}
 		}
@@ -63,7 +63,7 @@
 
 		for (let i = 0; i < n; i++) {
 
-			document.images[i - 1 + 1].src = "${pageContext.request.contextPath}/resources/images/chngstar.gif"
+			document.images[i - 1 + 7].src = "${pageContext.request.contextPath}/resources/images/chngstar.gif"
 			document.getElementById("str").innerHTML = "是否要給" + (i + 1) + "分";
 			document.getElementById("score").value = i + 1;
 		}
@@ -117,13 +117,13 @@
 
 
 	<div class="alert alert-success" role="alert">我是上方導覽列</div>
-	<!-- 		<div class="a"> -->
+			<div class="a">
 
-	<!-- 			<img class="c1" -->
-	<%-- 				src="${pageContext.request.contextPath}/resources/images/777.jpg"> --%>
-	<!-- 			<img class="c1" -->
-	<%-- 				src="${pageContext.request.contextPath}/resources/images/888.jpg"> --%>
-	<!-- 		</div> -->
+				<img class="c1"
+					src="${pageContext.request.contextPath}/resources/images/777.jpg">
+				<img class="c1"
+					src="${pageContext.request.contextPath}/resources/images/888.jpg">
+			</div>
 
 	<div class="b">
 		<div class="alert alert-danger" role="alert">
@@ -131,27 +131,20 @@
 			人氣排行
 		</div>
 
+						1.干貝 <img class="s1"
+							src="${pageContext.request.contextPath}/resources/images/111.jpg">
+						<hr>
 
+						2.酥炸花枝圈 <img class="s1"
+							src="${pageContext.request.contextPath}/resources/images/222.jpg">
+						<hr>
 
-
-
-
-
-
-		<!-- 				1.干貝 <img class="i1" -->
-		<%-- 					src="${pageContext.request.contextPath}/resources/images/111.jpg"> --%>
-		<!-- 				<hr> -->
-
-		<!-- 				2.酥炸花枝圈 <img class="i1" -->
-		<%-- 					src="${pageContext.request.contextPath}/resources/images/222.jpg"> --%>
-		<!-- 				<hr> -->
-
-		<!-- 				3.懷舊排骨<img class="i1" -->
-		<%-- 					src="${pageContext.request.contextPath}/resources/images/333.jpg"> --%>
-		<!-- 				<hr> -->
-		<!-- 				4.酥脆麥克雞塊<img class="i1" -->
-		<%-- 					src="${pageContext.request.contextPath}/resources/images/444.jpg"> --%>
-		<!-- 				<hr> -->
+						3.懷舊排骨<img class="s1"
+							src="${pageContext.request.contextPath}/resources/images/333.jpg">
+						<hr>
+						4.酥脆麥克雞塊<img class="s1"
+							src="${pageContext.request.contextPath}/resources/images/444.jpg">
+						<hr>
 
 
 
@@ -166,20 +159,8 @@
 	                        <!--被評價的商家ID -->
 		<input type=hidden value="${Store_id}" name="Store_id">
 
-		<!-- 						<div> -->
-		<!-- 							<img class="c1" -->
-		<%-- 								src="${pageContext.request.contextPath}/resources/images/555.png">要幫我評五顆星唷! --%>
-
-
-		<!-- 							<img class="i1" -->
-		<%-- 								src="${pageContext.request.contextPath}/resources/images/chngstar.gif"> --%>
-		<!-- 						</div> -->
-
-
-
-
+								
 		<div class="alert alert-success" role="alert">評分</div>
-
 
 
 		<img

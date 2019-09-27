@@ -35,7 +35,7 @@ public interface GroupsService {
 	void deletetoplace(Integer pid);
 	List<CategoryBean> getCategoryList();
 	
-	
+	List<GroupsBean> searchToGroups(String name); //查詢開團列表//9/27新增 
 
 	
 	
