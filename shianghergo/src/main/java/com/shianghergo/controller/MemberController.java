@@ -189,7 +189,7 @@ public class MemberController {
 			filename = filePath;
 		}
 		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-		String mimeType = context.getMimeType(filename);
+		String mimeType = context.getMimeType("/resources/images/NoImage.jpg");
 		MediaType mediaType = MediaType.valueOf(mimeType);
 		System.out.println("mediaType = " + mediaType);
 		headers.setContentType(mediaType);
@@ -247,7 +247,46 @@ public class MemberController {
 
 	@RequestMapping("/updateMember")
 	public String updateMember(@ModelAttribute("loginOK") MemberBean mb) {
-		System.out.println("updateMember()中" + mb.toString());
+		
+		if(mb.getImage()!=null) {
+			System.out.println("有上傳");
+		}else {
+			System.out.println("nonono");
+		}
+		
+		
+//		System.out.println("updateMember()中" + mb.toString());
+//		
+		if (mb.getImage() != null) {
+			MultipartFile image = mb.getImage();
+			String originalFilename = image.getOriginalFilename();
+			mb.setFileName(originalFilename);
+
+			if (image != null && !image.isEmpty()) {
+				String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
+				String rootDirectory = context.getRealPath("/");
+				byte[] b;
+				try {
+					b = image.getBytes();
+					Blob blob = new SerialBlob(b);
+					mb.setCoverImage(blob);
+				} catch (Exception e) {
+					e.printStackTrace();
+					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+				}
+			}
+		}else {
+			MemberBean mmb = service.queryMember(mb.getAccount());
+			mb.setCoverImage(mmb.getCoverImage());
+			mb.setFileName(mmb.getFileName());
+		}
+	
+	
+		
+		
+		
+		
+		
 		service.updateMember(mb);
 		// rq.getSession().setAttribute("id", mb.getAccount());
 		return "redirect:/Member001";

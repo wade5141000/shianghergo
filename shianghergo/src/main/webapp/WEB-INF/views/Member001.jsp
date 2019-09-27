@@ -21,7 +21,7 @@
 <style type="text/css">
 .table1 {
 	border: 1px solid #ddd;
-	width: 900px;
+	width: 700px;
 }
 
 thead {
@@ -32,18 +32,25 @@ thead {
 </head>
 <body>
 	<input type="hidden" name="id" value="${loginOK.id}" />
+	<div>
+	
+	</div>
 	<table border="1" class="layui-table">
 		<tbody>
 			<tr>
-				<td width="300">帳號</td>
+				<td width="30">大頭照</td>
+				<td align="center"><img  width="50" height="50" alt="" src="<c:url value='getmemberPicture/${loginOK.id}'/>"/></td>
+			</tr>
+			<tr>
+				<td width="30">帳號</td>
 				<td align="center">${loginOK.account}</td>
 			</tr>
 			<tr>
-				<td width="300">密碼</td>
+				<td width="30">密碼</td>
 				<td align="center">${loginOK.password}</td>
 			</tr>
 			<tr>
-				<td width="300">姓名</td>
+				<td width="30">姓名</td>
 				<td align="center">${loginOK.name}</td>
 			</tr>
 			<tr>
@@ -51,19 +58,19 @@ thead {
 				<td align="center">${loginOK.phone}</td>
 			</tr>
 			<tr>
-				<td width="300">Email</td>
+				<td width="30">Email</td>
 				<td align="center">${loginOK.email}</td>
 			</tr>
 			<tr>
-				<td width="300">生日</td>
+				<td width="30">生日</td>
 				<td align="center">${loginOK.birthday}</td>
 			</tr>
 			<tr>
-				<td width="300">地址</td>
+				<td width="30">地址</td>
 				<td align="center">${loginOK.address}</td>
 			</tr>
 			<tr>
-				<td width="300">修改</td>
+				<td width="30">修改</td>
 				<td align="center">
 				<a href="Practice/../doupdate?account=${loginOK.account}"><img
 						src="images/01.jpg" width="30"></a></td>
@@ -71,8 +78,6 @@ thead {
 		</tbody>
 	</table>
 	
-	<div>
-	<img  width="600" height="450" alt="" src="<c:url value='getmemberPicture/${loginOK.id}'/>"/>
-	</div>
+	
 </body>
 </html>

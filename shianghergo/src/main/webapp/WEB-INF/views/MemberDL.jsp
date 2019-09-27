@@ -89,11 +89,11 @@ position:fixed;
 			<li class="layui-nav-item"><a href="">所有商品</a></li>
 			<li class="layui-nav-item "><a href="">今日團購</a></li>
 			<li class="layui-nav-item"><a href="">關於我們</a></li>
-			<li class="layui-nav-item "><a href="">登入</a></li>
-			<li class="layui-nav-item"><a href="goRegisterPage">加入會員</a></li>
-			<li class="layui-nav-item layui-this"><a href="MemberDL">會員預覽</a></li>
-			<li class="layui-nav-item"><a href="MemberDL"> <img
-					src="http://t.cn/RCzsdCq" class="layui-nav-img">${loginOK.name}
+<!-- 			<li class="layui-nav-item "><a href="">登入</a></li> -->
+<!-- 			<li class="layui-nav-item"><a href="goRegisterPage">加入會員</a></li> -->
+			<li class="layui-nav-item "><a href="MemberDL">會員預覽</a></li>
+			<li class="layui-nav-item layui-this"><a href="MemberIndex"> <img
+					src="<c:url value='getmemberPicture/${loginOK.id}'/>" class="layui-nav-img">${loginOK.name}
 			</a></li>
 			<li class="layui-nav-item"><a href="logout">登出</a></li>
 		</ul>

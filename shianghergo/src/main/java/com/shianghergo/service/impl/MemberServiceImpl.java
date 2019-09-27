@@ -53,6 +53,16 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void updateMember(MemberBean mb) {
+//		MemberBean oldmb = dao.getMemberByAccount(mb.getAccount());
+//		
+//		
+//		if(mb.getCoverImage() != null) {
+//			oldmb.setFileName(mb.getFileName());
+//			oldmb.setCoverImage(mb.getCoverImage());
+//		}
+		
+		
+		
 		 dao.updateMember(mb);
 
 	}
