@@ -14,4 +14,8 @@ public interface StoreService {
 	List<StoreBean> getStoreList();
 
 	void updateStore(StoreBean sb);
+	
+	boolean checkStoreExist(Integer member_id);
+
+	StoreBean getStoreByMember_Id(Integer member_id);
 }

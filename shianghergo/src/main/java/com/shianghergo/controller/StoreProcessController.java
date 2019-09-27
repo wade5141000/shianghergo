@@ -25,15 +25,18 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shianghergo.model.CartBean;
 import com.shianghergo.model.ItemBean;
+import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.OrderBean;
 import com.shianghergo.model.OrderDetailBean;
 import com.shianghergo.model.StoreBean;
@@ -59,6 +62,7 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
 @Controller
+@SessionAttributes("loginOK")
 public class StoreProcessController {
 	
 	@Autowired
@@ -83,15 +87,14 @@ public class StoreProcessController {
 	public String list(Model model,HttpServletRequest re) {
 		List<ItemBean> list = itemService.getAllItems();
 		model.addAttribute("items", list);
-		re.getSession(true).setAttribute("member_id", 10001);
 		return "wade/items";
 	}
 	
 	@RequestMapping("gocart")
-	public void gocart(@RequestParam("id") Integer id,HttpServletResponse rp,HttpServletRequest re) {
+	public void gocart(@ModelAttribute("loginOK")MemberBean member,@RequestParam("itemid") Integer item_id,HttpServletResponse rp,HttpServletRequest re) {
 		
-		ItemBean ib = itemService.getItemById(id);
-		cartService.saveToCart(ib,(int)(re.getSession().getAttribute("member_id")));
+		ItemBean ib = itemService.getItemById(item_id);
+		cartService.saveToCart(ib,member.getId());
 		try {
 			rp.getWriter().write("");
 		} catch (IOException e) {
@@ -100,8 +103,8 @@ public class StoreProcessController {
 	}
 	
 	@RequestMapping("updatecart")
-	public void updatecart(HttpServletResponse rp,HttpServletRequest re) {
-		int mId = (int)(re.getSession().getAttribute("member_id"));
+	public void updatecart(@ModelAttribute("loginOK")MemberBean member,HttpServletResponse rp,HttpServletRequest re) {
+		int mId = member.getId();
 		List<CartBean> list = cartService.getCartItems(mId);
 		ObjectMapper mapper = new ObjectMapper();
 		String result = "";
@@ -117,8 +120,12 @@ public class StoreProcessController {
 	}
 	
 	@RequestMapping("cart")
-	public String cart(Model model,HttpServletRequest re) {
-		int mId = 10001;
+	public String cart(@ModelAttribute("loginOK")MemberBean member, Model model,HttpServletRequest re) {
+		Integer mId = member.getId();
+		if(mId == null) {
+			System.out.println("not login");
+			return "index";
+		}
 		List<CartBean> list = cartService.getCartItems(mId);
 		model.addAttribute("cartitems",list);
 		long total = 0;
@@ -209,8 +216,8 @@ public class StoreProcessController {
 	}
 	
 	@RequestMapping("orderlist")
-	public String orderList(Model model,HttpServletRequest re) {
-		int mId = (int)(re.getSession().getAttribute("member_id"));
+	public String orderList(@ModelAttribute("loginOK")MemberBean member,Model model,HttpServletRequest re) {
+		int mId = member.getId();
 		List<OrderBean> list = orderService.getOrderBeanByMemeber(mId);
 		model.addAttribute("orders",list);
 		return "wade/myorderlist";
@@ -225,9 +232,9 @@ public class StoreProcessController {
 	}
 	
 	@RequestMapping("addorder")
-	public String addOrder(Model model,HttpServletRequest re) {
+	public String addOrder(@ModelAttribute("loginOK")MemberBean member,Model model,HttpServletRequest re) {
 		
-		int mId = 10001;
+		int mId = member.getId();
 		int order_id = orderService.addOrder(mId);
 		List<OrderDetailBean> list = orderDetailService.getOrderDetail(order_id);
 		model.addAttribute("details",list);

@@ -25,7 +25,7 @@ public class MyIntercptor extends HandlerInterceptorAdapter {
 			
 			//获得session中的用户
 			 Object user = session.getAttribute("loginOK");
-		
+			 System.out.println("获得session中的用户:"+user);
 			
 			for (String strUrl : allowUrls) {
 				if(url.contains(strUrl))
@@ -40,7 +40,7 @@ public class MyIntercptor extends HandlerInterceptorAdapter {
 									
 			}
 			//重定向
-			response.sendRedirect(request.getContextPath()+"login");
+			response.sendRedirect(request.getContextPath()+"/login");
 				
 
 	        return true;

@@ -11,15 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.GroupsCartBean;
 import com.shianghergo.model.GroupsOrderBean;
 import com.shianghergo.model.Groups_ItemBean;
+import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
 import com.shianghergo.service.GroupsCartService;
 import com.shianghergo.service.GroupsItemService;
@@ -28,6 +31,7 @@ import com.shianghergo.service.GroupsOrderService;
 import com.shianghergo.service.GroupsService;
 
 @Controller
+@SessionAttributes("loginOK")
 public class GroupsProcessController {
 	
 	@Autowired
@@ -43,7 +47,6 @@ public class GroupsProcessController {
 	
 	@RequestMapping("showgroups")
 	public String showGroups(Model model,HttpServletRequest rq) {
-		rq.getSession(true).setAttribute("member_id", 10001);
 		List<GroupsBean> list = groupsService.getAllGroups();
 		model.addAttribute("groups",list);
 		
@@ -60,8 +63,8 @@ public class GroupsProcessController {
 	}
 	
 	@RequestMapping("groupcart")
-	public String groupCart(Model model,HttpServletRequest rq) {
-		Integer mId = Integer.valueOf(String.valueOf(rq.getSession().getAttribute("member_id")));
+	public String groupCart(@ModelAttribute("loginOK")MemberBean member,Model model,HttpServletRequest rq) {
+		Integer mId = member.getId();
 		List<GroupsCartBean> list = groupsCartService.getGroupsCartItems(mId);
 		model.addAttribute("cartitems",list);
 		int total =0;
@@ -73,10 +76,10 @@ public class GroupsProcessController {
 	}
 	
 	@RequestMapping("addgrouporder")
-	public String addGroupOrder(@RequestParam("gid") Integer gId,Model model,HttpServletRequest rq) {
+	public String addGroupOrder(@ModelAttribute("loginOK")MemberBean member,@RequestParam("gid") Integer gId,Model model,HttpServletRequest rq) {
 		
 		// 先直接給資料 資料應該從購物車來
-		Integer mId = 10001;
+		Integer mId = member.getId();
 		int oId = groupsOrderService.addOrder(mId,gId);
 //		Set<GroupsOrderDetailBean> list = groupsOrderDetailService.getOrderDetailById(oId);
 //		Iterator<GroupsOrderDetailBean> it = list.iterator();
@@ -89,10 +92,12 @@ public class GroupsProcessController {
 		return "wade/orderform";
 	}
 	
-	@RequestMapping("group/addtocart")
-	public void addToCart(@RequestParam("id") Integer id,@RequestParam("gid") Integer gId,HttpServletRequest rq,HttpServletResponse rp) {
-		Integer mId = Integer.parseInt(String.valueOf(rq.getSession().getAttribute("member_id")));
-		Groups_ItemBean ib = groupsItemService.getGroupsItemById(id);
+	@RequestMapping("addtocart")
+	public void addToCart(@ModelAttribute("loginOK")MemberBean member,@RequestParam("itemid") Integer item_id,@RequestParam("gid") Integer gId,HttpServletRequest rq,HttpServletResponse rp) {
+		Integer mId = member.getId();
+		System.out.println(member.getId());
+		System.out.println(member.getName());
+		Groups_ItemBean ib = groupsItemService.getGroupsItemById(item_id);
 		int x = groupsCartService.addToCart(mId,ib);
 		try {
 			rp.getWriter().write(String.valueOf(x));

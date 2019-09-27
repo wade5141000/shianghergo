@@ -171,7 +171,13 @@ public class GroupsServiceImpl implements GroupsService{
 		return dao.getCategoryList();
 	}
 
-
+	
+	//9/27新增 
+    public List<GroupsBean> searchToGroups(String name){
+			
+		return dao.searchToGroups(name);
+		
+	}
 
 	
 }

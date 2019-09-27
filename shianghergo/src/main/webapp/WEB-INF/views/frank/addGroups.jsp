@@ -58,14 +58,17 @@
 			</div>
 			<div class="item">
 				<label for="payment" class="item-label">付款方式:</label><br>
-<%-- 				<form:input type="text" id="payment" name="payment" path="payment" /> --%>
-				 <input type="checkbox" name="payment" value="1">面交付款<br>
-  				 <input type="checkbox" name="payment" value="2">銀行匯款<br>
+				<%-- 				<form:input type="text" id="payment" name="payment" path="payment" /> --%>
 				
+				<input type="checkbox" name="payment" value="1">面交付款<br>
+				<input type="checkbox" name="payment" value="2">銀行匯款<br>
+				
+
 			</div>
 			<div class="item">
 				<label for="productImage" class="item-label">上傳圖片:</label>
-				<form:input type="file" id="productImage" name="productImage" path="productImage" required="required"/>
+				<form:input type="file" id="productImage" name="productImage"
+					path="productImage" required="required" />
 			</div>
 
 

@@ -49,7 +49,7 @@ position:fixed;
 	<div class="site-nav-bg">
 		<div class="site-nav w1200">
 			<p class="sn-back-home">
-				<i class="layui-icon layui-icon-home"></i> <a href="index.jsp">首页</a>
+				<i class="layui-icon layui-icon-home"></i> <a href="index">首页</a>
 			</p>
 			<div class="sn-quick-menu">
 				<div class="login">
@@ -113,6 +113,8 @@ position:fixed;
 				<li class="layui-nav-item"><a _href="shianghergo/../Member004"><cite>我參與的合購</cite></a></li>
 				<li class="layui-nav-item"><a _href="getMyMessage"><cite>我的留言板</cite></a></li>
 				<li class="layui-nav-item"><a _href="MyMessage"><cite>寄件備份</cite></a></li>
+				<li class="layui-nav-item"><a _href="hao/buildStore"><cite>我要開店</cite></a></li>
+				
 			</ul>
 		</div>
 	</div>

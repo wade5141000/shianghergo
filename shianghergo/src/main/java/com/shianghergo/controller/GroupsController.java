@@ -39,14 +39,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.shianghergo.model.CategoryBean;
 import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
-
+import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
 import com.shianghergo.service.GroupsService;
 
 
 
 @Controller
-@SessionAttributes(value = "mid")
+@SessionAttributes("loginOK")
 
 public class GroupsController {
 
@@ -67,17 +67,17 @@ public class GroupsController {
 	}
 
 	// ----------------登入---------------
-	@RequestMapping("/frank/login")
-	public String login(Model model, String account) {
-		String hql = "select id FROM MemberBean where account =:account";
-		Session session = factory.openSession();
-
-		Integer id = (Integer) session.createQuery(hql).setParameter("account", account).getSingleResult();
-		model.addAttribute("mid", id);
-		System.out.println("111:  " + id);
-		return "frank/home";
-
-	}
+//	@RequestMapping("/frank/login")
+//	public String login(Model model, String account) {
+//		String hql = "select id FROM MemberBean where account =:account";
+//		Session session = factory.openSession();
+//
+//		Integer id = (Integer) session.createQuery(hql).setParameter("account", account).getSingleResult();
+//		model.addAttribute("mid", id);
+//		System.out.println("111:  " + id);
+//		return "frank/home";
+//
+//	}
 
 	// --------------------取的開團表單----------------------
 	@RequestMapping(value = "/frank/Groups1", method = RequestMethod.GET)
@@ -101,7 +101,7 @@ public class GroupsController {
 	// -------------------------開團 並把會員member_id 放入------------
 	@RequestMapping(value = "/frank/Groups1", method = RequestMethod.POST)
 	public String processAddNewProductForm(Model model, @ModelAttribute("groupsBean") GroupsBean gb,
-			BindingResult result, HttpServletRequest request, @ModelAttribute("mid") Integer member_id,
+			BindingResult result, HttpServletRequest request, @ModelAttribute("loginOK")MemberBean member,
 			@RequestParam("categoryBean") Integer category_id) {
 
 		String[] suppressedFields = result.getSuppressedFields();
@@ -127,9 +127,12 @@ public class GroupsController {
 				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
 			}
 		}
-
+		 if(gb.getPayment().length() !=1) {
+			 gb.setPayment("3");
+		 }
 		
-		Integer id = service.addGroups(gb, member_id,category_id);
+		
+		Integer id = service.addGroups(gb, member.getId(),category_id);
 		System.out.println("-----------------------------");
 		System.out.println(id);
 
@@ -428,23 +431,24 @@ public class GroupsController {
 	public String list(Model model) {
 		List<GroupsBean> list = service.getAllGroups();
 		model.addAttribute("groups", list);
-		return "frank/groups";
+//		return "frank/groups";
+		return "frank/Ngroup";
 	}
 
 //-------------------------某一個團購頁面---------------------------
 	@RequestMapping("/frank/group") // 查詢單一產品
-	public String getGroupsById(@RequestParam("id") Integer id, @RequestParam("mid") Integer mid, Model model,
-			Integer groups_id, GroupsBean gb) {
-		System.out.println("id: " + id);
-		System.out.println("mid:  " + mid);
+	public String getGroupsById(@RequestParam("gid") Integer gid, @ModelAttribute("loginOK")MemberBean member, Model model) {
+		
+		System.out.println("gid: " + gid);
+		System.out.println("mid:  " + member.getId());
 
-		model.addAttribute("group", service.getGroupById(id)); // 取團的資料
+		model.addAttribute("group", service.getGroupById(gid)); // 取團的資料
 
-		model.addAttribute("groups_id", service.getGroupsItemByGroups_id(gb.getId())); // 取商品的資料
+		model.addAttribute("groups_id", service.getGroupsItemByGroups_id(gid)); // 取商品的資料
 
-		model.addAttribute("member_id", service.getMemberById(mid)); // 取會員的資料
+		model.addAttribute("member_id", service.getMemberById(member.getId())); // 取會員的資料
 
-		model.addAttribute("place", service.getPlaceByGroups_id(gb.getId())); // 取地址的資料
+		model.addAttribute("place", service.getPlaceByGroups_id(gid)); // 取地址的資料
 
 //		System.out.println("測試21"+gb.getMemberBean().getId());
 
@@ -475,9 +479,9 @@ public class GroupsController {
 
 	// -----------------------------我開的團------------------------------
 	@RequestMapping("/frank/mygroups") // 查詢單一產品
-	public String getAllGroupsListByMember(Model model, GroupsBean gb, @ModelAttribute("mid") Integer member_id) {
+	public String getAllGroupsListByMember(Model model, GroupsBean gb,@ModelAttribute("loginOK")MemberBean member) {
 
-		model.addAttribute("mygroups", service.getAllGroupsByMember(member_id));
+		model.addAttribute("mygroups", service.getAllGroupsByMember(member.getId()));
 		return "frank/mygroups";
 	}
 
@@ -540,6 +544,10 @@ public class GroupsController {
 //		gb.setPayment(payment);
 //		gb.setId(id);
 			
+		
+		 if(gb.getPayment().length() !=1) {
+			 gb.setPayment("3");
+		 }
 		service.updategroups(gb,category_id);
 
 		return "redirect:/frank/showgroup?gid=" + id;
@@ -680,8 +688,34 @@ public class GroupsController {
 //			e.printStackTrace();
 //		}
 //	}
-	@RequestMapping("Ngroup")
+	@RequestMapping("/frank/Ngroup")
 	public String Ngroup() {
 		return "frank/Ngroup";
 	}
+
+	
+	
+	
+	//轉開團輸入欄  --927新增
+		@RequestMapping("leopard/searchGroups")
+		public String searchGroups() {
+			
+		    return"leopard/SearchGroups";
+			
+		}
+	
+	//顯示開團列表 --927新增
+	@RequestMapping("leopard/showGroups")
+	public String showGroups(String name , Model model) {
+		
+	    List<GroupsBean> list = service.searchToGroups(name);
+		
+	    model.addAttribute("Groups",list);
+	    	
+		return "leopard/showSearchGroups";
+		
+		
+	}
+
+
 }

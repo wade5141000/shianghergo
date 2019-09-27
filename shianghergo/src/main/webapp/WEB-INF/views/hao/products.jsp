@@ -20,6 +20,17 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<script>
+	function goCart(x){
+		$.ajax({
+			url:"../gocart?itemid="+x,
+			type:"get",
+			success:function(data){
+				alert("添加成功")
+			},
+		})
+	}
+</script>
 </head>
 <body>
 	<div class="site-nav-bg">
@@ -213,7 +224,7 @@
 													<span class="pri"  style="float:right;font-size:20px;color:gray;"><del>${product.price+100 }元</del>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 												 </p>
 												<p class="price">
-													<button class="layui-btn  layui-btn-danger car-btn" style="width:140px;height:40px;float:left;"><i class="layui-icon layui-icon-cart-simple"></i>加入購物車</button>
+													<button class="layui-btn  layui-btn-danger car-btn" style="width:140px;height:40px;float:left;" ><i class="layui-icon layui-icon-cart-simple"></i>加入購物車</button>
 													<span class="pri"  style="float:right;font-size:24px;">${product.price }元&nbsp;&nbsp;&nbsp;&nbsp;</span>
 												</p>
 											</div>
@@ -233,7 +244,7 @@
 			<section>
 				<div>
 					<div class="container" style="text-align: center">
-						<h1>商品清單</h1>
+						<h1>商品清單</h1><a href="../cart">進入購物車</a>
 					</div>
 				</div>
 			</section>
@@ -260,6 +271,7 @@
 										class="btn btn-primary"> <span
 										class="glyphicon-info-sigh glyphicon"></span>修改
 									</a>
+									<button onclick="goCart(${product.id})">加入購物車</button>
 								</p>
 							</div>
 						</div>

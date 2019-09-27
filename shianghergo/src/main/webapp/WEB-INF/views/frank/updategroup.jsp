@@ -86,9 +86,22 @@
 			</tr>
 			<tr>
 				<td>付款方式：</td>
-				<td><input type="checkbox" name="payment" value="1">面交付款<br>
-					<input type="checkbox" name="payment" value="2">銀行匯款<br>
-
+				
+				<td>
+				<c:if test="${updategroup.payment == 1}">
+				 	<input type="checkbox" name="payment" value="1" checked>面交付款
+				 	<input type="checkbox" name="payment" value="2" >銀行匯款<br>
+				</c:if>
+				
+				<c:if test="${updategroup.payment == 2}">
+				    <input type="checkbox" name="payment" value="1" >面交付款
+				 	<input type="checkbox" name="payment" value="2" checked>銀行匯款<br>
+				</c:if>
+				<c:if test="${updategroup.payment == 3}">
+				    <input type="checkbox" name="payment" value="1" checked>面交付款
+				 	<input type="checkbox" name="payment" value="2" checked>銀行匯款<br>
+				</c:if>
+				
 				</td>
 			</tr>
 

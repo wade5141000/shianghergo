@@ -25,9 +25,9 @@
       </p>
       <div class="sn-quick-menu">
       	<div class="login"><a href="oldindex">舊index</a></div>
-      	<div class="login"><a >註冊</a></div>
+      	<div class="login"><a href="goRegisterPage">註冊</a></div>
         <div class="login"><a href="login">登入</a></div>
-        <div class="sp-cart"><a href="">購物車</a><span>2</span></div>
+        <div class="sp-cart"><a href="cart">購物車</a><span>2</span></div>
       </div>
     </div>
   </div>
@@ -60,7 +60,9 @@
         <div class="inner-cont1 w1200">
           <div class="inner-cont2">
             <a href="hao/products" class="active">所有商品</a>
-            <a href="frank/groups">今日團購</a>
+            <a href="frank/groups">我要團購</a>
+            <a href="frank/Groups1">我要開團</a>
+            <a href="hao/stores">商家瀏覽(暫)</a>
           </div>
         </div>
       </div>

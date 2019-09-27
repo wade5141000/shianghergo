@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shianghergo.dao.SearchDAO;
+import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.SearchBean;
 
 @Service
@@ -24,4 +25,5 @@ public class SearchService {
 		return searchDAO.findSearchByName(name);
 
 	}
+
 }

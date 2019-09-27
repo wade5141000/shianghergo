@@ -38,16 +38,8 @@ public interface GroupsDao {
 	Groups_ItemBean getGroup_ItemById(Integer iid);
 	void deletegitemById(Integer iid);
 	void deletetoplace(Integer pid);
-
-	
-
 	List<CategoryBean> getCategoryList();
-
-	
-
 	CategoryBean getCategoryById(Integer category_id);
-
-
-
+	List<GroupsBean>  searchToGroups(String name); //查詢開團列表 9/27新增
 	
 }

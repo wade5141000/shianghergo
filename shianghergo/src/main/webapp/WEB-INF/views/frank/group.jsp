@@ -11,7 +11,7 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/static/css/main.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/layui/css/layui.css">
   <script type="text/javascript" src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
-
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
 
 <style>
 .gd1 {
@@ -26,7 +26,24 @@
 	width: 760px;
 }
 </style>
+<script>
 
+function addGroupCart(item_id,groups_id){
+	alert("item=" + item_id);
+	alert("group=" + groups_id);
+	$.ajax({
+		url:"../addtocart?itemid="+item_id+"&gid="+groups_id,
+		type:"get",
+		success:function(data){
+			if(data==1){
+				alert("添加成功");
+			}else{
+				alert("不可添加其他團商品");
+			}
+		},
+	})
+}
+</script>
 </head>
 <body>
 
@@ -60,8 +77,8 @@
 
 
 		<div>
-			<img width='600' height='450'
-				src="<c:url value='/frank/getgroupPicture/${group.id }' />" />
+<!-- 			<img width='600' height='450' -->
+<%-- 				src="<c:url value='/frank/getgroupPicture/${group.id }' />" /> --%>
 		</div>
 
 
@@ -79,16 +96,16 @@
 			<c:forEach var="item" items="${groups_id}">
 				<div class="gd1" style="width: 250px; height: 300px;">
 					<div>
-						<img width='100' height='100'
-							src="<c:url value='/frank/getPicture/${item.id }' />" />
+<!-- 						<img width='100' height='100' -->
+<%-- 							src="<c:url value='/frank/getPicture/${item.id }' />" /> --%>
 					</div>
 					<p>商品名稱:${item.name}</p>
 					<p>商品說明:${item.detail}</p>
 					<p>商品價格:${item.price}</p>
-					<button class="layui-btn  layui-btn-danger car-btn" style="width:140px;height:40px;">
-					<i class="layui-icon layui-icon-cart-simple"></i>加入購物車</button>
+					<button style="width:140px;height:40px;" onclick="addGroupCart(${item.id},${item.groupsBean.id})"><i class="layui-icon layui-icon-cart-simple" ></i>加入購物車</button>
 				</div>
 			</c:forEach>
+			<a href="../groupcart">進購物車</a>
 		</div>
 	</div>
 

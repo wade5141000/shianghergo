@@ -25,8 +25,9 @@ public class LoginInterceptor implements HandlerInterceptor{
 
 	        //判断session
 	        HttpSession session = request.getSession();
+	        System.out.println("LoginInterceptor裡面的::"+session);
 	        //从session中取出用户身份信息
-	        String account = (String) session.getAttribute("account");
+	        String account = (String) session.getAttribute("loginOK");
 	        if(account != null) {
 	            return true;
 	        }
