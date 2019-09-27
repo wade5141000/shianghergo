@@ -41,7 +41,9 @@ import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
+import com.shianghergo.model.SearchBean;
 import com.shianghergo.service.GroupsService;
+import com.shianghergo.service.SearchService;
 
 
 
@@ -52,6 +54,8 @@ public class GroupsController {
 
 	@Autowired
 	GroupsService service;
+	@Autowired
+	SearchService searchService;
 	@Autowired
 	ServletContext context;
 	@Autowired
@@ -706,7 +710,23 @@ public class GroupsController {
 	
 	//顯示開團列表 --927新增
 	@RequestMapping("leopard/showGroups")
-	public String showGroups(String name , Model model) {
+	public String showGroups(String name , Model model ,Integer sort) {
+		
+	   
+		if(sort == 1) {
+			
+		List<SearchBean> Searchlist = searchService.findSearchByName(name);
+//		System.out.println("後端Searchlist="+Searchlist);
+		
+		session.setAttribute("searchList", Searchlist);
+		
+		List<SearchBean> Searchlist1 =(List<SearchBean>) session.getAttribute("searchList");
+
+		System.out.println("session 裡有"+Searchlist1);
+//呼叫view
+			return "eric/information";
+		}
+		else {
 		
 	    List<GroupsBean> list = service.searchToGroups(name);
 		
@@ -717,5 +737,5 @@ public class GroupsController {
 		
 	}
 
-
+	}
 }
