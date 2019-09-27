@@ -11,6 +11,12 @@
 
 <form action="showGroups" method="POST">
 
+<select name="sort">
+
+<option value="1">商品</option>
+<option value="2">團購商品</option>
+
+</select>
 
 <input type="text" name="name">
 <input type="submit" value="查詢"> 

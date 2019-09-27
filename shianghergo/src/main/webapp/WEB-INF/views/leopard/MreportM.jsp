@@ -10,50 +10,67 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
 <style>
-* {
-	font-family: 微軟正黑體;
+.content{
+
+width:550px;
+margin-left:32%;
+
 }
 
-.content {
-	width: 800px;
-	height: 500px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 100px;
-
+.report{
+border-radius:10px;
+margin-top: 70px;
+background-color: buttonhighlight;
 }
 
 .a{
-float:left;
-border:3px solid;
-width:300px;
-height:500px;
+
+float: left;
+width: 20%;
+height:70%;
+
 }
 
 .b{
-float:right;
-border:3px solid;
-width:300px;
-height:500px;
+
+float: right;
+width: 20%;
+height:70%;
 
 }
+
+.c1{
+
+width:70px;
+
+
+
+}
+
 
 </style>
 
 <body>
 
-
-
 	<div class="alert alert-success" role="alert">我是上方導覽列</div>
-    <div class="a">放廣告</div>
+     
+     <div class="a"> 
+         
+          <img class="c1"
+				src="${pageContext.request.contextPath}/resources/images/777.jpg">
+			<img class="c1"
+				src="${pageContext.request.contextPath}/resources/images/888.jpg">
+         
+     </div>
+     <div class="b"> 我是人氣排行</div>
+   
 
-     <div class="b">放人氣排行</div>
+     
 
-
-	<div class="content">
+	<div class="content">	
+	<div class="title">檢舉會員</div>
+		<div class="alert alert-warning" role="alert">	您要檢舉的會員ID:${target}</div>
 		
-		<div class="alert alert-warning" role="alert">檢舉會員</div>
-
 		<form action="SaveRM" method="POST" >
 			<div class="alert alert-info" role="alert">
 				檢舉類別: <select name="category" class="select">
@@ -78,12 +95,11 @@ height:500px;
 		</form>
 	</div>
 	
-</body>
-		<div class="alert alert-warning" role="alert">
-		  檢舉會員注意事項<ul>
-           <li>如果您發現有響合購會員涉嫌侵害您的智慧財產權，可以經由智慧財產權保護傘方案 ，提出侵權通知</li>
-           <li>如果您在交易過程中認為某會員誠信不佳，可以善用會員評價功能提出評價；如果您發現有會員已經涉嫌詐欺、或者正企圖進行詐欺，您可以經由詐欺檢舉辦法提出檢舉。</li>
-           <li>如果您發現有響合購會員涉及違反露天拍賣網站政策或法令禁止限制規範項目，可以填妥檢舉表格，向我們提出檢舉。</li>
-	      </ul>
+		<div class="alert alert-success" role="alert" style="margin-top: 35% ">
+		  <h4>檢舉會員注意事項</h4><hr>
+          <p>1.如果您發現有響合購會員涉嫌侵害您的智慧財產權，可以經由智慧財產權保護傘方案 ，提出侵權通知</p><br>
+           <p>2.如果您在交易過程中認為某會員誠信不佳，可以善用會員評價功能提出評價；如果您發現有會員已經涉嫌詐欺、或者正企圖進行詐欺，您可以經由詐欺檢舉辦法提出檢舉。</p><br>
+           <p>3.如果您發現有響合購會員涉及違反露天拍賣網站政策或法令禁止限制規範項目，可以填妥檢舉表格，向我們提出檢舉。 </p>
 	      </div>
+</body>
 </html>
