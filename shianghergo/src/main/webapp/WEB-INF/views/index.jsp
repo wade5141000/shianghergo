@@ -24,6 +24,7 @@
         <a href="index">首頁</a>
       </p>
       <div class="sn-quick-menu">
+      	<div class="login"><a href="wade/showmap">google map</a></div>
       	<div class="login"><a href="oldindex">舊index</a></div>
       	<div class="login"><a href="goRegisterPage">註冊</a></div>
         <div class="login"><a href="login">登入</a></div>
