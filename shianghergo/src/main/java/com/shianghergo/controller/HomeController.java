@@ -42,9 +42,14 @@ public class HomeController {
 	}
 	
 	// 前端測試
-	@RequestMapping("/fortest")
-	public String forTest() {
-		return "wade/test";
+	@RequestMapping("/testhead")
+	public String TestHead() {
+		return "eric/header";
+	}
+	
+	@RequestMapping("/testfoot")
+	public String TestFoot() {
+		return "eric/foot";
 	}
 	
 	
