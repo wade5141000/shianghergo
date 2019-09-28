@@ -1,31 +1,22 @@
 package com.shianghergo.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jxl.Workbook;
-import jxl.format.Alignment;
-import jxl.format.Border;
-import jxl.format.BorderLineStyle;
-import jxl.format.Colour;
-import jxl.format.VerticalAlignment;
-import jxl.write.Label;
-import jxl.write.WritableCellFormat;
-import jxl.write.WritableFont;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
+import com.shianghergo.model.CategoryBean;
+import com.shianghergo.service.GroupsService;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	GroupsService groupsService;
 	
 	@RequestMapping("/goRegisterPage")
 	public String goRegisterPage() {
@@ -36,7 +27,12 @@ public class HomeController {
 	//------------------------- 以上聖捷
 
 	@RequestMapping(value = { "/", "/index" })
-	public String index() {
+	public String index(HttpServletRequest rq) {
+		HttpSession httpSession = rq.getSession();
+		
+		List<CategoryBean> list = groupsService.getCategoryList();
+		
+		httpSession.setAttribute("categoryList", list);
 		return "index";
 	}
 	
@@ -46,6 +42,16 @@ public class HomeController {
 	}
 	
 	// 前端測試
+	@RequestMapping("/testhead")
+	public String TestHead() {
+		return "eric/header";
+	}
+	
+	@RequestMapping("/testfoot")
+	public String TestFoot() {
+		return "eric/foot";
+	}
+	
 	
 	@RequestMapping("/test")
 	public String Test() {
