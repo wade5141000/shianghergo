@@ -5,12 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <meta charset="UTF-8">
 <title>您的購物車</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/wade/css/cart.css">
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/res/wade/js/cart.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/wade/css/cart.css">
+
 </head>
 
 
@@ -25,7 +25,7 @@
 </button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">您的購物車</h5>
@@ -33,9 +33,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="padding:0px;">
         <div class="cartdiv">
-	<table class="tb">
+			<table class="tb">
 		<tr>
 			<th></th>
 			<th>品名</th>
@@ -48,7 +48,7 @@
 		<tr>
 			<td><img src="<c:url value='wade/getPicture/${item.item_id}' />" width="50px" height="50px"></td>
 			<td>${item.name}</td>
-			<td><button class="btn1" onclick="changeAmount(${item.id},2)">-</button ><span id="${item.id}">${item.amount}</span><button onclick="changeAmount(${item.id},1)" class="btn2">+</button>&nbsp;&nbsp;</td>
+			<td><button class="btn btn-outline-danger btn1" onclick="changeAmount(${item.id},2)">-</button ><span id="${item.id}">${item.amount}</span><button onclick="changeAmount(${item.id},1)" class="btn btn-outline-success btn2">+</button>&nbsp;&nbsp;</td>
 			<td>${item.price}</td>
 			<td><span id="${item.id}a" style="color:red;"></span></td>
 			<td><button onclick="deletetr(this,${item.id})">刪除</button></td>
@@ -60,19 +60,23 @@
 		</c:forEach>
 		<tr><td/><td/><td/><td/>
 		<td><span class="total">Total:</span><span id="total" class="total" style="color:red;">${total}</span></td>
-		<td><a href="addorder">加入訂單</a></td>
+		<td></td>
 		</tr>
 	</table>
-	<a href="index">回首頁 </a>
+<!-- 	<a href="index">回首頁 </a> -->
 	</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+<!--         <button type="button" class="btn btn-primary">Save changes</button> -->
+        <a class="btn btn-primary" href="addorder" role="button">加入訂單</a>
       </div>
     </div>
   </div>
 </div>
+
+
+
 
 <div class="cartdiv">
 	<table class="tb">

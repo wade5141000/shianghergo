@@ -8,15 +8,21 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.shianghergo.model.CategoryBean;
+import com.shianghergo.service.CartService;
 import com.shianghergo.service.GroupsService;
 
 @Controller
+@SessionAttributes("loginOK")
 public class HomeController {
 	
 	@Autowired
 	GroupsService groupsService;
+	
+	@Autowired
+	CartService cartService;
 	
 	@RequestMapping("/goRegisterPage")
 	public String goRegisterPage() {
@@ -31,8 +37,9 @@ public class HomeController {
 		HttpSession httpSession = rq.getSession();
 		
 		List<CategoryBean> list = groupsService.getCategoryList();
-		
 		httpSession.setAttribute("categoryList", list);
+		
+		
 		return "index";
 	}
 	

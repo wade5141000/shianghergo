@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/static/css/main.css">
+
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/res/layui/layui.js"></script> --%>
 <!-- <meta name="viewport" -->
 <!-- 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"> -->
@@ -41,27 +42,41 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<!-- wade 購物車 -->
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/res/wade/js/cart.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/wade/css/cart.css">
 </head>
+<!-- 這段勿刪 wade -->
+<script>
+var x = 1+1;
+var y = x+1;
+</script>
+<!-- 這段勿刪 wade -->
 <body>
 	<div class="site-nav-bg" style="height:30px;background-color:#ffa042;">
 		<div class="site-nav w1200">
 			<div class="sn-quick-menu">
-			<div class="login"><a href="testhead" style="color:#ecffff">測試head</a></div>
-			<div class="login"><a href="testfoot" style="color:#ecffff">測試foot</a></div>
-      	<div class="login"><a href="productfile.s" style="color:#ecffff">訂購單</a></div>
-      	<div class="login"><a href="wade/showmap" style="color:#ecffff">google map</a></div>
+			<div class="login"><a href="${pageContext.request.contextPath}/testhead" style="color:#ecffff">測試head</a></div>
+			<div class="login"><a href="${pageContext.request.contextPath}/testfoot" style="color:#ecffff">測試foot</a></div>
+      	<div class="login"><a href="${pageContext.request.contextPath}/productfile.s" style="color:#ecffff">訂購單</a></div>
+      	<div class="login"><a href="${pageContext.request.contextPath}/wade/showmap" style="color:#ecffff">google map</a></div>
 				<div class="login">
-					<a href="oldindex" style="color:#ecffff">舊index</a>
+					<a href="${pageContext.request.contextPath}/oldindex" style="color:#ecffff">舊index</a>
 				</div>
 				<div class="login">
-					<a href="goRegisterPage" style="color:#ecffff">註冊</a>
+					<a href="${pageContext.request.contextPath}/goRegisterPage" style="color:#ecffff">註冊</a>
 				</div>
 				<div class="login">
-					<a href="login" style="color:#ecffff">登入</a>
+					<a href="${pageContext.request.contextPath}/login" style="color:#ecffff">登入</a>
 				</div>
 				<div class="sp-cart">
-					<a href="cart" style="color:#ecffff">購物車</a><span>2</span>
+					<a href="${pageContext.request.contextPath}/cart" style="color:#ecffff">購物車</a><span>2</span>
 				</div>
+				<div class="login">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  					購物車<span>2</span></button>
+  					</div>
 			</div>
 		</div>
 	</div>
@@ -111,16 +126,71 @@
 			<form action="${pageContext.request.contextPath}/leopard/showGroups"  method="POST"
 				class="form-inline my-2 my-lg-0">
 				<select name="sort">
-					<option value="1">商品</option>
-					<option value="2">團購商品</option>
+					<option value="1">找商品</option>
+					<option value="2">找團</option>
 				</select>
 				<input class="form-control mr-sm-2" type="text" name="name"
-					autocomplete="off" placeholder="請輸入需要的商品"
+					autocomplete="off" placeholder="您要搜尋團購還是商品？"
 					aria-label="Search" style="width:300px">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">GO</button>
 			</form>
 		</div>
 	</nav>
+	
+	
+	<!-- wade購物車 -->
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">您的購物車</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding:0px;">
+        <div class="cartdiv">
+			<table class="tb">
+		<tr>
+			<th></th>
+			<th>品名</th>
+			<th>數量</th>
+			<th>單價</th>
+			<th>小計</th>
+			<th>操作</th>
+		</tr>
+		<c:forEach var="item" items="${cartitems}">
+		<tr>
+			<td><img src="${pageContext.request.contextPath}/wade/getPicture/${item.item_id}" width="50px" height="50px"></td>
+			<td>${item.name}</td>
+			<td><button class="btn btn-outline-danger btn1" onclick="changeAmount(${item.id},2)">-</button ><span id="${item.id}">${item.amount}</span><button onclick="changeAmount(${item.id},1)" class="btn btn-outline-success btn2">+</button>&nbsp;&nbsp;</td>
+			<td>${item.price}</td>
+			<td><span id="${item.id}a" style="color:red;"></span></td>
+			<td><button onclick="deletetr(this,${item.id})">刪除</button></td>
+			<script>
+				var a = ${item.price} * ${item.amount};
+				$("#"+${item.id}+"a").text(a);
+			</script>
+		</tr>
+		</c:forEach>
+		<tr><td/><td/><td/><td/>
+		<td><span class="total">Total:</span><span id="total" class="total" style="color:red;">${total}</span></td>
+		<td></td>
+		</tr>
+	</table>
+<!-- 	<a href="index">回首頁 </a> -->
+	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--         <button type="button" class="btn btn-primary">Save changes</button> -->
+        <a class="btn btn-primary" href="addorder" role="button">加入訂單</a>
+      </div>
+    </div>
+  </div>
+</div>
+	
+<!-- wade 購物車結束 -->
 </body>
 </html>
