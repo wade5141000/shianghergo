@@ -5,14 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <meta charset="UTF-8">
-
-<title>cart</title>
+<title>您的購物車</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/wade/css/cart.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/res/wade/js/cart.js"></script>
+
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/eric/header.jsp" ></jsp:include>
+
 <div class="cartdiv">
 	<table class="tb">
 		<tr>
@@ -45,6 +48,6 @@
 	<a href="index">回首頁 </a>
 	</div>
 	
-	
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp" ></jsp:include>
 </body>
 </html>

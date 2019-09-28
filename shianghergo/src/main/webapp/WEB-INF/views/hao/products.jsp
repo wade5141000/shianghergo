@@ -33,6 +33,7 @@
 </script>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/eric/header.jsp" ></jsp:include>
 	<div class="site-nav-bg">
 		<div class="site-nav w1200">
 			<p class="sn-back-home">
