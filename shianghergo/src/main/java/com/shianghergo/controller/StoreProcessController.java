@@ -16,6 +16,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.CacheControl;
@@ -153,6 +154,17 @@ public class StoreProcessController {
 		int totala =cb.getPrice()*newAmount;
 		String result = total+","+newAmount+","+id+","+totala;
 		System.out.println(result);
+		
+		
+		HttpSession httpSession = re.getSession();
+		List<CartBean> list2 = cartService.getCartItems(cb.getMember_id());
+		httpSession.setAttribute("cartitems", list2);
+		long total2 = 0;
+		for(CartBean ccb:list2) {
+			total2 += ccb.getPrice()*ccb.getAmount();
+		}
+		httpSession.setAttribute("total",total2);
+		
 		try {
 			rp.getWriter().write(result);
 		}  catch (IOException e) {
@@ -163,7 +175,23 @@ public class StoreProcessController {
 	@RequestMapping("delete")
 	public void delete(HttpServletRequest re,HttpServletResponse rp) {
 		int id = Integer.parseInt((re.getParameter("id")));
+		CartBean cb = cartService.getCartBeanById(id);
+		int mId = cb.getMember_id();
+		
 		int reduce = cartService.deleteCartBeanById(id);
+		
+		
+		HttpSession httpSession = re.getSession();
+		List<CartBean> list2 = cartService.getCartItems(mId);
+		httpSession.setAttribute("cartitems", list2);
+		long total2 = 0;
+		for(CartBean ccb:list2) {
+			total2 += ccb.getPrice()*ccb.getAmount();
+		}
+		httpSession.setAttribute("total",total2);
+		
+		
+		
 		try {
 			rp.getWriter().write(String.valueOf(reduce));
 		} catch (IOException e) {

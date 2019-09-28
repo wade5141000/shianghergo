@@ -74,82 +74,96 @@
 <style>
 * {
 	font-family: 微軟正黑體;
+
 }
 
-.content {
-	width: 600px;
-	margin-left: auto;
-	margin-right: auto;
+body{
+
+border:3px solid;
+
 }
 
-.a {
-	float: left;
-	width: 300px;
-	height: 500px;
-	margin-left: 50px;
+
+
+.a{
+
+border:1px solid;
+width:100%;
+
+
 }
 
-.b {
-	border: 3px ridge;
-	border-radius: 10px;
-	width: 300px;
-	height: 550px;
-	float: right;
-	padding: 15px;
-	font-size: 20px;
-	font-weight: 20px;
-	margin-right: 50px;
+.b{
+
+border:1px solid;
+width:100%;
+margin-left:10px;
+display: block;
 }
 
-.c1 {
-	padding: 10px;
-	width: 300px;
+
+.c1{
+width:300px;
+
 }
 
-.s1 {
-	width: 80px;
+.content{
+
+width:3px solid;
+
+
 }
+
+
+
+
 </style>
 
 </head>
 <body>
 
-
-
 	<div class="alert alert-success" role="alert">我是上方導覽列</div>
-		
-<div class="a">
-
+		<div class="content">
+		<div class="a">
 			<img class="c1"
 				src="${pageContext.request.contextPath}/resources/images/777.jpg">
 			<img class="c1"
 				src="${pageContext.request.contextPath}/resources/images/888.jpg">
-		</div>
-	<div class="b">
-		<div class="alert alert-danger" role="alert">
-			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+
+	  <div class="b">
+	  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 			人氣排行
-		</div>
 
-
-				1.干貝 <img class="s1"
+				1.干貝 <img class="c1"
 					src="${pageContext.request.contextPath}/resources/images/111.jpg">
-				<hr>
+				
 
-				2.酥炸花枝圈 <img class="s1"
+				2.酥炸花枝圈 <img class="c1"
 					src="${pageContext.request.contextPath}/resources/images/222.jpg">
-				<hr>
+				
 
-				3.懷舊排骨<img class="s1"
+				3.懷舊排骨<img class="c1"
 					src="${pageContext.request.contextPath}/resources/images/333.jpg">
-				<hr>
-				4.酥脆麥克雞塊<img class="s1"
+				
+				4.酥脆麥克雞塊<img class="c1"
 					src="${pageContext.request.contextPath}/resources/images/444.jpg">
-				<hr>
+	 </div>
+	
+	  </div>
+	  
+	  
+	    </div>
+	  
+	  
+	  
+  
+	
+	
+	
+	
+	
+		
 
-
-
-	</div>
 
 	<div class="content">
 

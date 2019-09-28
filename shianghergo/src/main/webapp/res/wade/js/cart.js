@@ -4,7 +4,7 @@ function changeAmount(id,types){
 		}else{
 			var total2 = $("#total").text();
 			$.ajax({
-				url:"changeAmount?id="+id+"&type="+types+"&total="+total2,
+				url:"http://localhost:8080/shianghergo/changeAmount?id="+id+"&type="+types+"&total="+total2,
 				type:"get",
 				success:function(data){
 					list = data.split(",");
@@ -19,7 +19,7 @@ function changeAmount(id,types){
 	function deletetr(it,id){
 		if(confirm("是否刪除商品?")){
 			$.ajax({
-				url:"delete?id="+id,
+				url:"http://localhost:8080/shianghergo/delete?id="+id,
 				type:"get",
 				success:function(data){
 					$(it.parentNode.parentNode).remove();

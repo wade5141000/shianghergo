@@ -1,7 +1,10 @@
 package com.shianghergo.controller;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.shianghergo.model.CartBean;
 import com.shianghergo.model.MemberBean;
+import com.shianghergo.service.CartService;
 import com.shianghergo.service.MemberService;
 
 
@@ -25,6 +30,9 @@ public class LoginController {
 
 	@Autowired
 	ServletContext context;
+	
+	@Autowired
+	CartService cartService;
 
 //	@RequestMapping(value = "/login", method = RequestMethod.GET)
 //	public String getLoginForm(Model model) {
@@ -88,11 +96,24 @@ public class LoginController {
 //	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String login(String account, String password, Model model) {
+	public String login(String account, String password, Model model,HttpServletRequest rq) {
 		MemberBean mb = service.login(account, password);// 前
 		System.out.println("login()+++" + mb);
 		model.addAttribute("loginOK", mb);
 		// 向ModelMap视图中添加一个Session级别存储的属性
+		
+		
+		// wade 購物車
+		HttpSession httpSession = rq.getSession();
+		List<CartBean> list2 = cartService.getCartItems(mb.getId());
+		httpSession.setAttribute("cartitems", list2);
+		long total = 0;
+		for(CartBean cb:list2) {
+			total += cb.getPrice()*cb.getAmount();
+		}
+		httpSession.setAttribute("total",total);
+		// ===== wade購物車
+		
 		if (mb != null&& mb.getStatus()!=null) {
 			if (mb.getAccount().equals(account) && mb.getPassword().equals(password) ) {
 				if(mb.getStatus()==1) {

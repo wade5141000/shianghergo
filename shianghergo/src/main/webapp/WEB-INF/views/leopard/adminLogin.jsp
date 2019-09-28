@@ -28,7 +28,7 @@ margin-top: 50px;
 }
 
 .img{
-   margin-left:630px;
+   margin-left:43%;
    margin-top: 50px;
 
 }

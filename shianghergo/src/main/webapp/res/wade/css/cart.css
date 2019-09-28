@@ -1,7 +1,8 @@
 tr{ 
 	margin:10px;
  	padding:10px; 
- 	border: 1px solid #111111;
+ 	border-top: 1px solid 	#dee2e6;
+ 	border-buttom: 1px solid 	#dee2e6;
  } 
 td{  
  	margin:10px; 
@@ -29,15 +30,16 @@ td{
 	padding: 10px;
 	border-collapse: collapse;
 	margin:auto;
-	margin-bottom:30px;
-	border: 1px solid #111111;
-	width:800px;
+	margin-bottom:20px;
+/* 	border: 1px solid #111111; */
+	width:795px;
 }
 
 .cartdiv{
-	margin:50px auto;
+	margin:20px auto;
 	padding:0px;
-	width:800px;
+	width:795px;
  	text-align: center;
-/*  	background-color:#FFAC55; */
+/*  	background-color:#02df82; */
+/*  	height:1600px; */
  }

@@ -1,6 +1,7 @@
 package com.shianghergo.model;
 
 import java.math.BigDecimal;
+import java.sql.Blob;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,10 +18,13 @@ public class SearchBean {
 	private BigDecimal reserve;
 	private BigDecimal price;
 	private String detail;
+	private Blob coverImage;
+	private String fileName;
 	@Override
 	public String toString() {
 		return "SearchBean [id=" + id + ", name=" + name + ", category_id=" + category_id + ", store_id=" + store_id
-				+ ", reserve=" + reserve + ", price=" + price + ", detail=" + detail + "]";
+				+ ", reserve=" + reserve + ", price=" + price + ", detail=" + detail + ",coverImage=" + coverImage
+				+",fileName=" + fileName+"]";
 	}
 	public BigDecimal getId() {
 		return id;
@@ -64,6 +68,17 @@ public class SearchBean {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-
+	public String getfileName() {
+		return fileName;
+	}
+	public void setfileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public Blob getcoverImage() {
+		return coverImage;
+	}
+	public void setcoverImage(Blob coverImage) {
+		this.coverImage = coverImage;
+	}
 
 }

@@ -8,6 +8,8 @@
   <title>Document</title>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/static/css/main.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/static/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/static/css/header.css">
   <script type="text/javascript" src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -26,71 +28,63 @@
 </head>
 <body>
 
-  <div class="site-nav-bg">
-    <div class="site-nav w1200">
-      <p class="sn-back-home">
-        <i class="layui-icon layui-icon-home"></i>
-        <a href="index.jsp">首頁</a>
-      </p>
-      <div class="sn-quick-menu">
-        <div class="login"><a href="login.jsp">登入</a></div>
-        <div class="sp-cart"><a href="shopcart.jsp">購物車</a><span>2</span></div>
-      </div>
-    </div>
-  </div>
+  <div class="site-nav-bg" style="height: 30px">
+		<div class="site-nav w1200">
+			<div class="sn-quick-menu">
+				<div class="login">
+					<a href="oldindex">舊index</a>
+				</div>
+				<div class="login">
+					<a href="goRegisterPage">註冊</a>
+				</div>
+				<div class="login">
+					<a href="login.jsp">登入</a>
+				</div>
+				<div class="sp-cart">
+					<a href="shopcart.jsp">購物車</a><span>2</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light"
+		style="width: 100%">
+		<a href="index.jsp"> <img src="${pageContext.request.contextPath}/res/static/img/logo4.png"
+			width="100" height="100">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="#">首頁
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="hao/products">所有商品</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="frank/groups"
+					id="navbarDropdown" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">今日團購 </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">下拉表單1</a> <a
+							class="dropdown-item" href="#">下拉表單2</a>
+						<div class="dropdown-divider"></div>
+					</div></li>
+				<li class="nav-item"><a class="nav-link" href="#">我要開團</a></li>
 
-
-  <div class="header">
-    <div class="headerLayout w1200">
-      <div class="headerCon">
-        <h1 class="mallLogo">
-          <a href="index.jsp">
-            <img src="${pageContext.request.contextPath}/res/static/img/logo4.png" width="100" height="100">
-          </a>
-        </h1>
-        <div class="mallSearch">
-	        <form action='<c:url value="/Search.controller" />' method="get"  class="container-fluid" novalidate>
-<!-- 	        	<div class="container-fluid"> -->
-	        		<div class="row" style="height: 32px; width: 495px;">
-	        			<div class="col-2" style="padding: 0">
-	        				<select name="filter" value="${param.filter}">
-				            	<option value="item">商品</option>
-				            	<option value="groups">團購</option>	
-				            </select>
-	        			</div>
-	        			<div class="col-10" style="padding: 0">
-	        				<input type="text" name="title" value="${param.title}" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="請輸入需要的商品" style="width: 87%;height: 32px;">
-				            <button class="layui-btn align-right" lay-submit lay-filter="formDemo" type="submit" style="width: 13%; height: 32px;">
-				                <!-- <i class="layui-icon layui-icon-search"></i> -->
-				                <i class="material-icons">search</i>
-				            </button>
-	        			</div>
-	        		</div>
-<!-- 	        	</div> -->
-	            <!-- <input type="submit" name="" value=""> -->
-	        </form>
-        </div>
-      </div>
-    </div>
-  </div>
-<div class="content content-nav-base buytoday-content">
-    <div id="list-cont">
-      <div class="main-nav">
-        <div class="inner-cont0">
-          <div class="inner-cont1 w1200">
-            <div class="inner-cont2">
-              <a href="commodity.jsp">所有商品</a>
-              <a href="buytoday.jsp">今日團購</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="banner-box">
-<!--         <div class="banner"></div> -->
-      </div>
-    </div>
-  </div>
+			</ul>
+			<form action='<c:url value="/Search.controller" />' method="get"
+				class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" name="title"
+					value="${param.title}" autocomplete="off" placeholder="請輸入需要的商品"
+					aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">GO</button>
+			</form>
+		</div>
+	</nav>
 
   <div class="content content-nav-base information-content">
     <div class="info-list-box">
@@ -118,6 +112,7 @@
 			      	<c:forEach varStatus="stVar" var="anSearch" items="${searchList}">
 				        <tr>
 				          <td><img src="${pageContext.request.contextPath}/res/static/img/temp.png" height="100"></td>
+<%-- 				          <td><img src="${pageContext.request.contextPath}/res/static/img/${anSearch.FileName}.jsp" height="100"></td> --%>
 				          <td>${anSearch.name}</td>
 				          <td>${anSearch.price}</td>
 				          <td>${anSearch.detail}</td>
@@ -134,47 +129,7 @@
       </div>
     </div>
   </div>
-  <!-- 模版引擎导入 -->
-  <!-- <script type="text/html" id="demo">
-    {{# layui.each(d.listCont,function(index,item){}}
-    <div class="item">
-      <div class="img">
-        <img src="../res/img/new1.jpg" alt="">
-      </div>
-      <div class="text">
-        <h4>周岁内的宝宝消化不良拉肚子怎么办?</h4>
-        <p class="data">2016-12-24 16:33:26</p>
-        <p class="info-cont">宝宝在周岁之前体质相对较弱，特别是薄弱肠道，一不注意就会拉肚子;那么宝宝消化不良拉肚子</p>
-      </div>
-    </div>
-    {{# })}}
-  </script> -->
-<script>
-  layui.config({
-    base: '../res/static/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
-  }).use(['mm','laypage'],function(){
-      var
-      mm = layui.mm,laypage = layui.laypage;
-      laypage.render({
-        elem: 'demo0'
-        ,count: 100 //数据总数
-      });
-    // 模版引擎导入
-     // var html = demo.innerHTML;
-     // var listCont = document.getElementById('list-cont');
-     //  mm.request({
-     //    url: '../json/information.json',
-     //    success : function(res){
-     //      console.log(res)
-     //      listCont.innerHTML = mm.renderHtml(html,res)
-     //    },
-     //    error: function(res){
-     //      console.log(res);
-     //    }
-     //  })   
-});
-
-</script>
+<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 
 
 </body>
