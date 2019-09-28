@@ -86,57 +86,57 @@ position:fixed;
 	</div>
 	<div class="main-nav" style="padding-bottom: 500px;">
 		<ul class="layui-nav " lay-filter="" id="top">
-			<li class="layui-nav-item"><a href="">所有商品</a></li>
-			<li class="layui-nav-item "><a href="">今日團購</a></li>
-			<li class="layui-nav-item"><a href="">關於我們</a></li>
-<!-- 			<li class="layui-nav-item "><a href="">登入</a></li> -->
+			<li class="layui-nav-item"><a href="Member002"><i class="layui-icon layui-icon-star"></i>我購買的商品</a></li>
+			<li class="layui-nav-item "><a href=""><i class="layui-icon layui-icon-star"></i>我建立的合購</a></li>
+			<li class="layui-nav-item"><a href=""><i class="layui-icon layui-icon-star"></i>我參與的合購</a></li>
+			<li class="layui-nav-item "><a href=""><i class="layui-icon layui-icon-star"></i>我的留言板</a></li>
 <!-- 			<li class="layui-nav-item"><a href="goRegisterPage">加入會員</a></li> -->
-			<li class="layui-nav-item "><a href="MemberDL">會員預覽</a></li>
+			<li class="layui-nav-item "><a href="MemberDL"><i class="layui-icon layui-icon-star"></i>寄件備份</a></li>
 			<li class="layui-nav-item layui-this"><a href="MemberIndex"> <img
 					src="<c:url value='getmemberPicture/${loginOK.id}'/>" class="layui-nav-img">${loginOK.name}
 			</a></li>
-			<li class="layui-nav-item"><a href="logout">登出</a></li>
+			<li class="layui-nav-item"><a href="logout"><i class="layui-icon layui-icon-star"></i>登出</a></li>
 		</ul>
 	</div>
 <!-- 	layui-bg-black -->
 	
-	<div class="layui-side"
-		style="margin-left: 200px; width: 200px; height: 500px; margin-top: 200px;">
-		<div class="layui-side-scroll"
-			style="height: 500px; border-bottom-style: solid; border-bottom-width: 0px;">
-			<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-			<ul class="layui-nav layui-nav-tree" lay-filter="test"
-				style="position: none;">
-				<li class="layui-nav-item"><a _href="shianghergo/../goMember001"><cite>me的檔案</cite></a></li>
-				<li class="layui-nav-item"><a _href="shianghergo/../Member002"><cite>我購買的商品</cite></a></li>
-				<li class="layui-nav-item"><a _href="shianghergo/../Member003"><cite>我建立的合購</cite></a></li>
-				<li class="layui-nav-item"><a _href="shianghergo/../Member004"><cite>我參與的合購</cite></a></li>
-				<li class="layui-nav-item"><a _href="getMyMessage"><cite>我的留言板</cite></a></li>
-				<li class="layui-nav-item"><a _href="MyMessage"><cite>寄件備份</cite></a></li>
-				<li class="layui-nav-item"><a _href="hao/buildStore"><cite>我要開店</cite></a></li>
+<!-- 	<div class="layui-side" -->
+<!-- 		style="margin-left: 200px; width: 200px; height: 500px; margin-top: 200px;"> -->
+<!-- 		<div class="layui-side-scroll" -->
+<!-- 			style="height: 500px; border-bottom-style: solid; border-bottom-width: 0px;"> -->
+<!-- 			<!-- 左侧导航区域（可配合layui已有的垂直导航） --> -->
+<!-- 			<ul class="layui-nav layui-nav-tree" lay-filter="test" -->
+<!-- 				style="position: none;"> -->
+<%-- 				<li class="layui-nav-item"><a _href="shianghergo/../goMember001"><cite>me的檔案</cite></a></li> --%>
+<%-- 				<li class="layui-nav-item"><a _href="shianghergo/../Member002"><cite>我購買的商品</cite></a></li> --%>
+<%-- 				<li class="layui-nav-item"><a _href="shianghergo/../Member003"><cite>我建立的合購</cite></a></li> --%>
+<%-- 				<li class="layui-nav-item"><a _href="shianghergo/../Member004"><cite>我參與的合購</cite></a></li> --%>
+<%-- 				<li class="layui-nav-item"><a _href="getMyMessage"><cite>我的留言板</cite></a></li> --%>
+<%-- 				<li class="layui-nav-item"><a _href="MyMessage"><cite>寄件備份</cite></a></li> --%>
+<%-- 				<li class="layui-nav-item"><a _href="hao/buildStore"><cite>我要開店</cite></a></li> --%>
 				
-			</ul>
-		</div>
-	</div>
+<!-- 			</ul> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 
-	<div class="layui-body"
-		style="padding-left: 100px; padding-right: 50px; margin-left: 50px;top: 200px;margin-bottom: 250px;">
-		<!-- 内容主体区域 -->
-		<div class="layui-tab tab" lay-filter="mainTab" lay-allowclose="false"
-			style="padding-left: 100px; padding-right: 100px;   padding-bottom: 200px;  width: 1200px;height: 200px;">
-			<ul class="layui-tab-title">
-				<li class="home"><i class="layui-icon">&#xe68e;</i>我的桌面</li>
-			</ul>
-			<div class="layui-tab-content"
-				style="height: 100%; margin-top: 20px;">
-				<div class="layui-tab-item layui-show" style="height: 100%;">
-					<iframe src='Practice/../MemberIndex' frameborder="0"
-						scrolling="yes" style="height: 300px; width: 1200px;"
-						class="x-iframe"></iframe>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- 	<div class="layui-body" -->
+<!-- 		style="padding-left: 100px; padding-right: 50px; margin-left: 50px;top: 200px;margin-bottom: 250px;"> -->
+<!-- 		<!-- 内容主体区域 --> -->
+<!-- 		<div class="layui-tab tab" lay-filter="mainTab" lay-allowclose="false" -->
+<!-- 			style="padding-left: 100px; padding-right: 100px;   padding-bottom: 200px;  width: 1200px;height: 200px;"> -->
+<!-- 			<ul class="layui-tab-title"> -->
+<!-- 				<li class="home"><i class="layui-icon">&#xe68e;</i>我的桌面</li> -->
+<!-- 			</ul> -->
+<!-- 			<div class="layui-tab-content" -->
+<!-- 				style="height: 100%; margin-top: 20px;"> -->
+<!-- 				<div class="layui-tab-item layui-show" style="height: 100%;"> -->
+<!-- 					<iframe src='Practice/../MemberIndex' frameborder="0" -->
+<!-- 						scrolling="yes" style="height: 300px; width: 1200px;" -->
+<!-- 						class="x-iframe"></iframe> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 
 	<div class="footer" style="padding-right: 200px; padding-left: 200px;">
 		<div class="ng-promise-box">

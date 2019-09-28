@@ -183,7 +183,7 @@ body {
 }
 
 fieldset {
-	width: 500px;
+	width: 800px;
 	margin: auto;
 }
 
@@ -199,7 +199,7 @@ legend {
 
 .item .item-label {
 	float: left;
-	width: 100px;
+	width: 240px;
 	text-align: right;
 }
 
@@ -257,7 +257,8 @@ label.valid {
 }
 
 .layui-btn-container {
-	margin: 20 150;
+	margin: 20 200;
+	
 }
 </style>
 
@@ -381,7 +382,7 @@ label.valid {
 					<form:input type="file" id="image" name="image" path="image"
 						class="item-file" placeholder="" autocomplete="off" tip="" />
 				</div>
-				<div class="layui-btn-container">
+				<div class="layui-btn-container" style="margin-left: 300px;">
 					<input type="submit" value="提交" class="layui-btn"> <input
 						type="reset" value="重填" name="cancel" id="cancel"
 						class="layui-btn">
