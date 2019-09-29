@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import com.shianghergo.dao.comment_storeDao;
 import com.shianghergo.model.comment_store;
 
-
 @Repository
 public class Icomment_storeDao implements comment_storeDao {
 
@@ -19,21 +18,17 @@ public class Icomment_storeDao implements comment_storeDao {
 	SessionFactory factory;
 
 	@Override
-	public void savecomment_store(comment_store cs, Integer member_id) {
+	public void savecomment_store(comment_store cs) {
 
 		Session session = factory.getCurrentSession();
 
-	
 		Date date = new Date();
 
 		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
-		cs.setMember_id(member_id);
-
 		cs.setTime(ft.format(date));
 
 		session.save(cs);
-
 
 	}
 

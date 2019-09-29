@@ -19,7 +19,7 @@ public class Icomment_memberDao implements comment_memberDao {
 	SessionFactory factory;
 
 	@Override
-	public void savecomment_member(comment_member cm, Integer member_id) {
+	public void savecomment_member(comment_member cm) {
 			
 		Session session = factory.getCurrentSession();
 		
@@ -27,15 +27,12 @@ public class Icomment_memberDao implements comment_memberDao {
 		Date date = new Date();
 
 		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-		
-		cm.setMember_id(member_id);
+
 
 		cm.setTime(ft.format(date));
 
 		session.save(cm);	
-		
-
-		
+			
 	}
 
 	

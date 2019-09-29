@@ -19,16 +19,13 @@ public class Icomment_itemDao implements comment_itemDao {
 	SessionFactory factory;
 
 	@Override
-	public void savecomment_Item(comment_item ci, Integer member_id) {
+	public void savecomment_Item(comment_item ci) {
 
 		Session session = factory.getCurrentSession();
-
 
 		Date date = new Date();
 
 		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-
-		ci.setMember_id(member_id);
 
 		ci.setTime(ft.format(date));
 

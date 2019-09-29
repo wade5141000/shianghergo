@@ -55,11 +55,11 @@ public interface GBDBService {
 
 	public Integer getStoreId(Integer target);
 
-	public void savecomment_member(comment_member cm, Integer member_id);
+	public void savecomment_member(comment_member cm);
 
-	public void savecomment_store(comment_store cs, Integer member_id);
+	public void savecomment_store(comment_store cs);
 
-	public void savecomment_Item(comment_item ci, Integer member_id);
+	public void savecomment_Item(comment_item ci);
 
 	// --新增的 復原會員權限---// 9/25
 	public void recoveryMember(Integer target);

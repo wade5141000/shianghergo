@@ -195,22 +195,22 @@ public class GBDBServiceImp implements GBDBService {
 	}
 
 	@Override
-	public void savecomment_member(comment_member cm, Integer member_id) {
+	public void savecomment_member(comment_member cm) {
 
-		cmdao.savecomment_member(cm, member_id);
+		cmdao.savecomment_member(cm);
 	}
 
 	@Override
-	public void savecomment_store(comment_store cs, Integer member_id) {
+	public void savecomment_store(comment_store cs) {
 
-		csdao.savecomment_store(cs, member_id);
+		csdao.savecomment_store(cs);
 
 	}
 
 	@Override
-	public void savecomment_Item(comment_item ci, Integer member_id) {
+	public void savecomment_Item(comment_item ci) {
 
-		cidao.savecomment_Item(ci, member_id);
+		cidao.savecomment_Item(ci);
 
 	}
 
