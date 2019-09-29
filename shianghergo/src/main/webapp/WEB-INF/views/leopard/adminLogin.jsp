@@ -28,7 +28,7 @@ margin-top: 50px;
 }
 
 .img{
-   margin-left:43%;
+   margin-left:42%;
    margin-top: 50px;
 
 }
@@ -64,12 +64,5 @@ margin-top: 50px;
 
 	</form>
 </div>
-
-<a href="searchGroups">搜尋開團</a>
-
-
-
-
-
 </body>
 </html>
