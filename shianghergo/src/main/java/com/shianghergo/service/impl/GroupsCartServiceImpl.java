@@ -48,4 +48,12 @@ public class GroupsCartServiceImpl implements GroupsCartService{
 		return cb;
 	}
 
+	@Override
+	@Transactional
+	public GroupsCartBean getGroupsCartItemById(Integer cart_id) {
+		return dao.getGroupsCartBeanById(cart_id);
+	}
+	
+	
+
 }

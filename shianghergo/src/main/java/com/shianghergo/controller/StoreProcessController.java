@@ -96,6 +96,18 @@ public class StoreProcessController {
 		
 		ItemBean ib = itemService.getItemById(item_id);
 		cartService.saveToCart(ib,member.getId());
+		
+		HttpSession httpSession = re.getSession();
+		List<CartBean> list2 = cartService.getCartItems(member.getId());
+		httpSession.setAttribute("cartitems", list2);
+		long total2 = 0;
+		for(CartBean ccb:list2) {
+			total2 += ccb.getPrice()*ccb.getAmount();
+		}
+		httpSession.setAttribute("total",total2);
+		httpSession.setAttribute("its",list2.size());
+		
+		
 		try {
 			rp.getWriter().write("");
 		} catch (IOException e) {
@@ -109,6 +121,16 @@ public class StoreProcessController {
 		List<CartBean> list = cartService.getCartItems(mId);
 		ObjectMapper mapper = new ObjectMapper();
 		String result = "";
+		
+		HttpSession httpSession = re.getSession();
+		List<CartBean> list2 = cartService.getCartItems(mId);
+		httpSession.setAttribute("cartitems", list2);
+		long total2 = 0;
+		for(CartBean ccb:list2) {
+			total2 += ccb.getPrice()*ccb.getAmount();
+		}
+		httpSession.setAttribute("total",total2);
+		httpSession.setAttribute("its",list2.size());
 		
 		try {
 			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list);
@@ -134,6 +156,7 @@ public class StoreProcessController {
 			total += cb.getPrice()*cb.getAmount();
 		}
 		model.addAttribute("total",total);
+		model.addAttribute("its",list.size());
 		return "wade/cart";
 	}
 	
@@ -164,6 +187,7 @@ public class StoreProcessController {
 			total2 += ccb.getPrice()*ccb.getAmount();
 		}
 		httpSession.setAttribute("total",total2);
+		httpSession.setAttribute("its",list2.size());
 		
 		try {
 			rp.getWriter().write(result);
@@ -189,7 +213,7 @@ public class StoreProcessController {
 			total2 += ccb.getPrice()*ccb.getAmount();
 		}
 		httpSession.setAttribute("total",total2);
-		
+		httpSession.setAttribute("its",list2.size());
 		
 		
 		try {
@@ -267,6 +291,19 @@ public class StoreProcessController {
 		List<OrderDetailBean> list = orderDetailService.getOrderDetail(order_id);
 		model.addAttribute("details",list);
 		model.addAttribute("order_id",order_id);
+		
+		
+		HttpSession httpSession = re.getSession();
+		List<CartBean> list2 = cartService.getCartItems(mId);
+		httpSession.setAttribute("cartitems", list2);
+		long total2 = 0;
+		for(CartBean ccb:list2) {
+			total2 += ccb.getPrice()*ccb.getAmount();
+		}
+		httpSession.setAttribute("total",total2);
+		httpSession.setAttribute("its",list2.size());
+		
+		
 		return "wade/detail";
 	}
 	

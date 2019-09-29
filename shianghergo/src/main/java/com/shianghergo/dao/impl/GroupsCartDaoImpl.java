@@ -74,4 +74,5 @@ public class GroupsCartDaoImpl implements GroupsCartDao{
 		Session session = factory.getCurrentSession();
 		return session.get(GroupsCartBean.class, id);
 	}
+
 }

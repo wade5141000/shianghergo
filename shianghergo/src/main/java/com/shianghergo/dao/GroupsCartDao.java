@@ -10,5 +10,4 @@ public interface GroupsCartDao {
 	int addToCart(Integer mId, Groups_ItemBean ib);
 	int deleteCartBeanById(Integer cart_id);
 	GroupsCartBean getGroupsCartBeanById(Integer id);
-	
 }
