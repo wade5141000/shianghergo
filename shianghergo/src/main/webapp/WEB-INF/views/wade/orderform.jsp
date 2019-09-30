@@ -43,7 +43,7 @@
     		<label for="exampleFormControlSelect2">選擇面交地點與時間：</label>
     		<select multiple class="form-control" id="exampleFormControlSelect2" name="place">
 			      <c:forEach var="place" items="${places}"  varStatus='i'>
-				      <option value="${place.id}">地址：${place.address}。<br>時間：${place.time}。</option>
+				      <option value="${place.id}">地址：${place.address}。時間：${place.time}。</option>
 			      </c:forEach>
     		</select>
   		</div>

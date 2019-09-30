@@ -73,7 +73,8 @@ var y = x+1;
 	<div class="site-nav-bg" style="height:50px;background-color:#ffa042;">
 		<div class="site-nav w1200">
 			<div class="sn-quick-menu">
-			<div class="login" style="margin-top:10px;"><a href="${pageContext.request.contextPath}/testhead" style="color:#ecffff;margin:auto">測試head</a></div>
+			<div class="login" style="margin-top:10px;"><a href="${pageContext.request.contextPath}/testgok" style="color:#ecffff;">測試gok</a></div>
+			<div class="login" style="margin-top:10px;"><a href="${pageContext.request.contextPath}/testhead" style="color:#ecffff;">測試head</a></div>
 			<div class="login" style="margin-top:10px;"><a href="${pageContext.request.contextPath}/testfoot" style="color:#ecffff">測試foot</a></div>
       	<div class="login" style="margin-top:10px;"><a href="${pageContext.request.contextPath}/productfile.s" style="color:#ecffff">訂購單</a></div>
       	<div class="login" style="margin-top:10px;"><a href="${pageContext.request.contextPath}/wade/showmap" style="color:#ecffff">google map</a></div>
@@ -120,7 +121,7 @@ var y = x+1;
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="" id="navbarDropdown1" role="button" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false" style="margin-right:25px;font-weight:bold">瀏覽商品</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown1" style="text-align:center;">
 						<a class="dropdown-item" href="${pageContext.request.contextPath}/hao/products">所有商品</a>
 						<c:forEach var="category" items="${categoryList}">
 							<a class="dropdown-item" href="">${category.name}</a> 
@@ -132,7 +133,7 @@ var y = x+1;
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="" id="navbarDropdown2" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false" style="margin-right:25px;font-weight:bold">瀏覽團購 </a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown2" style="text-align:center;">
 						<a class="dropdown-item" href="${pageContext.request.contextPath}/frank/groups">所有團購</a>
 						<c:forEach var="category" items="${categoryList}">
 							<a class="dropdown-item" href="">${category.name}</a> 
@@ -231,7 +232,7 @@ var y = x+1;
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 <!--         <button type="button" class="btn btn-primary">Save changes</button> -->
-        <a class="btn btn-primary" href="addorder" role="button">加入訂單</a>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/addorder" role="button">加入訂單</a>
       </div>
     </div>
   </div>
@@ -290,7 +291,7 @@ var y = x+1;
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a class="btn btn-primary" href="addgrouporder?gid=${gcartitems[0].groups_id}" role="button">確定跟團</a>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/addgrouporder?gid=${gcartitems[0].groups_id}" role="button">確定跟團</a>
       </div>
     </div>
   </div>

@@ -28,7 +28,7 @@
 	href="${pageContext.request.contextPath}/res/static/css/footer.css">
 </head>
 <body>
-	<footer style="padding: 0px; margin: 0px;">
+	<footer style="padding: 0px; margin-top: 30px;">
 		<div class="container pt-5 border-bottom"
 			style="padding: 0px; margin: 0px">
 			<div class="row">

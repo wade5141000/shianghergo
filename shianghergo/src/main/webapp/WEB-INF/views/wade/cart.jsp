@@ -13,9 +13,6 @@
 
 </head>
 
-
-
-
 <body>
 <jsp:include page="/WEB-INF/views/eric/header.jsp" ></jsp:include>
 

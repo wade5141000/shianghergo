@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <meta charset="UTF-8">
-<title>跟團結果</title>
+<title>付款結果</title>
 <style>
 td{
 	border:1px solid gray;
@@ -26,13 +28,15 @@ tr:last-child td:first-child{
 tr:last-child td:last-child{
   border-bottom-right-radius: 5px;
 }
+
 </style>
+
 </head>
 <body style="background-color: #fffaf4;">
-	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
-	<div style="text-align: center; margin: auto;">
-		<h2 style="margin-top:20px;color:#00bb00;font-weight:bold">跟團成功</h2>
-		<h6 style="margin-top:20px;">請您提前聯繫主購，並在約定時間進行取貨</h6>
+<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
+
+<div style="text-align: center; margin: auto;">
+		<h2 style="margin-top:20px;font-weight:bold">付款結果：<span style="color:#00bb00;font-weight:bold">成功</span></h2>
 		<table style="margin:30px auto;width:450px;border-collapse: separate;border-spacing: 0;">
 			<tr>
 				<td style="background-color:#ffa042;color:#2828ff;font-weight:bold">訂單編號</td>
@@ -40,15 +44,7 @@ tr:last-child td:last-child{
 			</tr>
 			<tr>
 				<td style="background-color:#ffa042;color:#2828ff;font-weight:bold">訂購時間</td>
-				<td>${order.time}</td>
-			</tr>
-			<tr>
-				<td style="background-color:#ffa042;color:#2828ff;font-weight:bold">訂購人</td>
-				<td>${order.name}</td>
-			</tr>
-			<tr>
-				<td style="background-color:#ffa042;color:#2828ff;font-weight:bold">聯繫電話</td>
-				<td>${order.phone}</td>
+				<td>${order.order_time}</td>
 			</tr>
 			<tr>
 				<td style="background-color:#ffa042;color:#2828ff;font-weight:bold">訂單金額</td>
@@ -56,24 +52,14 @@ tr:last-child td:last-child{
 			</tr>
 			<tr>
 				<td style="background-color:#ffa042;color:#2828ff;font-weight:bold">付款方式</td>
-				<c:if test="${order.payment==1}">
-					<td>面交付款</td>
-				</c:if>
-				<c:if test="${order.payment==2}">
-					<td>銀行匯款</td>
-				</c:if>
-			</tr>
-			<tr>
-				<td style="background-color:#ffa042;color:#2828ff;font-weight:bold">面交地點</td>
-				<td>${order.place.address}</td>
-			</tr>
-			<tr>
-				<td style="background-color:#ffa042;color:#2828ff;font-weight:bold">面交時間</td>
-				<td>${order.place.time}</td>
+				<td>${order.payment}</td>
 			</tr>
 
 		</table>
 	</div>
-	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
+
+
+
+<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 </body>
 </html>
