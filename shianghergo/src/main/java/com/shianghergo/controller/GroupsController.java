@@ -89,7 +89,7 @@ public class GroupsController {
 		GroupsBean gb = new GroupsBean();
 
 		java.util.Date d = new java.util.Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String timeNow = sdf.format(d);
 		List<CategoryBean> list =service.getCategoryList();
 		model.addAttribute("now", timeNow);
