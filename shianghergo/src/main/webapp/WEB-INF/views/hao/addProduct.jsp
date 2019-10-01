@@ -38,7 +38,8 @@ fieldset {
 	background-image: url('https://i.imgur.com/dqiRiVK.jpg');
 	background-repeat: no-repeat;
 }
-.form-group{
+
+.form-group {
 	padding-bottom: 20px;
 }
 form{
@@ -58,8 +59,6 @@ form{
 <!-- 	</section> -->
 <!-- 	<hr -->
 <!-- 		style="height: 1px; border: none; color: #333; background-color: #333;"> -->
-	
-
 	<section class="container" >
 		<!--       三個地方要完全一樣 -->
 		
@@ -137,6 +136,7 @@ form{
 			</fieldset>
 		</form:form>
 	</section>
+
 
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
