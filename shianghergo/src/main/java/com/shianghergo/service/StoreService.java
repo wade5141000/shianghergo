@@ -18,4 +18,6 @@ public interface StoreService {
 	boolean checkStoreExist(Integer member_id);
 
 	StoreBean getStoreByMember_Id(Integer member_id);
+
+	void closeStore(StoreBean sb);
 }
