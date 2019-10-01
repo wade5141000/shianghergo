@@ -207,7 +207,7 @@
 								<div class="prod-number"></div>
 								<div class="cont-list layui-clear" id="list-cont">
 									<c:forEach var='product' items='${products }'>
-										<div class="item">
+										<div class="item" style="height:390px;">
 											<div class="img">
 												<a
 													href="<spring:url value='/hao/product?id=${product.id }' />">
@@ -225,7 +225,7 @@
 														style="width: 140px; height: 40px; float: left;">
 														<i class="layui-icon layui-icon-cart-simple"></i>加入購物車
 													</button>
-													<span class="pri" style="float: right; font-size: 24px;">${product.price }元&nbsp;&nbsp;&nbsp;&nbsp;</span>
+													<span class="pri" style="float: right; font-size: 20px;">${product.price }元&nbsp;&nbsp;&nbsp;&nbsp;</span>
 												</p>
 											</div>
 										</div>

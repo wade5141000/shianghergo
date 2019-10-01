@@ -96,8 +96,8 @@ layui-table {
 
 		<div class="layui-table" style="height: 650; max-height: 900px;">
 			<section>
-				<div class="container" style="text-align: center">
-					<h2>商店詳細資料</h2>
+				<div class="container" style="text-align: center; padding:40px">
+					<h2 style="font-size:60px">商店詳細資料</h2>
 				</div>
 			</section>
 			<div class="bang">
