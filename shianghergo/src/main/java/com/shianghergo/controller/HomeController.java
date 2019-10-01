@@ -60,38 +60,10 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping("/test")
-	public String Test() {
-		return "html/index";
+	@RequestMapping("/testgok")
+	public String Testgok() {
+		return "wade/detail";
 	}
-	@RequestMapping("/test1")
-	public String Test1() {
-		return "html/buytoday";
-	}
-	@RequestMapping("/test2")
-	public String Test2() {
-		return "html/commodity";
-	}
-	@RequestMapping("/test3")
-	public String Test3() {
-		return "html/details";
-	}
-	@RequestMapping("/test4")
-	public String Test4() {
-		return "html/group";
-	}
-	@RequestMapping("/test5")
-	public String Test5() {
-		return "html/information";
-	}
-	@RequestMapping("/test6")
-	public String Test6() {
-		return "html/login";
-	}
-//	@RequestMapping("/test7")
-//	public String Test7() {
-//		return "shopcart";
-//	}
 	
 	// 前端測試尾端
 	

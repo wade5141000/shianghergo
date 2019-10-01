@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h5>正在跳轉至綠界支付頁面</h5>
 ${form}
 </body>
 </html>

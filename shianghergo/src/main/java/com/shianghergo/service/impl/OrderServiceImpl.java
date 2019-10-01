@@ -34,4 +34,10 @@ public class OrderServiceImpl implements OrderService{
 		dao.updateStatus(order_id);
 	}
 
+	@Override
+	@Transactional
+	public OrderBean getOrderById(Integer order_id) {
+		return dao.getOrderById(order_id);
+	}
+
 }

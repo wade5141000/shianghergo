@@ -90,6 +90,17 @@ public class GroupsProcessController {
 		Iterator<PlaceBean> it = gb.getPlace().iterator();
 		model.addAttribute("places",it);
 		model.addAttribute("payment",gb.getPayment());
+		
+		HttpSession httpSession = rq.getSession();
+		List<GroupsCartBean> list3 = groupsCartService.getGroupsCartItems(mId);
+		httpSession.setAttribute("gcartitems", list3);
+		long gtotal = 0;
+		for(GroupsCartBean cb:list3) {
+			gtotal += cb.getPrice()*cb.getAmount();
+		}
+		httpSession.setAttribute("gtotal",gtotal);
+		
+		
 		return "wade/orderform";
 	}
 	

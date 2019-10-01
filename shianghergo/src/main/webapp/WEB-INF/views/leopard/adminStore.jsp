@@ -91,19 +91,15 @@
 			</ul>
 		</div>
 	</nav>
-	<form class="form-inline" style="margin-left: 700px; margin-top: 20px;">
-		<input class="form-control mr-sm-2" type="search" placeholder="Search"
-			aria-label="Search">
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	</form>
+	
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
 		<thead class="thead-dark">
 			<tr style="padding: 50px">
 				<th scope="col">#</th>
-				<th scope="col">商店名稱</th>
 				<th scope="col">商店ID</th>
 				<th scope="col">會員ID</th>
+				<th scope="col">商店名稱</th>
 				<th scope="col">商店狀態</th>
 				<th scope="col"></th>
 				<th scope="col"></th>
@@ -119,9 +115,9 @@
 			<c:forEach var='Stores' items='${Store}'>
 				<tr>
 					<th scope="row">O</th>
-					<td>${Stores.name}</td>
 					<td>${Stores.id}</td>
 					<td>${Stores.member_id}</td>
+					<td>${Stores.name}</td>
 					<td>${Stores.status}</td>
 					<td></td>
 					<td></td>
@@ -147,7 +143,7 @@
 						<form action="recoveryStore" method="POST">
 							<input type=hidden value="${Stores.id}" name="target">
 							<button type="submit" class="btn btn-success"
-								onclick="recovery()">恢復權限</button>
+								onclick="recovery()">停權取消</button>
 						</form>
 
 					</td>

@@ -75,11 +75,7 @@
 		</div>
 	</nav>
 
-	<form class="form-inline" style="margin-left: 700px; margin-top: 20px;">
-		<input class="form-control mr-sm-2" type="search" placeholder="Search"
-			aria-label="Search">
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	</form>
+	
 
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">

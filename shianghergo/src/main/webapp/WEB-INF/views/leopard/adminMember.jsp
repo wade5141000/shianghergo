@@ -100,17 +100,14 @@
 	<a href="reportAndevaStore">檢舉評價商家</a>
 	<a href="reportAndevaItem">評價商品</a>
 
-	<form class="form-inline" style="margin-left: 700px; margin-top: 20px;">
-		<input class="form-control mr-sm-2" type="search" placeholder="Search"
-			aria-label="Search">
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	</form>
+	
 
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">#</th>
+				<th scope="col">會員ID</th>
 				<th scope="col">會員名稱</th>
 				<th scope="col">會員帳號</th>
 				<th scope="col">會員信箱</th>
@@ -129,7 +126,7 @@
 			<c:forEach var='members' items='${Member}'>
 				<tr>
 					<th scope="row">O</th>
-
+					<td>${members.id}</td>
 					<td>${members.name}</td>
 					<td>${members.account}</td>
 					<td>${members.email}</td>
