@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <!-- lang="en" -->
 <head>
-  <meta charset="UTF-8">
-  <title>饗合購</title>
+<meta charset="UTF-8">
+<title>饗合購</title>
 <!--     <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <!-- 	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script> -->
 <!-- 	<script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-  <!--  ---------------分隔線--------------------------------------------- -->
+<!--  ---------------分隔線--------------------------------------------- -->
 
 
 <!-- <script src="https://code.jquery.com/jquery-3.4.1.js" -->
@@ -40,168 +40,155 @@
 <!-- 	rel="stylesheet"> -->
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/eric/header.jsp" ></jsp:include>
-<!-- id="list-cont" -->
-<!--   <div class="site-nav-bg"> -->
-<!--     <div class="site-nav w1200"> -->
-<!--       <p class="sn-back-home"> -->
-<!--         <i class="layui-icon layui-icon-home"></i> -->
-<!--         <a href="index">首頁</a> -->
-<!--       </p> -->
-<!--       <div class="sn-quick-menu"> -->
-<!--       	<div class="login"><a href="fortest">測試</a></div> -->
-<!--       	<div class="login"><a href="productfile.s">訂購單</a></div> -->
-<!--       	<div class="login"><a href="wade/showmap">google map</a></div> -->
-<!--       	<div class="login"><a href="oldindex">舊index</a></div> -->
-<!--       	<div class="login"><a href="goRegisterPage">註冊</a></div> -->
-<!--         <div class="login"><a href="login">登入</a></div> -->
-<!--         <div class="sp-cart"><a href="cart">購物車</a><span>2</span></div> -->
-<!--       </div> -->
-<!--     </div> -->
-<!--   </div> -->
-<!--   <div class="header"> -->
-<!--     <div class="headerLayout w1200"> -->
-<!--       <div class="headerCon"> -->
-<!--         <h1 class="mallLogo"> -->
-<!--           <a href="index"> -->
-<%--             <img src="${pageContext.request.contextPath}/res/static/img/logo4.png" width="100" height="100"> --%>
-<!--           </a> -->
-<!--         </h1> -->
-<!--         <div class="mallSearch"> -->
-<%--         <form action='<c:url value="/Search.controller" />' method="get"  class="layui-form" novalidate> --%>
-<%--             <input type="text" name="title" value="${param.title}" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="請輸入需要的商品" > --%>
-<!--             <button class="layui-btn" lay-submit lay-filter="formDemo" type="submit"> -->
-<!--                 <i class="layui-icon layui-icon-search"></i> -->
-<!--             </button> -->
-<!--             <input type="submit" name="" value=""> -->
-<!--           </form> -->
-<!--         </div> -->
-<!--       </div> -->
-<!--     </div> -->
-<!--   </div> -->
-<!--     <div class="main-nav"> -->
-<!--       <div class="inner-cont0"> -->
-<!--         <div class="inner-cont1 w1200"> -->
-<!--           <div class="inner-cont2"> -->
-<!--             <a href="hao/products" class="active">所有商品</a> -->
-<!--             <a href="frank/groups">我要團購</a> -->
-<!--             <a href="frank/Groups1">我要開團</a> -->
-<!--             <a href="hao/stores">商家瀏覽(暫)</a> -->
-<!--           </div> -->
-<!--         </div> -->
-<!--       </div> -->
-<!--     </div> -->
-<div class="content">
-       <div id="myCarousel" class="carousel slide" style="width:850px ;margin:auto">
-	
+	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
+	<!-- id="list-cont" -->
+	<!--   <div class="site-nav-bg"> -->
+	<!--     <div class="site-nav w1200"> -->
+	<!--       <p class="sn-back-home"> -->
+	<!--         <i class="layui-icon layui-icon-home"></i> -->
+	<!--         <a href="index">首頁</a> -->
+	<!--       </p> -->
+	<!--       <div class="sn-quick-menu"> -->
+	<!--       	<div class="login"><a href="fortest">測試</a></div> -->
+	<!--       	<div class="login"><a href="productfile.s">訂購單</a></div> -->
+	<!--       	<div class="login"><a href="wade/showmap">google map</a></div> -->
+	<!--       	<div class="login"><a href="oldindex">舊index</a></div> -->
+	<!--       	<div class="login"><a href="goRegisterPage">註冊</a></div> -->
+	<!--         <div class="login"><a href="login">登入</a></div> -->
+	<!--         <div class="sp-cart"><a href="cart">購物車</a><span>2</span></div> -->
+	<!--       </div> -->
+	<!--     </div> -->
+	<!--   </div> -->
+	<!--   <div class="header"> -->
+	<!--     <div class="headerLayout w1200"> -->
+	<!--       <div class="headerCon"> -->
+	<!--         <h1 class="mallLogo"> -->
+	<!--           <a href="index"> -->
+	<%--             <img src="${pageContext.request.contextPath}/res/static/img/logo4.png" width="100" height="100"> --%>
+	<!--           </a> -->
+	<!--         </h1> -->
+	<!--         <div class="mallSearch"> -->
+	<%--         <form action='<c:url value="/Search.controller" />' method="get"  class="layui-form" novalidate> --%>
+	<%--             <input type="text" name="title" value="${param.title}" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="請輸入需要的商品" > --%>
+	<!--             <button class="layui-btn" lay-submit lay-filter="formDemo" type="submit"> -->
+	<!--                 <i class="layui-icon layui-icon-search"></i> -->
+	<!--             </button> -->
+	<!--             <input type="submit" name="" value=""> -->
+	<!--           </form> -->
+	<!--         </div> -->
+	<!--       </div> -->
+	<!--     </div> -->
+	<!--   </div> -->
+	<!--     <div class="main-nav"> -->
+	<!--       <div class="inner-cont0"> -->
+	<!--         <div class="inner-cont1 w1200"> -->
+	<!--           <div class="inner-cont2"> -->
+	<!--             <a href="hao/products" class="active">所有商品</a> -->
+	<!--             <a href="frank/groups">我要團購</a> -->
+	<!--             <a href="frank/Groups1">我要開團</a> -->
+	<!--             <a href="hao/stores">商家瀏覽(暫)</a> -->
+	<!--           </div> -->
+	<!--         </div> -->
+	<!--       </div> -->
+	<!--     </div> -->
+	<div id="carouselExampleIndicators" class="carousel slide"
+		data-ride="carousel">
 		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-		</ol>   
-	
+			<li data-target="#carouselExampleIndicators" data-slide-to="0"
+				class="active"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		</ol>
 		<div class="carousel-inner">
-			<div class="item active">
-				<a href="${pageContext.request.contextPath}/eric/a" title="GO"><img src="${pageContext.request.contextPath}/res/static/img/1.png" alt="First slide" style="width:100%"></a>
+			<div class="carousel-item active">
+				<a href="${pageContext.request.contextPath}/eric/a" title="GO"><img
+					class="d-block w-100"
+					src="${pageContext.request.contextPath}/res/static/img/1.png"
+					alt="First slide"></a>
 			</div>
-			<div class="item">
-				<a href="${pageContext.request.contextPath}/eric/b" title="GO"><img src="${pageContext.request.contextPath}/res/static/img/2.png" alt="Second slide"style="width:100%"></a>
+			<div class="carousel-item">
+				<a href="${pageContext.request.contextPath}/eric/b" title="GO"><img
+					class="d-block w-100"
+					src="${pageContext.request.contextPath}/res/static/img/2.png"
+					alt="Second slide"></a>
 			</div>
-			<div class="item">
-				<a href="${pageContext.request.contextPath}/eric/a" title="GO"><img src="${pageContext.request.contextPath}/res/static/img/3.png" alt="Third slide" style="width:100%"></a>
+			<div class="carousel-item">
+				<a href="${pageContext.request.contextPath}/eric/c" title="GO"><img
+					class="d-block w-100"
+					src="${pageContext.request.contextPath}/res/static/img/3.png"
+					alt="Third slide"></a>
 			</div>
 		</div>
-		
-		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
+		<a class="carousel-control-prev" href="#carouselExampleIndicators"
+			role="button" data-slide="prev"> <span
+			class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+			class="sr-only">Previous</span>
+		</a> <a class="carousel-control-next" href="#carouselExampleIndicators"
+			role="button" data-slide="next"> <span
+			class="carousel-control-next-icon" aria-hidden="true"></span> <span
+			class="sr-only">Next</span>
 		</a>
-		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-</div> 
-    <div class="product-cont w1200" id="product-cont">
+	</div>
+	<!-- Section: Products v.3 -->
+	<!-- Section: Products v.3 -->
+<!-- 	<section class="text-center my-5"> -->
 
-      <div class="product-item product-item2 layui-clear">
-        <div class="left-title" style="height:420px">
-          <h4><i>衣</i></h4>
-          <img src="${pageContext.request.contextPath}/res/static/img/icon_gou.png">
-          <h5>秋冬潮流</h5>
-        </div>
-        <div class="right-cont">
-          <a href="javascript:;" class="top-img"><img src="${pageContext.request.contextPath}/res/static/img/cloth1.png" alt=""></a>
-          <div class="img-box">
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/+id+.jpg"></a>
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img8.jpg"></a>
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img9.jpg"></a>
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img10.jpg"></a>
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/s_img11.jpg"></a>
-          </div>
-        </div>
-      </div>
-      
-    </div>
+		<!-- Section heading -->
+<!-- 		<h2 class="h1-responsive font-weight-bold text-center my-5">十月熱銷</h2> -->
+		<!-- Section description -->
+		<c:forEach var='product' items='${aaa}'>
+					${product.name}
+				</c:forEach>
+<!-- 		<p class="grey-text text-center w-responsive mx-auto mb-5"></p> -->
 
-    <div class="product-list-box" id="product-list-box">
-      <div class="product-list-cont w1200">
-        <h4>這裡下面顯示團購商家</h4>
-        <div class="product-item-box layui-clear">
-          <div class="list-item">
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more1.jpg"></a>
-            <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
-            <span>￥100.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more2.jpg"></a>
-            <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
-            <span>￥100.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more3.jpg"></a>
-            <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
-            <span>￥100.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more1.jpg"></a>
-            <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
-            <span>￥100.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more2.jpg"></a>
-            <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
-            <span>￥100.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more3.jpg"></a>
-            <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
-            <span>￥100.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more1.jpg"></a>
-            <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
-            <span>￥100.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more2.jpg"></a>
-            <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
-            <span>￥100.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more3.jpg"></a>
-            <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
-            <span>￥100.00</span>
-          </div>
-          <div class="list-item">
-            <a href="javascript:;"><img src="${pageContext.request.contextPath}/res/static/img/more1.jpg"></a>
-            <p>时尚宝宝小黄鸭T恤纯棉耐脏多色可选0-2岁宝宝</p>
-            <span>￥100.00</span>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-  <jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
+		<!-- Grid row -->
+<!-- 		<div class="row"> -->
+
+			<!-- Grid column -->
+<!-- 			<div class="col-lg-3 col-md-6 mb-lg-0 mb-4"> -->
+				<!-- Card -->
+<!-- 				<div class="card align-items-center"> -->
+					
+						<!-- Card image -->
+<!-- 						<div class="view overlay"> -->
+<!-- 							<img -->
+<!-- 								src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" -->
+<!-- 								class="card-img-top" alt=""> -->
+<!-- 								<div class="mask rgba-white-slight"></div> -->
+							
+<!-- 						</div> -->
+<!-- 						Card image -->
+<!-- 						Card content -->
+<!-- 						<div class="card-body text-center"> -->
+<!-- 							Category & Title -->
+<!-- 							<h5><a href="" class="grey-text"> -->
+<%-- 								${product.name} --%>
+<!-- 							</a> -->
+<!-- 							</h5> -->
+<!-- 							<h5> -->
+<!-- 								<strong> <a href="" class="dark-grey-text">Denim -->
+<!-- 										shirt <span class="badge badge-pill danger-color">NEW</span> -->
+<!-- 								</a> -->
+<!-- 								</strong> -->
+<!-- 							</h5> -->
+<!-- 							<h4 class="font-weight-bold blue-text"> -->
+<!-- 								<strong>120$</strong> -->
+<!-- 							</h4> -->
+<!-- 						</div> -->
+						<!-- Card content -->
+					
+					
+					
+<!-- 				</div> -->
+				<!-- Card -->
+<!-- 			</div> -->
+
+<!-- 		</div> -->
+		<!-- Grid row -->
+
+<!-- 	</section> -->
+	<!-- Section: Products v.3 -->
+	<!-- Section: Products v.3 -->
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 </body>
 </html>

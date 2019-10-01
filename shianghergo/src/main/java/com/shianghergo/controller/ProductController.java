@@ -139,7 +139,7 @@ public class ProductController {
 	
 	
 	//-------------------------以下浩瑜----------------------
-	
+
 	@RequestMapping("/hao/products")
 	public String list(Model model) {
 		List<ItemBean> list = service.getAllProducts();
