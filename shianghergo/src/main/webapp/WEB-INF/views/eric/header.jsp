@@ -103,7 +103,7 @@ var y = x+1;
 	</div>
 <!-- 	====  -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"
-		style="width: 100%;margin-bottom: 0px;background-color:#b9b9ff;" >
+		style="width: 100%;margin-bottom: 20px;background-color:#b9b9ff;" >
 		<a href="${pageContext.request.contextPath}/index"> <img src="${pageContext.request.contextPath}/res/static/img/logo4.png"
 			width="130" height="130">
 		</a>
