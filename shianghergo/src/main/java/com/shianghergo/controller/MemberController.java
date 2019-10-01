@@ -306,4 +306,10 @@ public class MemberController {
 		return "Member001";
 	}
 
+	@RequestMapping("memberPage")
+	public String memberPage(Model model, @ModelAttribute("loginOK") MemberBean mb) {// ,HttpServletRequest rq
+		return "Member001";
+	}
+	
+	
 }

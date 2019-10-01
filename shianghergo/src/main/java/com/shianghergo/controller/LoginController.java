@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -61,8 +62,10 @@ public class LoginController {
 	public String toLogin(HttpServletRequest request) {
 
 		// TODO 判断有无session，有直接到首页
-		if (request.getSession().getAttribute("account") != null
-				&& request.getSession().getAttribute("password") != null) {
+		
+		Object mb = request.getSession().getAttribute("loginOK");
+		
+		if (mb != null) {
 			return "Member001";
 		}
 
@@ -103,48 +106,74 @@ public class LoginController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(String account, String password, Model model,HttpServletRequest rq) {
 		MemberBean mb = service.login(account, password);// 前
-		System.out.println("login()+++" + mb);
-		model.addAttribute("loginOK", mb);
-		// 向ModelMap视图中添加一个Session级别存储的属性
 		
-
-		HttpSession httpSession = rq.getSession();
-		List<CartBean> list2 = cartService.getCartItems(mb.getId());
-		httpSession.setAttribute("cartitems", list2);
-		long total = 0;
-		for(CartBean cb:list2) {
-			total += cb.getPrice()*cb.getAmount();
-		}
-		httpSession.setAttribute("total",total);
-		httpSession.setAttribute("its",list2.size());
-		// ===== wade購物車
-		
-		// wade 團購物車
-		List<GroupsCartBean> list3 = groupsCartService.getGroupsCartItems(mb.getId());
-		httpSession.setAttribute("gcartitems", list3);
-		long gtotal = 0;
-		for(GroupsCartBean cb:list3) {
-			gtotal += cb.getPrice()*cb.getAmount();
-		}
-		httpSession.setAttribute("gtotal",gtotal);
-//		httpSession.setAttribute("its",list2.size());
-		// ===== wade團購物車
-
-		if (mb != null&& mb.getStatus()!=null) {
-			if (mb.getAccount().equals(account) && mb.getPassword().equals(password) ) {
+		if(mb != null) {
+			if(password.equals(mb.getPassword())) {
 				if(mb.getStatus()==1) {
+					// 向ModelMap视图中添加一个Session级别存储的属性
+					model.addAttribute("loginOK", mb);
+					
+					// ===== wade購物車
+					HttpSession httpSession = rq.getSession();
+					List<CartBean> list2 = cartService.getCartItems(mb.getId());
+					httpSession.setAttribute("cartitems", list2);
+					long total = 0;
+					for(CartBean cb:list2) {
+						total += cb.getPrice()*cb.getAmount();
+					}
+					httpSession.setAttribute("total",total);
+					httpSession.setAttribute("its",list2.size());
+					// ===== wade購物車
+					
+					// wade 團購物車
+					List<GroupsCartBean> list3 = groupsCartService.getGroupsCartItems(mb.getId());
+					httpSession.setAttribute("gcartitems", list3);
+					long gtotal = 0;
+					for(GroupsCartBean cb:list3) {
+						gtotal += cb.getPrice()*cb.getAmount();
+					}
+					httpSession.setAttribute("gtotal",gtotal);
+	//				httpSession.setAttribute("its",list2.size());
+					// ===== wade團購物車
+					
+					
+					// 判斷header是否登入
+					httpSession.setAttribute("header11", 2);
 					return "Member001";
-				}else {
-					return "wrongMember";
 				}
-			}else {
-				return "debby/register";
+				
+				// status == 2
+				return "wrongMember";
 			}
+			
 		}
+		
+		// 帳號或密碼錯誤
+		return "loginNew";
+		
+//		System.out.println("login()+++" + mb);
+		
+		
+		
+		
+		
+		
+//
+//		if (mb != null&& mb.getStatus()!=null) {
+//			if (mb.getAccount().equals(account) && mb.getPassword().equals(password) ) {
+//				if() {
+//					return "Member001";
+//				}else {
+//					
+//				}
+//			}else {
+//				return "debby/register";
+//			}
+//		}
 //		if(mb.getAccount().equals(account) && mb.getPassword().equals(password)) {
 //			return "MemberDL";
 //		}
-		return "loginNew";
+//		return "loginNew";
 
 	}
 
@@ -170,12 +199,17 @@ public class LoginController {
 
 	// 退出
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
-	public String logout(SessionStatus sessionStatus) throws Exception {
+	public String logout(SessionStatus sessionStatus,HttpServletRequest rq) throws Exception {
 //		HttpSession session = request.getSession();
 //		session.invalidate();
 //		return "redirect:index";
 		sessionStatus.setComplete();
 		System.out.println("logout已執行");
+		
+		// wade
+		rq.getSession().setAttribute("header11", 1);
+		
+		
 		return "loginNew";
 	}
 

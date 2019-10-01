@@ -21,6 +21,7 @@ import com.shianghergo.service.ProductService;
 @SessionAttributes("loginOK")
 public class HomeController {
 	
+	private static int temp = 1;
 	@Autowired
 	GroupsService groupsService;
 	
@@ -43,6 +44,13 @@ public class HomeController {
 	@RequestMapping(value = { "/", "/index" })
 	public String index(HttpServletRequest rq,Model model) {
 		HttpSession httpSession = rq.getSession();
+		
+		if(temp == 1) {
+			httpSession.setAttribute("header11", 1);
+			temp++;
+		}
+		
+		
 		
 		List<CategoryBean> list = groupsService.getCategoryList();
 		httpSession.setAttribute("categoryList", list);
