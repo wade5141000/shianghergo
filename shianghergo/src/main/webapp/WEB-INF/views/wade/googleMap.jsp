@@ -60,12 +60,36 @@ html, body {
 				url:"http://localhost:8080/shianghergo/wade/changeMarker?gId=" + gId,
 				type:"get",
 				success:function(data){
-					var placeList = JSON.parse(data);
+					deleteMarkers();
+					var mapsa = JSON.parse(data);
+					var placeList = mapsa["placeList"];
+					var groupList = mapsa["groupList"];
+					
+					
 					for(var i=0;i<placeList.length;i++){
-						alert(placeList[i].address);
+						var marker = new google.maps.Marker({
+						    position: {
+						      lat: placeList[i].latitude,
+						      lng: placeList[i].longitude
+						    },
+						    map: map,
+						    title:groupList[i].name, // 滑鼠移上去顯示資訊
+						    icon:"https://img.icons8.com/nolan/64/000000/halloween-candy.png",
+						    data:"團號：<a href=''>"+ groupList[i].id +"</a></br>"+
+						    "團名：<a href=''>"+ groupList[i].name +"</a></br>"+
+						    "截止時間："+groupList[i].end_time+"</br>"+
+						    "面交地點：" + placeList[i].address+"<br>"+
+						    "面交時間："+placeList[i].time
+						  });
+						  markers.push(marker);
+						  var infowindow = new google.maps.InfoWindow({
+			//				    content: contentString
+						  });
+						  marker.addListener('click', function() {  
+							    infowindow.setContent( this.data );  
+							    infowindow.open(map, this);  
+							  });
 					}
-					// 清除所有marker
-					// 新增一個marker
 				}				
 			})
 		}

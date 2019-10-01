@@ -2,7 +2,9 @@ package com.shianghergo.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -44,12 +46,14 @@ public class MapController {
 	
 	static ObjectMapper mapper = new ObjectMapper();
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping("wade/changeMarker")
 	public void changeMarker(Model model,HttpServletResponse rp,@RequestParam Integer gId) {
 		System.out.println(gId);
 		ObjectMapper mapper = new ObjectMapper();
 		String result = "";
 		List<PlaceBean> newList = new ArrayList<>();
+		List<GroupsBean> groupList = new ArrayList<>();
 		
 		if(gId==1) {
 			List<PlaceBean> list = placeService.getAllPlace();
@@ -60,7 +64,15 @@ public class MapController {
 				pb.setAddress(old.getAddress());
 				pb.setLatitude(old.getLatitude());
 				pb.setLongitude(old.getLongitude());
+				pb.setTime(old.getTime());
 				newList.add(pb);
+				
+				GroupsBean gb = new GroupsBean();
+				GroupsBean oldgb = old.getGroupsBean();
+				gb.setId(oldgb.getId());
+				gb.setName(oldgb.getName());
+				gb.setEnd_time(oldgb.getEnd_time());
+				groupList.add(gb);
 			}
 		
 		}else {
@@ -73,12 +85,24 @@ public class MapController {
 				pb.setAddress(old.getAddress());
 				pb.setLatitude(old.getLatitude());
 				pb.setLongitude(old.getLongitude());
+				pb.setTime(old.getTime());
 				newList.add(pb);
+				
+				GroupsBean gb = new GroupsBean();
+				GroupsBean oldgb = old.getGroupsBean();
+				gb.setId(oldgb.getId());
+				gb.setName(oldgb.getName());
+				gb.setEnd_time(oldgb.getEnd_time());
+				groupList.add(gb);
 			}
 		}
 		
+		Map map = new HashMap();
+		map.put("placeList", newList);
+		map.put("groupList", groupList);
+		
 		try {
-			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(newList);
+			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(map);
 			rp.getWriter().write(result);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
