@@ -204,11 +204,6 @@
 
 						<div class="right-cont-wrap">
 							<div class="right-cont">
-								<div class="sort layui-clear">
-									<a class="active" href="javascript:;" event='volume'>價格</a> <a
-										href="javascript:;" event='price'>銷量</a>
-
-								</div>
 								<div class="prod-number"></div>
 								<div class="cont-list layui-clear" id="list-cont">
 									<c:forEach var='product' items='${products }'>
