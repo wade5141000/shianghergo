@@ -153,6 +153,13 @@ public class ProductController {
 		return "hao/product";
 	}
 	
+	@RequestMapping("/hao/myProducts")
+	public String getProductsByStore(@ModelAttribute("loginOK")MemberBean mb, Model model) {
+		List<ItemBean> list = service.getMyProducts(mb.getId());
+		model.addAttribute("products", list);
+		return "hao/myProducts";
+	}
+	
 	@RequestMapping(value = "/hao/product/Update", method = RequestMethod.GET)
 	public String getUpdateProductForm(@RequestParam("id") Integer id, Model model) {
 		model.addAttribute("product", service.getProductById(id));
@@ -214,7 +221,7 @@ public class ProductController {
 		List<CategoryBean> list =service.getAllCategories();
 		model.addAttribute("itemBean", bb);
 		model.addAttribute("category", list);
-		model.addAttribute("storeName", service.getStoreNameByMemberId(mb.getId()));
+		model.addAttribute("store_id", service.getStoreIdByMemberId(mb.getId()));
 		return "hao/addProduct";
 	}
 

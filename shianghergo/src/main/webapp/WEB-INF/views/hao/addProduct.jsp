@@ -15,11 +15,34 @@ fieldset {
 	width: 400px;
 	margin: auto;
 }
+
+.bang {
+	padding: 100px;
+	text-align: left;
+	margin: auto;
+	display: table;
+	padding-top: 40px;
+	padding-left: 160px;
+}
+
+.form-horizontal {
+	width: 280px;
+	padding: 20px;
+	margin-right: 50px;
+	border: 1px #cccccc solid;
+	background-color: white;
+}
+
+.bg {
+	background-image: url('https://i.imgur.com/dqiRiVK.jpg');
+	background-repeat: no-repeat;
+}
 </style>
 <title>Products</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/eric/header.jsp" />
+
+	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
 	<section>
 		<div class="container">
 			<h1 style="text-align: center">新增商品資料</h1>
@@ -32,9 +55,8 @@ fieldset {
 		<form:form method='POST' modelAttribute="itemBean"
 			class='form-horizontal' enctype="multipart/form-data">
 			<fieldset>
-				<div class="form-group" >
-					<label class="control-label col-lg-4" for='name'>
-						商品名稱 </label>
+				<div class="form-group">
+					<label class="control-label col-lg-4" for='name'> 商品名稱 </label>
 					<div class="col-lg-8">
 						<form:input id="name" path="name" type='text'
 							class='form:input-large' />
@@ -51,9 +73,10 @@ fieldset {
 				<!-- 					</div> -->
 				<!-- 				</div> -->
 
+
 				<div class="form-group">
-					<label class='control-label col-lg-4' for="category_id">
-						分類 </label>
+					<label class='control-label col-lg-4' for="category_id"> 分類
+					</label>
 					<div class='col-lg-8'>
 						<%-- 						<form:select id="category_id" required="required" path="category_id"> --%>
 						<%-- 							<form:option value="60001" selected="selected">團購美食</form:option> --%>
@@ -68,41 +91,44 @@ fieldset {
 					</div>
 				</div>
 
+
 				<div class="form-group">
-					<label class="control-label col-lg-4" for='store_id'>
-						商店名稱 (store_id)</label>
-					<div class="col-lg-8">
-						<form:input id="store_id" path="store_id" type='text'
-							class='form:input-large' value="${storeName }" />
+					<div class="col-lg-10">
+						<form:input id="store_id" path="store_id" type='hidden'
+							class='form:input-large' value="${store_id }" />
 					</div>
 				</div>
 
-<!-- 				<div class="form-group"> -->
-<!-- 					<label class='control-label col-lg-2 col-lg-2' for="reserve"> -->
-<!-- 						庫存數量 </label> -->
-<!-- 					<div class='col-lg-10'> -->
-<%-- 						<form:input id="reserve" path="reserve" type='text' --%>
-<%-- 							class='form:input-large' /> --%>
-<!-- 					</div> -->
-<!-- 				</div> -->
+
+				<!-- 				<div class="form-group"> -->
+				<!-- 					<label class='control-label col-lg-2 col-lg-2' for="reserve"> -->
+				<!-- 						庫存數量 </label> -->
+				<!-- 					<div class='col-lg-10'> -->
+				<%-- 						<form:input id="reserve" path="reserve" type='text' --%>
+				<%-- 							class='form:input-large' /> --%>
+				<!-- 					</div> -->
+				<!-- 				</div> -->
+
 
 				<div class="form-group">
-					<label class='control-label col-lg-4' for="price">
-						價格 </label>
+					<label class='control-label col-lg-4' for="price"> 價格 </label>
 					<div class='col-lg-8'>
 						<form:input id="price" path="price" type='text'
 							class='form:input-large' />
 					</div>
 				</div>
 
+
 				<div class="form-group">
-					<label class="control-label col-lg-4" for='detail'>
-						商品說明 </label>
+					<label class="control-label col-lg-4" for='detail'> 商品說明 </label>
 					<div class="col-lg-8">
 						<form:input id="detail" path="detail" type='text'
 							class='form:input-large' />
 					</div>
 				</div>
+
+
+
 
 				<div class="form-group">
 					<label class='control-label col-lg-4' for="productImage">
@@ -112,6 +138,7 @@ fieldset {
 							class='form:input-largt' />
 					</div>
 				</div>
+
 
 				<div class="form-group">
 					<div class='col-lg-offset-2 col-lg-10'>
