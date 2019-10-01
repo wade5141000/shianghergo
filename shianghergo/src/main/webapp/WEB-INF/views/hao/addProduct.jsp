@@ -14,6 +14,32 @@ fieldset {
 	border: 1px solid rgb(255, 232, 57);
 	width: 400px;
 	margin: auto;
+	padding-left: 320px;
+}
+
+.bang {
+	padding: 100px;
+	text-align: left;
+	margin: auto;
+	display: table;
+	padding-top: 40px;
+	padding-left: 160px;
+}
+
+.form-horizontal {
+	width: 280px;
+	padding: 20px;
+	margin-right: 50px;
+	border: 1px #cccccc solid;
+	background-color: white;
+}
+
+.bg {
+	background-image: url('https://i.imgur.com/dqiRiVK.jpg');
+	background-repeat: no-repeat;
+}
+.form-group{
+	padding-bottom: 20px;
 }
 form{
 	font-family: 微軟正黑體;
@@ -22,6 +48,7 @@ form{
 <title>Products</title>
 </head>
 <body>
+
 <jsp:include page="/WEB-INF/views/eric/header.jsp" />
 <jsp:include page="../BlackLine.jsp" />
 <!-- 	<section> -->
@@ -110,6 +137,7 @@ form{
 			</fieldset>
 		</form:form>
 	</section>
+
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>

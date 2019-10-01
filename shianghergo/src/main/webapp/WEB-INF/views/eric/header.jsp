@@ -19,38 +19,8 @@
 	}
 </script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/static/css/main.css">
+<title>header</title>
 
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/res/layui/layui.js"></script> --%>
-<!-- <meta name="viewport" -->
-<!-- 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"> -->
-<!-- <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"> -->
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.js" -->
-<!-- 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" -->
-<!-- 	crossorigin="anonymous"></script> -->
-<!-- <script -->
-<!-- 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" -->
-<!-- 	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" -->
-<!-- 	crossorigin="anonymous"></script> -->
-<!-- <link rel="stylesheet" -->
-<!-- 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" -->
-<!-- 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" -->
-<!-- 	crossorigin="anonymous"> -->
-<!-- <script -->
-<!-- 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" -->
-<!-- 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" -->
-<!-- 	crossorigin="anonymous"></script> -->
-<!-- <link rel="stylesheet" -->
-<!-- 	href="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.css"> -->
-<!-- <script -->
-<!-- 	src="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.js"></script> -->
-<!-- <script -->
-<!-- 	src="https://unpkg.com/bootstrap-table@1.15.4/dist/locale/bootstrap-table-zh-TW.min.js"></script> -->
-<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" -->
-<!-- 	rel="stylesheet"> -->
-<!-- 	<link rel="stylesheet" type="text/css" -->
-<%-- 	href="${pageContext.request.contextPath}/res/static/css/header.css"> --%>
 <!--  以下 六角bootstrap -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -60,7 +30,6 @@
 <script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/res/wade/js/cart.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/wade/css/cart.css">
-<%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/wade/css/groupscart.css"> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/res/wade/js/groupscart.js"></script>
 
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
@@ -72,63 +41,73 @@ var y = x+1;
 </script>
 <!-- 這段勿刪 wade -->
 <body>
-	<div class="site-nav-bg" style="height:50px;background-color:#ffa042;">
-		<div class="site-nav w1200">
-			<div class="sn-quick-menu">
-			<div class="login" style="margin-top:10px;"><a href="${pageContext.request.contextPath}/testgok" style="color:#ecffff;">測試gok</a></div>
-			<div class="login" style="margin-top:10px;"><a href="${pageContext.request.contextPath}/testhead" style="color:#ecffff;">測試head</a></div>
-			<div class="login" style="margin-top:10px;"><a href="${pageContext.request.contextPath}/testfoot" style="color:#ecffff">測試foot</a></div>
-      	<div class="login" style="margin-top:10px;"><a href="${pageContext.request.contextPath}/productfile.s" style="color:#ecffff">訂購單</a></div>
-      	<div class="login" style="margin-top:10px;"><a href="${pageContext.request.contextPath}/wade/showmap" style="color:#ecffff">google map</a></div>
-				<div class="login" style="margin-top:10px;">
-					<a href="${pageContext.request.contextPath}/oldindex" style="color:#ecffff">舊index</a>
-				</div>
-				<div class="login" style="margin-top:10px;">
-					<a href="${pageContext.request.contextPath}/goRegisterPage" style="color:#ecffff">註冊</a>
-				</div>
-				<div class="login" style="margin-top:10px;">
-					<a href="${pageContext.request.contextPath}/login" style="color:#ecffff">登入</a>
-				</div>
-<!-- 				<div class="sp-cart"> -->
-<%-- 					<a href="${pageContext.request.contextPath}/cart" style="color:#ecffff">購物車</a><span>2</span> --%>
-<!-- 				</div> -->
-				<div class="login" style="margin-top:10px;">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  					購物車<span id="its">${its}件商品</span></button>
-  					</div>
-  				<div class="login" style="margin-top:10px;">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
-  					團購物車<span id=""></span></button>
-  					</div>
-			</div>
-		</div>
-	</div>
-<!-- 	====  -->
+<h2>header11:${header11} login:${loginOK.name}</h2>
+<ul class="nav justify-content-end" style="height:50px;background-color:#ffa042;">
+
+  <li class="nav-item">
+    <a class="nav-link active" href="${pageContext.request.contextPath}/testgok" style="color:#ecffff;">測試gok</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="${pageContext.request.contextPath}/testhead" style="color:#ecffff;">測試head</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="${pageContext.request.contextPath}/testfoot" style="color:#ecffff">測試foot</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="${pageContext.request.contextPath}/productfile.s" style="color:#ecffff">訂購單</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="${pageContext.request.contextPath}/wade/showmap" style="color:#ecffff">google map</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="${pageContext.request.contextPath}/oldindex" style="color:#ecffff">舊index</a>
+  </li>
+  
+  <c:if test="${header11 != 2}" >
+	  <li class="nav-item">
+	    <a class="nav-link" href="${pageContext.request.contextPath}/goRegisterPage" style="color:#ecffff">註冊</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="${pageContext.request.contextPath}/login" style="color:#ecffff">登入</a>
+	  </li>
+  </c:if>
+  <c:if test="${header11 == 2}" >
+  	 	<li class="nav-item">
+  	 	<a class="navbar-brand" href="#">
+    		<img src="<c:url value='getmemberPicture/${loginOK.id}'/>" width="30" height="30" alt="">
+ 	 	</a>
+	  </li>
+  	 <li class="nav-item">
+	    <a class="nav-link" href="${pageContext.request.contextPath}/memberPage" style="color:#ecffff">${loginOK.name}</a>
+	  </li>
+	  <li class="nav-item">
+	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">購物車<span id="its">${its}件商品</span></button>
+	  </li>
+	  <li class="nav-item">
+	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">團購物車<span id=""></span></button>
+	  </li>
+  </c:if>
+</ul>
+
+
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"
-		style="width: 100%;margin-bottom: 0px;background-color:#b9b9ff;" >
+		style="width: 100%;margin-bottom: 20px;background-color:#b9b9ff;" >
 		<a href="${pageContext.request.contextPath}/index"> <img src="${pageContext.request.contextPath}/res/static/img/logo4.png"
 			width="130" height="130">
 		</a>
-<!-- 		<button class="navbar-toggler" type="button" data-toggle="collapse" -->
-<!-- 			data-target="#navbarSupportedContent" -->
-<!-- 			aria-controls="navbarSupportedContent" aria-expanded="false" -->
-<!-- 			aria-label="Toggle navigation"> -->
-<!-- 			<span class="navbar-toggler-icon"></span> -->
-<!-- 		</button> -->
-
+		
 		<div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left:120px">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/index" style="margin-right:25px;font-weight:bold">首頁</a></li>
-				
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="" id="navbarDropdown1" role="button" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false" style="margin-right:25px;font-weight:bold">瀏覽商品</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown1" style="text-align:center;">
 						<a class="dropdown-item" href="${pageContext.request.contextPath}/hao/products">所有商品</a>
+						<div class="dropdown-divider"></div>
 						<c:forEach var="category" items="${categoryList}">
-							<a class="dropdown-item" href="">${category.name}</a> 
+							<a class="dropdown-item" href="" style="line-height:2em">${category.name}</a> 
 						</c:forEach>
-<!-- 						<div class="dropdown-divider"></div> -->
 					</div>
 				</li>
 				
@@ -137,31 +116,16 @@ var y = x+1;
 						aria-haspopup="true" aria-expanded="false" style="margin-right:25px;font-weight:bold">瀏覽團購 </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown2" style="text-align:center;">
 						<a class="dropdown-item" href="${pageContext.request.contextPath}/frank/groups">所有團購</a>
+						<div class="dropdown-divider"></div>
 						<c:forEach var="category" items="${categoryList}">
-							<a class="dropdown-item" href="">${category.name}</a> 
+							<a class="dropdown-item" href="" style="line-height:2em">${category.name}</a> 
 						</c:forEach>
-<!-- 						<div class="dropdown-divider"></div> -->
 					</div>
 				</li>
 					
-				<li class="nav-item"><a class="nav-link" href="frank/Groups1" style="margin-right:25px;font-weight:bold">我要開團</a></li>
-
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/frank/Groups1" style="margin-right:25px;font-weight:bold">我要開團</a></li>
 			</ul>
-			
-			
-			
-<%-- 			<form action="${pageContext.request.contextPath}/leopard/showGroups"  method="POST" --%>
-<!-- 				class="form-inline my-2 my-lg-0"> -->
-<!-- 				<select name="sort"> -->
-<!-- 					<option value="1">找商品</option> -->
-<!-- 					<option value="2">找團</option> -->
-<!-- 				</select> -->
-<!-- 				<input class="form-control mr-sm-2" type="text" name="name" -->
-<!-- 					autocomplete="off" placeholder="您要搜尋團購還是商品？" -->
-<!-- 					aria-label="Search" style="width:300px"> -->
-<!-- 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">GO</button> -->
-<!-- 			</form> -->
-			
+					
 			
 				<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 				  <div class="btn-group mr-2" role="group" aria-label="First group">
@@ -178,25 +142,21 @@ var y = x+1;
 				  </form>
 				</div>
 				
-				
-			
-			
-			
 		</div>
 	</nav>
 	
 	
 	<!-- wade購物車 -->
-
+<c:if test="${header11==2}" >
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">您的購物車</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+    <div class="modal-content" style="text-align:center;">
+<!--       <div class="modal-header"> -->
+        <h3 class="modal-title" id="exampleModalLabel" style="margin-top:20px">您的購物車</h3>
+<!--         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+<!--           <span aria-hidden="true">&times;</span> -->
+<!--         </button> -->
+<!--       </div> -->
       <div class="modal-body" style="padding:0px;">
         <div class="cartdiv">
 			<table class="tb">
@@ -246,13 +206,13 @@ var y = x+1;
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">您的團購物車</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+    <div class="modal-content" style="text-align:center">
+<!--       <div class="modal-header"> -->
+        <h3 class="modal-title" id="exampleModalLabel" style="margin-top:20px">您的團購物車</h3>
+<!--         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+<!--           <span aria-hidden="true">&times;</span> -->
+<!--         </button> -->
+<!--       </div> -->
       <div class="modal-body" style="padding:0px;">
       
       
@@ -298,7 +258,7 @@ var y = x+1;
     </div>
   </div>
 </div>
-	
+	</c:if>
 <!-- wade 團團團購物車結束 -->
 </body>
 </html>

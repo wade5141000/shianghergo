@@ -43,6 +43,7 @@
 </style>
 </head>
 <body>
+
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
 	<div class="main-nav" style="padding-bottom: 500px;">
 	<ul class="layui-nav " lay-filter="" id="top">
@@ -66,6 +67,7 @@
 		<li class="layui-nav-item "><a href="/hao/buildStore"><i
 				class="layui-icon layui-icon-star"></i>我要開店</a></li>
 	</ul>
+
 	<section>
 		<div class="container">
 			<h1 style="text-align: center">修改商家資料</h1>
@@ -116,7 +118,9 @@
 			</fieldset>
 		</form:form>
 	</section>
+
 	</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
+
 </body>
 </html>
