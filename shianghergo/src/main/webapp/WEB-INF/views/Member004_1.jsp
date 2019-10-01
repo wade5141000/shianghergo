@@ -37,7 +37,7 @@ thead {
 	<table border="1" class="layui-table">
 
 		<tr id='borderA' height='50' >
-			<th id='borderA'  align="center">${loginOK.name}的商品明細</th>
+			<th id='borderA'  align="center"colspan="5">${loginOK.name}的商品明細</th>
 		</tr>
 		<tr id='borderA' height='36' >
 			<th id='borderA'>訂單編號</th>

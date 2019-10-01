@@ -46,7 +46,7 @@ public class LoginController {
 		// TODO 判断有无session，有直接到首页
 		if (request.getSession().getAttribute("account") != null
 				&& request.getSession().getAttribute("password") != null) {
-			return "MemberDL";
+			return "Member001";
 		}
 
 		return "loginNew";
@@ -58,7 +58,7 @@ public class LoginController {
 		// TODO 判断有无session，有直接到首页
 		if (request.getSession().getAttribute("account") != null
 				&& request.getSession().getAttribute("password") != null) {
-			return "MemberDL";
+			return "Member001";
 		}
 
 		return "loginNew";
@@ -104,20 +104,20 @@ public class LoginController {
 		
 		
 		// wade 購物車
-		HttpSession httpSession = rq.getSession();
-		List<CartBean> list2 = cartService.getCartItems(mb.getId());
-		httpSession.setAttribute("cartitems", list2);
-		long total = 0;
-		for(CartBean cb:list2) {
-			total += cb.getPrice()*cb.getAmount();
-		}
-		httpSession.setAttribute("total",total);
-		// ===== wade購物車
-		
+//		HttpSession httpSession = rq.getSession();
+//		List<CartBean> list2 = cartService.getCartItems(mb.getId());
+//		httpSession.setAttribute("cartitems", list2);
+//		long total = 0;
+//		for(CartBean cb:list2) {
+//			total += cb.getPrice()*cb.getAmount();
+//		}
+//		httpSession.setAttribute("total",total);
+//		// ===== wade購物車
+//		
 		if (mb != null&& mb.getStatus()!=null) {
 			if (mb.getAccount().equals(account) && mb.getPassword().equals(password) ) {
 				if(mb.getStatus()==1) {
-					return "MemberDL";
+					return "Member001";
 				}else {
 					return "wrongMember";
 				}

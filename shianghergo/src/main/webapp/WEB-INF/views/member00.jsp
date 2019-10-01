@@ -36,7 +36,9 @@
 </style>
 </head>
 <body>
-	<div class="layui-body" style="padding-left: 160px">
+<jsp:include page="eric/header.jsp" />
+<div class="main-nav" style="padding-bottom: 500px;">
+	<div class="layui-body" style="padding-top: 190px;padding-left: 500px;">
 		<!-- 内容主体区域 -->
 		<form id="saveForm" action="updateMember.do" method="post" class="layui-form"  enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${Member.id}" /> <input
@@ -84,7 +86,8 @@
 				</div>
 		</form>
 	</div>
-	
+	</div>
+	<jsp:include page="eric/foot.jsp" />
 </body>
 <script type="text/javascript">
 	// 	$(document).ready(function() {

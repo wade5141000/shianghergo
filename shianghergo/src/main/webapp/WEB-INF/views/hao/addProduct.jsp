@@ -19,6 +19,7 @@ fieldset {
 <title>Products</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/eric/header.jsp" />
 	<section>
 		<div class="container">
 			<h1 style="text-align: center">新增商品資料</h1>
@@ -31,10 +32,10 @@ fieldset {
 		<form:form method='POST' modelAttribute="itemBean"
 			class='form-horizontal' enctype="multipart/form-data">
 			<fieldset>
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for='name'>
+				<div class="form-group" >
+					<label class="control-label col-lg-4" for='name'>
 						商品名稱 </label>
-					<div class="col-lg-10">
+					<div class="col-lg-8">
 						<form:input id="name" path="name" type='text'
 							class='form:input-large' />
 					</div>
@@ -51,9 +52,9 @@ fieldset {
 				<!-- 				</div> -->
 
 				<div class="form-group">
-					<label class='control-label col-lg-2 col-lg-2' for="category_id">
+					<label class='control-label col-lg-4' for="category_id">
 						分類 </label>
-					<div class='col-lg-10'>
+					<div class='col-lg-8'>
 						<%-- 						<form:select id="category_id" required="required" path="category_id"> --%>
 						<%-- 							<form:option value="60001" selected="selected">團購美食</form:option> --%>
 						<%-- 							<form:option value="60002">保養美妝</form:option> --%>
@@ -68,9 +69,9 @@ fieldset {
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for='store_id'>
+					<label class="control-label col-lg-4" for='store_id'>
 						商店名稱 (store_id)</label>
-					<div class="col-lg-10">
+					<div class="col-lg-8">
 						<form:input id="store_id" path="store_id" type='text'
 							class='form:input-large' />
 					</div>
@@ -86,27 +87,27 @@ fieldset {
 <!-- 				</div> -->
 
 				<div class="form-group">
-					<label class='control-label col-lg-2 col-lg-2' for="price">
+					<label class='control-label col-lg-4' for="price">
 						價格 </label>
-					<div class='col-lg-10'>
+					<div class='col-lg-8'>
 						<form:input id="price" path="price" type='text'
 							class='form:input-large' />
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for='detail'>
+					<label class="control-label col-lg-4" for='detail'>
 						商品說明 </label>
-					<div class="col-lg-10">
+					<div class="col-lg-8">
 						<form:input id="detail" path="detail" type='text'
 							class='form:input-large' />
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class='control-label col-lg-2 col-lg-2' for="productImage">
+					<label class='control-label col-lg-4' for="productImage">
 						商品圖片 </label>
-					<div class='col-lg-10'>
+					<div class='col-lg-8'>
 						<form:input id="productImage" path="productImage" type='file'
 							class='form:input-largt' />
 					</div>
@@ -121,5 +122,6 @@ fieldset {
 			</fieldset>
 		</form:form>
 	</section>
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>

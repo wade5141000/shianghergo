@@ -2808,7 +2808,7 @@ a cite {
 }
 
 .layui-table img {
-	max-width: 100px
+	max-width: 500px
 }
 
 .layui-table[lay-size=lg] td, .layui-table[lay-size=lg] th {
