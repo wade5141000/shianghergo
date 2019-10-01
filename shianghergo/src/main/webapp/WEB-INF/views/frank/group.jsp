@@ -35,6 +35,7 @@ function addGroupCart(item_id,groups_id){
 		success:function(data){
 			if(data==1){
 				alert("添加成功");
+				window.location.reload();
 			}else{
 				alert("不可添加其他團商品");
 			}
