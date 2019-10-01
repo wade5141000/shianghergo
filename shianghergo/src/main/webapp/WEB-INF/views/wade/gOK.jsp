@@ -73,6 +73,29 @@ tr:last-child td:last-child{
 			</tr>
 
 		</table>
+		
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+			團購明細</button>
+  		<div class="collapse" id="collapseExample">
+  			<table style="margin:15px auto;width:450px;border-collapse: separate;border-spacing: 0;">
+				<tr>
+					<td>商品名稱</td>
+					<td>單價</td>
+					<td>數量</td>
+				</tr>
+				<c:forEach var="item" items="${orderDetail}">
+					<tr>
+						<td>${item.name}</td>
+						<td>${item.price}</td>
+						<td>${item.amount}</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		
+		
+		
+		
 	</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 </body>

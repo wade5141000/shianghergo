@@ -62,7 +62,7 @@ public class HomeController {
 	
 	@RequestMapping("/testgok")
 	public String Testgok() {
-		return "wade/detail";
+		return "wade/hotsell";
 	}
 	
 	// 前端測試尾端
