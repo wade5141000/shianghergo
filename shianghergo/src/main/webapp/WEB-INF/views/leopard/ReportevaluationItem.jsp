@@ -78,12 +78,19 @@
 		for (let i = 0; i < n; i++) {
 
 			document.images[i - 1 + 1].src = "${pageContext.request.contextPath}/resources/images/chngstar.gif"
-			document.getElementById("str").innerHTML = "是否要給" + (i + 1) + "分";
+			document.getElementById("str").innerHTML = "給" + (i + 1) + "星";
 			document.getElementById("score").value = i + 1;
 		}
 
 	}
+
+	function targer(myObj) {
+
+		document.getElementById("item_id").value = myObj.value;
+	}
 </script>
+
+
 <style>
 .s1 {
 	width: 40px;
@@ -91,6 +98,67 @@
 </style>
 </head>
 <body>
+
+	<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"
+						style="margin-left: 180px; color: blue;">評價商品</h5>
+				
+
+					<div class="form-group">
+						<label for="recipient-name" class="col-form-label"></label>
+					</div>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="evaluationitem" method="POST">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">評分: </label> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star1" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star2" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star3" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star4" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star5" class="s1">
+
+						</div>
+						<div>
+							<span class="c1" id="str"></span>
+						</div>
+
+					
+						<!--使用者會員ID -->
+						<input type=hidden value="${id}" name="member_id">
+						<!--被評價的商家ID -->
+						<input type=hidden value="1" name="item_id" id="item_id">
+						<!--取的被選中的星星 -->
+						<input type=hidden value="1" name="score" id="score">
+
+						<div class="form-group">
+							<label for="message-text" class="col-form-label">評價內容:</label>
+							<textarea class="form-control" id="message-text" name="contents"></textarea>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">清除</button>
+							<button type="submit" class="btn btn-primary">確認評分</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<p>登入會員id${id}</p>
 
@@ -106,90 +174,35 @@
 				<th scope="col">商品數量</th>
 				<th scope="col"></th>
 				<th scope="col"></th>
+				<th scope="col"></th>
+				<th scope="col"></th>
+				<th scope="col"></th>
+				<th scope="col"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var='items' items='${item}'>
-				<th scope="row">O</th>
-				<td>${items.id}</td>
-				<td>${items.name}</td>
-				<td>${items.detail}</td>
-				<td>${items.price}</td>
-				<td>${items.reserve}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<!--會員評價商品 -->
-				<td>
-				
-					<div class="modal fade" id="exampleModal1" tabindex="-1"
-						role="dialog" aria-labelledby="exampleModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">給予</h5>
-
-									<div class="form-group" style="text-align: center;">
-										<label for="recipient-name" class="col-form-label">評價商家:${Stores.id}</label>
-									</div>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<form action="evaluationitem" method="POST">
-										<div class="form-group">
-											<label for="recipient-name" class="col-form-label">評分對象:
-											</label> <img
-												src="${pageContext.request.contextPath}/resources/images/star.gif"
-												id="star1" class="s1"> <img
-												src="${pageContext.request.contextPath}/resources/images/star.gif"
-												id="star2" class="s1"> <img
-												src="${pageContext.request.contextPath}/resources/images/star.gif"
-												id="star3" class="s1"> <img
-												src="${pageContext.request.contextPath}/resources/images/star.gif"
-												id="star4" class="s1"> <img
-												src="${pageContext.request.contextPath}/resources/images/star.gif"
-												id="star5" class="s1">
-
-										</div>
-										<div>
-											<span class="c1" id="str"></span>
-										</div>
-
-										<hr>
-										<!--使用者會員ID -->
-										<input type=hidden value="${id}" name="member_id">
-										<!--被評價的商家ID -->
-										<input type=hidden value="${items.id}" name="items_id">
-										<!--取的被選中的星星 -->
-										<input type=hidden value="1" name="score" id="score">
-
-										<div class="form-group">
-											<label for="message-text" class="col-form-label">評價內容:</label>
-											<textarea class="form-control" id="message-text"
-												name="contents"></textarea>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary"
-												data-dismiss="modal">清除</button>
-											<button type="submit" class="btn btn-primary">確認評分${items.id}</button>
-										</div>
-									</form>
-
-								</div>
-							</div>
-						</div>
-					</div>
-					<button type="button" class="btn btn-primary" data-toggle="modal"
-						data-target="#exampleModal1" data-whatever="@fat">評價</button>
-			
-		</tr>
-
+				<tr>
+					<th scope="row">O</th>
+					<td>${items.id}</td>
+					<td>${items.name}</td>
+					<td>${items.detail}</td>
+					<td>${items.price}</td>
+					<td>${items.reserve}</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-target="#exampleModal1" id="target" value='${items.id}'
+							onclick="targer(this)">評價</button>
+					<td>
 			</c:forEach>
+
+
+
+
 		</tbody>
 	</table>
 </body>

@@ -33,18 +33,26 @@ public class ALLController {
 
 //------------登入------------------------------------	
 
+	// 轉管理員登入頁面
 	@RequestMapping("leopard/login")
 	public String Login() {
 
 		return "leopard/adminLogin";
 	}
 
-//----------------登入時 取得登入會員的MemberID--------------
-	@RequestMapping("leopard/login.do")
-	public String adminLogin(String account, Model model) {
+	// 測試會員
+	@RequestMapping("leopard/testlogin")
+	public String testLogin() {
+
+		return "leopard/testLogin";
+	}
+
+//----------------登入時會員取得會員的MemberID--------------
+	@RequestMapping("leopard/testlogin.do")
+	public String testLogin(String account, Model model) {
 
 		Integer id = service.loginMember(account);
-	
+
 		model.addAttribute("id", id);
 
 		List<Category_ReportBean> list = service.getCategoryReport();
@@ -54,7 +62,29 @@ public class ALLController {
 		model.addAttribute("Member", mem);
 
 		return "leopard/adminMember";
-		
+
+	}
+
+// 管理員登入 //
+	@RequestMapping("leopard/login.do")
+	public String adminLogin(String account, String password, Model model) {
+
+		if (account.equals("admin") && password.equals("1009")) {
+
+			List<Category_ReportBean> list = service.getCategoryReport();
+			List<MemberBean> mem = service.getMember();
+
+			model.addAttribute("list", list);
+			model.addAttribute("Member", mem);
+
+			return "leopard/adminMember";
+
+		} else {
+
+			return "leopard/adminLogin";
+
+		}
+
 	}
 
 //--後台功能 1.警告2. 停權3.停權取消4.違規處理(商家跟會員)//---------------------------------------
@@ -378,7 +408,7 @@ public class ALLController {
 
 	}
 
-    //會員評價商家	
+	// 會員評價商家
 	@RequestMapping("leopard/evaluationStore")
 	public String evaluationStore2(comment_store cs, Model model) {
 
@@ -397,21 +427,19 @@ public class ALLController {
 //----------------------會員評價商品--------------------------		
 
 	// 測試的顯示商品畫面
-		@RequestMapping("leopard/reportAndevaItem")
-		public String reportAndevaItem(Model model) {
+	@RequestMapping("leopard/reportAndevaItem")
+	public String reportAndevaItem(Model model) {
 
+		List<ItemBean> list = service.getAllItem();
 
-			List<ItemBean> list = service.getAllItem();
+		model.addAttribute("item", list);
 
-			model.addAttribute("item", list);
+		return "leopard/ReportevaluationItem";
 
-			return "leopard/ReportevaluationItem";
-
-		}
-	
+	}
 
 	@RequestMapping("leopard/evaluationitem")
-	public String evaluationitem2(comment_item ci,Model model) {
+	public String evaluationitem2(comment_item ci, Model model) {
 
 		service.savecomment_Item(ci);
 

@@ -41,7 +41,7 @@ font-size: 25px;
 </head>
 <body>
 	<div class="container">
-		<h1 style="margin-left: 480px;">管理員登入</h1>
+		<h1 style="margin-left: 480px;">測試會員登入</h1>
 
 
 		<img class="img" alt="管理員"
@@ -51,16 +51,16 @@ font-size: 25px;
 		<div class="admin">
 
 
-			<form action="login.do" method="POST">
+			<form action="testlogin.do" method="POST">
 
 				<div class="input-group input-group-lg">
-					<span class="input-group-addon" id="sizing-addon1">管理員帳號</span> <input
+					<span class="input-group-addon" id="sizing-addon1">會員帳號</span> <input
 						type="text" name="account" class="form-control"
 						aria-describedby="sizing-addon1">
 				</div>
 
 				<div class="input-group input-group-lg">
-					<span class="input-group-addon" id="sizing-addon1">管理員密碼</span> <input
+					<span class="input-group-addon" id="sizing-addon1">會員密碼</span> <input
 						type="password" name="password" class="form-control"
 						aria-describedby="sizing-addon1">
 				</div>
