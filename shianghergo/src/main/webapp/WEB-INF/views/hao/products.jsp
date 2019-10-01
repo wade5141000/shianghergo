@@ -33,7 +33,7 @@
 </script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/eric/header.jsp" ></jsp:include>
+	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
 	<div class="site-nav-bg">
 		<div class="site-nav w1200">
 			<p class="sn-back-home">
@@ -221,12 +221,16 @@
 												</a>
 											</div>
 											<div class="text">
-												<p class="title">&nbsp;&nbsp;&nbsp;&nbsp;${product.name }
-													<span class="pri"  style="float:right;font-size:20px;color:gray;"><del>${product.price+100 }元</del>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-												 </p>
+												<p class="title">
+													&nbsp;&nbsp;&nbsp;&nbsp;${product.name } <span class="pri"
+														style="float: right; font-size: 20px; color: gray;"><del>${product.price+100 }元</del>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+												</p>
 												<p class="price">
-													<button class="layui-btn  layui-btn-danger car-btn" style="width:140px;height:40px;float:left;" ><i class="layui-icon layui-icon-cart-simple"></i>加入購物車</button>
-													<span class="pri"  style="float:right;font-size:24px;">${product.price }元&nbsp;&nbsp;&nbsp;&nbsp;</span>
+													<button class="layui-btn  layui-btn-danger car-btn"
+														style="width: 140px; height: 40px; float: left;">
+														<i class="layui-icon layui-icon-cart-simple"></i>加入購物車
+													</button>
+													<span class="pri" style="float: right; font-size: 24px;">${product.price }元&nbsp;&nbsp;&nbsp;&nbsp;</span>
 												</p>
 											</div>
 										</div>
@@ -245,7 +249,8 @@
 			<section>
 				<div>
 					<div class="container" style="text-align: center">
-						<h1>商品清單</h1><a href="../cart">進入購物車</a>
+						<h1>商品清單</h1>
+						<a href="../cart">進入購物車</a>
 					</div>
 				</div>
 			</section>
