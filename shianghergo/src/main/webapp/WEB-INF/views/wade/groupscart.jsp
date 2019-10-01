@@ -13,7 +13,7 @@
 <title>groups cart</title>
 </head>
 <body>
-	<div class="cartdiv">
+	<div class="gscartdiv">
 		<table class="tb">
 			<tr>
 				<th>我想團...</th>

@@ -82,4 +82,10 @@ public class ProductServiceImpl implements ProductService {
 		n = dao.deleteProduct(id);
 		return n;
 	}
+	
+	@Transactional
+	@Override
+	public String getStoreNameByMemberId(int member_id) {
+		return dao.getStoreNameByMemberId(member_id);
+	}
 }

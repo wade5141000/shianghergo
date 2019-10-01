@@ -209,11 +209,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/hao/products/add", method = RequestMethod.GET)
-	public String getAddNewProductForm(Model model) {
+	public String getAddNewProductForm(@ModelAttribute("loginOK")MemberBean mb, Model model) {
 		ItemBean bb = new ItemBean();
 		List<CategoryBean> list =service.getAllCategories();
 		model.addAttribute("itemBean", bb);
 		model.addAttribute("category", list);
+		model.addAttribute("storeName", service.getStoreNameByMemberId(mb.getId()));
 		return "hao/addProduct";
 	}
 

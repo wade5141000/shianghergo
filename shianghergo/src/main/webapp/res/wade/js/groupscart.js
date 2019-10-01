@@ -1,14 +1,14 @@
-function changeAmount(id,types){
+function changeGroupAmount(id,types){
 		if($("#"+id).text()==1 && types ==2){
 			alert("商品數量不可低於1")
 		}else{
-			var total2 = $("#total").text();
+			var total2 = $("#gtotal").text();
 			$.ajax({
-				url:"changeGroupsAmount?id="+id+"&type="+types+"&total="+total2,
+				url:"http://localhost:8080/shianghergo/changeGroupsAmount?id="+id+"&type="+types+"&total="+total2,
 				type:"get",
 				success:function(data){
 					list = data.split(",");
-					$("#total").text(list[0]);
+					$("#gtotal").text(list[0]);
 					$("#"+list[2]).html(list[1]);
 					$("#"+id+"a").text(list[3]);
 				},
@@ -19,14 +19,14 @@ function changeAmount(id,types){
 
 
 
-function deletetr(it,id){
+function gdeletetr(it,id){
 		if(confirm("是否刪除商品?")){
 			$.ajax({
-				url:"deletegroups?id="+id,
+				url:"http://localhost:8080/shianghergo/deletegroups?id="+id,
 				type:"get",
 				success:function(data){
 					$(it.parentNode.parentNode).remove();
-					$("#total").text($("#total").text()-data);
+					$("#gtotal").text($("#gtotal").text()-data);
 				},
 			})
 			

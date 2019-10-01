@@ -108,4 +108,16 @@ public class ProductDaoImpl implements ProductDao {
 		n++;
 		return n;
 	}
+	
+	@Override
+	public String getStoreNameByMemberId(int member_id) {
+//		StoreBean cb = null;
+		String hql = "select name FROM StoreBean where member_id=:member_id";
+
+		Session session = factory.getCurrentSession();
+
+		String list = (String) session.createQuery(hql).setParameter("member_id", member_id).getSingleResult();
+
+		return list;
+	}
 }

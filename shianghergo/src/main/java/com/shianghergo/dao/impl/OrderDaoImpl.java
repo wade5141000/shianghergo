@@ -93,4 +93,10 @@ public class OrderDaoImpl implements OrderDao {
 		
 	}
 
+	@Override
+	public OrderBean getOrderById(Integer order_id) {
+		Session session = factory.getCurrentSession();
+		return session.get(OrderBean.class, order_id);
+	}
+
 }

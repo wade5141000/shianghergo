@@ -73,7 +73,7 @@ fieldset {
 						商店名稱 (store_id)</label>
 					<div class="col-lg-8">
 						<form:input id="store_id" path="store_id" type='text'
-							class='form:input-large' />
+							class='form:input-large' value="${storeName }" />
 					</div>
 				</div>
 

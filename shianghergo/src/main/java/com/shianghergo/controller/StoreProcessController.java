@@ -96,6 +96,18 @@ public class StoreProcessController {
 		
 		ItemBean ib = itemService.getItemById(item_id);
 		cartService.saveToCart(ib,member.getId());
+		
+		HttpSession httpSession = re.getSession();
+		List<CartBean> list2 = cartService.getCartItems(member.getId());
+		httpSession.setAttribute("cartitems", list2);
+		long total2 = 0;
+		for(CartBean ccb:list2) {
+			total2 += ccb.getPrice()*ccb.getAmount();
+		}
+		httpSession.setAttribute("total",total2);
+		httpSession.setAttribute("its",list2.size());
+		
+		
 		try {
 			rp.getWriter().write("");
 		} catch (IOException e) {
@@ -109,6 +121,16 @@ public class StoreProcessController {
 		List<CartBean> list = cartService.getCartItems(mId);
 		ObjectMapper mapper = new ObjectMapper();
 		String result = "";
+		
+		HttpSession httpSession = re.getSession();
+		List<CartBean> list2 = cartService.getCartItems(mId);
+		httpSession.setAttribute("cartitems", list2);
+		long total2 = 0;
+		for(CartBean ccb:list2) {
+			total2 += ccb.getPrice()*ccb.getAmount();
+		}
+		httpSession.setAttribute("total",total2);
+		httpSession.setAttribute("its",list2.size());
 		
 		try {
 			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list);
@@ -134,6 +156,7 @@ public class StoreProcessController {
 			total += cb.getPrice()*cb.getAmount();
 		}
 		model.addAttribute("total",total);
+		model.addAttribute("its",list.size());
 		return "wade/cart";
 	}
 	
@@ -164,6 +187,7 @@ public class StoreProcessController {
 			total2 += ccb.getPrice()*ccb.getAmount();
 		}
 		httpSession.setAttribute("total",total2);
+		httpSession.setAttribute("its",list2.size());
 		
 		try {
 			rp.getWriter().write(result);
@@ -189,7 +213,7 @@ public class StoreProcessController {
 			total2 += ccb.getPrice()*ccb.getAmount();
 		}
 		httpSession.setAttribute("total",total2);
-		
+		httpSession.setAttribute("its",list2.size());
 		
 		
 		try {
@@ -234,7 +258,7 @@ public class StoreProcessController {
 		obj.setNeedExtraPaidInfo("N");
 		obj.setRedeem("N");
 		//  (返回商店按鈕 無付款結果)
-		obj.setClientBackURL("http:/localhost:8080/shianghergo/orderlist");
+		obj.setClientBackURL("http:/localhost:8080/shianghergo/payResult?oId="+order_id);
 		// 直接重新導向 (有付款結果)
 		// obj.setOrderResultURL("http:/localhost:8080/mvcExercise/ECPayResult.do");
 		String form = all.aioCheckOut(obj, null);
@@ -243,12 +267,13 @@ public class StoreProcessController {
 		return "wade/ECPayForm";
 	}
 	
-	@RequestMapping("orderlist")
-	public String orderList(@ModelAttribute("loginOK")MemberBean member,Model model,HttpServletRequest re) {
-		int mId = member.getId();
-		List<OrderBean> list = orderService.getOrderBeanByMemeber(mId);
-		model.addAttribute("orders",list);
-		return "wade/myorderlist";
+	@RequestMapping("payResult")
+	public String payResult(Model model,@RequestParam("oId")Integer oId) {
+		
+		System.out.println("pay result:" + oId);
+		OrderBean ob = orderService.getOrderById(oId);
+		model.addAttribute("order",ob);
+		return "wade/payresult";
 	}
 	
 	@RequestMapping("orderdetail/{id}")
@@ -265,8 +290,22 @@ public class StoreProcessController {
 		int mId = member.getId();
 		int order_id = orderService.addOrder(mId);
 		List<OrderDetailBean> list = orderDetailService.getOrderDetail(order_id);
+		OrderBean ob = orderService.getOrderById(order_id);
 		model.addAttribute("details",list);
-		model.addAttribute("order_id",order_id);
+		model.addAttribute("order",ob);
+		
+		
+		HttpSession httpSession = re.getSession();
+		List<CartBean> list2 = cartService.getCartItems(mId);
+		httpSession.setAttribute("cartitems", list2);
+		long total2 = 0;
+		for(CartBean ccb:list2) {
+			total2 += ccb.getPrice()*ccb.getAmount();
+		}
+		httpSession.setAttribute("total",total2);
+		httpSession.setAttribute("its",list2.size());
+		
+		
 		return "wade/detail";
 	}
 	

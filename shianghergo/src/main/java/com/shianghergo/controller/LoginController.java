@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.shianghergo.model.CartBean;
+import com.shianghergo.model.GroupsCartBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.service.CartService;
+import com.shianghergo.service.GroupsCartService;
 import com.shianghergo.service.MemberService;
 
 
@@ -33,6 +35,9 @@ public class LoginController {
 	
 	@Autowired
 	CartService cartService;
+	
+	@Autowired
+	GroupsCartService groupsCartService;
 
 //	@RequestMapping(value = "/login", method = RequestMethod.GET)
 //	public String getLoginForm(Model model) {
@@ -102,18 +107,29 @@ public class LoginController {
 		model.addAttribute("loginOK", mb);
 		// 向ModelMap视图中添加一个Session级别存储的属性
 		
+
+		HttpSession httpSession = rq.getSession();
+		List<CartBean> list2 = cartService.getCartItems(mb.getId());
+		httpSession.setAttribute("cartitems", list2);
+		long total = 0;
+		for(CartBean cb:list2) {
+			total += cb.getPrice()*cb.getAmount();
+		}
+		httpSession.setAttribute("total",total);
+		httpSession.setAttribute("its",list2.size());
+		// ===== wade購物車
 		
-		// wade 購物車
-//		HttpSession httpSession = rq.getSession();
-//		List<CartBean> list2 = cartService.getCartItems(mb.getId());
-//		httpSession.setAttribute("cartitems", list2);
-//		long total = 0;
-//		for(CartBean cb:list2) {
-//			total += cb.getPrice()*cb.getAmount();
-//		}
-//		httpSession.setAttribute("total",total);
-//		// ===== wade購物車
-//		
+		// wade 團購物車
+		List<GroupsCartBean> list3 = groupsCartService.getGroupsCartItems(mb.getId());
+		httpSession.setAttribute("gcartitems", list3);
+		long gtotal = 0;
+		for(GroupsCartBean cb:list3) {
+			gtotal += cb.getPrice()*cb.getAmount();
+		}
+		httpSession.setAttribute("gtotal",gtotal);
+//		httpSession.setAttribute("its",list2.size());
+		// ===== wade團購物車
+
 		if (mb != null&& mb.getStatus()!=null) {
 			if (mb.getAccount().equals(account) && mb.getPassword().equals(password) ) {
 				if(mb.getStatus()==1) {

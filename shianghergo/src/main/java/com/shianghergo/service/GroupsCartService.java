@@ -10,4 +10,5 @@ public interface GroupsCartService {
 	int addToCart(Integer mId,Groups_ItemBean ib);
 	int deleteCartBeanById(Integer cart_id);
 	GroupsCartBean updateCartBeanById(Integer cart_id,String type);
+	GroupsCartBean getGroupsCartItemById(Integer cart_id);
 }

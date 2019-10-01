@@ -13,7 +13,9 @@ public interface ProductService {
 	public ItemBean getProductById(int productId);
 	
 	void addProduct(ItemBean product,Integer category_id);
+	
 	StoreBean getStoreById(int store_id);
+	
 	List<StoreBean> getStoreList();
 	
 	List<CategoryBean> getAllCategories();
@@ -22,4 +24,5 @@ public interface ProductService {
 
 	int deleteProduct(int id);
 	
+	public String getStoreNameByMemberId(int member_id);
 }

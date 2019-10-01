@@ -40,7 +40,16 @@
 						</p>
 						<p>商店名稱：${store.name }</p>
 						<p>商店介紹：${store.detail }</p>
-						<p>目前狀態：${store.status }</p>
+						<c:set var="status" scope="session" value="${store.status }" />
+						<c:if test="${status == 1 }">
+							<p>目前狀態：正常</p>
+						</c:if>
+						<c:if test="${status == 2 }">
+							<p>目前狀態：禁用</p>
+						</c:if>
+						<c:if test="${status == 3 }">
+							<p>目前狀態：關閉</p>
+						</c:if>
 						<p>
 							<a href="<spring:url value='store?id=${store.id }' />"
 								class="btn btn-primary">
