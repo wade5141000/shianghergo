@@ -3,18 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/static/css/main.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/layui/css/layui.css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script> -->
+<!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script> -->
+<!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script> -->
+<!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script> -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script> -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -35,49 +29,31 @@ thead {
 </head>
 <body >
 <jsp:include page="eric/header.jsp" />
-		<div class="main-nav" style="padding-bottom: 500px;">
-			<ul class="layui-nav " lay-filter="" id="top">
-				<li class="layui-nav-item"><a href="Member002"><i
-						class="layui-icon layui-icon-star"></i>我購買的商品</a></li>
-				<li class="layui-nav-item "><a href="Member003"><i
-						class="layui-icon layui-icon-star"></i>我建立的合購</a></li>
-				<li class="layui-nav-item "><a href="Member004"><i
-						class="layui-icon layui-icon-star"></i>我參與的合購</a></li>
-				<li class="layui-nav-item "><a href="getMyMessage"><i
-						class="layui-icon layui-icon-star"></i>我的留言板</a></li>
-				<!-- 			<li class="layui-nav-item"><a href="goRegisterPage">加入會員</a></li> -->
-				<li class="layui-nav-item layui-this"><a href="MyMessage"><i
-						class="layui-icon layui-icon-star"></i>寄件備份</a></li>
-				<li class="layui-nav-item "><a href="Member001"> <img
-						src="<c:url value='getmemberPicture/${loginOK.id}'/>"
-						class="layui-nav-img">${loginOK.name}
-				</a></li>
-				<li class="layui-nav-item"><a href="logout"><i
-						class="layui-icon layui-icon-star"></i>登出</a></li>
-			</ul>
+		<div style="padding-bottom: 500px;">
+			<jsp:include page="shianghergo/../BlackLine.jsp" />
 	<div style="padding-left: 350px; padding-right: 350px;">
-	<table class="layui-table">
-		<tr id='borderA' height='50' >
-			<th id='borderA'  align="center">我的留言(寄件備份)</th>
+	<table class="table table-hover">
+		<tr id='borderA'>
+			<th id='borderA' >我的留言(寄件備份)</th>
 		</tr>
-		<tr id='borderA' height='36' >
-			<th id='borderA'>留言編號</th>
-			<th id='borderA'>留言者</th>
-			<th id='borderA'>標題</th>
-			<th id='borderA'>內容	</th>
-			<th id='borderA'>時間</th>
+		<tr id='borderA' >
+			<th scope="col" id='borderA'>留言編號</th>
+			<th scope="col" id='borderA'>留言者</th>
+			<th scope="col" id='borderA'>標題</th>
+			<th scope="col" id='borderA'>內容	</th>
+			<th scope="col" id='borderA'>時間</th>
 		</tr>
 		<c:forEach var="MyMesg"  items="${MyMessage}">
-			<TR id='borderA' height='30'>
-			<TD id='borderA'  align="center">&nbsp;${MyMesg.id}</TD>
-			<TD id='borderA'  align="left">
+			<TR id='borderA' >
+			<TD id='borderA' >&nbsp;${MyMesg.id}</TD>
+			<TD id='borderA' >
 			    <a  href="<c:url value='sendMemberMessage?target=${MyMesg.memberBean.id}' />">
 				    ${MyMesg.memberBean.id}
 			    </a>
 			</TD>
-			<TD id='borderA'  align="center">${MyMesg.title}</TD>
-			<TD id='borderA'  align="center">&nbsp;${MyMesg.contents}</TD>
-			<TD id='borderA'  align="center">${MyMesg.time}</TD>			
+			<TD id='borderA' >${MyMesg.title}</TD>
+			<TD id='borderA' >&nbsp;${MyMesg.contents}</TD>
+			<TD id='borderA' >${MyMesg.time}</TD>			
 		</TR>
 		</c:forEach>
 	</TABLE>
