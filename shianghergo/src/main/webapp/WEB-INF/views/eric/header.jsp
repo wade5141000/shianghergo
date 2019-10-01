@@ -31,6 +31,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/res/wade/js/cart.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/wade/css/cart.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/res/wade/js/groupscart.js"></script>
+
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 </head>
 <!-- 這段勿刪 wade -->
 <script>

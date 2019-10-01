@@ -3,18 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/static/css/main.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/layui/css/layui.css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script> -->
+<!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script> -->
+<!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script> -->
+<!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script> -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script> -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -34,30 +28,34 @@ thead {
 </style>
 </head>
 <body >
-	<table border="1" class="layui-table">
-
+<jsp:include page="eric/header.jsp" />
+<jsp:include page="BlackLine.jsp" />
+<div  style="padding-bottom: 500px;">
+	<div style="padding-left: 350px; padding-right: 350px;">
+	<table class="table table-hover">
 		<tr id='borderA' height='50' >
-			<th id='borderA'  align="center"colspan="5">${loginOK.name}的商品明細</th>
+			<th id='borderA'  align="left"colspan="5">${loginOK.name}的商品明細</th>
 		</tr>
 		<tr id='borderA' height='36' >
-			<th id='borderA'>訂單編號</th>
-			<th id='borderA'>商品編號</th>
-			<th id='borderA'>商品名稱</th>
-			<th id='borderA'>數量</th>
-			<th id='borderA'>價格</th>
+			<th scope="col" id='borderA'>訂單編號</th>
+			<th scope="col" id='borderA'>商品編號</th>
+			<th scope="col" id='borderA'>商品名稱</th>
+			<th scope="col" id='borderA'>數量</th>
+			<th scope="col" id='borderA'>價格</th>
 		</tr>
 		<c:forEach var="anGOrderD"  items="${MyGroupsListD}">
 			<TR id='borderA' height='30'>
-			<TD id='borderA' width="86" align="center">${anGOrderD.groups_order_info_id}</TD>
-			<TD id='borderA' width="80" align="right">${anGOrderD.groups_item_id}</TD>
-			<TD id='borderA' width="100" align="center">${anGOrderD.name}</TD>
-			<TD id='borderA' width="100" align="left">&nbsp;${anGOrderD.amount}</TD>				
-			<TD id='borderA' width="80" align="right">${anGOrderD.price}</TD>
+			<TD id='borderA' width="80" >${anGOrderD.groups_order_info_id}</TD>
+			<TD id='borderA' width="80" >${anGOrderD.groups_item_id}</TD>
+			<TD id='borderA' width="80" >${anGOrderD.name}</TD>
+			<TD id='borderA' width="80" >&nbsp;${anGOrderD.amount}</TD>				
+			<TD id='borderA' width="80" >${anGOrderD.price}</TD>
 			
 		</TR>
 		</c:forEach>
 		
 	</TABLE>
-
+	</div>
+</div>
 </body>
 </html>
