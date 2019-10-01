@@ -27,4 +27,8 @@ public interface ProductDao {
 	CategoryBean getCategoryById(Integer category_id);
 	
 	public String getStoreNameByMemberId(int member_id);
+	
+	public String getStoreIdByName(String store_name);
+	
+	public Integer getStoreIdByMemberId(Integer store_id);
 }

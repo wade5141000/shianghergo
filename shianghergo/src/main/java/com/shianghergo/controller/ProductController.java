@@ -214,7 +214,7 @@ public class ProductController {
 		List<CategoryBean> list =service.getAllCategories();
 		model.addAttribute("itemBean", bb);
 		model.addAttribute("category", list);
-		model.addAttribute("storeName", service.getStoreNameByMemberId(mb.getId()));
+		model.addAttribute("store_id", service.getStoreIdByMemberId(mb.getId()));
 		return "hao/addProduct";
 	}
 

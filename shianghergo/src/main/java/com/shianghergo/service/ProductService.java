@@ -25,4 +25,8 @@ public interface ProductService {
 	int deleteProduct(int id);
 	
 	public String getStoreNameByMemberId(int member_id);
+	
+	public String getStoreIdByName(String store_name);
+
+	public Integer getStoreIdByMemberId(int member_id);
 }

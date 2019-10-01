@@ -88,4 +88,16 @@ public class ProductServiceImpl implements ProductService {
 	public String getStoreNameByMemberId(int member_id) {
 		return dao.getStoreNameByMemberId(member_id);
 	}
+
+	@Transactional
+	@Override
+	public String getStoreIdByName(String store_name) {
+		return dao.getStoreIdByName(store_name);
+	}
+	
+	@Transactional
+	@Override
+	public Integer getStoreIdByMemberId(int member_id) {
+		return dao.getStoreIdByMemberId(member_id);
+	}
 }

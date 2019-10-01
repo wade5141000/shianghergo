@@ -28,6 +28,7 @@
 </script>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
 	<section>
 		<div class="container">
 			<h1 style="text-align: center">修改商家資料</h1>
@@ -58,8 +59,9 @@
 					<label class='control-label col-lg-2 col-lg-2' for="detail">
 						商店介紹 </label>
 					<div class='col-lg-10'>
-						<form:input id="detail" path="detail" type='text' style="width:400px;height:120px;"
-							class='form:input-large' value='${store.detail }' />
+						<form:input id="detail" path="detail" type='text'
+							style="width:400px;height:120px;" class='form:input-large'
+							value='${store.detail }' />
 					</div>
 				</div>
 
@@ -77,5 +79,6 @@
 			<button type="submit" class="btn btn-success" onclick="close()">關閉商店</button>
 		</form>
 	</section>
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 </body>
 </html>

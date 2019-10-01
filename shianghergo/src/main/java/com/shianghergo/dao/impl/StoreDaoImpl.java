@@ -122,12 +122,13 @@ public class StoreDaoImpl implements StoreDao {
 	public StoreBean getStoreByMember_Id(Integer member_id) {
 		Session session = factory.getCurrentSession();
 		String hql = "FROM StoreBean where member_id=:member_id";
-		Object result = session.createQuery(hql).setParameter("member_id", member_id).getSingleResult();
-		if(result==null) {
-			return null;
+//		Object result = session.createQuery(hql).setParameter("member_id", member_id).getSingleResult();
+		List list = session.createQuery(hql).setParameter("member_id", member_id).getResultList();
+//		StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("member_id", member_id);
+		if(list.size()>0) {
+			return (StoreBean) list.get(0);
 		}else {
-			StoreBean bb = (StoreBean) session.createQuery(hql).setParameter("member_id", member_id).getSingleResult();
-			return bb;
+			return null;
 		}
 	}
 }
