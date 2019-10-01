@@ -7,22 +7,31 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.shianghergo.model.CategoryBean;
+import com.shianghergo.model.ItemBean;
 import com.shianghergo.service.CartService;
 import com.shianghergo.service.GroupsService;
+import com.shianghergo.service.ProductService;
 
 @Controller
 @SessionAttributes("loginOK")
 public class HomeController {
 	
+	private static int temp = 1;
 	@Autowired
 	GroupsService groupsService;
 	
 	@Autowired
 	CartService cartService;
+	
+	@Autowired
+	ProductService service;
+	
+	
 	
 	@RequestMapping("/goRegisterPage")
 	public String goRegisterPage() {
@@ -33,12 +42,20 @@ public class HomeController {
 	//------------------------- 以上聖捷
 
 	@RequestMapping(value = { "/", "/index" })
-	public String index(HttpServletRequest rq) {
+	public String index(HttpServletRequest rq,Model model) {
 		HttpSession httpSession = rq.getSession();
+		
+		if(temp == 1) {
+			httpSession.setAttribute("header11", 1);
+			temp++;
+		}
+		
+		
 		
 		List<CategoryBean> list = groupsService.getCategoryList();
 		httpSession.setAttribute("categoryList", list);
-		
+		List<ItemBean> list2 = service.getAllProducts();
+		model.addAttribute("aaa",list2);
 		
 		return "index";
 	}
@@ -62,7 +79,7 @@ public class HomeController {
 	
 	@RequestMapping("/testgok")
 	public String Testgok() {
-		return "wade/detail";
+		return "wade/hotsell";
 	}
 	
 	// 前端測試尾端

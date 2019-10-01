@@ -108,8 +108,7 @@ public class StoreController {
 	public String closeStore(@RequestParam("id") Integer id ,Model model) {
 		StoreBean sb = new StoreBean();
 		sb.setId(id);
-		sb.setStatus(3);
-		service.updateStore(sb);
+		service.closeStore(sb);
 		
 		model.addAttribute("store", service.getStoreById(id));
 		return "/hao/store";

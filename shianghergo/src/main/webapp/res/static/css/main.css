@@ -347,3 +347,7 @@ i{font-style: normal;}
 .shopcart-content .FloatBarHolder .total span{color: #ee0000; font-size: 26px; font-weight: bold; padding-left: 5px;}
 .shopcart-content .FloatBarHolder .th-chk .select-all label{letter-spacing: 4px;}
 /*end-shopcart-content*/
+
+/*store-detail*/
+.store-bg{width: 100%; background: url(../img/hao2.jpg) no-repeat; background-size: cover;}
+/*end-store-detail*/

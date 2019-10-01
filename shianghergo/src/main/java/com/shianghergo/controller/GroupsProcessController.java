@@ -135,6 +135,8 @@ public class GroupsProcessController {
 		
 		GroupsOrderBean ob = groupsOrderService.addOrderForm(oId, name, phone, pay, place_id);
 		model.addAttribute("order",ob);
+		model.addAttribute("orderDetail",ob.getOrderDetail());
+		
 		return "wade/gOK";
 	}
 	
