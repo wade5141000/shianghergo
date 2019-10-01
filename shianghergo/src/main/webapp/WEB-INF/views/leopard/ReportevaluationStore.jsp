@@ -83,14 +83,142 @@
 		}
 
 	}
+
+	function reportTarger(myObj) {
+
+		document.getElementById("target").value = myObj.value;
+	}
+
+	function scoreTarger(myObj) {
+
+		document.getElementById("scoretarget").value = myObj.value;
+	}
 </script>
 <style>
+* {
+	font-family: 微軟正黑體;
+}
+
 .s1 {
 	width: 40px;
 }
 </style>
 </head>
 <body>
+
+	<!--//會員檢舉商家 -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"
+						style="margin-left: 180px; color: blue;">檢舉商家</h5>
+
+
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					<form action="SaveRS" method="POST">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">檢舉類別:</label>
+							<select name="category_report_id" class="select">
+								<c:forEach var='items' items='${list}'>
+									<option value="${items.id}">${items.name}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<input type="hidden" value="${id}" name="member_id"> <input
+							type=hidden value="1" id="target" name="store_id">
+
+						<div class="form-group">
+							<label for="message-text" class="col-form-label">檢舉內容:</label>
+							<textarea class="form-control" id="message-text" name="contents"></textarea>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">清除</button>
+							<button type="submit" class="btn btn-primary">確認檢舉</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- //會員評價商家 -->
+
+	<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"
+						style="margin-left: 180px; color: blue;">評價商家</h5>
+					
+
+					<div class="form-group" style="text-align: center;">
+						<label for="recipient-name" class="col-form-label"></label>
+					</div>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+
+					<form action="evaluationStore" method="POST">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">評分對象:
+							</label> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star1" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star2" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star3" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star4" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star5" class="s1">
+
+						</div>
+						<div>
+							<span class="c1" id="str"></span>
+						</div>
+
+					
+						<!--使用者會員ID -->
+						<input type=hidden value="${id}" name="member_id">
+						<!--被評價的商家ID -->
+						<input type=hidden value="1" id="scoretarget" name="store_id">
+						<!--取的被選中的星星 -->
+						<input type=hidden value="1" name="score" id="score">
+
+						<div class="form-group">
+							<label for="message-text" class="col-form-label">評價內容:</label>
+							<textarea class="form-control" id="message-text" name="contents"></textarea>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">清除</button>
+							<button type="submit" class="btn btn-primary">確認評分${Stores.id}</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<p>登入會員id${id}</p>
 
@@ -126,127 +254,24 @@
 
 					<!-- 會員檢舉會員 -->
 					<td>
-						<div class="modal fade" id="exampleModal" tabindex="-1"
-							role="dialog" aria-labelledby="exampleModalLabel"
-							aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">檢舉內容</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<hr>
-										<form action="SaveRS" method="POST">
-											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">檢舉類別:</label>
-												<select name="category_report_id" class="select">
-													<c:forEach var='items' items='${list}'>
-														<option value="${items.id}">${items.name}</option>
-													</c:forEach>
-												</select>
-											</div>
-											<input type="hidden" value="${id}" name= "member_id" >
-											
 
-											<input type=hidden value="${Stores.id}" name="store_id">
-
-											<div class="form-group">
-												<label for="message-text" class="col-form-label">檢舉內容:</label>
-												<textarea class="form-control" id="message-text"
-													name="contents"></textarea>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary"
-													data-dismiss="modal">清除</button>
-												<button type="submit" class="btn btn-primary">確認檢舉對象ID:[${Stores.id}]</button>
-											</div>
-										</form>
-
-									</div>
-								</div>
-							</div>
-						</div>
 
 						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target="#exampleModal" data-whatever="@mdo">檢舉</button> 
-							
-							
-							
-							
-							
-							
-						<!--會員評價會員 -->
+							data-target="#exampleModal" value="${Stores.id}"
+							onclick="reportTarger(this)">檢舉</button>
 
-						<div class="modal fade" id="exampleModal1" tabindex="-1"
-							role="dialog" aria-labelledby="exampleModalLabel"
-							aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">給予</h5>
-
-										<div class="form-group" style="text-align: center;">
-											<label for="recipient-name" class="col-form-label">評價商家:${Stores.id}</label>
-										</div>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
+					</td>
 
 
-										<form action="evaluationStore" method="POST">
-											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">評分對象: </label>
 
-												<img
-													src="${pageContext.request.contextPath}/resources/images/star.gif"
-													id="star1" class="s1"> <img
-													src="${pageContext.request.contextPath}/resources/images/star.gif"
-													id="star2" class="s1"> <img
-													src="${pageContext.request.contextPath}/resources/images/star.gif"
-													id="star3" class="s1"> <img
-													src="${pageContext.request.contextPath}/resources/images/star.gif"
-													id="star4" class="s1"> <img
-													src="${pageContext.request.contextPath}/resources/images/star.gif"
-													id="star5" class="s1">
 
-											</div>
-											<div>
-												<span class="c1" id="str"></span>
-											</div>
-								
-											<hr>
-												<!--使用者會員ID -->
-												<input type=hidden value="${id}" name="member_id">
-												<!--被評價的商家ID -->
-												<input type=hidden value="${Stores.id}" name="target">
-												<!--取的被選中的星星 -->
-												<input type=hidden value="1" name="score" id="score">
-										
-											<div class="form-group">
-												<label for="message-text" class="col-form-label">評價內容:</label>
-												<textarea class="form-control" id="message-text"
-													name="contents"></textarea>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary"
-													data-dismiss="modal">清除</button>
-												<button type="submit" class="btn btn-primary">確認評分${Stores.id}</button>
-											</div>
-										</form>
+					<!--會員評價會員 -->
+					<td>
 
-									</div>
-								</div>
-							</div>
-						</div>
 						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target="#exampleModal1" data-whatever="@fat">評價</button></td>
+							data-target="#exampleModal1" value="${Stores.id}"
+							onclick="scoreTarger(this)">評價</button>
+					</td>
 
 				</tr>
 			</c:forEach>
