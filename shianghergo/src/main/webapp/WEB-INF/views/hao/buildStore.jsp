@@ -82,14 +82,14 @@
 									<form:input type="hidden" id="member_id" path="member_id" value="${loginOK.id }" />
 									<form:input type="text" path="name" id="name"
 										lay-verify="required|phone" placeholder="請輸入商店名稱"
-										autocomplete="off" class="layui-input" />
+										autocomplete="off" class="layui-input" required="required" />
 								</div>
 							</div>
 							<div class="layui-inline iphone">
 								<div class="layui-input-inline">
 									<form:input id="detail" type="text" path="detail"
 										lay-verify="required" placeholder="請輸入商店說明" autocomplete="off"
-										class="layui-input" />
+										class="layui-input" required="required" />
 								</div>
 							</div>
 						</div>

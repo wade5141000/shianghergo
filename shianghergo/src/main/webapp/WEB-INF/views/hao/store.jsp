@@ -15,7 +15,6 @@
 
 <style type="text/css">
 .layui-table {
-
 	color: #252525;
 	font-size: 20px;
 }
@@ -23,9 +22,9 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
-		<jsp:include page="../BlackLine.jsp" />
-		<section class="container" >
-		<table style="border-style:solid;margin-top: 25px;">
+	<jsp:include page="../BlackLine.jsp" />
+	<section class="container">
+		<table style="border-style: solid; margin-top: 25px;">
 			<tr>
 				<td></td>
 				<td><h2>商店詳細資料</h2></td>
@@ -55,21 +54,17 @@
 				</c:if>
 			</tr>
 		</table>
-		
-		<div style="padding-left: 290px;padding-top:30px;">
-			<%-- 				<h3>商家編號：${store.id}</h3> --%>
-			<%-- 				<p>商店名稱:：${store.name}</p> --%>
-			<%-- 				<p>商店介紹： ${store.detail}</p> --%>
-
-
-			<div class="layui-btn-group">
-				<a href="<spring:url value='store/Update?id=${store.id }' />"
-					class="layui-btn"> <span class="glyphicon-info-sigh glyphicon"></span>修改
-				</a> <a href="<spring:url value='/hao/stores' />" class="layui-btn">
-					<span class="glyphicon-hand-left glyphicon"></span>返回
-				</a> 
-			</div>
+		<%-- 				<h3>商家編號：${store.id}</h3> --%>
+		<%-- 				<p>商店名稱:：${store.name}</p> --%>
+		<%-- 				<p>商店介紹： ${store.detail}</p> --%>
+		<div class="layui-btn-group">
+			<a href="<spring:url value='store/Update?id=${store.id }' />"
+				class="layui-btn"> <span class="glyphicon-info-sigh glyphicon"></span>修改
+			</a> <a href="<spring:url value='/hao/stores' />" class="layui-btn">
+				<span class="glyphicon-hand-left glyphicon"></span>返回
+			</a>
 		</div>
+
 	</section>
 
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />

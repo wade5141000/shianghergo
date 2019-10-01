@@ -69,8 +69,8 @@
 	</ul>
 
 	<section>
-		<div class="container">
-			<h1 style="text-align: center">修改商家資料</h1>
+		<div class="container" style="padding:20px">
+			<h1 style="text-align: center; font-size:50px">修改商家資料</h1>
 		</div>
 	</section>
 	<hr
@@ -79,13 +79,13 @@
 		<!--       三個地方要完全一樣 -->
 		<form:form method='POST' modelAttribute="storeBean"
 			class='form-horizontal' enctype="multipart/form-data" >
-			<fieldset >
+			<fieldset style="padding-top:20px;text-align:center">
 				<div class="form-group" >
 					<label class="control-label col-lg-2 col-lg-2" for='name'>
 						商店名稱 </label>
 					<div class="col-lg-10">
 						<form:input id="name" path="name" type='text'
-							class='form:input-large' value='${store.name}' />
+							class='form:input-large' value='${store.name}' required="required" />
 					</div>
 				</div>
 
@@ -100,7 +100,7 @@
 					<div class='col-lg-10'>
 						<form:input id="detail" path="detail" type='text'
 							style="width:400px;height:120px;" class='form:input-large'
-							value='${store.detail }' />
+							value='${store.detail }' required="required" />
 					</div>
 				</div>
 
