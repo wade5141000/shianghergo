@@ -275,7 +275,7 @@ label.valid {
 </style>
 </head>
 <body>
-<%-- <jsp:include page="eric/header.jsp" /> --%>
+<jsp:include page="eric/header.jsp" />
 	<div class="container"style="height: 650;max-height: 900px;">
 		<form:form action="goRegisterPage.do" method="post" id="regForm"
 			enctype="multipart/form-data" name="memberlist"
