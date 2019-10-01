@@ -5,28 +5,18 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
 <title>register</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/static/css/main.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/layui/css/layui.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script
-	src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
-<script
-	src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-<script
-	src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!-- <meta name="viewport" -->
+<!-- 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"> -->
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"> -->
 <script>
 	$(document)
 			.ready(
@@ -177,14 +167,36 @@
 			});
 </script>
 <style>
-body {
-	font-family: Microsoft Yahei;
-	font-size: 20px;
-}
+/* body { */
+/* 	font-family: Microsoft Yahei; */
+/* 	font-size: 20px; */
+/* 	background-image:url('images/rebg02.jpeg'); */
+/* 	background-color:#a3a3a3; */
+/* } */
+
+body{
+
+margin:0px;
+padding:0px;
+background:#fff url('images/rebg0801.jpg') center center fixed no-repeat;　
+background-size: contain;　
+
+}        
 
 fieldset {
-	width: 800px;
-	margin: auto;
+
+	width: 750px;
+	border:1px solid gray;
+	margin-left:auto;
+	margin-right:auto;
+	width:50%;
+	background-color:white;
+	text-align:left;
+	padding:10px;
+	font-family:微軟正黑體;
+	border-radius: 5px;
+    border-spacing: 0;
+	
 }
 
 legend {
@@ -199,7 +211,7 @@ legend {
 
 .item .item-label {
 	float: left;
-	width: 240px;
+	width: 100px;
 	text-align: right;
 }
 
@@ -256,73 +268,71 @@ label.valid {
 	width: 32px;
 }
 
-.layui-btn-container {
-	margin: 20 200;
-	
-}
+
 </style>
-
-
-
 </head>
 <body>
-	<div class="site-nav-bg">
-		<div class="site-nav w1200">
-			<p class="sn-back-home">
-				<i class="layui-icon layui-icon-home"></i> <a href="index.jsp">首页</a>
-			</p>
-			<div class="sn-quick-menu">
-				<div class="login">
-					<a href="login.jsp">登录</a>
-				</div>
-				<div class="sp-cart">
-					<a href="shopcart.jsp">购物车</a><span>2</span>
-				</div>
-			</div>
-		</div>
-	</div>
+<jsp:include page="eric/header.jsp" />
+
+<!-- 	<div class="site-nav-bg"> -->
+<!-- 		<div class="site-nav w1200"> -->
+<!-- 			<p class="sn-back-home"> -->
+<!-- 				<i class="layui-icon layui-icon-home"></i> <a href="index">首页</a> -->
+<!-- 			</p> -->
+<!-- 			<div class="sn-quick-menu"> -->
+<!-- 				<div class="login"> -->
+<!-- 					<a href="login.jsp">登录</a> -->
+<!-- 				</div> -->
+<!-- 				<div class="sp-cart"> -->
+<!-- 					<a href="shopcart.jsp">购物车</a><span>2</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 
 
 
-	<div class="header">
-		<div class="headerLayout w1200">
-			<div class="headerCon">
-				<h1 class="mallLogo">
-					<a href="index.jsp"> <img
-						src="${pageContext.request.contextPath}/res/static/img/logo4.png"
-						width="100" height="100">
-					</a>
-				</h1>
-				<div class="mallSearch">
-					<form action="" class="layui-form" novalidate>
-						<input type="text" name="title" required lay-verify="required"
-							autocomplete="off" class="layui-input" placeholder="请输入需要的商品">
-						<button class="layui-btn" lay-submit lay-filter="formDemo">
-							<i class="layui-icon layui-icon-search"></i>
-						</button>
-						<input type="hidden" name="" value="">
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- 	<div class="header"> -->
+<!-- 		<div class="headerLayout w1200"> -->
+<!-- 			<div class="headerCon"> -->
+<!-- 				<h1 class="mallLogo"> -->
+<!-- 					<a href="index.jsp"> <img -->
+<%-- 						src="${pageContext.request.contextPath}/res/static/img/logo4.png" --%>
+<!-- 						width="100" height="100"> -->
+<!-- 					</a> -->
+<!-- 				</h1> -->
+<!-- 				<div class="mallSearch"> -->
+<%-- 					<form action="" class="layui-form" novalidate> --%>
+<!-- 						<input type="text" name="title" required lay-verify="required" -->
+<!-- 							autocomplete="off" class="layui-input" placeholder="请输入需要的商品"> -->
+<!-- 						<button class="layui-btn" lay-submit lay-filter="formDemo"> -->
+<!-- 							<i class="layui-icon layui-icon-search"></i> -->
+<!-- 						</button> -->
+<!-- 						<input type="hidden" name="" value=""> -->
+<%-- 					</form> --%>
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 
-	<div class="main-nav">
-		<ul class="layui-nav" lay-filter="">
-			<li class="layui-nav-item"><a href="">所有商品</a></li>
-			<li class="layui-nav-item "><a href="">今日團購</a></li>
-			<li class="layui-nav-item"><a href="">關於我們</a></li>
-			<li class="layui-nav-item"><a href="login">登入</a></li>
-			<li class="layui-nav-item layui-this"><a href="goRegisterPage">加入會員</a></li>
-			<li class="layui-nav-item"><a href="MemberDL">會員預覽</a></li>
-		</ul>
-	</div>
-	<div class="container ">
+<!-- 	<div class="main-nav"> -->
+<!-- 		<ul class="layui-nav" lay-filter=""> -->
+<!-- 			<li class="layui-nav-item"><a href="">所有商品</a></li> -->
+<!-- 			<li class="layui-nav-item "><a href="">今日團購</a></li> -->
+<!-- 			<li class="layui-nav-item"><a href="">關於我們</a></li> -->
+<!-- 			<li class="layui-nav-item"><a href="login">登入</a></li> -->
+<!-- 			<li class="layui-nav-item layui-this"><a href="goRegisterPage">加入會員</a></li> -->
+<!-- 			<li class="layui-nav-item"><a href="MemberDL">會員預覽</a></li> -->
+<!-- 		</ul> -->
+<!-- 	</div> -->
+
+
+	<div class="container"style="height: 650;max-height: 900px;">
 		<form:form action="goRegisterPage.do" method="post" id="regForm"
 			enctype="multipart/form-data" name="memberlist"
 			modelAttribute="memberbean">
-			<fieldset>
-				<legend>會員註冊</legend>
+			<fieldset style="margin-left: 800px;margin-top: 100px;">
+				<h1 align="center">會員註冊</h1>
 				<div class="item">
 					<label for="account" class="item-label">帳號:</label>
 					<form:input type="text" id="account" name="account" path="account"
@@ -382,58 +392,61 @@ label.valid {
 					<form:input type="file" id="image" name="image" path="image"
 						class="item-file" placeholder="" autocomplete="off" tip="" />
 				</div>
-				<div class="layui-btn-container" style="margin-left: 300px;">
-					<input type="submit" value="提交" class="layui-btn"> <input
-						type="reset" value="重填" name="cancel" id="cancel"
-						class="layui-btn">
+				<div class="btn-group" style="margin-left: 120px;">
+				<button type="submit" class="btn btn-primary btn-sm">提交</button>
+				<button type="reset" class="btn btn-primary btn-sm">重置</button>
+				<a href="loginNew" class="btn btn-primary btn-sm">已有會員?馬上登入</a>
 				</div>
 			</fieldset>
 		</form:form>
 	</div>
-	<div class="footer">
-		<div class="ng-promise-box">
-			<div class="ng-promise w1200">
-				<p class="text">
-					<a class="icon1" href="javascript:;">7天无理由退换货</a> <a class="icon2"
-						href="javascript:;">满99元全场免邮</a> <a class="icon3"
-						style="margin-right: 0" href="javascript:;">100%品质保证</a>
-				</p>
-			</div>
-		</div>
-		<div class="mod_help w1200">
-			<p>
-				<a href="javascript:;">关于我们</a> <span>|</span> <a
-					href="javascript:;">帮助中心</a> <span>|</span> <a href="javascript:;">售后服务</a>
-				<span>|</span> <a href="javascript:;">母婴资讯</a> <span>|</span> <a
-					href="javascript:;">关于货源</a>
-			</p>
-			<p class="coty">母婴商城版权所有 &copy; 2012-2020</p>
-		</div>
-	</div>
+
+
+	<jsp:include page="eric/foot.jsp" />
+<!-- 	<div class="footer"> -->
+<!-- 		<div class="ng-promise-box"> -->
+<!-- 			<div class="ng-promise w1200"> -->
+<!-- 				<p class="text"> -->
+<!-- 					<a class="icon1" href="javascript:;">7天无理由退换货</a> <a class="icon2" -->
+<!-- 						href="javascript:;">满99元全场免邮</a> <a class="icon3" -->
+<!-- 						style="margin-right: 0" href="javascript:;">100%品质保证</a> -->
+<!-- 				</p> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		<div class="mod_help w1200"> -->
+<!-- 			<p> -->
+<!-- 				<a href="javascript:;">关于我们</a> <span>|</span> <a -->
+<!-- 					href="javascript:;">帮助中心</a> <span>|</span> <a href="javascript:;">售后服务</a> -->
+<!-- 				<span>|</span> <a href="javascript:;">母婴资讯</a> <span>|</span> <a -->
+<!-- 					href="javascript:;">关于货源</a> -->
+<!-- 			</p> -->
+<!-- 			<p class="coty">母婴商城版权所有 &copy; 2012-2020</p> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	<!--   <script type="text/javascript"> -->
 	<!--     layui.config({ -->
 	<!--        base: '../res/static/js/util' //你存放新模块的目录，注意，不是layui的模块目录 -->
 	<!--      }).use(['jquery','form'],function(){ -->
 	<!--            var $ = layui.$,form = layui.form; -->
 	<!--   </script> -->
-	<script type="text/javascript">
-		$(function() {
-			layui.use('form', function() {
-				var form = layui.form;
-				//监听提交
-				form.on('submit(login)', function(data) {
-					console.log(data);
-					return false;
-				});
-			});
-		})
-		//注意：导航 依赖 element 模块，否则无法进行功能性操作
-		layui.use('element', function() {
-			var element = layui.element;
+<!-- 	<script type="text/javascript"> -->
+<!-- // 		$(function() { -->
+<!-- // 			layui.use('form', function() { -->
+<!-- // 				var form = layui.form; -->
+<!-- // 				//监听提交 -->
+<!-- // 				form.on('submit(login)', function(data) { -->
+<!-- // 					console.log(data); -->
+<!-- // 					return false; -->
+<!-- // 				}); -->
+<!-- // 			}); -->
+<!-- // 		}) -->
+<!-- // 		//注意：导航 依赖 element 模块，否则无法进行功能性操作 -->
+<!-- // 		layui.use('element', function() { -->
+<!-- // 			var element = layui.element; -->
 
-			//…
-		});
-	</script>
+<!-- // 			//… -->
+<!-- // 		}); -->
+<!-- 	</script> -->
 </body>
 
 </html>

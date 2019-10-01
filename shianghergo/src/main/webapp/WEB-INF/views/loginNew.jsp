@@ -1,174 +1,146 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Document</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/static/css/main.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/layui/css/layui.css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-<style type="text/css">
-.layui-btn-container {
-	margin: auto;
-	padding: 9px 25px 9px 5px;
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+	src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script
+	src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<script
+	src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+<title>register</title>
+<!-- <meta name="viewport" -->
+<!-- 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"> -->
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"> -->
+<style>
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('images/rebg10.jpg') center center fixed no-repeat;
+	　 background-size: 100%;
+	　
 }
+
+fieldset {
+	width: 750px;
+	border: 1px solid gray;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	background-color: white;
+	text-align: left;
+	padding: 10px;
+	font-family:微軟正黑體;
+	border-radius: 5px;
+    border-spacing: 0;
+}
+
+legend {
+	margin: auto;
+}
+
+.item {
+	height: 46px;
+	line-height: 26px;
+	margin: 10px;
+}
+
+.item .item-label {
+	float: left;
+	width: 100px;
+	text-align: right;
+}
+
+.item-text {
+	float: left;
+	width: 300px;
+	height: 26px;
+	padding: 9px 25px 9px 5px;
+	margin-left: 10px;
+	border: 1px solid #ccc;
+	overflow: hidden;
+}
+
+.item-select {
+	float: left;
+	height: 34px;
+	border: 1px solid #ccc;
+	margin-left: 10px;
+	font-size: 14px;
+	padding: 6px 0px;
+}
+
+.item-submit {
+	margin-left: 88px;
+}
+
+input.error {
+	border: 1px solid #E6594E;
+}
+
+input.highlight {
+	border: 1px solid #7abd54;
+}
+
+/* label.error, label.tip { */
+/* 	float: left; */
+/* 	height: 32px; */
+/* 	line-height: 32px; */
+/* 	font-size: 14px; */
+/* 	text-align: left; */
+/* 	margin-left: 5px; */
+/* 	padding-left: 20px; */
+/* 	color: red; */
+/* 	background: url('error.png') no-repeat left center; */
+/* } */
+
+/* label.tip { */
+/* 	color: #aaa; */
+/* 	background: url('tip.png') no-repeat left center; */
+/* } */
+
+/* label.valid { */
+/* 	background: url('valid.png') no-repeat left center; */
+/* 	width: 32px; */
+/* } */
+
+
 </style>
 </head>
 <body>
-
-	<div class="site-nav-bg">
-		<div class="site-nav w1200">
-			<p class="sn-back-home">
-				<i class="layui-icon layui-icon-home"></i> <a href="index">首页</a>
-			</p>
-			<div class="sn-quick-menu">
-				<div class="login">
-					<a href="login.jsp">登录</a>
+	<jsp:include page="eric/header.jsp" />
+	<div class="container" style="height: 750; margin-left: 500px;">
+		<form role="form" action="login.do" method="post" style="padding-top: 150px">
+			<fieldset>
+				<h1 align="center">會員登入</h1>
+				<div class="form-group col-lg-5"align="center"style="padding-left: 15px;padding-right: 15px;left: 150px;">
+					<label for="account">帳號</label> <input type="text"
+						class="form-control" id="account" name="account" placeholder="請輸入帳號">
 				</div>
-				<div class="sp-cart">
-					<a href="shopcart.jsp">购物车</a><span>2</span>
+				<div class="form-group col-lg-5"align="center"style="padding-left: 15px;padding-right: 15px;left: 150px;">
+					<label for="password">密碼</label> <input type="password"
+						class="form-control" id="password" name="password" placeholder="請輸入密碼">
 				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-	<div class="header">
-		<div class="headerLayout w1200">
-			<div class="headerCon">
-				<h1 class="mallLogo">
-					<a href="index.jsp"> <img
-						src="${pageContext.request.contextPath}/res/static/img/logo4.png"
-						width="100" height="100">
-					</a>
-				</h1>
-				<div class="mallSearch">
-					<form action="" class="layui-form" novalidate>
-						<input type="text" name="title" required lay-verify="required"
-							autocomplete="off" class="layui-input" placeholder="请输入需要的商品">
-						<button class="layui-btn" lay-submit lay-filter="formDemo">
-							<i class="layui-icon layui-icon-search"></i>
-						</button>
-						<input type="hidden" name="" value="">
-					</form>
+				<div style="padding-left: 170px;padding-top: 30px">
+				<button type="submit" class="btn btn-primary btn-sm">提交</button>
+				<button type="reset" class="btn btn-primary btn-sm">重置</button>
+				<a href="goRegisterPage" class="btn btn-primary btn-sm">加入會員</a>
 				</div>
-			</div>
-		</div>
+			</fieldset>
+		</form>
 	</div>
-
-
-	<div class="content content-nav-base  login-content">
-		<div class="main-nav">
-			<ul class="layui-nav" lay-filter="">
-				<li class="layui-nav-item"><a href="">所有商品</a></li>
-				<li class="layui-nav-item "><a href="">今日團購</a></li>
-				<li class="layui-nav-item"><a href="">關於我們</a></li>
-				<li class="layui-nav-item layui-this"><a href="">登入</a></li>
-				<li class="layui-nav-item"><a href="goRegisterPage">加入會員</a></li>
-				<li class="layui-nav-item"><a href="MemberDL">會員預覽</a></li>
-			</ul>
-			<!--       <div class="inner-cont0"> -->
-			<!--         <div class="inner-cont1 w1200"> -->
-			<!--           <div class="inner-cont2"> -->
-			<!--             <a href="commodity.jsp" class="active">所有商品</a> -->
-			<!--             <a href="buytoday.jsp">今日团购</a> -->
-			<!--             <a href="about.jsp">关于我们</a> -->
-			<!--           </div> -->
-			<!--         </div> -->
-			<!--       </div> -->
-		</div>
-		<div class="login-bg">
-			<div class="login-cont w1200">
-				<div class="form-box">
-					<form class="layui-form" action="login.do" method="post">
-						<legend>會員登入</legend>
-						<div class="layui-form-item">
-							<div class="layui-inline iphone">
-								<div class="layui-input-inline">
-									<i class="layui-icon layui-icon-username iphone-icon"></i> <input
-										type="text" name="account" id="account"
-										lay-verify="required|phone" placeholder="請輸入帳號"
-										autocomplete="off" class="layui-input">
-								</div>
-							</div>
-							<div class="layui-inline iphone">
-								<div class="layui-input-inline">
-									<i class="layui-icon layui-icon-password iphone-icon"></i> <input
-										id="password" type="password" name="password"
-										lay-verify="required" placeholder="請輸入密碼" autocomplete="off"
-										class="layui-input">
-								</div>
-							</div>
-						</div>
-						<div class="layui-form-item login-btn">
-							<div class="layui-input-block">
-								<button class="layui-btn" lay-submit lay-filter="login">登入</button>
-							</div>
-							<div class="layui-btn-container">
-								<!--                 <button type="button" class="layui-btn">一个标准的按钮</button> -->
-								<a href="goRegisterPage" class="layui-btn">加入會員</a>
-								<button type="reset" class="layui-btn">重置</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="footer">
-		<div class="ng-promise-box">
-			<div class="ng-promise w1200">
-				<p class="text">
-					<a class="icon1" href="javascript:;">7天无理由退换货</a> <a class="icon2"
-						href="javascript:;">满99元全场免邮</a> <a class="icon3"
-						style="margin-right: 0" href="javascript:;">100%品质保证</a>
-				</p>
-			</div>
-		</div>
-		<div class="mod_help w1200">
-			<p>
-				<a href="javascript:;">关于我们</a> <span>|</span> <a
-					href="javascript:;">帮助中心</a> <span>|</span> <a href="javascript:;">售后服务</a>
-				<span>|</span> <a href="javascript:;">母婴资讯</a> <span>|</span> <a
-					href="javascript:;">关于货源</a>
-			</p>
-			<p class="coty">母婴商城版权所有 &copy; 2012-2020</p>
-		</div>
-	</div>
-	<!--   <script type="text/javascript"> -->
-	<!--     layui.config({ -->
-	<!--        base: '../res/static/js/util' //你存放新模块的目录，注意，不是layui的模块目录 -->
-	<!--      }).use(['jquery','form'],function(){ -->
-	<!--            var $ = layui.$,form = layui.form; -->
-	<!--   </script> -->
-	<script type="text/javascript">
-		$(function() {
-			layui.use('form', function() {
-				var form = layui.form;
-				//监听提交
-				form.on('submit(login)', function(data) {
-					console.log(data);
-					return false;
-				});
-			});
-		})
-		//注意：导航 依赖 element 模块，否则无法进行功能性操作
-		layui.use('element', function() {
-			var element = layui.element;
-
-			//…
-		});
-	</script>
-
+	<jsp:include page="eric/foot.jsp" 	/>
 
 </body>
+
 </html>
