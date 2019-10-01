@@ -28,7 +28,7 @@
 	<div class="stores-bg">
 		<section>
 			<div>
-				<div class="container" style="text-align: center">
+				<div class="container" style="text-align: center; padding:20px;">
 					<h1>商家清單</h1>
 				</div>
 			</div>
@@ -36,8 +36,8 @@
 		
 		<section class="container">
 			<c:forEach var='store' items='${stores }'>
-				<div class="col-sm-6 col-md-3" style="width: 360px; height: 360px;">
-					<div class="thumbnail" style="width: 320px; height: 340px;">
+				<div class="col-sm-6 col-md-3" style="width: 360px; height: 260px;">
+					<div class="thumbnail" style="width: 320px; height: 240px;">
 						<div class="caption">
 							<p>
 								<b style='font-size: 16px;'>${store.id }</b>
@@ -56,15 +56,13 @@
 							</c:if>
 
 						</div>
-						
+						<div style="text-align:right">
 							<a href="<spring:url value='store?id=${store.id }' />"
-								class="btn btn-primary"> <span
-								class="glyphicon-info-sigh glyphicon"></span>詳細資料
+								class="btn btn-primary">詳細資料
 							</a> <a href="<spring:url value='store/Update?id=${store.id }' />"
-								class="btn btn-primary"> <span
-								class="glyphicon-info-sigh glyphicon"></span>修改
+								class="btn btn-primary">修改
 							</a>
-						
+						</div>
 					</div>
 				</div>
 			</c:forEach>
