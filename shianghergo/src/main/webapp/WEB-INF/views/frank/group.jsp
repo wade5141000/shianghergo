@@ -94,6 +94,7 @@ function addGroupCart(item_id,groups_id){
 			}
 			
 			$("#gtable").append(result);
+			$("#gits").text(cartitems.length);
 			
 		}
 	})

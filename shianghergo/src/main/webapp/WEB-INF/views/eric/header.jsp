@@ -34,6 +34,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/res/wade/js/groupscart.js"></script>
 
 
+
 </head>
 <!-- 這段勿刪 wade -->
 <script>
@@ -63,6 +64,25 @@ var y = x+1;
   <li class="nav-item">
     <a class="nav-link" href="${pageContext.request.contextPath}/oldindex" style="color:#ecffff">舊index</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+  
   
   <c:if test="${header11 != 2}" >
 	  <li class="nav-item">
@@ -75,17 +95,17 @@ var y = x+1;
   <c:if test="${header11 == 2}" >
   	 	<li class="nav-item">
   	 	<a class="navbar-brand" href="#">
-    		<img src="<c:url value='getmemberPicture/${loginOK.id}'/>" width="30" height="30" alt="">
+    		<img src="${pageContext.request.contextPath}/getmemberPicture/${loginOK.id}" width="30" height="30" alt="">
  	 	</a>
 	  </li>
   	 <li class="nav-item">
 	    <a class="nav-link" href="${pageContext.request.contextPath}/memberPage" style="color:#ecffff">${loginOK.name}</a>
 	  </li>
 	  <li class="nav-item">
-	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">購物車<span id="its">${its}件商品</span></button>
+	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">購物車<span id="its">${its}</span>件商品</button>
 	  </li>
 	  <li class="nav-item">
-	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">團購物車<span id=""></span></button>
+	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">團購物車<span id="gits">${gits}</span>件商品</button>
 	  </li>
   </c:if>
 </ul>

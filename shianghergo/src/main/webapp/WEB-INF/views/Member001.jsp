@@ -11,6 +11,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <head>
 <style type="text/css">
 .table1 {

@@ -135,7 +135,7 @@ public class LoginController {
 						gtotal += cb.getPrice()*cb.getAmount();
 					}
 					httpSession.setAttribute("gtotal",gtotal);
-	//				httpSession.setAttribute("its",list2.size());
+					httpSession.setAttribute("gits",list3.size());
 					// ===== wade團購物車
 					
 					
