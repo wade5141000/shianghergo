@@ -358,5 +358,16 @@ public class MemberDaoImpl implements MemberDao {
 
 		
 	
+		@Override
+		public StoreBean getStoreBeanById(int member_id) {
+			Session session = factory.getCurrentSession();
+			
+			String hql = "FROM StoreBean where member_id=:member_id";
+
+			StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("member_id", member_id).getSingleResult();
+			
+		
+			return sb;
+		}
 	
 }
