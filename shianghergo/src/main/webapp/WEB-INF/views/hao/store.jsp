@@ -9,10 +9,12 @@
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <title>Store</title>
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
 	<jsp:include page="../BlackLine.jsp" />
+
 	<div style="padding-bottom: 350px;" >
 		<div style="padding-left: 350px; padding-right: 350px;"
 			class="card text-center">
@@ -49,6 +51,7 @@
 		</div>
 		
 	</div>
+
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>

@@ -25,10 +25,12 @@
 /* fieldset{ */
 /* border:2px; */
 /* } */
+
 </style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
+
 	<jsp:include page="../BlackLine.jsp" />
 	<div style="padding-bottom: 350px;">
 		<div style="padding-left: 350px; padding-right: 350px;">
@@ -73,8 +75,8 @@
 				</fieldset>
 			</form:form>
 		</div>
+
 	</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
-
 </body>
 </html>

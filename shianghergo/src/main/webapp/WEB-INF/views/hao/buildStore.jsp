@@ -13,6 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 </head>
 <body>
+
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
 	<div style="padding-bottom: 400px;">
 		<jsp:include page="../BlackLine.jsp" />
@@ -38,6 +39,7 @@
 					<div class="">
 						<button class="btn btn-primary">確認送出</button>
 					</div>
+
 				</div>
 			</form:form>
 

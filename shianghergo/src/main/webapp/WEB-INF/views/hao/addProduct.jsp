@@ -35,7 +35,8 @@
 	background-image: url('https://i.imgur.com/dqiRiVK.jpg');
 	background-repeat: no-repeat;
 }
-.form-group{
+
+.form-group {
 	padding-bottom: 20px;
 }
 form{
@@ -47,8 +48,10 @@ form{
 <body>
 <jsp:include page="/WEB-INF/views/eric/header.jsp" />
 <jsp:include page="../BlackLine.jsp" />
+
 <div  style="padding-bottom: 350px;">
 	<div style="padding-left: 350px;padding-right: 350px;">
+
 		<!--       三個地方要完全一樣 -->
 		<form:form method='POST' modelAttribute="itemBean"
 			class='form-horizontal' enctype="multipart/form-data">
@@ -123,8 +126,10 @@ form{
 				</div>
 			</fieldset>
 		</form:form>
+
 	</div>
 </div>
+
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>

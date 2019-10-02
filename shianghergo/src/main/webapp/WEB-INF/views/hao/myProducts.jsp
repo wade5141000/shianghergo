@@ -10,10 +10,14 @@
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <style>
+.bg{
+	background-image: url('https://i.imgur.com/a6yD7QT.gif')
+}
 </style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
+
 	<jsp:include page="../BlackLine.jsp" />
 	<div style="padding-bottom: 500px; margin-left: 265px;">
 		<div class="card">
@@ -67,37 +71,7 @@
 		</div>
 
 
-		<!-- 		<section class="container"> -->
-		<!-- 			<div class="row"> -->
-		<%-- 				<c:forEach var='product' items='${products }'> --%>
-		<!-- 					<div class="col-sm" style="padding-bottom: 30px;"> -->
-		<!-- 						<div class="col-sm-6 col-md-3" -->
-		<!-- 							style="width: 360px; height: 360px;"> -->
-		<!-- 							<div class="thumbnail" -->
-		<!-- 								style="width: 250px; height: 340px; border: solid 1px gray;"> -->
-		<!-- 								<div style="padding-bottom: 5px; text-align: center;"> -->
-		<!-- 									<img width='140' height='200' -->
-		<%-- 										src="<c:url value='/hao/getPicture/${product.id }' />" /> --%>
-		<!-- 								</div> -->
-		<!-- 								<div class="caption" style="text-align: center"> -->
-		<!-- 									<p> -->
-		<%-- 										<b style='font-size: 16px;'>品名:${product.name }</b> --%>
-		<!-- 									</p> -->
-		<%-- 									<p>價格：${product.price }</p> --%>
-		<%-- 									<p>說明：${product.detail }</p> --%>
-		<%-- 									<p>說明：${product.id }</p> --%>
-		<!-- 									<p> -->
-		<!-- 										<a -->
-		<%-- 											href="<spring:url value='/hao/product/Update?id=${product.id }' />" --%>
-		<!-- 											class="btn btn-primary"> 修改 </a> -->
-		<!-- 									</p> -->
-		<!-- 								</div> -->
-		<!-- 							</div> -->
-		<!-- 						</div> -->
-		<!-- 					</div> -->
-		<%-- 				</c:forEach> --%>
-		<!-- 			</div> -->
-		<!-- 		</section> -->
+
 	</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 	<!-- 	<tr> -->
