@@ -7,6 +7,7 @@ import javax.persistence.NoResultException;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -213,6 +214,20 @@ public class MemberDaoImpl implements MemberDao {
 		return session.get(StoreBean.class, id);
 	}
 
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public StoreBean getStoreBeanById(Integer id) {
+		
+		StoreBean sb = null;
+		String hql = "FROM StoreBean WHERE member_id:id";
+		Session session = factory.getCurrentSession();
+		sb = (StoreBean) session.createQuery(hql).setParameter("id", id).uniqueResult();
+
+		
+		return sb;
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<OrderBean> getMemberOrders(Integer id) {
@@ -318,6 +333,14 @@ public class MemberDaoImpl implements MemberDao {
 		return list;
 	}
 	
+	@Override
+	public void deleteByid(Integer id) {
+		Session session = factory.getCurrentSession();
+		MessageBean contacts = (MessageBean) session.get(MessageBean.class, id);
+		session.delete(contacts);
+	}
+
+	
 	//--------------新增功能(復原會員權限) 9/25 家翔-----------------------
 	
 	
@@ -333,6 +356,7 @@ public class MemberDaoImpl implements MemberDao {
 		
 		}
 
+		
 	
 	
 }

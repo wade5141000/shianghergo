@@ -35,7 +35,7 @@ thead {
  
 <div style="padding-left: 400px; padding-right: 400px;padding-top: 50px;">
 	<input type="hidden" name="id" value="${loginOK.id}" />
-	<table class="table table-hover" style="border-style:dashed;font-family:微軟正黑體;">
+	<table class="table table-hover" style="font-family:微軟正黑體;">
 		<tbody>
 			<tr>
 				<td rowspan="10" align="center"><img  class="img" width="700" height="150" alt="" src="<c:url value='getmemberPicture/${loginOK.id}'/>"/></td>

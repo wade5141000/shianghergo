@@ -111,6 +111,7 @@ public class StoreController {
 		service.closeStore(sb);
 		
 		model.addAttribute("store", service.getStoreById(id));
+		
 		return "/hao/store";
 	}
 }

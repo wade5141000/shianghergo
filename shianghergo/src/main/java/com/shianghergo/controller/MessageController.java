@@ -80,6 +80,12 @@ public class MessageController {
 		return "getMyMessage";
 	}
 	
+	@RequestMapping("/deleteMesgByid")
+	public String deleteMessageByid(MessageBean MesgB,Model model) {
+		 service.deleteByid(MesgB.getId());
+		return "redirect:getMyMessage";
+	}
+	
 	
 	
 	
