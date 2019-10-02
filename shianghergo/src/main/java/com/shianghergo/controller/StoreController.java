@@ -88,7 +88,7 @@ public class StoreController {
 		bb.setId(id);
 		service.updateStore(bb);
 
-		return "redirect:/hao/stores";
+		return "redirect:/hao/buildStore";
 	}
 
 	@RequestMapping("/hao/stores")

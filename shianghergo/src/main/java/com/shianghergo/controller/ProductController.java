@@ -155,11 +155,19 @@ public class ProductController {
 		return "hao/product";
 	}
 
-	@RequestMapping("/hao/myProducts")
+	@RequestMapping(value = "/hao/myProducts", method = RequestMethod.GET)
 	public String getProductsByStore(@ModelAttribute("loginOK") MemberBean mb, Model model) {
 		List<ItemBean> list = service.getMyProducts(mb.getId());
 		model.addAttribute("products", list);
 		return "hao/myProducts";
+	}
+	
+	@RequestMapping(value = "/hao/myProducts", method = RequestMethod.POST)
+	public String getProductsByStorePost(@RequestParam("id") Integer id, Model model) {
+		ItemBean ib = new ItemBean();
+		ib.setId(id);
+		service.deleteProduct(id);
+		return "redirect:/hao/myProducts";
 	}
 
 	@RequestMapping(value = "/hao/product/Update", method = RequestMethod.GET)
@@ -271,7 +279,7 @@ public class ProductController {
 		bb.setId(id);
 		service.deleteProduct(id);
 
-		return "redirect:/hao/products";
+		return "redirect:/hao/myProducts";
 	}
 
 	@ModelAttribute("categoryList")

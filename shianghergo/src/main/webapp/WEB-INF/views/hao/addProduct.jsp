@@ -91,7 +91,7 @@ form{
 <!-- 				<td><label class="control-label col" for='store_id'> -->
 <!-- 						商店名稱 (store_id)</label></td> -->
 			<form:input id="store_id" path="store_id" type='hidden'
-							class='form:input-large' value="${storeName}"  />
+							class='form:input-large' value="${store_id}"  />
 <!-- 			</tr> -->
 <!-- 				<div class="form-group"> -->
 <!-- 					<label class='control-label col-lg-2 col-lg-2' for="reserve"> -->

@@ -90,7 +90,7 @@
               <h4>${product.name} </h4>
               <span><i class="layui-icon layui-icon-rate-solid"></i>收藏</span>
             </div>
-            <div class="summary">
+            <div class="summary" style="height:180px">
               <p class="reference"><span>單&nbsp;&nbsp;&nbsp;&nbsp;價</span> ${product.price}元</p>
 <!--          <p class="activity"><span>商品編號</span><strong class="price"><i>￥</i>99.00</strong></p> -->
 			  <p class="reference"><span>類&nbsp;&nbsp;&nbsp;&nbsp;別</span> ${product.categoryBean.name}</p>
