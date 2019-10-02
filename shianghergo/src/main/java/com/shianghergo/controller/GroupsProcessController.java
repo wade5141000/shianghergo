@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.GroupsCartBean;
 import com.shianghergo.model.GroupsOrderBean;
@@ -112,6 +113,9 @@ public class GroupsProcessController {
 		Groups_ItemBean ib = groupsItemService.getGroupsItemById(item_id);
 		int x = groupsCartService.addToCart(mId,ib);
 		
+		ObjectMapper mapper = new ObjectMapper();
+		String result = "";
+		
 		HttpSession httpSession = rq.getSession();
 		List<GroupsCartBean> list3 = groupsCartService.getGroupsCartItems(mId);
 		httpSession.setAttribute("gcartitems", list3);
@@ -120,9 +124,13 @@ public class GroupsProcessController {
 			gtotal += cb.getPrice()*cb.getAmount();
 		}
 		httpSession.setAttribute("gtotal",gtotal);
+		httpSession.setAttribute("gits",list3.size());
+		
+		
 		
 		try {
-			rp.getWriter().write(String.valueOf(x));
+			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list3);
+			rp.getWriter().write(result);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -150,15 +158,21 @@ public class GroupsProcessController {
 		HttpSession httpSession = re.getSession();
 		List<GroupsCartBean> list3 = groupsCartService.getGroupsCartItems(mId);
 		httpSession.setAttribute("gcartitems", list3);
-		long gtotal = 0;
+		int gtotal = 0;
 		for(GroupsCartBean cb:list3) {
 			gtotal += cb.getPrice()*cb.getAmount();
 		}
 		httpSession.setAttribute("gtotal",gtotal);
+		httpSession.setAttribute("gits",list3.size());
+		
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String result = "";
 		
 		
 		try {
-			rp.getWriter().write(String.valueOf(reduce));
+			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list3);
+			rp.getWriter().write(result);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -192,6 +206,7 @@ public class GroupsProcessController {
 			gtotal += gcb.getPrice()*gcb.getAmount();
 		}
 		httpSession.setAttribute("gtotal",gtotal);
+		httpSession.setAttribute("gits",list3.size());
 		
 		
 		try {

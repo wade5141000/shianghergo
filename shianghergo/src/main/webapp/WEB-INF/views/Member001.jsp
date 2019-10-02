@@ -11,6 +11,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <head>
 <style type="text/css">
 .table1 {
@@ -35,7 +36,7 @@ thead {
  
 <div style="padding-left: 400px; padding-right: 400px;padding-top: 50px;">
 	<input type="hidden" name="id" value="${loginOK.id}" />
-	<table class="table table-hover" style="border-style:dashed;font-family:微軟正黑體;">
+	<table class="table table-hover" style="font-family:微軟正黑體;">
 		<tbody>
 			<tr>
 				<td rowspan="10" align="center"><img  class="img" width="700" height="150" alt="" src="<c:url value='getmemberPicture/${loginOK.id}'/>"/></td>

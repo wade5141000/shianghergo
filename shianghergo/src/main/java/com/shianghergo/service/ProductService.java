@@ -31,4 +31,6 @@ public interface ProductService {
 	public Integer getStoreIdByMemberId(int member_id);
 
 	List<ItemBean> getMyProducts(int member_id);
+
+	public String getStoreNameByItemId(Integer id);
 }
