@@ -55,8 +55,6 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public void closeStore(StoreBean sb) {
 		StoreBean oldStoreBean=dao.getStoreById(sb.getId());
-		oldStoreBean.setName(sb.getName());
-		oldStoreBean.setDetail(sb.getDetail());
 		oldStoreBean.setStatus(3);
 		dao.updateStore(oldStoreBean);
 	}

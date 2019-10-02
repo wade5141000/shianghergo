@@ -95,6 +95,7 @@
 <!--          <p class="activity"><span>商品編號</span><strong class="price"><i>￥</i>99.00</strong></p> -->
 			  <p class="reference"><span>類&nbsp;&nbsp;&nbsp;&nbsp;別</span> ${product.categoryBean.name}</p>
               <p class="address-box"><span>介&nbsp;&nbsp;&nbsp;&nbsp;紹</span><strong class="address">${product.detail}</strong></p>
+              <p class="reference"><span>商&nbsp;&nbsp;&nbsp;&nbsp;家</span><a href="/shianghergo/hao/store?id=${product.storeBean.id }">${product.storeBean.name }</a></p>
             </div>
             <div class="choose-attrs">
               <div class="number layui-clear"><span class="title">數&nbsp;&nbsp;&nbsp;&nbsp;量</span><div class="number-cont"><span class="cut btn">-</span><input onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" maxlength="4" type="" name="" value="1"><span class="add btn">+</span></div></div>
