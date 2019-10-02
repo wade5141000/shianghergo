@@ -26,7 +26,8 @@ import com.shianghergo.service.MemberService;
 
 @Transactional
 @Controller
-@SessionAttributes("loginOK")
+@SessionAttributes(value= {"loginOK","store"})
+
 public class LoginController {
 	@Autowired
 	MemberService service;
@@ -106,13 +107,14 @@ public class LoginController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(String account, String password, Model model,HttpServletRequest rq) {
 		MemberBean mb = service.login(account, password);// 前
-		
 		if(mb != null) {
 			if(password.equals(mb.getPassword())) {
 				if(mb.getStatus()==1) {
 					// 向ModelMap视图中添加一个Session级别存储的属性
 					model.addAttribute("loginOK", mb);
-					
+//					System.out.println("00000");
+//					model.addAttribute("store",service.getStoreBeanById(mb.getId()));
+//					System.out.println("11111");
 					// ===== wade購物車
 					HttpSession httpSession = rq.getSession();
 					List<CartBean> list2 = cartService.getCartItems(mb.getId());

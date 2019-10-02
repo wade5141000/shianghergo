@@ -5,17 +5,14 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
-
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <style type="text/css">
-fieldset {
-	border: 1px solid rgb(255, 232, 57);
-	width: 400px;
-	margin: auto;
-	padding-left: 320px;
-}
+ fieldset { 
+ 	border: 1px solid rgb(255, 232, 57); 
+ 	width: 400px; 
+ 	margin: auto; 
+ 	padding-left: 320px; 
+ } 
 
 .bang {
 	padding: 100px;
@@ -30,7 +27,7 @@ fieldset {
 	width: 280px;
 	padding: 20px;
 	margin-right: 50px;
-	border: 1px #cccccc solid;
+/* 	border: 1px #cccccc solid; */
 	background-color: white;
 }
 
@@ -48,28 +45,18 @@ form{
 <title>Products</title>
 </head>
 <body>
-
 <jsp:include page="/WEB-INF/views/eric/header.jsp" />
 <jsp:include page="../BlackLine.jsp" />
-<!-- 	<section> -->
-<!-- 		<div class="container"> -->
-<!-- 			<h1 style="text-align: center">新增商品資料</h1> -->
-<!-- 		</div> -->
-<!-- 	</section> -->
-<!-- 	<hr -->
-<!-- 		style="height: 1px; border: none; color: #333; background-color: #333;"> -->
-	
-
-	<section class="container" >
+<div  style="padding-bottom: 350px;">
+	<div style="padding-left: 350px;padding-right: 350px;">
 		<!--       三個地方要完全一樣 -->
-		
 		<form:form method='POST' modelAttribute="itemBean"
 			class='form-horizontal' enctype="multipart/form-data">
-			<fieldset style="padding-top: 30px;margin-left: 350px;">
-			<table style="border-style:solid;"	>
+			<fieldset style="margin-left: 350px;">
+			<table class="table table-hover">
 			<tr>
-				<td></td>
-				<td><h1 style="padding-left: 45px;padding-top: 10px;">新增商品</h1></td>
+<!-- 				<td colspan=""></td> -->
+				<td align="center" colspan="2"><h1>新增商品</h1></td>
 			</tr>
 			
 			<tr>
@@ -97,12 +84,12 @@ form{
 						<%-- 							<form:option value="60003">服飾配件</form:option> --%>
 						<%-- 							<form:option value="60004">育兒親子</form:option> --%>
 				</tr>
-				<tr>
-				<td><label class="control-label col" for='store_id'>
-						商店名稱 (store_id)</label></td>
-				<td><form:input id="store_id" path="store_id" type='text'
-							class='form:input-large' value="${storeName }" /></td>
-			</tr>
+<!-- 				<tr> -->
+<!-- 				<td><label class="control-label col" for='store_id'> -->
+<!-- 						商店名稱 (store_id)</label></td> -->
+			<form:input id="store_id" path="store_id" type='hidden'
+							class='form:input-large' value="${storeName}"  />
+<!-- 			</tr> -->
 <!-- 				<div class="form-group"> -->
 <!-- 					<label class='control-label col-lg-2 col-lg-2' for="reserve"> -->
 <!-- 						庫存數量 </label> -->
@@ -136,8 +123,8 @@ form{
 				</div>
 			</fieldset>
 		</form:form>
-	</section>
-
+	</div>
+</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>
