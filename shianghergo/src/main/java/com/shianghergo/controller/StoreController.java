@@ -60,7 +60,7 @@ public class StoreController {
 		if (sb.getMember_id() != null && sb.getName() != null && sb.getDetail() != null) {
 			redirectAttributes.addFlashAttribute("name", sb.getName());
 			redirectAttributes.addFlashAttribute("success", "註冊成功");
-			sb.setStatus(1);
+			sb.setStatus2(1);
 			service.buildStore(sb);
 			return "redirect:/";
 		} else {
@@ -88,7 +88,7 @@ public class StoreController {
 		bb.setId(id);
 		service.updateStore(bb);
 
-		return "redirect:/hao/stores";
+		return "redirect:/hao/buildStore";
 	}
 
 	@RequestMapping("/hao/stores")
@@ -111,6 +111,7 @@ public class StoreController {
 		service.closeStore(sb);
 		
 		model.addAttribute("store", service.getStoreById(id));
+		
 		return "/hao/store";
 	}
 }

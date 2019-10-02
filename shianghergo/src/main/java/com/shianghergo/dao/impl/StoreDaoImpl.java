@@ -72,7 +72,7 @@ public class StoreDaoImpl implements StoreDao {
 		String hql = "FROM StoreBean where id=:id";
 
 		StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("id", target).getSingleResult();
-		sb.setStatus(2);
+		sb.setStatus2(2);
 	}
 
 	@Override
@@ -115,7 +115,7 @@ public class StoreDaoImpl implements StoreDao {
 
 		StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("id", target).getSingleResult();
 
-		sb.setStatus(1);
+		sb.setStatus2(1);
 	}
 
 	@Override

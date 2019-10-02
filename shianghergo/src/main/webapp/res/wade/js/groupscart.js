@@ -17,16 +17,23 @@ function changeGroupAmount(id,types){
 	}
 
 
-
-
 function gdeletetr(it,id){
 		if(confirm("是否刪除商品?")){
 			$.ajax({
 				url:"http://localhost:8080/shianghergo/deletegroups?id="+id,
 				type:"get",
 				success:function(data){
+					var gitems = JSON.parse(data);
+					var total = 0;
+					var lens = gitems.length;
+					for(var i=0; i<gitems.length ;i++){
+						total += gitems[i].price * gitems[i].amount;
+					}
+					
 					$(it.parentNode.parentNode).remove();
-					$("#gtotal").text($("#gtotal").text()-data);
+					$("#gtotal").text(total);
+					$("#gits").text(lens);
+					
 				},
 			})
 			

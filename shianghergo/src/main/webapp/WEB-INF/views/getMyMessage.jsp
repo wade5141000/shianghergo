@@ -44,6 +44,7 @@ thead {
 			<th scope="col" id='borderA'>標題</th>
 			<th scope="col" id='borderA'>內容	</th>
 			<th scope="col" id='borderA'>時間</th>
+			<th scope="col" id='borderA'>刪除留言</th>
 		</tr>							  
 		<c:forEach var="gMyMesg"  items="${getMyMessage}">
 			<TR id='borderA' >
@@ -55,7 +56,10 @@ thead {
 			</TD>
 			<TD id='borderA' >${gMyMesg.title}</TD>
 			<TD id='borderA' >&nbsp;${gMyMesg.contents}</TD>
-			<TD id='borderA' >${gMyMesg.time}</TD>				
+			<TD id='borderA' >${gMyMesg.time}</TD>
+			<TD id='borderA'><a  href="<c:url value='deleteMesgByid?id=${gMyMesg.id}' />">
+				    <button type="button" class="btn btn-primary btn-sm"><span >刪除</span> </button>
+			    </a></TD>				
 		</TR>
 		</c:forEach>
 		

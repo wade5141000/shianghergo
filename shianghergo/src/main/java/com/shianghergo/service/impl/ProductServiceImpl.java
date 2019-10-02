@@ -106,5 +106,11 @@ public class ProductServiceImpl implements ProductService {
 	public List<ItemBean> getMyProducts(int member_id) {
 		return dao.getMyProducts(member_id);
 	}
+
+	@Transactional
+	@Override
+	public String getStoreNameByItemId(Integer id) {
+		return dao.getStoreNameByItemId(id);
+	}
 	
 }
