@@ -10,10 +10,21 @@
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <style>
-.bg{
+.bg {
 	background-image: url('https://i.imgur.com/a6yD7QT.gif')
 }
 </style>
+<script type="text/javascript">
+	function confirmDelete() {
+		var msg = "您真的確定要刪除嗎？\n\n請確認！";
+		if (confirm(msg) == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
@@ -23,7 +34,8 @@
 		<div class="card">
 			<h1 class="card-header">我的商品列表</h1>
 			<div class="card-body">
-				<a href="${pageContext.request.contextPath}/hao/products/add" class="btn btn-primary">新增商品</a>
+				<a href="${pageContext.request.contextPath}/hao/products/add"
+					class="btn btn-primary">新增商品</a>
 			</div>
 		</div>
 		<div class="card-deck">
@@ -39,9 +51,18 @@
 
 					</div>
 					<div class="card-footer">
+					<form action="/shianghergo/hao/product/Update/Delete" method="POST">
 						<a
 							href="<spring:url value='/hao/product/Update?id=${product.id }' />"
 							class="btn btn-primary"> 修改 </a>
+						<%-- 							<a href="/shianghergo/hao/product/Update/Delete?id=${product.id }"><input --%>
+						<!-- 							type="button" name="delete" value="刪除" class='btn btn-primary' -->
+						<!-- 							onclick="confirmDelete()" /></a> -->
+						
+							<input type="hidden" value="${product.id }" name="id">
+							<input type="submit" name="delete" value="刪除"
+								class='btn btn-primary' onclick="confirmDelete()" />
+						</form>
 					</div>
 				</div>
 				<c:if test="${(status.index % 5) == 4}">
