@@ -57,88 +57,89 @@ import com.shianghergo.service.ProductService;
 public class ProductController {
 	@Autowired
 	ProductService service;
-	
+
 	@Autowired
 	MemberService memberService;
 
 	@Autowired
 	ServletContext context;
-	
+
 	// -------------------以下聖捷--------------------
-	
+
 	@RequestMapping(value = "/Member002")
-	public String getMyOrderList(@ModelAttribute("loginOK")MemberBean mb, Model model) {
-		System.out.println("MemberBean mb++"+mb);
+	public String getMyOrderList(@ModelAttribute("loginOK") MemberBean mb, Model model) {
+		System.out.println("MemberBean mb++" + mb);
 		List<OrderBean> list = memberService.getMemberOrders(mb.getId());
 //		String[] list2 = new String[list.size()];
 //		for(int i=0 ; i<list.size();i++) {
 //			StoreBean store = service.getStoreById(list.get(i).getStore_id());
 //			list2[i] = store.getName();
 //		}
-		model.addAttribute("MyOrderList",list);//service.getorderById(ob.getId())
+		model.addAttribute("MyOrderList", list);// service.getorderById(ob.getId())
 //		model.addAttribute("it",list2);
-		System.out.println("getMyOrderList裡的list:"+list);
+		System.out.println("getMyOrderList裡的list:" + list);
 		return "Member002";
 	}
+
 	@RequestMapping(value = "/Member003")
-	public String getMyGroupsList(@ModelAttribute("loginOK")MemberBean mb, Model model) {
+	public String getMyGroupsList(@ModelAttribute("loginOK") MemberBean mb, Model model) {
 		List<GroupsBean> list = memberService.getMemberGroups(mb.getId());
-		model.addAttribute("MyGroupsList",list);
+		model.addAttribute("MyGroupsList", list);
 		return "Member003";
 	}
+
 	@RequestMapping("/getMyOrderListD")
-	public String getMyOrderListD(@RequestParam("order_id")Integer order_id, Model model) {
+	public String getMyOrderListD(@RequestParam("order_id") Integer order_id, Model model) {
 		List<OrderDetailBean> list = memberService.getMemberOrdersD(order_id);
-		System.out.println("order_id::"+order_id);
-		System.out.println("getMyOrderListD()裡的="+list);
-		model.addAttribute("MyOrderListD",list);
+		System.out.println("order_id::" + order_id);
+		System.out.println("getMyOrderListD()裡的=" + list);
+		model.addAttribute("MyOrderListD", list);
 		return "Member002_1";
 	}
-	
+
 	@RequestMapping("/getMyGroupsListD")
-	public String getMyGroupsListD(@RequestParam("groups_id")Integer groups_id, Model model,GroupsBean GB) {
+	public String getMyGroupsListD(@RequestParam("groups_id") Integer groups_id, Model model, GroupsBean GB) {
 		List<Groups_ItemBean> list = memberService.getGroupsOrdersD(groups_id);
 		System.out.println(groups_id);
-		System.out.println("getMyGroupsListD()裡的="+list);
-		model.addAttribute("MyGroupsListD",list);
+		System.out.println("getMyGroupsListD()裡的=" + list);
+		model.addAttribute("MyGroupsListD", list);
 		return "Member003_1";
 	}
-	
+
 	@RequestMapping("/getMyGOrderListD")
-	public String getMyGOrderListD(@RequestParam("groups_order_info_id")Integer groups_order_info_id, Model model) {
+	public String getMyGOrderListD(@RequestParam("groups_order_info_id") Integer groups_order_info_id, Model model) {
 		List<GroupsOrderDetailBean> list = memberService.getGOrderD(groups_order_info_id);
-		System.out.println("getMyGOrderListD()裡的="+list);
-		model.addAttribute("MyGroupsListD",list);
+		System.out.println("getMyGOrderListD()裡的=" + list);
+		model.addAttribute("MyGroupsListD", list);
 		return "Member004_1";
 	}
-	
+
 	@RequestMapping(value = "/Member004")
-	public String getMyGroupsOrderList(@ModelAttribute("loginOK")MemberBean mb, Model model) {
+	public String getMyGroupsOrderList(@ModelAttribute("loginOK") MemberBean mb, Model model) {
 		List<GroupsOrderBean> list = memberService.getMemberGroupsOrders(mb.getId());
-		model.addAttribute("MyGroupsOrderList",list);
-		System.out.println("參與的"+list);
+		model.addAttribute("MyGroupsOrderList", list);
+		System.out.println("參與的" + list);
 		return "Member004";
 	}
-	
+
 	@RequestMapping(value = "/getMyGroupsPerson")
-	public String getMyGroupsPerson(@RequestParam("groups_id")Integer groups_id, Model model) {
+	public String getMyGroupsPerson(@RequestParam("groups_id") Integer groups_id, Model model) {
 		List<GroupsOrderBean> list = memberService.getGroupsPerson(groups_id);
-		model.addAttribute("getMyGroupsPerson",list);
-		//System.out.println("參與的"+list);
+		model.addAttribute("getMyGroupsPerson", list);
+		// System.out.println("參與的"+list);
 		return "Member003_2";
 	}
-	
+
 	@RequestMapping(value = "/getMyGroupsplace")
-	public String getMyPlace(@RequestParam("place_id")Integer place_id, Model model,GroupsOrderBean GOB) {
+	public String getMyPlace(@RequestParam("place_id") Integer place_id, Model model, GroupsOrderBean GOB) {
 		List<PlaceBean> list = memberService.getMyPlaceByid(GOB.getPlace().getId());
-		System.out.println("getMyPlace++:"+list);
-		model.addAttribute("getMyPlace",list);
-		//System.out.println("參與的"+list);
+		System.out.println("getMyPlace++:" + list);
+		model.addAttribute("getMyPlace", list);
+		// System.out.println("參與的"+list);
 		return "Member003_3";
 	}
-	
-	
-	//-------------------------以下浩瑜----------------------
+
+	// -------------------------以下浩瑜----------------------
 
 	@RequestMapping("/hao/products")
 	public String list(Model model) {
@@ -150,30 +151,31 @@ public class ProductController {
 	@RequestMapping("/hao/product")
 	public String getProductsById(@RequestParam("id") Integer id, Model model) {
 		model.addAttribute("product", service.getProductById(id));
+//		model.addAttribute("store", service.getStoreNameByItemId(id));
 		return "hao/product";
 	}
-	
+
 	@RequestMapping("/hao/myProducts")
-	public String getProductsByStore(@ModelAttribute("loginOK")MemberBean mb, Model model) {
+	public String getProductsByStore(@ModelAttribute("loginOK") MemberBean mb, Model model) {
 		List<ItemBean> list = service.getMyProducts(mb.getId());
 		model.addAttribute("products", list);
 		return "hao/myProducts";
 	}
-	
+
 	@RequestMapping(value = "/hao/product/Update", method = RequestMethod.GET)
 	public String getUpdateProductForm(@RequestParam("id") Integer id, Model model) {
 		model.addAttribute("product", service.getProductById(id));
 		ItemBean bb = new ItemBean();
-		List<CategoryBean> list =service.getAllCategories();
+		List<CategoryBean> list = service.getAllCategories();
 		model.addAttribute("itemBean", bb);
 		model.addAttribute("category", list);
 		return "hao/productUpdate";
 	}
-	
+
 	@RequestMapping(value = "/hao/product/Update", method = RequestMethod.POST)
-	public String getUpdateProductForm(@RequestParam(value = "id",required = false)Integer id, 
-			@RequestParam("categoryBean") Integer category_id,
-			@ModelAttribute("itemBean") ItemBean bb, BindingResult result, HttpServletRequest request) {
+	public String getUpdateProductForm(@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam("categoryBean") Integer category_id, @ModelAttribute("itemBean") ItemBean bb,
+			BindingResult result, HttpServletRequest request) {
 //		String[] suppressedFields = result.getSuppressedFields();
 //		if (suppressedFields.length > 0) {
 //			throw new RuntimeException("嘗試傳入不允許的欄位:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
@@ -199,7 +201,7 @@ public class ProductController {
 		}
 		System.out.println(category_id);
 		bb.setId(id);
-		service.updateItem(bb,category_id);
+		service.updateItem(bb, category_id);
 
 //		try {
 //			File imageFolder = new File(rootDirectory, "images");
@@ -214,11 +216,11 @@ public class ProductController {
 
 		return "redirect:/hao/products";
 	}
-	
+
 	@RequestMapping(value = "/hao/products/add", method = RequestMethod.GET)
-	public String getAddNewProductForm(@ModelAttribute("loginOK")MemberBean mb, Model model) {
+	public String getAddNewProductForm(@ModelAttribute("loginOK") MemberBean mb, Model model) {
 		ItemBean bb = new ItemBean();
-		List<CategoryBean> list =service.getAllCategories();
+		List<CategoryBean> list = service.getAllCategories();
 		model.addAttribute("itemBean", bb);
 		model.addAttribute("category", list);
 		model.addAttribute("store_id", service.getStoreIdByMemberId(mb.getId()));
@@ -226,7 +228,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/hao/products/add", method = RequestMethod.POST)
-	public String getAddNewProductForm(@ModelAttribute("itemBean") ItemBean bb, BindingResult result, 
+	public String getAddNewProductForm(@ModelAttribute("itemBean") ItemBean bb, BindingResult result,
 			@RequestParam("categoryBean") Integer category_id, HttpServletRequest request) {
 
 		MultipartFile productImage = bb.getProductImage();
@@ -264,14 +266,14 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/hao/product/Update/Delete", method = RequestMethod.POST)
-	public String ProductDelete(@RequestParam(value = "id",required = false)Integer id, 
+	public String ProductDelete(@RequestParam(value = "id", required = false) Integer id,
 			@ModelAttribute("itemBean") ItemBean bb, BindingResult result, HttpServletRequest request) {
 		bb.setId(id);
 		service.deleteProduct(id);
-		
+
 		return "redirect:/hao/products";
 	}
-	
+
 	@ModelAttribute("categoryList")
 	public List<CategoryBean> getCategoryList() {
 		return service.getAllCategories();
@@ -281,8 +283,6 @@ public class ProductController {
 	public void whiteListing(WebDataBinder binder) {
 		binder.setAllowedFields("name", "category_id", "store_id", "reserve", "price", "detail", "productImage");
 	}
-
-	
 
 	@RequestMapping(value = "/hao/getPicture/{id}", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getPicture(HttpServletRequest resp, @PathVariable Integer id) {
@@ -335,9 +335,9 @@ public class ProductController {
 		}
 		return b;
 	}
-	
-	@ExceptionHandler({ProductNotFoundException.class})
-	public ModelAndView handleError(HttpServletRequest request,ProductNotFoundException exception) {
+
+	@ExceptionHandler({ ProductNotFoundException.class })
+	public ModelAndView handleError(HttpServletRequest request, ProductNotFoundException exception) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("invalidItemId", exception.getId());
 		mv.addObject("exception", exception);
