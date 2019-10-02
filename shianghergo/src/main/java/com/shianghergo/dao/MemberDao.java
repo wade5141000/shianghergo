@@ -73,4 +73,6 @@ public interface MemberDao {
 
 	public List<PlaceBean> getMyPlaceByid(Integer id);
 
+	StoreBean getStoreBeanById(int member_id);
+
 }

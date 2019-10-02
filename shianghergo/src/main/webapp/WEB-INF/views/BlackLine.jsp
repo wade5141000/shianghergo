@@ -68,11 +68,26 @@ li{
 		<li class="list-group-item list-group-item-action list-group-item-info"style="background-color:#ffffdf;border-style:dashed;"><a href="${pageContext.request.contextPath}/hao/productUpdate"style="color:#ff8000;font-family: 微軟正黑體;"><i
 				class="layui-icon layui-icon-star"></i>5</a></li>
 		<li class="list-group-item list-group-item-action list-group-item-info"style="background-color:#ffffdf;border-style:dashed;"><a href="${pageContext.request.contextPath}/hao/store"style="color:#ff8000;font-family: 微軟正黑體;"><i
-				class="layui-icon layui-icon-star"></i>6</a></li>
+				class="layui-icon layui-icon-star"></i>${loginOK.id}</a></li>
 		<li class="list-group-item list-group-item-action list-group-item-info"style="background-color:#ffffdf;border-style:dashed;"><a href="${pageContext.request.contextPath}/hao/stores"style="color:#ff8000;font-family: 微軟正黑體;"><i
-				class="layui-icon layui-icon-star"></i>7</a></li>
-		<li class="list-group-item list-group-item-action list-group-item-info"style="background-color:#ffffdf;border-style:dashed;"><a href="${pageContext.request.contextPath}/hao/storeUpdate"style="color:#ff8000;font-family: 微軟正黑體;"><i
-				class="layui-icon layui-icon-star"></i>8</a></li>
+				class="layui-icon layui-icon-star"></i>${store.id}</a></li>
+					
+					<c:if test="${store.member_id == loginOK.id}">
+					
+						<li class="list-group-item list-group-item-action list-group-item-info"style="background-color:#ffffdf;border-style:dashed;"><a href="${pageContext.request.contextPath}/hao/storeUpdate"style="color:#ff8000;font-family: 微軟正黑體;"><i
+				class="layui-icon layui-icon-star"></i>我的商店</a></li>
+					</c:if>
+					
+					
+					<c:if test="${store ==null}">
+						<li class="list-group-item list-group-item-action list-group-item-info"style="background-color:#ffffdf;border-style:dashed;"><a href="${pageContext.request.contextPath}/hao/storeUpdate"style="color:#ff8000;font-family: 微軟正黑體;"><i
+				class="layui-icon layui-icon-star"></i>建立商店</a></li>
+					</c:if>
+					
+		
+		
+		
+		
 	</ul>
 	</div>
 </body>

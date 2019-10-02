@@ -218,4 +218,8 @@ public class MemberServiceImpl implements MemberService {
 //	    }
 
 
+	@Override
+	public StoreBean getStoreBeanById(int member_id) {
+		return dao.getStoreBeanById(member_id);
+	}
 }
