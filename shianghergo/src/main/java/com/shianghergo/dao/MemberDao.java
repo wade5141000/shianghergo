@@ -76,6 +76,7 @@ public interface MemberDao {
 	public List<PlaceBean> getMyPlaceByid(Integer id);
 
 
+
 	public void deleteByid(Integer id);
 	
 
