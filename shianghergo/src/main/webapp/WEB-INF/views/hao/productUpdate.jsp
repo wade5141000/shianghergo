@@ -105,5 +105,6 @@
 			</section>
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>

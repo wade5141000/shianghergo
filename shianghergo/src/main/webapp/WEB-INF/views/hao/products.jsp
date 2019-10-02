@@ -189,5 +189,6 @@
 			</div>
 		</c:forEach>
 	</section>
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>
