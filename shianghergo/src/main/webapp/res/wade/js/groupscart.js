@@ -17,8 +17,6 @@ function changeGroupAmount(id,types){
 	}
 
 
-
-
 function gdeletetr(it,id){
 		if(confirm("是否刪除商品?")){
 			$.ajax({

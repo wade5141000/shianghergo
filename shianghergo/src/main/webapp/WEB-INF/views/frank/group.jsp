@@ -53,12 +53,49 @@ function addGroupCart(item_id,groups_id){
 		url:"../addtocart?itemid="+item_id+"&gid="+groups_id,
 		type:"get",
 		success:function(data){
-			if(data==1){
-				alert("添加成功");
-			}else{
-				alert("不可添加其他團商品");
+			alert("添加成功");
+			var cartitems = JSON.parse(data);
+			var ttotal = 0;
+			for(var j=0  ; j<cartitems.length ; j++){
+				ttotal += cartitems[j].price * cartitems[j].amount;
 			}
-		},
+			
+			$("#gtable").empty();
+			
+			var result = "<table class='tb'>";
+			
+			for(var i=0  ; i<cartitems.length ; i++){
+				
+				if(i==0){
+					result += "<tr><th>我想團...</th><th>數量</th><th>單價</th><th>小計</th><th>操作</th></tr>";
+					
+				}
+				result += '<tr>';
+				result += '<td id="giname">'+cartitems[i].name+'</td>';
+
+				result += '<td><button class="btn btn-outline-danger btn1" onclick='+
+						'"changeGroupAmount('+cartitems[i].id+',2)">-'+
+						'</button ><span id="'+cartitems[i].id+'">'+cartitems[i].amount+'</span><button onclick="changeGroupAmount('+cartitems[i].id+',1)" class="btn btn-outline-success btn2">+</button>&nbsp;&nbsp;</td>';
+				result +='<td id="giprice">'+cartitems[i].price+'</td>';
+				
+				var small = 0;
+				small += cartitems[i].price * cartitems[i].amount;
+				
+				result +='<td><span id="'+cartitems[i].id+'a" style="color:red;">'+ small +'</span></td>';
+				result +='<td><button class="btn btn-danger" onclick="gdeletetr(this,'+cartitems[i].id+')">刪除</button></td>';
+
+				
+				if(i == (cartitems.length-1)){
+					result += "<tr><td/><td/><td/><td>";
+					result += '<span class="total">Total:</span><span id="gtotal" class="total" style="color:red;">'+ttotal+'</span></td>';
+					result += "<td></td></tr></table>";
+				}
+
+			}
+			
+			$("#gtable").append(result);
+			
+		}
 	})
 }
 function openClass(evt, className) {
@@ -78,9 +115,8 @@ function openClass(evt, className) {
 	var mybtn = document.getElementsByClassName("testbtn")[0];
 	mybtn.click();
 
-
-
 </script>
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>

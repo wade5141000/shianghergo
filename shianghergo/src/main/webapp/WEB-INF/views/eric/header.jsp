@@ -27,7 +27,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <!-- wade 購物車 -->
-<!-- <script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script> -->
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/res/wade/js/cart.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/res/wade/css/cart.css">
@@ -219,7 +219,7 @@ var y = x+1;
       
       
       
-      <div class="cartdiv">
+      <div class="cartdiv" id="gtable">
 		<table class="tb">
 			<tr>
 				<th>我想團...</th>
@@ -230,9 +230,9 @@ var y = x+1;
 			</tr>
 			<c:forEach var="gitem" items="${gcartitems}">
 				<tr>
-					<td>${gitem.name}</td>
+					<td id="giname">${gitem.name}</td>
 					<td><button class="btn btn-outline-danger btn1" onclick="changeGroupAmount(${gitem.id},2)">-</button ><span id="${gitem.id}">${gitem.amount}</span><button onclick="changeGroupAmount(${gitem.id},1)" class="btn btn-outline-success btn2">+</button>&nbsp;&nbsp;</td>
-					<td>${gitem.price}</td>
+					<td id="giprice">${gitem.price}</td>
 					<td><span id="${gitem.id}a" style="color:red;"></span></td>
 					<td><button class="btn btn-danger" onclick="gdeletetr(this,${gitem.id})">刪除</button></td>
 					<script>

@@ -30,6 +30,7 @@
 		var r = confirm("是否關閉商店")
 		if (r == true) {
 			alert('成功關閉商店');
+			
 		} else {
 			alert('取消關閉商店');
 		}
@@ -108,10 +109,8 @@
 					<div class='col-lg-offset-2 col-lg-10'>
 						<input id="btnAdd" type='submit' class='btn btn-primary'
 							value="確認修改" />
-						<form action="closeStore" method="POST">
 							<input type=hidden value="${store.id}" name="id">
-							<button type="submit" class="btn btn-success" onclick="close()">關閉商店</button>
-						</form>
+							<button type="button" class="btn btn-success" onclick="close(${store.id})">關閉商店</button>
 						<input type ="button"class="btn btn-success" onclick="history.back()" value="回到上一頁"></input>
 					</div>
 				</div>

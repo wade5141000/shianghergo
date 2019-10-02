@@ -47,7 +47,7 @@ public class StoreServiceImpl implements StoreService {
 		StoreBean oldStoreBean=dao.getStoreById(sb.getId());
 		oldStoreBean.setName(sb.getName());
 		oldStoreBean.setDetail(sb.getDetail());
-		sb.setStatus(3);
+//		sb.setStatus(3);
 		dao.updateStore(oldStoreBean);
 	}
 	
@@ -57,8 +57,8 @@ public class StoreServiceImpl implements StoreService {
 		StoreBean oldStoreBean=dao.getStoreById(sb.getId());
 		oldStoreBean.setName(sb.getName());
 		oldStoreBean.setDetail(sb.getDetail());
-		oldStoreBean.setStatus(3);
-		dao.updateStore(oldStoreBean);
+		oldStoreBean.setStatus2(3);
+//		dao.updateStore(oldStoreBean);
 	}
 
 	@Transactional
