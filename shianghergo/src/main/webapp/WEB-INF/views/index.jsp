@@ -134,16 +134,16 @@
 		<h2 class="h1-responsive font-weight-bold text-center my-5">十月熱銷</h2>
 		<!-- Section description -->
 		<div class="row">
-			<c:forEach var='product' items='${aaa}' begin="1" end="4">
+			<c:forEach var='product' items='${aaa}' begin="1" end="8">
 
 				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
 					<!-- Card -->
 					<div class="card align-items-center">
 						<!-- Card image -->
 						<div class="view overlay">
-							<img
-								src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg"
-								class="card-img-top" alt=""> <a>
+							<a href="http://localhost:8080/shianghergo/hao/product?id=${product.id}"><img
+								src="<c:url value='/hao/getPicture/${product.id }' />"
+								class="card-img-top" alt=""></a> <a>
 								<div class="mask rgba-white-slight"></div>
 							</a>
 						</div>
