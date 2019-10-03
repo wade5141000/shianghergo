@@ -121,16 +121,16 @@
 	<section class="container">
 		<div class="row">
 			<c:forEach var="item" items="${updategroup.groupsitem}">
-				<div class="col-sm-6 col-md-3"
+				<div class="col-sm-6 col-md-3"							
 					style="width: 360px; height: 450px; font-size: 16px;">
-					<div class="thumbnail" style="width: 320px; height: 400px">
+					<div class="thumbnail" style="width: 270px; height: 400px">
 						<img width='275' height='250'
 							src="<c:url value='/frank/getPicture/${item.id }' />" />
 						<div class="caption">
 							<p>
 								<b style='font-size: 16px;'>${item.name}</b>
 							</p>
-							<p>說明:${item.detail}</p>
+							<p style="word-break: break-all">說明:${item.detail}</p>
 							<p>價格: ${item.price} 元</p>
 
 							<p>

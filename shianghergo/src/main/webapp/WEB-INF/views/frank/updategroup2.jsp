@@ -45,11 +45,9 @@
 <body>
 <jsp:include page="/WEB-INF/views/eric/header.jsp" />
 <jsp:include page="../BlackLine.jsp" />
-	<h3>團資料編輯</h3>
-
 	<div class="container">	
 	<!-- action对应一个action标签，id对应提交时的对应关系 -->
-	<div class="border border-success"style="padding-left: 300px;padding-right: 300px;">
+	<div class="rounded"style="padding-left: 300px;padding-right: 300px;border-style:dotted;">
 	<form:form id="saveForm" action="updatetogroup(mb)" method="post"
 		enctype="multipart/form-data" modelAttribute="upgroupsBean">
 		<input type="hidden" name="id" value="${updategroup.id}" />

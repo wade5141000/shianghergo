@@ -139,7 +139,7 @@ table {
 		<div class="row">
 			<c:forEach var="item" items="${updategroup.groupsitem}">
 				<div class="col-sm-6 col-md-3"
-					style="width: 360px; height: 450px; font-size: 16px;">
+					style="width: 360px; height: 450px; font-size: 16px;word-break: break-all">
 					<div class="thumbnail" style="width: 320px; height: 400px">
 						<img width='500' height='300'
 							src="<c:url value='/frank/getPicture/${item.id }' />" />
