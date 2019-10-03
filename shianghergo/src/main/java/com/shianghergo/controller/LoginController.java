@@ -109,6 +109,8 @@ public class LoginController {
 	public String login(String account, String password, Model model,HttpServletRequest rq) {
 		MemberBean mb = service.login(account, password);// 前
 
+		StoreBean sb = service.getStoreBeanById(mb.getId());
+		
 		if(mb != null) {
 			if(password.equals(mb.getPassword())) {
 				if(mb.getStatus()==1) {
