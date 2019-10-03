@@ -7,7 +7,6 @@ function changeAmount(id,types){
 				url:"http://localhost:8080/shianghergo/changeAmount?id="+id+"&type="+types+"&total="+total2,
 				type:"get",
 				success:function(data){
-					alert("ht");
 					list = data.split(",");
 					$("#total").text(list[0]);
 					$("#"+list[2]).html(list[1]);
@@ -23,8 +22,17 @@ function changeAmount(id,types){
 				url:"http://localhost:8080/shianghergo/delete?id="+id,
 				type:"get",
 				success:function(data){
+					
+					var gitems = JSON.parse(data);
+					var total = 0;
+					var lens = gitems.length;
+					for(var i=0; i<gitems.length ;i++){
+						total += gitems[i].price * gitems[i].amount;
+					}
+					
 					$(it.parentNode.parentNode).remove();
-					$("#total").text($("#total").text()-data);
+					$("#total").text(total);
+					$("#its").text(lens);
 				},
 			})
 			

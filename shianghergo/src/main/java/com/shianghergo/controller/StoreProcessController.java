@@ -221,9 +221,13 @@ public class StoreProcessController {
 		httpSession.setAttribute("total",total2);
 		httpSession.setAttribute("its",list2.size());
 		
+		ObjectMapper mapper = new ObjectMapper();
+		String result = "";
+		
 		
 		try {
-			rp.getWriter().write(String.valueOf(reduce));
+			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list2);
+			rp.getWriter().write(result);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

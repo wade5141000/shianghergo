@@ -215,18 +215,21 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	
-	@SuppressWarnings("unchecked")
-	@Override
-	public StoreBean getStoreBeanById(Integer id) {
-		
-		StoreBean sb = null;
-		String hql = "FROM StoreBean WHERE member_id=:id";
-		Session session = factory.getCurrentSession();
-		sb = (StoreBean) session.createQuery(hql).setParameter("id", id).uniqueResult();
 
-		
-		return sb;
-	}
+
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public StoreBean getStoreBeanById(Integer id) {
+//		
+//		StoreBean sb = null;
+//		String hql = "FROM StoreBean WHERE member_id=:id";
+//		Session session = factory.getCurrentSession();
+//		sb = (StoreBean) session.createQuery(hql).setParameter("id", id).uniqueResult();
+//
+//		
+//		return sb;
+//	}
+
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -358,16 +361,16 @@ public class MemberDaoImpl implements MemberDao {
 
 		
 	
-		@Override
-		public StoreBean getStoreBeanById(int member_id) {
-			Session session = factory.getCurrentSession();
-			
-			String hql = "FROM StoreBean where member_id=:member_id";
-
-			StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("member_id", member_id).getSingleResult();
-			
-		
-			return sb;
-		}
-	
+//		@Override
+//		public StoreBean getStoreBeanById(int member_id) {
+//			Session session = factory.getCurrentSession();
+//			
+//			String hql = "FROM StoreBean where member_id=:member_id";
+//
+//			StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("member_id", member_id).getSingleResult();
+//			
+//		
+//			return sb;
+//		}
+//	
 }
