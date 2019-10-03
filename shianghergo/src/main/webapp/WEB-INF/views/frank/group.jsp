@@ -29,11 +29,6 @@
 	width: 760px;
 }
 
-.btn-group{
-margin:0 auto;
-width:1000px;
-}
-
 .f2 {
 	margin: 0 auto;
 }
@@ -121,6 +116,32 @@ function addGroupCart(item_id,groups_id){
 	})
 }
 
+$(document).ready(function(){
+	$("#one").show();
+	$("#two").hide();
+	$("#three").hide();
+
+	$("#111").click(function(){
+		$("#one").show();
+		$("#two").hide();
+		$("#three").hide();
+	});
+	
+	$("#222").click(function(){
+		$("#one").hide();
+		$("#two").show();
+		$("#three").hide();
+	});
+
+	$("#333").click(function(){
+		$("#one").hide();
+		$("#two").hide();
+		$("#three").show();
+	});
+	
+});
+
+
 </script>
 
 </head>
@@ -141,8 +162,7 @@ function addGroupCart(item_id,groups_id){
 					src="<c:url value='/getmemberPicture/${group.memberBean.id }' />" />${group.memberBean.name}
 					<button type="button" class="btn btn-primary">☠檢舉</button>
 					<button type="button" class="btn btn-primary">📜評價</button>
-					<button type="button" class="btn btn-primary">📩留言給我</button>
-					</td>
+					<button type="button" class="btn btn-primary">📩留言給我</button></td>
 
 			</tr>
 
@@ -185,15 +205,25 @@ function addGroupCart(item_id,groups_id){
 			</c:forEach>
 		</table>
 	</div>
-	<div style="margin:0 auto;text-align:center;">
-	<div class="btn-group" role="group" aria-label="Basic example" >
-		<button type="button" class="btn btn-secondary">商品與說明</button>
-		<button type="button" class="btn btn-secondary">評價</button>
-		<button type="button" class="btn btn-secondary">團主的其他合購</button>
+	<div style="margin: 0 auto; text-align: center;">
+		<div class="btn-group" role="group" aria-label="Basic example"
+			style="width: 1000px">
+			<button type="button" class="btn btn-secondary" id="111">商品與說明</button>
+			<button type="button" class="btn btn-secondary" id="222">評價</button>
+			<button type="button" class="btn btn-secondary" id="333">團主的其他合購</button>
 
+
+
+		</div>
 	</div>
-</div>
-	<div class="one">
+	<div id="one">
+		<div style="word-break: break-all; width: 800px; margin: 0 auto; ">
+			<img width='750' height='450'src="<c:url value='/frank/getgroupPicture/${group.id }' />">
+		
+	</div>
+	<div style="width:1000px; margin: 0 auto;">
+		<h3>商品</h3>
+		</div>
 
 		<div class="f2" style="width: 1000px;">
 			<c:forEach var="item" items="${groups_id}">
@@ -218,7 +248,15 @@ function addGroupCart(item_id,groups_id){
 			</c:forEach>
 		</div>
 
-	
+
+	</div>
+
+	<div id="two">
+		<p>22222222222</p>
+	</div>
+
+	<div id="three">
+		<p>3333333333333</p>
 	</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 

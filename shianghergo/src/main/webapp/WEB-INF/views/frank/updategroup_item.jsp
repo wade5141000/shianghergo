@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +22,9 @@
 		<input type="hidden" name="gid" value="${updategitem.groupsBean.id}" />
 234234
 		<h2>商品資訊</h2>
+		
+		<img width='500' height='300'
+							src="<c:url value='/frank/getPicture/${updategitem.id }' />" />
 		<table style="font-size: :16px">
 			<tr>
 				<td>商品名稱：</td>
