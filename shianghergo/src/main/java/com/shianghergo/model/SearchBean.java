@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name="item")
 public class SearchBean {
 	@Id
-	private BigDecimal id;
+	private Integer id;
 	private String name;	
 	private BigDecimal category_id;
 	private BigDecimal store_id;
@@ -26,10 +26,10 @@ public class SearchBean {
 				+ ", reserve=" + reserve + ", price=" + price + ", detail=" + detail + ",coverImage=" + coverImage
 				+",fileName=" + fileName+"]";
 	}
-	public BigDecimal getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(BigDecimal id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {
