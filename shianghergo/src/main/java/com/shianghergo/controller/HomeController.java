@@ -9,10 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.shianghergo.model.CategoryBean;
 import com.shianghergo.model.ItemBean;
+import com.shianghergo.model.MemberBean;
+import com.shianghergo.model.NotificationBean;
 import com.shianghergo.service.CartService;
 import com.shianghergo.service.GroupsService;
 import com.shianghergo.service.ProductService;
@@ -81,6 +84,16 @@ public class HomeController {
 	public String Testgok() {
 		return "wade/hotsell";
 	}
+	
+//	@RequestMapping("/showNotification")
+//	public String showNotification(@SessionAttribute("loginOK") MemberBean member,HttpServletRequest rq) {
+//		List<NotificationBean> list = cartService.getNotification(member.getId());
+//		HttpSession session = rq.getSession();
+//		session.setAttribute("notification", list);
+//		
+//		
+//		return "";
+//	}
 	
 	// 前端測試尾端
 	

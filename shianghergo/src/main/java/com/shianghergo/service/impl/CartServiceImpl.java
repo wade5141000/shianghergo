@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.shianghergo.dao.CartDao;
 import com.shianghergo.model.CartBean;
 import com.shianghergo.model.ItemBean;
+import com.shianghergo.model.NotificationBean;
 import com.shianghergo.service.CartService;
 
 @Service
@@ -52,6 +53,12 @@ public class CartServiceImpl implements CartService{
 	public int deleteCartBeanById(Integer cart_id) {
 		int reduce = dao.deleteCartBeanById(cart_id);
 		return reduce;
+	}
+
+	@Override
+	@Transactional
+	public List<NotificationBean> getNotification(Integer memebr_id) {
+		return dao.getNotification(memebr_id);
 	}
 	
 }
