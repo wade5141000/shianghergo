@@ -107,9 +107,13 @@ public class StoreProcessController {
 		httpSession.setAttribute("total",total2);
 		httpSession.setAttribute("its",list2.size());
 		
+		ObjectMapper mapper = new ObjectMapper();
+		String result = "";
+		
 		
 		try {
-			rp.getWriter().write("");
+			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list2);
+			rp.getWriter().write(result);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -168,6 +172,7 @@ public class StoreProcessController {
 		int id = Integer.parseInt((re.getParameter("id")));
 		String type = re.getParameter("type");
 		CartBean cb = cartService.updateCartBeanById(id, type);
+		Integer mId = cb.getMember_id();
 		int newAmount = cb.getAmount();
 		if(type.equals("1")) {
 			total += cb.getPrice();
@@ -179,8 +184,9 @@ public class StoreProcessController {
 		System.out.println(result);
 		
 		
+		
 		HttpSession httpSession = re.getSession();
-		List<CartBean> list2 = cartService.getCartItems(cb.getMember_id());
+		List<CartBean> list2 = cartService.getCartItems(mId);
 		httpSession.setAttribute("cartitems", list2);
 		long total2 = 0;
 		for(CartBean ccb:list2) {
@@ -215,9 +221,13 @@ public class StoreProcessController {
 		httpSession.setAttribute("total",total2);
 		httpSession.setAttribute("its",list2.size());
 		
+		ObjectMapper mapper = new ObjectMapper();
+		String result = "";
+		
 		
 		try {
-			rp.getWriter().write(String.valueOf(reduce));
+			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list2);
+			rp.getWriter().write(result);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

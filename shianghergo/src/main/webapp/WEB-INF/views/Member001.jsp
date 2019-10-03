@@ -8,9 +8,10 @@
 <!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script> -->
 <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script> -->
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!-- <meta name="viewport" -->
+<!-- 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"> -->
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"> -->
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <head>
 <style type="text/css">
 .table1 {

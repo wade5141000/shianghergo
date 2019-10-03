@@ -100,6 +100,7 @@ public class GroupsProcessController {
 			gtotal += cb.getPrice()*cb.getAmount();
 		}
 		httpSession.setAttribute("gtotal",gtotal);
+		httpSession.setAttribute("gits",list3.size());
 		
 		
 		return "wade/orderform";
@@ -124,6 +125,9 @@ public class GroupsProcessController {
 			gtotal += cb.getPrice()*cb.getAmount();
 		}
 		httpSession.setAttribute("gtotal",gtotal);
+		httpSession.setAttribute("gits",list3.size());
+		
+		
 		
 		try {
 			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list3);
@@ -155,15 +159,21 @@ public class GroupsProcessController {
 		HttpSession httpSession = re.getSession();
 		List<GroupsCartBean> list3 = groupsCartService.getGroupsCartItems(mId);
 		httpSession.setAttribute("gcartitems", list3);
-		long gtotal = 0;
+		int gtotal = 0;
 		for(GroupsCartBean cb:list3) {
 			gtotal += cb.getPrice()*cb.getAmount();
 		}
 		httpSession.setAttribute("gtotal",gtotal);
+		httpSession.setAttribute("gits",list3.size());
+		
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String result = "";
 		
 		
 		try {
-			rp.getWriter().write(String.valueOf(reduce));
+			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list3);
+			rp.getWriter().write(result);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -197,6 +207,7 @@ public class GroupsProcessController {
 			gtotal += gcb.getPrice()*gcb.getAmount();
 		}
 		httpSession.setAttribute("gtotal",gtotal);
+		httpSession.setAttribute("gits",list3.size());
 		
 		
 		try {

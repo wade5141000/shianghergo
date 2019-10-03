@@ -20,6 +20,7 @@
 	<h3>團資料編輯</h3>
 	<br />
 	<br />
+
 	<div class="container">
 		<div class="border border-success">
 			<!-- action对应一个action标签，id对应提交时的对应关系 -->
@@ -28,6 +29,7 @@
 				class="row">
 				<input type="hidden" name="iid" value="${updategitem.id}" />
 				<input type="hidden" name="gid" value="${updategitem.groupsBean.id}" />
+
 
 				<!-- 		<h2>商品資訊</h2> -->
 				<div class="col-4" style="align:center;">

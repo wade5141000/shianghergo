@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.shianghergo.dao.CartDao;
 import com.shianghergo.model.CartBean;
 import com.shianghergo.model.ItemBean;
+import com.shianghergo.model.NotificationBean;
 
 @Repository
 public class CartDaoImpl implements CartDao{
@@ -68,6 +69,16 @@ public class CartDaoImpl implements CartDao{
 		int reduce = (int) (cb.getAmount()*cb.getPrice());
 		session.delete(cb);
 		return reduce;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<NotificationBean> getNotification(Integer memebr_id) {
+		Session session = factory.getCurrentSession();
+		String hql = "from NotificationBean where target=:idd";
+		List<NotificationBean> list = session.createQuery(hql).setParameter("idd", memebr_id).getResultList();
+		
+		return list;
 	}
 
 }

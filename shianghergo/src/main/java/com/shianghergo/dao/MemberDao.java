@@ -51,7 +51,7 @@ public interface MemberDao {
 
 	StoreBean getStoreById(Integer id);
 	
-	public StoreBean getStoreBeanById(Integer id);
+//	public StoreBean getStoreBeanById(Integer id);
 
 	List<GroupsBean> getMemberGroups(Integer id);
 
@@ -75,7 +75,10 @@ public interface MemberDao {
 
 	public List<PlaceBean> getMyPlaceByid(Integer id);
 
+
+
 	public void deleteByid(Integer id);
 	
+
 
 }

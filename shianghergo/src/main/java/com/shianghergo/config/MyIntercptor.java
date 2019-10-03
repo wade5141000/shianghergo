@@ -4,13 +4,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.shianghergo.exception.UserException;
+import com.shianghergo.model.MemberBean;
+import com.shianghergo.service.MemberService;
+
+
 
 
 public class MyIntercptor extends HandlerInterceptorAdapter {
+	
+	@Autowired
+	MemberService service;
+	
 	 @Override
 	    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handle) throws Exception {
 	        System.out.println("before");
@@ -24,7 +33,9 @@ public class MyIntercptor extends HandlerInterceptorAdapter {
 			String url =request.getRequestURL().toString();
 			
 			//获得session中的用户
-			   Object user = session.getAttribute("loginOK");
+			   MemberBean user = (MemberBean)session.getAttribute("loginOK");
+			   
+			   
 			 System.out.println("获得session中的用户:"+user);
 			
 			for (String strUrl : allowUrls) {
@@ -35,13 +46,43 @@ public class MyIntercptor extends HandlerInterceptorAdapter {
 				System.out.println("攔截已放行");
 			}
 			
-			if(user ==null)
-			{
-				throw new UserException("您尚未登陸！");	
-									
+			MemberBean homeMb = null;
+			
+			if(user != null) {
+				homeMb = service.getMemberByAccount(user.getAccount());
+				System.out.println("user id " + user.getId());
+				System.out.println("user status " + user.getStatus());
 			}
+			
+			if(homeMb != null && homeMb.getStatus() == 2) {
+				
+				System.out.println("user != null && user.getStatus() == 2");
+				
+				response.sendRedirect(request.getContextPath()+"/login");
+				
+//				session.invalidate();
+				
+				session.removeAttribute("loginOK");
+				session.removeAttribute("cartitems");
+				session.removeAttribute("total");
+				session.removeAttribute("its");
+				session.removeAttribute("gcartitems");
+				session.removeAttribute("gtotal");
+				session.removeAttribute("gits");
+				session.removeAttribute("header11");
+				session.removeAttribute("notification");
+				
+				
+			}else if(user ==null) {
+				
+				System.out.println("user ==null");
+				response.sendRedirect(request.getContextPath()+"/login");
+			}
+			
+			
+			
 			//重定向
-			response.sendRedirect(request.getContextPath()+"/login");
+//			response.sendRedirect(request.getContextPath()+"/login");
 	        return true;
 	    }//进入Handler方法之前执行。可以用于身份认证、身份授权。比如如果认证没有通过表示用户没有登陆，需要此方法拦截不再往下执行（return false），否则就放行（return true）。
 

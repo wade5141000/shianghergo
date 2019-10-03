@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -105,7 +106,7 @@ public class GroupsController {
 	// -------------------------開團 並把會員member_id 放入------------
 	@RequestMapping(value = "/frank/Groups1", method = RequestMethod.POST)
 	public String processAddNewProductForm(Model model, @ModelAttribute("groupsBean") GroupsBean gb,
-			BindingResult result, HttpServletRequest request, @ModelAttribute("loginOK")MemberBean member,
+			BindingResult result, HttpServletRequest request, @SessionAttribute("loginOK")MemberBean member,
 			@RequestParam("categoryBean") Integer category_id) {
 
 		String[] suppressedFields = result.getSuppressedFields();
@@ -445,12 +446,12 @@ public class GroupsController {
 		
 		System.out.println("gid: " + gid);
 		System.out.println("mid:  " + member.getId());
-
-		model.addAttribute("group", service.getGroupById(gid)); // 取團的資料
+		GroupsBean gb = service.getGroupById(gid);
+		model.addAttribute("group", gb); // 取團的資料
 
 		model.addAttribute("groups_id", service.getGroupsItemByGroups_id(gid)); // 取商品的資料
 
-		model.addAttribute("member_id", service.getMemberById(member.getId())); // 取會員的資料
+//		model.addAttribute("member_id", service.getMemberById(member.getId())); // 取會員的資料
 
 		model.addAttribute("place", service.getPlaceByGroups_id(gid)); // 取地址的資料
 

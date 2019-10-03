@@ -157,7 +157,7 @@ table {
 								<input type="button" value="刪除"
 									onclick="location.href='deletetogroup_item?gid=${updategroup.id}&iid=${item.id}'"
 									class="btn btn-danger" style="width: 80px; height: 30px;">
-
+s
 							</p>
 						</div>
 					</div>
