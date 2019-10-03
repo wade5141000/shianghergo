@@ -369,8 +369,8 @@ public class StoreProcessController {
 	
 	@RequestMapping("/productfile.s")
 	public void CreateExcel(HttpServletRequest request,HttpServletResponse response,Integer store_id) {
-		store_id = 20001;
-		StoreBean sb = storeService.getStoreById(store_id);
+		int id = store_id;
+		StoreBean sb = storeService.getStoreById(id);
 		Object[] items = sb.getItems().toArray();
 		File file = new File("C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\resources\\"+sb.getName()+".xls");
 		try {
