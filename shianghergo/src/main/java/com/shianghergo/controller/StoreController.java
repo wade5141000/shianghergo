@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.NotificationBean;
 import com.shianghergo.model.StoreBean;
+import com.shianghergo.service.ProductService;
 import com.shianghergo.service.StoreService;
 
 @Transactional
@@ -31,6 +32,9 @@ public class StoreController {
 	@Autowired
 	StoreService service;
 
+	@Autowired
+	ProductService productService;
+	
 	@Autowired
 	ServletContext context;
 
@@ -102,6 +106,14 @@ public class StoreController {
 	public String getProductsById(@RequestParam("id") Integer id, Model model) {
 		model.addAttribute("store", service.getStoreById(id));
 		return "hao/store";
+	}
+	
+	@RequestMapping("/hao/getStoreByProduct")
+	public String getStoreByProduct(@RequestParam("id") Integer id, Model model) {
+		model.addAttribute("store", service.getStoreById(id));
+		int member_id = service.getMemberIdByStoreId(id);
+		model.addAttribute("products", productService.getMyProducts(member_id));
+		return "hao/getStoreByProduct";
 	}
 	
 	@RequestMapping("/hao/closeStore")

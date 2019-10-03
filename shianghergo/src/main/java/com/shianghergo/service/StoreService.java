@@ -20,4 +20,6 @@ public interface StoreService {
 	StoreBean getStoreByMember_Id(Integer member_id);
 
 	void closeStore(StoreBean sb);
+
+	int getMemberIdByStoreId(Integer id);
 }

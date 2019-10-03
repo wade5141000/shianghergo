@@ -24,4 +24,6 @@ public interface StoreDao {
 	void recoveryStore(Integer target);
 
 	StoreBean getStoreByMember_Id(Integer member_id);
+
+	int getMemberIdByStoreId(Integer id);
 }

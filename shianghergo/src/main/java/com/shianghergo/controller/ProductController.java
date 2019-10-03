@@ -148,6 +148,13 @@ public class ProductController {
 		return "hao/products";
 	}
 
+	@RequestMapping("/hao/productsByCategory")
+	public String productsByCategory(@RequestParam("category_id") Integer category_id ,Model model) {
+		List<ItemBean> list = service.getProductsByCategory(category_id);
+		model.addAttribute("products", list);
+		return "hao/products";
+	}
+	
 	@RequestMapping("/hao/product")
 	public String getProductsById(@RequestParam("id") Integer id, Model model) {
 		model.addAttribute("product", service.getProductById(id));

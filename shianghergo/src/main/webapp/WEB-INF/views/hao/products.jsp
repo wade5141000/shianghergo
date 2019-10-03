@@ -76,78 +76,32 @@
 		<div class="commod-cont-wrap">
 			<div class="commod-cont w1200 layui-clear">
 				<div class="left-nav">
-					<div class="title">所有分类</div>
-					<div class="list-box">
-						<dl>
-							<dt>奶粉辅食</dt>
-							<dd>
-								<a href="javascript:;">进口奶粉</a>
+					<div class="list-box" style="background-color: #FFE5B5">
+						<dl style="background-color: #FFE5B5">
+							<dd style="background-color: #FFB01C;text-align:center">
+								所有分類
 							</dd>
 							<dd>
-								<a href="javascript:;">宝宝辅食</a>
+								<a href="${pageContext.request.contextPath}/hao/products">全品項</a>
 							</dd>
 							<dd>
-								<a href="javascript:;">营养品</a>
-							</dd>
-						</dl>
-						<dl>
-							<dt>儿童用品</dt>
-							<dd>
-								<a href="javascript:;">纸尿裤</a>
+								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60001">團購美食</a>
 							</dd>
 							<dd>
-								<a href="javascript:;">婴儿湿巾</a>
+								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60002">保養美妝</a>
 							</dd>
 							<dd>
-								<a href="javascript:;">婴儿车</a>
+								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60003">服飾配件</a>
 							</dd>
 							<dd>
-								<a href="javascript:;">婴儿床</a>
+								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60004">育兒親子</a>
 							</dd>
 							<dd>
-								<a href="javascript:;">儿童安全座椅</a>
-							</dd>
-						</dl>
-						<dl>
-							<dt>儿童早教</dt>
-							<dd>
-								<a href="javascript:;">儿童玩具</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">早教书籍</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">孕产育儿书</a>
-							</dd>
-						</dl>
-						<dl>
-							<dt>儿童服饰</dt>
-							<dd>
-								<a href="javascript:;">童装</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">童鞋</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">宝宝配饰</a>
-							</dd>
-						</dl>
-						<dl>
-							<dt>孕妈专区</dt>
-							<dd>
-								<a href="javascript:;">孕妇装</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">孕妇护肤</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">孕妇用品</a>
+								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60005">生鮮食品</a>
 							</dd>
 						</dl>
 					</div>
 				</div>
-
-
 
 				<div class="right-cont-wrap">
 					<div class="right-cont">
@@ -164,7 +118,7 @@
 									</div>
 									<div class="text">
 										<p class="title">
-											&nbsp;&nbsp;&nbsp;&nbsp;${product.name } <span class="pri"
+											<strong>&nbsp;&nbsp;&nbsp;&nbsp;${product.name }</strong> <span class="pri"
 												style="float: right; font-size: 20px; color: gray;"><del>${product.price+100 }元</del>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 										</p>
 										<p class="price">
