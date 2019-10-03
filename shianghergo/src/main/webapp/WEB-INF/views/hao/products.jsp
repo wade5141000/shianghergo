@@ -39,7 +39,7 @@
 		<div class="commod-cont-wrap">
 			<div class="commod-cont w1200 layui-clear">
 				<div class="left-nav">
-					<div class="list-box">
+					<div class="list-box" style="background-color: #FFE5B5">
 						<dl style="background-color: #FFE5B5">
 							<dd style="background-color: #FFB01C;text-align:center">
 								所有分類
@@ -81,7 +81,7 @@
 									</div>
 									<div class="text">
 										<p class="title">
-											&nbsp;&nbsp;&nbsp;&nbsp;${product.name } <span class="pri"
+											<strong>&nbsp;&nbsp;&nbsp;&nbsp;${product.name }</strong> <span class="pri"
 												style="float: right; font-size: 20px; color: gray;"><del>${product.price+100 }元</del>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 										</p>
 										<p class="price">
