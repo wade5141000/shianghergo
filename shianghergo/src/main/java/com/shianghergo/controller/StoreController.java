@@ -60,7 +60,7 @@ public class StoreController {
 		if (sb.getMember_id() != null && sb.getName() != null && sb.getDetail() != null) {
 			redirectAttributes.addFlashAttribute("name", sb.getName());
 			redirectAttributes.addFlashAttribute("success", "註冊成功");
-			sb.setStatus2(1);
+			sb.setStatus(1);
 			service.buildStore(sb);
 			return "redirect:/";
 		} else {
