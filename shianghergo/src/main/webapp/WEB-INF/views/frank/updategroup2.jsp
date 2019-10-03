@@ -50,7 +50,7 @@
 	<div class="container">	
 	<!-- action对应一个action标签，id对应提交时的对应关系 -->
 	<div class="border border-success"style="padding-left: 300px;padding-right: 300px;">
-	<form:form id="saveForm" action="updatetogroup" method="post"
+	<form:form id="saveForm" action="updatetogroup(mb)" method="post"
 		enctype="multipart/form-data" modelAttribute="upgroupsBean">
 		<input type="hidden" name="id" value="${updategroup.id}" />
 <!-- 		<h2>團資訊</h2> -->

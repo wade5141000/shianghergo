@@ -4,14 +4,8 @@
 <!DOCTYPE html>
 <html>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script
-	src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
-<script
-	src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-<script
-	src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- <script -->
+<!-- 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <meta name="viewport"
@@ -37,6 +31,7 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
 	integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 	crossorigin="anonymous"></script>
+	<script src="http://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <style>
 li {
 	line-height: 1em;
@@ -99,27 +94,27 @@ li {
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/hao/myProducts"
 				style="color: #ff8000; font-family: 微軟正黑體;">我的商品列表</a></li>
-			<li
-				class="list-group-item list-group-item-action list-group-item-info"
-				style="background-color: #ffffdf; border-style: dashed;"><a
-				href="${pageContext.request.contextPath}/hao/products"
-				style="color: #ff8000; font-family: 微軟正黑體;"> 4</a></li>
-			<li
-				class="list-group-item list-group-item-action list-group-item-info"
-				style="background-color: #ffffdf; border-style: dashed;"><a
-				href="${pageContext.request.contextPath}/hao/productUpdate"
-				style="color: #ff8000; font-family: 微軟正黑體;"> 5</a></li>
+<!-- 			<li -->
+<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+<%-- 				href="${pageContext.request.contextPath}/frank/showgroup" --%>
+<!-- 				style="color: #ff8000; font-family: 微軟正黑體;"> 4</a></li> -->
+<!-- 			<li -->
+<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+<%-- 				href="${pageContext.request.contextPath}/frank/mygroups" --%>
+<!-- 				style="color: #ff8000; font-family: 微軟正黑體;"> 5</a></li> -->
 				
-			<li
-				class="list-group-item list-group-item-action list-group-item-info"
-				style="background-color: #ffffdf; border-style: dashed;"><a
-				href="${pageContext.request.contextPath}/hao/store"
-				style="color: #ff8000; font-family: 微軟正黑體;"> ${loginOK.id}</a></li>
-			<li
-				class="list-group-item list-group-item-action list-group-item-info"
-				style="background-color: #ffffdf; border-style: dashed;"><a
-				href="${pageContext.request.contextPath}/hao/stores"
-				style="color: #ff8000; font-family: 微軟正黑體;"> ${store.member_id}</a></li>
+<!-- 			<li -->
+<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+<%-- 				href="${pageContext.request.contextPath}/hao/store" --%>
+<%-- 				style="color: #ff8000; font-family: 微軟正黑體;"> ${loginOK.id}</a></li> --%>
+<!-- 			<li -->
+<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+<%-- 				href="${pageContext.request.contextPath}/hao/stores" --%>
+<%-- 				style="color: #ff8000; font-family: 微軟正黑體;"> ${store.member_id}</a></li> --%>
 		</ul>
 	</div>
 </body>

@@ -23,7 +23,7 @@
 	<div class="container">
 		<div class="border border-success">
 			<!-- action对应一个action标签，id对应提交时的对应关系 -->
-			<form:form method="post" action="updatetogroup_item"
+			<form:form method="post" action="updatetogroup_item(mb)"
 				enctype="multipart/form-data" modelAttribute="upgroupsitemBean"
 				class="row">
 				<input type="hidden" name="iid" value="${updategitem.id}" />

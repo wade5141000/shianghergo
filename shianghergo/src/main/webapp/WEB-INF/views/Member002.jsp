@@ -29,7 +29,7 @@ thead {
 </head>
 <body >
 <jsp:include page="eric/header.jsp" />
-	<div  style="padding-bottom: 500px;">
+	<div  style="padding-bottom: 300px;">
 	<jsp:include page="shianghergo/../BlackLine.jsp" />
 
 	<div style="padding-left: 350px;padding-right: 350px;">
