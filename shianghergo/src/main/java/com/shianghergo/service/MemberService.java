@@ -72,4 +72,6 @@ public interface MemberService {
 	public void deleteByid(Integer id);
 
 	// int activeUser(String code);//激活會員
+	
+	StoreBean getStoreBeanById(int member_id);
 }

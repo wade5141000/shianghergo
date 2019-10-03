@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Products</title>
-<link rel="stylesheet"
-	href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<!-- <link rel="stylesheet" -->
+<!-- 	href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<!-- <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script> -->
 <script
 	src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -189,5 +189,6 @@
 			</div>
 		</c:forEach>
 	</section>
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>

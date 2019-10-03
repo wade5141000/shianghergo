@@ -66,7 +66,6 @@ li {
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/getMyMessage"
 				style="color: #ff8000; font-family: 微軟正黑體;"> 我的留言板</a></li>
-
 			<li
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
@@ -121,6 +120,7 @@ li {
 				href="${pageContext.request.contextPath}/hao/stores"
 				style="color: #ff8000; font-family: 微軟正黑體;"> ${store.member_id}</a></li>
 		</ul>
+
 	</div>
 </body>
 </html>
