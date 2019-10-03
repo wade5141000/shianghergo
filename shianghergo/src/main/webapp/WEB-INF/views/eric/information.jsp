@@ -54,7 +54,11 @@
 			      
 			      	<c:forEach varStatus="stVar" var="anSearch" items="${searchList}">
 				        <tr>
-				          <td><img src="${pageContext.request.contextPath}/res/static/img/temp.png" height="100"></td>
+				          <td>
+				          <a href="http://localhost:8080/shianghergo/hao/product?id=${anSearch.id}">
+				          <img src="<c:url value='/hao/getPicture/${anSearch.id}' />" height="100">
+				          </a>
+				          </td>
 <%-- 				          <td><img src="${pageContext.request.contextPath}/res/static/img/${anSearch.FileName}.jsp" height="100"></td> --%>
 				          <td>${anSearch.name}</td>
 				          <td>${anSearch.price}</td>

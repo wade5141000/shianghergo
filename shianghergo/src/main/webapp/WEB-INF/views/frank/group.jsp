@@ -8,12 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>group</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/static/css/main.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/layui/css/layui.css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
+<!-- <link rel="stylesheet" type="text/css" -->
+<%-- 	href="${pageContext.request.contextPath}/res/static/css/main.css"> --%>
+<!-- <link rel="stylesheet" type="text/css" -->
+<%-- 	href="${pageContext.request.contextPath}/res/layui/css/layui.css"> --%>
+<!-- <script type="text/javascript" -->
+<%-- 	src="${pageContext.request.contextPath}/res/layui/layui.js"></script> --%>
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <style>
@@ -110,6 +110,7 @@ function addGroupCart(item_id,groups_id){
 			
 			$("#gtable").append(result);
 			$("#gits").text(cartitems.length);
+			$("#groupgo").attr("href","${pageContext.request.contextPath}/addgrouporder?gid=" + cartitems[0].groups_id);
 			
 		}
 	})
