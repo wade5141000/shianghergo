@@ -33,15 +33,15 @@ public interface GBDBService {
 
 	public void stopMessageBean(MessageBean msg, Integer target);
 
-	public List<Report_MemberBean> getAll();
+	List<Report_MemberBean> getProcess(Integer status);
+
+	List<Report_StoreBean> getProcessS(Integer status);
 
 	Integer loginMember(String account);
 
 	public void saveReport(Report_MemberBean report);
 
 	void updateReport(Report_MemberBean rb, Integer id);
-
-	public List<Report_StoreBean> getAllStoreBean();
 
 	public void saveReport(Report_StoreBean report);
 
@@ -72,8 +72,13 @@ public interface GBDBService {
 
 	// --新增的 message改為NotificationBean---// 9/25 /停權
 	public void stopNotification(NotificationBean notification, Integer target);
-	
+
 	// --新增的 message改為NotificationBean---// 9/25 /恢復權限
 	public void recoveryNotification(NotificationBean notification, Integer target);
 
+	//用狀態碼查詢正常/停權會員 10/03 
+	List<MemberBean> getMemberUSEStatus(Integer status);
+	//用狀態碼查詢正常/停權商家 10/03 
+	public List<StoreBean> getStoreUSEStatus(Integer status);
+	
 }

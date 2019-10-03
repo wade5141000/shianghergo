@@ -356,6 +356,19 @@ public class MemberDaoImpl implements MemberDao {
 		
 		}
 
+		@Override
+		public List<MemberBean> getMemberUSEStatus(Integer status) {
+		
+			Session session = factory.getCurrentSession();
+			
+			String hql = "FROM MemberBean where status=:status";
+			
+			@SuppressWarnings("unchecked")
+			List<MemberBean> mb = session.createQuery(hql).setParameter("status", status).getResultList();
+					
+			return mb;
+		}
+
 		
 	
 	

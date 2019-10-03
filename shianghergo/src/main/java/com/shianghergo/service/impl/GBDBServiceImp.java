@@ -116,12 +116,6 @@ public class GBDBServiceImp implements GBDBService {
 	}
 
 	@Override
-	public List<Report_MemberBean> getAll() {
-
-		return rmdao.getAll();
-	}
-
-	@Override
 	public void saveReport(Report_MemberBean report) {
 
 		Date date = new Date();
@@ -138,13 +132,6 @@ public class GBDBServiceImp implements GBDBService {
 	public void updateReport(Report_MemberBean rb, Integer id) {
 
 		rmdao.updateReport(rb, id);
-
-	}
-
-	@Override
-	public List<Report_StoreBean> getAllStoreBean() {
-
-		return rsdao.getAllStoreBean();
 
 	}
 
@@ -257,4 +244,29 @@ public class GBDBServiceImp implements GBDBService {
 		
 	}
 
+	@Override
+	public List<Report_MemberBean> getProcess(Integer status) {
+	
+		return rmdao.getProcess(status);
+	}
+
+	@Override
+	public List<Report_StoreBean> getProcessS(Integer status) {
+	
+		return rsdao.getProcessS(status);
+	}
+
+	@Override
+	public List<MemberBean> getMemberUSEStatus(Integer status) {
+	
+		return mdao.getMemberUSEStatus(status);
+	}
+
+	@Override
+	public List<StoreBean> getStoreUSEStatus(Integer status) {
+		
+		
+		return sdao.getStoreUSEStatus(status);
+	}
+	
 }

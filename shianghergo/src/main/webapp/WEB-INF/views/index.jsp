@@ -38,6 +38,7 @@
 <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" -->
 <!-- 	rel="stylesheet"> -->
 </head>
+
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
 	<!-- id="list-cont" -->
@@ -142,6 +143,7 @@
 
 		<!-- Grid row -->
 <!-- 		<div class="row"> -->
+
 
 			<!-- Grid column -->
 <!-- 			<div class="col-lg-3 col-md-6 mb-lg-0 mb-4"> -->

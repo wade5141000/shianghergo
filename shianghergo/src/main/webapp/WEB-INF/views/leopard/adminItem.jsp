@@ -23,15 +23,26 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
 	integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 	crossorigin="anonymous"></script>
+
+
 <script>
-	function delete777() {
-		var r = confirm("是否要下架")
-		if (r == true) {
-			alert('下架成功');
-		} else {
-			alert('下架取消');
-		}
-	}
+function deleteItem(target){
+	
+	var x = confirm("是否要下架");
+	if (x) {
+		alert('下架成功');
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/deleteItem?id='+target, true);
+		httpRequest.send();
+	
+		setTimeout("history.go(0);",100);
+
+	}else {	
+		alert('下架取消');	
+	}	
+
+	
+}
 </script>
 </head>
 <style>
@@ -52,8 +63,9 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item "><a class="nav-link"
-					href="member.do">會員管理 <span class="sr-only">(current)</span></a></li>
+				<li class="nav-item "><a class="nav-link" href="member.do">會員管理
+						<span class="sr-only">(current)</span>
+				</a></li>
 				<li class="nav-item "><a class="nav-link" href="store.do">商店管理</a>
 				</li>
 				<li class="nav-item active"><a class="nav-link" href="showItem">商品管理</a>
@@ -62,7 +74,7 @@
 				</li>
 				<li class="nav-item"><a class="nav-link" href="showVM.do">違規處理-會員</a>
 				</li>
-				
+
 				<li class="nav-item"><a class="nav-link" href="showVS.do">違規處理-商家</a>
 				</li>
 				<li class="nav-item" style="margin-left: 800px"><a
@@ -73,38 +85,32 @@
 	</nav>
 
 
+	<h3 style="margin-left: 150px;">商品</h3>
+
+
+
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">#</th>
-				<th scope="col">商品ID</th>
+				<th scope="col">商品號</th>
 				<th scope="col">商品名稱</th>
 				<th scope="col">商品介紹</th>
 				<th scope="col">價格</th>
-				<th scope="col">商品數量</th>
 				<th scope="col"></th>
-				<th scope="col"></th>
+
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var='items' items='${item}'>
 				<tr>
-				<td>O</td>
-				<td>${items.id}</td>
-				<td>${items.name}</td>
-				<td>${items.detail}</td>
-				<td>${items.price}</td>
-				<td>${items.reserve}</td>
+					<td>${items.id}</td>
+					<td>${items.name}</td>
+					<td>${items.detail}</td>
+					<td>${items.price}</td>
 
-				<td>
-					<form action="deletel" method="POST">
-						<input type=hidden value="${items.id}" name="id">
-						<button type="submit" class="btn btn-info" onclick="delete777()">下架</button>
-					</form>
-
-				</td>
-			
+					<td><button type="button" class="btn btn-info"
+							onclick="deleteItem(${items.id})">下架</button></td>
 			</c:forEach>
 	</table>
 

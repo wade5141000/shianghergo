@@ -72,7 +72,8 @@ public class StoreDaoImpl implements StoreDao {
 		String hql = "FROM StoreBean where id=:id";
 
 		StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("id", target).getSingleResult();
-		sb.setStatus2(2);
+		
+		sb.setStatus(2);
 	}
 
 	@Override
@@ -115,7 +116,7 @@ public class StoreDaoImpl implements StoreDao {
 
 		StoreBean sb = (StoreBean) session.createQuery(hql).setParameter("id", target).getSingleResult();
 
-		sb.setStatus2(1);
+		sb.setStatus(1);
 	}
 
 	@Override
@@ -131,4 +132,22 @@ public class StoreDaoImpl implements StoreDao {
 			return null;
 		}
 	}
+	
+	@Override
+	public List<StoreBean> getStoreUSEStatus(Integer status) {
+	
+		Session session = factory.getCurrentSession();
+		
+		String hql = "FROM StoreBean where status=:status";
+		
+		@SuppressWarnings("unchecked")
+		List<StoreBean> sb = session.createQuery(hql).setParameter("status", status).getResultList();
+				
+		return sb;
+	}
+	
+	
+	
+	
+	
 }
