@@ -19,6 +19,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.shianghergo.model.CartBean;
 import com.shianghergo.model.GroupsCartBean;
 import com.shianghergo.model.MemberBean;
+import com.shianghergo.model.NotificationBean;
 import com.shianghergo.model.StoreBean;
 import com.shianghergo.service.CartService;
 import com.shianghergo.service.GroupsCartService;
@@ -141,8 +142,14 @@ public class LoginController {
 					// ===== wade團購物車
 					
 					
-					// 判斷header是否登入
+					// 判斷header是否登入 wade
 					httpSession.setAttribute("header11", 2);
+					
+					// 顯示通知 wade
+					List<NotificationBean> list = cartService.getNotification(mb.getId());
+					httpSession.setAttribute("notification", list);
+					
+					
 					return "Member001";
 				}
 				

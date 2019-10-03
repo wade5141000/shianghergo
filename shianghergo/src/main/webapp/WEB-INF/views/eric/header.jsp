@@ -61,63 +61,85 @@ var y = x+1;
 	<ul class="nav justify-content-end"
 		style="height: 50px; background-color: #ffa042;">
 
-		<li class="nav-item"><a class="nav-link active"
-			href="${pageContext.request.contextPath}/testgok"
-			style="color: #ecffff;">測試gok</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="${pageContext.request.contextPath}/testhead"
-			style="color: #ecffff;">測試head</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="${pageContext.request.contextPath}/testfoot"
-			style="color: #ecffff">測試foot</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="${pageContext.request.contextPath}/productfile.s"
-			style="color: #ecffff">訂購單</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="${pageContext.request.contextPath}/wade/showmap"
-			style="color: #ecffff">google map</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="${pageContext.request.contextPath}/oldindex"
-			style="color: #ecffff">舊index</a></li>
-		<li class="nav-item"><a class="nav-link"></a></li>
-		<li class="nav-item"><a class="nav-link"></a></li>
-		<li class="nav-item"><a class="nav-link"></a></li>
-		<li class="nav-item"><a class="nav-link"></a></li>
-		<li class="nav-item"><a class="nav-link"></a></li>
-		<li class="nav-item"><a class="nav-link"></a></li>
 
-
-		<c:if test="${header11 != 2}">
-			<li class="nav-item"><a class="nav-link"
-				href="${pageContext.request.contextPath}/goRegisterPage"
-				style="color: #ecffff">註冊</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href="${pageContext.request.contextPath}/login"
-				style="color: #ecffff">登入</a></li>
-		</c:if>
-		<c:if test="${header11 == 2}">
-			<li class="nav-item"><a class="navbar-brand" href="#"> <img
-					src="${pageContext.request.contextPath}/getmemberPicture/${loginOK.id}"
-					width="30" height="30" alt="">
-			</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href="${pageContext.request.contextPath}/memberPage"
-				style="color: #ecffff">${loginOK.name}</a></li>
-			<li class="nav-item">
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#exampleModal">
-					購物車<span id="its">${its}</span>件商品
-				</button>
-			</li>
-			<li class="nav-item">
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#exampleModal2">
-					團購物車<span id="gits">${gits}</span>件商品
-				</button>
-			</li>
-		</c:if>
-	</ul>
-
+  <li class="nav-item">
+    <a class="nav-link active badge badge-light" href="${pageContext.request.contextPath}/testgok" >測試gok</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="${pageContext.request.contextPath}/testhead" style="color:#ecffff;">測試head</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="${pageContext.request.contextPath}/testfoot" style="color:#ecffff">測試foot</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="${pageContext.request.contextPath}/productfile.s" style="color:#ecffff">訂購單</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="${pageContext.request.contextPath}/wade/showmap" style="color:#ecffff">google map</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="${pageContext.request.contextPath}/oldindex" style="color:#ecffff">舊index</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+  
+  
+  <c:if test="${header11 != 2}" >
+	  <li class="nav-item">
+	    <a class="nav-link" href="${pageContext.request.contextPath}/goRegisterPage" style="color:#ecffff">註冊</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="${pageContext.request.contextPath}/login" style="color:#ecffff">登入</a>
+	  </li>
+  </c:if>
+  <c:if test="${header11 == 2}" >
+  
+  
+  <li class="nav-item dropdown">
+        <a class="nav-link " href="#" id="barnotification" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#ecffff">
+        	  通知
+        </a>
+        <div class="dropdown-menu" aria-labelledby="barnotification">
+        	<c:forEach var="notis" items="${notification}">
+          		<span class="dropdown-item">${notis.contents}</span>
+          	</c:forEach>
+        </div>
+      </li>
+  
+  
+  	 	<li class="nav-item">
+  	 	<a class="navbar-brand" href="${pageContext.request.contextPath}/memberPage">
+    		<img src="${pageContext.request.contextPath}/getmemberPicture/${loginOK.id}" width="30" height="30" alt="">
+ 	 	</a>
+	  </li>
+  	 <li class="nav-item">
+	    <a class="nav-link" href="${pageContext.request.contextPath}/memberPage" style="color:#ecffff">${loginOK.name}</a>
+	  </li>
+  
+	  <li class="nav-item">
+	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">購物車<span id="its">${its}</span>件商品</button>
+	  </li>
+	  <li class="nav-item">
+	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">團購物車<span id="gits">${gits}</span>件商品</button>
+	  </li>
+  </c:if>
+</ul>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"
 		style="width: 100%; margin-bottom: 20px; background-color: #b9b9ff;">
@@ -335,6 +357,7 @@ var y = x+1;
 			</div>
 		</div>
 	</c:if>
-	<!-- wade 團團團購物車結束 -->
+
+<!-- wade 團團團購物車結束 -->
 </body>
 </html>
