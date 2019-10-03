@@ -47,13 +47,13 @@ thead {
 			<th scope="col" id='borderA'>數量</th>
 		</tr>
 		<c:forEach var="anOrderD"  items="${MyOrderListD}">
-			<TR id='borderA' height='30'>
-			<TD id='borderA' width="86" align="center">${anOrderD.order_id}</TD>
-			<TD id='borderA' width="80" align="right">${anOrderD.store_id}</TD>
-			<TD id='borderA' width="80" align="left">&nbsp;${anOrderD.item_id}</TD>
-			<TD id='borderA' width="80" align="center">${anOrderD.name}</TD>
-			<TD id='borderA' width="80" align="right">${anOrderD.price}</TD>
-			<TD id='borderA' width="80" align="left">&nbsp;${anOrderD.amount}</TD>				
+			<TR id='borderA' >
+			<TD id='borderA' >${anOrderD.order_id}</TD>
+			<TD id='borderA' >${anOrderD.store_id}</TD>
+			<TD id='borderA' >&nbsp;${anOrderD.item_id}</TD>
+			<TD id='borderA' >${anOrderD.name}</TD>
+			<TD id='borderA' >${anOrderD.price}</TD>
+			<TD id='borderA' >&nbsp;${anOrderD.amount}</TD>				
 		</TR>
 		</c:forEach>
 		

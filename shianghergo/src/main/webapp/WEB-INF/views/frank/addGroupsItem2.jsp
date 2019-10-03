@@ -11,34 +11,43 @@
 <title>新增商品</title>
 </head>
 <body>
-
-	<form:form action="additem" method="POST"
+<jsp:include page="/WEB-INF/views/eric/header.jsp" />
+<jsp:include page="../BlackLine.jsp" />
+<div class="container">	
+	<div class="border border-success"style="padding-left: 300px;padding-right: 300px;">
+	<form:form action="additem(mb)" method="POST"
 		modelAttribute="groupsitemBean" enctype="multipart/form-data">
 		<fieldset>
-			<legend>新增商品上架</legend>
+<!-- 			<legend>新增商品上架</legend> -->
 			<input type="hidden" name="gid" value="${gid}" />
-			<div class="item">
-				<label for="name" class="item-label">標題:</label>
-				<form:input type="text" id="name" name="name" path="name" />
-			</div>
-			<div class="item">
-				<label for="detail" class="item-label">商品說明:</label>
-				<form:input type="text" id="detail" name="detail" path="detail" />
-			</div>
-			<div class="item">
-				<label for="price" class="item-label">價格:</label>
-				<form:input type="text" id="price" name="price" path="price" required="required" />
-			</div>
-			<div class="item">
-				<label for="productImage" class="item-label">上傳圖片:</label>
-				<form:input type="file" id="productImage" name="productImage" path="productImage" required="required"/>
-			</div>
+			<table style="font-size: :16px"class="rwd-table">
+			<tr>
+			<td align="center" colspan="2"><h1>新增商品上架</h1></td>
+			</tr>
+			<tr>
+			<td><label for="name" class="item-label">標題:</label></td>
+			<td><form:input type="text" id="name" name="name" path="name" /></td>
+			</tr>
+			<tr>
+			<td><label for="detail" class="item-label">商品說明:</label></td>
+			<td><form:input type="text" id="detail" name="detail" path="detail" /></td>
+			</tr>
+			<tr>
+			<td><label for="price" class="item-label">價格:</label></td>
+			<td><form:input type="text" id="price" name="price" path="price" required="required" /></td>
+			</tr>
+			<tr>
+			<td><label for="productImage" class="item-label">上傳圖片:</label></td>
+			<td><form:input type="file" id="productImage" name="productImage" path="productImage" required="required"/></td>
+			</tr>
 
-
-
-			<input type="submit" value="新增商品">
+			</table>
+			<div style="padding-left: 150px;padding-top: 10px;"> 
+			<input type="submit" value="新增商品"class="btn btn-primary"	>
+			</div>
 		</fieldset>
 	</form:form>
-
+</div>
+</div>
 </body>
 </html>
