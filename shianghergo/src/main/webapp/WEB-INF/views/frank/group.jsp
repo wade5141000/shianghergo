@@ -29,11 +29,6 @@
 	width: 760px;
 }
 
-.btn-group{
-margin:0 auto;
-width:1000px;
-}
-
 .f2 {
 	margin: 0 auto;
 }
@@ -164,10 +159,9 @@ $(document).ready(function(){
 				<td colspan="2"><img width='100px' height='100px'
 					style="display: block; margin: auto;"
 					src="<c:url value='/getmemberPicture/${group.memberBean.id }' />" />${group.memberBean.name}
-					<button type="button" class="btn btn-primary" >☠檢舉</button>
-					<button type="button" class="btn btn-primary" >📜評價</button>
-					<button type="button" class="btn btn-primary" >📩留言給我</button>
-					</td>
+					<button type="button" class="btn btn-primary">☠檢舉</button>
+					<button type="button" class="btn btn-primary">📜評價</button>
+					<button type="button" class="btn btn-primary">📩留言給我</button></td>
 
 			</tr>
 
@@ -210,15 +204,25 @@ $(document).ready(function(){
 			</c:forEach>
 		</table>
 	</div>
-	<div style="margin:0 auto;text-align:center;">
-	<div class="btn-group" role="group" aria-label="Basic example" >
-		<button type="button" class="btn btn-secondary" id="111">商品與說明</button>
-		<button type="button" class="btn btn-secondary" id="222">評價</button>
-		<button type="button" class="btn btn-secondary" id="333">團主的其他合購</button>
+	<div style="margin: 0 auto; text-align: center;">
+		<div class="btn-group" role="group" aria-label="Basic example"
+			style="width: 1000px">
+			<button type="button" class="btn btn-secondary" id="111">商品與說明</button>
+			<button type="button" class="btn btn-secondary" id="222">評價</button>
+			<button type="button" class="btn btn-secondary" id="333">團主的其他合購</button>
 
+
+
+		</div>
 	</div>
-</div>
 	<div id="one">
+		<div style="word-break: break-all; width: 800px; margin: 0 auto; ">
+			<img width='750' height='450'src="<c:url value='/frank/getgroupPicture/${group.id }' />">
+		
+	</div>
+	<div style="width:1000px; margin: 0 auto;">
+		<h3>商品</h3>
+		</div>
 
 		<div class="f2" style="width: 1000px;">
 			<c:forEach var="item" items="${groups_id}">
@@ -243,15 +247,15 @@ $(document).ready(function(){
 			</c:forEach>
 		</div>
 
-	
+
 	</div>
-	
+
 	<div id="two">
-	<p>22222222222</p>
+		<p>22222222222</p>
 	</div>
-	
+
 	<div id="three">
-	<p>3333333333333</p>
+		<p>3333333333333</p>
 	</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 

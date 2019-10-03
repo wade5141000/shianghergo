@@ -53,6 +53,7 @@
 		enctype="multipart/form-data" modelAttribute="upgroupsBean">
 		<input type="hidden" name="id" value="${updategroup.id}" />
 		<h2>團資訊</h2>
+		<img width='275' height='250' src="<c:url value='/frank/getgroupPicture/${updategroup.id }' />">
 		<table style="font-size: :16px">
 			<tr>
 				<td>標題：</td>
