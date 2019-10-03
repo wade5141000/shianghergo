@@ -7,6 +7,7 @@ function changeAmount(id,types){
 				url:"http://localhost:8080/shianghergo/changeAmount?id="+id+"&type="+types+"&total="+total2,
 				type:"get",
 				success:function(data){
+					alert("ht");
 					list = data.split(",");
 					$("#total").text(list[0]);
 					$("#"+list[2]).html(list[1]);

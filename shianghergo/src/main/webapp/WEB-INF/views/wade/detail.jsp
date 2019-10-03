@@ -10,7 +10,7 @@
 <title>訂單詳情</title>
 <style>
 
-td{
+.tdd{
 	border:1px solid gray;
 }
 
@@ -44,23 +44,23 @@ tr:last-child td:last-child{
 
 		<h2 style="margin-top:20px;font-weight:bold">訂單：<span style="color:#ff7575">${order.id}</span> 已建立。</h2>
 		
-		<h5>您可以選擇<a href="order/${order.id}" class="badge badge-success" style="margin:10px">立刻結帳</a>或<a href="" class="badge badge-info" style="margin:10px">回到商城</a>繼續購買。</h5>
+		<h3 style="font-weight:bold">您可以選擇<a href="order/${order.id}" class="badge badge-success" style="margin:10px">立刻結帳</a>或<a href="${pageContext.request.contextPath}/hao/products" class="badge badge-info" style="margin:10px">回到商城</a>繼續購買。</h3>
 		<table style="margin:15px auto;width:450px;border-collapse: separate;border-spacing: 0;">
 			<tr>
-				<td style="background-color:#ffa042;color:#2828ff;font-weight:bold;">訂單編號</td>
-				<td>${order.id}</td>
+				<td class="tdd" style="background-color:#ffa042;color:#2828ff;font-weight:bold;">訂單編號</td>
+				<td class="tdd">${order.id}</td>
 			</tr>
 			<tr>
-				<td style="background-color:#ffa042;color:#2828ff;font-weight:bold">訂購時間</td>
-				<td>${order.order_time}</td>
+				<td class="tdd" style="background-color:#ffa042;color:#2828ff;font-weight:bold">訂購時間</td>
+				<td class="tdd">${order.order_time}</td>
 			</tr>
 			<tr>
-				<td style="background-color:#ffa042;color:#2828ff;font-weight:bold">訂單金額</td>
-				<td>${order.price}</td>
+				<td class="tdd" style="background-color:#ffa042;color:#2828ff;font-weight:bold">訂單金額</td>
+				<td class="tdd">${order.price}</td>
 			</tr>
 			<tr>
-				<td style="background-color:#ffa042;color:#2828ff;font-weight:bold">付款方式</td>
-				<td>${order.payment}</td>
+				<td class="tdd" style="background-color:#ffa042;color:#2828ff;font-weight:bold">付款方式</td>
+				<td class="tdd">${order.payment}</td>
 			</tr>
 		</table>
 		
@@ -69,16 +69,16 @@ tr:last-child td:last-child{
 			查看商品明細</button>
   		<div class="collapse" id="collapseExample">
   			<table style="margin:15px auto;width:450px;border-collapse: separate;border-spacing: 0;">
-				<tr>
-					<td>商品名稱</td>
-					<td>單價</td>
-					<td>數量</td>
+				<tr style="background-color:#ffd2d2">
+					<td class="tdd">商品名稱</td>
+					<td class="tdd">單價</td>
+					<td class="tdd">數量</td>
 				</tr>
 				<c:forEach var="item" items="${details}">
 					<tr>
-						<td>${item.name}</td>
-						<td>${item.price}</td>
-						<td>${item.amount}</td>
+						<td class="tdd">${item.name}</td>
+						<td class="tdd">${item.price}</td>
+						<td class="tdd">${item.amount}</td>
 					</tr>
 				</c:forEach>
 			</table>

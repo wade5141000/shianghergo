@@ -78,7 +78,7 @@ tr:last-child td:last-child{
 			團購明細</button>
   		<div class="collapse" id="collapseExample">
   			<table style="margin:15px auto;width:450px;border-collapse: separate;border-spacing: 0;">
-				<tr>
+				<tr style="background-color:#ffd2d2">
 					<td>商品名稱</td>
 					<td>單價</td>
 					<td>數量</td>

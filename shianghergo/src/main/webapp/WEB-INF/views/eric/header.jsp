@@ -101,7 +101,7 @@ var y = x+1;
         </a>
         <div class="dropdown-menu" aria-labelledby="barnotification">
         	<c:forEach var="notis" items="${notification}">
-          		<span class="dropdown-item">${notis.contents}</span>
+          		<span class="dropdown-item" style="line-height:2em;">${notis.contents}</span>
           	</c:forEach>
         </div>
       </li>
@@ -194,7 +194,7 @@ var y = x+1;
 <!--         </button> -->
 <!--       </div> -->
       <div class="modal-body" style="padding:0px;">
-        <div class="cartdiv">
+        <div class="cartdiv" id="itable">
 			<table class="tb">
 		<tr>
 			<th></th>
@@ -230,7 +230,7 @@ var y = x+1;
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 <!--         <button type="button" class="btn btn-primary">Save changes</button> -->
-        <a class="btn btn-primary" href="${pageContext.request.contextPath}/addorder" role="button">加入訂單</a>
+        <a id="ordergo" class="btn btn-primary" href="${pageContext.request.contextPath}/addorder" role="button">加入訂單</a>
       </div>
     </div>
   </div>
@@ -289,7 +289,7 @@ var y = x+1;
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a class="btn btn-primary" href="${pageContext.request.contextPath}/addgrouporder?gid=${gcartitems[0].groups_id}" role="button">確定跟團</a>
+        <a id="groupgo" class="btn btn-primary" href="${pageContext.request.contextPath}/addgrouporder?gid=${gcartitems[0].groups_id}" role="button">確定跟團</a>
       </div>
     </div>
   </div>

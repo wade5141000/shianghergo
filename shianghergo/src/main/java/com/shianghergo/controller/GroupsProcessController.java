@@ -100,6 +100,7 @@ public class GroupsProcessController {
 			gtotal += cb.getPrice()*cb.getAmount();
 		}
 		httpSession.setAttribute("gtotal",gtotal);
+		httpSession.setAttribute("gits",list3.size());
 		
 		
 		return "wade/orderform";
