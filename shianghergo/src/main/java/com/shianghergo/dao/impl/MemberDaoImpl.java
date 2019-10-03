@@ -217,18 +217,18 @@ public class MemberDaoImpl implements MemberDao {
 	
 
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public StoreBean getStoreBeanById(Integer id) {
-		
-		StoreBean sb = null;
-		String hql = "FROM StoreBean WHERE member_id=:id";
-		Session session = factory.getCurrentSession();
-		sb = (StoreBean) session.createQuery(hql).setParameter("id", id).uniqueResult();
-
-		
-		return sb;
-	}
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public StoreBean getStoreBeanById(Integer id) {
+//		
+//		StoreBean sb = null;
+//		String hql = "FROM StoreBean WHERE member_id=:id";
+//		Session session = factory.getCurrentSession();
+//		sb = (StoreBean) session.createQuery(hql).setParameter("id", id).uniqueResult();
+//
+//		
+//		return sb;
+//	}
 
 	
 	@SuppressWarnings("unchecked")
