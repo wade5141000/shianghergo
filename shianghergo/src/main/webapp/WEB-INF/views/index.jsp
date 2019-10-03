@@ -134,7 +134,7 @@
 		<h2 class="h1-responsive font-weight-bold text-center my-5">十月熱銷</h2>
 		<!-- Section description -->
 		<div class="row">
-			<c:forEach var='product' items='${aaa}' begin="1" end="8">
+			<c:forEach var='product' items='${aaa}' begin="1" end="4">
 
 				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
 					<!-- Card -->
@@ -159,6 +159,47 @@
 							</h5>
 							<h4 class="font-weight-bold blue-text">
 								<strong>${product.price }$</strong>
+							</h4>
+						</div>
+						<!-- Card content -->
+					</div>
+					<!-- Card -->
+				</div>
+
+			</c:forEach>
+		</div>
+	</section>
+	<section class="text-center my-5">
+
+		<!-- Section heading -->
+		<h2 class="h1-responsive font-weight-bold text-center my-5">十月優質商家</h2>
+		<!-- Section description -->
+		<div class="row">
+			<c:forEach var='group' items='${bbb}' begin="1" end="4">
+
+				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+					<!-- Card -->
+					<div class="card align-items-center">
+						<!-- Card image -->
+						<div class="view overlay">
+							<a href="http://localhost:8080/shianghergo/frank/product?id= ${group.memberBean.id}"><img
+								src="<c:url value='/frank/getPicture/ ${group.memberBean.id}' />"
+								class="card-img-top" alt=""></a> <a>
+								<div class="mask rgba-white-slight"></div>
+							</a>
+						</div>
+						<!-- Card image -->
+						<!-- Card content -->
+						<div class="card-body text-center">
+							<!-- Category & Title -->
+							<h5>
+								<strong> <a href="" class="dark-grey-text"> ${group.memberBean.name}
+										<span class="badge badge-pill danger-color" style="color:red">HOT</span>
+								</a>
+								</strong>
+							</h5>
+							<h4 class="font-weight-bold blue-text">
+								<strong>${group.detail}</strong>
 							</h4>
 						</div>
 						<!-- Card content -->

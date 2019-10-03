@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.shianghergo.model.CategoryBean;
+import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.ItemBean;
 import com.shianghergo.service.CartService;
 import com.shianghergo.service.GroupsService;
@@ -57,9 +58,15 @@ public class HomeController {
 		List<ItemBean> list2 = service.getAllProducts();
 		model.addAttribute("aaa",list2);
 		
+		List<CategoryBean> list3 = groupsService.getCategoryList();
+		httpSession.setAttribute("categoryList", list3);
+		List<GroupsBean> list4 = groupsService.getAllGroups();
+		model.addAttribute("bbb",list4);
+		
 		return "index";
 	}
 	
+
 	@RequestMapping("oldindex")
 	public String oldIndex() {
 		return "wade/index";
