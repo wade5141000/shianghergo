@@ -32,7 +32,7 @@ function deleteItem(target){
 	if (x) {
 		alert('下架成功');
 		var httpRequest = new XMLHttpRequest();
-		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/deleteItem?id='+target, true);
+		httpRequest.open('GET','http://localhost:8080/shianghergo/leopard/deleteItem?id='+target, true);
 		httpRequest.send();
 	
 		setTimeout("history.go(0);",100);
@@ -83,11 +83,19 @@ function deleteItem(target){
 			</ul>
 		</div>
 	</nav>
+	<div style="margin-left: 150px; margin-top: 15px">
 
 
-	<h3 style="margin-left: 150px;">商品</h3>
-
-
+		<h3>商品</h3>
+		<form action="storeIdItem" method="POST">
+			<select name="store_id">
+				<c:forEach var='stores' items='${store}'>
+					<option value="${stores.id}">${stores.id}</option>
+				</c:forEach>
+			</select>
+			<button type="submit" class="btn btn-outline-success">商家查詢</button>
+		</form>
+	</div>
 
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
@@ -102,17 +110,18 @@ function deleteItem(target){
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var='items' items='${item}'>
+			
+				<c:forEach var='items' items='${item}'>
 				<tr>
 					<td>${items.id}</td>
 					<td>${items.name}</td>
 					<td>${items.detail}</td>
 					<td>${items.price}</td>
-
-					<td><button type="button" class="btn btn-info"
-							onclick="deleteItem(${items.id})">下架</button></td>
-			</c:forEach>
+					<td><button type="button" class="btn btn-info" onclick="deleteItem(${items.id})">下架</button></td>
+					
+					
+		</c:forEach>	
+		
 	</table>
-
 </body>
 </html>

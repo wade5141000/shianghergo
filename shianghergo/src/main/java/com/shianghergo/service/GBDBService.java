@@ -75,10 +75,16 @@ public interface GBDBService {
 
 	// --新增的 message改為NotificationBean---// 9/25 /恢復權限
 	public void recoveryNotification(NotificationBean notification, Integer target);
-
+	
 	//用狀態碼查詢正常/停權會員 10/03 
 	List<MemberBean> getMemberUSEStatus(Integer status);
+	
 	//用狀態碼查詢正常/停權商家 10/03 
 	public List<StoreBean> getStoreUSEStatus(Integer status);
+   
+	//用商店ID查詢商店所持有的商品 10/04
+	List<ItemBean> getItemByStoreId(Integer store_id);
 	
+	//用團購號ID查詢團購商品 10/04
+	public List<Groups_ItemBean> getGroupsItemByGroupsId(Integer groups_id);
 }

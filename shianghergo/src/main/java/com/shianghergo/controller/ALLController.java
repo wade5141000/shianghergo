@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.shianghergo.model.Category_ReportBean;
+import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.ItemBean;
 import com.shianghergo.model.MemberBean;
@@ -23,6 +24,7 @@ import com.shianghergo.model.comment_item;
 import com.shianghergo.model.comment_member;
 import com.shianghergo.model.comment_store;
 import com.shianghergo.service.GBDBService;
+import com.shianghergo.service.GroupsService;
 
 @Controller
 @SessionAttributes(value = "id") // member_id 放在session域讓類中方法都能使用
@@ -30,6 +32,9 @@ public class ALLController {
 
 	@Autowired
 	GBDBService service;
+
+	@Autowired
+	GroupsService gservice;
 
 //------------登入------------------------------------	
 
@@ -220,7 +225,7 @@ public class ALLController {
 	public String recoveryStore(Integer targetS, Integer target, NotificationBean notification, Model model) {
 
 		service.recoveryStore(targetS);
-		service.recoveryNotification(notification,target);
+		service.recoveryNotification(notification, target);
 		List<StoreBean> sto = service.getStore();
 		model.addAttribute("Store", sto);
 
@@ -234,9 +239,24 @@ public class ALLController {
 	@RequestMapping("leopard/showItem")
 	public String getAllItem(Model model) {
 
-		List<ItemBean> list = service.getAllItem();
+		List<ItemBean> item = service.getAllItem();
+		List<StoreBean> store = service.getStore();
 
-		model.addAttribute("item", list);
+		model.addAttribute("store", store);
+		model.addAttribute("item", item);
+
+		return "leopard/adminItem";
+
+	}
+
+	@RequestMapping("leopard/storeIdItem")
+	public String storeIdItem(Integer store_id, Model model) {
+
+		List<StoreBean> store = service.getStore();
+		List<ItemBean> item = service.getItemByStoreId(store_id);
+
+		model.addAttribute("store", store);
+		model.addAttribute("item", item);
 
 		return "leopard/adminItem";
 
@@ -257,7 +277,23 @@ public class ALLController {
 	public String getAllGroups_item(Model model) {
 
 		List<Groups_ItemBean> list = service.getAllGroups_item();
+		List<GroupsBean> group = gservice.getAllGroups();
 
+		model.addAttribute("group", group);
+		model.addAttribute("groups_item", list);
+
+		return "leopard/adminGroupsItem";
+
+	}
+
+	@RequestMapping("leopard/groupIdItem")
+	public String groupIdItem(Integer groups_id, Model model) {
+
+		List<GroupsBean> group = gservice.getAllGroups();
+		List<Groups_ItemBean> list = service.getGroupsItemByGroupsId(groups_id);
+
+
+		model.addAttribute("group", group);
 		model.addAttribute("groups_item", list);
 
 		return "leopard/adminGroupsItem";

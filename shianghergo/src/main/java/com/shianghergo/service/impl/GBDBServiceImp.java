@@ -268,5 +268,20 @@ public class GBDBServiceImp implements GBDBService {
 		
 		return sdao.getStoreUSEStatus(status);
 	}
+
+	@Override
+	public List<ItemBean> getItemByStoreId(Integer store_id) {
+	
+		return idao.getItemByStoreId(store_id);
+	}
+
+	@Override
+	public List<Groups_ItemBean> getGroupsItemByGroupsId(Integer groups_id) {
+		
+		return gdao.getGroupsItemByGroupsId(groups_id);
+	}
+
+	
+	
 	
 }

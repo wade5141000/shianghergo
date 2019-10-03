@@ -41,13 +41,31 @@ public class ItemDaoImpl implements ItemDao {
 	
 		String hql = "FROM ItemBean where id =:id";
 		
-		ItemBean one = session.get(ItemBean.class,id);
+		Object item = session.createQuery(hql).setParameter("id", id).getSingleResult();
 		
-		System.out.println(one);
-		
-		session.delete(one);
+		session.delete(item);
 
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ItemBean> getItemByStoreId(Integer store_id) {
+		
+		Session session = factory.getCurrentSession();
+		
+		String hql = "FROM ItemBean where store_id =:store_id";
+		
+		List<ItemBean> list = session.createQuery(hql).setParameter("store_id", store_id).getResultList();
+		
+		return list;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
