@@ -78,7 +78,7 @@
 		<form action="reportStatusM" method="POST">
 			<div class="select">
 				<select name="status">
-					<option value="1">未處理</option>
+					<option value="1">尚未處理</option>
 					<option value="2">已處理</option>
 				</select>
 			</div>

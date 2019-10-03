@@ -87,12 +87,27 @@
 	</nav>
 
 
-	<h3 style="margin-left: 150px;">團購商品</h3>
+     <div style="margin-left: 150px; margin-top: 15px">
+
+
+		<h3>團購商品</h3>
+
+
+		<form action="memberStatus" method="POST">
+				<select name="status">
+			<c:forEach var='groups_items' items='${groups_item}'>
+					<option value="${groups_items.groupsBean.id}">${groups_items.groupsBean.id}</option>
+			</c:forEach>
+				</select>
+				<button type="submit" class="btn btn-outline-success">查詢</button>
+		</form>
+	</div>
+
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
 		<thead class="thead-dark">
-			<tr>
-				<th scope="col">團購商品號</th>
+			<tr>				
+				<th scope="col">開團ID</th>
 				<th scope="col">團購商品名稱</th>
 				<th scope="col">團購商品說明</th>
 				<th scope="col">價格</th>

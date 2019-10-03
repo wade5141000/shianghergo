@@ -145,8 +145,8 @@ function recovery(target){
 		<form action="memberStatus" method="POST">
 			<div class="select">
 				<select name="status">
-					<option value="1">正常號</option>
-					<option value="2">停權號</option>
+					<option value="1">一般會員</option>
+					<option value="2">停權會員</option>
 				</select>
 			</div>
 			<button type="submit" class="btn btn-outline-success">查詢</button>
@@ -165,7 +165,7 @@ function recovery(target){
 				<th scope="col">會員信箱</th>
 				<th scope="col">會員電話</th>
 				<th scope="col">會員地址</th>
-				<th scope="col">會員狀態</th>
+				<th scope="col">狀態</th>
 				<th scope="col"></th>
 				<th scope="col"></th>
 				<th scope="col"></th>
@@ -192,20 +192,20 @@ function recovery(target){
 						</c:when>
 						<c:when test="${members.status eq '1'}">
 
-							<td>✔</td>
+							<td>○</td>
 
 						</c:when>
 
 					</c:choose>
 
-					<td><button type="button" class="btn btn-info"
-							onclick="Notification(${members.id})">!</button></td>
+					<td><button type="button" class="btn btn-warning"
+							onclick="Notification(${members.id})">警告</button></td>
+
+					<td><button type="button" class="btn btn-danger"
+							onclick="stop(${members.id})">X</button></td>
 
 					<td><button type="button" class="btn btn-info"
-							onclick="stop(${members.id})">停權</button></td>
-
-					<td><button type="button" class="btn btn-info"
-							onclick="recovery(${members.id})">恢復權限</button></td>
+							onclick="recovery(${members.id})">O</button></td>
 
 				</tr>
 			</c:forEach>

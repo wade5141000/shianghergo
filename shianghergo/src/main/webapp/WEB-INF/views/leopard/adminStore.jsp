@@ -43,41 +43,24 @@ function Notification(target){
 	
 }
 
-
-function stop(target){
-	
-	var x = confirm("是否要停權");
-	if (x) {
+function stop() {
+	var r = confirm("是否要停權")
+	if (r == true) {
 		alert('停權成功');
-		var httpRequest = new XMLHttpRequest();
-		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/stopStore?target='+target, true);
-		httpRequest.send();
-	
-		setTimeout("history.go(0);",100);
-
-	}else {	
-		alert('停權取消');	
-	}	
-
-	
+		
+	} else {
+		alert('停權取消');
+	}
 }
 
-function recovery(target){
-	
-	var x = confirm("是否要恢復權限");
-	if (x) {
+function recovery() {
+	var r = confirm("是否恢復權限")
+	if (r == true) {
 		alert('恢復權限成功');
-		var httpRequest = new XMLHttpRequest();
-		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/recoveryStore?target='+target, true);
-		httpRequest.send();
 	
-		setTimeout("history.go(0);",100);
-
-	}else {	
-		alert('恢復權限取消');	
-	}	
-
-	
+	} else {
+		alert('恢復權限取消');
+	}
 }
 
 </script>
@@ -138,8 +121,8 @@ function recovery(target){
 		<form action="storeStatus" method="POST">
 			<div class="select">
 				<select name="status">
-					<option value="1">正常號</option>
-					<option value="2">停權號</option>
+					<option value="1">一般商家</option>
+					<option value="2">停權商家</option>
 				</select>
 			</div>
 			<button type="submit" class="btn btn-outline-success">查詢</button>
@@ -154,11 +137,10 @@ function recovery(target){
 				<th scope="col">所屬會員</th>
 				<th scope="col">商店號</th>
 				<th scope="col">商店名稱</th>
-				<th scope="col">商店狀態</th>
+				<th scope="col">狀態</th>
 				<th scope="col"></th>
 				<th scope="col"></th>
 				<th scope="col"></th>
-
 			</tr>
 		</thead>
 		<tbody>
@@ -177,20 +159,32 @@ function recovery(target){
 						</c:when>
 						<c:when test="${Stores.status eq '1'}">
 
-							<td>✔</td>
+							<td>O</td>
 
 						</c:when>
 
 					</c:choose>
 
-					<td><button type="button" class="btn btn-info"
-							onclick="Notification(${Stores.member_id})">!</button></td>
+					<td><button type="button" class="btn btn-warning"
+							onclick="Notification(${Stores.member_id})">警告</button></td>
 
-					<td><button type="button" class="btn btn-info"
-							onclick="stop(${Stores.id})">停權</button></td>
+					<td>
+						<form action="stopStore" method="POST">
+							<input type=hidden value="${Stores.member_id}" name="target">
+							<input type=hidden value="${Stores.id}" name="targetS">
+							<button type="submit" class="btn btn-danger" onclick="stop()">X</button>
+						</form>
+					</td>
+					<td>
 
-					<td><button type="button" class="btn btn-info"
-							onclick="recovery(${Stores.id})">恢復權限</button></td>
+						<form action="recoveryStore" method="POST">
+							<input type=hidden value="${Stores.member_id}" name="target">
+							<input type=hidden value="${Stores.id}" name="targetS">
+							<button type="submit" class="btn btn-info"
+								onclick="recovery()">O</button>
+						</form>
+
+					</td>
 			</c:forEach>
 	</table>
 

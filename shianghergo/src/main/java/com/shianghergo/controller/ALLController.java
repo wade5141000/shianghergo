@@ -106,24 +106,11 @@ public class ALLController {
 	@RequestMapping("leopard/memberStatus")
 	public String MemberOK(Model model, Integer status) {
 
-		if (status == 1) {
+		List<MemberBean> mem = service.getMemberUSEStatus(status);
 
-			List<MemberBean> mem = service.getMemberUSEStatus(status);
+		model.addAttribute("Member", mem);
 
-			model.addAttribute("Member", mem);
-
-			return "leopard/adminMember";
-
-		} else
-
-		{
-
-			List<MemberBean> mem = service.getMemberUSEStatus(status);
-
-			model.addAttribute("Member", mem);
-
-			return "leopard/adminMember";
-		}
+		return "leopard/adminMember";
 
 	}
 
@@ -184,6 +171,7 @@ public class ALLController {
 			List<StoreBean> sto = service.getStoreUSEStatus(status);
 
 			model.addAttribute("Store", sto);
+
 			return "leopard/adminStore";
 
 		} else
@@ -213,10 +201,15 @@ public class ALLController {
 
 	// 商家停權
 	@RequestMapping("leopard/stopStore")
-	public void stopStore(Integer target, NotificationBean notification) {
+	public String stopStore(Integer targetS, Integer target, NotificationBean notification, Model model) {
 
-		service.saveStoreIdToStop(target);
+		service.saveStoreIdToStop(targetS);
 		service.stopNotification(notification, target);
+
+		List<StoreBean> sto = service.getStore();
+		model.addAttribute("Store", sto);
+
+		return "leopard/adminStore";
 
 	}
 
@@ -224,10 +217,14 @@ public class ALLController {
 
 	// 商家恢復權限
 	@RequestMapping("leopard/recoveryStore")
-	public void recoveryStore(Integer target, NotificationBean notification) {
+	public String recoveryStore(Integer targetS, Integer target, NotificationBean notification, Model model) {
 
-		service.recoveryStore(target);
-		service.recoveryNotification(notification, target);
+		service.recoveryStore(targetS);
+		service.recoveryNotification(notification,target);
+		List<StoreBean> sto = service.getStore();
+		model.addAttribute("Store", sto);
+
+		return "leopard/adminStore";
 
 	}
 
@@ -292,7 +289,7 @@ public class ALLController {
 
 	// ---------------依照status查詢違規會員資料---------------//
 	@RequestMapping("leopard/reportStatusM")
-	public String SviolationOK(Model model, Integer status) {
+	public String MviolationOK(Model model, Integer status) {
 
 		if (status == 1) {
 
@@ -331,7 +328,7 @@ public class ALLController {
 	// 後台---------------------------------------------違規處理商家-----------------------------------------------------
 
 	// ---------------顯示所有違規商家---------------//
-	
+
 	@RequestMapping("leopard/showVS.do")
 	public String Sviolation(Model model) {
 
@@ -343,27 +340,16 @@ public class ALLController {
 
 	}
 
-	// 違規商店資料 已處理的
-	@RequestMapping("leopard/showVS.OK")
-	public String MviolationOK(Model model, Integer status) {
+	// ---------------依照status查詢違規會員資料---------------//
+	@RequestMapping("leopard/reportStatusS")
 
-		if (status == 1) {
+	public String SviolationOK(Model model, Integer status) {
 
-			List<Report_StoreBean> list = service.getProcessS(1);
+		List<Report_StoreBean> list = service.getProcessS(status);
 
-			model.addAttribute("violation", list);
+		model.addAttribute("violation", list);
 
-			return "leopard/adminVS";
-
-		} else {
-
-			List<Report_StoreBean> list = service.getProcessS(status);
-
-			model.addAttribute("violation", list);
-
-			return "leopard/adminVSOK";
-
-		}
+		return "leopard/adminVS";
 
 	}
 

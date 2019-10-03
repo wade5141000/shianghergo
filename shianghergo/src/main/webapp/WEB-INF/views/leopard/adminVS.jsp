@@ -72,7 +72,20 @@
 		</div>
 	</nav>
 
-	<h3 style="margin-left: 150px;">未處理</h3>
+	<div style="margin-left: 150px; margin-top: 15px">
+
+		<h3>違規商家</h3>
+
+		<form action="reportStatusS" method="POST">
+			<div class="select">
+				<select name="status">
+					<option value="1">尚未處理</option>
+					<option value="2">已處理</option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-outline-success">查詢</button>
+		</form>
+	</div>
 
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
@@ -88,30 +101,41 @@
 				<th scope="col"></th>
 			</tr>
 		</thead>
-		
+
 		<tbody>
 
 			<c:forEach var='violations' items='${violation}'>
 				<tr>
-				    <td>${violations.id}</td>
+					<td>${violations.id}</td>
 					<td>${violations.member_id}</td>
 					<td>${violations.store_id}</td>
 					<td>${violations.time}</td>
 					<td>${violations.contents}</td>
-					<td>${violations.status}</td>
-					<td>
-						<form action="processS" method="POST">
-							<textarea name="process_result" rows="2" cols="20"></textarea>
-							<input type=hidden value="${violations.id}" name="id">
-							<button type="submit" class="btn btn-success">送出</button>
-							<button type="reset" class="btn btn-success">清除</button>
+					<c:choose>
 
+						<c:when test="${violations.status eq '2'}">
+							<td>✔</td>
+							<td>${violations.process_time}</td>
+							<td>${violations.process_result}</td>
+						</c:when>
+						<c:when test="${violations.status eq '1'}">
 
-						</form>
-					</td>
+							<td>✘</td>
+							<td></td>
+							<td>
+
+								<form action="processS" method="POST">
+									<textarea name="process_result" rows="2" cols="20"></textarea>
+									<input type=hidden value="${violations.id}" name="id">
+									<button type="submit" class="btn btn-success">送出</button>
+									<button type="reset" class="btn btn-success">清除</button>
+								</form>
+							</td>
+
+						</c:when>
+
+					</c:choose>
 			</c:forEach>
-			
-		
 	</table>
 
 
