@@ -45,70 +45,9 @@
 
 </head>
 <body>
-<!-- header fix -->
-<%-- <jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include> --%>
-<!-- <div class="site-nav-bg" style="height: 30px"> -->
-<!-- 		<div class="site-nav w1200"> -->
-<!-- 			<div class="sn-quick-menu"> -->
-<!-- 				<div class="login"> -->
-<!-- 					<a href="oldindex">舊index</a> -->
-<!-- 				</div> -->
-<!-- 				<div class="login"> -->
-<!-- 					<a href="goRegisterPage">註冊</a> -->
-<!-- 				</div> -->
-<!-- 				<div class="login"> -->
-<!-- 					<a href="login.jsp">登入</a> -->
-<!-- 				</div> -->
-<!-- 				<div class="sp-cart"> -->
-<!-- 					<a href="shopcart.jsp">購物車</a><span>2</span> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
-<!-- 	==== -->
-<!-- 	<nav class="navbar navbar-expand-lg navbar-light bg-light" -->
-<!-- 		style="width: 100%"> -->
-<%-- 		<a href="index.jsp"> <img src="${pageContext.request.contextPath}/res/static/img/logo4.png" --%>
-<!-- 			width="100" height="100"> -->
-<!-- 		</a> -->
-<!-- 		<button class="navbar-toggler" type="button" data-toggle="collapse" -->
-<!-- 			data-target="#navbarSupportedContent" -->
-<!-- 			aria-controls="navbarSupportedContent" aria-expanded="false" -->
-<!-- 			aria-label="Toggle navigation"> -->
-<!-- 			<span class="navbar-toggler-icon"></span> -->
-<!-- 		</button> -->
 
-<!-- 		<div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
-<!-- 			<ul class="navbar-nav mr-auto"> -->
-<!-- 				<li class="nav-item active"><a class="nav-link" href="#">首頁 -->
-<!-- 						<span class="sr-only">(current)</span> -->
-<!-- 				</a></li> -->
-<!-- 				<li class="nav-item"><a class="nav-link" href="hao/products">所有商品</a></li> -->
-<!-- 				<li class="nav-item dropdown"><a -->
-<!-- 					class="nav-link dropdown-toggle" href="frank/groups" -->
-<!-- 					id="navbarDropdown" role="button" data-toggle="dropdown" -->
-<!-- 					aria-haspopup="true" aria-expanded="false">今日團購 </a> -->
-<!-- 					<div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
-<!-- 						<a class="dropdown-item" href="#">下拉表單1</a> <a -->
-<!-- 							class="dropdown-item" href="#">下拉表單2</a> -->
-<!-- 						<div class="dropdown-divider"></div> -->
-<!-- 					</div></li> -->
-<!-- 				<li class="nav-item"><a class="nav-link" href="#">我要開團</a></li> -->
-
-<!-- 			</ul> -->
-<%-- 			<form action='<c:url value="/Search.controller" />' method="get" --%>
-<!-- 				class="form-inline my-2 my-lg-0"> -->
-<!-- 				<input class="form-control mr-sm-2" type="text" name="title" -->
-<%-- 					value="${param.title}" autocomplete="off" placeholder="請輸入需要的商品" --%>
-<!-- 					aria-label="Search"> -->
-<!-- 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">GO</button> -->
-<!-- 			</form> -->
-<!-- 		</div> -->
-<!-- 	</nav> -->
-
-
-<!-- header fix -->
 
 	<div class="content content-nav-base information-content">
 		<!-- Section: Blog v.1 -->
@@ -141,21 +80,16 @@
 						<div class="news-data d-flex justify-content-between">
 							<a href="#!" class="deep-orange-text">
 								<h6 class="font-weight-bold">
-									<i class="fas fa-utensils pr-2"></i>Culinary
+									<i class="fas fa-utensils pr-2"></i>
 								</h6>
 							</a>
 						</div>
 
 						<!-- Excerpt -->
 						<h3 class="font-weight-bold dark-grey-text mb-3">
-							<a>Title of the news</a>
+							<a>慶中秋 來響合購</a>
 						</h3>
-						<p class="dark-grey-text mb-lg-0 mb-md-5 mb-4">Sed ut
-							perspiciatis unde voluptatem omnis iste natus error sit
-							voluptatem accusantium doloremque laudantium, totam rem aperiam,
-							eaque ipsa quae ab illo inventore veritatis et quasi architecto
-							beatae vitae explicabo. Duis aute irure dolor in reprehenderit in
-							voluptate velit esse cillum dolore eu fugiat.</p>
+						<p class="dark-grey-text mb-lg-0 mb-md-5 mb-4"></p>
 
 					</div>
 					<!-- Featured news -->
@@ -198,7 +132,7 @@
 								
 								<div class="d-flex justify-content-between">
 									<div class="col-11 text-truncate pl-0 mb-3">
-										<a href="#!" class="btn btn-success btn-md">了解更多 Go</a>
+										<a href="http://localhost:8080/shianghergo/hao/product?id=50002" class="btn btn-success btn-md">了解更多 Go</a>
 									</div>
 									<a><i class="fas fa-angle-double-right"></i></a>
 								</div>
@@ -224,7 +158,7 @@
 								<!--Image-->
 								<div class="view overlay rounded z-depth-1 mb-4">
 									<img class="img-fluid"
-										src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
+										src="${pageContext.request.contextPath}/res/static/img/天使紅蝦.jpg"
 										alt="Sample image"> <a>
 										<div class="mask rgba-white-slight"></div>
 									</a>
@@ -237,61 +171,19 @@
 							<div class="col-md-9">
 
 								<!-- Excerpt -->
-								<p class="font-weight-bold dark-grey-text">25/02/2018</p>
+								<p class="font-weight-bold dark-grey-text">天使紅蝦 挑戰最低價</p>
+								<p class="font-weight-bold dark-grey-text">天使蝦來自阿根廷,南部海域純淨無汙染,這種環境生長的天使紅蝦,營養豐富,口感鮮嫩</p>
+								<p class="font-weight-bold dark-grey-text">急速冷凍,高檔食材,中秋海鮮首選!!!
+
+								
 								<div class="d-flex justify-content-between">
 									<div class="col-11 text-truncate pl-0 mb-3">
-										<a href="#!" class="dark-grey-text">Itaque earum rerum hic
-											tenetur a sapiente delectus</a>
+										<a href="http://localhost:8080/shianghergo/hao/product?id=50002" class="btn btn-success btn-md">了解更多 Go</a>
 									</div>
 									<a><i class="fas fa-angle-double-right"></i></a>
 								</div>
 
 							</div>
-							<!-- Grid column -->
-
-						</div>
-						<!-- Grid row -->
-
-					</div>
-					<!-- Small news -->
-
-					<!-- Small news -->
-					<div class="single-news mb-4">
-
-						<!-- Grid row -->
-						<div class="row">
-
-							<!-- Grid column -->
-							<div class="col-md-3">
-
-								<!--Image-->
-								<div class="view overlay rounded z-depth-1 mb-4">
-									<img class="img-fluid"
-										src="https://mdbootstrap.com/img/Photos/Others/images/87.jpg"
-										alt="Sample image"> <a>
-										<div class="mask rgba-white-slight"></div>
-									</a>
-								</div>
-
-							</div>
-							<!-- Grid column -->
-
-							<!-- Grid column -->
-							<div class="col-md-9">
-
-								<!-- Excerpt -->
-								<p class="font-weight-bold dark-grey-text">24/02/2018</p>
-								<div class="d-flex justify-content-between">
-									<div class="col-11 text-truncate pl-0 mb-3">
-										<a href="#!" class="dark-grey-text">Soluta nobis est
-											eligendi optio cumque nihil impedit quo minus</a>
-									</div>
-									<a><i class="fas fa-angle-double-right"></i></a>
-								</div>
-
-							</div>
-							<!-- Grid column -->
-
 						</div>
 						<!-- Grid row -->
 
@@ -308,9 +200,9 @@
 							<div class="col-md-3">
 
 								<!--Image-->
-								<div class="view overlay rounded z-depth-1 mb-md-0 mb-4">
+								<div class="view overlay rounded z-depth-1 mb-4">
 									<img class="img-fluid"
-										src="https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg"
+										src="${pageContext.request.contextPath}/res/static/img/天使紅蝦.jpg"
 										alt="Sample image"> <a>
 										<div class="mask rgba-white-slight"></div>
 									</a>
@@ -323,22 +215,17 @@
 							<div class="col-md-9">
 
 								<!-- Excerpt -->
-								<p class="font-weight-bold dark-grey-text">23/02/2018</p>
+								<p class="font-weight-bold dark-grey-text">天使紅蝦 挑戰最低價</p>
+								<p class="font-weight-bold dark-grey-text">天使蝦來自阿根廷,南部海域純淨無汙染,這種環境生長的天使紅蝦,營養豐富,口感鮮嫩</p>
+								<p class="font-weight-bold dark-grey-text">急速冷凍,高檔食材,中秋海鮮首選!!!
+
+								
 								<div class="d-flex justify-content-between">
-									<div class="col-11 text-truncate pl-0 mb-lg-3">
-										<a href="#!" class="dark-grey-text">Duis aute irure dolor
-											in reprehenderit in voluptate</a>
+									<div class="col-11 text-truncate pl-0 mb-3">
+										<a href="http://localhost:8080/shianghergo/hao/product?id=50002" class="btn btn-success btn-md">了解更多 Go</a>
 									</div>
 									<a><i class="fas fa-angle-double-right"></i></a>
 								</div>
-
-							</div>
-							<!-- Grid column -->
-
-						</div>
-						<!-- Grid row -->
-
-					</div>
 					<!-- Small news -->
 
 				</div>
@@ -350,7 +237,7 @@
 		</section>
 		<!-- Section: Magazine v.2 -->
 	</div>
-	</div>
+
 	
 	<!-- Section: Blog v.1 -->
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
