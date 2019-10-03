@@ -20,6 +20,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
 	function goCart(x){
 		$.ajax({
@@ -27,6 +28,42 @@
 			type:"get",
 			success:function(data){
 				alert("添加成功")
+				var cartitems = JSON.parse(data);
+				var itotal = 0;
+				for(var q=0  ; q<cartitems.length ; q++){
+					itotal += cartitems[q].price * cartitems[q].amount;
+				}
+				$("#itable").empty();
+				
+				var result = "<table class='tb'>";
+				
+				for(var k=0  ; k<cartitems.length ; k++){
+					if(k==0){
+						result += "<tr><th></th><th>品名</th><th>數量</th><th>單價</th><th>小計</th><th>操作</th></tr>";
+					}
+					result += '<tr>';
+					result += '<td><img src="http://localhost:8080/shianghergo/wade/getPicture/'+cartitems[k].item_id+'" width="50px" height="50px"></td>';
+					result += '<td>' + cartitems[k].name + '</td>';
+					result += '<td><button class="btn btn-outline-danger btn1" onclick="changeAmount(' + cartitems[k].id + ',2)">-</button ><span id="' + cartitems[k].id + '">'+ cartitems[k].amount + '</span><button onclick="changeAmount(' +cartitems[k].id+ ',1)" class="btn btn-outline-success btn2">+</button>&nbsp;&nbsp;</td>';
+					result += '<td>' + cartitems[k].price + '</td>';
+					
+					var smalls = 0;
+					smalls += cartitems[k].price * cartitems[k].amount;
+					
+					result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +'</span></td>';
+					result += '<td><button class="btn btn-danger" onclick="deletetr(this,' + cartitems[k].id + ')">刪除</button></td>';
+
+					if(k == (cartitems.length-1)){
+						result += "<tr><td/><td/><td/><td/><td>";
+						result += '<span class="total">Total:</span><span id="total" class="total" style="color:red;">'+itotal+'</span></td>';
+						result += "<td></td></tr></table>";
+					}
+					
+				}
+				
+				$("#itable").append(result);
+				$("#its").text(cartitems.length);
+				
 			},
 		})
 	}

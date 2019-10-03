@@ -115,6 +115,7 @@ function addGroupCart(item_id,groups_id){
 			
 			$("#gtable").append(result);
 			$("#gits").text(cartitems.length);
+			$("#groupgo").attr("href","${pageContext.request.contextPath}/addgrouporder?gid=" + cartitems[0].groups_id);
 			
 		}
 	})
