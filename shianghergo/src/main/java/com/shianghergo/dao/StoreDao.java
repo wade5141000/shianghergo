@@ -25,8 +25,13 @@ public interface StoreDao {
 	void recoveryStore(Integer target);
 
 	StoreBean getStoreByMember_Id(Integer member_id);
+
 	
 	//用狀態碼查詢正常/停權商家 10/03 
 	public List<StoreBean> getStoreUSEStatus(Integer status);
+
+
+
+	int getMemberIdByStoreId(Integer id);
 
 }

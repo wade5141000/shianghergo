@@ -51,7 +51,7 @@ public interface MemberDao {
 
 	StoreBean getStoreById(Integer id);
 	
-	public StoreBean getStoreBeanById(Integer id);
+//	public StoreBean getStoreBeanById(Integer id);
 
 	List<GroupsBean> getMemberGroups(Integer id);
 
@@ -75,12 +75,12 @@ public interface MemberDao {
 
 	public List<PlaceBean> getMyPlaceByid(Integer id);
 
+
+
 	public void deleteByid(Integer id);
 	
+
 	//用狀態碼查詢正常/停權會員 10/03 
 	List<MemberBean> getMemberUSEStatus(Integer status);
-	
-	
-	
-	
+
 }

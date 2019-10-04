@@ -113,4 +113,9 @@ public class ProductServiceImpl implements ProductService {
 		return dao.getStoreNameByItemId(id);
 	}
 	
+	@Transactional
+	@Override
+	public List<ItemBean> getProductsByCategory(Integer category_id) {
+		return dao.getProductsByCategory(category_id);
+	}
 }

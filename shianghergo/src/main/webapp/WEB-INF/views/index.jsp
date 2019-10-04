@@ -129,67 +129,91 @@
 			class="sr-only">Next</span>
 		</a>
 	</div>
-	<!-- Section: Products v.3 -->
-	<!-- Section: Products v.3 -->
-<!-- 	<section class="text-center my-5"> -->
+	<section class="text-center my-5">
 
 		<!-- Section heading -->
-<!-- 		<h2 class="h1-responsive font-weight-bold text-center my-5">十月熱銷</h2> -->
+		<h2 class="h1-responsive font-weight-bold text-center my-5">十月熱銷</h2>
 		<!-- Section description -->
-		<c:forEach var='product' items='${aaa}'>
-					${product.name}
-				</c:forEach>
-<!-- 		<p class="grey-text text-center w-responsive mx-auto mb-5"></p> -->
+		<div class="row">
+			<c:forEach var='product' items='${aaa}' begin="1" end="4">
 
-		<!-- Grid row -->
-<!-- 		<div class="row"> -->
-
-
-			<!-- Grid column -->
-<!-- 			<div class="col-lg-3 col-md-6 mb-lg-0 mb-4"> -->
-				<!-- Card -->
-<!-- 				<div class="card align-items-center"> -->
-					
+				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+					<!-- Card -->
+					<div class="card align-items-center">
 						<!-- Card image -->
-<!-- 						<div class="view overlay"> -->
-<!-- 							<img -->
-<!-- 								src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" -->
-<!-- 								class="card-img-top" alt=""> -->
-<!-- 								<div class="mask rgba-white-slight"></div> -->
-							
-<!-- 						</div> -->
-<!-- 						Card image -->
-<!-- 						Card content -->
-<!-- 						<div class="card-body text-center"> -->
-<!-- 							Category & Title -->
-<!-- 							<h5><a href="" class="grey-text"> -->
-<%-- 								${product.name} --%>
-<!-- 							</a> -->
-<!-- 							</h5> -->
-<!-- 							<h5> -->
-<!-- 								<strong> <a href="" class="dark-grey-text">Denim -->
-<!-- 										shirt <span class="badge badge-pill danger-color">NEW</span> -->
-<!-- 								</a> -->
-<!-- 								</strong> -->
-<!-- 							</h5> -->
-<!-- 							<h4 class="font-weight-bold blue-text"> -->
-<!-- 								<strong>120$</strong> -->
-<!-- 							</h4> -->
-<!-- 						</div> -->
+						<div class="view overlay">
+							<a href="http://localhost:8080/shianghergo/hao/product?id=${product.id}"><img
+								src="<c:url value='/hao/getPicture/${product.id }' />"
+								class="card-img-top" alt=""></a> <a>
+								<div class="mask rgba-white-slight"></div>
+							</a>
+						</div>
+						<!-- Card image -->
 						<!-- Card content -->
-					
-					
-					
-<!-- 				</div> -->
-				<!-- Card -->
-<!-- 			</div> -->
+						<div class="card-body text-center">
+							<!-- Category & Title -->
+							<h5>
+								<strong> <a href="" class="dark-grey-text">${product.name }
+										<span class="badge badge-pill danger-color" style="color:red">HOT</span>
+								</a>
+								</strong>
+							</h5>
+							<h4 class="font-weight-bold blue-text">
+								<strong>${product.price }$</strong>
+							</h4>
+						</div>
+						<!-- Card content -->
+					</div>
+					<!-- Card -->
+				</div>
 
-<!-- 		</div> -->
-		<!-- Grid row -->
+			</c:forEach>
+		</div>
+	</section>
+	<section class="text-center my-5">
 
-<!-- 	</section> -->
-	<!-- Section: Products v.3 -->
-	<!-- Section: Products v.3 -->
+
+		<!-- Section heading -->
+		<h2 class="h1-responsive font-weight-bold text-center my-5">十月優質商家</h2>
+		<!-- Section description -->
+		<div class="row">
+			<c:forEach var='group' items='${bbb}' begin="1" end="4">
+
+				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+					<!-- Card -->
+					<div class="card align-items-center">
+
+						<!-- Card image -->
+						<div class="view overlay">
+							<a href="http://localhost:8080/shianghergo/frank/product?id= ${group.memberBean.id}"><img
+								src="<c:url value='/frank/getPicture/ ${group.memberBean.id}' />"
+								class="card-img-top" alt=""></a> <a>
+								<div class="mask rgba-white-slight"></div>
+							</a>
+						</div>
+						<!-- Card image -->
+						<!-- Card content -->
+						<div class="card-body text-center">
+							<!-- Category & Title -->
+							<h5>
+								<strong> <a href="" class="dark-grey-text"> ${group.memberBean.name}
+										<span class="badge badge-pill danger-color" style="color:red">HOT</span>
+								</a>
+								</strong>
+							</h5>
+							<h4 class="font-weight-bold blue-text">
+								<strong>${group.detail}</strong>
+							</h4>
+						</div>
+						<!-- Card content -->
+					</div>
+					<!-- Card -->
+				</div>
+
+			</c:forEach>
+		</div>
+	</section>
+
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 </body>
 </html>

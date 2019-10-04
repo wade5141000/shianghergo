@@ -165,4 +165,15 @@ public class ProductDaoImpl implements ProductDao {
 		String store_name = (String) session.createQuery(hql2).setParameter("id", store_id).getSingleResult();
 		return store_name;
 	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<ItemBean> getProductsByCategory(Integer category_id){
+		String hql = "FROM ItemBean where category_id=:category_id";
+		Session session = null;
+		List<ItemBean> list = new ArrayList<>();
+		session = factory.getCurrentSession();
+		list = session.createQuery(hql).setParameter("category_id", category_id).getResultList();
+		return list;
+	}
 }

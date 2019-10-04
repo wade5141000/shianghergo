@@ -8,12 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>group</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/static/css/main.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/layui/css/layui.css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
+<!-- <link rel="stylesheet" type="text/css" -->
+<%-- 	href="${pageContext.request.contextPath}/res/static/css/main.css"> --%>
+<!-- <link rel="stylesheet" type="text/css" -->
+<%-- 	href="${pageContext.request.contextPath}/res/layui/css/layui.css"> --%>
+<!-- <script type="text/javascript" -->
+<%-- 	src="${pageContext.request.contextPath}/res/layui/layui.js"></script> --%>
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <style>
@@ -29,21 +29,36 @@
 	width: 760px;
 }
 
-
-.button{
-  background:#ccc;
-  padding:10px;
-  color:#000;
-  display: inline-block;
-}
-.bar-block{
-  margin-bottom:20px;
+.f2 {
+	margin: 0 auto;
 }
 
+.f3 {
+	margin: 0 auto;
+	padding-left: 810px;
+	boder: 10px;
+}
 
-.red{
-    background: red!important;
-    color:#fff!important;
+.f4 {
+	margin: 0 auto;
+	width: 1000px;
+	font-size: 20px;
+	text-align: center;
+}
+
+.f5 {
+	text-align: center;
+	width: 1000px;
+	background-color: yellow;
+	margin: 0 auto;
+}
+
+.td1 {
+	background-color: #FFF0D4;
+}
+
+.card {
+	margin: 20px 20px;
 }
 </style>
 <script>
@@ -95,105 +110,125 @@ function addGroupCart(item_id,groups_id){
 			
 			$("#gtable").append(result);
 			$("#gits").text(cartitems.length);
+			$("#groupgo").attr("href","${pageContext.request.contextPath}/addgrouporder?gid=" + cartitems[0].groups_id);
 			
 		}
 	})
 }
-function openClass(evt, className) {
-	  var i, x, tablinks;
-	  x = document.getElementsByClassName("class");
-	  for (i = 0; i < x.length; i++) {
-	     x[i].style.display = "none";
-	  }
-	  tablinks = document.getElementsByClassName("tablink");
-	  for (i = 0; i < x.length; i++) {
-	     tablinks[i].classList.remove("red");
-	  }
-	  document.getElementById(className).style.display = "block";
-	  evt.currentTarget.classList.add("red");
-	}
 
-	var mybtn = document.getElementsByClassName("testbtn")[0];
-	mybtn.click();
+$(document).ready(function(){
+	$("#one").show();
+	$("#two").hide();
+	$("#three").hide();
+
+	$("#111").click(function(){
+		$("#one").show();
+		$("#two").hide();
+		$("#three").hide();
+	});
+	
+	$("#222").click(function(){
+		$("#one").hide();
+		$("#two").show();
+		$("#three").hide();
+	});
+
+	$("#333").click(function(){
+		$("#one").hide();
+		$("#two").hide();
+		$("#three").show();
+	});
+	
+});
+
 
 </script>
 
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
-	<div>
-		<div>
 
-			<h2>${group.name}</h2>
-		</div>
-
+	<div class="f5">
+		<H1>${group.name}</H1>
 	</div>
 
 
+	<div>
+		<table style="font-size: :50px; word-break: break-all;" class="f4">
+			<tr>
+				<td class="td1">團主</td>
+				<td colspan="2"><img width='100px' height='100px'
+					style="display: block; margin: auto;"
+					src="<c:url value='/getmemberPicture/${group.memberBean.id }' />" />${group.memberBean.name}
+					<button type="button" class="btn btn-primary">☠檢舉</button>
+					<button type="button" class="btn btn-primary">📜評價</button>
+					<button type="button" class="btn btn-primary">📩留言給我</button></td>
 
+			</tr>
 
-	<!-- 	<div> -->
+			<tr>
+				<td class="td1">結束時間</td>
+				<td colspan="2">${group.end_time }</td>
+			</tr>
+			<tr>
+				<td class="td1">分類</td>
+				<td colspan="2">${group.categoryBean.name }</td>
+			</tr>
 
-	<%-- 	<img width="100" heigth="150" src="<c:url value='/Picture/${group.groupId}'/>"/> --%>
-	<!-- 	</div> -->
+			<tr>
+				<td class="td1">付款方式</td>
 
-	<div style="align: center">
+				<c:if test="${group.payment ==1}">
+					<td colspan="2">面交付款</td>
+				</c:if>
+				<c:if test="${group.payment ==2}">
+					<td colspan="2">面交付款</td>
+				</c:if>
+				<c:if test="${group.payment ==3}">
+					<td colspan="2">面交付款、銀行匯款</td>
+				</c:if>
+			</tr>
+			<!-- 			<tr> -->
+			<!-- 				<td class="td1">說明</td> -->
+			<%-- 				<td style="word-break: break-all;">${group.detail }</td> --%>
+			<!-- 			</tr> -->
 
-		<P>
-			<a href="<spring:url value='memberdata?mmid=${member_id.id}' />">團主:${member_id.name}
-			</a>
-		</P>
+			<c:forEach var="places" items="${place}" varStatus="i">
 
-		<p>付款方式:${group.payment}</p>
-		<p>截止時間:${group.end_time}</p>
-		<p>商品說明:${group.detail}</p>
-
-
-
-		<div>
-			<!-- 			<img width='600' height='450' -->
-			<%-- 				src="<c:url value='/frank/getgroupPicture/${group.id }' />" /> --%>
-		</div>
-
-	
-		<div class="bar-block">
-			<div class="container">
-				<h5>選單</h5>
-				<a href="javascript:void(0)" class="bar-item button tablink testbtn"
-					onclick="openClass(event, 'class1')">教學1</a> <a
-					href="javascript:void(0)" class="bar-item button tablink"
-					onclick="openClass(event, 'class2')">教學2</a> <a
-					href="javascript:void(0)" class="bar-item button tablink"
-					onclick="openClass(event, 'class3')">教學3</a> <a
-					href="javascript:void(0)" class="bar-item button tablink"
-					onclick="openClass(event, 'class4')">教學4</a>
-			</div>
-		</div>
-
-		<div id="class1" class="container class">教學1內容 教學1內容 教學1內容</div>
-
-		<div id="class2" class="container class">教學2內容 教學2內容 教學2內容</div>
-		<div id="class3" class="container class">教學3內容 教學3內容 教學3內容</div>
-<!-- 		<div id="class4" class="container class">教學4內容 教學4內容 教學4內容</div> -->
-
-
-
-
-		<div id="class4" class="container class">
-			<c:forEach var="places" items="${place}">
-				<div class="gd1" style="width: 250px; height: 200px;">
-					<p>地址:${places.address}</p>
-					<p>時間:${places.time}</p>
-
-				</div>
+				<tr>
+					<c:if test="${i.index==0}">
+						<td class="td1" rowspan="10">面交地址</td>
+					</c:if>
+					<td>${places.address }</td>
+					<td>${places.time }</td>
+				</tr>
 			</c:forEach>
-		</div>
-		<br> <br> <br>
+		</table>
+	</div>
+	<div style="margin: 0 auto; text-align: center;">
+		<div class="btn-group" role="group" aria-label="Basic example"
+			style="width: 1000px">
+			<button type="button" class="btn btn-secondary" id="111">商品與說明</button>
+			<button type="button" class="btn btn-secondary" id="222">評價</button>
+			<button type="button" class="btn btn-secondary" id="333">團主的其他合購</button>
 
-		<div>
+
+
+		</div>
+	</div>
+	<div id="one">
+		<div style="word-break: break-all; width: 800px; margin: 0 auto; ">
+			<img width='750' height='450'src="<c:url value='/frank/getgroupPicture/${group.id }' />">
+		
+	</div>
+	<div style="width:1000px; margin: 0 auto;">
+		<h3>商品</h3>
+		</div>
+
+		<div class="f2" style="width: 1000px;">
 			<c:forEach var="item" items="${groups_id}">
-				<div class="card" style="width: 18rem; display: inline-block;">
-					<img width='500' height='300'
+				<div class="card" style="width: 200px; display: inline-block;">
+					<img width='200' height='150'
 						src="<c:url value='/frank/getPicture/${item.id }' />"
 						class="card-img-top" alt="...">
 					<div class="card-body">
@@ -213,9 +248,18 @@ function openClass(evt, className) {
 			</c:forEach>
 		</div>
 
-		<a href="../groupcart">💸進購物車</a>
-		<hr>
 
-		<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
+	</div>
+
+	<div id="two">
+		<p>22222222222</p>
+	</div>
+
+	<div id="three">
+		<p>3333333333333</p>
+	</div>
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
+
+
 </body>
 </html>

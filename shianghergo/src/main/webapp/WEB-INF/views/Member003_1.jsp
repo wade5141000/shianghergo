@@ -35,21 +35,21 @@ thead {
 		<jsp:include page="shianghergo/../BlackLine.jsp" />
 <div style="padding-left: 350px;padding-right: 350px;">
 	<table class="table table-hover">
-		<tr id='borderA' height='50' >
-			<th id='borderA'  align="center"colspan="4">由${loginOK.name}建立合購團明細</th>
+		<tr id='borderA'  >
+			<th id='borderA' colspan="4">由${loginOK.name}建立合購團明細</th>
 		</tr>
-		<tr id='borderA' height='36' >
+		<tr id='borderA'  >
 			<th scope="col" id='borderA'>合購團編</th>
 			<th scope="col" id='borderA'>商品名稱</th>
 			<th scope="col" id='borderA'>商品簡介</th>
 			<th scope="col" id='borderA'>價格</th>
 		</tr>
 		<c:forEach var="anGroupsD"  items="${MyGroupsListD}">
-			<TR id='borderA' height='30'>
-			<TD id='borderA' width="100" align="center">${anGroupsD.groupsBean.id}</TD>
-			<TD id='borderA' width="100" align="center">${anGroupsD.name}</TD>
-			<TD id='borderA' width="100" align="center">${anGroupsD.detail}</TD>				
-			<TD id='borderA' width="100" align="center">${anGroupsD.price}</TD>
+			<TR id='borderA'>
+			<TD id='borderA' >${anGroupsD.groupsBean.id}</TD>
+			<TD id='borderA' >${anGroupsD.name}</TD>
+			<TD id='borderA' >${anGroupsD.detail}</TD>				
+			<TD id='borderA' >${anGroupsD.price}</TD>
 		</TR>
 		</c:forEach>
 	</TABLE>

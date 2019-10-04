@@ -120,10 +120,10 @@ public class MemberServiceImpl implements MemberService {
 	public StoreBean getStoreById(Integer id) {
 		return dao.getStoreById(id);
 	}
-	@Override
-	public StoreBean getStoreBeanById(Integer id) {
-		return dao.getStoreBeanById(id);
-	}
+//	@Override
+//	public StoreBean getStoreBeanById(Integer id) {
+//		return dao.getStoreBeanById(id);
+//	}
 
 	@Override
 	public List<GroupsBean> getMemberGroups(Integer id) {
@@ -227,4 +227,8 @@ public class MemberServiceImpl implements MemberService {
 //	    }
 
 
+//	@Override
+//	public StoreBean getStoreBeanById(int member_id) {
+//		return dao.getStoreBeanById(member_id);
+//	}
 }

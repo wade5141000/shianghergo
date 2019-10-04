@@ -20,6 +20,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
 	function goCart(x){
 		$.ajax({
@@ -27,6 +28,42 @@
 			type:"get",
 			success:function(data){
 				alert("添加成功")
+				var cartitems = JSON.parse(data);
+				var itotal = 0;
+				for(var q=0  ; q<cartitems.length ; q++){
+					itotal += cartitems[q].price * cartitems[q].amount;
+				}
+				$("#itable").empty();
+				
+				var result = "<table class='tb'>";
+				
+				for(var k=0  ; k<cartitems.length ; k++){
+					if(k==0){
+						result += "<tr><th></th><th>品名</th><th>數量</th><th>單價</th><th>小計</th><th>操作</th></tr>";
+					}
+					result += '<tr>';
+					result += '<td><img src="http://localhost:8080/shianghergo/wade/getPicture/'+cartitems[k].item_id+'" width="50px" height="50px"></td>';
+					result += '<td>' + cartitems[k].name + '</td>';
+					result += '<td><button class="btn btn-outline-danger btn1" onclick="changeAmount(' + cartitems[k].id + ',2)">-</button ><span id="' + cartitems[k].id + '">'+ cartitems[k].amount + '</span><button onclick="changeAmount(' +cartitems[k].id+ ',1)" class="btn btn-outline-success btn2">+</button>&nbsp;&nbsp;</td>';
+					result += '<td>' + cartitems[k].price + '</td>';
+					
+					var smalls = 0;
+					smalls += cartitems[k].price * cartitems[k].amount;
+					
+					result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +'</span></td>';
+					result += '<td><button class="btn btn-danger" onclick="deletetr(this,' + cartitems[k].id + ')">刪除</button></td>';
+
+					if(k == (cartitems.length-1)){
+						result += "<tr><td/><td/><td/><td/><td>";
+						result += '<span class="total">Total:</span><span id="total" class="total" style="color:red;">'+itotal+'</span></td>';
+						result += "<td></td></tr></table>";
+					}
+					
+				}
+				
+				$("#itable").append(result);
+				$("#its").text(cartitems.length);
+				
 			},
 		})
 	}
@@ -39,78 +76,32 @@
 		<div class="commod-cont-wrap">
 			<div class="commod-cont w1200 layui-clear">
 				<div class="left-nav">
-					<div class="title">所有分类</div>
-					<div class="list-box">
-						<dl>
-							<dt>奶粉辅食</dt>
-							<dd>
-								<a href="javascript:;">进口奶粉</a>
+					<div class="list-box" style="background-color: #FFE5B5">
+						<dl style="background-color: #FFE5B5">
+							<dd style="background-color: #FFB01C;text-align:center">
+								所有分類
 							</dd>
 							<dd>
-								<a href="javascript:;">宝宝辅食</a>
+								<a href="${pageContext.request.contextPath}/hao/products">全品項</a>
 							</dd>
 							<dd>
-								<a href="javascript:;">营养品</a>
-							</dd>
-						</dl>
-						<dl>
-							<dt>儿童用品</dt>
-							<dd>
-								<a href="javascript:;">纸尿裤</a>
+								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60001">團購美食</a>
 							</dd>
 							<dd>
-								<a href="javascript:;">婴儿湿巾</a>
+								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60002">保養美妝</a>
 							</dd>
 							<dd>
-								<a href="javascript:;">婴儿车</a>
+								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60003">服飾配件</a>
 							</dd>
 							<dd>
-								<a href="javascript:;">婴儿床</a>
+								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60004">育兒親子</a>
 							</dd>
 							<dd>
-								<a href="javascript:;">儿童安全座椅</a>
-							</dd>
-						</dl>
-						<dl>
-							<dt>儿童早教</dt>
-							<dd>
-								<a href="javascript:;">儿童玩具</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">早教书籍</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">孕产育儿书</a>
-							</dd>
-						</dl>
-						<dl>
-							<dt>儿童服饰</dt>
-							<dd>
-								<a href="javascript:;">童装</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">童鞋</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">宝宝配饰</a>
-							</dd>
-						</dl>
-						<dl>
-							<dt>孕妈专区</dt>
-							<dd>
-								<a href="javascript:;">孕妇装</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">孕妇护肤</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">孕妇用品</a>
+								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60005">生鮮食品</a>
 							</dd>
 						</dl>
 					</div>
 				</div>
-
-
 
 				<div class="right-cont-wrap">
 					<div class="right-cont">
@@ -127,7 +118,7 @@
 									</div>
 									<div class="text">
 										<p class="title">
-											&nbsp;&nbsp;&nbsp;&nbsp;${product.name } <span class="pri"
+											<strong>&nbsp;&nbsp;&nbsp;&nbsp;${product.name }</strong> <span class="pri"
 												style="float: right; font-size: 20px; color: gray;"><del>${product.price+100 }元</del>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 										</p>
 										<p class="price">

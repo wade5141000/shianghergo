@@ -19,6 +19,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.shianghergo.model.CartBean;
 import com.shianghergo.model.GroupsCartBean;
 import com.shianghergo.model.MemberBean;
+import com.shianghergo.model.NotificationBean;
+import com.shianghergo.model.StoreBean;
 import com.shianghergo.service.CartService;
 import com.shianghergo.service.GroupsCartService;
 import com.shianghergo.service.MemberService;
@@ -107,14 +109,23 @@ public class LoginController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(String account, String password, Model model,HttpServletRequest rq) {
 		MemberBean mb = service.login(account, password);// 前
+
+
+//		StoreBean sb = service.getStoreBeanById(mb.getId());
+
+
+
 		if(mb != null) {
 			if(password.equals(mb.getPassword())) {
 				if(mb.getStatus()==1) {
 					// 向ModelMap视图中添加一个Session级别存储的属性
 					model.addAttribute("loginOK", mb);
+
+
 //					System.out.println("00000");
 //					model.addAttribute("store",service.getStoreBeanById(mb.getId()));
 //					System.out.println("11111");
+
 					// ===== wade購物車
 					HttpSession httpSession = rq.getSession();
 					List<CartBean> list2 = cartService.getCartItems(mb.getId());
@@ -139,8 +150,14 @@ public class LoginController {
 					// ===== wade團購物車
 					
 					
-					// 判斷header是否登入
+					// 判斷header是否登入 wade
 					httpSession.setAttribute("header11", 2);
+					
+					// 顯示通知 wade
+					List<NotificationBean> list = cartService.getNotification(mb.getId());
+					httpSession.setAttribute("notification", list);
+					
+					
 					return "Member001";
 				}
 				
@@ -152,6 +169,7 @@ public class LoginController {
 		
 		// 帳號或密碼錯誤
 		return "loginNew";
+	
 		
 //		System.out.println("login()+++" + mb);
 		

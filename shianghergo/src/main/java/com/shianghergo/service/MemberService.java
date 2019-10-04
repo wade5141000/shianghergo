@@ -45,7 +45,7 @@ public interface MemberService {
 
 	public StoreBean getStoreById(Integer id);
 	
-	public StoreBean getStoreBeanById(Integer id);
+//	public StoreBean getStoreBeanById(Integer id);
 
 	public List<GroupsBean> getMemberGroups(Integer id);
 
@@ -72,4 +72,6 @@ public interface MemberService {
 	public void deleteByid(Integer id);
 
 	// int activeUser(String code);//激活會員
+	
+//	StoreBean getStoreBeanById(int member_id);
 }

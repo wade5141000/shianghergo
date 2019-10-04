@@ -147,7 +147,12 @@ public class StoreDaoImpl implements StoreDao {
 	}
 	
 	
-	
-	
-	
+  @Override
+	public int getMemberIdByStoreId(Integer id) {
+		Session session = factory.getCurrentSession();
+		String hql = "select member_id from StoreBean where id=:id";
+		int member_id = (Integer) session.createQuery(hql).setParameter("id", id).getSingleResult();
+		return member_id;
+	}
+
 }

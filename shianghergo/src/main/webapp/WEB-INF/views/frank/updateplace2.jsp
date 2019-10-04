@@ -12,7 +12,7 @@
 	<div class="container">	
 	<div class="border border-success"style="padding-left: 300px;padding-right: 300px;">
 	<!-- action对应一个action标签，id对应提交时的对应关系 -->
-	<form id="saveForm" action="updatetoplace" method="post">
+	<form id="saveForm" action="updatetoplace(mb)" method="post">
 		<input type="hidden" name="pid" value="${updateplace.id}" />
 		<input type="hidden" name="gid" value="${updateplace.groupsBean.id}" />
 			

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -488,6 +489,19 @@ public class ALLController {
 		return "leopard/ReportevaluationStore";
 
 	}
+	
+	@RequestMapping("hao/SaveRS")
+	public String haoMreportS(Report_StoreBean rb, Model model) {
+
+		service.saveReport(rb);
+
+		List<Category_ReportBean> list = service.getCategoryReport();
+		List<StoreBean> sto = service.getStore();
+		model.addAttribute("list", list);
+		model.addAttribute("Store", sto);
+
+		return "hao/getStoreByProduct?id="+rb.getMember_id();
+	}
 
 	// 會員評價商家
 	@RequestMapping("leopard/evaluationStore")
@@ -502,6 +516,21 @@ public class ALLController {
 		model.addAttribute("Store", sto);
 
 		return "leopard/ReportevaluationStore";
+
+	}
+	
+	@RequestMapping("/hao/evaluationStore")
+	public String evaluationStore3(comment_store cs, Model model) {
+
+		service.savecomment_store(cs);
+
+		List<Category_ReportBean> list = service.getCategoryReport();
+		List<StoreBean> sto = service.getStore();
+
+		model.addAttribute("list", list);
+		model.addAttribute("Store", sto);
+
+		return "getStoreByProduct?id=" + cs.getMember_id(); 
 
 	}
 

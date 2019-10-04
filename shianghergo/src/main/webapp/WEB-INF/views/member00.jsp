@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <head>
 <style type="text/css">
-.container {
+.table {
 	margin: auto;
 	/*   margin-left: auto; */
 	padding-right: 15px;
@@ -21,51 +21,51 @@
 <body>
 <jsp:include page="eric/header.jsp" />
 <jsp:include page="shianghergo/../BlackLine.jsp" />
-<div  style="padding-bottom: 500px;">
-	<div  style="padding-top: 190px;padding-left: 500px;">
+<div>
+	<div  style="padding-top: 10px;padding-left: 250px;">
 		<!-- 内容主体区域 -->
 		<form id="saveForm" action="updateMember.do" method="post"  enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${Member.id}" /> <input
 				type="hidden" name="account" value="${Member.account}" />
-			<table  class="table table-hover"style="font-size: :16px">
+			<table  class="table table-hover"style="font-size:16px;">
 				<tr>
 					<td>姓名：</td>
-					<td><input type="text" value="${Member.name }" name="name" class="layui-input" /></td>
+					<td><input type="text" value="${Member.name }" name="name" class="form-control" /></td>
 				</tr>
 				<tr>
 					<td>密碼：</td>
 					<td><input type="text" value="${Member.password }"
-						name="password" class="layui-input" /></td>
+						name="password" class="form-control" /></td>
 				</tr>
 				<tr>
 				<tr>
 					<td>手機：</td>
-					<td><input type="text" value="${Member.phone }" name="phone" class="layui-input" /></td>
+					<td><input type="text" value="${Member.phone }" name="phone" class="form-control" /></td>
 				</tr>
 				<tr>
 					<td>Email：</td>
-					<td><input type="text" value="${Member.email }" name="email" class="layui-input" /></td>
+					<td><input type="text" value="${Member.email }" name="email" class="form-control" /></td>
 				</tr>
 				<tr>
 					<td>生日：</td>
 					<td><input type="text" value="${Member.birthday }"
-						name="birthday" class="layui-input" /></td>
+						name="birthday" class="form-control" /></td>
 				</tr>
 				<tr>
 					<td>地址：</td>
 					<td><input type="text" value="${Member.address }"
-						name="address" class="layui-input" /></td>
+						name="address" class="form-control" /></td>
 				</tr>
 				<tr>
 					<td>更換大頭照：</td>
 					<td><input type="file" 
-						name="image" class="layui-input" /></td>
+						name="image" class="" /></td>
 				</tr>
 			</table>
-				<div class="layui-btn-group">
-					<div align="right" class="layui-btn-group" style="padding-left: 50px;padding-top: 20px;">
-					<input type="submit" value="更新" class="layui-btn"/> 
-					<a href="javascript:history.go(-1)" class="layui-btn">取消 </a>
+				<div >
+					<div   style="padding-top: 20px;padding-left: 600px;">
+					<input type="submit" value="更新" class="btn btn-success"/> 
+					<a href="javascript:history.go(-1)" class="btn btn-danger">取消 </a>
 				</div>
 				</div>
 		</form>
