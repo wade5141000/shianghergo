@@ -15,7 +15,7 @@ public interface GroupsService {
 	Set<Groups_ItemBean> getGroupItemsById(Integer group_id);
 	//----------------以下士權------------------
 	Integer addGroups(GroupsBean gb , Integer member_id,Integer category_id);
-	void addGroupsItem(Groups_ItemBean groupsitem,int idd);
+	int addGroupsItem(Groups_ItemBean groupsitem,int idd);
 	GroupsBean getGroupstById(int groupsId);
 	List<GroupsBean> getGroupsList();
 	public GroupsBean getGroupById(int groupId);//查詢單一團的資料

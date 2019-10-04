@@ -63,17 +63,19 @@ public class GroupsDaoImpl implements GroupsDao {
 	}
 
 	@Override
-	public void addGroupsItem(Groups_ItemBean groupsitem) {
+	public int addGroupsItem(Groups_ItemBean groupsitem) {
 		Session session = factory.getCurrentSession();
 		GroupsBean x = groupsitem.getGroupsBean();
 
 		GroupsBean gb = getGroupsById(x.getId());
 
-		session.save(groupsitem);
+		int iid = (int)session.save(groupsitem);
 		Set<Groups_ItemBean> set = new HashSet<Groups_ItemBean>();
 		set = gb.getGroupsitem();
 		set.add(groupsitem);
 		gb.setGroupsitem(set);
+		
+		return iid;
 	}
 
 	@Override
