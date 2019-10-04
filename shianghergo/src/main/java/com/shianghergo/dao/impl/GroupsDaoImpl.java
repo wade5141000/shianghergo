@@ -46,13 +46,13 @@ public class GroupsDaoImpl implements GroupsDao {
 	}
 
 	@Override
-	public Integer addGroups(GroupsBean group, Integer member_id ,Integer category_id) {
+	public Integer addGroups(GroupsBean group, Integer member_id, Integer category_id) {
 		Session session = factory.getCurrentSession();
-		MemberBean x = getMemberById(member_id);	
+		MemberBean x = getMemberById(member_id);
 		group.setMemberBean(x);
 		CategoryBean y = getCategoryById(category_id);
 		group.setCategoryBean(y);
-		
+
 		Integer id = (Integer) session.save(group);
 
 		Set<GroupsBean> set = new HashSet<GroupsBean>();
@@ -114,12 +114,10 @@ public class GroupsDaoImpl implements GroupsDao {
 	public GroupsBean getGroupById(int groupId) {
 		Session session = factory.getCurrentSession();
 		GroupsBean gb = session.get(GroupsBean.class, groupId);
-		if(gb == null)
+		if (gb == null)
 			throw new ProductNotFoundException("商品編號:" + groupId + "找不到");
 		return gb;
 	}
-	
-
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -149,6 +147,7 @@ public class GroupsDaoImpl implements GroupsDao {
 		MemberBean mb = session.get(MemberBean.class, memberid);
 		return mb;
 	}
+
 	@Override
 	public CategoryBean getCategoryById(Integer category_id) {
 
@@ -157,9 +156,6 @@ public class GroupsDaoImpl implements GroupsDao {
 		return cb;
 	}
 
-	
-	
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PlaceBean> getPlaceByGroups_id(Integer groups_id) {
@@ -188,17 +184,17 @@ public class GroupsDaoImpl implements GroupsDao {
 
 		Session session = factory.getCurrentSession();
 //		GroupsBean x = session.get(GroupsBean.class, gb.getId());
-		
+
 //		CategoryBean y = getCategoryById(category_id);
 //		x.setCategoryBean(y);
 //		gb.setCategoryBean(y);
-		
+
 //		x.setName(gb.getName());
 //		x.setEnd_time(gb.getEnd_time());
 //		x.setDetail(gb.getDetail());
 //		x.setPayment(gb.getPayment());
 		session.update(gb);
-		
+
 		return;
 	}
 
@@ -233,7 +229,7 @@ public class GroupsDaoImpl implements GroupsDao {
 		Session session = factory.getCurrentSession();
 //		Groups_ItemBean x = session.get(Groups_ItemBean.class, ib.getId());
 //	
-		
+
 //		x.setName(ib.getName());
 //		x.setDetail(ib.getDetail());
 //		x.setPrice(ib.getPrice());
@@ -248,7 +244,7 @@ public class GroupsDaoImpl implements GroupsDao {
 
 		Session session = factory.getCurrentSession();
 		Groups_ItemBean ib = session.get(Groups_ItemBean.class, iid);
-		if(ib == null)
+		if (ib == null)
 			throw new ProductNotFoundException("商品編號:" + iid + "找不到");
 		return ib;
 	}
@@ -282,7 +278,6 @@ public class GroupsDaoImpl implements GroupsDao {
 		return list;
 	}
 
-	
 //	@Override
 //	public Groups_ItemBean getGroup_ItemByGroups_id(Integer groups_id) {
 //		Session session = factory.getCurrentSession();
@@ -290,19 +285,32 @@ public class GroupsDaoImpl implements GroupsDao {
 //		return gib;
 //	}
 
+	// 9/27 新增搜查開團
+	@Override
+	public List<GroupsBean> searchToGroups(String name) {
+
+		String hql = "from GroupsBean Where name LIKE '%" + name + "%'";
+
+		Session session = factory.getCurrentSession();
+
+		@SuppressWarnings("unchecked")
+		List<GroupsBean> data = session.createQuery(hql).getResultList();
+
+		return data;
+	}
+
 	
-	// 9/27  新增搜查開團
-		@Override
-		public List<GroupsBean> searchToGroups(String name) {
-			
-			String hql = "from GroupsBean Where name LIKE '%"+ name +"%'";
-			
-			Session session = factory.getCurrentSession();
-			
-			@SuppressWarnings("unchecked")
-			List<GroupsBean> data  = session.createQuery(hql).getResultList();
-			
-			return data;
-		}
-	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<GroupsBean> getGroupsByCategory_id(Integer category_id) {
+		String hql = "From GroupsBean Where category_id =:category_id ";
+
+		List<GroupsBean> list = new ArrayList<>();
+		Session session = factory.getCurrentSession();
+		
+		 list = session.createQuery(hql).setParameter("category_id", category_id).getResultList();
+
+		return list;
+	}
+
 }

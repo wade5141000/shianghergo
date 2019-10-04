@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -14,11 +13,9 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.CacheControl;
@@ -217,7 +214,7 @@ public class GroupsController {
 		model.addAttribute("gid", gid);
 
 		System.out.println("測試1" + gid);
-		return "frank/addGroupsItem2";
+		return "frank/addGroupsItem";
 
 	}
 
@@ -492,7 +489,7 @@ public class GroupsController {
 		model.addAttribute("gid", gidd);
 
 		System.out.println("測試1" + gidd);
-		return "frank/addPlace2";
+		return "frank/addPlace";
 
 	}
 
@@ -537,11 +534,32 @@ public class GroupsController {
 	@RequestMapping("/frank/groups")
 	public String list(Model model) {
 		List<GroupsBean> list = service.getAllGroups();
+		List<CategoryBean> list1 =service.getCategoryList();
+		 model.addAttribute("category",list1);
+		
 		model.addAttribute("groups", list);
+		
+		
 //		return "frank/groups";
 		return "frank/Ngroup";
 	}
 
+	
+	@RequestMapping("/frank/groupsByCategory")
+	public String getGroupsByCategory_id(@RequestParam("category_id")Integer category_id,Model model) {
+		
+		 List<GroupsBean> list = service.getGroupsByCategory_id(category_id);
+		 List<CategoryBean> list1 =service.getCategoryList();
+		 model.addAttribute("category",list1);
+		 model.addAttribute("groups",list);
+		 
+		 
+	    return"frank/Ngroup";
+		
+	}
+	
+	
+	
 //-------------------------某一個團購頁面---------------------------
 	@RequestMapping("/frank/group") // 查詢單一產品
 	public String getGroupsById(@RequestParam("gid") Integer gid, @ModelAttribute("loginOK")MemberBean member, Model model) {
@@ -867,6 +885,14 @@ public class GroupsController {
 	}
 
 	}
+	
+	
+
+	
+	
+	
+	
+	
 	
 	
 	//會員中心新&修
