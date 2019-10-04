@@ -95,7 +95,7 @@ public class GroupsController {
 		model.addAttribute("groupsBean", gb);
 		model.addAttribute("category",list );
 //		System.out.println(list);
-
+		
 		
 		return "frank/addGroups";
 	}
@@ -104,8 +104,8 @@ public class GroupsController {
 	@RequestMapping(value = "/frank/Groups1", method = RequestMethod.POST)
 	public String processAddNewProductForm(Model model, @ModelAttribute("groupsBean") GroupsBean gb,
 			BindingResult result, HttpServletRequest request, @SessionAttribute("loginOK")MemberBean member,
-			@RequestParam("categoryBean") Integer category_id) {
-
+			@RequestParam("categoryBean") Integer category_id,@RequestParam("banknumber") Integer banknumber) {
+		
 		String[] suppressedFields = result.getSuppressedFields();
 		if (suppressedFields.length > 0) {
 			throw new RuntimeException("嘗試傳入不允許的欄位:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
@@ -132,11 +132,12 @@ public class GroupsController {
 		 if(gb.getPayment().length() !=1) {
 			 gb.setPayment("3");
 		 }
+		 gb.setBanknumber(banknumber);
 		
 		
 		Integer id = service.addGroups(gb, member.getId(),category_id);
-		System.out.println("-----------------------------");
-		System.out.println(id);
+
+//		System.out.println(id);
 
 		try {
 			File imageFolder = new File(rootDirectory, "images");
@@ -149,8 +150,8 @@ public class GroupsController {
 			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
 		}
 		
-		
-		
+		System.out.println("-----------------------------------------------------------------");
+		System.out.println("gb+++++++++++"+gb);
 
 		return "redirect:/frank/showgroup?gid=" + id;
 	}
@@ -998,6 +999,37 @@ public class GroupsController {
 				return "redirect:/frank/showgroup(mb)?gid=" + gid;
 			}
 	
+
+			// ----------------------刪除商品---------------------------
+			@RequestMapping(value = "/frank/deletetogroup_item(mb)")
+			public String mbdeletetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("iid") Integer iid, Model model) {
+
+//					service.deletegitemById(iid);
+//					 String x = service.getGroup_ItemById(iid);
+//					session.removeAttribute(x);
+				service.deletegitemById(iid);
+
+//					Session session = factory.getCurrentSession();		
+//					session.delete(service.getGroup_ItemById(iid));
+
+				return "redirect:/frank/showgroup(mb)?gid=" + gid;
+			}
+
+			// -----------------------刪除地址------------------------
+			@RequestMapping(value = "/frank/deletetoplace(mb)")
+			public String mbdeletetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model) {
+
+//					service.deletegitemById(iid);
+//					 String x = service.getGroup_ItemById(iid);
+//					session.removeAttribute(x);
+				service.deletetoplace(pid);
+
+//					Session session = factory.getCurrentSession();		
+//					session.delete(service.getGroup_ItemById(iid));
+
+				return "redirect:/frank/showgroup(mb)?gid=" + gid;
+			}
+			
 	
 	
 	

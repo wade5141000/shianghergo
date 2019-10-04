@@ -49,7 +49,7 @@
 						<td>面交付款</td>
 					</c:if>
 					<c:if test="${updategroup.payment ==2}">
-						<td>面交付款</td>
+						<td>銀行匯款</td>
 					</c:if>
 					<c:if test="${updategroup.payment ==3}">
 						<td>面交付款、銀行匯款</td>
@@ -99,7 +99,7 @@
 						<dl class="row">
 							<dt class="col-sm-4">${places.time}</dt>
 							<dd class="col-sm-8"><input type="button" value="刪除"
-					onclick="location.href='deletetoplace?gid=${updategroup.id}&pid=${places.id}'"
+					onclick="location.href='deletetoplace(mb)?gid=${updategroup.id}&pid=${places.id}'"
 					class="btn btn-danger" style="width: 80px; height: 30px;"></dd>
 						</dl>
 					</dd>
@@ -138,7 +138,7 @@
 									onclick="location.href='updatetogroup_item(mb)?gid=${updategroup.id}&iid=${item.id}'"
 									class="btn btn-info" style="width: 80px; height: 30px;">
 								<input type="button" value="刪除"
-									onclick="location.href='deletetogroup_item?gid=${updategroup.id}&iid=${item.id}'"
+									onclick="location.href='deletetogroup_item(mb)?gid=${updategroup.id}&iid=${item.id}'"
 									class="btn btn-danger" style="width: 80px; height: 30px;">
 							</p>
 						</div>
