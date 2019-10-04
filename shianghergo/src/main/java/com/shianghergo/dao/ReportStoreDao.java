@@ -9,7 +9,7 @@ import com.shianghergo.model.Report_StoreBean;
 public interface ReportStoreDao {
 	
 
-	List<Report_StoreBean> getAllStoreBean();
+	List<Report_StoreBean> getProcessS(Integer status);
 	
 	void saveReport(Report_StoreBean report);
 

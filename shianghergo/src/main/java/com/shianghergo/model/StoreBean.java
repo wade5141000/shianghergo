@@ -22,8 +22,6 @@ public class StoreBean implements Serializable {
 	private String		detail;
 	private Integer		status;
 	
-	private Integer status2;
-	
 	private Set<ItemBean> items = new LinkedHashSet<>();
 
 	
@@ -54,13 +52,6 @@ public class StoreBean implements Serializable {
 		this.items = items;
 	}
 	
-	
-	public Integer getStatus2() {
-		return status2;
-	}
-	public void setStatus2(Integer status2) {
-		this.status2 = status2;
-	}
 	public Integer getMember_id() {
 		return member_id;
 	}

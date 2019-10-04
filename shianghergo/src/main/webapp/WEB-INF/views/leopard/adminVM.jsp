@@ -29,6 +29,13 @@
 * {
 	font-family: 微軟正黑體;
 }
+
+.select {
+	border: 1px solid green;
+	display: inline-block;
+	padding: 7px;
+	border-radius: 7px;
+}
 </style>
 
 <body>
@@ -43,17 +50,18 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item "><a class="nav-link"
-					href="member.do">會員管理 <span class="sr-only">(current)</span></a></li>
+				<li class="nav-item "><a class="nav-link" href="member.do">會員管理
+						<span class="sr-only">(current)</span>
+				</a></li>
 				<li class="nav-item"><a class="nav-link" href="store.do">商店管理</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="showItem">商品管理</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="showGroups_item">團購商品管理</a>
 				</li>
-				<li class="nav-item active"><a class="nav-link" href="showVM.do">違規處理-會員</a>
-				</li>
-				
+				<li class="nav-item active"><a class="nav-link"
+					href="showVM.do">違規處理-會員</a></li>
+
 				<li class="nav-item"><a class="nav-link" href="showVS.do">違規處理-商家</a>
 				</li>
 				<li class="nav-item" style="margin-left: 800px"><a
@@ -63,19 +71,34 @@
 		</div>
 	</nav>
 
-	
-	
+	<div style="margin-left: 150px; margin-top: 15px">
+
+		<h3>違規會員</h3>
+
+		<form action="reportStatusM" method="POST">
+			<div class="select">
+				<select name="status">
+					<option value="1">尚未處理</option>
+					<option value="2">已處理</option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-outline-success">查詢</button>
+		</form>
+	</div>
+
+
 
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">#</th>
+				<th scope="col">檢舉號</th>
 				<th scope="col">檢舉人ID</th>
 				<th scope="col">被檢舉人ID</th>
 				<th scope="col">檢舉時間</th>
 				<th scope="col">檢舉內容</th>
 				<th scope="col">處理狀態</th>
+				<th scope="col">處理時間</th>
 				<th scope="col">處理回覆</th>
 
 				<th scope="col"></th>
@@ -85,29 +108,42 @@
 
 			<c:forEach var='violations' items='${violation}'>
 				<tr>
-				<th scope="row">O</th>
-				<td>${violations.member_id}</td>
-				<td>${violations.target}</td>
-				<td>${violations.time}</td>
-				<td>${violations.contents}</td>
-				<td>${violations.status}</td>
-				<td>
-					<form action="processM" method="POST">
-						<textarea name="process_result" rows="2" cols="20"></textarea>
-						<input type=hidden value="${violations.id}" name="id">
-						<button type="submit" class="btn btn-success">送出</button>
-						<button type="reset" class="btn btn-success">清除</button>
+					<th scope="row">${violations.id}</th>
+					<td>${violations.member_id}</td>
+					<td>${violations.target}</td>
+					<td>${violations.time}</td>
+					<td>${violations.contents}</td>
+					<c:choose>
+
+						<c:when test="${violations.status eq '2'}">
+							<td>✔</td>
+							<td>${violations.process_time}</td>
+							<td>${violations.process_result}</td>
+						</c:when>
+						<c:when test="${violations.status eq '1'}">
+
+							<td>✘</td>
+							<td></td>
+							<td>
 
 
-					</form>
-				</td>
+								<form action="processM" method="POST">
+									<textarea name="process_result" rows="2" cols="20"></textarea>
+									<input type=hidden value="${violations.id}" name="id">
+									<button type="submit" class="btn btn-success">送出</button>
+									<button type="reset" class="btn btn-success">清除</button>
+								</form>
+							</td>
 
 
 
 
+
+
+						</c:when>
+
+					</c:choose>
 			</c:forEach>
 	</table>
-
-
 </body>
 </html>
