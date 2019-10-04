@@ -2,12 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/res/layui/css/layui.css">
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
 <title>Store</title>
 <script>
 	let flag = true;
@@ -79,6 +85,21 @@
 
 		document.getElementById("scoretarget").value = myObj.value;
 	}
+
+	$(document).ready(function() {
+		$("#one").show();
+		$("#two").hide();
+
+		$("#111").click(function() {
+			$("#one").show();
+			$("#two").hide();
+		});
+
+		$("#222").click(function() {
+			$("#one").hide();
+			$("#two").show();
+		});
+	});
 </script>
 </head>
 <body>
@@ -109,8 +130,8 @@
 								</c:forEach>
 							</select>
 						</div>
-						<input type="hidden" value="${loginOK.id}" name="member_id"> <input
-							type=hidden value="1" id="target" name="store_id">
+						<input type="hidden" value="${loginOK.id}" name="member_id">
+						<input type=hidden value="1" id="target" name="store_id">
 
 						<div class="form-group">
 							<label for="message-text" class="col-form-label">檢舉內容:</label>
@@ -224,7 +245,8 @@
 				style="padding-left: 20px; padding-top: 30px; height: 90px; text-align: center"
 				class="card-footer text-muted">
 				<button class="btn btn-primary" onclick="scoreTarger(this)"
-					data-toggle="modal" data-target="#exampleModal1" value="${store.id }">評價</button>
+					data-toggle="modal" data-target="#exampleModal1"
+					value="${store.id }">評價</button>
 				<button class="btn btn-danger" onclick="reportTarger(this)"
 					data-toggle="modal" data-target="#exampleModal" value="${store.id}">檢舉</button>
 				<a href="${pageContext.request.contextPath}/productfile.s"><button
@@ -234,10 +256,16 @@
 	</div>
 
 
+	<div style="margin: 0 auto; text-align: center;">
+		<div class="btn-group" role="group" aria-label="Basic example"
+			style="width: 1000px">
+			<button type="button" class="btn btn-secondary" id="111">商品列表</button>
+			<button type="button" class="btn btn-secondary" id="222">評價滿意度</button>
+		</div>
+	</div>
 
 
-
-	<div
+	<div id="one"
 		style="padding-bottom: 50px; margin-left: 265px; padding-right: 350px; padding-left: 85px">
 		<div class="card" style="padding-bottom: 35px; border: white">
 			<h1 class="card-header" style="text-align: center">商品列表</h1>
@@ -250,11 +278,15 @@
 						src="<c:url value='/hao/getPicture/${product.id }' />"
 						class="card-img-top" alt="...">
 					</a>
-					<div class="card-body">
-						<h5 class="card-title">品名:${product.name }</h5>
-						<p class="card-text">說明：${product.detail }</p>
-						<p class="card-text">說明：${product.id }</p>
-
+					<div class="card-body" style="text-align: center">
+						<h5 class="card-title">
+							<strong>${product.name }</strong>
+						</h5>
+						<%-- 						<p class="card-text">說明：${product.detail }</p> --%>
+						<p class="card-text">${product.price }元</p>
+						<button class="layui-btn  layui-btn-danger car-btn">
+							<i class="layui-icon layui-icon-cart-simple"></i>加入購物車
+						</button>
 					</div>
 				</div>
 				<c:if test="${(status.index % 5) == 4}">
@@ -272,6 +304,29 @@
 			</c:if>
 			</c:forEach>
 		</div>
+	</div>
+
+	<div id="two"
+		style="padding-bottom: 50px; margin-left: 265px; padding-right: 350px; padding-left: 85px">
+		<div class="card" style="padding-bottom: 35px; border: white">
+			<h1 class="card-header" style="text-align: center">評價滿意度</h1>
+		</div>
+		<c:forEach var='comment' items='${comment }'>
+			<div style="padding-left: 35%; padding-right: 35%;">
+				<div style="display: inline;">
+					<img
+						src="<c:url value='/resources/images/star_${comment.score }.gif' />">
+				</div>
+				<div style="display: inline;">
+					<p style="text-align: right">${comment.time }</p>
+				</div>
+				<p>會員：${comment.member_id }</p>
+				<p style="text-align: left">${comment.contents }</p>
+			</div>
+			<div style="padding-left: 35%; padding-right: 35%">
+				<hr style="color: gray;">
+			</div>
+		</c:forEach>
 	</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>

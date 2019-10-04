@@ -153,7 +153,14 @@ public class ProductController {
 	public String list(Model model) {
 		List<ItemBean> list = service.getAllProducts();
 		model.addAttribute("products", list);
-//		List<comment_item> list1 = gbdbService.getAverageScoreByItemId();
+		
+		List<Integer> list1 = service.getAllProductsId();
+		double score = 0;
+		for(Integer GG:list1) {	
+			score = gbdbService.getAverageScoreByItemId(GG);
+		}
+		
+		
 		return "hao/products";
 	}
 
@@ -169,6 +176,7 @@ public class ProductController {
 			Model model) {
 		model.addAttribute("product", service.getProductById(id));
 //		model.addAttribute("store", service.getStoreNameByItemId(id));
+		model.addAttribute("comment", gbdbService.getComment_item(id));
 		return "hao/product";
 	}
 

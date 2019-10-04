@@ -37,4 +37,6 @@ public interface ProductDao {
 	public String getStoreNameByItemId(Integer id);
 
 	List<ItemBean> getProductsByCategory(Integer category_id);
+
+	List<Integer> getAllProductsId();
 }

@@ -39,11 +39,23 @@ public class Icomment_itemDao implements comment_itemDao {
 		String hql = "select score from comment_item where item_id=:item_id";
 		Session session = factory.getCurrentSession();
 		List<Integer> list = session.createQuery(hql).setParameter("item_id", id).getResultList();
-		for(Integer GG:list) {
-			System.out.println(GG);
+		int sum = 0;
+		int count = 0;
+		for(Integer GG:list) {	
+			sum = sum + GG;
+			count++;
 		}
+		double d = sum/count;  
+		d = ((int)(d*10)) / 10;
 		
-		return 0;
+		return d;
 	}
-
+	
+	@Override
+	public List<comment_item> getComment_item(Integer item_id){
+		String hql = "from comment_item where item_id=:item_id";
+		Session session = factory.getCurrentSession();
+		List<comment_item> list = session.createQuery(hql).setParameter("item_id", item_id).getResultList();	
+		return list;
+	}
 }

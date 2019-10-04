@@ -177,4 +177,14 @@ public class ProductDaoImpl implements ProductDao {
 		list = session.createQuery(hql).setParameter("category_id", category_id).getResultList();
 		return list;
 	}
+	
+	@Override
+	public List<Integer> getAllProductsId(){
+		String hql = "select id FROM ItemBean";
+		Session session = null;
+		List list = new ArrayList<>();
+		session = factory.getCurrentSession();
+		list = session.createQuery(hql).getResultList();
+		return list;
+	}
 }
