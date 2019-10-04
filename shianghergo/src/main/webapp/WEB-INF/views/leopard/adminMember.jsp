@@ -30,38 +30,74 @@
 }
 </style>
 <script>
-	function Notification() {
-		var r = confirm("是否要警告")
-		if (r == true) {
-			alert('警告成功');
-		} else {
-			alert('警告取消');
-		}
-	}
+	
+function Notification(target){
+	
+	var x = confirm("是否要警告");
+	if (x) {
+		alert('警告成功');
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/NotificationMember?target='+target, true);
+		httpRequest.send();
+	
+		setTimeout("history.go(0);",100);
 
-	function stop() {
-		var r = confirm("是否要停權")
-		if (r == true) {
-			alert('停權成功');
-		} else {
-			alert('停權取消');
-		}
-	}
+	}else {	
+		alert('警告取消');	
+	}	
 
-	function recovery() {
-		var r = confirm("是否恢復權限")
-		if (r == true) {
-			alert('恢復權限成功');
-		} else {
-			alert('恢復權限取消');
-		}
-	}
+	
+}
+
+function stop(target){
+	
+	var x = confirm("是否要停權");
+	if (x) {
+		alert('停權成功');
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/stopMember?target='+target, true);
+		httpRequest.send();
+	
+		setTimeout("history.go(0);",100);
+
+	}else {	
+		alert('停權取消');	
+	}	
+
+	
+}
+
+function recovery(target){
+	
+	var x = confirm("是否要恢復權限");
+	if (x) {
+		alert('恢復權限成功');
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/recoveryMember?target='+target, true);
+		httpRequest.send();
+	
+		setTimeout("history.go(0);",100);
+
+	}else {	
+		alert('恢復權限取消');	
+	}	
+
+	
+}
+
 </script>
 
 </head>
 <style>
 * {
 	font-family: 微軟正黑體;
+}
+
+.select {
+	border: 1px solid green;
+	display: inline-block;
+	padding: 7px;
+	border-radius: 7px;
 }
 </style>
 
@@ -94,74 +130,90 @@
 					class="nav-link" href="login">切換管理員</a></li>
 
 			</ul>
+
 		</div>
 	</nav>
-	<a href="reportAndevaMember">檢舉評價會員</a>
-	<a href="reportAndevaStore">檢舉評價商家</a>
-	<a href="reportAndevaItem">評價商品</a>
 
-	
+
+	<div style="margin-left: 150px; margin-top: 15px">
+
+
+		<h3>會員</h3>
+
+
+
+		<form action="memberStatus" method="POST">
+			<div class="select">
+				<select name="status">
+					<option value="1">一般會員</option>
+					<option value="2">停權會員</option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-outline-success">查詢</button>
+		</form>
+	</div>
+
+
 
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">#</th>
 				<th scope="col">會員ID</th>
-				<th scope="col">會員名稱</th>
 				<th scope="col">會員帳號</th>
+				<th scope="col">會員名稱</th>
 				<th scope="col">會員信箱</th>
 				<th scope="col">會員電話</th>
-				<th scope="col">會員生日</th>
 				<th scope="col">會員地址</th>
-				<th scope="col">會員狀態</th>
+				<th scope="col">狀態</th>
 				<th scope="col"></th>
 				<th scope="col"></th>
 				<th scope="col"></th>
-				<th scope="col"></th>
-				<th scope="col"></th>
+
+
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var='members' items='${Member}'>
 				<tr>
-					<th scope="row">O</th>
 					<td>${members.id}</td>
-					<td>${members.name}</td>
 					<td>${members.account}</td>
+					<td>${members.name}</td>
 					<td>${members.email}</td>
 					<td>${members.phone}</td>
-					<td>${members.birthday}</td>
 					<td>${members.address}</td>
-					<td>${members.status}</td>
 
-					<td><form action="NotificationMember" method="POST">
-							<input type=hidden value="${members.id}" name="target">
-							<button type="submit" class="btn btn-warning"
-								onclick="Notification()">警告</button>
-						</form></td>
+					<c:choose>
 
-					<td>
-						<form action="stopMember" method="POST">
-							<input type=hidden value="${members.id}" name="target">
-							<button type="submit" class="btn btn-danger" onclick="stop()">停權</button>
-						</form>
-					</td>
+						<c:when test="${members.status eq '2'}">
 
+							<td>✘</td>
 
-					<td>
-						<form action="recoveryMember" method="POST">
-							<input type=hidden value="${members.id}" name="target">
-							<button type="submit" class="btn btn-success"
-								onclick="recovery()">停權取消</button>
-						</form>
-					</td>
+						</c:when>
+						<c:when test="${members.status eq '1'}">
+
+							<td>○</td>
+
+						</c:when>
+
+					</c:choose>
+
+					<td><button type="button" class="btn btn-warning"
+							onclick="Notification(${members.id})">警告</button></td>
+
+					<td><button type="button" class="btn btn-danger"
+							onclick="stop(${members.id})">X</button></td>
+
+					<td><button type="button" class="btn btn-info"
+							onclick="recovery(${members.id})">O</button></td>
 
 				</tr>
 			</c:forEach>
 
 		</tbody>
 	</table>
-
+	<a href="reportAndevaMember">檢舉評價會員</a>
+	<a href="reportAndevaStore">檢舉評價商家</a>
+	<a href="reportAndevaItem">評價商品</a>
 </body>
 </html>

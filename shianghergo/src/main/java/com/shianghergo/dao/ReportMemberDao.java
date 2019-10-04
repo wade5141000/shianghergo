@@ -8,7 +8,7 @@ import com.shianghergo.model.Report_MemberBean;
 public interface ReportMemberDao {
 	
 
-    List<Report_MemberBean> getAll();
+	List<Report_MemberBean> getProcess(Integer status);
 	
 	void saveReport(Report_MemberBean rp);
 		

@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.shianghergo.model.CategoryBean;
 import com.shianghergo.model.GroupsBean;
@@ -120,6 +122,18 @@ public class HomeController {
 //			e.printStackTrace();
 //		}
 //	}
+	
+//	// wade 測試圖片上傳
+//	@RequestMapping("testimg")
+//	public String imaage(@RequestParam("idPic") MultipartFile img) {
+//		if(!img.isEmpty()) {
+//			System.out.println("有東西");
+//		}
+//		img.
+//		
+//		return "index";
+//	}
+	
 	
 	
 }

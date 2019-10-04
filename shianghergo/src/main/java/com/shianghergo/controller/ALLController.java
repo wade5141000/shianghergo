@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.shianghergo.model.Category_ReportBean;
+import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.ItemBean;
 import com.shianghergo.model.MemberBean;
@@ -24,6 +25,7 @@ import com.shianghergo.model.comment_item;
 import com.shianghergo.model.comment_member;
 import com.shianghergo.model.comment_store;
 import com.shianghergo.service.GBDBService;
+import com.shianghergo.service.GroupsService;
 
 @Controller
 @SessionAttributes(value = "id") // member_id 放在session域讓類中方法都能使用
@@ -31,6 +33,9 @@ public class ALLController {
 
 	@Autowired
 	GBDBService service;
+
+	@Autowired
+	GroupsService gservice;
 
 //------------登入------------------------------------	
 
@@ -88,9 +93,302 @@ public class ALLController {
 
 	}
 
-//--後台功能 1.警告2. 停權3.停權取消4.違規處理(商家跟會員)//---------------------------------------
+	// 後台---------------------------------------------會員-----------------------------------------------------
 
-//----------------管理員處理檢舉的違規處理頁面---------------------------------------
+	// ---------------顯示全部會員---------------//
+
+	@RequestMapping("leopard/member.do")
+	public String getMember(Model model) {
+
+		List<MemberBean> mem = service.getMember();
+
+		model.addAttribute("Member", mem);
+
+		return "leopard/adminMember";
+
+	}
+
+	// ---------------依照status查詢會員---------------//
+	@RequestMapping("leopard/memberStatus")
+	public String MemberOK(Model model, Integer status) {
+
+		List<MemberBean> mem = service.getMemberUSEStatus(status);
+
+		model.addAttribute("Member", mem);
+
+		return "leopard/adminMember";
+
+	}
+
+	// ---------------警告---------------//
+
+	// 會員警告
+	@RequestMapping("leopard/NotificationMember")
+	public void NotificationMember(Integer target, NotificationBean notification) {
+
+		service.caveatNotification(notification, target);
+
+	}
+
+	// ---------------停權---------------//
+
+	// 會員停權
+	@RequestMapping("leopard/stopMember")
+	public void stopMember(Integer target, NotificationBean notification) {
+
+		service.saveMemberIdToStop(target);
+		service.stopNotification(notification, target);
+
+	}
+
+	// ---------------恢復權限---------------//
+
+	// 會員恢復權限
+	@RequestMapping("leopard/recoveryMember")
+	public void recoveryMember(Integer target, NotificationBean notification) {
+
+		service.recoveryMember(target);
+		service.recoveryNotification(notification, target);
+
+	}
+
+	// 後台---------------------------------------------商家-----------------------------------------------------
+
+	// ---------------顯示全部商家---------------//
+
+	@RequestMapping("leopard/store.do")
+	public String getStore(Model model) {
+
+		List<StoreBean> sto = service.getStore();
+
+		model.addAttribute("Store", sto);
+
+		return "leopard/adminStore";
+
+	}
+
+	// ---------------依照status查詢會員---------------//
+
+	@RequestMapping("leopard/storeStatus")
+	public String StoreOK(Model model, Integer status) {
+
+		if (status == 1) {
+
+			List<StoreBean> sto = service.getStoreUSEStatus(status);
+
+			model.addAttribute("Store", sto);
+
+			return "leopard/adminStore";
+
+		} else
+
+		{
+
+			List<StoreBean> sto = service.getStoreUSEStatus(status);
+
+			model.addAttribute("Store", sto);
+
+			return "leopard/adminStore";
+		}
+
+	}
+
+	// ---------------警告---------------//
+
+	// 商家警告
+	@RequestMapping("leopard/NotificationStore")
+	public void NotificationStop(Integer target, NotificationBean notification) {
+
+		service.caveatNotification(notification, target);
+
+	}
+
+	// ---------------停權---------------//
+
+	// 商家停權
+	@RequestMapping("leopard/stopStore")
+	public String stopStore(Integer targetS, Integer target, NotificationBean notification, Model model) {
+
+		service.saveStoreIdToStop(targetS);
+		service.stopNotification(notification, target);
+
+		List<StoreBean> sto = service.getStore();
+		model.addAttribute("Store", sto);
+
+		return "leopard/adminStore";
+
+	}
+
+	// ---------------恢復權限---------------//
+
+	// 商家恢復權限
+	@RequestMapping("leopard/recoveryStore")
+	public String recoveryStore(Integer targetS, Integer target, NotificationBean notification, Model model) {
+
+		service.recoveryStore(targetS);
+		service.recoveryNotification(notification, target);
+		List<StoreBean> sto = service.getStore();
+		model.addAttribute("Store", sto);
+
+		return "leopard/adminStore";
+
+	}
+
+	// 後台---------------------------------------------商品-----------------------------------------------------
+
+	// ---------------顯示所有商品---------------//
+	@RequestMapping("leopard/showItem")
+	public String getAllItem(Model model) {
+
+		List<ItemBean> item = service.getAllItem();
+		List<StoreBean> store = service.getStore();
+
+		model.addAttribute("store", store);
+		model.addAttribute("item", item);
+
+		return "leopard/adminItem";
+
+	}
+
+	@RequestMapping("leopard/storeIdItem")
+	public String storeIdItem(Integer store_id, Model model) {
+
+		List<StoreBean> store = service.getStore();
+		List<ItemBean> item = service.getItemByStoreId(store_id);
+
+		model.addAttribute("store", store);
+		model.addAttribute("item", item);
+
+		return "leopard/adminItem";
+
+	}
+
+	// ---------------下架商品---------------//
+	@RequestMapping("leopard/deleteItem")
+	public void deleteItem(Integer id) {
+
+		service.deleteItem(id);
+
+	}
+
+	// 後台---------------------------------------------團購商品-----------------------------------------------------
+
+	// ---------------顯示所有團購商品---------------//
+	@RequestMapping("leopard/showGroups_item")
+	public String getAllGroups_item(Model model) {
+
+		List<Groups_ItemBean> list = service.getAllGroups_item();
+		List<GroupsBean> group = gservice.getAllGroups();
+
+		model.addAttribute("group", group);
+		model.addAttribute("groups_item", list);
+
+		return "leopard/adminGroupsItem";
+
+	}
+
+	@RequestMapping("leopard/groupIdItem")
+	public String groupIdItem(Integer groups_id, Model model) {
+
+		List<GroupsBean> group = gservice.getAllGroups();
+		List<Groups_ItemBean> list = service.getGroupsItemByGroupsId(groups_id);
+
+
+		model.addAttribute("group", group);
+		model.addAttribute("groups_item", list);
+
+		return "leopard/adminGroupsItem";
+
+	}
+
+	// ---------------下架團購商品---------------//
+	@RequestMapping("leopard/deletel1")
+	public void deleteIPage(Integer id) {
+
+		service.deleteGroups_item(id);
+
+	}
+
+// 後台---------------------------------------------違規處理會員-----------------------------------------------------	
+
+	// ---------------顯示所有違規會員---------------//
+
+	@RequestMapping("leopard/showVM.do")
+	public String Mviolation(Model model) {
+
+		List<Report_MemberBean> list = service.getProcess(1);
+
+		model.addAttribute("violation", list);
+
+		return "leopard/adminVM";
+
+	}
+
+	// ---------------依照status查詢違規會員資料---------------//
+	@RequestMapping("leopard/reportStatusM")
+	public String MviolationOK(Model model, Integer status) {
+
+		if (status == 1) {
+
+			List<Report_MemberBean> list = service.getProcess(status);
+
+			model.addAttribute("violation", list);
+
+			return "leopard/adminVM";
+
+		} else {
+
+			List<Report_MemberBean> list = service.getProcess(status);
+
+			model.addAttribute("violation", list);
+
+			return "leopard/adminVM";
+
+		}
+
+	}
+
+	// ---------------處理違規會員---------------//
+	@RequestMapping("leopard/processM")
+	public String processM(Report_MemberBean rb, Integer id, Model model) {
+
+		service.updateReport(rb, id);
+
+		List<Report_MemberBean> list = service.getProcess(1);
+
+		model.addAttribute("violation", list);
+
+		return "leopard/adminVM";
+
+	}
+
+	// 後台---------------------------------------------違規處理商家-----------------------------------------------------
+
+	// ---------------顯示所有違規商家---------------//
+
+	@RequestMapping("leopard/showVS.do")
+	public String Sviolation(Model model) {
+
+		List<Report_StoreBean> list = service.getProcessS(1);
+
+		model.addAttribute("violation", list);
+
+		return "leopard/adminVS";
+
+	}
+
+	// ---------------依照status查詢違規會員資料---------------//
+	@RequestMapping("leopard/reportStatusS")
+
+	public String SviolationOK(Model model, Integer status) {
+
+		List<Report_StoreBean> list = service.getProcessS(status);
+
+		model.addAttribute("violation", list);
+
+		return "leopard/adminVS";
+
+	}
 
 	// 管理員處理商店違規
 	@RequestMapping("leopard/processS")
@@ -100,228 +398,11 @@ public class ALLController {
 
 		service.updateReport(rb, id);
 
-		List<Report_StoreBean> list = service.getAllStoreBean();
+		List<Report_StoreBean> list = service.getProcessS(1);
 
 		model.addAttribute("violation", list);
 
 		return "leopard/adminVS";
-
-	}
-
-	// 管理員處理會員違規
-	@RequestMapping("leopard/processM")
-	public String processM(Report_MemberBean rb, Integer id, Model model) {
-
-		service.updateReport(rb, id);
-
-		List<Report_MemberBean> list = service.getAll();
-
-		model.addAttribute("violation", list);
-
-		return "leopard/adminVM";
-
-	}
-
-//----------------顯示資料畫面----------------------------------------------	
-
-	// 違規商店資料
-	@RequestMapping("leopard/showVS.do")
-	public String Sviolation(Model model) {
-
-		List<Report_StoreBean> list = service.getAllStoreBean();
-
-		model.addAttribute("violation", list);
-
-		return "leopard/adminVS";
-
-	}
-
-	// 違規會員資料
-	@RequestMapping("leopard/showVM.do")
-	public String Mviolation(Model model) {
-
-		List<Report_MemberBean> list = service.getAll();
-
-		model.addAttribute("violation", list);
-
-		return "leopard/adminVM";
-
-	}
-
-	// 全部團購商品
-	@RequestMapping("leopard/showGroups_item")
-	public String getAllGroups_item(Model model) {
-
-		List<Groups_ItemBean> list = service.getAllGroups_item();
-
-		model.addAttribute("groups_item", list);
-
-		return "leopard/adminGroupsItem";
-
-	}
-
-	// 全部商品
-	@RequestMapping("leopard/showItem")
-	public String getAllItem(Model model) {
-
-		List<ItemBean> list = service.getAllItem();
-
-		model.addAttribute("item", list);
-
-		return "leopard/adminItem";
-
-	}
-
-	// 顯示全部會員
-	@RequestMapping("leopard/member.do")
-	public String getMember(String account, Model model) {
-
-		List<Category_ReportBean> list = service.getCategoryReport();
-		List<MemberBean> mem = service.getMember();
-
-		model.addAttribute("list", list);
-		model.addAttribute("Member", mem);
-
-		return "leopard/adminMember";
-
-	}
-
-	// 顯示全部商店
-
-	@RequestMapping("leopard/store.do")
-	public String getStore(Model model) {
-		List<Category_ReportBean> list = service.getCategoryReport();
-		List<StoreBean> sto = service.getStore();
-
-		model.addAttribute("list", list);
-		model.addAttribute("Store", sto);
-
-		return "leopard/adminStore";
-
-	}
-
-//----------------下架團購.商品功能------------------------------	
-
-	// 下架商品
-	@RequestMapping("leopard/deletel")
-	public String deleteportPage(Integer id, Model model) {
-
-		service.deleteItem(id);
-
-		List<ItemBean> list = service.getAllItem();
-
-		model.addAttribute("item", list);
-
-		return "leopard/adminItem";
-
-	}
-
-	// 下架團購商品
-	@RequestMapping("leopard/deletel1")
-	public String deleteIPage(Integer id, Model model) {
-
-		service.deleteGroups_item(id);
-
-		List<Groups_ItemBean> list = service.getAllGroups_item();
-
-		model.addAttribute("groups_item", list);
-
-		return "leopard/adminGroupsItem";
-
-	}
-
-//-------------------會員違規通知(警告)--9/24改成NotificationBean--------
-
-	// 會員.商店畫面的警告按鈕
-	@RequestMapping("leopard/NotificationMember")
-	public String NotificationMember(Integer target, NotificationBean notification, Model model) {
-
-		service.caveatNotification(notification, target);
-		List<Category_ReportBean> list = service.getCategoryReport();
-		List<MemberBean> mem = service.getMember();
-
-		model.addAttribute("list", list);
-		model.addAttribute("Member", mem);
-
-		return "leopard/adminMember";
-
-	}
-
-//-------------商店違規通知(警告) ---9/24 新增//	
-	@RequestMapping("leopard/NotificationStore")
-	public String NotificationStore(Integer target, NotificationBean notification, Model model) {
-
-		service.caveatNotification(notification, target);
-
-		List<StoreBean> sto = service.getStore();
-
-		model.addAttribute("Store", sto);
-
-		return "leopard/adminStore";
-	}
-
-//-------------------會員違規通知(停權)--9/24改成NotificationBean	----	
-
-	// 會員畫面的停權按鈕
-	@RequestMapping("leopard/stopMember")
-	public String stopMember(Integer target, NotificationBean notification, Model model) {
-
-		service.saveMemberIdToStop(target);
-		service.stopNotification(notification, target);
-
-		List<Category_ReportBean> list = service.getCategoryReport();
-		List<MemberBean> mem = service.getMember();
-
-		model.addAttribute("list", list);
-		model.addAttribute("Member", mem);
-
-		return "leopard/adminMember";
-	}
-
-//-------------------商店違規通知(停權)-9/24改成NotificationBean----
-
-	// 商店畫面的停權按鈕
-	@RequestMapping("leopard/stopStore")
-	public String stopStore(Integer target, NotificationBean notification, Model model) {
-
-		service.saveStoreIdToStop(target);
-		service.stopNotification(notification, target);
-
-		List<StoreBean> sto = service.getStore();
-
-		model.addAttribute("Store", sto);
-
-		return "leopard/adminStore";
-
-	}
-
-//---------------新增的功能 取消停權(會員)  9/24-------------------
-
-	@RequestMapping("leopard/recoveryMember")
-	public String recoveryMember(Integer target, Model model, NotificationBean notification) {
-
-		service.recoveryMember(target);
-		service.recoveryNotification(notification, target);
-		List<MemberBean> mem = service.getMember();
-
-		model.addAttribute("Member", mem);
-
-		return "leopard/adminMember";
-
-	}
-
-//---------------新增的功能 取消停權(商店)9/24-------------------	
-
-	@RequestMapping("leopard/recoveryStore")
-	public String recoveryStore(Integer target, Model model, NotificationBean notification) {
-
-		service.recoveryStore(target);
-		service.recoveryNotification(notification, target);
-		List<StoreBean> sto = service.getStore();
-
-		model.addAttribute("Store", sto);
-
-		return "leopard/adminStore";
 
 	}
 
