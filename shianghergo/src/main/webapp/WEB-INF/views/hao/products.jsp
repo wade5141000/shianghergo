@@ -119,7 +119,7 @@
 									<div class="text">
 										<p class="title">
 											<strong>&nbsp;&nbsp;&nbsp;&nbsp;${product.name }</strong> <span class="pri"
-												style="float: right; font-size: 20px; color: gray;"><del>${product.price+100 }元</del>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+												style="float: right; font-size: 20px; color: gray;"><del>${product.storeBean.id}元</del>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 										</p>
 										<p class="price">
 											<button class="layui-btn  layui-btn-danger car-btn"
