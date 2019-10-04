@@ -216,4 +216,18 @@ public class GroupsProcessController {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	@RequestMapping("/setLatLng")
+	public void setLatLng(HttpServletResponse rp,HttpServletRequest re) {
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 }
