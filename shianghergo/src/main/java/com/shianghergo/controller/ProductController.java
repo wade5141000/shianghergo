@@ -47,6 +47,8 @@ import com.shianghergo.model.OrderBean;
 import com.shianghergo.model.OrderDetailBean;
 import com.shianghergo.model.PlaceBean;
 import com.shianghergo.model.StoreBean;
+import com.shianghergo.model.comment_item;
+import com.shianghergo.service.GBDBService;
 import com.shianghergo.service.GroupsService;
 import com.shianghergo.service.MemberService;
 import com.shianghergo.service.ProductService;
@@ -63,6 +65,9 @@ public class ProductController {
 
 	@Autowired
 	ServletContext context;
+	
+	@Autowired
+	GBDBService gbdbService;
 
 	// -------------------以下聖捷--------------------
 
@@ -145,18 +150,20 @@ public class ProductController {
 	public String list(Model model) {
 		List<ItemBean> list = service.getAllProducts();
 		model.addAttribute("products", list);
+//		List<comment_item> list1 = gbdbService.getAverageScoreByItemId();
 		return "hao/products";
 	}
 
 	@RequestMapping("/hao/productsByCategory")
-	public String productsByCategory(@RequestParam("category_id") Integer category_id ,Model model) {
+	public String productsByCategory(@RequestParam("category_id") Integer category_id, Model model) {
 		List<ItemBean> list = service.getProductsByCategory(category_id);
 		model.addAttribute("products", list);
 		return "hao/products";
 	}
-	
+
 	@RequestMapping("/hao/product")
-	public String getProductsById(@RequestParam("id") Integer id, Model model) {
+	public String getProductsById(@ModelAttribute("loginOK") MemberBean mb, @RequestParam("id") Integer id,
+			Model model) {
 		model.addAttribute("product", service.getProductById(id));
 //		model.addAttribute("store", service.getStoreNameByItemId(id));
 		return "hao/product";
@@ -168,7 +175,7 @@ public class ProductController {
 		model.addAttribute("products", list);
 		return "hao/myProducts";
 	}
-	
+
 	@RequestMapping(value = "/hao/myProducts", method = RequestMethod.POST)
 	public String getProductsByStorePost(@RequestParam("id") Integer id, Model model) {
 		ItemBean ib = new ItemBean();
