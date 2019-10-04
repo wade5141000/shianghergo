@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
+
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
 <!-- <script -->
 <!-- 	src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script> -->
@@ -17,11 +18,13 @@
 <!-- <meta name="viewport" -->
 <!-- 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"> -->
 <!-- <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"> -->
+
 <head>
 <!-- <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script> -->
 <meta charset="UTF-8">
 <title>會員黑條(共同)</title>
 <!--  六角bootstrap -->
+
 <!-- <link rel="stylesheet" -->
 <!-- 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" -->
 <!-- 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" -->
@@ -37,6 +40,7 @@
 <!-- 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" -->
 <!-- 	integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" -->
 <!-- 	crossorigin="anonymous"></script> -->
+
 <style>
 li {
 	line-height: 1em;
@@ -99,27 +103,27 @@ li {
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/hao/myProducts"
 				style="color: #ff8000; font-family: 微軟正黑體;">我的商品列表</a></li>
-			<li
-				class="list-group-item list-group-item-action list-group-item-info"
-				style="background-color: #ffffdf; border-style: dashed;"><a
-				href="${pageContext.request.contextPath}/hao/products"
-				style="color: #ff8000; font-family: 微軟正黑體;"> 4</a></li>
-			<li
-				class="list-group-item list-group-item-action list-group-item-info"
-				style="background-color: #ffffdf; border-style: dashed;"><a
-				href="${pageContext.request.contextPath}/hao/productUpdate"
-				style="color: #ff8000; font-family: 微軟正黑體;"> 5</a></li>
+<!-- 			<li -->
+<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+<%-- 				href="${pageContext.request.contextPath}/frank/showgroup" --%>
+<!-- 				style="color: #ff8000; font-family: 微軟正黑體;"> 4</a></li> -->
+<!-- 			<li -->
+<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+<%-- 				href="${pageContext.request.contextPath}/frank/mygroups" --%>
+<!-- 				style="color: #ff8000; font-family: 微軟正黑體;"> 5</a></li> -->
 				
-			<li
-				class="list-group-item list-group-item-action list-group-item-info"
-				style="background-color: #ffffdf; border-style: dashed;"><a
-				href="${pageContext.request.contextPath}/hao/store"
-				style="color: #ff8000; font-family: 微軟正黑體;"> ${loginOK.id}</a></li>
-			<li
-				class="list-group-item list-group-item-action list-group-item-info"
-				style="background-color: #ffffdf; border-style: dashed;"><a
-				href="${pageContext.request.contextPath}/hao/stores"
-				style="color: #ff8000; font-family: 微軟正黑體;"> ${store.member_id}</a></li>
+<!-- 			<li -->
+<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+<%-- 				href="${pageContext.request.contextPath}/hao/store" --%>
+<%-- 				style="color: #ff8000; font-family: 微軟正黑體;"> ${loginOK.id}</a></li> --%>
+<!-- 			<li -->
+<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+<%-- 				href="${pageContext.request.contextPath}/hao/stores" --%>
+<%-- 				style="color: #ff8000; font-family: 微軟正黑體;"> ${store.member_id}</a></li> --%>
 		</ul>
 
 	</div>

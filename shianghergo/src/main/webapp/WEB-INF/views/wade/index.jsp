@@ -87,13 +87,13 @@
 <jsp:include page="../top.jsp" />
 <hr>
 奕鴻
-<form action='<c:url value="/Search.controller" />' method="get"  class="layui-form" novalidate>
-            <input type="text" name="title" value="${param.title}" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="請輸入需要的商品" >
-            <button class="layui-btn" lay-submit lay-filter="formDemo" type="submit">
-                <i class="layui-icon layui-icon-search"></i>
-            </button>
-            <input type="submit" name="" value="">
-          </form>
+<%-- <form action='<c:url value="/Search.controller" />' method="get"  class="layui-form" novalidate> --%>
+<%--             <input type="text" name="title" value="${param.title}" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="請輸入需要的商品" > --%>
+<!--             <button class="layui-btn" lay-submit lay-filter="formDemo" type="submit"> -->
+<!--                 <i class="layui-icon layui-icon-search"></i> -->
+<!--             </button> -->
+<!--             <input type="submit" name="" value=""> -->
+<!--           </form> -->
 
 </body>
 </html>

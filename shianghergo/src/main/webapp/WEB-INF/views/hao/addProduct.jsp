@@ -63,7 +63,7 @@ form{
 			</tr>
 			
 			<tr>
-				<td><label class="control-label col" for='name'>商品名稱 </label></td>
+				<td><label class="control-label " for='name'>商品名稱 </label></td>
 				<td><form:input id="name" path="name" type='text' class='form:input-large' /></td>
 			</tr>
 				<!-- 				<div class="form-group"> -->
@@ -75,7 +75,7 @@ form{
 				<!-- 					</div> -->
 				<!-- 				</div> -->
 				<tr>
-				<td><label class='control-label col' for="category_id">分類 </label></td>
+				<td><label class='control-label ' for="category_id">分類 </label></td>
 				<td><form:select path="categoryBean" name="categoryBean">
 							<c:forEach var="categorys" items="${category}">
 								<option value="${categorys.id}">${categorys.name}</option>
@@ -102,19 +102,19 @@ form{
 <!-- 					</div> -->
 <!-- 				</div> -->
 				<tr>
-				<td><label class='control-label col' for="price">
+				<td><label class='control-label ' for="price">
 						價格 </label></td>
 				<td><form:input id="price" path="price" type='text'
 							class='form:input-large' /></td>
 				</tr>
 				<tr>
-				<td><label class="control-label col" for='detail'>
+				<td><label class="control-label " for='detail'>
 						商品說明 </label></td>
 				<td><form:input id="detail" path="detail" type='text'
 							class='form:input-large' /></td>
 				</tr>
 				<tr>
-				<td><label class='control-label col' for="productImage">
+				<td><label class='control-label ' for="productImage">
 						商品圖片 </label></td>
 				<td><form:input id="productImage" path="productImage" type='file'
 							class='form:input-largt' /></td>

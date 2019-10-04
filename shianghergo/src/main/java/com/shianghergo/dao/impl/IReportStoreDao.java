@@ -21,16 +21,18 @@ public class IReportStoreDao implements ReportStoreDao {
 
 	
 	//顯示商店違規未處理的資料
-	@Override
-	public List<Report_StoreBean> getAllStoreBean() {
+		@Override
+		public List<Report_StoreBean> getProcessS(Integer status) {
 
-		String hql = "FROM Report_StoreBean where status = 1";
-		
-		Session session = factory.getCurrentSession();
-		
-		List<Report_StoreBean> list = session.createQuery(hql).getResultList();
-		return list;
-	}
+			String hql = "FROM Report_StoreBean where status =:status";
+			
+			Session session = factory.getCurrentSession();
+			
+			@SuppressWarnings("unchecked")
+			List<Report_StoreBean> list = session.createQuery(hql).setParameter("status", status).getResultList();
+			
+			return list;
+		}
 
 	//存入檢舉商店資料 
 	@Override

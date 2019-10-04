@@ -38,6 +38,7 @@
 <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" -->
 <!-- 	rel="stylesheet"> -->
 </head>
+
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
 	<!-- id="list-cont" -->
@@ -171,6 +172,7 @@
 	</section>
 	<section class="text-center my-5">
 
+
 		<!-- Section heading -->
 		<h2 class="h1-responsive font-weight-bold text-center my-5">十月優質商家</h2>
 		<!-- Section description -->
@@ -180,6 +182,7 @@
 				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
 					<!-- Card -->
 					<div class="card align-items-center">
+
 						<!-- Card image -->
 						<div class="view overlay">
 							<a href="http://localhost:8080/shianghergo/frank/product?id= ${group.memberBean.id}"><img

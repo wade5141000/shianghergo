@@ -20,18 +20,17 @@ public class IReportMember implements ReportMemberDao {
 	SessionFactory factory;
 
 	@Override
-	public List<Report_MemberBean> getAll() {
-
-		String hql = "FROM Report_MemberBean where status = 1";
+	public List<Report_MemberBean> getProcess(Integer status) {
+		String hql = "FROM Report_MemberBean where status =:status";
 
 		Session session = factory.getCurrentSession();
 
 		@SuppressWarnings("unchecked")
-		List<Report_MemberBean> list = session.createQuery(hql).getResultList();
+		List<Report_MemberBean> list = session.createQuery(hql).setParameter("status", status).getResultList();
 
 		return list;
-
 	}
+
 
 	@Override
 	public void saveReport(Report_MemberBean report) {

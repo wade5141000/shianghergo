@@ -23,17 +23,16 @@ thead {
 	background-color: lightblue;
 }
 .img {
-    width: 350;
-    height: 250;
+    width: 500;
+    height: 300;
 }
 
 </style>
 </head>
 <body>
 <jsp:include page="eric/header.jsp" />
-		<div  style="padding-bottom: 500px;">
+		<div  style="padding-bottom: 100px;">
 <jsp:include page="BlackLine.jsp" />
- 
 <div style="padding-left: 400px; padding-right: 400px;padding-top: 50px;">
 	<input type="hidden" name="id" value="${loginOK.id}" />
 	<table class="table table-hover" style="font-family:微軟正黑體;">
@@ -46,10 +45,10 @@ thead {
 				<td >帳號</td>
 				<td align="center">${loginOK.account}</td>
 			</tr>
-			<tr>
-				<td >密碼</td>
-				<td align="center">${loginOK.password}</td>
-			</tr>
+<!-- 			<tr> -->
+<!-- 				<td >密碼</td> -->
+<%-- 				<td align="center">${loginOK.password}</td> --%>
+<!-- 			</tr> -->
 			<tr>
 				<td >姓名</td>
 				<td align="center">${loginOK.name}</td>

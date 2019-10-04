@@ -25,14 +25,24 @@
 	crossorigin="anonymous"></script>
 
 <script>
-	function delete777() {
-		var r = confirm("是否要下架")
-		if (r == true) {
+	function delete1(targetId){
+		
+		var x = confirm("是否要下架");
+		if (x) {
 			alert('下架成功');
-		} else {
-			alert('下架取消');
-		}
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/deletel1?id='+targetId, true);
+			httpRequest.send();
+		
+			setTimeout("history.go(0);",100);
+
+		}else {	
+			alert('下架取消');	
+		}	
+	
+		
 	}
+
 </script>
 </head>
 <style>
@@ -54,20 +64,21 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item "><a class="nav-link"
-					href="member.do">會員管理 <span class="sr-only">(current)</span></a></li>
+				<li class="nav-item "><a class="nav-link" href="member.do">會員管理
+						<span class="sr-only">(current)</span>
+				</a></li>
 				<li class="nav-item"><a class="nav-link" href="store.do">商店管理</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="showItem">商品管理</a>
 				</li>
-				<li class="nav-item active"><a class="nav-link" href="showGroups_item">團購商品管理</a>
-				</li>
+				<li class="nav-item active"><a class="nav-link"
+					href="showGroups_item">團購商品管理</a></li>
 				<li class="nav-item"><a class="nav-link" href="showVM.do">違規處理-會員</a>
 				</li>
-				
+
 				<li class="nav-item"><a class="nav-link" href="showVS.do">違規處理-商家</a>
 				</li>
-				
+
 				<li class="nav-item" style="margin-left: 800px"><a
 					class="nav-link" href="login">切換管理員</a></li>
 
@@ -75,35 +86,45 @@
 		</div>
 	</nav>
 
-	
+
+     <div style="margin-left: 150px; margin-top: 15px">
+
+
+		<h3>團購商品</h3>
+
+
+		<form action="groupIdItem" method="POST">
+				<select name="groups_id">
+			<c:forEach var='groups' items='${group}'>
+					<option value="${groups.id}">${groups.id}</option>
+			</c:forEach>
+				</select>
+				<button type="submit" class="btn btn-outline-success">團購單查詢</button>
+		</form>
+	</div>
 
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
 		<thead class="thead-dark">
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">團購商品ID</th>
+			<tr>				
+				<th scope="col">開團ID</th>
 				<th scope="col">團購商品名稱</th>
 				<th scope="col">團購商品說明</th>
 				<th scope="col">價格</th>
-				<th scope="col"></th>
 				<th scope="col"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var='groups_items' items='${groups_item}'>
 				<tr>
-				<th scope="row">O</th>
-				<td>${groups_items.groupsBean.id}</td>
-				<td>${groups_items.name}</td>
-				<td>${groups_items.detail}</td>
-				<td>${groups_items.price}</td>
-				<td>
-					<form action="deletel1" method="POST">
-						<input type=hidden value="${groups_items.id}" name="id">
-						<button type="submit" class="btn btn-info" onclick="delete777()">下架</button>
-					</form>
-				</td>
+					<td>${groups_items.groupsBean.id}</td>
+					<td>${groups_items.name}</td>
+					<td>${groups_items.detail}</td>
+					<td>${groups_items.price}</td>
+					<td>
+						<button type="button" class="btn btn-info"
+							onclick="delete1(${groups_items.id})">下架</button>
+					</td>
 			</c:forEach>
 	</table>
 

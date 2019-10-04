@@ -24,38 +24,58 @@
 	integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 	crossorigin="anonymous"></script>
 <script>
-	function Notification() {
-		var r = confirm("是否要警告")
-		if (r == true) {
-			alert('警告成功');
-		} else {
-			alert('警告取消');
-		}
-	}
+	
+function Notification(target){
+	
+	var x = confirm("是否要警告");
+	if (x) {
+		alert('警告成功');
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/NotificationStore?target='+target, true);
+		httpRequest.send();
+	
+		setTimeout("history.go(0);",100);
 
-	function stop() {
-		var r = confirm("是否要停權")
-		if (r == true) {
-			alert('停權成功');
-		} else {
-			alert('停權取消');
-		}
-	}
+	}else {	
+		alert('警告取消');	
+	}	
 
-	function recovery() {
-		var r = confirm("是否恢復權限")
-		if (r == true) {
-			alert('恢復權限成功');
-		} else {
-			alert('恢復權限取消');
-		}
+	
+}
+
+function stop() {
+	var r = confirm("是否要停權")
+	if (r == true) {
+		alert('停權成功');
+		
+	} else {
+		alert('停權取消');
 	}
+}
+
+function recovery() {
+	var r = confirm("是否恢復權限")
+	if (r == true) {
+		alert('恢復權限成功');
+	
+	} else {
+		alert('恢復權限取消');
+	}
+}
+
 </script>
 
 
 <style>
 * {
 	font-family: 微軟正黑體;
+}
+
+.select {
+	border: 1px solid green;
+	display: inline-block;
+	padding: 7px;
+	border-radius: 7px;
 }
 </style>
 <body>
@@ -91,59 +111,77 @@
 			</ul>
 		</div>
 	</nav>
-	
+
+	<div style="margin-left: 150px; margin-top: 15px">
+
+
+		<h3>商家</h3>
+
+
+		<form action="storeStatus" method="POST">
+			<div class="select">
+				<select name="status">
+					<option value="1">一般商家</option>
+					<option value="2">停權商家</option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-outline-success">查詢</button>
+		</form>
+	</div>
+
+
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
 		<thead class="thead-dark">
 			<tr style="padding: 50px">
-				<th scope="col">#</th>
-				<th scope="col">商店ID</th>
-				<th scope="col">會員ID</th>
+				<th scope="col">所屬會員</th>
+				<th scope="col">商店號</th>
 				<th scope="col">商店名稱</th>
-				<th scope="col">商店狀態</th>
+				<th scope="col">狀態</th>
 				<th scope="col"></th>
 				<th scope="col"></th>
 				<th scope="col"></th>
-				<th scope="col"></th>
-				<th scope="col"></th>
-				<th scope="col"></th>
-			
-				
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var='Stores' items='${Store}'>
 				<tr>
-					<th scope="row">O</th>
-					<td>${Stores.id}</td>
 					<td>${Stores.member_id}</td>
+					<td>${Stores.id}</td>
 					<td>${Stores.name}</td>
-					<td>${Stores.status}</td>
-					<td></td>
-					<td></td>
-					<td></td>
 
-					<td>
-						<form action="NotificationStore" method="POST">
-							<input type=hidden value="${Stores.id}" name="target">
-							<button type="submit" class="btn btn-warning"
-								onclick="Notification()">警告</button>
-						</form>
-					</td>
+					<c:choose>
+
+						<c:when test="${Stores.status eq '2'}">
+
+							<td>✘</td>
+
+						</c:when>
+						<c:when test="${Stores.status eq '1'}">
+
+							<td>O</td>
+
+						</c:when>
+
+					</c:choose>
+
+					<td><button type="button" class="btn btn-warning"
+							onclick="Notification(${Stores.member_id})">警告</button></td>
+
 					<td>
 						<form action="stopStore" method="POST">
-							<input type=hidden value="${Stores.id}" name="target">
-							<button type="submit" class="btn btn-danger" onclick="stop()">停權</button>
+							<input type=hidden value="${Stores.member_id}" name="target">
+							<input type=hidden value="${Stores.id}" name="targetS">
+							<button type="submit" class="btn btn-danger" onclick="stop()">X</button>
 						</form>
 					</td>
-
-
 					<td>
 
 						<form action="recoveryStore" method="POST">
-							<input type=hidden value="${Stores.id}" name="target">
-							<button type="submit" class="btn btn-success"
-								onclick="recovery()">停權取消</button>
+							<input type=hidden value="${Stores.member_id}" name="target">
+							<input type=hidden value="${Stores.id}" name="targetS">
+							<button type="submit" class="btn btn-info"
+								onclick="recovery()">O</button>
 						</form>
 
 					</td>

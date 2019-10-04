@@ -80,5 +80,7 @@ public interface MemberDao {
 	public void deleteByid(Integer id);
 	
 
+	//用狀態碼查詢正常/停權會員 10/03 
+	List<MemberBean> getMemberUSEStatus(Integer status);
 
 }

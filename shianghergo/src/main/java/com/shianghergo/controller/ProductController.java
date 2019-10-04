@@ -277,7 +277,7 @@ public class ProductController {
 			e.printStackTrace();
 			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
 		}
-		return "redirect:/hao/products";
+		return "redirect:/hao/myProducts";
 	}
 
 	@RequestMapping(value = "/hao/product/Update/Delete", method = RequestMethod.POST)
