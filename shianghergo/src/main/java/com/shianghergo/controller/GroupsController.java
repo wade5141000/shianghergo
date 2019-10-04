@@ -1,22 +1,22 @@
 package com.shianghergo.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.CacheControl;
@@ -97,7 +97,7 @@ public class GroupsController {
 
 		model.addAttribute("groupsBean", gb);
 		model.addAttribute("category",list );
-		System.out.println(list);
+//		System.out.println(list);
 
 		
 		return "frank/addGroups";
@@ -115,23 +115,25 @@ public class GroupsController {
 		}
 		System.out.println("有沒有阿~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		MultipartFile productImage = gb.getProductImage();
-		String originalFilename = productImage.getOriginalFilename();
-		System.out.println(originalFilename);
+		gb.setProductImage(null);
+		gb.setImage(null);
+//		String originalFilename = productImage.getOriginalFilename();
+//		System.out.println(originalFilename);
 //		gib.setFileName(originalFilename);
-		String ext = ".jpg";
-		String rootDirectory = context.getRealPath("/");
+//		String ext = ".jpg";
+//		String rootDirectory = context.getRealPath("/");
 
-		if (productImage != null && !productImage.isEmpty()) {
-			byte[] b;
-			try {
-				b = productImage.getBytes();
-				Blob blob = new SerialBlob(b);
-				gb.setImage(blob);
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
-			}
-		}
+//		if (productImage != null && !productImage.isEmpty()) {
+//			byte[] b;
+//			try {
+//				b = productImage.getBytes();
+//				Blob blob = new SerialBlob(b);
+//				gb.setImage(blob);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+//			}
+//		}
 		 if(gb.getPayment().length() !=1) {
 			 gb.setPayment("3");
 		 }
@@ -141,18 +143,40 @@ public class GroupsController {
 		System.out.println("-----------------------------");
 		System.out.println(id);
 
-		try {
-			File imageFolder = new File(rootDirectory, "images");
-			if (!imageFolder.exists())
-				imageFolder.mkdirs();
-			File file = new File(imageFolder, gb.getId() + ext);
-			productImage.transferTo(file);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
+//		try {
+//			File imageFolder = new File(rootDirectory, "images");
+//			if (!imageFolder.exists())
+//				imageFolder.mkdirs();
+//			File file = new File(imageFolder, gb.getId() + ext);
+//			productImage.transferTo(file);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
+//		}
+		
+		
+		if (productImage.isEmpty()) {
+			System.out.println("沒上傳圖片");
+		} else {
+			
+			String shianghergo = context.getRealPath("/");
+			shianghergo += "images/groupsImg/" + id +".jpg";
+			
+			File tempF = new File(shianghergo);
+			
+			try {
+				if (!tempF.exists()) {
+					tempF.createNewFile();
+					productImage.transferTo(tempF);
+				} else {
+					productImage.transferTo(tempF);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			
 		}
-		
-		
 		
 
 		return "redirect:/frank/showgroup?gid=" + id;
@@ -191,7 +215,7 @@ public class GroupsController {
 		model.addAttribute("gid", gid);
 
 		System.out.println("測試1" + gid);
-		return "frank/addGroupsItem2";
+		return "frank/addGroupsItem";
 
 	}
 
@@ -204,111 +228,187 @@ public class GroupsController {
 		}
 
 		MultipartFile productImage = gib.getProductImage();
-		String originalFilename = productImage.getOriginalFilename();
-		System.out.println(originalFilename);
+		
+		gib.setProductImage(null);
+		gib.setImage(null);
+		
+//		String originalFilename = productImage.getOriginalFilename();
+//		System.out.println(originalFilename);
 //		gib.setFileName(originalFilename);
-		String ext = ".jpg";
-		String rootDirectory = context.getRealPath("/");
+//		String ext = ".jpg";
+//		String rootDirectory = context.getRealPath("/");
+		
+		
+//		if (productImage != null && !productImage.isEmpty()) {
+//			byte[] b;
+//			try {
+//				b = productImage.getBytes();
+//				Blob blob = new SerialBlob(b);
+//				gib.setImage(blob);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+//			}
+//		}
 
-		if (productImage != null && !productImage.isEmpty()) {
-			byte[] b;
+		int iid = service.addGroupsItem(gib, gid);
+
+//		try {
+//			File imageFolder = new File(rootDirectory, "images");
+//			if (!imageFolder.exists())
+//				imageFolder.mkdirs();
+//			File file = new File(imageFolder, gib.getId() + ext);
+//			productImage.transferTo(file);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
+//		}
+		if (productImage.isEmpty()) {
+			System.out.println("沒上傳圖片");
+		} else {
+			String shianghergo = context.getRealPath("/");
+			shianghergo += "images/groupsItemImg/" + iid +".jpg";
+			System.out.println(shianghergo);
+			
+			File tempF = new File(shianghergo);
+			
 			try {
-				b = productImage.getBytes();
-				Blob blob = new SerialBlob(b);
-				gib.setImage(blob);
-			} catch (Exception e) {
+				if (!tempF.exists()) {
+					tempF.createNewFile();
+					productImage.transferTo(tempF);
+				} else {
+					productImage.transferTo(tempF);
+				}
+			} catch (IOException e) {
 				e.printStackTrace();
-				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
-			}
+			}	
 		}
-
-		service.addGroupsItem(gib, gid);
-
-		try {
-			File imageFolder = new File(rootDirectory, "images");
-			if (!imageFolder.exists())
-				imageFolder.mkdirs();
-			File file = new File(imageFolder, gib.getId() + ext);
-			productImage.transferTo(file);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
-		}
+		
+		
+		
+		
 		return "redirect:/frank/showgroup?gid=" + gid;
 	}
 
 	//--------------------------------取商品圖片---------------------------------
 	@RequestMapping(value = "/frank/getPicture/{id}", method = RequestMethod.GET)
-	public ResponseEntity<byte[]> getPicture(HttpServletRequest resp, @PathVariable Integer id) {
-		String filePath = "C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\images\\hello.png";
-		byte[] media = null;
-		HttpHeaders headers = new HttpHeaders();
-		String filename = "1.png";
-		int len = 0;
-		System.out.println("---------------------------------------------------");
-		Groups_ItemBean bean =  service.getGroup_ItemById(id);
-		if (bean != null) {
-			Blob blob = bean.getImage();
-//			filename = bean.getFileName();
-			if (blob != null) {
-				try {
-					len = (int) blob.length();
-					media = blob.getBytes(1, len);
-				} catch (SQLException e) {
-					throw new RuntimeException("ProductController的getPicture()發生SQLException:" + e.getMessage());
-				}
-			} else {
-				media = toByteArray(filePath);
-				filename = filePath;
-			}
-		} else {
-			media = toByteArray(filePath);
-			filename = filePath;
+	public void getPicture(HttpServletRequest resp, @PathVariable Integer id,HttpServletResponse rp) {
+//		String filePath = "C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\images\\hello.png";
+//		byte[] media = null;
+//		HttpHeaders headers = new HttpHeaders();
+//		String filename = "1.png";
+//		int len = 0;
+//		System.out.println("---------------------------------------------------");
+//		Groups_ItemBean bean =  service.getGroup_ItemById(id);
+//		if (bean != null) {
+//			Blob blob = bean.getImage();
+////			filename = bean.getFileName();
+//			if (blob != null) {
+//				try {
+//					len = (int) blob.length();
+//					media = blob.getBytes(1, len);
+//				} catch (SQLException e) {
+//					throw new RuntimeException("ProductController的getPicture()發生SQLException:" + e.getMessage());
+//				}
+//			} else {
+//				media = toByteArray(filePath);
+//				filename = filePath;
+//			}
+//		} else {
+//			media = toByteArray(filePath);
+//			filename = filePath;
+//		}
+//		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+//		String mimeType = context.getMimeType(filename);
+//		MediaType mediaType = MediaType.valueOf(mimeType);
+//		System.out.println("mediaType = " + mediaType);
+//		headers.setContentType(mediaType);
+//		ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+//		return responseEntity;
+		
+		
+		String shianghergo = context.getRealPath("/");
+		shianghergo += "images/groupsItemImg/" + id +".jpg";
+		
+		File tempF = new File(shianghergo);
+		try {
+			int n = 0;
+			byte[] bb = new byte[1024];
+			FileInputStream in = new FileInputStream(tempF);		
+			ServletOutputStream out = rp.getOutputStream();
+			
+			while ((n = in.read(bb)) != -1) {
+                out.write(bb, 0, n);
+            }
+
+            out.close();
+            in.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-		String mimeType = context.getMimeType(filename);
-		MediaType mediaType = MediaType.valueOf(mimeType);
-		System.out.println("mediaType = " + mediaType);
-		headers.setContentType(mediaType);
-		ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
-		return responseEntity;
 	}
 	
 	//--------------------------------取團圖片---------------------------------
 		@RequestMapping(value = "/frank/getgroupPicture/{id}", method = RequestMethod.GET)
-		public ResponseEntity<byte[]> getgroupPicture(HttpServletRequest resp, @PathVariable Integer id) {
-			String filePath = "C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\images\\hello.png";
-			byte[] media = null;
-			HttpHeaders headers = new HttpHeaders();
-			String filename = "1.png";
-			int len = 0;
-			System.out.println("---------------------------------------------------");
-			GroupsBean bean =  service.getGroupById(id);
-			if (bean != null) {
-				Blob blob = bean.getImage();
-//				filename = bean.getFileName();
-				if (blob != null) {
-					try {
-						len = (int) blob.length();
-						media = blob.getBytes(1, len);
-					} catch (SQLException e) {
-						throw new RuntimeException("ProductController的getPicture()發生SQLException:" + e.getMessage());
-					}
-				} else {
-					media = toByteArray(filePath);
-					filename = filePath;
-				}
-			} else {
-				media = toByteArray(filePath);
-				filename = filePath;
+		public void getgroupPicture(HttpServletRequest resp, @PathVariable Integer id,HttpServletResponse rp) {
+//			String filePath = "C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\images\\hello.png";
+			
+//			byte[] media = null;
+//			HttpHeaders headers = new HttpHeaders();
+//			String filename = "1.png";
+//			int len = 0;
+//			System.out.println("---------------------------------------------------");
+//			GroupsBean bean =  service.getGroupById(id);
+//			if (bean != null) {
+//				Blob blob = bean.getImage();
+////				filename = bean.getFileName();
+//				if (blob != null) {
+//					try {
+//						len = (int) blob.length();
+//						media = blob.getBytes(1, len);
+//					} catch (SQLException e) {
+//						throw new RuntimeException("ProductController的getPicture()發生SQLException:" + e.getMessage());
+//					}
+//				} else {
+//					media = toByteArray(filePath);
+//					filename = filePath;
+//				}
+//			} else {
+//				media = toByteArray(filePath);
+//				filename = filePath;
+//			}
+//			headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+//			String mimeType = context.getMimeType(filename);
+//			MediaType mediaType = MediaType.valueOf(mimeType);
+//			System.out.println("mediaType = " + mediaType);
+//			headers.setContentType(mediaType);
+//			ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+//			return responseEntity;
+			
+			
+			String shianghergo = context.getRealPath("/");
+			shianghergo += "images/groupsImg/" + id +".jpg";
+			
+			File tempF = new File(shianghergo);
+			try {
+				int n = 0;
+				byte[] bb = new byte[1024];
+				FileInputStream in = new FileInputStream(tempF);		
+				ServletOutputStream out = rp.getOutputStream();
+				
+				while ((n = in.read(bb)) != -1) {
+	                out.write(bb, 0, n);
+	            }
+
+	            out.close();
+	            in.close();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-			String mimeType = context.getMimeType(filename);
-			MediaType mediaType = MediaType.valueOf(mimeType);
-			System.out.println("mediaType = " + mediaType);
-			headers.setContentType(mediaType);
-			ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
-			return responseEntity;
+			
+			
 		}
 	
 	
@@ -390,7 +490,7 @@ public class GroupsController {
 		model.addAttribute("gid", gidd);
 
 		System.out.println("測試1" + gidd);
-		return "frank/addPlace2";
+		return "frank/addPlace";
 
 	}
 
@@ -435,11 +535,32 @@ public class GroupsController {
 	@RequestMapping("/frank/groups")
 	public String list(Model model) {
 		List<GroupsBean> list = service.getAllGroups();
+		List<CategoryBean> list1 =service.getCategoryList();
+		 model.addAttribute("category",list1);
+		
 		model.addAttribute("groups", list);
+		
+		
 //		return "frank/groups";
 		return "frank/Ngroup";
 	}
 
+	
+	@RequestMapping("/frank/groupsByCategory")
+	public String getGroupsByCategory_id(@RequestParam("category_id")Integer category_id,Model model) {
+		
+		 List<GroupsBean> list = service.getGroupsByCategory_id(category_id);
+		 List<CategoryBean> list1 =service.getCategoryList();
+		 model.addAttribute("category",list1);
+		 model.addAttribute("groups",list);
+		 
+		 
+	    return"frank/Ngroup";
+		
+	}
+	
+	
+	
 //-------------------------某一個團購頁面---------------------------
 	@RequestMapping("/frank/group") // 查詢單一產品
 	public String getGroupsById(@RequestParam("gid") Integer gid, @ModelAttribute("loginOK")MemberBean member, Model model) {
@@ -521,24 +642,51 @@ public class GroupsController {
 			@ModelAttribute("upgroupsBean") GroupsBean gb,BindingResult result, HttpServletRequest request) {
 			
 		if (gb.getProductImage() != null) {
+			
 			MultipartFile productImage = gb.getProductImage();
-			String originalFilename = productImage.getOriginalFilename();
-		System.out.println("1111111111111111111111111111111111111111111111111111111111111111");
-
-			if (productImage != null && !productImage.isEmpty()) {
-				String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
-				String rootDirectory = context.getRealPath("/");
-				System.out.println("2222222222222222222222222222222222222222222222222222222");
-				byte[] b;
+			gb.setProductImage(null);
+			gb.setImage(null);
+			
+			
+			if (productImage.isEmpty()) {
+				System.out.println("沒上傳圖片");
+			} else {
+				
+				String shianghergo = context.getRealPath("/");
+				shianghergo += "images/groupsImg/" + id +".jpg";
+				
+				File tempF = new File(shianghergo);
+				
 				try {
-					b = productImage.getBytes();
-					Blob blob = new SerialBlob(b);
-					gb.setImage(blob);
-				} catch (Exception e) {
+					if (!tempF.exists()) {
+						tempF.createNewFile();
+						productImage.transferTo(tempF);
+					} else {
+						productImage.transferTo(tempF);
+					}
+				} catch (IOException e) {
 					e.printStackTrace();
-					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
-				}
+				}	
 			}
+			
+			
+//			String originalFilename = productImage.getOriginalFilename();
+//		System.out.println("1111111111111111111111111111111111111111111111111111111111111111");
+
+//			if (productImage != null && !productImage.isEmpty()) {
+//				String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
+//				String rootDirectory = context.getRealPath("/");
+////				System.out.println("2222222222222222222222222222222222222222222222222222222");
+//				byte[] b;
+//				try {
+//					b = productImage.getBytes();
+//					Blob blob = new SerialBlob(b);
+//					gb.setImage(blob);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+//				}
+//			}
 		}
 		gb.setId(id);
 		
@@ -579,28 +727,58 @@ public class GroupsController {
 	public String updatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("name") String name,
 			@RequestParam("detail") String detail, @RequestParam("price") Integer price,
 			@RequestParam("iid") Integer iid,@ModelAttribute("upgroupsitemBean") Groups_ItemBean ib) {
-
-			System.out.println("hellllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllo");
-//		if (ib.getProductImage() != null) {
-			if (ib.getProductImage() != null) {
-				MultipartFile productImage = ib.getProductImage();
-				String originalFilename = productImage.getOriginalFilename();
+		
+		
+		if (ib.getProductImage() != null) {
 			
-
-				if (productImage != null && !productImage.isEmpty()) {
-					String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
-					String rootDirectory = context.getRealPath("/");
-					byte[] b;
-					try {
-						b = productImage.getBytes();
-						Blob blob = new SerialBlob(b);
-						ib.setImage(blob);
-					} catch (Exception e) {
-						e.printStackTrace();
-						throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+			MultipartFile productImage = ib.getProductImage();
+			ib.setProductImage(null);
+			ib.setImage(null);
+			
+			
+			if (productImage.isEmpty()) {
+				System.out.println("沒上傳圖片");
+			} else {
+				
+				String shianghergo = context.getRealPath("/");
+				shianghergo += "images/groupsItemImg/" + iid +".jpg";
+				
+				File tempF = new File(shianghergo);
+				
+				try {
+					if (!tempF.exists()) {
+						tempF.createNewFile();
+						productImage.transferTo(tempF);
+					} else {
+						productImage.transferTo(tempF);
 					}
-				}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}	
 			}
+		}
+
+//			System.out.println("hellllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllo");
+//		if (ib.getProductImage() != null) {
+//			if (ib.getProductImage() != null) {
+//				MultipartFile productImage = ib.getProductImage();
+//				String originalFilename = productImage.getOriginalFilename();
+//			
+//
+//				if (productImage != null && !productImage.isEmpty()) {
+//					String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
+//					String rootDirectory = context.getRealPath("/");
+//					byte[] b;
+//					try {
+//						b = productImage.getBytes();
+//						Blob blob = new SerialBlob(b);
+//						ib.setImage(blob);
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//						throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+//					}
+//				}
+//			}
 			ib.setId(iid);
 			service.updateitem(ib);
 
@@ -738,4 +916,321 @@ public class GroupsController {
 	}
 
 	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	//會員中心新&修
+	
+	// ---------------------------某一團的詳細資料--------------------------
+	@RequestMapping("/frank/showgroup(mb)")
+	public String getMbGroupById(@RequestParam("gid") Integer gid, Model model, GroupsBean gb) {
+
+		model.addAttribute("updategroup", service.getGroupById(gid)); // 取團的資料
+
+		return "frank/showgroup(mb)";
+	}
+	
+	
+	// ----------------新增商品取的表單-----------------------
+		@RequestMapping(value = "/frank/additem(mb)", method = RequestMethod.GET)
+		public String mbAddNewGroupsItemForm(@RequestParam("gid") Integer gid, Model model) {
+			System.out.println("測試" + gid);
+			Groups_ItemBean gib = new Groups_ItemBean();
+
+			model.addAttribute("groupsitemBean", gib);
+			model.addAttribute("gid", gid);
+
+			System.out.println("測試1" + gid);
+			return "frank/addGroupsItem2";
+
+		}
+
+		@RequestMapping(value = "/frank/additem(mb)", method = RequestMethod.POST)
+		public String mbgetAddNewProductForm(@RequestParam("gid") Integer gid,@ModelAttribute("groupsitemBean") Groups_ItemBean gib, BindingResult result,
+				HttpServletRequest request) {
+			String[] suppressedFields = result.getSuppressedFields();
+			if (suppressedFields.length > 0) {
+				throw new RuntimeException("嘗試傳入不允許的欄位:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
+			}
+
+			MultipartFile productImage = gib.getProductImage();
+			gib.setProductImage(null);
+			gib.setImage(null);
+			
+//			String originalFilename = productImage.getOriginalFilename();
+//			System.out.println(originalFilename);
+//			gib.setFileName(originalFilename);
+//			String ext = ".jpg";
+//			String rootDirectory = context.getRealPath("/");
+
+//			if (productImage != null && !productImage.isEmpty()) {
+//				byte[] b;
+//				try {
+//					b = productImage.getBytes();
+//					Blob blob = new SerialBlob(b);
+//					gib.setImage(blob);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+//				}
+//			}
+
+			int iid = service.addGroupsItem(gib, gid);
+
+//			try {
+//				File imageFolder = new File(rootDirectory, "images");
+//				if (!imageFolder.exists())
+//					imageFolder.mkdirs();
+//				File file = new File(imageFolder, gib.getId() + ext);
+//				productImage.transferTo(file);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
+//			}
+			
+			if (productImage.isEmpty()) {
+				System.out.println("沒上傳圖片");
+			} else {
+				String shianghergo = context.getRealPath("/");
+				shianghergo += "images/groupsItemImg/" + iid +".jpg";
+				System.out.println(shianghergo);
+				
+				File tempF = new File(shianghergo);
+				
+				try {
+					if (!tempF.exists()) {
+						tempF.createNewFile();
+						productImage.transferTo(tempF);
+					} else {
+						productImage.transferTo(tempF);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}	
+			}
+			
+			return "redirect:/frank/showgroup(mb)?gid=" + gid;
+		}
+	
+		
+		
+		// ----------------新增地址-----------------------
+		@RequestMapping(value = "/frank/addplace(mb)", method = RequestMethod.GET)
+		public String mbAddNewPlaceForm(@RequestParam("gid") Integer gidd, Model model, HttpServletRequest rq) {
+			System.out.println("測試" + gidd);
+			PlaceBean pb = new PlaceBean();
+
+			model.addAttribute("placeBean", pb);
+			model.addAttribute("gid", gidd);
+
+			System.out.println("測試1" + gidd);
+			return "frank/addPlace2";
+
+		}
+
+		// -----------------------新增地址------------------
+		@RequestMapping(value = "/frank/addplace(mb)", method = RequestMethod.POST)
+		public String mbAddNewPlaceForm(@RequestParam("gid") Integer gid, @ModelAttribute("placeBean") PlaceBean pb,
+				GroupsBean gb) {
+
+			System.out.println("有進來嗎" + gid);
+
+			service.addPlace(pb, gid);
+
+			return "redirect:/frank/showgroup(mb)?gid=" + gid;
+		}
+	
+	
+	// ------------------------修改團的表單-----------------
+		@RequestMapping(value = "/frank/updatetogroup(mb)", method = RequestMethod.GET)
+		public String mbupdatetogroups(@RequestParam("gid") Integer gid, Model model) {
+			List<CategoryBean> list =service.getCategoryList();
+			model.addAttribute("category",list );
+			model.addAttribute("updategroup", service.getGroupById(gid));
+			GroupsBean gb = new GroupsBean();
+
+			model.addAttribute("upgroupsBean", gb);
+
+			return "frank/updategroup2";
+
+		}
+
+		// ---------------------修改團的資料-----------------
+		@RequestMapping(value = "/frank/updatetogroup(mb)", method = RequestMethod.POST)
+		public String mbupdatetogroups(@RequestParam("name") String name, @RequestParam("end_time") String end_time,
+				@RequestParam("detail") String detail, @RequestParam("payment") String payment,
+				@RequestParam("id") Integer id,@RequestParam("categoryBean") Integer category_id,
+				@ModelAttribute("upgroupsBean") GroupsBean gb,BindingResult result, HttpServletRequest request) {
+				
+			if (gb.getProductImage() != null) {
+				MultipartFile productImage = gb.getProductImage();
+				gb.setProductImage(null);
+				gb.setImage(null);
+				
+				if (productImage.isEmpty()) {
+					System.out.println("沒上傳圖片");
+				} else {
+					
+					String shianghergo = context.getRealPath("/");
+					shianghergo += "images/groupsImg/" + id +".jpg";
+					
+					File tempF = new File(shianghergo);
+					
+					try {
+						if (!tempF.exists()) {
+							tempF.createNewFile();
+							productImage.transferTo(tempF);
+						} else {
+							productImage.transferTo(tempF);
+						}
+					} catch (IOException e) {
+						e.printStackTrace();
+					}	
+				}
+			}
+				
+//				String originalFilename = productImage.getOriginalFilename();
+//			System.out.println("1111111111111111111111111111111111111111111111111111111111111111");
+
+//				if (productImage != null && !productImage.isEmpty()) {
+//					String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
+//					String rootDirectory = context.getRealPath("/");
+//					System.out.println("2222222222222222222222222222222222222222222222222222222");
+//					byte[] b;
+//					try {
+//						b = productImage.getBytes();
+//						Blob blob = new SerialBlob(b);
+//						gb.setImage(blob);
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//						throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+//					}
+//				}
+			
+			gb.setId(id);
+			
+
+//			gb.setName(name);
+//			gb.setEnd_time(end_time);
+//			gb.setDetail(detail);
+//			gb.setPayment(payment);
+//			gb.setId(id);
+				
+			
+			 if(gb.getPayment().length() !=1) {
+				 gb.setPayment("3");
+			 }
+			service.updategroups(gb,category_id);
+
+			return "redirect:/frank/showgroup(mb)?gid=" + id;
+		}
+
+
+
+		
+		// -----------------------修改商品的表單-------------------
+		@RequestMapping(value = "/frank/updatetogroup_item(mb)", method = RequestMethod.GET)
+		public String mbupdatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("iid") Integer iid, Model model,
+				GroupsBean gb) {
+			Groups_ItemBean gib = new Groups_ItemBean();
+
+			model.addAttribute("upgroupsitemBean", gib);
+			model.addAttribute("updategitem", service.getGroup_ItemById(iid));
+
+			return "frank/updategroup_item2";
+
+		}
+
+		// ---------------------修改商品的資料-----------------
+		@RequestMapping(value = "/frank/updatetogroup_item(mb)", method = RequestMethod.POST)
+		public String mbupdatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("name") String name,
+				@RequestParam("detail") String detail, @RequestParam("price") Integer price,
+				@RequestParam("iid") Integer iid,@ModelAttribute("upgroupsitemBean") Groups_ItemBean ib) {
+
+//				System.out.println("hellllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllo");
+//			if (ib.getProductImage() != null) {
+				if (ib.getProductImage() != null) {
+					MultipartFile productImage = ib.getProductImage();
+//					String originalFilename = productImage.getOriginalFilename();
+					ib.setProductImage(null);
+					ib.setImage(null);
+					
+					if (productImage.isEmpty()) {
+						System.out.println("沒上傳圖片");
+					} else {
+						
+						String shianghergo = context.getRealPath("/");
+						shianghergo += "images/groupsItemImg/" + iid +".jpg";
+						
+						File tempF = new File(shianghergo);
+						
+						try {
+							if (!tempF.exists()) {
+								tempF.createNewFile();
+								productImage.transferTo(tempF);
+							} else {
+								productImage.transferTo(tempF);
+							}
+						} catch (IOException e) {
+							e.printStackTrace();
+						}	
+					}
+				}
+//					if (productImage != null && !productImage.isEmpty()) {
+//						String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
+//						String rootDirectory = context.getRealPath("/");
+//						byte[] b;
+//						try {
+//							b = productImage.getBytes();
+//							Blob blob = new SerialBlob(b);
+//							ib.setImage(blob);
+//						} catch (Exception e) {
+//							e.printStackTrace();
+//							throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+//						}
+//					}
+				
+				ib.setId(iid);
+				service.updateitem(ib);
+
+			return "redirect:/frank/showgroup(mb)?gid=" + gid ;
+		}
+
+		
+		// -----------------------修改地址的表單-------------------
+			@RequestMapping(value = "/frank/updatetoplace(mb)", method = RequestMethod.GET)
+			public String mbupdatetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model,
+					GroupsBean gb) {
+
+				model.addAttribute("updateplace", service.getPlaceById(pid));
+
+				return "frank/updateplace2";
+
+			}
+
+			// ---------------------修改地址的資料-----------------
+			@RequestMapping(value = "/frank/updatetoplace(mb)", method = RequestMethod.POST)
+			public String mbupdatetoplace(@RequestParam("gid") Integer gid, @RequestParam("address") String address,
+					@RequestParam("time") String time, @RequestParam("pid") Integer pid) {
+
+				PlaceBean pb = new PlaceBean();
+				pb.setAddress(address);
+				pb.setTime(time);
+				pb.setId(pid);
+
+				service.updateplace(pb);
+
+				return "redirect:/frank/showgroup(mb)?gid=" + gid;
+			}
+	
+	
+	
+	
 }

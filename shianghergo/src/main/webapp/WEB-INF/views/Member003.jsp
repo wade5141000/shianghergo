@@ -57,13 +57,13 @@ thead {
 						<TD id='borderA' align="center">${anGroupsBean.start_time}</TD>
 						<TD id='borderA' align="center">&nbsp;${anGroupsBean.end_time}</TD>
 						<TD id='borderA' align="center">${anGroupsBean.name}</TD>
-						<TD id='borderA' align="center">&nbsp;${anGroupsBean.detail}</TD>
+						<TD id='borderA' align="center" style="word-break:break-all">&nbsp;${anGroupsBean.detail}</TD>
 						<TD id='borderA' align="center">${anGroupsBean.payment}</TD>
 						<TD id='borderA' align="center"><a
 							href="<c:url value='getMyGroupsPerson?groups_id=${anGroupsBean.id}' />">
 								<button type="button" class="btn btn-primary btn-sm">詳情</button> </a></TD>
 					<TD id='borderA' align="center"><a
-							href="<c:url value='getMyGroupsListD?groups_id=${anGroupsBean.id}' />">
+							href="<c:url value='/frank/showgroup(mb)?gid=${anGroupsBean.id}' />">
 								 <button type="button" class="btn btn-primary btn-sm">詳情</button></a></TD>
 					</TR>
 				</c:forEach>

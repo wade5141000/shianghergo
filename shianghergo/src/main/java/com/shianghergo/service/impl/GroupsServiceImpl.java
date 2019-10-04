@@ -41,10 +41,11 @@ public class GroupsServiceImpl implements GroupsService{
 	}
 	@Transactional
 	@Override
-	public void addGroupsItem(Groups_ItemBean groupsitem,int gid) {
+	public int addGroupsItem(Groups_ItemBean groupsitem,int gid) {
 		GroupsBean gb = dao.getGroupById(gid);
 		groupsitem.setGroupsBean(gb);
-		dao.addGroupsItem(groupsitem);
+		int iid =  dao.addGroupsItem(groupsitem);
+		return iid;
 	}
 	@Transactional
 	@Override
@@ -177,6 +178,12 @@ public class GroupsServiceImpl implements GroupsService{
 			
 		return dao.searchToGroups(name);
 		
+	}
+
+	@Override
+	public List<GroupsBean> getGroupsByCategory_id(Integer category_id) {
+	
+		return dao.getGroupsByCategory_id(category_id);
 	}
 
 	

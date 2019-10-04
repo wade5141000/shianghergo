@@ -20,7 +20,7 @@ public interface GroupsDao {
 	// ---------------------------
 	
 	Integer addGroups(GroupsBean Groups,Integer member_id,Integer category_id);//新增團
-	void addGroupsItem(Groups_ItemBean groupsitme); //新增商品
+	int addGroupsItem(Groups_ItemBean groupsitme); //新增商品
 	GroupsBean getGroupsById(int groupsid);  //取到團的ID
 	List<GroupsBean> getGroupsList(); 
 	GroupsBean getGroupById(int groupId); //查詢單一團的資料
@@ -41,5 +41,7 @@ public interface GroupsDao {
 	List<CategoryBean> getCategoryList();
 	CategoryBean getCategoryById(Integer category_id);
 	List<GroupsBean>  searchToGroups(String name); //查詢開團列表 9/27新增
+
+	List<GroupsBean> getGroupsByCategory_id(Integer category_id);
 	
 }

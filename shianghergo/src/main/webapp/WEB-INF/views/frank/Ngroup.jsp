@@ -85,20 +85,17 @@
 								<a href="javascript:;">所有分類</a>
 							</dd>
 							<dd>
-								<a href="javascript:;">全品項</a>
+								<a href="${pageContext.request.contextPath}/frank/">全品項</a>
 							</dd>
+						<c:forEach var="categorys" items="${category}">
 							<dd>
-								<a href="javascript:;">團購美食</a>
+								<a href="${pageContext.request.contextPath}/frank/groupsByCategory?category_id=${categorys.id}">${categorys.name}</a>
 							</dd>
-							<dd>
-								<a href="javascript:;">保養美妝</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">服飾配件</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">育兒親子</a>
-							</dd>
+							</c:forEach>
+						
+						
+						
+						
 						</dl>
 					</div>
 				</div>

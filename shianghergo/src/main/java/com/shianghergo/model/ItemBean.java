@@ -191,4 +191,13 @@ public class ItemBean implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	@Override
+	public String toString() {
+		return "ItemBean [id=" + id + ", name=" + name + ", category_id=" + category_id + ", store_id=" + store_id
+				+ ", reserve=" + reserve + ", price=" + price + ", detail=" + detail + ", coverImage=" + coverImage
+				+ ", fileName=" + fileName + ", storeBean=" + storeBean + ", productImage=" + productImage
+				+ ", categoryBean=" + categoryBean + ", priceStr=" + priceStr + "]";
+	}
+
 }
