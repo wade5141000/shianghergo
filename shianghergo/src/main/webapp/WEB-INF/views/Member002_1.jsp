@@ -40,7 +40,7 @@ thead {
 		</tr>
 		<tr id='borderA' height='36' >
 			<th scope="col" id='borderA'>訂單編號</th>
-			<th scope="col" id='borderA'>商店編號</th>
+<!-- 			<th scope="col" id='borderA'>商店編號</th> -->
 			<th scope="col" id='borderA'>商品編號</th>
 			<th scope="col" id='borderA'>商品名稱</th>
 			<th scope="col" id='borderA'>價格</th>
@@ -49,7 +49,7 @@ thead {
 		<c:forEach var="anOrderD"  items="${MyOrderListD}">
 			<TR id='borderA' >
 			<TD id='borderA' >${anOrderD.order_id}</TD>
-			<TD id='borderA' >${anOrderD.store_id}</TD>
+<%-- 			<TD id='borderA' >${anOrderD.store_id}</TD> --%>
 			<TD id='borderA' >&nbsp;${anOrderD.item_id}</TD>
 			<TD id='borderA' >${anOrderD.name}</TD>
 			<TD id='borderA' >${anOrderD.price}</TD>

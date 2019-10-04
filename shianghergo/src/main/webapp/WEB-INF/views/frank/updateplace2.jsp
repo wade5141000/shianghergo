@@ -8,7 +8,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
 	<jsp:include page="../BlackLine.jsp" />
-	<div class="container">
+	<div class="container" style="padding-bottom: 250px;">
 		<div style="padding-left: 300px; padding-right: 300px;">
 			<!-- action对应一个action标签，id对应提交时的对应关系 -->
 			<form id="saveForm" action="updatetoplace(mb)" method="post">
@@ -39,5 +39,6 @@
 			</form>
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>

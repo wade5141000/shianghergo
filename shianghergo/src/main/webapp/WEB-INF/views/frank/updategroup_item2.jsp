@@ -17,7 +17,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
 	<jsp:include page="../BlackLine.jsp" />
-	<div class="container">
+	<div class="container" style="padding-bottom: 250px;">
 		<div >
 			<!-- action对应一个action标签，id对应提交时的对应关系 -->
 			<form:form method="post" action="updatetogroup_item(mb)"
@@ -74,6 +74,6 @@
 			</form:form>
 		</div>
 	</div>
-</body>
 <jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
+</body>
 </html>

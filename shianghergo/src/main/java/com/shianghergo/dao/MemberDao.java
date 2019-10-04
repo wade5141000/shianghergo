@@ -9,6 +9,7 @@ import com.shianghergo.model.GroupsOrderDetailBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.MessageBean;
+import com.shianghergo.model.NotificationBean;
 import com.shianghergo.model.OrderBean;
 import com.shianghergo.model.OrderDetailBean;
 import com.shianghergo.model.PlaceBean;
@@ -75,7 +76,7 @@ public interface MemberDao {
 
 	public List<PlaceBean> getMyPlaceByid(Integer id);
 
-
+	public List<NotificationBean> getNotificationByid(Integer target);
 
 	public void deleteByid(Integer id);
 	

@@ -32,7 +32,7 @@ thead {
 	<div  style="padding-bottom: 300px;">
 	<jsp:include page="shianghergo/../BlackLine.jsp" />
 
-	<div style="padding-left: 350px;padding-right: 350px;">
+	<div style="padding-left: 290px;padding-right: 30px;">
 		<table class="table table-hover">
 		<tr id='borderA'>
 			<th id='borderA' colspan="7">${loginOK.name}的訂購紀錄</th>

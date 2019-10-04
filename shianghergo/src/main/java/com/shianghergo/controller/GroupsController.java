@@ -439,13 +439,13 @@ public class GroupsController {
 //		return "frank/groups";
 		return "frank/Ngroup";
 	}
-
+//	@ModelAttribute("loginOK")MemberBean member,
 //-------------------------某一個團購頁面---------------------------
 	@RequestMapping("/frank/group") // 查詢單一產品
-	public String getGroupsById(@RequestParam("gid") Integer gid, @ModelAttribute("loginOK")MemberBean member, Model model) {
+	public String getGroupsById(@RequestParam("gid") Integer gid,  Model model) {
 		
 		System.out.println("gid: " + gid);
-		System.out.println("mid:  " + member.getId());
+//		System.out.println("mid:  " + member.getId());
 		GroupsBean gb = service.getGroupById(gid);
 		model.addAttribute("group", gb); // 取團的資料
 

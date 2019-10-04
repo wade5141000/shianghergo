@@ -31,27 +31,29 @@ thead {
 <jsp:include page="eric/header.jsp" />
 		<div style="padding-bottom: 500px;">
 			<jsp:include page="shianghergo/../BlackLine.jsp" />
-	<div style="padding-left: 350px; padding-right: 350px;">
+	<div style="padding-left: 290px;padding-right: 30px;">
 	<table class="table table-hover">
 		<tr id='borderA'>
 			<th id='borderA' >我的留言(寄件備份)</th>
 		</tr>
 		<tr id='borderA' >
-			<th scope="col" id='borderA'>留言編號</th>
-			<th scope="col" id='borderA'>留言者</th>
+<!-- 			<th scope="col" id='borderA'>留言編號</th> -->
+<!-- 			<th scope="col" id='borderA'>留言者</th> -->
 			<th scope="col" id='borderA'>標題</th>
+			<th scope="col" id='borderA'>收件人</th>
 			<th scope="col" id='borderA'>內容	</th>
 			<th scope="col" id='borderA'>時間</th>
 		</tr>
 		<c:forEach var="MyMesg"  items="${MyMessage}">
 			<TR id='borderA' >
-			<TD id='borderA' >&nbsp;${MyMesg.id}</TD>
-			<TD id='borderA' >
-			    <a  href="<c:url value='sendMemberMessage?target=${MyMesg.memberBean.id}' />">
-				    ${MyMesg.memberBean.id}
-			    </a>
-			</TD>
+<%-- 			<TD id='borderA' >&nbsp;${MyMesg.id}</TD> --%>
+<!-- 			<TD id='borderA' > -->
+<%-- 			    <a  href="<c:url value='sendMemberMessage?target=${MyMesg.memberBean.id}' />"> --%>
+<%-- 				    ${MyMesg.memberBean.id} --%>
+<!-- 			    </a> -->
+<!-- 			</TD> -->
 			<TD id='borderA' >${MyMesg.title}</TD>
+			<TD id='borderA' >${MyMesg.target.memberBean.name}</TD>
 			<TD id='borderA' >&nbsp;${MyMesg.contents}</TD>
 			<TD id='borderA' >${MyMesg.time}</TD>			
 		</TR>
@@ -61,10 +63,4 @@ thead {
 </div>
 <jsp:include page="eric/foot.jsp" />
 </body>
-<script type="text/javascript">
-	//注意：导航 依赖 element 模块，否则无法进行功能性操作
-	layui.use('element', function() {
-		var element = layui.element(); //导航的hover效果、二级菜单等功能，需要依赖element模块
-	});
-</script>
 </html>

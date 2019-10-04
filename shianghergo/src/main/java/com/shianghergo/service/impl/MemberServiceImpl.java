@@ -15,6 +15,7 @@ import com.shianghergo.model.GroupsOrderDetailBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.MessageBean;
+import com.shianghergo.model.NotificationBean;
 import com.shianghergo.model.OrderBean;
 import com.shianghergo.model.OrderDetailBean;
 import com.shianghergo.model.PlaceBean;
@@ -190,6 +191,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void deleteByid(Integer id) {
 		 dao.deleteByid(id);
+	}
+
+	@Override
+	public List<NotificationBean> getNotificationByid(Integer target) {
+		return dao.getNotificationByid(target);
 	}
 
 //	@Override

@@ -43,9 +43,7 @@
 				<%-- 				<p>商店名稱:：${store.name}</p> --%>
 				<%-- 				<p>商店介紹： ${store.detail}</p> --%>
 				<a href="<spring:url value='store/Update?id=${store.id }' />"
-					class="btn btn-primary">修改 </a> <a
-					href="<spring:url value='/hao/stores' />" class="btn btn-primary">
-					返回 </a>
+					class="btn btn-primary">修改 </a> 
 			</div>
 			
 		</div>

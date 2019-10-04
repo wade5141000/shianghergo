@@ -36,19 +36,19 @@ thead {
 <div style="padding-left: 350px; padding-right: 350px;">
 	<table class="table table-hover">
 		<tr id='borderA'  >
-			<th id='borderA'>誰給我的留言</th>
+			<th id='borderA'>誰留言給我</th>
 		</tr>
 		<tr id='borderA'  >
-			<th scope="col" id='borderA'>留言編號</th>
-			<th scope="col" id='borderA'>誰留言給我</th>
+<!-- 			<th scope="col" id='borderA'>留言編號</th> -->
+			<th scope="col" id='borderA'>寄件人</th>
 			<th scope="col" id='borderA'>標題</th>
 			<th scope="col" id='borderA'>內容	</th>
-			<th scope="col" id='borderA'>時間</th>
+			<th scope="col" id='borderA'>留言時間</th>
 			<th scope="col" id='borderA'>刪除留言</th>
 		</tr>							  
 		<c:forEach var="gMyMesg"  items="${getMyMessage}">
 			<TR id='borderA' >
-			<TD id='borderA'  >&nbsp;${gMyMesg.id}</TD>
+<%-- 			<TD id='borderA'  >&nbsp;${gMyMesg.id}</TD> --%>
 			<TD id='borderA'  >
 			    <a  href="<c:url value='sendMemberMessage?target=${gMyMesg.memberBean.id}' />">
 				    ${gMyMesg.memberBean.name}&nbsp;<button type="button" class="btn btn-primary btn-sm"><span >✉</span> </button>

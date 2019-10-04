@@ -76,18 +76,14 @@ li {
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/MyMessage"
 				style="color: #ff8000; font-family: 微軟正黑體;"> 寄件備份</a></li>
-			<li
-				class="list-group-item list-group-item-action list-group-item-info"
-				style="background-color: #ffffdf; border-style: dashed;"><a
-				href="${pageContext.request.contextPath}/Member001"
-				style="color: #ff8000; font-family: 微軟正黑體;"> <img
-					src="<c:url value='${pageContext.request.contextPath}/getmemberPicture/${loginOK.id}'/>">${loginOK.name}
-			</a></li>
-			<li
-				class="list-group-item list-group-item-action list-group-item-info"
-				style="background-color: #ffffdf; border-style: dashed;"><a
-				href="${pageContext.request.contextPath}/logout"
-				style="color: #ff8000; font-family: 微軟正黑體;"> 登出</a></li>
+			<!-- 			<li -->
+			<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+			<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+			<%-- 				href="${pageContext.request.contextPath}/Member001" --%>
+			<!-- 				style="color: #ff8000; font-family: 微軟正黑體;"> <img -->
+			<%-- 					src="<c:url value='${pageContext.request.contextPath}/getmemberPicture/${loginOK.id}'/>">${loginOK.name} --%>
+			<!-- 			</a></li> -->
+
 			<li
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
@@ -103,27 +99,32 @@ li {
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/hao/myProducts"
 				style="color: #ff8000; font-family: 微軟正黑體;">我的商品列表</a></li>
-<!-- 			<li -->
-<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
-<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
-<%-- 				href="${pageContext.request.contextPath}/frank/showgroup" --%>
-<!-- 				style="color: #ff8000; font-family: 微軟正黑體;"> 4</a></li> -->
-<!-- 			<li -->
-<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
-<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
-<%-- 				href="${pageContext.request.contextPath}/frank/mygroups" --%>
-<!-- 				style="color: #ff8000; font-family: 微軟正黑體;"> 5</a></li> -->
-				
-<!-- 			<li -->
-<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
-<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
-<%-- 				href="${pageContext.request.contextPath}/hao/store" --%>
-<%-- 				style="color: #ff8000; font-family: 微軟正黑體;"> ${loginOK.id}</a></li> --%>
-<!-- 			<li -->
-<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
-<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
-<%-- 				href="${pageContext.request.contextPath}/hao/stores" --%>
-<%-- 				style="color: #ff8000; font-family: 微軟正黑體;"> ${store.member_id}</a></li> --%>
+			<li
+				class="list-group-item list-group-item-action list-group-item-info"
+				style="background-color: #ffffdf; border-style: dashed;"><a
+				href="${pageContext.request.contextPath}/getMyNotification"
+				style="color: #ff8000; font-family: 微軟正黑體;">站內通知信</a></li>
+			<li
+				class="list-group-item list-group-item-action list-group-item-info"
+				style="background-color: #ffffdf; border-style: dashed;"><a
+				href="${pageContext.request.contextPath}/logout"
+				style="color: #ff8000; font-family: 微軟正黑體;"> 登出</a></li>
+			<!-- 			<li -->
+			<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+			<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+			<%-- 				href="${pageContext.request.contextPath}/frank/mygroups" --%>
+			<!-- 				style="color: #ff8000; font-family: 微軟正黑體;"> 5</a></li> -->
+
+			<!-- 			<li -->
+			<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+			<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+			<%-- 				href="${pageContext.request.contextPath}/hao/store" --%>
+			<%-- 				style="color: #ff8000; font-family: 微軟正黑體;"> ${loginOK.id}</a></li> --%>
+			<!-- 			<li -->
+			<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+			<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+			<%-- 				href="${pageContext.request.contextPath}/hao/stores" --%>
+			<%-- 				style="color: #ff8000; font-family: 微軟正黑體;"> ${store.member_id}</a></li> --%>
 		</ul>
 
 	</div>

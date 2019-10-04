@@ -7,7 +7,6 @@ import javax.persistence.NoResultException;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +18,7 @@ import com.shianghergo.model.GroupsOrderDetailBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.MessageBean;
+import com.shianghergo.model.NotificationBean;
 import com.shianghergo.model.OrderBean;
 import com.shianghergo.model.OrderDetailBean;
 import com.shianghergo.model.PlaceBean;
@@ -341,6 +341,15 @@ public class MemberDaoImpl implements MemberDao {
 		Session session = factory.getCurrentSession();
 		MessageBean contacts = (MessageBean) session.get(MessageBean.class, id);
 		session.delete(contacts);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<NotificationBean> getNotificationByid(Integer target) {
+		String hql = "FROM NotificationBean WHERE target=:id";
+		Session session = factory.getCurrentSession();
+		List<NotificationBean> list = session.createQuery(hql).setParameter("id", target).getResultList();
+		return list;
 	}
 
 	

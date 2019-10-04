@@ -48,8 +48,6 @@
 				<div class="card-body">
 					<h5 class="card-title">品名:${product.name }</h5>
 					<p class="card-text">說明：${product.detail }</p>
-					<p class="card-text">說明：${product.id }</p>
-
 				</div>
 				<div class="card-footer">
 					<form action="/shianghergo/hao/product/Update/Delete" method="POST">

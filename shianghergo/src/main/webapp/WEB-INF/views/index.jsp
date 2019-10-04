@@ -37,6 +37,15 @@
 
 <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" -->
 <!-- 	rel="stylesheet"> -->
+<style type="text/css">
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('images/bbg06.png') center center fixed ;
+	　 
+	　
+}
+</style>
 </head>
 
 <body>
@@ -215,5 +224,6 @@
 	</section>
 
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
+	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>
