@@ -55,7 +55,7 @@ function deleteItem(target){
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"
 		style="height: 100px;">
-		<a class="navbar-brand" href="#">管理員</a>
+		<a class="navbar-brand" href="#">管理員功能</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -83,22 +83,26 @@ function deleteItem(target){
 			</ul>
 		</div>
 	</nav>
+
 	<div style="margin-left: 150px; margin-top: 15px">
 
 
 		<h3>商品</h3>
+
 		<form action="storeIdItem" method="POST">
-			<select name="store_id">
-				<c:forEach var='stores' items='${store}'>
-					<option value="${stores.id}">${stores.id}</option>
-				</c:forEach>
-			</select>
-			<button type="submit" class="btn btn-outline-success">商家查詢</button>
+			<div class="alert alert-primary" role="alert" style="width: 250px;">
+				<select name="store_id">
+					<c:forEach var='stores' items='${store}'>
+						<option value="${stores.id}">${stores.id}</option>
+					</c:forEach>
+				</select>
+
+				<button type="submit" class="btn btn-primary">search</button>
+			</div>
 		</form>
 	</div>
 
-	<table class="table"
-		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
+	<table class="table" style="width: 1400px; margin-left: 150px; margin-top: 50px;">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">商品號</th>
@@ -110,18 +114,16 @@ function deleteItem(target){
 			</tr>
 		</thead>
 		<tbody>
-			
-				<c:forEach var='items' items='${item}'>
+
+			<c:forEach var='items' items='${item}'>
 				<tr>
 					<td>${items.id}</td>
 					<td>${items.name}</td>
 					<td>${items.detail}</td>
 					<td>${items.price}</td>
-					<td><button type="button" class="btn btn-info" onclick="deleteItem(${items.id})">下架</button></td>
-					
-					
-		</c:forEach>	
-		
+					<td><button type="button" class="btn btn-danger"
+							onclick="deleteItem(${items.id})">下架</button></td>
+			</c:forEach>
 	</table>
 </body>
 </html>

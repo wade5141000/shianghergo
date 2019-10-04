@@ -25,13 +25,13 @@
 	crossorigin="anonymous"></script>
 <script>
 	
-function Notification(target){
+function Notification(target,type){
 	
-	var x = confirm("是否要警告");
+	var x = confirm("是否要警告ID[" + target +"]會員");
 	if (x) {
 		alert('警告成功');
 		var httpRequest = new XMLHttpRequest();
-		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/NotificationStore?target='+target, true);
+		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/NotificationStore?target='+target+'&type='+type, true);
 		httpRequest.send();
 	
 		setTimeout("history.go(0);",100);
@@ -43,8 +43,8 @@ function Notification(target){
 	
 }
 
-function stop() {
-	var r = confirm("是否要停權")
+function stop(target) {
+	var r = confirm("是否要停權ID[" + target +"]會員")
 	if (r == true) {
 		alert('停權成功');
 		
@@ -53,8 +53,8 @@ function stop() {
 	}
 }
 
-function recovery() {
-	var r = confirm("是否恢復權限")
+function recovery(target) {
+	var r = confirm("是否要恢復ID[" + target +"]會員權限")
 	if (r == true) {
 		alert('恢復權限成功');
 	
@@ -70,20 +70,13 @@ function recovery() {
 * {
 	font-family: 微軟正黑體;
 }
-
-.select {
-	border: 1px solid green;
-	display: inline-block;
-	padding: 7px;
-	border-radius: 7px;
-}
 </style>
 <body>
 
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"
 		style="height: 100px;">
-		<a class="navbar-brand" href="#">管理員</a>
+		<a class="navbar-brand" href="#">管理員功能</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -115,17 +108,17 @@ function recovery() {
 	<div style="margin-left: 150px; margin-top: 15px">
 
 
-		<h3>商家</h3>
+		<h3>商店</h3>
 
 
 		<form action="storeStatus" method="POST">
-			<div class="select">
+			<div class="alert alert-primary" role="alert" style="width: 250px;">
 				<select name="status">
-					<option value="1">一般商家</option>
-					<option value="2">停權商家</option>
+					<option value="1">一般商店</option>
+					<option value="2">停權商店</option>
 				</select>
+				<button type="submit" class="btn btn-primary">search</button>
 			</div>
-			<button type="submit" class="btn btn-outline-success">查詢</button>
 		</form>
 	</div>
 
@@ -134,10 +127,10 @@ function recovery() {
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
 		<thead class="thead-dark">
 			<tr style="padding: 50px">
+				<th scope="col">狀態</th>
 				<th scope="col">所屬會員</th>
 				<th scope="col">商店號</th>
 				<th scope="col">商店名稱</th>
-				<th scope="col">狀態</th>
 				<th scope="col"></th>
 				<th scope="col"></th>
 				<th scope="col"></th>
@@ -146,42 +139,45 @@ function recovery() {
 		<tbody>
 			<c:forEach var='Stores' items='${Store}'>
 				<tr>
-					<td>${Stores.member_id}</td>
-					<td>${Stores.id}</td>
-					<td>${Stores.name}</td>
-
 					<c:choose>
 
 						<c:when test="${Stores.status eq '2'}">
 
-							<td>✘</td>
+							<td class="alert alert-danger" role="alert"></td>
 
 						</c:when>
 						<c:when test="${Stores.status eq '1'}">
 
-							<td>O</td>
+							<td class="alert alert-success" role="alert"></td>
 
 						</c:when>
 
 					</c:choose>
+					<td>${Stores.member_id}</td>
+					<td>${Stores.id}</td>
+					<td>${Stores.name}</td>
+
 
 					<td><button type="button" class="btn btn-warning"
-							onclick="Notification(${Stores.member_id})">警告</button></td>
+							onclick="Notification(${Stores.member_id},2)">❗❗</button></td>
 
 					<td>
 						<form action="stopStore" method="POST">
 							<input type=hidden value="${Stores.member_id}" name="target">
-							<input type=hidden value="${Stores.id}" name="targetS">
-							<button type="submit" class="btn btn-danger" onclick="stop()">X</button>
+							<input type=hidden value="${Stores.id}" name="targetS"> <input
+								type=hidden value="2" name="type">
+							<button type="submit" class="btn btn-danger"
+								onclick="stop(${Stores.member_id})">X</button>
 						</form>
 					</td>
 					<td>
 
 						<form action="recoveryStore" method="POST">
 							<input type=hidden value="${Stores.member_id}" name="target">
-							<input type=hidden value="${Stores.id}" name="targetS">
-							<button type="submit" class="btn btn-info"
-								onclick="recovery()">O</button>
+							<input type=hidden value="${Stores.id}" name="targetS"> <input
+								type=hidden value="2" name="type">
+							<button type="submit" class="btn btn-success"
+								onclick="recovery(${Stores.member_id})">O</button>
 						</form>
 
 					</td>

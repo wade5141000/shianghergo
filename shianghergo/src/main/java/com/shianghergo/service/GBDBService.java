@@ -68,13 +68,13 @@ public interface GBDBService {
 	public void recoveryStore(Integer target);
 
 	// --新增的 message改為NotificationBean---// 9/25 /警告
-	public void caveatNotification(NotificationBean notification, Integer target);
+	public void caveatNotification(NotificationBean notification, Integer target ,Integer type);
 
 	// --新增的 message改為NotificationBean---// 9/25 /停權
-	public void stopNotification(NotificationBean notification, Integer target);
+	public void stopNotification(NotificationBean notification, Integer target , Integer type);
 
 	// --新增的 message改為NotificationBean---// 9/25 /恢復權限
-	public void recoveryNotification(NotificationBean notification, Integer target);
+	public void recoveryNotification(NotificationBean notification, Integer target , Integer type);
 	
 	//用狀態碼查詢正常/停權會員 10/03 
 	List<MemberBean> getMemberUSEStatus(Integer status);
