@@ -179,5 +179,11 @@ public class GroupsServiceImpl implements GroupsService{
 		
 	}
 
+	@Override
+	public List<GroupsBean> getGroupsByCategory_id(Integer category_id) {
+	
+		return dao.getGroupsByCategory_id(category_id);
+	}
+
 	
 }

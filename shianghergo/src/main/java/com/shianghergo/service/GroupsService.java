@@ -36,6 +36,8 @@ public interface GroupsService {
 	List<CategoryBean> getCategoryList();
 	
 	List<GroupsBean> searchToGroups(String name); //查詢開團列表//9/27新增 
+	List<GroupsBean> getGroupsByCategory_id(Integer category_id);//團列表的分類顯示
+	
 
 	
 	

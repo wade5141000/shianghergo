@@ -41,5 +41,7 @@ public interface GroupsDao {
 	List<CategoryBean> getCategoryList();
 	CategoryBean getCategoryById(Integer category_id);
 	List<GroupsBean>  searchToGroups(String name); //查詢開團列表 9/27新增
+
+	List<GroupsBean> getGroupsByCategory_id(Integer category_id);
 	
 }
