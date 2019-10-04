@@ -60,9 +60,9 @@
 					<input type="button" value="修改"
 						onclick="location.href='updatetogroup(mb)?gid=${updategroup.id}'"
 						class="btn btn-info"> <input type="button" value="新增地址"
-						onclick="location.href='addplace?gid=${updategroup.id}'"
+						onclick="location.href='addplace(mb)?gid=${updategroup.id}'"
 						class="btn btn-info"> <input type="button" value="新增商品"
-						onclick="location.href='additem?gid=${updategroup.id}'"
+						onclick="location.href='additem(mb)?gid=${updategroup.id}'"
 						class="btn btn-info">
 				</dd>
 			</dl>
