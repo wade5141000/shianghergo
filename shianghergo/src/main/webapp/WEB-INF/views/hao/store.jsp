@@ -9,15 +9,27 @@
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <title>Store</title>
+<style type="text/css">
 
+#DIV1{
+    -moz-border-image:url("/`images/01.png") 30 30 round;    /* 給 Firefox 看*/
+    -webkit-border-image:url("/images/01.png") 30 30 round;    /* 給 Safari 與 Chrome 看*/
+    border-image:url("/images/01.png") 30 30 round;
+ 
+    
+}
+
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
 	<jsp:include page="../BlackLine.jsp" />
 
+<%-- 	<img  src="<c:url value='/images/01.png' />" alt="..." > --%>
+
 	<div style="padding-bottom: 350px;">
 		<div style="padding-left: 350px; padding-right: 350px;"
-			class="card text-center">
+			id="DIV1">
 			<div class="card-header" style="margin-top: 25px; margin-top: 10px;">
 				<h1>商店資訊</h1>
 			</div>
