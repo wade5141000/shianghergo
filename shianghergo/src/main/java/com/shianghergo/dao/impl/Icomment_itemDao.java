@@ -2,6 +2,7 @@ package com.shianghergo.dao.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -33,4 +34,28 @@ public class Icomment_itemDao implements comment_itemDao {
 
 	}
 
+	@Override
+	public double getAverageScoreByItemId(Integer id) {
+		String hql = "select score from comment_item where item_id=:item_id";
+		Session session = factory.getCurrentSession();
+		List<Integer> list = session.createQuery(hql).setParameter("item_id", id).getResultList();
+		int sum = 0;
+		int count = 0;
+		for(Integer GG:list) {	
+			sum = sum + GG;
+			count++;
+		}
+		double d = sum/count;  
+		d = ((int)(d*10)) / 10;
+		
+		return d;
+	}
+	
+	@Override
+	public List<comment_item> getComment_item(Integer item_id){
+		String hql = "from comment_item where item_id=:item_id";
+		Session session = factory.getCurrentSession();
+		List<comment_item> list = session.createQuery(hql).setParameter("item_id", item_id).getResultList();	
+		return list;
+	}
 }

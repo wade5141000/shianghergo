@@ -28,16 +28,20 @@
 .s1 {
 	width: 50px;
 }
+
+* {
+	font-family: 微軟正黑體;
+}
 </style>
 <script>
 	
-function Notification(target){
+function Notification(target,type){
 	
-	var x = confirm("是否要警告");
+	var x = confirm("是否要警告ID[" + target +"]會員");
 	if (x) {
 		alert('警告成功');
 		var httpRequest = new XMLHttpRequest();
-		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/NotificationMember?target='+target, true);
+		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/NotificationMember?target='+target+'&type='+type, true);
 		httpRequest.send();
 	
 		setTimeout("history.go(0);",100);
@@ -49,13 +53,13 @@ function Notification(target){
 	
 }
 
-function stop(target){
+function stop(target,type){
 	
-	var x = confirm("是否要停權");
+	var x = confirm("是否要停權ID[" + target +"]會員");
 	if (x) {
 		alert('停權成功');
 		var httpRequest = new XMLHttpRequest();
-		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/stopMember?target='+target, true);
+		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/stopMember?target='+target+'&type='+type, true);
 		httpRequest.send();
 	
 		setTimeout("history.go(0);",100);
@@ -67,13 +71,13 @@ function stop(target){
 	
 }
 
-function recovery(target){
+function recovery(target,type){
 	
-	var x = confirm("是否要恢復權限");
+	var x = confirm("是否要恢復ID[" + target + "]會員權限");
 	if (x) {
 		alert('恢復權限成功');
 		var httpRequest = new XMLHttpRequest();
-		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/recoveryMember?target='+target, true);
+		httpRequest.open('GET', 'http://localhost:8080/shianghergo/leopard/recoveryMember?target='+target+'&type='+type, true);
 		httpRequest.send();
 	
 		setTimeout("history.go(0);",100);
@@ -93,19 +97,14 @@ function recovery(target){
 	font-family: 微軟正黑體;
 }
 
-.select {
-	border: 1px solid green;
-	display: inline-block;
-	padding: 7px;
-	border-radius: 7px;
-}
+
 </style>
 
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"
 		style="height: 100px;">
-		<a class="navbar-brand" href="#">管理員</a>
+		<a class="navbar-brand" href="#">管理員功能</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -143,29 +142,26 @@ function recovery(target){
 
 
 		<form action="memberStatus" method="POST">
-			<div class="select">
+			<div class="alert alert-primary" role="alert" style="width:250px;">
 				<select name="status">
 					<option value="1">一般會員</option>
 					<option value="2">停權會員</option>
 				</select>
+			<button type="submit" class="btn btn-primary">search</button>
 			</div>
-			<button type="submit" class="btn btn-outline-success">查詢</button>
 		</form>
 	</div>
-
-
-
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
 		<thead class="thead-dark">
 			<tr>
+				<th scope="col">狀態</th>
 				<th scope="col">會員ID</th>
 				<th scope="col">會員帳號</th>
 				<th scope="col">會員名稱</th>
 				<th scope="col">會員信箱</th>
 				<th scope="col">會員電話</th>
 				<th scope="col">會員地址</th>
-				<th scope="col">狀態</th>
 				<th scope="col"></th>
 				<th scope="col"></th>
 				<th scope="col"></th>
@@ -176,6 +172,20 @@ function recovery(target){
 		<tbody>
 			<c:forEach var='members' items='${Member}'>
 				<tr>
+					<c:choose>
+
+						<c:when test="${members.status eq '2'}">
+
+							<td class="alert alert-danger" role="alert"></td>
+
+						</c:when>
+						<c:when test="${members.status eq '1'}">
+
+							<td class="alert alert-success" role="alert"></td>
+
+						</c:when>
+
+					</c:choose>
 					<td>${members.id}</td>
 					<td>${members.account}</td>
 					<td>${members.name}</td>
@@ -183,29 +193,15 @@ function recovery(target){
 					<td>${members.phone}</td>
 					<td>${members.address}</td>
 
-					<c:choose>
-
-						<c:when test="${members.status eq '2'}">
-
-							<td>✘</td>
-
-						</c:when>
-						<c:when test="${members.status eq '1'}">
-
-							<td>○</td>
-
-						</c:when>
-
-					</c:choose>
 
 					<td><button type="button" class="btn btn-warning"
-							onclick="Notification(${members.id})">警告</button></td>
+							onclick="Notification(${members.id},1)">❗❗</button></td>
 
 					<td><button type="button" class="btn btn-danger"
-							onclick="stop(${members.id})">X</button></td>
+							onclick="stop(${members.id},1)">X</button></td>
 
-					<td><button type="button" class="btn btn-info"
-							onclick="recovery(${members.id})">O</button></td>
+					<td><button type="button" class="btn btn-success"
+							onclick="recovery(${members.id},1)">O</button></td>
 
 				</tr>
 			</c:forEach>
