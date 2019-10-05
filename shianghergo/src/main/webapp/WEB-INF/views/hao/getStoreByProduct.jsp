@@ -104,7 +104,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
-
+	
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -215,6 +215,11 @@
 		</div>
 	</div>
 
+
+<%-- 	<c:set var="status" scope="session" value="${store.status }" /> --%>
+<%-- 	<c:if test="${status!=3 }">123</c:if> --%>
+	
+	
 	<div style="padding-bottom: 50px;">
 		<div style="padding-left: 350px; padding-right: 350px;"
 			class="card text-center">
@@ -328,6 +333,7 @@
 			</div>
 		</c:forEach>
 	</div>
+	
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>

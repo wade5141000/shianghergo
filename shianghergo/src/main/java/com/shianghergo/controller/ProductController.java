@@ -155,10 +155,11 @@ public class ProductController {
 		model.addAttribute("products", list);
 		
 		List<Integer> list1 = service.getAllProductsId();
-		double score = 0;
-		for(Integer GG:list1) {	
-			score = gbdbService.getAverageScoreByItemId(GG);
-		}
+//		double score = 0;
+//		for(Integer GG:list1) {	
+//			score = gbdbService.getAverageScoreByItemId(GG);
+			model.addAttribute("scores", list1);
+//		}
 		
 		
 		return "hao/products";
