@@ -18,17 +18,25 @@ public class INotificationDao implements NotificationDao {
 	SessionFactory factory;
 
 	@Override
-	public void caveatNotification(NotificationBean notification, Integer target) {
+	public void caveatNotification(NotificationBean notification, Integer target, Integer type) {
 
 		Session session = factory.getCurrentSession();
+
+		if (type == 1) {
+
+			notification.setContents("帳號因違反商城相關規範，故觸犯情節為輕微給予警告提醒，請會員務必遵守商城規範");
+
+		} else {
+
+			notification.setContents("帳號所屬[ 商店 ]因違反商城相關規範，故觸犯情節為輕微給予警告提醒，請會員務必遵守商城規範");
+
+		}
 
 		Date date = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd/HH:mm");
 		String now = ft.format(date);
-
 		notification.setTarget(target);
 		notification.setTitle("管理員通知");
-		notification.setContents("因違反商城相關規範，視情節為輕微故給予警告提醒。");
 		notification.setTime(now);
 		notification.setStatus(1);
 
@@ -37,17 +45,24 @@ public class INotificationDao implements NotificationDao {
 	}
 
 	@Override
-	public void stopNotification(NotificationBean notification, Integer target) {
+	public void stopNotification(NotificationBean notification, Integer target, Integer type) {
 
 		Session session = factory.getCurrentSession();
 
+		if (type == 1) {
+
+			notification.setContents("帳號因違反商城相關規範之情節重大，故給予停權處分，對處分有相關疑慮可與客服人員聯絡詳談。");
+
+		} else {
+
+			notification.setContents("帳號所屬[ 商店 ]因違反商城相關規範之情節重大，故給予停權處分，對處分有相關疑慮可與客服人員聯絡詳談。");
+
+		}
 		Date date = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd/HH:mm");
 		String now = ft.format(date);
-
 		notification.setTarget(target);
 		notification.setTitle("管理員通知");
-		notification.setContents("因違反商城相關規範之情節重大，故給予停權處分，對處分有相關疑慮可與客服人員聯絡詳談。");
 		notification.setTime(now);
 		notification.setStatus(1);
 
@@ -56,9 +71,19 @@ public class INotificationDao implements NotificationDao {
 	}
 
 	@Override
-	public void recoveryNotification(NotificationBean notification, Integer target) {
+	public void recoveryNotification(NotificationBean notification, Integer target, Integer type) {
 
 		Session session = factory.getCurrentSession();
+
+		if (type == 1) {
+
+			notification.setContents("帳號因停權時效已過，故恢復使用者使用權限。");
+
+		} else {
+
+			notification.setContents("帳號所屬[ 商店 ]因停權時效已過，故恢復商店使用權限。");
+
+		}
 
 		Date date = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd/HH:mm");
@@ -66,7 +91,6 @@ public class INotificationDao implements NotificationDao {
 
 		notification.setTarget(target);
 		notification.setTitle("管理員通知");
-		notification.setContents("停權時效已過，恢復使用者使用權限。");
 		notification.setTime(now);
 		notification.setStatus(1);
 

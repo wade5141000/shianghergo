@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -124,9 +123,9 @@ public class ALLController {
 
 	// 會員警告
 	@RequestMapping("leopard/NotificationMember")
-	public void NotificationMember(Integer target, NotificationBean notification) {
+	public void NotificationMember(Integer target, NotificationBean notification , Integer type) {
 
-		service.caveatNotification(notification, target);
+		service.caveatNotification(notification, target , type);
 
 	}
 
@@ -134,10 +133,10 @@ public class ALLController {
 
 	// 會員停權
 	@RequestMapping("leopard/stopMember")
-	public void stopMember(Integer target, NotificationBean notification) {
+	public void stopMember(Integer target, NotificationBean notification , Integer type) {
 
 		service.saveMemberIdToStop(target);
-		service.stopNotification(notification, target);
+		service.stopNotification(notification, target , type);
 
 	}
 
@@ -145,10 +144,10 @@ public class ALLController {
 
 	// 會員恢復權限
 	@RequestMapping("leopard/recoveryMember")
-	public void recoveryMember(Integer target, NotificationBean notification) {
+	public void recoveryMember(Integer target, NotificationBean notification , Integer type) {
 
 		service.recoveryMember(target);
-		service.recoveryNotification(notification, target);
+		service.recoveryNotification(notification, target ,type);
 
 	}
 
@@ -197,9 +196,9 @@ public class ALLController {
 
 	// 商家警告
 	@RequestMapping("leopard/NotificationStore")
-	public void NotificationStop(Integer target, NotificationBean notification) {
-
-		service.caveatNotification(notification, target);
+	public void NotificationStop(Integer target, NotificationBean notification, Integer type) {
+	
+		service.caveatNotification(notification, target ,type);
 
 	}
 
@@ -207,10 +206,10 @@ public class ALLController {
 
 	// 商家停權
 	@RequestMapping("leopard/stopStore")
-	public String stopStore(Integer targetS, Integer target, NotificationBean notification, Model model) {
+	public String stopStore(Integer targetS, Integer target, NotificationBean notification, Model model , Integer type) {
 
 		service.saveStoreIdToStop(targetS);
-		service.stopNotification(notification, target);
+		service.stopNotification(notification, target ,type);
 
 		List<StoreBean> sto = service.getStore();
 		model.addAttribute("Store", sto);
@@ -223,10 +222,10 @@ public class ALLController {
 
 	// 商家恢復權限
 	@RequestMapping("leopard/recoveryStore")
-	public String recoveryStore(Integer targetS, Integer target, NotificationBean notification, Model model) {
+	public String recoveryStore(Integer targetS, Integer target, NotificationBean notification, Model model , Integer type) {
 
 		service.recoveryStore(targetS);
-		service.recoveryNotification(notification, target);
+		service.recoveryNotification(notification, target , type);
 		List<StoreBean> sto = service.getStore();
 		model.addAttribute("Store", sto);
 

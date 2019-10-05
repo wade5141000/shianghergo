@@ -53,8 +53,6 @@ import com.shianghergo.model.SearchBean;
 import com.shianghergo.service.GroupsService;
 import com.shianghergo.service.SearchService;
 
-
-
 @Controller
 @SessionAttributes("loginOK")
 
@@ -99,21 +97,21 @@ public class GroupsController {
 		java.util.Date d = new java.util.Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String timeNow = sdf.format(d);
-		List<CategoryBean> list =service.getCategoryList();
+		List<CategoryBean> list = service.getCategoryList();
 		model.addAttribute("now", timeNow);
 
 		model.addAttribute("groupsBean", gb);
-		model.addAttribute("category",list );
+
+		model.addAttribute("category", list);
 //		System.out.println(list);
 
-		
 		return "frank/addGroups";
 	}
 
 	// -------------------------開團 並把會員member_id 放入------------
 	@RequestMapping(value = "/frank/Groups1", method = RequestMethod.POST)
 	public String processAddNewProductForm(Model model, @ModelAttribute("groupsBean") GroupsBean gb,
-			BindingResult result, HttpServletRequest request, @SessionAttribute("loginOK")MemberBean member,
+			BindingResult result, HttpServletRequest request, @SessionAttribute("loginOK") MemberBean member,
 			@RequestParam("categoryBean") Integer category_id) {
 
 		String[] suppressedFields = result.getSuppressedFields();
@@ -127,6 +125,7 @@ public class GroupsController {
 //		String originalFilename = productImage.getOriginalFilename();
 //		System.out.println(originalFilename);
 //		gib.setFileName(originalFilename);
+
 //		String ext = ".jpg";
 //		String rootDirectory = context.getRealPath("/");
 
@@ -184,7 +183,7 @@ public class GroupsController {
 			
 			
 		}
-		
+
 
 		return "redirect:/frank/showgroup?gid=" + id;
 	}
@@ -204,13 +203,6 @@ public class GroupsController {
 //		return categoryMap;
 //	}
 //	
-	
-	
-	
-	
-	
-	
-	
 
 	// ----------------新增商品取的表單-----------------------
 	@RequestMapping(value = "/frank/additem", method = RequestMethod.GET)
@@ -227,8 +219,8 @@ public class GroupsController {
 	}
 
 	@RequestMapping(value = "/frank/additem", method = RequestMethod.POST)
-	public String getAddNewProductForm(@RequestParam("gid") Integer gid,@ModelAttribute("groupsitemBean") Groups_ItemBean gib, BindingResult result,
-			HttpServletRequest request) {
+	public String getAddNewProductForm(@RequestParam("gid") Integer gid,
+			@ModelAttribute("groupsitemBean") Groups_ItemBean gib, BindingResult result, HttpServletRequest request) {
 		String[] suppressedFields = result.getSuppressedFields();
 		if (suppressedFields.length > 0) {
 			throw new RuntimeException("嘗試傳入不允許的欄位:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
@@ -297,7 +289,7 @@ public class GroupsController {
 		return "redirect:/frank/showgroup?gid=" + gid;
 	}
 
-	//--------------------------------取商品圖片---------------------------------
+	// --------------------------------取商品圖片---------------------------------
 	@RequestMapping(value = "/frank/getPicture/{id}", method = RequestMethod.GET)
 	public void getPicture(HttpServletRequest resp, @PathVariable Integer id,HttpServletResponse rp) {
 //		String filePath = "C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\images\\hello.png";
@@ -415,12 +407,8 @@ public class GroupsController {
 				e.printStackTrace();
 			}
 			
-			
 		}
-	
-	
-	
-	
+
 	private byte[] toByteArray(String filePath) {
 		byte[] b = null;
 		String realPath = context.getRealPath(filePath);
@@ -438,13 +426,7 @@ public class GroupsController {
 		}
 		return b;
 	}
-	
-	
-	
-	
-	
-	
-	
+
 	// -----------------------新增商品------------------
 //	@RequestMapping(value = "/frank/additem", method = RequestMethod.POST)
 //	public String AddNewGroupsIteForm(@RequestParam("gid") Integer gid,
@@ -456,7 +438,6 @@ public class GroupsController {
 //
 //		return "redirect:/frank/showgroup?gid=" + gid;
 //	}
-
 
 ////---------------新增商品 取的表單 並把groups_id 放入-------------------
 //	@RequestMapping(value = "/item", method = RequestMethod.GET)
@@ -592,8 +573,9 @@ public class GroupsController {
 	
 //-------------------------某一個團購頁面---------------------------
 	@RequestMapping("/frank/group") // 查詢單一產品
-	public String getGroupsById(@RequestParam("gid") Integer gid, @ModelAttribute("loginOK")MemberBean member, Model model) {
-		
+	public String getGroupsById(@RequestParam("gid") Integer gid, @ModelAttribute("loginOK") MemberBean member,
+			Model model) {
+
 		System.out.println("gid: " + gid);
 		System.out.println("mid:  " + member.getId());
 		GroupsBean gb = service.getGroupById(gid);
@@ -618,7 +600,7 @@ public class GroupsController {
 		model.addAttribute("groups_idList", list);
 		System.out.println(list);
 		return "frank/itemm";
-		
+
 	}
 
 	// -------------------團主資料------------------
@@ -634,7 +616,7 @@ public class GroupsController {
 
 	// -----------------------------我開的團------------------------------
 	@RequestMapping("/frank/mygroups") // 查詢單一產品
-	public String getAllGroupsListByMember(Model model, GroupsBean gb,@ModelAttribute("loginOK")MemberBean member) {
+	public String getAllGroupsListByMember(Model model, GroupsBean gb, @ModelAttribute("loginOK") MemberBean member) {
 
 		model.addAttribute("mygroups", service.getAllGroupsByMember(member.getId()));
 		return "frank/mygroups";
@@ -652,8 +634,8 @@ public class GroupsController {
 	// ------------------------修改團的表單-----------------
 	@RequestMapping(value = "/frank/updatetogroup", method = RequestMethod.GET)
 	public String updatetogroups(@RequestParam("gid") Integer gid, Model model) {
-		List<CategoryBean> list =service.getCategoryList();
-		model.addAttribute("category",list );
+		List<CategoryBean> list = service.getCategoryList();
+		model.addAttribute("category", list);
 		model.addAttribute("updategroup", service.getGroupById(gid));
 		GroupsBean gb = new GroupsBean();
 
@@ -667,9 +649,9 @@ public class GroupsController {
 	@RequestMapping(value = "/frank/updatetogroup", method = RequestMethod.POST)
 	public String updatetogroups(@RequestParam("name") String name, @RequestParam("end_time") String end_time,
 			@RequestParam("detail") String detail, @RequestParam("payment") String payment,
-			@RequestParam("id") Integer id,@RequestParam("categoryBean") Integer category_id,
-			@ModelAttribute("upgroupsBean") GroupsBean gb,BindingResult result, HttpServletRequest request) {
-			
+			@RequestParam("id") Integer id, @RequestParam("categoryBean") Integer category_id,
+			@ModelAttribute("upgroupsBean") GroupsBean gb, BindingResult result, HttpServletRequest request) {
+
 		if (gb.getProductImage() != null) {
 			
 			MultipartFile productImage = gb.getProductImage();
@@ -718,26 +700,21 @@ public class GroupsController {
 //			}
 		}
 		gb.setId(id);
-		
 
 //		gb.setName(name);
 //		gb.setEnd_time(end_time);
 //		gb.setDetail(detail);
 //		gb.setPayment(payment);
 //		gb.setId(id);
-			
-		
-		 if(gb.getPayment().length() !=1) {
-			 gb.setPayment("3");
-		 }
-		service.updategroups(gb,category_id);
+
+		if (gb.getPayment().length() != 1) {
+			gb.setPayment("3");
+		}
+		service.updategroups(gb, category_id);
 
 		return "redirect:/frank/showgroup?gid=" + id;
 	}
 
-
-
-	
 	// -----------------------修改商品的表單-------------------
 	@RequestMapping(value = "/frank/updatetogroup_item", method = RequestMethod.GET)
 	public String updatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("iid") Integer iid, Model model,
@@ -811,48 +788,36 @@ public class GroupsController {
 			ib.setId(iid);
 			service.updateitem(ib);
 
-		return "redirect:/frank/showgroup?gid=" + gid ;
+
+		return "redirect:/frank/showgroup?gid=" + gid;
 	}
 
-	
 	// -----------------------修改地址的表單-------------------
-		@RequestMapping(value = "/frank/updatetoplace", method = RequestMethod.GET)
-		public String updatetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model,
-				GroupsBean gb) {
+	@RequestMapping(value = "/frank/updatetoplace", method = RequestMethod.GET)
+	public String updatetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model,
+			GroupsBean gb) {
 
-			model.addAttribute("updateplace", service.getPlaceById(pid));
+		model.addAttribute("updateplace", service.getPlaceById(pid));
 
-			return "frank/updateplace";
+		return "frank/updateplace";
 
-		}
+	}
 
-		// ---------------------修改地址的資料-----------------
-		@RequestMapping(value = "/frank/updatetoplace", method = RequestMethod.POST)
-		public String updatetoplace(@RequestParam("gid") Integer gid, @RequestParam("address") String address,
-				@RequestParam("time") String time, @RequestParam("pid") Integer pid) {
+	// ---------------------修改地址的資料-----------------
+	@RequestMapping(value = "/frank/updatetoplace", method = RequestMethod.POST)
+	public String updatetoplace(@RequestParam("gid") Integer gid, @RequestParam("address") String address,
+			@RequestParam("time") String time, @RequestParam("pid") Integer pid) {
 
-			PlaceBean pb = new PlaceBean();
-			pb.setAddress(address);
-			pb.setTime(time);
-			pb.setId(pid);
+		PlaceBean pb = new PlaceBean();
+		pb.setAddress(address);
+		pb.setTime(time);
+		pb.setId(pid);
 
-			service.updateplace(pb);
+		service.updateplace(pb);
 
-			return "redirect:/frank/showgroup?gid=" + gid;
-		}
+		return "redirect:/frank/showgroup?gid=" + gid;
+	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	// ----------------------刪除商品---------------------------
 	@RequestMapping(value = "/frank/deletetogroup_item")
 	public String deletetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("iid") Integer iid, Model model) {
@@ -905,58 +870,51 @@ public class GroupsController {
 		return "frank/Ngroup";
 	}
 
-	
-	
-	
-	//轉開團輸入欄  --927新增
-		@RequestMapping("leopard/searchGroups")
-		public String searchGroups() {
-			
-		    return"leopard/SearchGroups";
-			
-		}
-	
-	//顯示開團列表 --927新增
-	@RequestMapping("leopard/showGroups")
-	public String showGroups(String name , Model model ,Integer sort) {
-		
-	   
-		if(sort == 1) {
-			
-		List<SearchBean> Searchlist = searchService.findSearchByName(name);
-//		System.out.println("後端Searchlist="+Searchlist);
-		
-		session.setAttribute("searchList", Searchlist);
-		
-		List<SearchBean> Searchlist1 =(List<SearchBean>) session.getAttribute("searchList");
+	// 轉開團輸入欄 --927新增
+	@RequestMapping("leopard/searchGroups")
+	public String searchGroups() {
 
-		System.out.println("session 裡有"+Searchlist1);
+		return "leopard/SearchGroups";
+
+	}
+
+	// 顯示開團列表 --927新增
+	@RequestMapping("leopard/showGroups")
+	public String showGroups(String name, Model model, Integer sort) {
+
+		if (sort == 1) {
+
+			List<SearchBean> Searchlist = searchService.findSearchByName(name);
+
+			int size = Searchlist.size();
+
+//		System.out.println("後端Searchlist="+Searchlist);
+			model.addAttribute("name", name);
+			model.addAttribute("size", size);
+			session.setAttribute("searchList", Searchlist);
+
+			List<SearchBean> Searchlist1 = (List<SearchBean>) session.getAttribute("searchList");
+
+			System.out.println("session 裡有" + Searchlist1);
 //呼叫view
 			return "eric/information";
+		} else {
+
+			List<GroupsBean> list = service.searchToGroups(name);
+
+			int size = list.size();
+			model.addAttribute("name", name);
+			model.addAttribute("size", size);
+			model.addAttribute("Groups", list);
+			return "leopard/showSearchGroups";
+
 		}
-		else {
-		
-	    List<GroupsBean> list = service.searchToGroups(name);
-		
-	    model.addAttribute("Groups",list);
-		return "leopard/showSearchGroups";
-		
-		
-	}
 
 	}
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
-	//會員中心新&修
-	
+
+	// 會員中心新&修
+
 	// ---------------------------某一團的詳細資料--------------------------
 	@RequestMapping("/frank/showgroup(mb)")
 	public String getMbGroupById(@RequestParam("gid") Integer gid, Model model, GroupsBean gb) {
@@ -965,29 +923,30 @@ public class GroupsController {
 
 		return "frank/showgroup(mb)";
 	}
-	
-	
+
 	// ----------------新增商品取的表單-----------------------
-		@RequestMapping(value = "/frank/additem(mb)", method = RequestMethod.GET)
-		public String mbAddNewGroupsItemForm(@RequestParam("gid") Integer gid, Model model) {
-			System.out.println("測試" + gid);
-			Groups_ItemBean gib = new Groups_ItemBean();
+	@RequestMapping(value = "/frank/additem(mb)", method = RequestMethod.GET)
+	public String mbAddNewGroupsItemForm(@RequestParam("gid") Integer gid, Model model) {
+		System.out.println("測試" + gid);
+		Groups_ItemBean gib = new Groups_ItemBean();
 
-			model.addAttribute("groupsitemBean", gib);
-			model.addAttribute("gid", gid);
+		model.addAttribute("groupsitemBean", gib);
+		model.addAttribute("gid", gid);
 
-			System.out.println("測試1" + gid);
-			return "frank/addGroupsItem2";
+		System.out.println("測試1" + gid);
+		return "frank/addGroupsItem2";
 
+	}
+
+	@RequestMapping(value = "/frank/additem(mb)", method = RequestMethod.POST)
+	public String mbgetAddNewProductForm(@RequestParam("gid") Integer gid,
+			@ModelAttribute("groupsitemBean") Groups_ItemBean gib, BindingResult result, HttpServletRequest request) {
+		String[] suppressedFields = result.getSuppressedFields();
+		if (suppressedFields.length > 0) {
+			throw new RuntimeException("嘗試傳入不允許的欄位:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
 		}
 
-		@RequestMapping(value = "/frank/additem(mb)", method = RequestMethod.POST)
-		public String mbgetAddNewProductForm(@RequestParam("gid") Integer gid,@ModelAttribute("groupsitemBean") Groups_ItemBean gib, BindingResult result,
-				HttpServletRequest request) {
-			String[] suppressedFields = result.getSuppressedFields();
-			if (suppressedFields.length > 0) {
-				throw new RuntimeException("嘗試傳入不允許的欄位:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
-			}
+
 
 			MultipartFile productImage = gib.getProductImage();
 			gib.setProductImage(null);
@@ -1046,50 +1005,71 @@ public class GroupsController {
 			}
 			
 			return "redirect:/frank/showgroup(mb)?gid=" + gid;
-		}
-	
-		
-		
-		// ----------------新增地址-----------------------
-		@RequestMapping(value = "/frank/addplace(mb)", method = RequestMethod.GET)
-		public String mbAddNewPlaceForm(@RequestParam("gid") Integer gidd, Model model, HttpServletRequest rq) {
-			System.out.println("測試" + gidd);
-			PlaceBean pb = new PlaceBean();
-
-			model.addAttribute("placeBean", pb);
-			model.addAttribute("gid", gidd);
-
-			System.out.println("測試1" + gidd);
-			return "frank/addPlace2";
 
 		}
 
-		// -----------------------新增地址------------------
-		@RequestMapping(value = "/frank/addplace(mb)", method = RequestMethod.POST)
-		public String mbAddNewPlaceForm(@RequestParam("gid") Integer gid, @ModelAttribute("placeBean") PlaceBean pb,
-				GroupsBean gb) {
+		service.addGroupsItem(gib, gid);
 
-			System.out.println("有進來嗎" + gid);
-
-			service.addPlace(pb, gid);
-
-			return "redirect:/frank/showgroup(mb)?gid=" + gid;
+		try {
+			File imageFolder = new File(rootDirectory, "images");
+			if (!imageFolder.exists())
+				imageFolder.mkdirs();
+			File file = new File(imageFolder, gib.getId() + ext);
+			productImage.transferTo(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
 		}
-	
-	
+		return "redirect:/frank/showgroup(mb)?gid=" + gid;
+	}
+
+	// ----------------新增地址-----------------------
+	@RequestMapping(value = "/frank/addplace(mb)", method = RequestMethod.GET)
+	public String mbAddNewPlaceForm(@RequestParam("gid") Integer gidd, Model model, HttpServletRequest rq) {
+		System.out.println("測試" + gidd);
+		PlaceBean pb = new PlaceBean();
+
+		model.addAttribute("placeBean", pb);
+		model.addAttribute("gid", gidd);
+
+		System.out.println("測試1" + gidd);
+		return "frank/addPlace2";
+
+	}
+
+	// -----------------------新增地址------------------
+	@RequestMapping(value = "/frank/addplace(mb)", method = RequestMethod.POST)
+	public String mbAddNewPlaceForm(@RequestParam("gid") Integer gid, @ModelAttribute("placeBean") PlaceBean pb,
+			GroupsBean gb) {
+
+		System.out.println("有進來嗎" + gid);
+
+		service.addPlace(pb, gid);
+
+		return "redirect:/frank/showgroup(mb)?gid=" + gid;
+	}
+
 	// ------------------------修改團的表單-----------------
-		@RequestMapping(value = "/frank/updatetogroup(mb)", method = RequestMethod.GET)
-		public String mbupdatetogroups(@RequestParam("gid") Integer gid, Model model) {
-			List<CategoryBean> list =service.getCategoryList();
-			model.addAttribute("category",list );
-			model.addAttribute("updategroup", service.getGroupById(gid));
-			GroupsBean gb = new GroupsBean();
+	@RequestMapping(value = "/frank/updatetogroup(mb)", method = RequestMethod.GET)
+	public String mbupdatetogroups(@RequestParam("gid") Integer gid, Model model) {
+		List<CategoryBean> list = service.getCategoryList();
+		model.addAttribute("category", list);
+		model.addAttribute("updategroup", service.getGroupById(gid));
+		GroupsBean gb = new GroupsBean();
 
-			model.addAttribute("upgroupsBean", gb);
+		model.addAttribute("upgroupsBean", gb);
 
-			return "frank/updategroup2";
+		return "frank/updategroup2";
 
-		}
+	}
+
+	// ---------------------修改團的資料-----------------
+	@RequestMapping(value = "/frank/updatetogroup(mb)", method = RequestMethod.POST)
+	public String mbupdatetogroups(@RequestParam("name") String name, @RequestParam("end_time") String end_time,
+			@RequestParam("detail") String detail, @RequestParam("payment") String payment,
+			@RequestParam("id") Integer id, @RequestParam("categoryBean") Integer category_id,
+			@ModelAttribute("upgroupsBean") GroupsBean gb, BindingResult result, HttpServletRequest request) {
+
 
 		// ---------------------修改團的資料-----------------
 		@RequestMapping(value = "/frank/updatetogroup(mb)", method = RequestMethod.POST)
@@ -1151,40 +1131,36 @@ public class GroupsController {
 //			gb.setDetail(detail);
 //			gb.setPayment(payment);
 //			gb.setId(id);
-				
-			
-			 if(gb.getPayment().length() !=1) {
-				 gb.setPayment("3");
-			 }
-			service.updategroups(gb,category_id);
 
-			return "redirect:/frank/showgroup(mb)?gid=" + id;
+		if (gb.getPayment().length() != 1) {
+			gb.setPayment("3");
 		}
+		service.updategroups(gb, category_id);
+
+		return "redirect:/frank/showgroup(mb)?gid=" + id;
+	}
+
+	// -----------------------修改商品的表單-------------------
+	@RequestMapping(value = "/frank/updatetogroup_item(mb)", method = RequestMethod.GET)
+	public String mbupdatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("iid") Integer iid, Model model,
+			GroupsBean gb) {
+		Groups_ItemBean gib = new Groups_ItemBean();
+
+		model.addAttribute("upgroupsitemBean", gib);
+		model.addAttribute("updategitem", service.getGroup_ItemById(iid));
+
+		return "frank/updategroup_item2";
+
+	}
+
+	// ---------------------修改商品的資料-----------------
+	@RequestMapping(value = "/frank/updatetogroup_item(mb)", method = RequestMethod.POST)
+	public String mbupdatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("name") String name,
+			@RequestParam("detail") String detail, @RequestParam("price") Integer price,
+			@RequestParam("iid") Integer iid, @ModelAttribute("upgroupsitemBean") Groups_ItemBean ib) {
 
 
 
-		
-		// -----------------------修改商品的表單-------------------
-		@RequestMapping(value = "/frank/updatetogroup_item(mb)", method = RequestMethod.GET)
-		public String mbupdatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("iid") Integer iid, Model model,
-				GroupsBean gb) {
-			Groups_ItemBean gib = new Groups_ItemBean();
-
-			model.addAttribute("upgroupsitemBean", gib);
-			model.addAttribute("updategitem", service.getGroup_ItemById(iid));
-
-			return "frank/updategroup_item2";
-
-		}
-
-		// ---------------------修改商品的資料-----------------
-		@RequestMapping(value = "/frank/updatetogroup_item(mb)", method = RequestMethod.POST)
-		public String mbupdatetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("name") String name,
-				@RequestParam("detail") String detail, @RequestParam("price") Integer price,
-				@RequestParam("iid") Integer iid,@ModelAttribute("upgroupsitemBean") Groups_ItemBean ib) {
-
-//				System.out.println("hellllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllo");
-//			if (ib.getProductImage() != null) {
 				if (ib.getProductImage() != null) {
 					MultipartFile productImage = ib.getProductImage();
 //					String originalFilename = productImage.getOriginalFilename();
@@ -1229,37 +1205,51 @@ public class GroupsController {
 				ib.setId(iid);
 				service.updateitem(ib);
 
-			return "redirect:/frank/showgroup(mb)?gid=" + gid ;
+
+			if (productImage != null && !productImage.isEmpty()) {
+				String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
+				String rootDirectory = context.getRealPath("/");
+				byte[] b;
+				try {
+					b = productImage.getBytes();
+					Blob blob = new SerialBlob(b);
+					ib.setImage(blob);
+				} catch (Exception e) {
+					e.printStackTrace();
+					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+				}
+			}
 		}
+		ib.setId(iid);
+		service.updateitem(ib);
 
-		
-		// -----------------------修改地址的表單-------------------
-			@RequestMapping(value = "/frank/updatetoplace(mb)", method = RequestMethod.GET)
-			public String mbupdatetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model,
-					GroupsBean gb) {
+		return "redirect:/frank/showgroup(mb)?gid=" + gid;
+	}
 
-				model.addAttribute("updateplace", service.getPlaceById(pid));
+	// -----------------------修改地址的表單-------------------
+	@RequestMapping(value = "/frank/updatetoplace(mb)", method = RequestMethod.GET)
+	public String mbupdatetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model,
+			GroupsBean gb) {
 
-				return "frank/updateplace2";
+		model.addAttribute("updateplace", service.getPlaceById(pid));
 
-			}
+		return "frank/updateplace2";
 
-			// ---------------------修改地址的資料-----------------
-			@RequestMapping(value = "/frank/updatetoplace(mb)", method = RequestMethod.POST)
-			public String mbupdatetoplace(@RequestParam("gid") Integer gid, @RequestParam("address") String address,
-					@RequestParam("time") String time, @RequestParam("pid") Integer pid) {
+	}
 
-				PlaceBean pb = new PlaceBean();
-				pb.setAddress(address);
-				pb.setTime(time);
-				pb.setId(pid);
+	// ---------------------修改地址的資料-----------------
+	@RequestMapping(value = "/frank/updatetoplace(mb)", method = RequestMethod.POST)
+	public String mbupdatetoplace(@RequestParam("gid") Integer gid, @RequestParam("address") String address,
+			@RequestParam("time") String time, @RequestParam("pid") Integer pid) {
 
-				service.updateplace(pb);
+		PlaceBean pb = new PlaceBean();
+		pb.setAddress(address);
+		pb.setTime(time);
+		pb.setId(pid);
 
-				return "redirect:/frank/showgroup(mb)?gid=" + gid;
-			}
-	
-	
-	
-	
+		service.updateplace(pb);
+
+		return "redirect:/frank/showgroup(mb)?gid=" + gid;
+	}
+
 }
