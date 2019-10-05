@@ -18,8 +18,8 @@ public class PlaceBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String address;
-	private Double longitude;
-	private Double latitude;
+	private String longitude;
+	private String latitude;
 	private String time;
 	
 	private GroupsBean groupsBean;
@@ -34,7 +34,7 @@ public class PlaceBean implements Serializable {
 		this.groupsOrder = groupsOrder;
 	}
 
-	public PlaceBean(Integer id, String address, Double longitude, Double latitude, String time,
+	public PlaceBean(Integer id, String address, String longitude, String latitude, String time,
 			GroupsBean groupsBean) {
 	
 		this.id = id;
@@ -67,19 +67,19 @@ public class PlaceBean implements Serializable {
 		this.address = address;
 	}
 
-	public Double getLongitude() {
+	public String getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(Double longitude) {
+	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
 
-	public Double getLatitude() {
+	public String getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(Double latitude) {
+	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
 
@@ -102,11 +102,11 @@ public class PlaceBean implements Serializable {
 	}
 
 
-	@Override
-	public String toString() {
-		return "PlaceBean [id=" + id + ", address=" + address + ", longitude=" + longitude + ", latitude=" + latitude
-				+ ", time=" + time + ", groupsBean=" + groupsBean + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "PlaceBean [id=" + id + ", address=" + address + ", longitude=" + longitude + ", latitude=" + latitude
+//				+ ", time=" + time + ", groupsBean=" + groupsBean + "]";
+//	}
 	
 	
 	

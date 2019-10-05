@@ -36,6 +36,7 @@ public class GroupsBean implements Serializable {
 	private String detail; // 團購商品說明
 	private String payment;// 付款方式
 	private Blob image;
+	private Integer banknumber;	
 	private MemberBean memberBean;
 
 	
@@ -92,25 +93,26 @@ public class GroupsBean implements Serializable {
 
 
 	}
-
 	@Override
 	public String toString() {
 		return "GroupsBean [id=" + id + ", start_time=" + start_time + ", end_time=" + end_time + ", status=" + status
-				+ ", name=" + name + ", detail=" + detail + ", payment=" + payment + ", groupsitem=" + groupsitem + "]";
+				+ ", name=" + name + ", payment=" + payment + ", banknumber=" + banknumber + "]";
 	}
+	
 
 	public GroupsBean() {
 
 	}
 
 	// id由系統自動生成
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	public Integer getId() {
 		return id;
 	}
+
+
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -190,6 +192,14 @@ public class GroupsBean implements Serializable {
 
 	public void setPayment(String payment) {
 		this.payment = payment;
+	}
+
+	public Integer getBanknumber() {
+		return banknumber;
+	}
+
+	public void setBanknumber(Integer banknumber) {
+		this.banknumber = banknumber;
 	}
 
 }

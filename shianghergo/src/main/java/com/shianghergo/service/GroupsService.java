@@ -8,6 +8,7 @@ import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
+import com.shianghergo.model.comment_member;
 
 
 public interface GroupsService {
@@ -15,7 +16,7 @@ public interface GroupsService {
 	Set<Groups_ItemBean> getGroupItemsById(Integer group_id);
 	//----------------以下士權------------------
 	Integer addGroups(GroupsBean gb , Integer member_id,Integer category_id);
-	void addGroupsItem(Groups_ItemBean groupsitem,int idd);
+	int addGroupsItem(Groups_ItemBean groupsitem,int idd);
 	GroupsBean getGroupstById(int groupsId);
 	List<GroupsBean> getGroupsList();
 	public GroupsBean getGroupById(int groupId);//查詢單一團的資料
@@ -36,6 +37,9 @@ public interface GroupsService {
 	List<CategoryBean> getCategoryList();
 	
 	List<GroupsBean> searchToGroups(String name); //查詢開團列表//9/27新增 
+	List<GroupsBean> getGroupsByCategory_id(Integer category_id);//團列表的分類顯示
+	List<comment_member> getAllCommentByMember(Integer member_id);
+	
 
 	
 	

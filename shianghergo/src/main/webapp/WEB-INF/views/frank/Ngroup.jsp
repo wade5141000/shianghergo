@@ -85,20 +85,17 @@
 								<a href="javascript:;">所有分類</a>
 							</dd>
 							<dd>
-								<a href="javascript:;">全品項</a>
+								<a href="${pageContext.request.contextPath}/frank/">全品項</a>
 							</dd>
+						<c:forEach var="categorys" items="${category}">
 							<dd>
-								<a href="javascript:;">團購美食</a>
+								<a href="${pageContext.request.contextPath}/frank/groupsByCategory?category_id=${categorys.id}">${categorys.name}</a>
 							</dd>
-							<dd>
-								<a href="javascript:;">保養美妝</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">服飾配件</a>
-							</dd>
-							<dd>
-								<a href="javascript:;">育兒親子</a>
-							</dd>
+							</c:forEach>
+						
+						
+						
+						
 						</dl>
 					</div>
 				</div>
@@ -109,9 +106,10 @@
 <!-- 								href="javascript:;" event='price'>截止</a> -->
 
 <!-- 						</div> -->
-					
-						<div class="cont-list layui-clear" id="list-cont">
-							<c:forEach var="group" items="${groups}">
+			<div class="cont-list layui-clear" id="list-cont">
+						
+							<c:forEach var="group" items="${groups}">	
+							<c:if test="${group.memberBean.status==1}">						
 								<div class="item" style="height: 400px;">
 									<div class="img">
 										<a href="<spring:url value='group?gid=${group.id}'/>"> <img
@@ -125,6 +123,7 @@
 										<p>截止日期: ${group.end_time}</p>
 									</div>
 								</div>
+								</c:if>
 							</c:forEach>
 						</div>
 

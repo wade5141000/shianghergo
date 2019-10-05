@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <meta charset="UTF-8">
 <style>
 #regForm {
@@ -29,7 +30,16 @@ body {
 	
 }
 </style>
+<script>
+	$(document).ready(function() {
+		$("#num").hide();
 
+		$("#bank").click(function() {
+			$("#num").toggle();
+		});
+
+	});
+</script>
 <title>開團流程</title>
 </head>
 <body>
@@ -89,7 +99,11 @@ body {
 					<tr>
 						<td><label for="payment" class="item-label">付款方式:</label><br></td>
 						<td><input type="checkbox" name="payment" value="1">面交付款<br>
-							<input type="checkbox" name="payment" value="2">銀行匯款<br></td>
+							<input type="checkbox" name="payment" value="2" id="bank">銀行匯款<br>
+							<div id="num">
+								<label>銀行卡號</label> 
+								<form:input type="text" name="banknumber" id="banknumber" path="banknumber" />
+							</div></td>
 
 						<%-- 				<form:input type="text" id="payment" name="payment" path="payment" /> --%>
 					</tr>
@@ -99,8 +113,9 @@ body {
 								name="productImage" path="productImage" required="required" /></td>
 					</tr>
 				</table>
-				<div style="padding-left: 150px;padding-top: 10px;">
-					<input type="submit" value="下一步" id="regForm"class="btn btn-primary" />
+				<div style="padding-left: 150px; padding-top: 10px;">
+					<input type="submit" value="下一步" id="regForm"
+						class="btn btn-primary" />
 				</div>
 				<!-- 			<div class="item"> -->
 				<!-- 				<label for="image" class="item-label">上傳圖片:</label>  -->

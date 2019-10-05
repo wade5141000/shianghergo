@@ -23,6 +23,7 @@ import com.shianghergo.model.Category_ReportBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.NotificationBean;
 import com.shianghergo.model.StoreBean;
+import com.shianghergo.model.comment_store;
 import com.shianghergo.service.GBDBService;
 import com.shianghergo.service.ProductService;
 import com.shianghergo.service.StoreService;
@@ -122,7 +123,9 @@ public class StoreController {
 		int member_id = service.getMemberIdByStoreId(id);
 		List<Category_ReportBean> list = GBDBservice.getCategoryReport();
 		List<StoreBean> sto = GBDBservice.getStore();
-
+		List<comment_store> list1 = GBDBservice.getComment_store(id);
+		
+		model.addAttribute("comment", list1);
 		model.addAttribute("list", list);
 		model.addAttribute("Store", sto);
 		

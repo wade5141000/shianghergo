@@ -223,23 +223,23 @@ public class GBDBServiceImp implements GBDBService {
 
 	// ------ 9/25改過 message改成NotificationBean
 	@Override
-	public void caveatNotification(NotificationBean notification, Integer target) {
+	public void caveatNotification(NotificationBean notification, Integer target ,Integer type) {
 
-		noDao.caveatNotification(notification, target);
+		noDao.caveatNotification(notification, target, type);
 
 	}
 
 	// ------ 9/25改過 message改成NotificationBean
 	@Override
-	public void stopNotification(NotificationBean notification, Integer target) {
+	public void stopNotification(NotificationBean notification, Integer target , Integer type) {
 
-		noDao.stopNotification(notification, target);
+		noDao.stopNotification(notification, target ,type);
 	}
 
 	@Override
-	public void recoveryNotification(NotificationBean notification, Integer target) {
+	public void recoveryNotification(NotificationBean notification, Integer target , Integer type) {
 
-		noDao.recoveryNotification(notification, target);
+		noDao.recoveryNotification(notification, target ,type);
 		
 		
 	}
@@ -281,7 +281,18 @@ public class GBDBServiceImp implements GBDBService {
 		return gdao.getGroupsItemByGroupsId(groups_id);
 	}
 
+	@Override
+	public double getAverageScoreByItemId(Integer id) {
+		return cidao.getAverageScoreByItemId(id);
+	}
+
+	@Override
+	public List<comment_item> getComment_item(Integer item_id) {
+		return cidao.getComment_item(item_id);
+	}
 	
-	
-	
+	@Override
+	public List<comment_store> getComment_store(Integer store_id) {
+		return csdao.getComment_store(store_id);
+	}
 }
