@@ -134,7 +134,7 @@ public class MemberController {
 			}
 		}
 
-		System.out.println(mb);
+//		System.out.println(mb);
 		service.saveMember(mb);
 
 		try {
@@ -181,7 +181,7 @@ public class MemberController {
 		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
 		String mimeType = context.getMimeType("/resources/images/NoImage.jpg");
 		MediaType mediaType = MediaType.valueOf(mimeType);
-		System.out.println("mediaType = " + mediaType);
+//		System.out.println("mediaType = " + mediaType);
 		headers.setContentType(mediaType);
 		ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
 		return responseEntity;
@@ -223,7 +223,7 @@ public class MemberController {
 	@RequestMapping(value = "/doupdate")
 	public String doupdate(@RequestParam(value = "account") String account, Model model) {
 		model.addAttribute("Member", service.queryMember(account));
-		System.out.println(account);
+//		System.out.println(account);
 		System.out.println("doupdate已執行");
 		return "member00";
 	}
