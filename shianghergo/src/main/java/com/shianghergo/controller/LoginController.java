@@ -174,10 +174,6 @@ public class LoginController {
 //		System.out.println("login()+++" + mb);
 		
 		
-		
-		
-		
-		
 //
 //		if (mb != null&& mb.getStatus()!=null) {
 //			if (mb.getAccount().equals(account) && mb.getPassword().equals(password) ) {

@@ -22,4 +22,9 @@ public class PlaceServiceImpl implements PlaceService{
 		return dao.getAllPlace();
 	}
 
+	@Override
+	public void setLatLngs(Double lat, Double lng, String loca) {
+		dao.setLatLngs(lat, lng, loca);
+	}
+
 }

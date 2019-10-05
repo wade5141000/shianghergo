@@ -29,6 +29,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
 	<jsp:include page="../BlackLine.jsp" />
+
 <div  style="padding-bottom: 350px;">
 	<div style="padding-left: 290px; padding-right: 30px;">
 	

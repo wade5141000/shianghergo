@@ -12,7 +12,7 @@ public interface ProductService {
 	
 	public ItemBean getProductById(int productId);
 	
-	void addProduct(ItemBean product,Integer category_id);
+	int addProduct(ItemBean product,Integer category_id);
 	
 	StoreBean getStoreById(int store_id);
 	
@@ -36,5 +36,6 @@ public interface ProductService {
 
 	List<ItemBean> getProductsByCategory(Integer category_id);
 
+	List<Integer> getAllProductsId();
 
 }

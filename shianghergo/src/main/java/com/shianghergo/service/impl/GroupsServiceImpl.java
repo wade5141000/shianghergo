@@ -13,6 +13,7 @@ import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
+import com.shianghergo.model.comment_member;
 import com.shianghergo.service.GroupsService;
 
 @Transactional
@@ -41,10 +42,11 @@ public class GroupsServiceImpl implements GroupsService{
 	}
 	@Transactional
 	@Override
-	public void addGroupsItem(Groups_ItemBean groupsitem,int gid) {
+	public int addGroupsItem(Groups_ItemBean groupsitem,int gid) {
 		GroupsBean gb = dao.getGroupById(gid);
 		groupsitem.setGroupsBean(gb);
-		dao.addGroupsItem(groupsitem);
+		int iid =  dao.addGroupsItem(groupsitem);
+		return iid;
 	}
 	@Transactional
 	@Override
@@ -177,6 +179,18 @@ public class GroupsServiceImpl implements GroupsService{
 			
 		return dao.searchToGroups(name);
 		
+	}
+
+	@Override
+	public List<GroupsBean> getGroupsByCategory_id(Integer category_id) {
+	
+		return dao.getGroupsByCategory_id(category_id);
+	}
+
+	@Override
+	public List<comment_member> getAllCommentByMember(Integer member_id) {
+		
+		return dao.getAllCommentByMember(member_id);
 	}
 
 	

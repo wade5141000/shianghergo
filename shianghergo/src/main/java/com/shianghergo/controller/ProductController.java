@@ -1,6 +1,7 @@
 package com.shianghergo.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,7 +10,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.rowset.serial.SerialBlob;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +50,8 @@ import com.shianghergo.model.OrderBean;
 import com.shianghergo.model.OrderDetailBean;
 import com.shianghergo.model.PlaceBean;
 import com.shianghergo.model.StoreBean;
+import com.shianghergo.model.comment_item;
+import com.shianghergo.service.GBDBService;
 import com.shianghergo.service.GroupsService;
 import com.shianghergo.service.MemberService;
 import com.shianghergo.service.ProductService;
@@ -67,12 +72,16 @@ public class ProductController {
 	
 	@Autowired
 	StoreService stservice;
+  
+	@Autowired
+	GBDBService gbdbService;
+
 
 	// -------------------以下聖捷--------------------
 
 	@RequestMapping(value = "/Member002")
 	public String getMyOrderList(@ModelAttribute("loginOK") MemberBean mb, Model model) {
-		System.out.println("MemberBean mb++" + mb);
+//		System.out.println("MemberBean mb++" + mb);
 		List<OrderBean> list = memberService.getMemberOrders(mb.getId());
 //		String[] list2 = new String[list.size()];
 //		for(int i=0 ; i<list.size();i++) {
@@ -81,7 +90,7 @@ public class ProductController {
 //		}
 		model.addAttribute("MyOrderList", list);// service.getorderById(ob.getId())
 //		model.addAttribute("it",list2);
-		System.out.println("getMyOrderList裡的list:" + list);
+//		System.out.println("getMyOrderList裡的list:" + list);
 		return "Member002";
 	}
 
@@ -95,8 +104,8 @@ public class ProductController {
 	@RequestMapping("/getMyOrderListD")
 	public String getMyOrderListD(@RequestParam("order_id") Integer order_id, Model model) {
 		List<OrderDetailBean> list = memberService.getMemberOrdersD(order_id);
-		System.out.println("order_id::" + order_id);
-		System.out.println("getMyOrderListD()裡的=" + list);
+//		System.out.println("order_id::" + order_id);
+//		System.out.println("getMyOrderListD()裡的=" + list);
 		model.addAttribute("MyOrderListD", list);
 		model.addAttribute("id", order_id);
 		return "Member002_1";
@@ -105,8 +114,8 @@ public class ProductController {
 	@RequestMapping("/getMyGroupsListD")
 	public String getMyGroupsListD(@RequestParam("groups_id") Integer groups_id, Model model, GroupsBean GB) {
 		List<Groups_ItemBean> list = memberService.getGroupsOrdersD(groups_id);
-		System.out.println(groups_id);
-		System.out.println("getMyGroupsListD()裡的=" + list);
+//		System.out.println(groups_id);
+//		System.out.println("getMyGroupsListD()裡的=" + list);
 		model.addAttribute("MyGroupsListD", list);
 		return "Member003_1";
 	}
@@ -114,7 +123,7 @@ public class ProductController {
 	@RequestMapping("/getMyGOrderListD")
 	public String getMyGOrderListD(@RequestParam("groups_order_info_id") Integer groups_order_info_id, Model model) {
 		List<GroupsOrderDetailBean> list = memberService.getGOrderD(groups_order_info_id);
-		System.out.println("getMyGOrderListD()裡的=" + list);
+//		System.out.println("getMyGOrderListD()裡的=" + list);
 		model.addAttribute("MyGroupsListD", list);
 		model.addAttribute("id", groups_order_info_id);
 		return "Member004_1";
@@ -124,7 +133,7 @@ public class ProductController {
 	public String getMyGroupsOrderList(@ModelAttribute("loginOK") MemberBean mb, Model model) {
 		List<GroupsOrderBean> list = memberService.getMemberGroupsOrders(mb.getId());
 		model.addAttribute("MyGroupsOrderList", list);
-		System.out.println("參與的" + list);
+//		System.out.println("參與的" + list);
 		return "Member004";
 	}
 
@@ -139,7 +148,7 @@ public class ProductController {
 	@RequestMapping(value = "/getMyGroupsplace")
 	public String getMyPlace(@RequestParam("place_id") Integer place_id, Model model, GroupsOrderBean GOB) {
 		List<PlaceBean> list = memberService.getMyPlaceByid(GOB.getPlace().getId());
-		System.out.println("getMyPlace++:" + list);
+//		System.out.println("getMyPlace++:" + list);
 		model.addAttribute("getMyPlace", list);
 		// System.out.println("參與的"+list);
 		return "Member003_3";
@@ -151,20 +160,31 @@ public class ProductController {
 	public String list(Model model) {
 		List<ItemBean> list = service.getAllProducts();
 		model.addAttribute("products", list);
+		
+		List<Integer> list1 = service.getAllProductsId();
+//		double score = 0;
+//		for(Integer GG:list1) {	
+//			score = gbdbService.getAverageScoreByItemId(GG);
+			model.addAttribute("scores", list1);
+//		}
+		
+		
 		return "hao/products";
 	}
 
 	@RequestMapping("/hao/productsByCategory")
-	public String productsByCategory(@RequestParam("category_id") Integer category_id ,Model model) {
+	public String productsByCategory(@RequestParam("category_id") Integer category_id, Model model) {
 		List<ItemBean> list = service.getProductsByCategory(category_id);
 		model.addAttribute("products", list);
 		return "hao/products";
 	}
-	
+
 	@RequestMapping("/hao/product")
-	public String getProductsById(@RequestParam("id") Integer id, Model model) {
+	public String getProductsById(@ModelAttribute("loginOK") MemberBean mb, @RequestParam("id") Integer id,
+			Model model) {
 		model.addAttribute("product", service.getProductById(id));
 //		model.addAttribute("store", service.getStoreNameByItemId(id));
+		model.addAttribute("comment", gbdbService.getComment_item(id));
 		return "hao/product";
 	}
 
@@ -178,7 +198,7 @@ public class ProductController {
 							
 		return "hao/myProducts";
 	}
-	
+
 	@RequestMapping(value = "/hao/myProducts", method = RequestMethod.POST)
 	public String getProductsByStorePost(@RequestParam("id") Integer id, Model model) {
 		ItemBean ib = new ItemBean();
@@ -207,24 +227,52 @@ public class ProductController {
 //		}
 		if (bb.getProductImage() != null) {
 			MultipartFile productImage = bb.getProductImage();
-			String originalFilename = productImage.getOriginalFilename();
-			bb.setFileName(originalFilename);
-
-			if (productImage != null && !productImage.isEmpty()) {
-				String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
-				String rootDirectory = context.getRealPath("/");
-				byte[] b;
+			bb.setProductImage(null);
+			bb.setCoverImage(null);
+			
+			if (productImage.isEmpty()) {
+				System.out.println("沒上傳圖片");
+			} else {
+				
+				String shianghergo = context.getRealPath("/");
+				shianghergo += "images/storeItemImg/" + id +".jpg";
+				
+				File tempF = new File(shianghergo);
+				
 				try {
-					b = productImage.getBytes();
-					Blob blob = new SerialBlob(b);
-					bb.setCoverImage(blob);
-				} catch (Exception e) {
+					if (!tempF.exists()) {
+						tempF.createNewFile();
+						productImage.transferTo(tempF);
+					} else {
+						productImage.transferTo(tempF);
+					}
+				} catch (IOException e) {
 					e.printStackTrace();
-					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
-				}
+				}	
 			}
+			
+//			String originalFilename = productImage.getOriginalFilename();
+//			bb.setFileName(originalFilename);
+
+//			if (productImage != null && !productImage.isEmpty()) {
+//				String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
+//				String rootDirectory = context.getRealPath("/");
+//				byte[] b;
+//				try {
+//					b = productImage.getBytes();
+//					Blob blob = new SerialBlob(b);
+//					bb.setCoverImage(blob);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+//				}
+//			}
 		}
-		System.out.println(category_id);
+//		System.out.println(category_id);
+		
+		
+		
+		
 		bb.setId(id);
 		service.updateItem(bb, category_id);
 
@@ -257,36 +305,60 @@ public class ProductController {
 			@RequestParam("categoryBean") Integer category_id, HttpServletRequest request) {
 
 		MultipartFile productImage = bb.getProductImage();
-		String originalFilename = productImage.getOriginalFilename();
-		bb.setFileName(originalFilename);
+		
+		bb.setProductImage(null);
+		bb.setCoverImage((null));
+		
+//		String originalFilename = productImage.getOriginalFilename();
+//		bb.setFileName(originalFilename);
 
-		String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
-		String rootDirectory = context.getRealPath("/");
+//		String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
+//		String rootDirectory = context.getRealPath("/");
 
-		if (productImage != null && !productImage.isEmpty()) {
-			byte[] b;
+//		if (productImage != null && !productImage.isEmpty()) {
+//			byte[] b;
+//			try {
+//				b = productImage.getBytes();
+//				Blob blob = new SerialBlob(b);
+//				bb.setCoverImage(blob);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+//			}
+//		}
+
+		int id = service.addProduct(bb, category_id);
+		
+		if (productImage.isEmpty()) {
+			System.out.println("沒上傳圖片");
+		} else {
+			String shianghergo = context.getRealPath("/");
+			shianghergo += "images/storeItemImg/" + id +".jpg";
+			System.out.println(shianghergo);
+			
+			File tempF = new File(shianghergo);
+			
 			try {
-				b = productImage.getBytes();
-				Blob blob = new SerialBlob(b);
-				bb.setCoverImage(blob);
-			} catch (Exception e) {
+				if (!tempF.exists()) {
+					tempF.createNewFile();
+					productImage.transferTo(tempF);
+				} else {
+					productImage.transferTo(tempF);
+				}
+			} catch (IOException e) {
 				e.printStackTrace();
-				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
-			}
+			}	
 		}
-
-		service.addProduct(bb, category_id);
-
-		try {
-			File imageFolder = new File(rootDirectory, "images");
-			if (!imageFolder.exists())
-				imageFolder.mkdirs();
-			File file = new File(imageFolder, bb.getId() + ext);
-			productImage.transferTo(file);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
-		}
+//		try {
+//			File imageFolder = new File(rootDirectory, "images");
+//			if (!imageFolder.exists())
+//				imageFolder.mkdirs();
+//			File file = new File(imageFolder, bb.getId() + ext);
+//			productImage.transferTo(file);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
+//		}
 		return "redirect:/hao/myProducts";
 	}
 
@@ -310,38 +382,59 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/hao/getPicture/{id}", method = RequestMethod.GET)
-	public ResponseEntity<byte[]> getPicture(HttpServletRequest resp, @PathVariable Integer id) {
-		String filePath = "/resources/images/NoImage.jpg";
-		byte[] media = null;
-		HttpHeaders headers = new HttpHeaders();
-		String filename = "";
-		int len = 0;
-		ItemBean bean = service.getProductById(id);
-		if (bean != null) {
-			Blob blob = bean.getCoverImage();
-			filename = bean.getFileName();
-			if (blob != null) {
-				try {
-					len = (int) blob.length();
-					media = blob.getBytes(1, len);
-				} catch (SQLException e) {
-					throw new RuntimeException("ProductController的getPicture()發生SQLException:" + e.getMessage());
-				}
-			} else {
-				media = toByteArray(filePath);
-				filename = filePath;
-			}
-		} else {
-			media = toByteArray(filePath);
-			filename = filePath;
+	public void getPicture(HttpServletRequest resp, @PathVariable Integer id, HttpServletResponse rp) {
+//		String filePath = "/resources/images/NoImage.jpg";
+//		byte[] media = null;
+//		HttpHeaders headers = new HttpHeaders();
+//		String filename = "";
+//		int len = 0;
+//		ItemBean bean = service.getProductById(id);
+//		if (bean != null) {
+//			Blob blob = bean.getCoverImage();
+//			filename = bean.getFileName();
+//			if (blob != null) {
+//				try {
+//					len = (int) blob.length();
+//					media = blob.getBytes(1, len);
+//				} catch (SQLException e) {
+//					throw new RuntimeException("ProductController的getPicture()發生SQLException:" + e.getMessage());
+//				}
+//			} else {
+//				media = toByteArray(filePath);
+//				filename = filePath;
+//			}
+//		} else {
+//			media = toByteArray(filePath);
+//			filename = filePath;
+//		}
+//		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+//		String mimeType = context.getMimeType(filename);
+//		MediaType mediaType = MediaType.valueOf(mimeType);
+//		System.out.println("mediaType = " + mediaType);
+//		headers.setContentType(mediaType);
+//		ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+//		return responseEntity;
+		
+		String shianghergo = context.getRealPath("/");
+		shianghergo += "images/storeItemImg/" + id +".jpg";
+		
+		File tempF = new File(shianghergo);
+		try {
+			int n = 0;
+			byte[] bb = new byte[1024];
+			FileInputStream in = new FileInputStream(tempF);		
+			ServletOutputStream out = rp.getOutputStream();
+			
+			while ((n = in.read(bb)) != -1) {
+                out.write(bb, 0, n);
+            }
+
+            out.close();
+            in.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-		String mimeType = context.getMimeType(filename);
-		MediaType mediaType = MediaType.valueOf(mimeType);
-		System.out.println("mediaType = " + mediaType);
-		headers.setContentType(mediaType);
-		ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
-		return responseEntity;
 	}
 
 	private byte[] toByteArray(String filePath) {

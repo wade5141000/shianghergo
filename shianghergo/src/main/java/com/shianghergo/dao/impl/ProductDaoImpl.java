@@ -40,13 +40,14 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public void addProduct(ItemBean product,Integer category_id) {
+	public int addProduct(ItemBean product,Integer category_id) {
 		Session session = factory.getCurrentSession();
 		CategoryBean y = getCategoryById(category_id);
 		StoreBean cb = getStoreById(product.getStore_id());	
 		product.setStoreBean(cb);
 		product.setCategoryBean(y);
-		session.save(product);
+		int id = (int)session.save(product);
+		return id;
 	}
 
 	@Override
@@ -177,7 +178,15 @@ public class ProductDaoImpl implements ProductDao {
 		return list;
 	}
 
-
-
 	
+	@Override
+	public List<Integer> getAllProductsId(){
+		String hql = "select id FROM ItemBean";
+		Session session = null;
+		List list = new ArrayList<>();
+		session = factory.getCurrentSession();
+		list = session.createQuery(hql).getResultList();
+		return list;
+	}
+
 }
