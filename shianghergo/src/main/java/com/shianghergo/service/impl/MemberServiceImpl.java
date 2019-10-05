@@ -198,6 +198,14 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getNotificationByid(target);
 	}
 
+	@Override
+	public void deletenotiByid(Integer id) {
+		dao.deletenotiByid(id);
+		
+	}
+	
+	
+
 //	@Override
 //	public List<String> getorder_info(OrderBean OB) {
 //		return dao.getorder_info(OB);

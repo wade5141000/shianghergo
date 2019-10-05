@@ -28,147 +28,64 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
-
 	<jsp:include page="../BlackLine.jsp" />
-	<!-- 	<div style="padding-bottom: 500px; margin-left: 265px;"> -->
-	<!-- 		<div class="card"> -->
-	<!-- 			<h1 class="card-header">我的商品列表</h1> -->
-	<!-- 			<div class="card-body"> -->
-	<%-- 				<a href="${pageContext.request.contextPath}/hao/products/add" --%>
-	<!-- 					class="btn btn-primary">新增商品</a> -->
-	<!-- 			</div> -->
-	<!-- 		</div> -->
-	<!-- 		<div> -->
-	<div class="card-deck">
-		<c:forEach var='product' items='${products}' varStatus="status">
-			<div class="card">
-				<img width='140' height='200'
-					src="<c:url value='/hao/getPicture/${product.id }' />"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">品名:${product.name }</h5>
-					<p class="card-text">說明：${product.detail }</p>
-				</div>
-				<div class="card-footer">
-					<form action="/shianghergo/hao/product/Update/Delete" method="POST">
-						<a href="<spring:url value='/hao/product/Update?id=${product.id }' />"
-							class="btn btn-primary"> 修改 </a> 
-							<a href="/shianghergo/hao/product/Update/Delete?id=${product.id }">
-							<input type="button" name="delete" value="刪除" class='btn btn-primary'
-							onclick="confirmDelete()" /></a> 
-							<input type="hidden" value="${product.id }" name="id"> 
-<!-- 							<input type="submit"name="delete" value="刪除" class='btn btn-primary' -->
-<!-- 							onclick="confirmDelete()" /> -->
-					</form>
-				</div>
-			</div>
-			<c:if test="${(status.count % 5) == 0}">
+<div  style="padding-bottom: 350px;">
+	<div style="padding-left: 290px; padding-right: 30px;">
+	
+		<div class="card-body">
+			<h1 class="card-title">商店名稱:${store.name}</h1>
+			<p class="card-text">${store.detail}</p>
+			<a href="${pageContext.request.contextPath}/hao/products/add" class="btn btn-primary">新增商品</a>
+		</div>
 	</div>
-	<div class="card-deck">
-		</c:if>
-
-		<c:if test="${status.last}">
-			<c:if test="${(status.index+1) % 5 != 0}">
-				<c:forEach var='abc' items='${products}' varStatus="i">
-					<c:if test="${i.index < -(((status.index+1)%5) -5)}">
-						<div class="card" style="border: 1px solid white"></div>
-					</c:if>
-				</c:forEach>
+	<!-- -------------------------- -->
+	<div style="padding-left: 290px; padding-right: 30px;">
+		<div class="card-deck">
+			<c:forEach var='product' items='${products}' varStatus="status">
+				<div class="card">
+					<img width='140' height='200'
+						src="<c:url value='/hao/getPicture/${product.id }' />"
+						class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">品名:${product.name }</h5>
+						<p class="card-text">單價：${product.price }</p>
+						<p class="card-text">說明：${product.detail }</p>
+						
+					</div>
+					<div class="card-footer">
+						<form action="/shianghergo/hao/product/Update/Delete"
+							method="POST">
+							<a
+								href="<spring:url value='/hao/product/Update?id=${product.id }' />"
+								class="btn btn-primary"> 修改 </a> <a
+								href="/shianghergo/hao/product/Update/Delete?id=${product.id }">
+								<input type="button" name="delete" value="刪除"
+								class='btn btn-primary' onclick="return confirmDelete()" />
+							</a> <input type="hidden" value="${product.id }" name="id">
+							<!-- 							<input type="submit"name="delete" value="刪除" class='btn btn-primary' -->
+							<!-- 							onclick="confirmDelete()" /> -->
+						</form>
+					</div>
+				</div>
+				<c:if test="${(status.count % 5) == 0}">
+		</div>
+		<div class="card-deck">
 			</c:if>
-		</c:if>
-		</c:forEach>
-		<!-- 		</div> -->
+
+			<c:if test="${status.last}">
+				<c:if test="${(status.index+1) % 5 != 0}">
+					<c:forEach var='abc' items='${products}' varStatus="i">
+						<c:if test="${i.index < -(((status.index+1)%5) -5)}">
+							<div class="card" style="border: 1px solid white"></div>
+						</c:if>
+					</c:forEach>
+				</c:if>
+			</c:if>
+			</c:forEach>
+			<!-- 		</div> -->
+		</div>
 	</div>
-
-
-	<!-- 以下堂哥改 -->
-	<!-- 			<div class="card-deck"> -->
-	<%-- 			<c:forEach var = 'product' items = '${products}' varStatus = 'hello'> --%>
-	<%-- 			<c:choose> --%>
-	<%-- 				<c:when test = '${(hello.count % 5) != 0}'> --%>
-	<!-- 					<div class="card"> -->
-	<!-- 					<img width='140' height='200' -->
-	<%-- 						src="<c:url value='/hao/getPicture/${product.id }' />" --%>
-	<!-- 						class="card-img-top" alt="..."> -->
-	<!-- 					<div class="card-body"> -->
-	<%-- 						<h5 class="card-title">品名:${product.name }</h5> --%>
-	<%-- 						<p class="card-text">說明：${product.detail }</p> --%>
-	<%-- 						<p class="card-text">說明：${product.id }</p> --%>
-
-	<!-- 					</div> -->
-	<!-- 					<div class="card-footer"> -->
-	<!-- 					<form action="/shianghergo/hao/product/Update/Delete" method="POST"> -->
-	<!-- 						<a -->
-	<%-- 							href="<spring:url value='/hao/product/Update?id=${product.id }' />" --%>
-	<!-- 							class="btn btn-primary"> 修改 </a> -->
-	<%-- 													<a href="/shianghergo/hao/product/Update/Delete?id=${product.id }"><input --%>
-	<!-- 													type="button" name="delete" value="刪除" class='btn btn-primary' -->
-	<!-- 													onclick="confirmDelete()" /></a> -->
-
-	<%-- 							<input type="hidden" value="${product.id }" name="id"> --%>
-	<!-- 							<input type="submit" name="delete" value="刪除" -->
-	<!-- 								class='btn btn-primary' onclick="confirmDelete()" /> -->
-	<!-- 						</form> -->
-	<!-- 					</div> -->
-	<!-- 				</div> -->
-	<%-- 				<c:if test = '${hello.last}'> --%>
-	<!-- 					</div class = 'card-deck'> -->
-	<%-- 				</c:if> --%>
-	<%-- 				</c:when> --%>
-	<%-- 				<c:otherwise> --%>
-	<!-- 					<div class="card"> -->
-	<!-- 					<img width='140' height='200' -->
-	<%-- 						src="<c:url value='/hao/getPicture/${product.id }' />" --%>
-	<!-- 						class="card-img-top" alt="..."> -->
-	<!-- 					<div class="card-body"> -->
-	<%-- 						<h5 class="card-title">品名:${product.name }</h5> --%>
-	<%-- 						<p class="card-text">說明：${product.detail }</p> --%>
-	<%-- 						<p class="card-text">說明：${product.id }</p> --%>
-
-	<!-- 					</div> -->
-	<!-- 					<div class="card-footer"> -->
-	<!-- 					<form action="/shianghergo/hao/product/Update/Delete" method="POST"> -->
-	<!-- 						<a -->
-	<%-- 							href="<spring:url value='/hao/product/Update?id=${product.id }' />" --%>
-	<!-- 							class="btn btn-primary"> 修改 </a> -->
-	<%-- 													<a href="/shianghergo/hao/product/Update/Delete?id=${product.id }"><input --%>
-	<!-- 													type="button" name="delete" value="刪除" class='btn btn-primary' -->
-	<!-- 													onclick="confirmDelete()" /></a> -->
-
-	<%-- 							<input type="hidden" value="${product.id }" name="id"> --%>
-	<!-- 							<input type="submit" name="delete" value="刪除" -->
-	<!-- 								class='btn btn-primary' onclick="confirmDelete()" /> -->
-	<!-- 						</form> -->
-	<!-- 					</div> -->
-	<!-- 				</div> -->
-	<!-- 				</div class = 'card-deck'> -->
-	<!-- 				<div class="card-deck">	 -->
-	<%-- 				</c:otherwise> --%>
-	<%-- 			</c:choose> --%>
-	<%-- 			</c:forEach> --%>
-
-
-
-
-
-	<!-- 	</div> -->
+	</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
-	<!-- 	<tr> -->
-	<%-- 		<c:if test="${not empty properList}"> --%>
-	<%-- 			<c:forEach var="object" items="${properList}" varStatus="status"> --%>
-	<%-- 				<c:if test="${(status.index+1) mod 3 !=1}"> --%>
-	<%-- 					<td noWrap class="td_title" width="8%" align="center">${object.propertyName }</td> --%>
-	<!-- 					<td class="td_detail"><input type="text" -->
-	<%-- 						id="${object.propertyName }" name="${object.propertyName }" /></td> --%>
-	<%-- 				</c:if> --%>
-	<%-- 				<c:if test="${(status.index+1) mod 3==1}"> --%>
-	<!-- 					<tr> -->
-	<%-- 						<td noWrap class="td_title" width="8%" align="center">${object.propertyName }</td> --%>
-	<!-- 						<td class="td_detail"><input type="text" -->
-	<%-- 							id="${object.propertyName }" name="${object.propertyName }" /></td> --%>
-	<%-- 				</c:if> --%>
-	<%-- 			</c:forEach> --%>
-	<%-- 		</c:if> --%>
-	<!-- 	</tr> -->
 </body>
 </html>

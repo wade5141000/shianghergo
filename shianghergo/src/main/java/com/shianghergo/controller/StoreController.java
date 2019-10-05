@@ -97,8 +97,11 @@ public class StoreController {
 		bb.setId(id);
 		service.updateStore(bb);
 
-		return "redirect:/hao/buildStore";
+		return "redirect:/hao/myProducts";
 	}
+	     
+	
+	
 
 	@RequestMapping("/hao/stores")
 	public String list(Model model) {

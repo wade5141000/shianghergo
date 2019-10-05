@@ -89,11 +89,11 @@ li {
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/hao/buildStore"
 				style="color: #ff8000; font-family: 微軟正黑體;"> 我的商店</a></li>
-			<li
-				class="list-group-item list-group-item-action list-group-item-info"
-				style="background-color: #ffffdf; border-style: dashed;"><a
-				href="${pageContext.request.contextPath}/hao/products/add"
-				style="color: #ff8000; font-family: 微軟正黑體;"> 新增商品</a></li>
+<!-- 			<li -->
+<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
+<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
+<%-- 				href="${pageContext.request.contextPath}/hao/products/add" --%>
+<!-- 				style="color: #ff8000; font-family: 微軟正黑體;"> 新增商品</a></li> -->
 			<li
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
@@ -102,7 +102,7 @@ li {
 			<li
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
-				href="${pageContext.request.contextPath}/getMyNotification"
+				href="${pageContext.request.contextPath}/getMynotification"
 				style="color: #ff8000; font-family: 微軟正黑體;">站內通知信</a></li>
 			<li
 				class="list-group-item list-group-item-action list-group-item-info"

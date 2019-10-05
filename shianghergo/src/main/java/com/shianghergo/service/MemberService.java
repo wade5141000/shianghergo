@@ -73,6 +73,8 @@ public interface MemberService {
 	public void deleteByid(Integer id);
 	
 	public List<NotificationBean> getNotificationByid(Integer target);
+	
+	public void deletenotiByid(Integer id);
 
 	// int activeUser(String code);//激活會員
 	

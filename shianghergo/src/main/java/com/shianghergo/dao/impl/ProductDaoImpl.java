@@ -176,4 +176,8 @@ public class ProductDaoImpl implements ProductDao {
 		list = session.createQuery(hql).setParameter("category_id", category_id).getResultList();
 		return list;
 	}
+
+
+
+	
 }

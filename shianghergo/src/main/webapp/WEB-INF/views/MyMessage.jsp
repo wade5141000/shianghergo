@@ -26,6 +26,16 @@ thead {
 	background-color: lightblue;
 }
 </style>
+<script type="text/javascript">
+	function confirmDelete() {
+		var msg = "您真的確定要刪除嗎？\n\n請確認！";
+		if (confirm(msg) == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
 </head>
 <body >
 <jsp:include page="eric/header.jsp" />
@@ -42,7 +52,8 @@ thead {
 			<th scope="col" id='borderA'>標題</th>
 			<th scope="col" id='borderA'>收件人</th>
 			<th scope="col" id='borderA'>內容	</th>
-			<th scope="col" id='borderA'>時間</th>
+			<th scope="col" id='borderA'>寄信時間</th>
+			<th scope="col" id='borderA'>刪除寄件備份</th>
 		</tr>
 		<c:forEach var="MyMesg"  items="${MyMessage}">
 			<TR id='borderA' >
@@ -53,9 +64,12 @@ thead {
 <!-- 			    </a> -->
 <!-- 			</TD> -->
 			<TD id='borderA' >${MyMesg.title}</TD>
-			<TD id='borderA' >${MyMesg.target.memberBean.name}</TD>
+			<TD id='borderA' >${MyMesg.id}</TD>
 			<TD id='borderA' >&nbsp;${MyMesg.contents}</TD>
-			<TD id='borderA' >${MyMesg.time}</TD>			
+			<TD id='borderA' >${MyMesg.time}</TD>
+			<TD id='borderA'><a  href="<c:url value='deleteMesgByidtwo?id=${MyMesg.id}' />">
+				    <button type="button" onclick="return confirmDelete()" class="btn btn-primary btn-sm"><span >刪除</span> </button>
+			    </a></TD>			
 		</TR>
 		</c:forEach>
 	</TABLE>

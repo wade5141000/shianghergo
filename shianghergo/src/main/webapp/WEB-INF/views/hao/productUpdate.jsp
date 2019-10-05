@@ -30,6 +30,9 @@
 						<div class="card text-center">
 							<div class="card-header">修改商店商品</div>
 							<div class="card-body">
+								<input type="hidden" id="store_id" path="store_id"
+											class="form:input-large" value="${product.storeBean.id }"
+											readonly="readonly" /></td>
 								<table class="table table-hover">
 									<tr>
 										<td><label class="control-label " for='name'>
@@ -64,13 +67,11 @@
 
 										<!-- 					</div> -->
 									</tr>
-									<tr>
-										<td><label class="control-label " for="store_id">
-												商店名稱 (store_id)</label></td>
-										<td><input type="text" id="store_id" path="store_id"
-											class="form:input-large" value="${product.storeBean.id }"
-											readonly="readonly" /></td>
-									</tr>
+									
+<!-- 										<td><label class="control-label " for="store_id"> -->
+<!-- 												商店名稱 (store_id)</label></td> -->
+										
+									
 <!-- 									<tr> -->
 <!-- 										<td><label class='control-label ' for="reserve"> -->
 <!-- 												庫存數量 </label></td> -->

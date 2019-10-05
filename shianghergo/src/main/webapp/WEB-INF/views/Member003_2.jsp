@@ -51,7 +51,7 @@ width:100px;
 					</tr>
 					<c:forEach var="MyGP" items="${getMyGroupsPerson}">
 						<TR id='borderA'>
-							<TD id='borderA'">${MyGP.id}</TD>
+							<TD id='borderA'>${MyGP.id}</TD>
 							<TD id='borderA'><a
 								href="<c:url value='sendMemberMessage?target=${MyGP.member_id}' />">
 									${MyGP.member_id}

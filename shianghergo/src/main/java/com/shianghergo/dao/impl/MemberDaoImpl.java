@@ -294,18 +294,18 @@ public class MemberDaoImpl implements MemberDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MessageBean> MyMessage(Integer member_id) {
-		String hql = "FROM MessageBean WHERE member_id=:id ";
+		String hql = "FROM MessageBean WHERE member_id=:mid ";
 		Session session = factory.getCurrentSession();
-		List<MessageBean> list = session.createQuery(hql).setParameter("id", member_id).getResultList();
+		List<MessageBean> list = session.createQuery(hql).setParameter("mid", member_id).getResultList();
 		return list;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MessageBean> getMyMessage(Integer target) {
-		String hql = "FROM MessageBean WHERE target=:id ";
+		String hql = "FROM MessageBean WHERE target=:tar ";
 		Session session = factory.getCurrentSession();
-		List<MessageBean> list = session.createQuery(hql).setParameter("id", target).getResultList();
+		List<MessageBean> list = session.createQuery(hql).setParameter("tar", target).getResultList();
 		return list;
 	}
 
@@ -350,6 +350,13 @@ public class MemberDaoImpl implements MemberDao {
 		Session session = factory.getCurrentSession();
 		List<NotificationBean> list = session.createQuery(hql).setParameter("id", target).getResultList();
 		return list;
+	}
+	
+	@Override
+	public void deletenotiByid(Integer id) {
+		Session session = factory.getCurrentSession();
+		NotificationBean contacts = (NotificationBean) session.get(NotificationBean.class, id);
+		session.delete(contacts);
 	}
 
 	

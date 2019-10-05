@@ -34,10 +34,10 @@ thead {
 	<div style="padding-left: 290px;padding-right: 30px;">
 	<table class="table table-hover">
 		<tr id='borderA' height='50' >
-			<th id='borderA'  colspan="5">合購訂單編號的商品明細</th>
+			<th id='borderA'  colspan="5">合購訂單編號${id}的商品明細   </th>
 		</tr>
 		<tr id='borderA' height='36' >
-			<th scope="col" id='borderA'>訂單編號</th>
+<!-- 			<th scope="col" id='borderA'>訂單編號</th> -->
 <!-- 			<th scope="col" id='borderA'>商品編號</th> -->
 			<th scope="col" id='borderA'>商品名稱</th>
 			<th scope="col" id='borderA'>數量</th>
@@ -45,7 +45,7 @@ thead {
 		</tr>
 		<c:forEach var="anGOrderD"  items="${MyGroupsListD}">
 			<TR id='borderA' >
-			<TD id='borderA'  >${anGOrderD.groups_order_info_id}</TD>
+<%-- 			<TD id='borderA'  >${anGOrderD.groups_order_info_id}</TD> --%>
 <%-- 			<TD id='borderA' width="80" >${anGOrderD.groups_item_id}</TD> --%>
 			<TD id='borderA'  >${anGOrderD.name}</TD>
 			<TD id='borderA'  >${anGOrderD.amount}</TD>				

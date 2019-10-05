@@ -118,4 +118,6 @@ public class ProductServiceImpl implements ProductService {
 	public List<ItemBean> getProductsByCategory(Integer category_id) {
 		return dao.getProductsByCategory(category_id);
 	}
+
+
 }

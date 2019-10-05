@@ -66,8 +66,8 @@ public class MessageController {
 	
 	@RequestMapping("/MyMessage")//寄件備份
 	public String getMessage(MessageBean MesgB,Model model,@ModelAttribute("loginOK")MemberBean mb) {
-		Integer mid = mb.getId();
-		model.addAttribute("MyMessage", service.MyMessage(mid));
+		model.addAttribute("MyMessage", service.MyMessage(mb.getId()));//根據memberid
+//		model.addAttribute("mym",service.getMemberById(MesgB.getMemberBean().getId()));
 //		System.out.println(":"+list);
 		return "MyMessage";
 	}
@@ -87,13 +87,26 @@ public class MessageController {
 		return "redirect:getMyMessage";
 	}
 	
-	@RequestMapping("/getMyNotification")//誰留言給我
+	@RequestMapping("/deleteMesgByidtwo")
+	public String deleteMessageByidtwo(MessageBean MesgB,Model model) {
+		 service.deleteByid(MesgB.getId());
+		return "redirect:MyMessage";
+	}
+
+	
+	@RequestMapping("/getMynotification")//誰留言給我
 	public String getMyNotification(NotificationBean noti,Model model,@ModelAttribute("loginOK")MemberBean mb) {
 		model.addAttribute("getMyNotification", service.getNotificationByid(mb.getId()));//根據target
 		System.out.println("誰留言給我::"+service.getMyMessage(mb.getId()));
 //		model.addAttribute("tmb",service.getMemberById(MesgB.getMemberBean().getId()));
 		//System.out.println("tmb       :"+ service.getMemberById(MesgB.getMemberBean().getId()));
 		return "getMynotification";
+	}
+	
+	@RequestMapping("/deletenotiByid")
+	public String deletenotiByid(NotificationBean noti,Model model,@RequestParam("id") Integer id) {
+		 service.deletenotiByid(id);
+		return "redirect:getMynotification";
 	}
 	
 	

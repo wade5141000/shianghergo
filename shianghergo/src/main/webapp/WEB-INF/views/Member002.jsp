@@ -27,49 +27,57 @@ thead {
 }
 </style>
 </head>
-<body >
-<jsp:include page="eric/header.jsp" />
-	<div  style="padding-bottom: 300px;">
-	<jsp:include page="shianghergo/../BlackLine.jsp" />
+<body>
+	<jsp:include page="eric/header.jsp" />
+	<div style="padding-bottom: 300px;">
+		<jsp:include page="shianghergo/../BlackLine.jsp" />
 
-	<div style="padding-left: 290px;padding-right: 30px;">
-		<table class="table table-hover">
-		<tr id='borderA'>
-			<th id='borderA' colspan="7">${loginOK.name}的訂購紀錄</th>
-		</tr>
-		<tr id='borderA'>
-			<th scope="col" id='borderA'>訂單編號</th>
-<!-- 			<th id='borderA'>商店名</th> -->
-			<th scope="col" id='borderA'>購買品項種類</th>
-			<th scope="col" id='borderA'>金額</th>
-			<th scope="col" id='borderA'>訂單時間</th>
-			<th scope="col" id='borderA'>付款方式</th>
-			<th scope="col" id='borderA'>付款時間</th>
-			<th scope="col" id='borderA'>訂單詳情</th>
-		</tr>
-<!-- 		 varStatus="i" -->
-		<c:forEach var="anOrderBean"  items="${MyOrderList}">
-			<TR id='borderA'>
-			<TD id='borderA'  align="center">${anOrderBean.id} </TD>
-<%-- 			<TD id='${i.index}'  align="center"></TD> --%>
-<%-- 			<TD id='borderA' align="center">&nbsp;${anOrderBean.OrderDetailBean.name}</TD> --%>
-			<TD id='borderA'>&nbsp;${anOrderBean.item_count}</TD>
-			<TD id='borderA'>${anOrderBean.price}</TD>
-			<TD id='borderA'>${anOrderBean.order_time}</TD>
-			<TD id='borderA'>&nbsp;${anOrderBean.payment}</TD>
-			<TD id='borderA'>${anOrderBean.pay_time}</TD>
-			<TD id='borderA' ><a  href="<c:url value='getMyOrderListD?order_id=${anOrderBean.id}' />">
-				<button type="button" class="btn btn-primary btn-sm">詳情</button>
-			    </a></TD>				
-		</TR>
-		</c:forEach>
-<%-- 		<c:forEach var="item"  items="${it}" varStatus="i"> --%>
-<!-- 			<script> -->
-<%--  				$("#"+"${i.index}").html("${item}"); --%>
-<!-- 			</script> -->
-<%-- 		</c:forEach> --%>
-	</TABLE>
-	</div>
+		<div style="padding-left: 290px; padding-right: 30px;">
+			<table class="table table-hover">
+				<tr id='borderA'>
+					<th id='borderA' colspan="7">${loginOK.name}的訂購紀錄</th>
+				</tr>
+				<tr id='borderA'>
+					<th scope="col" id='borderA'>訂單編號</th>
+					<!-- 			<th id='borderA'>商店名</th> -->
+					<th scope="col" id='borderA'>購買品項種類</th>
+					<th scope="col" id='borderA'>金額</th>
+					<th scope="col" id='borderA'>訂單時間</th>
+					<th scope="col" id='borderA'>付款方式</th>
+					<th scope="col" id='borderA'>付款時間</th>
+					<th scope="col" id='borderA'>訂單詳情</th>
+				</tr>
+				<!-- 		 varStatus="i" -->
+				<c:forEach var="anOrderBean" items="${MyOrderList}">
+					<TR id='borderA'>
+						<TD id='borderA' align="center">${anOrderBean.id}</TD>
+						<%-- 			<TD id='${i.index}'  align="center"></TD> --%>
+						<%-- 			<TD id='borderA' align="center">&nbsp;${anOrderBean.OrderDetailBean.name}</TD> --%>
+						<TD id='borderA'>&nbsp;${anOrderBean.item_count}</TD>
+						<TD id='borderA'>${anOrderBean.price}</TD>
+						<TD id='borderA'>${anOrderBean.order_time}</TD>
+						<TD id='borderA'>&nbsp;${anOrderBean.payment}</TD>
+						<%-- 			<TD id='borderA'>${anOrderBean.pay_time}</TD> --%>
+						<c:if test="${anOrderBean.status==1}">
+						<TD id='borderA'>${anOrderBean.pay_time}</TD>
+						</c:if>
+						<c:if test="${anOrderBean.status==2 }">
+							<TD><a href=""><button type="button" class="btn btn-danger">🛒點我付款去</button></a></TD>
+						</c:if>
+
+						<TD id='borderA'><a
+							href="<c:url value='getMyOrderListD?order_id=${anOrderBean.id}' />">
+								<button type="button" class="btn btn-primary btn-sm">詳情</button>
+						</a></TD>
+					</TR>
+				</c:forEach>
+				<%-- 		<c:forEach var="item"  items="${it}" varStatus="i"> --%>
+				<!-- 			<script> -->
+				<%--  				$("#"+"${i.index}").html("${item}"); --%>
+				<!-- 			</script> -->
+				<%-- 		</c:forEach> --%>
+			</TABLE>
+		</div>
 	</div>
 	<jsp:include page="eric/foot.jsp" />
 </body>
