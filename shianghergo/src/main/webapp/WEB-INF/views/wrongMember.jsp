@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
 <!DOCTYPE html>
@@ -11,12 +11,36 @@
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<title>µn¤J²§±`</title>
+<!--    <meta http-equiv="refresh" content="3;URL=index"> -->
+<title>ç™»å…¥ç•°å¸¸</title>
+<script type="text/javascript">     
+function countDown(secs,surl){     
+//alert(surl);     
+var jumpTo = document.getElementById('jumpTo');
+jumpTo.innerHTML=secs;  
+if(--secs>0){     
+     setTimeout("countDown("+secs+",'"+surl+"')",1000);     
+     }     
+else{       
+     location.href=surl;     
+     }     
+}     
+</script> 
 </head>
 <body>
-<!-- ¤Ş¤J¦@¦Pªº­¶­º -->
-<jsp:include page="top.jsp" />
-<h1>µn¤J²§±`¡A±zªº±b¸¹¤w³Q°±Åv</h1>
-<h1>${exception.message }</h1>
+<!-- å¼•å…¥å…±åŒçš„é é¦– -->
+<jsp:include page="eric/header.jsp" />
+<div style="padding-bottom: 200px;">
+<div >
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">æ­¤å¸³è™Ÿç•°å¸¸ï¼Œå·²è¢«åœæ¬Š</h1>
+    <p class="lead"><span id="jumpTo">3</span>ç§’å¾Œè‡ªå‹•è½‰è·³è‡³é¦–é </p>
+  </div>
+</div>
+<script type="text/javascript">countDown(5,'index');</script>  
+</div>
+</div>
+<jsp:include page="eric/foot.jsp" />
 </body>
 </html>

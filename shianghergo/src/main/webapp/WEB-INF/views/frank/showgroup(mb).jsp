@@ -17,14 +17,14 @@
 	<jsp:include page="../BlackLine.jsp" />
 	<!-- action对应一个action标签，id对应提交时的对应关系 -->
 
-	<div class="media">
+	<div class="media"style="padding-left: 50px;">
 		<img width='480px' height='270'
 			src="<c:url value='/frank/getgroupPicture/${updategroup.id }' />"
 			class="align-self-center mr-3" alt="...">
 		<div class="media-body">
 			<input type="hidden" name="id" value="${updategroup.id}" />
 			<dl class="row">
-				<dt class="col-sm-3">標題：</dt>
+				<dt class="col-sm-3">合購團名：</dt>
 				<dd class="col-sm-9">${updategroup.name }</dd>
 
 				<dt class="col-sm-3">開始時間：</dt>
@@ -70,7 +70,7 @@
 		</div>
 	</div>
 
-	<div class="card text-center" style="margin-top: 15px;">
+	<div class="card text-center" style="margin-top: 30px;">
 		<div class="card-header">
 			<h5>地點</h5>
 		</div>
@@ -90,7 +90,7 @@
 							<dd class="col-sm-8">
 								<input type="button" value="修改"
 									onclick="location.href='updatetoplace(mb)?gid=${updategroup.id}&pid=${places.id}'"
-									class="btn btn-info" style="width: 80px; height: 30px;">
+									class="btn btn-info" style="width: 80px; height: 40px;">
 							</dd>
 						</dl>
 					</dd>
@@ -99,8 +99,10 @@
 						<dl class="row">
 							<dt class="col-sm-4">${places.time}</dt>
 							<dd class="col-sm-8"><input type="button" value="刪除"
-					onclick="location.href='deletetoplace(mb)?gid=${updategroup.id}&pid=${places.id}'"
-					class="btn btn-danger" style="width: 80px; height: 30px;"></dd>
+
+					onclick="location.href='deletetoplace?gid=${updategroup.id}&pid=${places.id}'"
+					class="btn btn-danger" style="width: 80px; height: 40px;"></dd>
+
 						</dl>
 					</dd>
 				</dl>
@@ -121,25 +123,26 @@
 	<section class="container">
 		<div class="row">
 			<c:forEach var="item" items="${updategroup.groupsitem}">
-				<div class="col-sm-6 col-md-3"
+				<div class="col-sm-6 col-md-3"							
 					style="width: 360px; height: 450px; font-size: 16px;">
-					<div class="thumbnail" style="width: 320px; height: 400px">
+					<div class="thumbnail" style="width: 270px; height: 400px">
 						<img width='275' height='250'
 							src="<c:url value='/frank/getPicture/${item.id }' />" />
 						<div class="caption">
 							<p>
 								<b style='font-size: 16px;'>${item.name}</b>
 							</p>
-							<p>說明:${item.detail}</p>
+							<p style="word-break: break-all">說明:${item.detail}</p>
 							<p>價格: ${item.price} 元</p>
 
 							<p>
 								<input type="button" value="修改"
 									onclick="location.href='updatetogroup_item(mb)?gid=${updategroup.id}&iid=${item.id}'"
-									class="btn btn-info" style="width: 80px; height: 30px;">
+									class="btn btn-info" style="width: 80px; height: 40px;">
 								<input type="button" value="刪除"
-									onclick="location.href='deletetogroup_item(mb)?gid=${updategroup.id}&iid=${item.id}'"
-									class="btn btn-danger" style="width: 80px; height: 30px;">
+									onclick="location.href='deletetogroup_item?gid=${updategroup.id}&iid=${item.id}'"
+									class="btn btn-danger" style="width: 80px; height: 40px;">
+
 							</p>
 						</div>
 					</div>

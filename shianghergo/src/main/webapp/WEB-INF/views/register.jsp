@@ -5,24 +5,22 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
-<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script> -->
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-
-
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+<!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script> -->
 <!-- <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> -->
+<!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script> -->
+<!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script> -->
 <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script> -->
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
 <title>register</title>
-<!-- <meta name="viewport" -->
-<!-- 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"> -->
-<!-- <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"> -->
 <script>
 	$(document)
 			.ready(
@@ -195,12 +193,12 @@ fieldset {
 	border:1px solid gray;
 	margin-left:auto;
 	margin-right:auto;
-	width:50%;
+	width:70%;
 	background-color:white;
 	text-align:left;
 	padding:10px;
 	font-family:微軟正黑體;
-	border-radius: 5px;
+	border-radius: 20px;
     border-spacing: 0;
 	
 }
@@ -218,7 +216,7 @@ legend {
 .item .item-label {
 	float: left;
 	width: 100px;
-	text-align: right;
+	text-align: center;
 }
 
 .item-text {
@@ -278,12 +276,12 @@ label.valid {
 </style>
 </head>
 <body>
-<jsp:include page="eric/header.jsp" />
-	<div class="container"style="height: 650;max-height: 900px;">
+<jsp:include page="headerfortop.jsp" />
+	<div class="container">
 		<form:form action="goRegisterPage.do" method="post" id="regForm"
 			enctype="multipart/form-data" name="memberlist"
 			modelAttribute="memberbean">
-			<fieldset style="margin-left: 800px;margin-top: 100px;">
+			<fieldset style="margin-left: 700px;margin-top: 100px;">
 				<h1 align="center">會員註冊</h1>
 				<div class="item">
 					<label for="account" class="item-label">帳號:</label>
@@ -344,10 +342,10 @@ label.valid {
 					<form:input type="file" id="image" name="image" path="image"
 						class="item-file" placeholder="" autocomplete="off" tip="" />
 				</div>
-				<div class="btn-group" style="margin-left: 120px;">
-				<button type="submit" class="btn btn-primary btn-sm">提交</button>
-				<button type="reset" class="btn btn-primary btn-sm">重置</button>
-				<a href="loginNew" class="btn btn-primary btn-sm">已有會員?馬上登入</a>
+				<div class="btn-group" style="margin-left: 220px;">
+				<button type="submit" class="btn btn-dark">提交</button>
+				<button type="reset" class="btn btn-dark">重置</button>
+				<a href="loginNew" class="btn btn-dark">已有會員?馬上登入</a>
 				</div>
 			</fieldset>
 		</form:form>

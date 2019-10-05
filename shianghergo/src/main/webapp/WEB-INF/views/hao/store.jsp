@@ -15,7 +15,7 @@
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
 	<jsp:include page="../BlackLine.jsp" />
 
-	<div style="padding-bottom: 350px;" >
+	<div style="padding-bottom: 350px;">
 		<div style="padding-left: 350px; padding-right: 350px;"
 			class="card text-center">
 			<div class="card-header" style="margin-top: 25px; margin-top: 10px;">
@@ -42,14 +42,14 @@
 				<%-- 				<h3>商家編號：${store.id}</h3> --%>
 				<%-- 				<p>商店名稱:：${store.name}</p> --%>
 				<%-- 				<p>商店介紹： ${store.detail}</p> --%>
-				<a href="<spring:url value='store/Update?id=${store.id }' />"
-					class="btn btn-primary">修改 </a> <a
-					href="<spring:url value='/hao/stores' />" class="btn btn-primary">
-					返回 </a>
+				<c:if test="${status==1 }">
+					<a href="<spring:url value='store/Update?id=${store.id }' />"
+						class="btn btn-primary">修改 </a>
+				</c:if>
 			</div>
-			
+
 		</div>
-		
+
 	</div>
 
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />

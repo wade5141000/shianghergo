@@ -79,13 +79,13 @@
 	<section id="contact-area">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-10 offset-lg-1">
+				<div class="col-lg-9 offset-lg-1">
 					<div class="contact-box text-center">
 						<form id="ajax-contact" action="saveMessage.do" method="post">
 							<input type="hidden" name="member_id" value="${mm.id}" /> <input
 								type="hidden" name="target" value="${mmm.id}" />
 							<div class="form-group row">
-								<div class="col-lg-2">
+								<div class="col-lg-3">
 									<p class="form-control-static">收件人:${mmm.name}</p>
 								</div>
 							</div>

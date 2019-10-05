@@ -586,7 +586,6 @@ public class GroupsController {
 	
 //-------------------------某一個團購頁面---------------------------
 	@RequestMapping("/frank/group") // 查詢單一產品
-
 	public String getGroupsById(@RequestParam("gid") Integer gid,@ModelAttribute("loginOK")MemberBean member,Model model) {
 
 		GroupsBean gb = service.getGroupById(gid);

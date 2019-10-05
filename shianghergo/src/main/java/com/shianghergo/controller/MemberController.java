@@ -45,19 +45,9 @@ public class MemberController {
 	@Autowired
 	ServletContext context;
 
-	@RequestMapping("/MemberDL")
+	@RequestMapping("/loginNew")
 	public String MemberDL() {
-		return "MemberDL";
-	}
-
-	@RequestMapping("/goMember001")
-	public String aboutMe() {
-		return "Member001";
-	}
-
-	@RequestMapping("/MemberIndex")
-	public String MemberIndex() {
-		return "MemberIndex";
+		return "loginNew";
 	}
 
 //	@RequestMapping(value = "/goRegisterPage", method = RequestMethod.GET)
