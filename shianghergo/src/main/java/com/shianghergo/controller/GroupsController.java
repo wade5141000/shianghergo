@@ -1020,20 +1020,6 @@ public class GroupsController {
 
 		}
 
-		service.addGroupsItem(gib, gid);
-
-		try {
-			File imageFolder = new File(rootDirectory, "images");
-			if (!imageFolder.exists())
-				imageFolder.mkdirs();
-			File file = new File(imageFolder, gib.getId() + ext);
-			productImage.transferTo(file);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
-		}
-		return "redirect:/frank/showgroup(mb)?gid=" + gid;
-	}
 
 	// ----------------新增地址-----------------------
 	@RequestMapping(value = "/frank/addplace(mb)", method = RequestMethod.GET)
@@ -1074,14 +1060,6 @@ public class GroupsController {
 		return "frank/updategroup2";
 
 	}
-
-	// ---------------------修改團的資料-----------------
-	@RequestMapping(value = "/frank/updatetogroup(mb)", method = RequestMethod.POST)
-	public String mbupdatetogroups(@RequestParam("name") String name, @RequestParam("end_time") String end_time,
-			@RequestParam("detail") String detail, @RequestParam("payment") String payment,
-			@RequestParam("id") Integer id, @RequestParam("categoryBean") Integer category_id,
-			@ModelAttribute("upgroupsBean") GroupsBean gb, BindingResult result, HttpServletRequest request) {
-
 
 		// ---------------------修改團的資料-----------------
 		@RequestMapping(value = "/frank/updatetogroup(mb)", method = RequestMethod.POST)
@@ -1171,8 +1149,6 @@ public class GroupsController {
 			@RequestParam("detail") String detail, @RequestParam("price") Integer price,
 			@RequestParam("iid") Integer iid, @ModelAttribute("upgroupsitemBean") Groups_ItemBean ib) {
 
-
-
 				if (ib.getProductImage() != null) {
 					MultipartFile productImage = ib.getProductImage();
 //					String originalFilename = productImage.getOriginalFilename();
@@ -1182,7 +1158,6 @@ public class GroupsController {
 					if (productImage.isEmpty()) {
 						System.out.println("沒上傳圖片");
 					} else {
-						
 						String shianghergo = context.getRealPath("/");
 						shianghergo += "images/groupsItemImg/" + iid +".jpg";
 						
@@ -1216,24 +1191,6 @@ public class GroupsController {
 				
 				ib.setId(iid);
 				service.updateitem(ib);
-
-
-			if (productImage != null && !productImage.isEmpty()) {
-				String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
-				String rootDirectory = context.getRealPath("/");
-				byte[] b;
-				try {
-					b = productImage.getBytes();
-					Blob blob = new SerialBlob(b);
-					ib.setImage(blob);
-				} catch (Exception e) {
-					e.printStackTrace();
-					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
-				}
-			}
-		}
-		ib.setId(iid);
-		service.updateitem(ib);
 
 		return "redirect:/frank/showgroup(mb)?gid=" + gid;
 	}
