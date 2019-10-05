@@ -39,6 +39,24 @@
 	// 	$("#name").text(val);
 	// 	$("#btn").html('<button id="n_u_btn" onclick="chan(this)">修改</button>');
 	// }
+	
+		$(document).ready(function() {
+		$("#num1").hide();
+
+		$("#bank1").click(function() {
+			$("#num1").toggle();
+		});
+
+		$("#bank2").click(function() {
+			$("#num2").toggle();
+		});
+	
+		$("#bank3").click(function() {
+			$("#num3").toggle();
+		});
+	});
+	
+	
 </script>
 
 </head>
@@ -94,16 +112,32 @@
 				<td>
 				<c:if test="${updategroup.payment == 1}">
 				 	<input type="checkbox" name="payment" value="1" checked>面交付款
-				 	<input type="checkbox" name="payment" value="2" >銀行匯款<br>
+				 	<input type="checkbox" name="payment" value="2" id="bank1" >銀行匯款<br>
+				 	
+				 	<div id="num1">
+										<label>銀行卡號</label>
+										<form:input type="text" name="banknumber" id="banknumber"
+										path="banknumber" value="${updategroup.banknumber}" />
+									</div>	
 				</c:if>
 				
 				<c:if test="${updategroup.payment == 2}">
 				    <input type="checkbox" name="payment" value="1" >面交付款
-				 	<input type="checkbox" name="payment" value="2" checked>銀行匯款<br>
+				 	<input type="checkbox" name="payment" value="2" checked id="bank2">銀行匯款<br>
+				 	<div id="num2">
+										<label>銀行卡號</label>
+										<form:input type="text" name="banknumber" id="banknumber"
+										path="banknumber" value="${updategroup.banknumber}" />
+									</div>	
 				</c:if>
 				<c:if test="${updategroup.payment == 3}">
 				    <input type="checkbox" name="payment" value="1" checked>面交付款
-				 	<input type="checkbox" name="payment" value="2" checked>銀行匯款<br>
+				 	<input type="checkbox" name="payment" value="2" checked id="bank3">銀行匯款<br>
+				 	<div id="num3">
+										<label>銀行卡號</label>
+										<form:input type="text" name="banknumber" id="banknumber"
+										path="banknumber" value="${updategroup.banknumber}" />
+									</div>	
 				</c:if>
 				
 				</td>
