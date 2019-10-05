@@ -44,15 +44,21 @@ body {
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
-	<H2 class="h1">填寫開團詳細訊息!!</H2>
+	
 
 	<div class="progress"
 		style="height: 30px; color: black; font-size: 20px;">
 		<div class="progress-bar bg-success" role="progressbar"
-			style="width: 33%" aria-valuenow="33" aria-valuemin="0"
+			style="width: 50%" aria-valuenow="33" aria-valuemin="0"
 			aria-valuemax="100">第一步</div>
+			<div class="progress-bar bg-success" role="progressbar"
+			style="width: 100%;background-color:pink;" aria-valuenow="33" aria-valuemin="0"
+			aria-valuemax="100">第二步</div>
 	</div>
-	<br>
+	
+	
+	<br> 
+	<H2 class="h1">填寫開團詳細訊息!!</H2>
 	<br>
 	<!-- <img src="../images/group.jpg" > -->
 	<div class="container">
