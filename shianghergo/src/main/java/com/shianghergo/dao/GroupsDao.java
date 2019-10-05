@@ -9,6 +9,7 @@ import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
+import com.shianghergo.model.comment_member;
 
 
 public interface GroupsDao {
@@ -43,5 +44,7 @@ public interface GroupsDao {
 	List<GroupsBean>  searchToGroups(String name); //查詢開團列表 9/27新增
 
 	List<GroupsBean> getGroupsByCategory_id(Integer category_id);
+
+	List<comment_member> getAllCommentByMember(Integer member_id);
 	
 }

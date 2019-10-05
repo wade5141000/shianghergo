@@ -13,6 +13,7 @@ import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
+import com.shianghergo.model.comment_member;
 import com.shianghergo.service.GroupsService;
 
 @Transactional
@@ -184,6 +185,12 @@ public class GroupsServiceImpl implements GroupsService{
 	public List<GroupsBean> getGroupsByCategory_id(Integer category_id) {
 	
 		return dao.getGroupsByCategory_id(category_id);
+	}
+
+	@Override
+	public List<comment_member> getAllCommentByMember(Integer member_id) {
+		
+		return dao.getAllCommentByMember(member_id);
 	}
 
 	

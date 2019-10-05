@@ -50,6 +50,7 @@ import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
 import com.shianghergo.model.SearchBean;
+import com.shianghergo.model.comment_member;
 import com.shianghergo.service.GroupsService;
 import com.shianghergo.service.SearchService;
 
@@ -111,8 +112,9 @@ public class GroupsController {
 	// -------------------------開團 並把會員member_id 放入------------
 	@RequestMapping(value = "/frank/Groups1", method = RequestMethod.POST)
 	public String processAddNewProductForm(Model model, @ModelAttribute("groupsBean") GroupsBean gb,
-			BindingResult result, HttpServletRequest request, @SessionAttribute("loginOK") MemberBean member,
-			@RequestParam("categoryBean") Integer category_id) {
+
+			BindingResult result, HttpServletRequest request, @SessionAttribute("loginOK")MemberBean member,
+			@RequestParam("categoryBean") Integer category_id,@RequestParam("banknumber") Integer banknumber) {
 
 		String[] suppressedFields = result.getSuppressedFields();
 		if (suppressedFields.length > 0) {
@@ -143,11 +145,13 @@ public class GroupsController {
 		 if(gb.getPayment().length() !=1) {
 			 gb.setPayment("3");
 		 }
+		 gb.setBanknumber(banknumber);
 		
 		
 		Integer id = service.addGroups(gb, member.getId(),category_id);
-		System.out.println("-----------------------------");
-		System.out.println(id);
+
+//		System.out.println(id);
+
 
 //		try {
 //			File imageFolder = new File(rootDirectory, "images");
@@ -570,23 +574,38 @@ public class GroupsController {
 	}
 	
 	
+//	// -----------------------------我開的團------------------------------
+//		@RequestMapping("/frank/mygroups") // 查詢單一產品
+//		public String getAllGroupsListByMember(Model model, GroupsBean gb,@ModelAttribute("loginOK")MemberBean member) {
+//
+//			model.addAttribute("mygroups", service.getAllGroupsByMember(member.getId()));
+//			return "frank/mygroups";
+//		}
+	
+	
 	
 //-------------------------某一個團購頁面---------------------------
 	@RequestMapping("/frank/group") // 查詢單一產品
-	public String getGroupsById(@RequestParam("gid") Integer gid, @ModelAttribute("loginOK") MemberBean member,
-			Model model) {
 
-		System.out.println("gid: " + gid);
-		System.out.println("mid:  " + member.getId());
+	public String getGroupsById(@RequestParam("gid") Integer gid,@ModelAttribute("loginOK")MemberBean member,Model model) {
+
 		GroupsBean gb = service.getGroupById(gid);
+		List<comment_member> comment = service.getAllCommentByMember(member.getId());
+		
 		model.addAttribute("group", gb); // 取團的資料
+		model.addAttribute("items", gb.getGroupsitem()); // 取商品的資料
+		model.addAttribute("place", gb.getPlace()); // 取地址的資料
+		model.addAttribute("mygroups", service.getAllGroupsByMember(member.getId()));
+		model.addAttribute("commentmb", comment);
+//		model.addAttribute("target", service.getMemberById(target));
+		
+		
 
-		model.addAttribute("groups_id", service.getGroupsItemByGroups_id(gid)); // 取商品的資料
 
+		
+//		model.addAttribute("groups_id", service.getGroupsItemByGroups_id(gid)); // 取商品的資料
+//		model.addAttribute("place", service.getPlaceByGroups_id(gid)); // 取地址的資料
 //		model.addAttribute("member_id", service.getMemberById(member.getId())); // 取會員的資料
-
-		model.addAttribute("place", service.getPlaceByGroups_id(gid)); // 取地址的資料
-
 //		System.out.println("測試21"+gb.getMemberBean().getId());
 
 //		System.out.println("groups_id");
@@ -613,14 +632,8 @@ public class GroupsController {
 
 		return "frank/memberdata";
 	}
+	
 
-	// -----------------------------我開的團------------------------------
-	@RequestMapping("/frank/mygroups") // 查詢單一產品
-	public String getAllGroupsListByMember(Model model, GroupsBean gb, @ModelAttribute("loginOK") MemberBean member) {
-
-		model.addAttribute("mygroups", service.getAllGroupsByMember(member.getId()));
-		return "frank/mygroups";
-	}
 
 	// ---------------------------某一團的詳細資料--------------------------
 	@RequestMapping("/frank/showgroup")
@@ -1251,5 +1264,38 @@ public class GroupsController {
 
 		return "redirect:/frank/showgroup(mb)?gid=" + gid;
 	}
+
+
+				
+			// ----------------------刪除商品---------------------------
+			@RequestMapping(value = "/frank/deletetogroup_item(mb)")
+			public String mbdeletetogroup_item(@RequestParam("gid") Integer gid, @RequestParam("iid") Integer iid, Model model) {
+
+//					service.deletegitemById(iid);
+//					 String x = service.getGroup_ItemById(iid);
+//					session.removeAttribute(x);
+				service.deletegitemById(iid);
+
+//					Session session = factory.getCurrentSession();		
+//					session.delete(service.getGroup_ItemById(iid));
+
+				return "redirect:/frank/showgroup(mb)?gid=" + gid;
+			}
+
+			// -----------------------刪除地址------------------------
+			@RequestMapping(value = "/frank/deletetoplace(mb)")
+			public String mbdeletetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model) {
+
+//					service.deletegitemById(iid);
+//					 String x = service.getGroup_ItemById(iid);
+//					session.removeAttribute(x);
+				service.deletetoplace(pid);
+
+//					Session session = factory.getCurrentSession();		
+//					session.delete(service.getGroup_ItemById(iid));
+
+				return "redirect:/frank/showgroup(mb)?gid=" + gid;
+			}
+			
 
 }

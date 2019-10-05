@@ -51,7 +51,7 @@ table {
 	<div class="progress"
 		style="height: 30px; font-size: 20px; color: black; font-size: 20px;">
 		<div class="progress-bar bg-success" role="progressbar"
-			style="width: 66%" aria-valuenow="66" aria-valuemin="0"
+			style="width: 100%" aria-valuenow="100" aria-valuemin="0"
 			aria-valuemax="100">第二步</div>
 	</div>
 
@@ -90,12 +90,12 @@ table {
 				</tr>
 				<tr>
 					<td class="td1">付款方式：</td>
-								
+
 					<c:if test="${updategroup.payment ==1}">
 						<td>面交付款</td>
 					</c:if>
 					<c:if test="${updategroup.payment ==2}">
-						<td>面交付款</td>
+						<td>銀行匯款</td>
 					</c:if>
 					<c:if test="${updategroup.payment ==3}">
 						<td>面交付款、銀行匯款</td>
@@ -136,30 +136,43 @@ table {
 
 
 	<section class="container">
-		<div class="row">
-			<c:forEach var="item" items="${updategroup.groupsitem}">
-				<div class="col-sm-6 col-md-3"
-					style="width: 360px; height: 450px; font-size: 16px;">
-					<div class="thumbnail" style="width: 320px; height: 400px">
-						<img width='500' height='300'
-							src="<c:url value='/frank/getPicture/${item.id }' />" />
-						<div class="caption">
-							<p>
-								<b style='font-size: 16px;'>${item.name}</b>
-							</p>
-							<p>說明:${item.detail}</p>
-							<p>價格: ${item.price} 元</p>
+		<!-- 		<div class="row"> -->
+		<%-- 			<c:forEach var="item" items="${updategroup.groupsitem}"> --%>
+		<!-- 				<div class="col-sm-6 col-md-3" -->
+		<!-- 					style="width: 360px; height: 450px; font-size: 16px;"> -->
+		<!-- 					<div class="thumbnail" style="width: 320px; height: 400px"> -->
+		<!-- 						<img width='500' height='300' -->
+		<%-- 							src="<c:url value='/frank/getPicture/${item.id }' />" /> --%>
+		<!-- 						<div class="caption"> -->
+		<!-- 							<p> -->
+		<%-- 								<b style='font-size: 16px;'>${item.name}</b> --%>
+		<!-- 							</p> -->
+		<%-- 							<p>說明:${item.detail}</p> --%>
+		<%-- 							<p>價格: ${item.price} 元</p> --%>
 
-							<p>
-								<input type="button" value="修改"
-									onclick="location.href='updatetogroup_item?gid=${updategroup.id}&iid=${item.id}'"
-									class="btn btn-info" style="width: 80px; height: 30px;">
-								<input type="button" value="刪除"
-									onclick="location.href='deletetogroup_item?gid=${updategroup.id}&iid=${item.id}'"
-									class="btn btn-danger" style="width: 80px; height: 30px;">
-s
-							</p>
-						</div>
+
+		<div class="f2" style="width: 1000px;">
+			<c:forEach var="item" items="${updategroup.groupsitem}">
+				<div class="card" style="width: 200px; display: inline-block;margin:0 20px;">
+					<img width='200' height='150'
+						src="<c:url value='/frank/getPicture/${item.id }' />"
+						class="card-img-top" alt="...">
+					<div class="card-body"> 
+						<h5 class="card-title">${item.name}</h5>
+
+						<p class="card-text">商品說明:${item.detail}</p>
+						<p class="card-text">商品價格:${item.price}</p>
+
+						<p>
+							<input type="button" value="修改"
+								onclick="location.href='updatetogroup_item?gid=${updategroup.id}&iid=${item.id}'"
+								class="btn btn-info" style="width: 80px; height: 30px;">
+							<input type="button" value="刪除"
+								onclick="location.href='deletetogroup_item?gid=${updategroup.id}&iid=${item.id}'"
+								class="btn btn-danger" style="width: 80px; height: 30px;">
+
+						</p>
+
 					</div>
 				</div>
 			</c:forEach>

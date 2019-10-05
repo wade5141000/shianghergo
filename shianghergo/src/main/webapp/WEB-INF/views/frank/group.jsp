@@ -209,7 +209,7 @@ $(document).ready(function(){
 		<div class="btn-group" role="group" aria-label="Basic example"
 			style="width: 1000px">
 			<button type="button" class="btn btn-secondary" id="111">商品與說明</button>
-			<button type="button" class="btn btn-secondary" id="222">評價</button>
+			<button type="button" class="btn btn-secondary" id="222">團主的評價</button>
 			<button type="button" class="btn btn-secondary" id="333">團主的其他合購</button>
 
 
@@ -217,16 +217,17 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<div id="one">
-		<div style="word-break: break-all; width: 800px; margin: 0 auto; ">
-			<img width='750' height='450'src="<c:url value='/frank/getgroupPicture/${group.id }' />">
-		
-	</div>
-	<div style="width:1000px; margin: 0 auto;">
-		<h3>商品</h3>
+		<div style="word-break: break-all; width: 800px; margin: 0 auto;">
+			<img width='750' height='450'
+				src="<c:url value='/frank/getgroupPicture/${group.id }' />">
+
+		</div>
+		<div style="width: 1000px; margin: 0 auto;">
+			<h3>商品</h3>
 		</div>
 
 		<div class="f2" style="width: 1000px;">
-			<c:forEach var="item" items="${groups_id}">
+			<c:forEach var="item" items="${items}">
 				<div class="card" style="width: 200px; display: inline-block;">
 					<img width='200' height='150'
 						src="<c:url value='/frank/getPicture/${item.id }' />"
@@ -252,12 +253,84 @@ $(document).ready(function(){
 	</div>
 
 	<div id="two">
-		<p>22222222222</p>
-	</div>
+	
+	
+	
+	
+	
+	
+<table>
+			<tr>
+				<td>評價人</td>
+				<td>分數</td>
+				<td>評語</td>
+				<td>評價時間</td>
+
+			</tr>
+
+
+			<c:forEach var="commentmb" items="${commentmb}">
+				<tr>
+					<td>${commentmb.target}</td>
+					<td>${commentmb.score}</td>
+					<td>${commentmb.contents}</td>
+					<td>${commentmb.time}</td>
+				
+
+
+
+				</tr>
+			</c:forEach>
+
+		</table>
+		
+			
+
+</div>
 
 	<div id="three">
-		<p>3333333333333</p>
+
+
+
+		<table>
+			<tr>
+				<td>合購編號</td>
+				<td>團名</td>
+				<td>簡介</td>
+				<td>付款方式</td>
+
+			</tr>
+
+
+			<c:forEach var="mygroups" items="${mygroups}">
+				<tr>
+					<td>${mygroups.id}</td>
+					<td>${mygroups.name}</td>
+					<td>${mygroups.detail}</td>
+					<c:if test="${group.payment ==1}">
+						<td >面交付款</td>
+					</c:if>
+					<c:if test="${group.payment ==2}">
+						<td >面交付款</td>
+					</c:if>
+					<c:if test="${group.payment ==3}">
+						<td >面交付款、銀行匯款</td>
+					</c:if>
+
+
+
+				</tr>
+			</c:forEach>
+
+		</table>
+
+
+
+
 	</div>
+	
+	
+
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 
 

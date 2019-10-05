@@ -44,6 +44,7 @@
 			</table>
 			<div style="padding-left: 150px;padding-top: 10px;"> 
 			<input type="submit" value="新增商品"class="btn btn-primary"	>
+			<a class="btn btn-primary"	href="javascript:history.go(-1)">取消 </a>
 			</div>
 		</fieldset>
 	</form:form>

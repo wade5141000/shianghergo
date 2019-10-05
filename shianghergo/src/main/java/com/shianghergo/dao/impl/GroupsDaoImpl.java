@@ -17,6 +17,7 @@ import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
+import com.shianghergo.model.comment_member;
 
 @Repository
 public class GroupsDaoImpl implements GroupsDao {
@@ -310,6 +311,17 @@ public class GroupsDaoImpl implements GroupsDao {
 		
 		 list = session.createQuery(hql).setParameter("category_id", category_id).getResultList();
 
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<comment_member> getAllCommentByMember(Integer member_id) {
+		String hql = "FROM comment_member WHERE member_id=:member_id";
+		List<comment_member> list = new ArrayList<>();
+		Session session = factory.getCurrentSession();
+		list = session.createQuery(hql).setParameter("member_id", member_id).getResultList();
+		System.out.println(list + "55555555");
 		return list;
 	}
 

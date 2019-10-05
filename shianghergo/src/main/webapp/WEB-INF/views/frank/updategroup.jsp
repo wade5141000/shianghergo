@@ -44,7 +44,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/eric/header.jsp" />
-<jsp:include page="../BlackLine.jsp" />
+
 	<h3>團資料編輯</h3>
 
 	<div class="container">	
