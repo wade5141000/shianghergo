@@ -220,6 +220,8 @@ public class GroupsDaoImpl implements GroupsDao {
 		PlaceBean x = session.get(PlaceBean.class, pb.getId());
 		x.setAddress(pb.getAddress());
 		x.setTime(pb.getTime());
+		x.setLatitude(pb.getLatitude());
+		x.setLongitude(pb.getLongitude());
 
 		return;
 

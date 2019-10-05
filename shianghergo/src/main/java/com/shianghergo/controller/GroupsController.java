@@ -506,8 +506,8 @@ public class GroupsController {
             ObjectMapper mapper = new ObjectMapper();
             Map map = mapper.readValue(builder.toString(), Map.class);
             Map location = (Map)((Map)((Map)((List)map.get("results")).get(0)).get("geometry")).get("location");
-            String lat = String.valueOf(location.get("lat"));
-            String lng = String.valueOf(location.get("lng"));
+            Double lat = Double.parseDouble(String.valueOf(location.get("lat")));
+            Double lng = Double.parseDouble(String.valueOf(location.get("lng")));
             pb.setLatitude(lat);
             pb.setLongitude(lng);
         } catch (IOException ex) {
@@ -824,7 +824,27 @@ public class GroupsController {
 		pb.setAddress(address);
 		pb.setTime(time);
 		pb.setId(pid);
-
+		
+		try {
+            String sKeyWord = address;
+            URL url  = new URL(String.format("https://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false&language=zh-TW&key=AIzaSyDOg4gokNHM20oe8VUQN_O5HRQ9Nw6w3Yg", 
+            URLEncoder.encode(sKeyWord, "UTF-8")));//p=%s is KeyWord in
+            URLConnection connectionnn = url.openConnection();
+            String line;
+            StringBuilder builder = new StringBuilder();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connectionnn.getInputStream(),"utf-8"));
+            while ((line = reader.readLine()) != null) {builder.append(line);}
+            ObjectMapper mapper = new ObjectMapper();
+            Map map = mapper.readValue(builder.toString(), Map.class);
+            Map location = (Map)((Map)((Map)((List)map.get("results")).get(0)).get("geometry")).get("location");
+            Double lat = Double.parseDouble(String.valueOf(location.get("lat")));
+            Double lng = Double.parseDouble(String.valueOf(location.get("lng")));
+            pb.setLatitude(lat);
+            pb.setLongitude(lng);
+        } catch (IOException ex) {
+        	ex.printStackTrace();
+        }
+		
 		service.updateplace(pb);
 
 		return "redirect:/frank/showgroup?gid=" + gid;
