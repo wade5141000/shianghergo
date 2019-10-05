@@ -43,7 +43,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"
 		style="height: 100px;">
-		<a class="navbar-brand" href="#">管理員</a>
+		<a class="navbar-brand" href="#">管理員功能</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -77,13 +77,13 @@
 		<h3>違規商家</h3>
 
 		<form action="reportStatusS" method="POST">
-			<div class="select">
+			<div class="alert alert-primary" role="alert" style="width:250px;">
 				<select name="status">
 					<option value="1">尚未處理</option>
 					<option value="2">已處理</option>
 				</select>
+				<button type="submit" class="btn btn-primary">search</button>
 			</div>
-			<button type="submit" class="btn btn-outline-success">查詢</button>
 		</form>
 	</div>
 
@@ -93,7 +93,7 @@
 			<tr>
 				<th scope="col">檢舉號</th>
 				<th scope="col">檢舉人</th>
-				<th scope="col">商家所屬違規者</th>
+				<th scope="col">違規商家</th>
 				<th scope="col">檢舉時間</th>
 				<th scope="col">檢舉內容</th>
 				<th scope="col">處理狀態</th>

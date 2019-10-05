@@ -113,8 +113,10 @@ public class GroupsController {
 		}
 		System.out.println("有沒有阿~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		MultipartFile productImage = gb.getProductImage();
-		String originalFilename = productImage.getOriginalFilename();
-		System.out.println(originalFilename);
+		gb.setProductImage(null);
+		gb.setImage(null);
+//		String originalFilename = productImage.getOriginalFilename();
+//		System.out.println(originalFilename);
 //		gib.setFileName(originalFilename);
 		String ext = ".jpg";
 		String rootDirectory = context.getRealPath("/");

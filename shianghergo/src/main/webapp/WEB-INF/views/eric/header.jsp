@@ -79,7 +79,7 @@ var y = x+1;
 		<li class="nav-item"><a class="nav-link"
 			href="${pageContext.request.contextPath}/oldindex"
 			style="color: #ecffff">舊index</a></li>
-		<li class="nav-item"><a class="nav-link"></a></li>
+		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/testimg1">測試上傳</a></li>
 		<li class="nav-item"><a class="nav-link"></a></li>
 		<li class="nav-item"><a class="nav-link"></a></li>
 		<li class="nav-item"><a class="nav-link"></a></li>
@@ -120,13 +120,13 @@ var y = x+1;
 
 			<li class="nav-item">
 				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#exampleModal">
+					data-target="#cartt">
 					購物車<span id="its">${its}</span>件商品
 				</button>
 			</li>
 			<li class="nav-item">
 				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#exampleModal2">
+					data-target="#gcartt">
 					團購物車<span id="gits">${gits}</span>件商品
 				</button>
 			</li>
@@ -211,7 +211,7 @@ var y = x+1;
 
 	<!-- wade購物車 -->
 	<c:if test="${header11==2}">
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		<div class="modal fade" id="cartt" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content" style="text-align: center;">
@@ -286,7 +286,7 @@ var y = x+1;
 
 		<!-- wade 團團團購物車 -->
 
-		<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+		<div class="modal fade" id="gcartt" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content" style="text-align: center">

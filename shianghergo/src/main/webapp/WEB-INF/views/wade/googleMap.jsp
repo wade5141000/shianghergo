@@ -43,10 +43,12 @@ html, body {
 		var lastOne = 1;
 
 
-		function getLatLong() {
+		function getLatLong(addr) {
 			var apiKey = "AIzaSyDOg4gokNHM20oe8VUQN_O5HRQ9Nw6w3Yg";
 			var api = "https://maps.googleapis.com/maps/api/geocode/json";
-			var location = "中國河北省唐山市路北区建设南路85号";
+			var location = addr;
+			alert("地址是: " + location);
+			
 			jQuery.get(api, {
 				"key" : apiKey,
 				"language" : "zh_tw",
@@ -59,6 +61,15 @@ html, body {
 			
 			var lat = info.results[0].geometry.location.lat;
 			var lng = info.results[0].geometry.location.lng;
+			
+			$.ajax({
+				url:"http://localhost:8080/shianghergo/setLatLng?lat="+lat+"&lng="+lng,
+				type:"get",
+				success:function(data){
+					
+				},
+			})
+			
 			
 			alert("緯度" + lat + "\n" + "經度" + lng);
 		}

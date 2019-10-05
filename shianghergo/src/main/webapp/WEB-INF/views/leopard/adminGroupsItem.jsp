@@ -56,7 +56,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"
 		style="height: 100px;">
-		<a class="navbar-brand" href="#">管理員</a>
+		<a class="navbar-brand" href="#">管理員功能</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -87,27 +87,29 @@
 	</nav>
 
 
-     <div style="margin-left: 150px; margin-top: 15px">
+	<div style="margin-left: 150px; margin-top: 15px">
 
 
 		<h3>團購商品</h3>
 
 
 		<form action="groupIdItem" method="POST">
-				<select name="groups_id">
-			<c:forEach var='groups' items='${group}'>
+		<div class="alert alert-primary" role="alert" style="width:250px;">
+			<select name="groups_id">
+				<c:forEach var='groups' items='${group}'>
 					<option value="${groups.id}">${groups.id}</option>
-			</c:forEach>
-				</select>
-				<button type="submit" class="btn btn-outline-success">團購單查詢</button>
+				</c:forEach>
+			</select>
+			<button type="submit" class="btn btn-primary">search</button>
+		</div>
 		</form>
 	</div>
 
 	<table class="table"
 		style="width: 1400px; margin-left: 150px; margin-top: 50px;">
 		<thead class="thead-dark">
-			<tr>				
-				<th scope="col">開團ID</th>
+			<tr>
+				<th scope="col">開團單號</th>
 				<th scope="col">團購商品名稱</th>
 				<th scope="col">團購商品說明</th>
 				<th scope="col">價格</th>
@@ -122,7 +124,7 @@
 					<td>${groups_items.detail}</td>
 					<td>${groups_items.price}</td>
 					<td>
-						<button type="button" class="btn btn-info"
+						<button type="button" class="btn btn-danger"
 							onclick="delete1(${groups_items.id})">下架</button>
 					</td>
 			</c:forEach>
