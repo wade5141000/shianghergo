@@ -473,6 +473,7 @@ public class GroupsController {
 	
 //-------------------------某一個團購頁面---------------------------
 	@RequestMapping("/frank/group") // 查詢單一產品
+
 	public String getGroupsById(@RequestParam("gid") Integer gid,Model model) {
 		
 		
@@ -814,25 +815,6 @@ public class GroupsController {
 				throw new RuntimeException("嘗試傳入不允許的欄位:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
 			}
 
-			MultipartFile productImage = gib.getProductImage();
-			String originalFilename = productImage.getOriginalFilename();
-			System.out.println(originalFilename);
-//			gib.setFileName(originalFilename);
-			String ext = ".jpg";
-			String rootDirectory = context.getRealPath("/");
-
-			if (productImage != null && !productImage.isEmpty()) {
-				byte[] b;
-				try {
-					b = productImage.getBytes();
-					Blob blob = new SerialBlob(b);
-					gib.setImage(blob);
-				} catch (Exception e) {
-					e.printStackTrace();
-					throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
-				}
-			}
-
 			service.addGroupsItem(gib, gid);
 
 			try {
@@ -847,14 +829,16 @@ public class GroupsController {
 			}
 			return "redirect:/frank/showgroup(mb)?gid=" + gid;
 		}
-	
+
 		
-		
-		// ----------------新增地址-----------------------
-		@RequestMapping(value = "/frank/addplace(mb)", method = RequestMethod.GET)
-		public String mbAddNewPlaceForm(@RequestParam("gid") Integer gidd, Model model, HttpServletRequest rq) {
-			System.out.println("測試" + gidd);
-			PlaceBean pb = new PlaceBean();
+
+
+	// ----------------新增地址-----------------------
+	@RequestMapping(value = "/frank/addplace(mb)", method = RequestMethod.GET)
+	public String mbAddNewPlaceForm(@RequestParam("gid") Integer gidd, Model model, HttpServletRequest rq) {
+		System.out.println("測試" + gidd);
+		PlaceBean pb = new PlaceBean();
+
 
 			model.addAttribute("placeBean", pb);
 			model.addAttribute("gid", gidd);
@@ -887,9 +871,11 @@ public class GroupsController {
 
 			model.addAttribute("upgroupsBean", gb);
 
+
 			return "frank/updategroup2";
 
 		}
+
 
 		// ---------------------修改團的資料-----------------
 		@RequestMapping(value = "/frank/updatetogroup(mb)", method = RequestMethod.POST)
@@ -958,17 +944,21 @@ public class GroupsController {
 				@RequestParam("detail") String detail, @RequestParam("price") Integer price,
 				@RequestParam("iid") Integer iid,@ModelAttribute("upgroupsitemBean") Groups_ItemBean ib) {
 
-				System.out.println("hellllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllo");
-//			if (ib.getProductImage() != null) {
 				if (ib.getProductImage() != null) {
 					MultipartFile productImage = ib.getProductImage();
-					String originalFilename = productImage.getOriginalFilename();
-				
+//					String originalFilename = productImage.getOriginalFilename();
+					ib.setProductImage(null);
+					ib.setImage(null);
+        
+					if (productImage.isEmpty()) {
+						System.out.println("沒上傳圖片");
+					} else {
+						String shianghergo = context.getRealPath("/");
+						shianghergo += "images/groupsItemImg/" + iid +".jpg";
+						
+						File tempF = new File(shianghergo);
+						
 
-					if (productImage != null && !productImage.isEmpty()) {
-						String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
-						String rootDirectory = context.getRealPath("/");
-						byte[] b;
 						try {
 							b = productImage.getBytes();
 							Blob blob = new SerialBlob(b);
@@ -990,6 +980,7 @@ public class GroupsController {
 			@RequestMapping(value = "/frank/updatetoplace(mb)", method = RequestMethod.GET)
 			public String mbupdatetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model,
 					GroupsBean gb) {
+
 
 				model.addAttribute("updateplace", service.getPlaceById(pid));
 

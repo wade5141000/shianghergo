@@ -33,24 +33,24 @@ thead {
 <jsp:include page="eric/header.jsp" />
 	<div  style="padding-bottom: 500px;">
 		<jsp:include page="shianghergo/../BlackLine.jsp" />
-<div style="padding-left: 350px;padding-right: 350px;">
+<div style="padding-left: 290px;padding-right: 30px;">
 	<table class="table table-hover">
 		<tr id='borderA' height='50' >
-			<th  scope="col" id='borderA'  align="center"colspan="6">${loginOK.name}的商品明細</th>
+			<th  scope="col" id='borderA'  align="center"colspan="6">${id}的商品明細</th>
 		</tr>
 		<tr id='borderA' height='36' >
-			<th scope="col" id='borderA'>訂單編號</th>
-			<th scope="col" id='borderA'>商店編號</th>
-			<th scope="col" id='borderA'>商品編號</th>
+<!-- 			<th scope="col" id='borderA'>訂單編號</th> -->
+<!-- 			<th scope="col" id='borderA'>商店編號</th> -->
+<!-- 			<th scope="col" id='borderA'>商品編號</th> -->
 			<th scope="col" id='borderA'>商品名稱</th>
 			<th scope="col" id='borderA'>價格</th>
 			<th scope="col" id='borderA'>數量</th>
 		</tr>
 		<c:forEach var="anOrderD"  items="${MyOrderListD}">
 			<TR id='borderA' >
-			<TD id='borderA' >${anOrderD.order_id}</TD>
-			<TD id='borderA' >${anOrderD.store_id}</TD>
-			<TD id='borderA' >&nbsp;${anOrderD.item_id}</TD>
+<%-- 			<TD id='borderA' >${anOrderD.order_id}</TD> --%>
+<%-- 			<TD id='borderA' >${anOrderD.store_id}</TD> --%>
+<%-- 			<TD id='borderA' >&nbsp;${anOrderD.item_id}</TD> --%>
 			<TD id='borderA' >${anOrderD.name}</TD>
 			<TD id='borderA' >${anOrderD.price}</TD>
 			<TD id='borderA' >&nbsp;${anOrderD.amount}</TD>				

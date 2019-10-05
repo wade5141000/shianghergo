@@ -55,6 +55,7 @@ import com.shianghergo.service.GBDBService;
 import com.shianghergo.service.GroupsService;
 import com.shianghergo.service.MemberService;
 import com.shianghergo.service.ProductService;
+import com.shianghergo.service.StoreService;
 
 @Transactional
 @SessionAttributes("loginOK")
@@ -70,7 +71,11 @@ public class ProductController {
 	ServletContext context;
 	
 	@Autowired
+	StoreService stservice;
+  
+	@Autowired
 	GBDBService gbdbService;
+
 
 	// -------------------以下聖捷--------------------
 
@@ -102,6 +107,7 @@ public class ProductController {
 //		System.out.println("order_id::" + order_id);
 //		System.out.println("getMyOrderListD()裡的=" + list);
 		model.addAttribute("MyOrderListD", list);
+		model.addAttribute("id", order_id);
 		return "Member002_1";
 	}
 
@@ -119,6 +125,7 @@ public class ProductController {
 		List<GroupsOrderDetailBean> list = memberService.getGOrderD(groups_order_info_id);
 //		System.out.println("getMyGOrderListD()裡的=" + list);
 		model.addAttribute("MyGroupsListD", list);
+		model.addAttribute("id", groups_order_info_id);
 		return "Member004_1";
 	}
 
@@ -184,7 +191,11 @@ public class ProductController {
 	@RequestMapping(value = "/hao/myProducts", method = RequestMethod.GET)
 	public String getProductsByStore(@ModelAttribute("loginOK") MemberBean mb, Model model) {
 		List<ItemBean> list = service.getMyProducts(mb.getId());
+
+
 		model.addAttribute("products", list);
+		model.addAttribute("store", stservice.getStoreByMember_Id(mb.getId()));
+							
 		return "hao/myProducts";
 	}
 
@@ -276,7 +287,7 @@ public class ProductController {
 //			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
 //		}
 
-		return "redirect:/hao/products";
+		return "redirect:/hao/myProducts";
 	}
 
 	@RequestMapping(value = "/hao/products/add", method = RequestMethod.GET)

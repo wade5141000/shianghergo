@@ -124,4 +124,5 @@ public class ProductServiceImpl implements ProductService {
 	public List<Integer> getAllProductsId() {
 		return dao.getAllProductsId();
 	}
+
 }

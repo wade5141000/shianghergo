@@ -34,15 +34,15 @@ thead {
 </head>
 <body>
 <jsp:include page="eric/header.jsp" />
-	<div  style="padding-bottom: 500px;">
+	<div  style="padding-bottom: 350px;">
 		<jsp:include page="shianghergo/../BlackLine.jsp" />
-		<div style="padding-left: 350px;padding-right: 350px;">
+		<div style="padding-left: 290px;padding-right: 30px;">
 			<table class="table table-hover">
 				<tr id='borderA' height='50'>
 					<th id='borderA' align="center"colspan="8">由 ${loginOK.name}發起的合購團</th>
 				</tr>
 				<tr id='borderA' >
-					<th scope="col" id='borderA'>合購編號</th>
+					<th scope="col" id='borderA'style="padding-right: 10px;padding-left: 10px;">合購編號</th>
 					<th scope="col" id='borderA'>開始時間</th>
 					<th scope="col" id='borderA'>截止時間</th>
 					<th scope="col" id='borderA'>團名</th>
@@ -58,7 +58,15 @@ thead {
 						<TD id='borderA' align="center">&nbsp;${anGroupsBean.end_time}</TD>
 						<TD id='borderA' align="center">${anGroupsBean.name}</TD>
 						<TD id='borderA' align="center" style="word-break:break-all">&nbsp;${anGroupsBean.detail}</TD>
-						<TD id='borderA' align="center">${anGroupsBean.payment}</TD>
+						<c:if test="${anGroupsBean.payment==1}">
+						<TD id='borderA' align="center">面交付款</TD>
+						</c:if>
+						<c:if test="${anGroupsBean.payment==2}">
+						<TD id='borderA' align="center">銀行匯款</TD>
+						</c:if>
+						<c:if test="${anGroupsBean.payment==3}">
+						<TD id='borderA' align="center">面交付款、銀行匯款</TD>
+						</c:if>
 						<TD id='borderA' align="center"><a
 							href="<c:url value='getMyGroupsPerson?groups_id=${anGroupsBean.id}' />">
 								<button type="button" class="btn btn-primary btn-sm">詳情</button> </a></TD>

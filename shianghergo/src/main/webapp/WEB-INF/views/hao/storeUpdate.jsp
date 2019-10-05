@@ -67,7 +67,7 @@
 								value="確認修改" />
 							<form action="closeStore" method="POST">
 								<input type=hidden value="${store.id}" name="id">
-								<button type="submit" class="btn btn-success" onclick="close()">關閉商店</button>
+								
 							</form>
 							<input type="button" class="btn btn-success"
 								onclick="history.back()" value="回到上一頁"></input>

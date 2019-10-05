@@ -18,6 +18,12 @@
 thead {
 	background-color: lightblue;
 }
+#borderA{
+width:100px;
+}
+    
+
+}
 </style>
 </head>
 <body>
@@ -26,39 +32,52 @@ thead {
 		<jsp:include page="eric/header.jsp" />
 		<div style="padding-bottom: 500px;">
 			<jsp:include page="shianghergo/../BlackLine.jsp" />
-			<div style="padding-left: 350px; padding-right: 350px;">
+			<div style="padding-left: 290px; padding-right: 30px;">
 				<table class="table table-hover">
-					<tr id='borderA' >
+					<tr id='borderA'>
 						<th id='borderA' align="center" colspan="8">團員資料</th>
 					</tr>
-					<tr id='borderA' >
-						<th scope="col" id='borderA'>會員id</th>
+					<tr id='borderA'>
+						<th scope="col" id='borderA'>訂單編號</th>
+						<th scope="col" id='borderA'>會員Id</th>
 						<th scope="col" id='borderA'>會員姓名</th>
 						<th scope="col" id='borderA'>會員電話</th>
 						<th scope="col" id='borderA'>金額</th>
-						<th scope="col" id='borderA'>付款時間</th>
+						<th scope="col" id='borderA'>訂購時間</th>
 						<th scope="col" id='borderA'>付款方式</th>
 						<th scope="col" id='borderA'>面交地點</th>
 						<th scope="col" id='borderA'>面交時間</th>
+						<th scope="col" id='borderA'>購買品項</th>
 					</tr>
 					<c:forEach var="MyGP" items="${getMyGroupsPerson}">
-						<TR id='borderA' >
-							<TD id='borderA' ><a
+						<TR id='borderA'>
+							<TD id='borderA'>${MyGP.id}</TD>
+							<TD id='borderA'><a
 								href="<c:url value='sendMemberMessage?target=${MyGP.member_id}' />">
 									${MyGP.member_id}
 									<button type="button" class="btn btn-primary btn-sm">
 										<span>連絡他✉</span>
 									</button>
 							</a></TD>
-							<TD id='borderA' >${MyGP.name}</TD>
+							<TD id='borderA'>${MyGP.name}</TD>
 							<%-- 			<TD id='borderA' width="100" align="center">${MyGP.name}</TD> --%>
 							<TD id='borderA'>${MyGP.phone}</TD>
 							<TD id='borderA'>${MyGP.price}</TD>
 							<TD id='borderA'>${MyGP.time}</TD>
-							<TD id='borderA'>${MyGP.payment}</TD>
+							<c:if test="${MyGP.payment==1}">
+								<TD id='borderA' align="center">面交付款</TD>
+							</c:if>
+							<c:if test="${MyGP.payment==2}">
+								<TD id='borderA' align="center">銀行匯款</TD>
+							</c:if>
+							<c:if test="${MyGP.payment==3}">
+								<TD id='borderA' align="center">面交付款、銀行匯款</TD>
+							</c:if>
 							<TD id='borderA'>${MyGP.place.address}</TD>
 							<TD id='borderA'>${MyGP.place.time}</TD>
-
+							<TD id='borderA'><a
+							href="<c:url value='' />">
+								 <button type="button" class="btn btn-primary btn-sm">詳情</button></a></TD>
 
 							<!-- 			<TD id='borderA' width="100" align="center"><a -->
 							<%-- 					href="<c:url value='getMyGroupsplace?place_id=${MyGP.place.id}' />"> --%>

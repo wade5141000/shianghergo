@@ -1,5 +1,8 @@
 package com.shianghergo.config;
 
+import java.io.PrintWriter;
+
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -8,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.shianghergo.exception.UserException;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.service.MemberService;
 
@@ -23,7 +25,16 @@ public class MyIntercptor extends HandlerInterceptorAdapter {
 	 @Override
 	    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handle) throws Exception {
 	        System.out.println("before");
-	      //创建session
+	        //=============
+	        if (request.getHeader("x-requested-with") != null && request.getHeader("x-requested-with").equalsIgnoreCase("XMLHttpRequest")){ //如果是ajax请求响应头会有x-requested-with  
+	            PrintWriter out = ((ServletResponse) request).getWriter();  
+	            out.print("loseSession");//session失效
+	            out.flush();
+	            return false;
+	        }
+  
+	        //==============
+	        //创建session
 			HttpSession session =request.getSession();
 			
 			//无需登录，允许访问的地址
@@ -78,12 +89,10 @@ public class MyIntercptor extends HandlerInterceptorAdapter {
 				System.out.println("user ==null");
 				response.sendRedirect(request.getContextPath()+"/login");
 			}
-			
-			
-			
 			//重定向
 //			response.sendRedirect(request.getContextPath()+"/login");
 	        return true;
+	        
 	    }//进入Handler方法之前执行。可以用于身份认证、身份授权。比如如果认证没有通过表示用户没有登陆，需要此方法拦截不再往下执行（return false），否则就放行（return true）。
 
 	    public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {

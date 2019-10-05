@@ -177,6 +177,7 @@ public class ProductDaoImpl implements ProductDao {
 		list = session.createQuery(hql).setParameter("category_id", category_id).getResultList();
 		return list;
 	}
+
 	
 	@Override
 	public List<Integer> getAllProductsId(){
@@ -187,4 +188,5 @@ public class ProductDaoImpl implements ProductDao {
 		list = session.createQuery(hql).getResultList();
 		return list;
 	}
+
 }

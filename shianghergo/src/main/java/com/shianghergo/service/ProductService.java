@@ -37,4 +37,5 @@ public interface ProductService {
 	List<ItemBean> getProductsByCategory(Integer category_id);
 
 	List<Integer> getAllProductsId();
+
 }

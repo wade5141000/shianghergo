@@ -155,6 +155,7 @@ table {
 
 		<div class="f2" style="width: 1000px;">
 			<c:forEach var="item" items="${updategroup.groupsitem}">
+
 				<div class="card" style="width: 200px; display: inline-block;margin:0 20px;">
 					<img width='200' height='150'
 						src="<c:url value='/frank/getPicture/${item.id }' />"

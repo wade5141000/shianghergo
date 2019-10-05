@@ -61,6 +61,7 @@
 
 </head>
 <body>
+
 <jsp:include page="/WEB-INF/views/eric/header.jsp" />
 <jsp:include page="../BlackLine.jsp" />
 	<h3>團資料編輯</h3>
@@ -155,9 +156,9 @@
 			<input class="btn btn-primary" type="submit" value="更新" /> <a
 			class="btn btn-primary"	href="javascript:history.go(-1)">取消 </a>
 		</div>
+			</form:form>
 
-	</form:form>
-	</div>
+		</div>
 	</div>
 	<%-- 	<c:forEach var="place" items="${updategroup.place}"> --%>
 	<!-- 			<tr> -->
@@ -176,6 +177,6 @@
 	<!--                     &nbsp;&nbsp; <a href="javascript:history.go(-1)">退回 </a></td> -->
 	<!--      </tr> -->
 
-<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>

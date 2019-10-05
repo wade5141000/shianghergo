@@ -38,7 +38,7 @@ thead {
 	<jsp:include page="shianghergo/../BlackLine.jsp" />
 	<div style="padding-bottom: 500px;">
 
-		<div style="padding-left: 350px; padding-right: 350px;">
+		<div style="padding-left: 290px;padding-right: 30px;">
 			<table class="table table-hover">
 
 				<tr id='borderA' height='50'>
@@ -51,7 +51,7 @@ thead {
 					<!-- 			<th id='borderA'>電話</th> -->
 					<!-- 						<th id='borderA'>團編</th> -->
 					<th scope="col" id='borderA'>總金額</th>
-					<th scope="col" id='borderA'>時間</th>
+					<th scope="col" id='borderA'>下訂單時間</th>
 					<th scope="col" id='borderA'>付款方式</th>
 					<!-- 			<th id='borderA'>面交地點編號</th> -->
 					<th scope="col" id='borderA'>面交地點</th>
@@ -60,17 +60,25 @@ thead {
 				</tr>
 				<c:forEach var="MyGOL" items="${MyGroupsOrderList}">
 					<TR id='borderA' height='30'>
-						<TD id='borderA' align="center">${MyGOL.id}</TD>
+						<TD id='borderA' >${MyGOL.id}</TD>
 						<%-- 			<TD id='borderA'  align="center">${MyGOL.name}</TD> --%>
 						<%-- 			<TD id='borderA'  align="center">${MyGOL.phone}</TD> --%>
 						<%-- 							<TD id='borderA' align="center">${MyGOL.groups_id}</TD> --%>
-						<TD id='borderA' align="center">&nbsp;${MyGOL.price}</TD>
-						<TD id='borderA' align="center">${MyGOL.time}</TD>
-						<TD id='borderA' align="center">&nbsp;${MyGOL.payment}</TD>
+						<TD id='borderA' >&nbsp;${MyGOL.price}</TD>
+						<TD id='borderA' >${MyGOL.time}</TD>
+						<c:if test="${MyGOL.payment==1}">
+						<TD id='borderA' >面交付款</TD>
+						</c:if>
+						<c:if test="${MyGOL.payment==2}">
+						<TD id='borderA' >銀行匯款</TD>
+						</c:if>
+						<c:if test="${MyGOL.payment==3}">
+						<TD id='borderA' >面交付款、銀行匯款</TD>
+						</c:if>
 						<%-- 			<TD id='borderA'  align="center">${MyGOL.place.id}</TD> --%>
-						<TD id='borderA' align="center">${MyGOL.place.address}</TD>
-						<TD id='borderA' align="center">${MyGOL.place.time}</TD>
-						<TD id='borderA' align="center"><a
+						<TD id='borderA' >${MyGOL.place.address}</TD>
+						<TD id='borderA' >${MyGOL.place.time}</TD>
+						<TD id='borderA' ><a
 							href="<c:url value='getMyGOrderListD?groups_order_info_id=${MyGOL.id}' />">
 								<button type="button" class="btn btn-primary btn-sm">詳情</button>
 						</a></TD>

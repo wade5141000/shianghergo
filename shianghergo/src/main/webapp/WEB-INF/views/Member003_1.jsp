@@ -33,7 +33,7 @@ thead {
 <jsp:include page="eric/header.jsp" />
 	<div style="padding-bottom: 500px;">
 		<jsp:include page="shianghergo/../BlackLine.jsp" />
-<div style="padding-left: 350px;padding-right: 350px;">
+<div style="padding-left: 290px;padding-right: 30px;">
 	<table class="table table-hover">
 		<tr id='borderA'  >
 			<th id='borderA' colspan="4">由${loginOK.name}建立合購團明細</th>
