@@ -1,12 +1,7 @@
 package testhibernate;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-
-@Controller
-public class Practice {
+//@Controller
+//public class Practice {
 
 //	public static void main(String[] args) {
 	
@@ -22,9 +17,24 @@ public class Practice {
 //		if(!img.isEmpty()) {
 //			System.out.println("有東西");
 //		}
+		
+//		GeoApiContext context = new GeoApiContext.Builder().apiKey("AIza...").build();
+//			GeocodingResult[] results = null;
+//			try {
+//				results = GeocodingApi.geocode(context,
+//				    "1600 Amphitheatre Parkway Mountain View, CA 94043").await();
+//			} catch (ApiException e) {
+//				e.printStackTrace();
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//			System.out.println(gson.toJson(results[0].addressComponents));
 //		
 //		return "index";
 //	}
-	
-	
-}
+//	
+//	
+//}

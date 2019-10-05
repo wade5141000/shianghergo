@@ -13,7 +13,7 @@
 	</form>
 </body>
 
-<img src="/testimg3" width="200px" height="200px" />
+<!-- <img src="/testimg3" width="200px" height="200px" /> -->
 
 
 

@@ -1,14 +1,20 @@
 package com.shianghergo.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
@@ -37,6 +43,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shianghergo.model.CategoryBean;
 import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
@@ -483,13 +490,13 @@ public class GroupsController {
 	// ----------------新增地址-----------------------
 	@RequestMapping(value = "/frank/addplace", method = RequestMethod.GET)
 	public String AddNewPlaceForm(@RequestParam("gid") Integer gidd, Model model, HttpServletRequest rq) {
-		System.out.println("測試" + gidd);
+//		System.out.println("測試" + gidd);
 		PlaceBean pb = new PlaceBean();
 
 		model.addAttribute("placeBean", pb);
 		model.addAttribute("gid", gidd);
 
-		System.out.println("測試1" + gidd);
+//		System.out.println("測試1" + gidd);
 		return "frank/addPlace";
 
 	}
@@ -499,8 +506,30 @@ public class GroupsController {
 	public String AddNewPlaceForm(@RequestParam("gid") Integer gid, @ModelAttribute("placeBean") PlaceBean pb,
 			GroupsBean gb) {
 
-		System.out.println("有進來嗎" + gid);
-
+//		System.out.println("有進來嗎" + gid);
+		// wade 地址轉經緯度 start ===================================
+		
+		try {
+            String sKeyWord = pb.getAddress();
+            URL url  = new URL(String.format("https://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false&language=zh-TW&key=AIzaSyDOg4gokNHM20oe8VUQN_O5HRQ9Nw6w3Yg", 
+            URLEncoder.encode(sKeyWord, "UTF-8")));//p=%s is KeyWord in
+            URLConnection connectionnn = url.openConnection();
+            String line;
+            StringBuilder builder = new StringBuilder();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connectionnn.getInputStream(),"utf-8"));
+            while ((line = reader.readLine()) != null) {builder.append(line);}
+            ObjectMapper mapper = new ObjectMapper();
+            Map map = mapper.readValue(builder.toString(), Map.class);
+            Map location = (Map)((Map)((Map)((List)map.get("results")).get(0)).get("geometry")).get("location");
+            String lat = String.valueOf(location.get("lat"));
+            String lng = String.valueOf(location.get("lng"));
+            pb.setLatitude(lat);
+            pb.setLongitude(lng);
+        } catch (IOException ex) {
+        	ex.printStackTrace();
+        }
+		
+		// wade 地址轉經緯度 end ===================================
 		service.addPlace(pb, gid);
 
 		return "redirect:/frank/showgroup?gid=" + gid;

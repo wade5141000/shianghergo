@@ -76,7 +76,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/Member002")
 	public String getMyOrderList(@ModelAttribute("loginOK") MemberBean mb, Model model) {
-		System.out.println("MemberBean mb++" + mb);
+//		System.out.println("MemberBean mb++" + mb);
 		List<OrderBean> list = memberService.getMemberOrders(mb.getId());
 //		String[] list2 = new String[list.size()];
 //		for(int i=0 ; i<list.size();i++) {
@@ -85,7 +85,7 @@ public class ProductController {
 //		}
 		model.addAttribute("MyOrderList", list);// service.getorderById(ob.getId())
 //		model.addAttribute("it",list2);
-		System.out.println("getMyOrderList裡的list:" + list);
+//		System.out.println("getMyOrderList裡的list:" + list);
 		return "Member002";
 	}
 
@@ -99,8 +99,8 @@ public class ProductController {
 	@RequestMapping("/getMyOrderListD")
 	public String getMyOrderListD(@RequestParam("order_id") Integer order_id, Model model) {
 		List<OrderDetailBean> list = memberService.getMemberOrdersD(order_id);
-		System.out.println("order_id::" + order_id);
-		System.out.println("getMyOrderListD()裡的=" + list);
+//		System.out.println("order_id::" + order_id);
+//		System.out.println("getMyOrderListD()裡的=" + list);
 		model.addAttribute("MyOrderListD", list);
 		return "Member002_1";
 	}
@@ -108,8 +108,8 @@ public class ProductController {
 	@RequestMapping("/getMyGroupsListD")
 	public String getMyGroupsListD(@RequestParam("groups_id") Integer groups_id, Model model, GroupsBean GB) {
 		List<Groups_ItemBean> list = memberService.getGroupsOrdersD(groups_id);
-		System.out.println(groups_id);
-		System.out.println("getMyGroupsListD()裡的=" + list);
+//		System.out.println(groups_id);
+//		System.out.println("getMyGroupsListD()裡的=" + list);
 		model.addAttribute("MyGroupsListD", list);
 		return "Member003_1";
 	}
@@ -117,7 +117,7 @@ public class ProductController {
 	@RequestMapping("/getMyGOrderListD")
 	public String getMyGOrderListD(@RequestParam("groups_order_info_id") Integer groups_order_info_id, Model model) {
 		List<GroupsOrderDetailBean> list = memberService.getGOrderD(groups_order_info_id);
-		System.out.println("getMyGOrderListD()裡的=" + list);
+//		System.out.println("getMyGOrderListD()裡的=" + list);
 		model.addAttribute("MyGroupsListD", list);
 		return "Member004_1";
 	}
@@ -126,7 +126,7 @@ public class ProductController {
 	public String getMyGroupsOrderList(@ModelAttribute("loginOK") MemberBean mb, Model model) {
 		List<GroupsOrderBean> list = memberService.getMemberGroupsOrders(mb.getId());
 		model.addAttribute("MyGroupsOrderList", list);
-		System.out.println("參與的" + list);
+//		System.out.println("參與的" + list);
 		return "Member004";
 	}
 
@@ -141,7 +141,7 @@ public class ProductController {
 	@RequestMapping(value = "/getMyGroupsplace")
 	public String getMyPlace(@RequestParam("place_id") Integer place_id, Model model, GroupsOrderBean GOB) {
 		List<PlaceBean> list = memberService.getMyPlaceByid(GOB.getPlace().getId());
-		System.out.println("getMyPlace++:" + list);
+//		System.out.println("getMyPlace++:" + list);
 		model.addAttribute("getMyPlace", list);
 		// System.out.println("參與的"+list);
 		return "Member003_3";

@@ -218,16 +218,4 @@ public class GroupsProcessController {
 	}
 	
 	
-	@RequestMapping("/setLatLng")
-	public void setLatLng(HttpServletResponse rp,HttpServletRequest re) {
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	
 }

@@ -9,42 +9,38 @@
 <head>
 
 <script>
-
-function getLatLong() {
-	var apiKey = "AIzaSyDOg4gokNHM20oe8VUQN_O5HRQ9Nw6w3Yg";
-	var api = "https://maps.googleapis.com/maps/api/geocode/json";
-	var location = addr;
-	alert("地址是: " + location);
+// function getLatLong() {
+// 	var apiKey = "AIzaSyDOg4gokNHM20oe8VUQN_O5HRQ9Nw6w3Yg";
+// 	var api = "https://maps.googleapis.com/maps/api/geocode/json";
+// 	var location = document.getElementById("address").value;
+// 	alert("地址是: " + location);
 	
-	jQuery.get(api, {
-		"key" : apiKey,
-		"language" : "zh_tw",
-		"address" : location
-	}, getResult, "text");
-}
-function getResult(data) {
-	// console.log(data);
-	var info = JSON.parse(data);
+// 	jQuery.get(api, {
+// 		"key" : apiKey,
+// 		"language" : "zh_tw",
+// 		"address" : location
+// 	}, getResult, "text");
+// }
+// function getResult(data) {
+// 	// console.log(data);
+// 	var info = JSON.parse(data);
+// 	var location = document.getElementById("address").value;
+// 	var lat = info.results[0].geometry.location.lat;
+// 	var lng = info.results[0].geometry.location.lng;
 	
-	var lat = info.results[0].geometry.location.lat;
-	var lng = info.results[0].geometry.location.lng;
+// 	var t=setTimeout(function(){
+// 		$.ajax({
+// 			url:"http://localhost:8080/shianghergo/setLatLng?lat="+lat+"&lng="+lng+"&loca="+location,
+// 			type:"get",
+// 			success:function(data){
+				
+// 			},
+// 		})
+// 	},5000);
 	
-	$.ajax({
-		url:"http://localhost:8080/shianghergo/setLatLng?lat="+lat+"&lng="+lng,
-		type:"get",
-		success:function(data){
-			
-		},
-	})
-	
-	
-	alert("緯度" + lat + "\n" + "經度" + lng);
-}
-
-
-
+// 	alert("緯度" + lat + "\n" + "經度" + lng);
+// }
 </script>
-
 
 <meta charset="UTF-8">
 <title>新增地址</title>
@@ -81,7 +77,7 @@ function getResult(data) {
 
 		</table>
 		<div style="padding-left: 150px;padding-top: 10px;">
-			<input type="submit" value="新增地址" class="btn btn-primary" onclick="getLatLong()">
+			<input type="submit" value="新增地址" class="btn btn-primary">
 			<a class="btn btn-primary"	href="javascript:history.go(-1)">取消 </a>
 			</div>
 		</fieldset>
