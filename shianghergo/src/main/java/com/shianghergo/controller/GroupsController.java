@@ -1071,8 +1071,6 @@ public class GroupsController {
 			@RequestMapping(value = "/frank/updatetoplace(mb)", method = RequestMethod.GET)
 			public String mbupdatetoplace(@RequestParam("gid") Integer gid, @RequestParam("pid") Integer pid, Model model,
 					GroupsBean gb) {
-
-
 				model.addAttribute("updateplace", service.getPlaceById(pid));
 
 				return "frank/updateplace2";
