@@ -32,8 +32,8 @@ public class ProductServiceImpl implements ProductService {
 
 	@Transactional
 	@Override
-	public void addProduct(ItemBean product,Integer category_id) {
-		dao.addProduct(product, category_id);
+	public int addProduct(ItemBean product,Integer category_id) {
+		return dao.addProduct(product, category_id);
 	}
 
 	@Transactional

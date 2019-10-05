@@ -498,8 +498,8 @@ public class ALLController {
 		List<StoreBean> sto = service.getStore();
 		model.addAttribute("list", list);
 		model.addAttribute("Store", sto);
-
-		return "hao/getStoreByProduct?id="+rb.getMember_id();
+		Integer sd = rb.getStore_id();
+		return "redirect:/hao/getStoreByProduct?id=" + sd;
 	}
 
 	// 會員評價商家
@@ -528,9 +528,8 @@ public class ALLController {
 
 		model.addAttribute("list", list);
 		model.addAttribute("Store", sto);
-
-		return "getStoreByProduct?id=" + cs.getMember_id(); 
-
+		Integer sd = cs.getStore_id();
+		return "redirect:/hao/getStoreByProduct?id=" + sd; 
 	}
 
 //----------------------會員評價商品--------------------------		
@@ -546,6 +545,7 @@ public class ALLController {
 		return "leopard/ReportevaluationItem";
 
 	}
+	
 
 	@RequestMapping("leopard/evaluationitem")
 	public String evaluationitem2(comment_item ci, Model model) {
@@ -559,4 +559,16 @@ public class ALLController {
 
 	}
 
+	@RequestMapping("/hao/evaluationitem")
+	public String evaluationitem3(comment_item ci, Model model) {
+
+		service.savecomment_Item(ci);
+
+		List<ItemBean> list = service.getAllItem();
+
+		model.addAttribute("item", list);
+		Integer pd = ci.getItem_id();
+		return "redirect:/hao/product?id=" + pd;
+
+	}
 }

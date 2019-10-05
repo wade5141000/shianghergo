@@ -6,6 +6,8 @@ public interface comment_itemDao {
 
 	
 	public void savecomment_Item(comment_item ci);
+
+	public double getAverageScoreByItemId(Integer id);
 	
 	
 }

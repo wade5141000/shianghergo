@@ -36,7 +36,7 @@
 		if (flag == true) {
 			for (let i = 0; i < n; i++) {
 
-				document.images[i - 1 + 1].src = '${pageContext.request.contextPath}/resources/images/chngstar.gif'
+				document.images[i - 1 + 2].src = '${pageContext.request.contextPath}/resources/images/chngstar.gif'
 
 			}
 
@@ -49,7 +49,7 @@
 
 			for (let i = 0; i < 5; i++) {
 
-				document.images[i - 1 + 1].src = "${pageContext.request.contextPath}/resources/images/star.gif"
+				document.images[i - 1 + 2].src = "${pageContext.request.contextPath}/resources/images/star.gif"
 
 			}
 		}
@@ -63,7 +63,7 @@
 
 		for (let i = 0; i < n; i++) {
 
-			document.images[i - 1 + 1].src = "${pageContext.request.contextPath}/resources/images/chngstar.gif"
+			document.images[i - 1 + 2].src = "${pageContext.request.contextPath}/resources/images/chngstar.gif"
 			document.getElementById("str").innerHTML = "是否要給" + (i + 1) + "分";
 			document.getElementById("score").value = i + 1;
 		}
@@ -150,7 +150,7 @@
 				<div class="modal-body">
 
 
-					<form action="evaluationStore" method="POST">
+					<form action="/shianghergo/hao/evaluationStore" method="POST">
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">評分對象:
 							</label> <img

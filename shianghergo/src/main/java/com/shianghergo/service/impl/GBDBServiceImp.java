@@ -281,6 +281,11 @@ public class GBDBServiceImp implements GBDBService {
 		return gdao.getGroupsItemByGroupsId(groups_id);
 	}
 
+	@Override
+	public double getAverageScoreByItemId(Integer id) {
+		return cidao.getAverageScoreByItemId(id);
+	}
+
 	
 	
 	
