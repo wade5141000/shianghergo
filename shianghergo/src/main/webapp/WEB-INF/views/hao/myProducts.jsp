@@ -57,7 +57,7 @@
 							class="btn btn-primary"> 修改 </a> 
 							<a href="/shianghergo/hao/product/Update/Delete?id=${product.id }">
 							<input type="button" name="delete" value="刪除" class='btn btn-primary'
-							onclick="confirmDelete()" /></a> 
+							onclick="return confirmDelete()" /></a> 
 							<input type="hidden" value="${product.id }" name="id"> 
 <!-- 							<input type="submit"name="delete" value="刪除" class='btn btn-primary' -->
 <!-- 							onclick="confirmDelete()" /> -->

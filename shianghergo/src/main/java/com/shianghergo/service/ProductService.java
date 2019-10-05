@@ -35,4 +35,6 @@ public interface ProductService {
 	public String getStoreNameByItemId(Integer id);
 
 	List<ItemBean> getProductsByCategory(Integer category_id);
+
+	List<Integer> getAllProductsId();
 }

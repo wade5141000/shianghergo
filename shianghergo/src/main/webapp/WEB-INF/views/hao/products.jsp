@@ -131,6 +131,12 @@
 									</div>
 								</div>
 							</c:forEach>
+							
+							
+<%-- 							<c:forEach var="score" items="scores"> --%>
+<%-- 							</c:forEach> --%>
+							
+							
 						</div>
 						<div id="demo0" style="text-align: center;"></div>
 					</div>

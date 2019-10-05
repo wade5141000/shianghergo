@@ -219,7 +219,19 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<h2 style="text-align:center;padding-bottom:15px">評價滿意度</h2>
+	<c:forEach var='comment' items='${comment }'>
+	<div style="padding-left:35%; padding-right:35%;">
+		<div style="display:inline;"><img src="<c:url value='/resources/images/star_${comment.score }.gif' />"></div>
+		<div style="display:inline;"><p style="text-align:right">${comment.time }</p></div>
+		<p>會員：${comment.member_id }</p>
+		<p style="text-align:left">${comment.contents }</p>
+	</div>
+	<div style="padding-left:35%; padding-right:35%">
+		<hr style="color:gray;">
+	</div>
+	</c:forEach>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>

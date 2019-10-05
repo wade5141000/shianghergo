@@ -286,7 +286,13 @@ public class GBDBServiceImp implements GBDBService {
 		return cidao.getAverageScoreByItemId(id);
 	}
 
+	@Override
+	public List<comment_item> getComment_item(Integer item_id) {
+		return cidao.getComment_item(item_id);
+	}
 	
-	
-	
+	@Override
+	public List<comment_store> getComment_store(Integer store_id) {
+		return csdao.getComment_store(store_id);
+	}
 }

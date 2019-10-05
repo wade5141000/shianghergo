@@ -88,5 +88,12 @@ public interface GBDBService {
 	//用團購號ID查詢團購商品 10/04
 	public List<Groups_ItemBean> getGroupsItemByGroupsId(Integer groups_id);
 	
+	//拿商品平均評價分數
 	public double getAverageScoreByItemId(Integer id);
+	
+	//拿comment_item
+	public List<comment_item> getComment_item(Integer item_id);
+	
+	//拿comment_store
+	public List<comment_store> getComment_store(Integer store_id);
 }
