@@ -46,7 +46,7 @@ table {
 	<!-- action对应一个action标签，id对应提交时的对应关系 -->
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
 	<input type="hidden" name="id" value="${updategroup.id}" />
-	<H1 class="f3">新增商品與地址</H1>
+
 
 	<div class="progress"
 		style="height: 30px; font-size: 20px; color: black; font-size: 20px;">
@@ -54,7 +54,9 @@ table {
 			style="width: 100%" aria-valuenow="100" aria-valuemin="0"
 			aria-valuemax="100">第二步</div>
 	</div>
-
+	<br>
+	<H1 class="f3">新增商品與地址</H1>
+	<br>
 
 	<div>
 		<div>

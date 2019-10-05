@@ -471,16 +471,16 @@ public class GroupsController {
 	
 //-------------------------某一個團購頁面---------------------------
 	@RequestMapping("/frank/group") // 查詢單一產品
-	public String getGroupsById(@RequestParam("gid") Integer gid,@ModelAttribute("loginOK")MemberBean member,Model model) {
+	public String getGroupsById(@RequestParam("gid") Integer gid,Model model) {
 		
 		
 		GroupsBean gb = service.getGroupById(gid);
-		List<comment_member> comment = service.getAllCommentByMember(member.getId());
+		List<comment_member> comment = service.getAllCommentByMember(gb.getMemberBean().getId());
 		
 		model.addAttribute("group", gb); // 取團的資料
 		model.addAttribute("items", gb.getGroupsitem()); // 取商品的資料
 		model.addAttribute("place", gb.getPlace()); // 取地址的資料
-		model.addAttribute("mygroups", service.getAllGroupsByMember(member.getId()));
+		model.addAttribute("mygroups", service.getAllGroupsByMember(gb.getMemberBean().getId())	);
 		model.addAttribute("commentmb", comment);
 //		model.addAttribute("target", service.getMemberById(target));
 		
