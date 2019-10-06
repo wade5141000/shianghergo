@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html>
 <head>
 <meta charset="UTF-8">
@@ -145,6 +145,66 @@ $(document).ready(function(){
 
 // wade 以下檢舉和評價
 
+let flag = true;
+
+	document.addEventListener("DOMContentLoaded", function() {
+
+		let stars = document.querySelectorAll("img.s1");
+
+		let starsLength = stars.length;
+
+		for (let i = 0; i < starsLength; i++) {
+
+			stars[i].addEventListener("mouseover", mouseOver);
+			stars[i].addEventListener("mouseout", mouseOut);
+			stars[i].addEventListener("click", Click);
+		}
+
+	});
+
+	function mouseOver() {
+
+		let n = this.id.charAt(4);
+
+		flag = true;
+
+		if (flag == true) {
+			for (let i = 0; i < n; i++) {
+
+				document.images[i - 1 + 2].src = '${pageContext.request.contextPath}/resources/images/chngstar.gif'
+
+			}
+
+		}
+
+	}
+	function mouseOut() {
+
+		if (flag) {
+
+			for (let i = 0; i < 5; i++) {
+
+				document.images[i - 1 + 2].src = "${pageContext.request.contextPath}/resources/images/star.gif"
+
+			}
+		}
+	}
+
+	function Click() {
+
+		flag = false;
+
+		let n = this.id.charAt(4);
+
+		for (let i = 0; i < n; i++) {
+
+			document.images[i - 1 + 2].src = "${pageContext.request.contextPath}/resources/images/chngstar.gif"
+			document.getElementById("str").innerHTML = "是否要給" + (i + 1) + "分";
+			document.getElementById("score").value = i + 1;
+		}
+
+	}
+
 function reportTarger(myObj) {
 
 		document.getElementById("target").value = myObj.value;
@@ -188,7 +248,7 @@ function reportTarger(myObj) {
 						</div>
 
 						<input type=hidden value="${loginOK.id}" name="member_id"> 
-						<input type=hidden value="${group.id}"  id="target" name="target">
+						<input type=hidden value="1"  id="target" name="target">
 						<div class="form-group">
 							<label for="message-text" class="col-form-label">檢舉內容:</label>
 							<textarea class="form-control" id="message-text" name="contents"></textarea>
@@ -204,12 +264,74 @@ function reportTarger(myObj) {
 			</div>
 		</div>
 	</div>
+	
+<!-- 	評價功能   -->
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"
+	                     style="margin-left: 180px;color: blue;" >評價會員</h5>
+					<div class="form-group" style="text-align: center;">
+						<label for="recipient-name" class="col-form-label"></label>
+					</div>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+
+					<form action="/shianghergo/frank/evaluationMember" method="POST">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">評分:
+							</label> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star1" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star2" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star3" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star4" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star5" class="s1">
+
+						</div>
+						<div>
+							<span class="c1" id="str"></span>
+						</div>
+
+					
+						<!--使用者會員ID -->
+						<input type=hidden value="${loginOK.id}" name="member_id">
+						<!--被評價的會員ID -->
+						<input type=hidden value="1" id="scoretarget" name="target">
+						<!--取的被選中的星星 -->
+						<input type=hidden value="1" name="score" id="score">
+
+						<div class="form-group">
+							<label for="message-text" class="col-form-label">評價內容:</label>
+							<textarea class="form-control" id="message-text" name="contents"></textarea>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">清除</button>
+							<button type="submit" class="btn btn-primary">確認評分</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 	
-	
-	
-	
-	<!-- wade 檢舉和評價開始  -->
+	<!-- wade 檢舉和評價結束  -->
 	
 	
 
@@ -228,16 +350,16 @@ function reportTarger(myObj) {
 					
 					
 					<button class="btn btn-primary" onclick="reportTarger(this)"
-					data-toggle="modal" data-target="#exampleModal" value="${store.id}">☠檢舉</button>
+					data-toggle="modal" data-target="#exampleModal" value="${group.id}">☠檢舉</button>
 					<button class="btn btn-primary" onclick="scoreTarger(this)"
 					data-toggle="modal" data-target="#exampleModal1"
-					value="${store.id }">📜評價</button>
+					value="${group.id}">📜評價</button>
 				
 					
 					
 <!-- 					<a class="btn btn-primary" href="" role="button">☠檢舉</a> -->
 <!-- 					<a class="btn btn-primary" href="" role="button">📜評價</a> -->
-					<a class="btn btn-primary" href="" role="button">📩留言給我</a></td>
+					<a class="btn btn-primary" href="${pageContext.request.contextPath}/sendMemberMessage?target=${group.memberBean.id}" role="button">📩留言給我</a></td>
 
 			</tr>
 
@@ -346,7 +468,7 @@ function reportTarger(myObj) {
 
 			<c:forEach var="commentmb" items="${commentmb}">
 				<tr>
-					<td>${commentmb.target}</td>
+					<td>${commentmb.memberBean.name}(${commentmb.memberBean.account})</td>
 					<td>${commentmb.score}</td>
 					<td>${commentmb.contents}</td>
 					<td>${commentmb.time}</td>

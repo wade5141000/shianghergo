@@ -3,6 +3,7 @@ package com.shianghergo.service;
 import java.util.List;
 
 import com.shianghergo.model.Category_ReportBean;
+import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.ItemBean;
 import com.shianghergo.model.MemberBean;
@@ -96,4 +97,6 @@ public interface GBDBService {
 	
 	//拿comment_store
 	public List<comment_store> getComment_store(Integer store_id);
+	
+	GroupsBean getGroupById(Integer gid);
 }

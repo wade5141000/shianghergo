@@ -4,7 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "comment_item")
@@ -16,6 +19,8 @@ public class comment_item {
 	private String time;
 	private String contents;
 	private Integer score;
+	
+	private MemberBean memberBean;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +32,7 @@ public class comment_item {
 		this.id = id;
 	}
 
+	@Transient
 	public Integer getMember_id() {
 		return member_id;
 	}
@@ -34,6 +40,17 @@ public class comment_item {
 	public void setMember_id(Integer member_id) {
 		this.member_id = member_id;
 	}
+
+	@ManyToOne
+	@JoinColumn(name = "member_id")
+	public MemberBean getMemberBean() {
+		return memberBean;
+	}
+
+	public void setMemberBean(MemberBean memberBean) {
+		this.memberBean = memberBean;
+	}
+
 
 	public Integer getItem_id() {
 		return item_id;
@@ -67,10 +84,5 @@ public class comment_item {
 		this.score = score;
 	}
 
-	@Override
-	public String toString() {
-		return "comment_item [id=" + id + ", member_id=" + member_id + ", item_id=" + item_id + ", time=" + time
-				+ ", contents=" + contents + ", score=" + score + "]";
-	}
 
 }

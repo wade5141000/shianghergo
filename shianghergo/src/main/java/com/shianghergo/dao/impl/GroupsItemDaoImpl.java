@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.shianghergo.dao.GroupsItemDao;
+import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.ItemBean;
 
@@ -65,6 +66,12 @@ public class GroupsItemDaoImpl implements GroupsItemDao {
 
 		return groups;
 		
+	}
+
+	@Override
+	public GroupsBean getGroupById(Integer gid) {
+		Session session = factory.getCurrentSession();
+		return session.get(GroupsBean.class, gid);
 	}
 
 	

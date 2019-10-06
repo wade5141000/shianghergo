@@ -21,6 +21,7 @@ import com.shianghergo.dao.comment_itemDao;
 import com.shianghergo.dao.comment_memberDao;
 import com.shianghergo.dao.comment_storeDao;
 import com.shianghergo.model.Category_ReportBean;
+import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.ItemBean;
 import com.shianghergo.model.MemberBean;
@@ -294,5 +295,10 @@ public class GBDBServiceImp implements GBDBService {
 	@Override
 	public List<comment_store> getComment_store(Integer store_id) {
 		return csdao.getComment_store(store_id);
+	}
+
+	@Override
+	public GroupsBean getGroupById(Integer gid) {
+		return gdao.getGroupById(gid);
 	}
 }

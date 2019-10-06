@@ -297,7 +297,7 @@
 	<div style="padding-left:35%; padding-right:35%;">
 		<div style="display:inline;"><img src="<c:url value='/resources/images/star_${comment.score }.gif' />"></div>
 		<div style="display:inline;"><p style="text-align:right">${comment.time }</p></div>
-		<p>會員：${comment.member_id }</p>
+		<p>會員：${comment.memberBean.name}(${comment.memberBean.account})</p>
 		<p style="text-align:left">${comment.contents }</p>
 	</div>
 	<div style="padding-left:35%; padding-right:35%">
