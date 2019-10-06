@@ -121,7 +121,7 @@ public class GBDBServiceImp implements GBDBService {
 
 		Date date = new Date();
 
-		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd/ HH:mm");
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
 		report.setTime(ft.format(date));
 		report.setStatus(1);
@@ -141,7 +141,7 @@ public class GBDBServiceImp implements GBDBService {
 
 		Date date = new Date();
 
-		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd/ HH:mm");
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
 		report.setStatus(1);
 		report.setTime(ft.format(date));
