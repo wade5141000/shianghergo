@@ -203,7 +203,7 @@
 						</div>
 
 						<div class="choose-btns">
-							<button class="layui-btn  layui-btn-danger car-btn">
+							<button class="layui-btn  layui-btn-danger car-btn" onclick="goCart(${product.id})">
 								<i class="layui-icon layui-icon-cart-simple"></i>加入購物車
 							</button>
 							<input type="button" value="返回列表"

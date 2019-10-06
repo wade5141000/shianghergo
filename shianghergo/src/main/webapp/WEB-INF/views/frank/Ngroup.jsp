@@ -81,11 +81,11 @@
 
 					<div class="list-box" style="background-color: #FFE5B5">
 						<dl style="background-color: #FFE5B5">
-							<dd style="background-color: #FFB01C">
-								<a href="javascript:;">所有分類</a>
-							</dd>
+<!-- 							<dd style="background-color: #FFB01C"> -->
+<!-- 								<a >所有分類</a> -->
+<!-- 							</dd> -->
 							<dd>
-								<a href="${pageContext.request.contextPath}/frank/">全品項</a>
+								<a href="${pageContext.request.contextPath}/frank/groups">全品項</a>
 							</dd>
 						<c:forEach var="categorys" items="${category}">
 							<dd>

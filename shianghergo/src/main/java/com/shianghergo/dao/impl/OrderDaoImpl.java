@@ -41,7 +41,17 @@ public class OrderDaoImpl implements OrderDao {
 		int total = 0;
 		for(int i=0;i<list.size();i++) {
 			CartBean cb = list.get(i);
-			total += cb.getPrice()*cb.getAmount();
+//			total += cb.getPrice()*cb.getAmount();
+			if(cb.getAmount() >= 18) {
+				total += (int)((cb.getPrice()*cb.getAmount()) * 0.7f);
+			}else if(cb.getAmount() >= 12) {
+				total += (int)((cb.getPrice()*cb.getAmount()) * 0.8f);
+			}else if(cb.getAmount() >= 6) {
+				total += (int)((cb.getPrice()*cb.getAmount()) * 0.9f);
+			}else {
+				total += cb.getPrice()*cb.getAmount();
+			}
+			
 		}
 		ob.setMember_id(member_id);
 		ob.setItem_count(list.size());

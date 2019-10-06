@@ -102,7 +102,15 @@ public class StoreProcessController {
 		httpSession.setAttribute("cartitems", list2);
 		long total2 = 0;
 		for(CartBean ccb:list2) {
-			total2 += ccb.getPrice()*ccb.getAmount();
+			if(ccb.getAmount() >= 18) {
+				total2 += (int)((ccb.getPrice()*ccb.getAmount()) * 0.7f);
+			}else if(ccb.getAmount() >= 12) {
+				total2 += (int)((ccb.getPrice()*ccb.getAmount()) * 0.8f);
+			}else if(ccb.getAmount() >= 6) {
+				total2 += (int)((ccb.getPrice()*ccb.getAmount()) * 0.9f);
+			}else {
+				total2 += ccb.getPrice()*ccb.getAmount();
+			}
 		}
 		httpSession.setAttribute("total",total2);
 		httpSession.setAttribute("its",list2.size());
@@ -180,26 +188,42 @@ public class StoreProcessController {
 			total -= cb.getPrice();
 		}
 		int totala =cb.getPrice()*newAmount;
-		String result = total+","+newAmount+","+id+","+totala;
-		System.out.println(result);
+//		String result = total+","+newAmount+","+id+","+totala;
+//		System.out.println(result);
 		
-		
+		ObjectMapper mapper = new ObjectMapper();
+		String result = "";
 		
 		HttpSession httpSession = re.getSession();
 		List<CartBean> list2 = cartService.getCartItems(mId);
 		httpSession.setAttribute("cartitems", list2);
 		long total2 = 0;
 		for(CartBean ccb:list2) {
-			total2 += ccb.getPrice()*ccb.getAmount();
+			if(ccb.getAmount() >= 18) {
+				total2 += (int)((ccb.getPrice()*ccb.getAmount()) * 0.7f);
+			}else if(ccb.getAmount() >= 12) {
+				total2 += (int)((ccb.getPrice()*ccb.getAmount()) * 0.8f);
+			}else if(ccb.getAmount() >= 6) {
+				total2 += (int)((ccb.getPrice()*ccb.getAmount()) * 0.9f);
+			}else {
+				total2 += ccb.getPrice()*ccb.getAmount();
+			}
 		}
 		httpSession.setAttribute("total",total2);
 		httpSession.setAttribute("its",list2.size());
 		
+//		try {
+//			rp.getWriter().write(result);
+//		}  catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		try {
+			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list2);
 			rp.getWriter().write(result);
-		}  catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	@RequestMapping("delete")
@@ -216,8 +240,17 @@ public class StoreProcessController {
 		httpSession.setAttribute("cartitems", list2);
 		long total2 = 0;
 		for(CartBean ccb:list2) {
-			total2 += ccb.getPrice()*ccb.getAmount();
+			if(ccb.getAmount() >= 18) {
+				total2 += (int)((ccb.getPrice()*ccb.getAmount()) * 0.7f);
+			}else if(ccb.getAmount() >= 12) {
+				total2 += (int)((ccb.getPrice()*ccb.getAmount()) * 0.8f);
+			}else if(ccb.getAmount() >= 6) {
+				total2 += (int)((ccb.getPrice()*ccb.getAmount()) * 0.9f);
+			}else {
+				total2 += ccb.getPrice()*ccb.getAmount();
+			}
 		}
+		
 		httpSession.setAttribute("total",total2);
 		httpSession.setAttribute("its",list2.size());
 		
@@ -254,6 +287,13 @@ public class StoreProcessController {
 		String itemName = "";
 		for(int i=0;i<list.size();i++) {
 			OrderDetailBean ob = list.get(i);
+			
+			// 這裡要計算折扣總額
+			
+			
+			
+			
+			
 			price += (ob.getAmount()*ob.getPrice());
 			if(i==0) {
 				itemName += ob.getName() +" * "+ob.getAmount();
@@ -261,6 +301,12 @@ public class StoreProcessController {
 				itemName += "#" + ob.getName()+" * "+ob.getAmount();
 			}
 		}
+		
+		
+		
+		
+		
+		
 		obj.setTotalAmount(String.valueOf(price));
 		obj.setItemName(itemName);
 		obj.setTradeDesc("test Description");

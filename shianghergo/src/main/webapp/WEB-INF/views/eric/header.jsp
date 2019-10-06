@@ -250,9 +250,25 @@ var y = x+1;
 												onclick="deletetr(this,${item.id})">刪除</button></td>
 
 										<script>
-				var a = ${item.price} * ${item.amount};
-				$("#"+${item.id}+"a").text(a);
-			</script>
+											var smalls = 0;
+											if(${item.amount} >= 18) {
+												smalls += Math.round((${item.price} * ${item.amount}) * 0.7);
+												var resutl = smalls + " (滿18件，享7折)"
+												$("#"+${item.id}+"a").text(resutl);
+											}else if(${item.amount} >= 12) {
+												smalls += Math.round((${item.price} * ${item.amount}) * 0.8);
+												var resutl = smalls + " (滿12件，享8折)"
+												$("#"+${item.id}+"a").text(resutl);
+											}else if(${item.amount} >= 6) {
+												smalls += Math.round((${item.price} * ${item.amount}) * 0.9);
+												var resutl = smalls + " (滿6件，享9折)"
+												$("#"+${item.id}+"a").text(resutl);
+											}else {
+												smalls += cartitems[k].price * cartitems[k].amount;
+												$("#"+${item.id}+"a").text(smalls);
+											}
+// 											$("#"+${item.id}+"a").text(a);
+										</script>
 
 									</tr>
 								</c:forEach>

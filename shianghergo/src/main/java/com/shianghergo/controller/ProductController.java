@@ -180,7 +180,7 @@ public class ProductController {
 	}
 
 	@RequestMapping("/hao/product")
-	public String getProductsById(@ModelAttribute("loginOK") MemberBean mb, @RequestParam("id") Integer id,
+	public String getProductsById(@RequestParam("id") Integer id,
 			Model model) {
 		model.addAttribute("product", service.getProductById(id));
 //		model.addAttribute("store", service.getStoreNameByItemId(id));
@@ -417,24 +417,27 @@ public class ProductController {
 		
 		String shianghergo = context.getRealPath("/");
 		shianghergo += "images/storeItemImg/" + id +".jpg";
-		
 		File tempF = new File(shianghergo);
-		try {
-			int n = 0;
-			byte[] bb = new byte[1024];
-			FileInputStream in = new FileInputStream(tempF);		
-			ServletOutputStream out = rp.getOutputStream();
-			
-			while ((n = in.read(bb)) != -1) {
-                out.write(bb, 0, n);
-            }
+		
+		if(tempF.exists()) {
+			try {
+				int n = 0;
+				byte[] bb = new byte[1024];
+				FileInputStream in = new FileInputStream(tempF);		
+				ServletOutputStream out = rp.getOutputStream();
+				
+				while ((n = in.read(bb)) != -1) {
+	                out.write(bb, 0, n);
+	            }
 
-            out.close();
-            in.close();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
+	            out.close();
+	            in.close();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+		
 	}
 
 	private byte[] toByteArray(String filePath) {
