@@ -31,7 +31,15 @@
 				var cartitems = JSON.parse(data);
 				var itotal = 0;
 				for(var q=0  ; q<cartitems.length ; q++){
-					itotal += cartitems[q].price * cartitems[q].amount;
+					if(cartitems[q].amount >= 18) {
+						itotal += Math.round((cartitems[q].price * cartitems[q].amount) * 0.7);
+					}else if(cartitems[q].amount >= 12) {
+						itotal += Math.round((cartitems[q].price * cartitems[q].amount) * 0.8);
+					}else if(cartitems[q].amount >= 6) {
+						itotal += Math.round((cartitems[q].price * cartitems[q].amount) * 0.9);
+					}else {
+						itotal += cartitems[q].price * cartitems[q].amount;
+					}
 				}
 				$("#itable").empty();
 				
@@ -48,9 +56,21 @@
 					result += '<td>' + cartitems[k].price + '</td>';
 					
 					var smalls = 0;
-					smalls += cartitems[k].price * cartitems[k].amount;
-					
-					result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +'</span></td>';
+// 					smalls += cartitems[k].price * cartitems[k].amount;
+					if(cartitems[k].amount >= 18) {
+						smalls += Math.round((cartitems[k].price * cartitems[k].amount) * 0.7);
+						result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +' (滿18件，享7折)</span></td>';
+					}else if(cartitems[k].amount >= 12) {
+						smalls += Math.round((cartitems[k].price * cartitems[k].amount) * 0.8);
+						result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +' (滿12件，享8折)</span></td>';
+					}else if(cartitems[k].amount >= 6) {
+						smalls += Math.round((cartitems[k].price * cartitems[k].amount) * 0.9);
+						result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +' (滿6件，享9折)</span></td>';
+					}else {
+						smalls += cartitems[k].price * cartitems[k].amount;
+						result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +'</span></td>';
+					}
+// 					result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +'</span></td>';
 					result += '<td><button class="btn btn-danger" onclick="deletetr(this,' + cartitems[k].id + ')">刪除</button></td>';
 
 					if(k == (cartitems.length-1)){
@@ -123,7 +143,7 @@
 										</p>
 										<p class="price">
 											<button class="layui-btn  layui-btn-danger car-btn"
-												style="width: 140px; height: 40px; float: left;">
+												style="width: 140px; height: 40px; float: left;" onclick="goCart(${product.id})">
 												<i class="layui-icon layui-icon-cart-simple"></i>加入購物車
 											</button>
 											<span class="pri" style="float: right; font-size: 20px;">${product.price }元&nbsp;&nbsp;&nbsp;&nbsp;</span>

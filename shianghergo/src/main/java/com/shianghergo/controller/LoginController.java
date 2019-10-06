@@ -132,7 +132,16 @@ public class LoginController {
 					httpSession.setAttribute("cartitems", list2);
 					long total = 0;
 					for(CartBean cb:list2) {
-						total += cb.getPrice()*cb.getAmount();
+						if(cb.getAmount() >= 18) {
+							total += (int)((cb.getPrice()*cb.getAmount()) * 0.7f);
+						}else if(cb.getAmount() >= 12) {
+							total += (int)((cb.getPrice()*cb.getAmount()) * 0.8f);
+						}else if(cb.getAmount() >= 6) {
+							total += (int)((cb.getPrice()*cb.getAmount()) * 0.9f);
+						}else {
+							total += cb.getPrice()*cb.getAmount();
+						}
+//						total += cb.getPrice()*cb.getAmount();
 					}
 					httpSession.setAttribute("total",total);
 					httpSession.setAttribute("its",list2.size());
