@@ -146,6 +146,9 @@ $(document).ready(function(){
 	
 });
 
+$("#111").mouseclick(function(){
+	  $("#111").css("background-color","yellow");
+	});
 
 
 </script>
@@ -212,20 +215,29 @@ $(document).ready(function(){
 		</table>
 	</div>
 	<div style="margin: 0 auto; text-align: center;">
-		<div class="btn-group" role="group" aria-label="Basic example"
-			style="width: 1000px">
-			<button type="button" class="btn btn-outline-success" id="111">商品與說明</button>
-			<button type="button" class="btn btn-outline-success" id="222">團主的評價</button>
-			<button type="button" class="btn btn-outline-success" id="333">團主的其他合購</button>
-			
+				<div class="btn-group" role="group" aria-label="Basic example"
+					style="width: 1000px">
+					<button type="button" class="btn btn-outline-success" id="111">商品與說明</button>
+					<button type="button" class="btn btn-outline-success" id="222">團主的評價</button>
+					<button type="button" class="btn btn-outline-success" id="333">團主的其他合購</button>
 
-		</div>
+
+				</div>
+	
+
 	</div>
+
+	
 	<div id="one">
+	<div
+		style="width: 1000px; margin: 0 auto; background-color: #FFE8BF; text-align: center;">
+		<h2>團購說明</h2>
+	</div>
 		<div style="word-break: break-all; width: 800px; margin: 0 auto;">
 			<img width='750' height='450'
-				src="<c:url value='/frank/getgroupPicture/${group.id }' />">
-
+				src="<c:url value='/frank/getgroupPicture/${group.id }' />"> <br>
+			<br>
+			<p style="font-size: 20px;">${group.detail}</p>
 		</div>
 
 		<div
@@ -260,7 +272,7 @@ $(document).ready(function(){
 	</div>
 
 	<div id="two"
-		style="word-break: break-all; width: 800px; margin: 0 auto; text-align: center;">
+		style="word-break: break-all; width: 1000px; margin: 0 auto; text-align: center;">
 
 		<!-- 			<tr> -->
 		<!-- 				<td style="width: 150px;">評價人</td> -->
@@ -290,8 +302,8 @@ $(document).ready(function(){
 		<c:if test="i.index%2==0"></c:if>
 		<c:forEach var='commentmb' items='${commentmb }' varStatus="i">
 			<div id="divv"
-				<c:if test="${i.index%2==0}">style="word-break: break-all; width: 800px; margin: 0 auto; text-align: center; background-color:#C9FFC9	;"</c:if>
-				<c:if test="${i.index%2==1}">style="word-break: break-all; width: 800px; margin: 0 auto; text-align: center; background-color:#FFFFC9;"</c:if>>
+				<c:if test="${i.index%2==0}">style="word-break: break-all; width: 1000px; margin: 0 auto; text-align: center; background-color:#C9FFC9	;"</c:if>
+				<c:if test="${i.index%2==1}">style="word-break: break-all; width: 1000px; margin: 0 auto; text-align: center; background-color:#FFFFC9;"</c:if>>
 
 				<!-- <div id="divv"style="word-break: break-all; width: 800px; margin: 0 auto; text-align: center; background-color: yellow;"> -->
 				<!-- 				<div style="display: inline;"> -->
@@ -318,7 +330,7 @@ $(document).ready(function(){
 	</div>
 
 	<div id="three"
-		style="word-break: break-all; width: 800px; margin: 0 auto;">
+		style="word-break: break-all; width:1000px; margin: 0 auto;">
 
 
 
