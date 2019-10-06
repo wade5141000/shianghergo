@@ -101,6 +101,7 @@ public class GroupsServiceImpl implements GroupsService{
 		ogb.setDetail(gb.getDetail());
 		ogb.setPayment(gb.getPayment());	
 		ogb.setCategoryBean(y);
+		ogb.setBanknumber(gb.getBanknumber());
 //		x.setName(gb.getName());
 //		x.setEnd_time(gb.getEnd_time());
 //		x.setDetail(gb.getDetail());
@@ -188,9 +189,9 @@ public class GroupsServiceImpl implements GroupsService{
 	}
 
 	@Override
-	public List<comment_member> getAllCommentByMember(Integer member_id) {
+	public List<comment_member> getAllCommentByTarget(Integer target) {
 		
-		return dao.getAllCommentByMember(member_id);
+		return dao.getAllCommentByTarget(target);
 	}
 
 	

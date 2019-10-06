@@ -318,12 +318,12 @@ public class GroupsDaoImpl implements GroupsDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<comment_member> getAllCommentByMember(Integer member_id) {
-		String hql = "FROM comment_member WHERE member_id=:member_id";
+	public List<comment_member> getAllCommentByTarget(Integer target) {
+		String hql = "FROM comment_member WHERE target=:target";
 		List<comment_member> list = new ArrayList<>();
 		Session session = factory.getCurrentSession();
-		list = session.createQuery(hql).setParameter("member_id", member_id).getResultList();
-		System.out.println(list + "55555555");
+		list = session.createQuery(hql).setParameter("target", target).getResultList();
+		
 		return list;
 	}
 
