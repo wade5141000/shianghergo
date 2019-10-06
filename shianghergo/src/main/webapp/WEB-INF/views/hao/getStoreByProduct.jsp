@@ -100,6 +100,73 @@
 			$("#two").show();
 		});
 	});
+	
+	// wade 購物車
+	function goCart(x){
+		$.ajax({
+			url:"../gocart?itemid="+x,
+			type:"get",
+			success:function(data){
+				alert("添加成功")
+				var cartitems = JSON.parse(data);
+				var itotal = 0;
+				for(var q=0  ; q<cartitems.length ; q++){
+					if(cartitems[q].amount >= 18) {
+						itotal += Math.round((cartitems[q].price * cartitems[q].amount) * 0.7);
+					}else if(cartitems[q].amount >= 12) {
+						itotal += Math.round((cartitems[q].price * cartitems[q].amount) * 0.8);
+					}else if(cartitems[q].amount >= 6) {
+						itotal += Math.round((cartitems[q].price * cartitems[q].amount) * 0.9);
+					}else {
+						itotal += cartitems[q].price * cartitems[q].amount;
+					}
+				}
+				$("#itable").empty();
+				
+				var result = "<table class='tb'>";
+				
+				for(var k=0  ; k<cartitems.length ; k++){
+					if(k==0){
+						result += "<tr><th></th><th>品名</th><th>數量</th><th>單價</th><th>小計</th><th>操作</th></tr>";
+					}
+					result += '<tr>';
+					result += '<td><img src="http://localhost:8080/shianghergo/wade/getPicture/'+cartitems[k].item_id+'" width="50px" height="50px"></td>';
+					result += '<td>' + cartitems[k].name + '</td>';
+					result += '<td><button class="btn btn-outline-danger btn1" onclick="changeAmount(' + cartitems[k].id + ',2)">-</button ><span id="' + cartitems[k].id + '">'+ cartitems[k].amount + '</span><button onclick="changeAmount(' +cartitems[k].id+ ',1)" class="btn btn-outline-success btn2">+</button>&nbsp;&nbsp;</td>';
+					result += '<td>' + cartitems[k].price + '</td>';
+					
+					var smalls = 0;
+// 					smalls += cartitems[k].price * cartitems[k].amount;
+					if(cartitems[k].amount >= 18) {
+						smalls += Math.round((cartitems[k].price * cartitems[k].amount) * 0.7);
+						result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +' (滿18件，享7折)</span></td>';
+					}else if(cartitems[k].amount >= 12) {
+						smalls += Math.round((cartitems[k].price * cartitems[k].amount) * 0.8);
+						result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +' (滿12件，享8折)</span></td>';
+					}else if(cartitems[k].amount >= 6) {
+						smalls += Math.round((cartitems[k].price * cartitems[k].amount) * 0.9);
+						result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +' (滿6件，享9折)</span></td>';
+					}else {
+						smalls += cartitems[k].price * cartitems[k].amount;
+						result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +'</span></td>';
+					}
+// 					result += '<td><span id="' + cartitems[k].id + 'a" style="color:red;">'+ smalls +'</span></td>';
+					result += '<td><button class="btn btn-danger" onclick="deletetr(this,' + cartitems[k].id + ')">刪除</button></td>';
+
+					if(k == (cartitems.length-1)){
+						result += "<tr><td/><td/><td/><td/><td>";
+						result += '<span class="total">Total:</span><span id="total" class="total" style="color:red;">'+itotal+'</span></td>';
+						result += "<td></td></tr></table>";
+					}
+					
+				}
+				
+				$("#itable").append(result);
+				$("#its").text(cartitems.length);
+				
+			},
+		})
+	}
 </script>
 </head>
 <body>
@@ -254,7 +321,7 @@
 					value="${store.id }">評價</button>
 				<button class="btn btn-danger" onclick="reportTarger(this)"
 					data-toggle="modal" data-target="#exampleModal" value="${store.id}">檢舉</button>
-				<a href="${pageContext.request.contextPath}/productfile.s"><button
+				<a href="${pageContext.request.contextPath}/productfile.s?sId=${store.id}"><button
 						class="btn btn-success">Excel下載</button></a>
 			</div>
 		</div>
@@ -289,7 +356,7 @@
 						</h5>
 						<%-- 						<p class="card-text">說明：${product.detail }</p> --%>
 						<p class="card-text">${product.price }元</p>
-						<button class="layui-btn  layui-btn-danger car-btn">
+						<button class="layui-btn  layui-btn-danger car-btn" onclick="goCart(${product.id})">
 							<i class="layui-icon layui-icon-cart-simple"></i>加入購物車
 						</button>
 					</div>

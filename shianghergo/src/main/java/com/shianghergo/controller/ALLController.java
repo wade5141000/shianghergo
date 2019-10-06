@@ -35,6 +35,9 @@ public class ALLController {
 
 	@Autowired
 	GroupsService gservice;
+	
+	
+	
 
 //------------登入------------------------------------	
 
@@ -440,6 +443,54 @@ public class ALLController {
 
 		return "leopard/ReportevaluationMember";
 	}
+	
+	// wade
+	@RequestMapping("frank/SaveRM")
+	public String MreportMf(Report_MemberBean rm, Integer target, Model model) {
+		
+		
+		
+		System.out.println(rm.getContents());
+		System.out.println(target);
+		Integer ogid = rm.getTarget();
+		System.out.println(ogid);
+		GroupsBean gb = gservice.getGroupById(ogid);
+		Integer mId = gb.getMemberBean().getId();
+		
+		Integer sid = service.getStoreId(mId);
+		rm.setStore_id(sid);
+		
+		rm.setTarget(mId);
+		
+		
+		service.saveReport(rm);
+
+		List<Category_ReportBean> list = service.getCategoryReport();
+
+		model.addAttribute("list", list);
+		
+		// ---------------------------------------
+
+		
+		List<comment_member> comment = gservice.getAllCommentByMember(mId);
+		List<GroupsBean> mygroups = gservice.getAllGroupsByMember(mId);
+//		
+		model.addAttribute("group", gb); // 取團的資料
+		model.addAttribute("items", gb.getGroupsitem()); // 取商品的資料
+		model.addAttribute("place", gb.getPlace()); // 取地址的資料
+		model.addAttribute("mygroups", mygroups);
+		model.addAttribute("commentmb", comment);
+		
+		
+		
+		
+
+		return "redirect:/frank/group?gid=" + 17002 ; // +gb.getId()
+	}
+	
+	// wade
+	
+	
 
 	// 會員評價會員
 	@RequestMapping("leopard/evaluationMember")
@@ -501,6 +552,8 @@ public class ALLController {
 		Integer sd = rb.getStore_id();
 		return "redirect:/hao/getStoreByProduct?id=" + sd;
 	}
+	
+	
 
 	// 會員評價商家
 	@RequestMapping("leopard/evaluationStore")

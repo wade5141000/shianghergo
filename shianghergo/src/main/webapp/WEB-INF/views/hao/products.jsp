@@ -146,7 +146,7 @@
 												style="width: 140px; height: 40px; float: left;" onclick="goCart(${product.id})">
 												<i class="layui-icon layui-icon-cart-simple"></i>加入購物車
 											</button>
-											<span class="pri" style="float: right; font-size: 20px;">${product.price }元&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span class="pri" style="float: right; font-size: 20px;">${product.price }元起&nbsp;&nbsp;&nbsp;&nbsp;</span>
 										</p>
 									</div>
 								</div>
@@ -168,44 +168,44 @@
 
 
 
-	<section>
-		<div>
-			<div class="container" style="text-align: center">
-				<h1>商品清單</h1>
-				<a href="../cart">進入購物車</a>
-			</div>
-		</div>
-	</section>
-	<hr
-		style="height: 1px; border: none; color: #333; background-color: #333;">
-	<section class="container">
-		<c:forEach var='product' items='${products }'>
-			<div class="col-sm-6 col-md-3" style="width: 360px; height: 360px">
-				<div class="thumbnail" style="width: 320px; height: 340px">
-					<img width='100' height='200'
-						src="<c:url value='/hao/getPicture/${product.id }' />" />
-					<div class="caption">
-						<p>
-							<b style='font-size: 16px;'>${product.name }</b>
-						</p>
-						<p>價格：${product.price }</p>
-						<p>目前在庫數量：${product.reserve }</p>
-						<p>
-							<a href="<spring:url value='/hao/product?id=${product.id }' />"
-								class="btn btn-primary"> <span
-								class="glyphicon-info-sigh glyphicon"></span>詳細資料
-							</a> <a
-								href="<spring:url value='/hao/product/Update?id=${product.id }' />"
-								class="btn btn-primary"> <span
-								class="glyphicon-info-sigh glyphicon"></span>修改
-							</a>
-							<button onclick="goCart(${product.id})">加入購物車</button>
-						</p>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-	</section>
+<!-- 	<section> -->
+<!-- 		<div> -->
+<!-- 			<div class="container" style="text-align: center"> -->
+<!-- 				<h1>商品清單</h1> -->
+<!-- 				<a href="../cart">進入購物車</a> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</section> -->
+<!-- 	<hr -->
+<!-- 		style="height: 1px; border: none; color: #333; background-color: #333;"> -->
+<!-- 	<section class="container"> -->
+<%-- 		<c:forEach var='product' items='${products }'> --%>
+<!-- 			<div class="col-sm-6 col-md-3" style="width: 360px; height: 360px"> -->
+<!-- 				<div class="thumbnail" style="width: 320px; height: 340px"> -->
+<!-- 					<img width='100' height='200' -->
+<%-- 						src="<c:url value='/hao/getPicture/${product.id }' />" /> --%>
+<!-- 					<div class="caption"> -->
+<!-- 						<p> -->
+<%-- 							<b style='font-size: 16px;'>${product.name }</b> --%>
+<!-- 						</p> -->
+<%-- 						<p>價格：${product.price }</p> --%>
+<%-- 						<p>目前在庫數量：${product.reserve }</p> --%>
+<!-- 						<p> -->
+<%-- 							<a href="<spring:url value='/hao/product?id=${product.id }' />" --%>
+<!-- 								class="btn btn-primary"> <span -->
+<!-- 								class="glyphicon-info-sigh glyphicon"></span>詳細資料 -->
+<!-- 							</a> <a -->
+<%-- 								href="<spring:url value='/hao/product/Update?id=${product.id }' />" --%>
+<!-- 								class="btn btn-primary"> <span -->
+<!-- 								class="glyphicon-info-sigh glyphicon"></span>修改 -->
+<!-- 							</a> -->
+<%-- 							<button onclick="goCart(${product.id})">加入購物車</button> --%>
+<!-- 						</p> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<%-- 		</c:forEach> --%>
+<!-- 	</section> -->
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>

@@ -62,7 +62,7 @@ thead {
 						<TD id='borderA'>${anOrderBean.pay_time}</TD>
 						</c:if>
 						<c:if test="${anOrderBean.status==2 }">
-							<TD><a href=""><button type="button" class="btn btn-danger">🛒點我付款去</button></a></TD>
+							<TD><a href="${pageContext.request.contextPath}/order/${anOrderBean.id}"><button type="button" class="btn btn-danger">🛒點我付款去</button></a></TD>
 						</c:if>
 
 						<TD id='borderA'><a
