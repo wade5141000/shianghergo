@@ -42,7 +42,7 @@ thead {
 			<table class="table table-hover">
 
 				<tr id='borderA' height='50'>
-					<th id='borderA' align="center" colspan="7">由
+					<th id='borderA' align="center" colspan="7"><img  src="<c:url value='/images/c02.png' />" alt="..." >&nbsp;由
 						${loginOK.name}參與的合購團</th>
 				</tr>
 				<tr id='borderA' height='36'>

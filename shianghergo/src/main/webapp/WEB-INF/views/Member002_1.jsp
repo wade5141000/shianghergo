@@ -36,7 +36,7 @@ thead {
 <div style="padding-left: 290px;padding-right: 30px;">
 	<table class="table table-hover">
 		<tr id='borderA' height='50' >
-			<th  scope="col" id='borderA'  align="center"colspan="6">${id}的商品明細</th>
+			<th  scope="col" id='borderA'  align="center"colspan="6"><img  src="<c:url value='/images/c02.png' />" alt="..." >&nbsp;${id}的商品明細</th>
 		</tr>
 		<tr id='borderA' height='36' >
 <!-- 			<th scope="col" id='borderA'>訂單編號</th> -->

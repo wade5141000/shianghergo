@@ -35,7 +35,7 @@ width:100px;
 			<div style="padding-left: 290px; padding-right: 30px;">
 				<table class="table table-hover">
 					<tr id='borderA'>
-						<th id='borderA' align="center" colspan="8">團員資料</th>
+						<th id='borderA' align="center" colspan="8"><img  src="<c:url value='/images/c02.png' />" alt="..." >&nbsp;團員資料</th>
 					</tr>
 					<tr id='borderA'>
 						<th scope="col" id='borderA'>訂單編號</th>

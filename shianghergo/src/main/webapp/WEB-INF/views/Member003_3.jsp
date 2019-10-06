@@ -36,7 +36,7 @@ thead {
 <div style="padding-left: 290px;padding-right: 30px;">
 	<table class="table table-hover">
 		<tr id='borderA' height='50' >
-			<th scope="col" id='borderA'  align="center">面交地點</th>
+			<th scope="col" id='borderA'  align="center"><img  src="<c:url value='/images/c02.png' />" alt="..." >&nbsp;面交地點</th>
 		</tr>
 		<tr id='borderA' height='36' >
 			<th scope="col" id='borderA'>地點編號</th>

@@ -35,7 +35,7 @@ thead {
 		<div style="padding-left: 290px; padding-right: 30px;">
 			<table class="table table-hover">
 				<tr id='borderA'>
-					<th id='borderA' colspan="7">${loginOK.name}的訂購紀錄</th>
+					<th id='borderA' colspan="7"><img  src="<c:url value='/images/c02.png' />" alt="..." >&nbsp;${loginOK.name}的訂購紀錄</th>
 				</tr>
 				<tr id='borderA'>
 					<th scope="col" id='borderA'>訂單編號</th>
