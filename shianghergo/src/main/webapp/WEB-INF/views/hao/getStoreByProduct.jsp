@@ -287,19 +287,59 @@
 <%-- 	<c:if test="${status!=3 }">123</c:if> --%>
 	
 	
-	<div style="padding-bottom: 50px;">
-		<div style="padding-left: 350px; padding-right: 350px;"
-			class="card text-center">
-			<div class="card-header" style="margin-top: 25px; margin-top: 10px;">
-				<h1>商店資訊</h1>
+<!-- 	<div style="padding-bottom: 50px;"> -->
+<!-- 		<div style="padding-left: 350px; padding-right: 350px;" -->
+<!-- 			class="card text-center"> -->
+<!-- 			<div class="card-header" style="margin-top: 25px; margin-top: 10px;"> -->
+<!-- 				<h1>商店資訊</h1> -->
+<!-- 			</div> -->
+<!-- 			<div class="card-body"> -->
+<%-- 				<p class="card-text">商家編號：${store.id}</p> --%>
+<!-- 				<br> -->
+<%-- 				<p class="card-text">商店名稱：${store.name}</p> --%>
+<!-- 				<br> -->
+<%-- 				<p class="card-text">商店介紹：${store.detail}</p> --%>
+<!-- 				<br> -->
+<!-- 				<p class="card-text"> -->
+<%-- 					<c:set var="status" scope="session" value="${store.status}" /> --%>
+<%-- 					<c:if test="${status==1 }"> --%>
+<!-- 						<p>商店狀態：正常</p> -->
+<%-- 					</c:if> --%>
+<%-- 					<c:if test="${status==2 }"> --%>
+<!-- 						<p>商店狀態：禁用</p> -->
+<%-- 					</c:if> --%>
+<%-- 					<c:if test="${status==3 }"> --%>
+<!-- 						<p>商店狀態：關閉</p> -->
+<%-- 					</c:if> --%>
+<!-- 				</p> -->
+<!-- 			</div> -->
+<!-- 			<div -->
+<!-- 				style="padding-left: 20px; padding-top: 30px; height: 90px; text-align: center" -->
+<!-- 				class="card-footer text-muted"> -->
+<!-- 				<button class="btn btn-primary" onclick="scoreTarger(this)" -->
+<!-- 					data-toggle="modal" data-target="#exampleModal1" -->
+<%-- 					value="${store.id }">評價</button> --%>
+<!-- 				<button class="btn btn-danger" onclick="reportTarger(this)" -->
+<%-- 					data-toggle="modal" data-target="#exampleModal" value="${store.id}">檢舉</button> --%>
+<%-- 				<a href="${pageContext.request.contextPath}/productfile.s?sId=${store.id}"><button --%>
+<!-- 						class="btn btn-success">Excel下載</button></a> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+
+
+<div style="padding-bottom: 50px;">
+		<div style="padding-left: 350px; padding-right: 350px;" id="DIV1">
+			<div class="card-header" style="margin-top: 25px; margin-top: 10px;box-shadow:3px 3px 12px #FF7F24;width:1100px;line-height:100px;text-align:center;">
+				<h1 style="font-family: 微軟正黑體;"><img  src="<c:url value='/images/t02.jpg' />" alt="..." >&nbsp;商店資訊</h1>
 			</div>
+			<br>
+			<img src="<c:url value='/images/01.png' />" alt="...">
+			<br>
 			<div class="card-body">
 				<p class="card-text">商家編號：${store.id}</p>
-				<br>
-				<p class="card-text">商店名稱：${store.name}</p>
-				<br>
+				<p class="card-text">商店名稱:${store.name}</p>
 				<p class="card-text">商店介紹：${store.detail}</p>
-				<br>
 				<p class="card-text">
 					<c:set var="status" scope="session" value="${store.status}" />
 					<c:if test="${status==1 }">
@@ -311,8 +351,10 @@
 					<c:if test="${status==3 }">
 						<p>商店狀態：關閉</p>
 					</c:if>
-				</p>
 			</div>
+			<br>
+			<img src="<c:url value='/images/01.png' />" alt="...">
+			<br>
 			<div
 				style="padding-left: 20px; padding-top: 30px; height: 90px; text-align: center"
 				class="card-footer text-muted">
@@ -324,7 +366,9 @@
 				<a href="${pageContext.request.contextPath}/productfile.s?sId=${store.id}"><button
 						class="btn btn-success">Excel下載</button></a>
 			</div>
+
 		</div>
+
 	</div>
 
 
