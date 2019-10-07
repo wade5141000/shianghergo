@@ -23,8 +23,13 @@ thead {
 	background-color: lightblue;
 }
 .img {
-    width: 500;
+    width: 400;
     height: 300;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('images/bbg06.png') center center fixed ;　
 }
 
 </style>
@@ -33,12 +38,12 @@ thead {
 <jsp:include page="eric/header.jsp" />
 		<div  style="padding-bottom: 100px;">
 <jsp:include page="BlackLine.jsp" />
-<div style="padding-left: 400px; padding-right: 400px;padding-top: 50px;">
+<div style="padding-left: 450px; padding-right: 550px;padding-top: 50px;">
 	<input type="hidden" name="id" value="${loginOK.id}" />
 	<table class="table table-hover" style="font-family:微軟正黑體;">
 		<tbody>
 			<tr>
-				<td rowspan="10" align="center"><img  class="img" width="700" height="150" alt="" src="<c:url value='getmemberPicture/${loginOK.id}'/>"/></td>
+				<td rowspan="9" align="center"><img  class="img" width="300" height="300" alt="" src="<c:url value='getmemberPicture/${loginOK.id}'/>"/></td>
 			</tr>
 			
 			<tr>
@@ -80,6 +85,7 @@ thead {
 	</div>
 	</div>
 	<jsp:include page="eric/foot.jsp" />
+	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 
 </html>

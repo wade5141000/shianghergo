@@ -123,16 +123,16 @@ input.highlight {
 	<div class="container" style="height: 750; margin-left: 500px;">
 		<form role="form" action="login.do" method="post" style="padding-top: 150px" >
 			<fieldset >
-				<h1 align="center">會員登入</h1>
+				<h1 align="center" style="padding-top: 50px">饗合購會員登入</h1>
 				<div class="form-group col-lg-5"align="center"style="padding-left: 15px;padding-right: 15px;left: 150px;">
-					<label for="account">帳號</label> <input type="text"
+					<label for="account"><img  src="<c:url value='/images/line07.png' />" alt="..." >&nbsp;帳號</label> <input type="text"
 						class="form-control" id="account" name="account" placeholder="請輸入帳號">
 				</div>
 				<div class="form-group col-lg-5"align="center"style="padding-left: 15px;padding-right: 15px;left: 150px;">
-					<label for="password">密碼</label> <input type="password"
+					<label for="password"><img  src="<c:url value='/images/line06.png' />" alt="..." >&nbsp;密碼</label> <input type="password"
 						class="form-control" id="password" name="password" placeholder="請輸入密碼">
 				</div>
-				<div style="padding-left: 170px;padding-top: 30px">
+				<div style="padding-left: 170px;padding-top: 50px;padding-bottom:50px">
 				<button type="submit" class="btn btn-primary btn-sm">提交</button>
 				<button type="reset" class="btn btn-primary btn-sm">重置</button>
 				<a href="goRegisterPage" class="btn btn-primary btn-sm">加入會員</a>

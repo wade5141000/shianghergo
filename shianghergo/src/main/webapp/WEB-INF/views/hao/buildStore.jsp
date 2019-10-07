@@ -11,6 +11,13 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<style>
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('../images/bbg06.png') center center fixed ;　
+}
+</style>
 </head>
 <body>
 
@@ -46,5 +53,6 @@
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
+	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>

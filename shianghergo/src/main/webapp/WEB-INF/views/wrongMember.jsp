@@ -13,6 +13,13 @@
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!--    <meta http-equiv="refresh" content="3;URL=index"> -->
 <title>登入異常</title>
+<style>
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('images/bbg06.png') center center fixed ;　
+}
+</style>
 <script type="text/javascript">     
 function countDown(secs,surl){     
 //alert(surl);     
@@ -42,5 +49,6 @@ else{
 </div>
 </div>
 <jsp:include page="eric/foot.jsp" />
+<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>

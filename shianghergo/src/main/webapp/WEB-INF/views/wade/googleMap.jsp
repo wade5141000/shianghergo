@@ -35,6 +35,11 @@ html, body {
 	margin: 0;
 	padding: 0;
 }
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('../images/bbg06.png') center center fixed ;　
+}
 </style>
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- <script src="http://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script> -->
@@ -201,7 +206,7 @@ html, body {
 	    
 	</script>
 </head>
-<body style="background-color: #fffaf4;">
+<body >
 <jsp:include page="/WEB-INF/views/eric/header.jsp" ></jsp:include>
 <jsp:include page="/WEB-INF/views/wade/hotsell.jsp" ></jsp:include>
 	<div id="groupList">
@@ -284,6 +289,7 @@ html, body {
 <!-- 	<button onclick="getLatLong()">Get Lat. Long.</button> -->
 	
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" ></jsp:include>
+	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 
 </html>

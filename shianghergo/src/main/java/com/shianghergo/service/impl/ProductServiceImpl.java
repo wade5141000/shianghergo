@@ -23,6 +23,12 @@ public class ProductServiceImpl implements ProductService {
 	public List<ItemBean> getAllProducts() {
 		return dao.getAllProducts();
 	}
+	
+	@Transactional
+	@Override
+	public List<ItemBean> getRProducts() {
+		return dao.getRProducts();
+	}
 
 	@Transactional
 	@Override
@@ -125,4 +131,9 @@ public class ProductServiceImpl implements ProductService {
 		return dao.getAllProductsId();
 	}
 
+	@Transactional
+	@Override
+	public List<ItemBean> getAllProductsByStoreStatus() {
+		return dao.getAllProductsByStoreStatus();
+	}
 }
