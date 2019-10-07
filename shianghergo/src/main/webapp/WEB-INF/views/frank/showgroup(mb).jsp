@@ -131,7 +131,7 @@ body {
 
 
 
-	<section class="container">
+	<section class="container"style="padding-bottom: 100px;">
 		<div class="row">
 			<c:forEach var="item" items="${updategroup.groupsitem}">
 				<div class="col-sm-6 col-md-3"							
@@ -161,8 +161,6 @@ body {
 			</c:forEach>
 		</div>
 	</section>
-
-
 </body>
 <jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>

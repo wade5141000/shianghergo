@@ -18,6 +18,7 @@
 		
 	}
 </script>
+
 <meta charset="UTF-8">
 <title>header</title>
 
@@ -160,11 +161,11 @@ var y = x+1;
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link"
 					href="${pageContext.request.contextPath}/index"
-					style="margin-right: 25px; font-weight: bold;font-size:26px;font-family:Microsoft JhengHei;">首頁</a></li>
+					style="margin-right: 25px; font-weight: bold;font-size:26px;font-family:Microsoft JhengHei;"><img  src="<c:url value='/images/line10.png' />" alt="..." >&nbsp;首頁</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="" id="navbarDropdown1"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false" style="margin-right: 25px; font-weight: bold;font-size:26px;font-family:Microsoft JhengHei;">瀏覽商品</a>
+					aria-expanded="false" style="margin-right: 25px; font-weight: bold;font-size:26px;font-family:Microsoft JhengHei;"><img  src="<c:url value='/images/line14.png' />" alt="..." >&nbsp;瀏覽商品</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown1"
 						style="text-align: center;">
 						<a class="dropdown-item"
@@ -180,7 +181,7 @@ var y = x+1;
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="" id="navbarDropdown2"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false" style="margin-right: 25px; font-weight: bold;font-size:26px;font-family:Microsoft JhengHei;">瀏覽團購
+					aria-expanded="false" style="margin-right: 25px; font-weight: bold;font-size:26px;font-family:Microsoft JhengHei;"><img  src="<c:url value='/images/line12.png' />" alt="..." >&nbsp;瀏覽團購
 				</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown2"
 						style="text-align: center;">
@@ -194,14 +195,14 @@ var y = x+1;
 
 				<li class="nav-item"><a class="nav-link"
 					href="${pageContext.request.contextPath}/wade/showmap"
-					style="margin-right: 25px; font-weight: bold;font-size:26px;font-family:Microsoft JhengHei;">地圖找團</a></li>
+					style="margin-right: 25px; font-weight: bold;font-size:26px;font-family:Microsoft JhengHei;"><img  src="<c:url value='/images/line09.png' />" alt="..." >&nbsp;地圖找團</a></li>
 
 
 
 
 				<li class="nav-item"><a class="nav-link"
 					href="${pageContext.request.contextPath}/frank/Groups1"
-					style="margin-right: 25px; font-weight: bold;font-size:26px;font-family:Microsoft JhengHei;">我要開團</a></li>
+					style="margin-right: 25px; font-weight: bold;font-size:26px;font-family:Microsoft JhengHei;"><img  src="<c:url value='/images/line11.png' />" alt="..." >&nbsp;我要開團</a></li>
 			</ul>
 
 
