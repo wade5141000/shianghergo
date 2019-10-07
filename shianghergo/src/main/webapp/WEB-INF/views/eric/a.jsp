@@ -6,42 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Document</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/static/css/footer.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/static/css/header.css">
-<link rel="stylesheet" type="text/css" href="../res/static/css/main.css">
-<!-- <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css"> -->
-<script type="text/javascript" src="../res/layui/layui.js"></script>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-
-<script src="https://code.jquery.com/jquery-3.4.1.js"
-	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
-
-<link rel="stylesheet"
-	href="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.css">
-<script
-	src="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.js"></script>
-<script
-	src="https://unpkg.com/bootstrap-table@1.15.4/dist/locale/bootstrap-table-zh-TW.min.js"></script>
-
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
 
 </head>
 <body>
@@ -55,7 +19,7 @@
 		<section class="magazine-section my-5">
 
 			<!-- Section heading -->
-			<h2 class="h1-responsive font-weight-bold text-center my-5">_</h2>
+			<h2 class="h1-responsive font-weight-bold text-center my-5"></h2>
 			<!-- Section description -->
 
 			<!-- Grid row -->
@@ -127,7 +91,7 @@
 								<!-- Excerpt -->
 								<p class="font-weight-bold dark-grey-text">天使紅蝦 挑戰最低價</p>
 								<p class="font-weight-bold dark-grey-text">天使蝦來自阿根廷,南部海域純淨無汙染,這種環境生長的天使紅蝦,營養豐富,口感鮮嫩</p>
-								<p class="font-weight-bold dark-grey-text">急速冷凍,高檔食材,中秋海鮮首選!!!
+								
 
 								
 								<div class="d-flex justify-content-between">
@@ -158,7 +122,7 @@
 								<!--Image-->
 								<div class="view overlay rounded z-depth-1 mb-4">
 									<img class="img-fluid"
-										src="${pageContext.request.contextPath}/res/static/img/天使紅蝦.jpg"
+										src="${pageContext.request.contextPath}/res/static/img/澎湖大生蠔.jpg"
 										alt="Sample image"> <a>
 										<div class="mask rgba-white-slight"></div>
 									</a>
@@ -171,9 +135,9 @@
 							<div class="col-md-9">
 
 								<!-- Excerpt -->
-								<p class="font-weight-bold dark-grey-text">天使紅蝦 挑戰最低價</p>
+								<p class="font-weight-bold dark-grey-text">澎湖大生蠔</p>
 								<p class="font-weight-bold dark-grey-text">天使蝦來自阿根廷,南部海域純淨無汙染,這種環境生長的天使紅蝦,營養豐富,口感鮮嫩</p>
-								<p class="font-weight-bold dark-grey-text">急速冷凍,高檔食材,中秋海鮮首選!!!
+								
 
 								
 								<div class="d-flex justify-content-between">
@@ -202,7 +166,7 @@
 								<!--Image-->
 								<div class="view overlay rounded z-depth-1 mb-4">
 									<img class="img-fluid"
-										src="${pageContext.request.contextPath}/res/static/img/天使紅蝦.jpg"
+										src="${pageContext.request.contextPath}/res/static/img/北海道干貝.jpg"
 										alt="Sample image"> <a>
 										<div class="mask rgba-white-slight"></div>
 									</a>
@@ -215,9 +179,9 @@
 							<div class="col-md-9">
 
 								<!-- Excerpt -->
-								<p class="font-weight-bold dark-grey-text">天使紅蝦 挑戰最低價</p>
+								<p class="font-weight-bold dark-grey-text">北海道干貝</p>
 								<p class="font-weight-bold dark-grey-text">天使蝦來自阿根廷,南部海域純淨無汙染,這種環境生長的天使紅蝦,營養豐富,口感鮮嫩</p>
-								<p class="font-weight-bold dark-grey-text">急速冷凍,高檔食材,中秋海鮮首選!!!
+								
 
 								
 								<div class="d-flex justify-content-between">

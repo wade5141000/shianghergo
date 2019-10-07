@@ -28,6 +28,13 @@ public class GroupsServiceImpl implements GroupsService{
 	public List<GroupsBean> getAllGroups() {
 		return dao.getAllGroups();
 	}
+	
+	@Override
+	@Transactional
+	public List<GroupsBean> getRGroups() {
+		return dao.getRGroups();
+	}
+
 
 	@Override
 	@Transactional

@@ -10,6 +10,8 @@ import com.shianghergo.model.StoreBean;
 public interface ProductService {
 	List<ItemBean> getAllProducts();
 	
+	List<ItemBean> getRProducts();
+	
 	public ItemBean getProductById(int productId);
 	
 	int addProduct(ItemBean product,Integer category_id);
@@ -37,5 +39,7 @@ public interface ProductService {
 	List<ItemBean> getProductsByCategory(Integer category_id);
 
 	List<Integer> getAllProductsId();
+
+	
 
 }
