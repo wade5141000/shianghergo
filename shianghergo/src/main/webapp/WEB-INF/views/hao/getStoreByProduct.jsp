@@ -14,9 +14,16 @@
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/res/layui/layui.js"></script>
+<style>
+.s1 {
+	width: 35px;
+}
+</style>
+
 <title>Store</title>
 <script>
-	let flag = true;
+	
+	let flag = null;
 
 	document.addEventListener("DOMContentLoaded", function() {
 
@@ -40,9 +47,10 @@
 		flag = true;
 
 		if (flag == true) {
-			for (let i = 0; i < n; i++) {
+			
+			for (let i=1; i<= n; i++) {
 
-				document.images[i - 1 + 2].src = '${pageContext.request.contextPath}/resources/images/chngstar.gif'
+				document.getElementById("star"+i).src ='${pageContext.request.contextPath}/resources/images/chngstar.gif'
 
 			}
 
@@ -51,29 +59,37 @@
 	}
 	function mouseOut() {
 
-		if (flag) {
+		let n = this.id.charAt(4);
+		
+		if (flag == true) {
 
-			for (let i = 0; i < 5; i++) {
-
-				document.images[i - 1 + 2].src = "${pageContext.request.contextPath}/resources/images/star.gif"
-
+			for (let i=1; i<=n ; i++) {
+				
+				document.getElementById("star"+i).src ="${pageContext.request.contextPath}/resources/images/star.gif"
 			}
 		}
 	}
 
 	function Click() {
 
-		flag = false;
-
 		let n = this.id.charAt(4);
+		
+		flag = false
+		
+		
+		if(flag == false){
+		
+		for (let i = 1; i <= n; i++) {
 
-		for (let i = 0; i < n; i++) {
-
-			document.images[i - 1 + 2].src = "${pageContext.request.contextPath}/resources/images/chngstar.gif"
-			document.getElementById("str").innerHTML = "是否要給" + (i + 1) + "分";
-			document.getElementById("score").value = i + 1;
+			document.getElementById("star"+i).src ="${pageContext.request.contextPath}/resources/images/chngstar.gif"
+			
+			document.getElementById("str").innerHTML = "是否要給" + i+ "分";
+			document.getElementById("score").value = i;
+		    
+			
 		}
 
+		}
 	}
 
 	function reportTarger(myObj) {
@@ -171,7 +187,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
-	
+
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -283,10 +299,10 @@
 	</div>
 
 
-<%-- 	<c:set var="status" scope="session" value="${store.status }" /> --%>
-<%-- 	<c:if test="${status!=3 }">123</c:if> --%>
-	
-	
+	<%-- 	<c:set var="status" scope="session" value="${store.status }" /> --%>
+	<%-- 	<c:if test="${status!=3 }">123</c:if> --%>
+
+
 	<div style="padding-bottom: 50px;">
 		<div style="padding-left: 350px; padding-right: 350px;"
 			class="card text-center">
@@ -321,7 +337,8 @@
 					value="${store.id }">評價</button>
 				<button class="btn btn-danger" onclick="reportTarger(this)"
 					data-toggle="modal" data-target="#exampleModal" value="${store.id}">檢舉</button>
-				<a href="${pageContext.request.contextPath}/productfile.s?sId=${store.id}"><button
+				<a
+					href="${pageContext.request.contextPath}/productfile.s?sId=${store.id}"><button
 						class="btn btn-success">Excel下載</button></a>
 			</div>
 		</div>
@@ -356,7 +373,8 @@
 						</h5>
 						<%-- 						<p class="card-text">說明：${product.detail }</p> --%>
 						<p class="card-text">${product.price }元</p>
-						<button class="layui-btn  layui-btn-danger car-btn" onclick="goCart(${product.id})">
+						<button class="layui-btn  layui-btn-danger car-btn"
+							onclick="goCart(${product.id})">
 							<i class="layui-icon layui-icon-cart-simple"></i>加入購物車
 						</button>
 					</div>
@@ -400,7 +418,7 @@
 			</div>
 		</c:forEach>
 	</div>
-	
+
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>
