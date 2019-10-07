@@ -26,6 +26,7 @@ import com.shianghergo.model.comment_store;
 import com.shianghergo.service.GBDBService;
 import com.shianghergo.service.GroupsService;
 import com.shianghergo.service.MemberService;
+import com.shianghergo.service.ProductService;
 
 @Controller
 @SessionAttributes(value = "id") // member_id 放在session域讓類中方法都能使用
@@ -39,6 +40,9 @@ public class ALLController {
 	
 	@Autowired
 	MemberService mservice;
+	
+	@Autowired
+	ProductService pservice;
 
 //------------登入------------------------------------	
 
@@ -650,9 +654,12 @@ public class ALLController {
 		service.savecomment_Item(ci);
 
 		List<ItemBean> list = service.getAllItem();
-
+//
 		model.addAttribute("item", list);
 		Integer pd = ci.getItem_id();
+		
+		
+		
 		return "redirect:/hao/product?id=" + pd;
 
 	}
