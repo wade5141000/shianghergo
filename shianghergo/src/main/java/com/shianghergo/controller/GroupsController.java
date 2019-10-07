@@ -240,7 +240,10 @@ public class GroupsController {
 		if (productImage.isEmpty()) {
 			System.out.println("沒上傳圖片");
 		} else {
-			String shianghergo = context.getRealPath("/");
+			
+			String shianghergo = request.getSession().getServletContext().getRealPath("/");
+			
+//			String shianghergo = context.getRealPath("/");
 			shianghergo += "images\\groupsItemImg\\" + iid +".jpg";
 			System.out.println(shianghergo);
 			File tempF = new File(shianghergo);
@@ -297,6 +300,11 @@ public class GroupsController {
 //		return responseEntity;
 		String shianghergo = context.getRealPath("/");
 		shianghergo += "images\\groupsItemImg\\" + id +".jpg";
+		
+		System.out.println(shianghergo+"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		
+		
+		
 		File tempF = new File(shianghergo);
 		if(tempF.exists()) {
 			try {
