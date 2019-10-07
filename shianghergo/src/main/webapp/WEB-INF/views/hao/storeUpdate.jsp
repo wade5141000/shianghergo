@@ -11,6 +11,13 @@
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <title>商家修改</title>
+<style type="text/css">
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('http://localhost:8080/shianghergo/images/bbg06.png') center center fixed ;　
+}
+</style>
 <script>
 	function close() {
 		var r = confirm("是否關閉商店")
@@ -22,16 +29,9 @@
 		}
 	}
 </script>
-<style type="text/css">
-/* fieldset{ */
-/* border:2px; */
-/* } */
-
-</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
-
 	<jsp:include page="../BlackLine.jsp" />
 	<div style="padding-bottom: 350px;">
 		<div style="padding-left: 350px; padding-right: 350px;">
@@ -70,7 +70,7 @@
 								
 							</form>
 							<input type="button" class="btn btn-success"
-								onclick="history.back()" value="回到上一頁"></input>
+								onclick="history.back()" value="取消修改"></input>
 						</div>
 					</div>
 				</fieldset>
@@ -79,5 +79,6 @@
 
 	</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
+	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>
