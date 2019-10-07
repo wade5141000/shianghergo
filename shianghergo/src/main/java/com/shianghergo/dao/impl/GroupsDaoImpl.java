@@ -137,7 +137,6 @@ public class GroupsDaoImpl implements GroupsDao {
 		List<Groups_ItemBean> list = new ArrayList<>();
 		Session session = factory.getCurrentSession();
 		list = session.createQuery(hql).setParameter("groups_id", groups_id).getResultList();
-		System.out.println(list + "55555555");
 		return list;
 	}
 
@@ -164,7 +163,6 @@ public class GroupsDaoImpl implements GroupsDao {
 		List<PlaceBean> list = new ArrayList<>();
 		Session session = factory.getCurrentSession();
 		list = session.createQuery(hql).setParameter("groups_id", groups_id).getResultList();
-		System.out.println("66666" + list);
 		return list;
 	}
 
@@ -176,7 +174,6 @@ public class GroupsDaoImpl implements GroupsDao {
 		List<GroupsBean> list = new ArrayList<>();
 		Session session = factory.getCurrentSession();
 		list = session.createQuery(hql).setParameter("member_id", member_id).getResultList();
-		System.out.println(list + "55555555");
 		return list;
 	}
 
@@ -323,7 +320,8 @@ public class GroupsDaoImpl implements GroupsDao {
 		List<comment_member> list = new ArrayList<>();
 		Session session = factory.getCurrentSession();
 		list = session.createQuery(hql).setParameter("target", target).getResultList();
-		
+
+	
 		return list;
 	}
 

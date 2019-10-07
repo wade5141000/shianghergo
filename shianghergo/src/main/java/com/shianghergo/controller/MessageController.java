@@ -41,19 +41,19 @@ public class MessageController {
 	public String getAllMemberList(Model model ) {
 		List<MemberBean> list = service.getPerson();
 		model.addAttribute("AllMemberList", list);
-		System.out.println("getAllMemberList++:"+list);
+//		System.out.println("getAllMemberList++:"+list);
 		return "AllMember";
 	}
 	
 	@RequestMapping(value="/sendMemberMessage")
 	public String sendMemberMessage(@RequestParam(value = "target") Integer target,@ModelAttribute("loginOK")MemberBean mb, Model model) {
-		System.out.println("target++:"+target);
+//		System.out.println("target++:"+target);
 		MessageBean Mesg = new MessageBean();
 //		Mesg.setMember_id(mb.getId());
 		model.addAttribute("MessageBean", Mesg);
 		model.addAttribute("mm",service.getMemberById(mb.getId()));
 		model.addAttribute("mmm",service.getMemberById(target));
-		System.out.println("mmm+++:"+service.getMemberById(target));
+//		System.out.println("mmm+++:"+service.getMemberById(target));
 //		System.out.println("mesg++:"+service.getMessageByMemberId(MesgB.getMember_id()));
 		return "Message";
 	}
@@ -75,7 +75,7 @@ public class MessageController {
 	@RequestMapping("/getMyMessage")//誰留言給我
 	public String getMyMessage(MessageBean MesgB,Model model,@ModelAttribute("loginOK")MemberBean mb) {
 		model.addAttribute("getMyMessage", service.getMyMessage(mb.getId()));//根據target
-		System.out.println("誰留言給我::"+service.getMyMessage(mb.getId()));
+//		System.out.println("誰留言給我::"+service.getMyMessage(mb.getId()));
 //		model.addAttribute("tmb",service.getMemberById(MesgB.getMemberBean().getId()));
 		//System.out.println("tmb       :"+ service.getMemberById(MesgB.getMemberBean().getId()));
 		return "getMyMessage";
@@ -97,7 +97,7 @@ public class MessageController {
 	@RequestMapping("/getMynotification")//誰留言給我
 	public String getMyNotification(NotificationBean noti,Model model,@ModelAttribute("loginOK")MemberBean mb) {
 		model.addAttribute("getMyNotification", service.getNotificationByid(mb.getId()));//根據target
-		System.out.println("誰留言給我::"+service.getMyMessage(mb.getId()));
+//		System.out.println("誰留言給我::"+service.getMyMessage(mb.getId()));
 //		model.addAttribute("tmb",service.getMemberById(MesgB.getMemberBean().getId()));
 		//System.out.println("tmb       :"+ service.getMemberById(MesgB.getMemberBean().getId()));
 		return "getMynotification";

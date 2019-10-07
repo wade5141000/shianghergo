@@ -90,7 +90,10 @@
 							<dd class="col-sm-8">
 								<input type="button" value="修改"
 									onclick="location.href='updatetoplace(mb)?gid=${updategroup.id}&pid=${places.id}'"
-									class="btn btn-info" style="width: 80px; height: 40px;">
+									class="btn btn-info" style="width: 80px; height: 40px;"><span><input type="button" value="刪除"
+
+					onclick="location.href='deletetoplace?gid=${updategroup.id}&pid=${places.id}'"
+					class="btn btn-danger" style="width: 80px; height: 40px;"></span>
 							</dd>
 						</dl>
 					</dd>
@@ -98,10 +101,11 @@
 					<dd class="col-sm-9">
 						<dl class="row">
 							<dt class="col-sm-4">${places.time}</dt>
-							<dd class="col-sm-8"><input type="button" value="刪除"
+<!-- 							<dd class="col-sm-8"><input type="button" value="刪除" -->
 
-					onclick="location.href='deletetoplace?gid=${updategroup.id}&pid=${places.id}'"
-					class="btn btn-danger" style="width: 80px; height: 40px;"></dd>
+<%-- 					onclick="location.href='deletetoplace?gid=${updategroup.id}&pid=${places.id}'" --%>
+<!-- 					class="btn btn-danger" style="width: 80px; height: 40px;"> -->
+					</dd>
 
 						</dl>
 					</dd>

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html>
 <head>
 <meta charset="UTF-8">
@@ -87,12 +87,14 @@ function addGroupCart(item_id,groups_id){
 			for(var i=0  ; i<cartitems.length ; i++){
 				
 				if(i==0){
-					result += "<tr><th>我想團...</th><th>數量</th><th>單價</th><th>小計</th><th>操作</th></tr>";
+					result += "<tr><th/><th>我想團...</th><th>數量</th><th>單價</th><th>小計</th><th>操作</th></tr>";
 					
 				}
 				result += '<tr>';
+				
+				result += '<td><img src="http://localhost:8080/shianghergo/frank/getPicture/' + cartitems[i].groups_item_id +'" width="50px" height="50px"></td>';
+				
 				result += '<td id="giname">'+cartitems[i].name+'</td>';
-
 				result += '<td><button class="btn btn-outline-danger btn1" onclick='+
 						'"changeGroupAmount('+cartitems[i].id+',2)">-'+
 						'</button ><span id="'+cartitems[i].id+'">'+cartitems[i].amount+'</span><button onclick="changeGroupAmount('+cartitems[i].id+',1)" class="btn btn-outline-success btn2">+</button>&nbsp;&nbsp;</td>';
@@ -106,7 +108,7 @@ function addGroupCart(item_id,groups_id){
 
 				
 				if(i == (cartitems.length-1)){
-					result += "<tr><td/><td/><td/><td>";
+					result += "<tr><td/><td/><td/><td/><td>";
 					result += '<span class="total">Total:</span><span id="gtotal" class="total" style="color:red;">'+ttotal+'</span></td>';
 					result += "<td></td></tr></table>";
 				}
@@ -146,9 +148,80 @@ $(document).ready(function(){
 	
 });
 
-$("#111").mouseclick(function(){
-	  $("#111").css("background-color","yellow");
+
+
+
+// wade 以下檢舉和評價
+
+let flag = true;
+
+	document.addEventListener("DOMContentLoaded", function() {
+
+		let stars = document.querySelectorAll("img.s1");
+
+		let starsLength = stars.length;
+
+		for (let i = 0; i < starsLength; i++) {
+
+			stars[i].addEventListener("mouseover", mouseOver);
+			stars[i].addEventListener("mouseout", mouseOut);
+			stars[i].addEventListener("click", Click);
+		}
+
 	});
+
+	function mouseOver() {
+
+		let n = this.id.charAt(4);
+
+		flag = true;
+
+		if (flag == true) {
+			for (let i = 0; i < n; i++) {
+
+				document.images[i - 1 + 2].src = '${pageContext.request.contextPath}/resources/images/chngstar.gif'
+
+			}
+
+		}
+
+	}
+	function mouseOut() {
+
+		if (flag) {
+
+			for (let i = 0; i < 5; i++) {
+
+				document.images[i - 1 + 2].src = "${pageContext.request.contextPath}/resources/images/star.gif"
+
+			}
+		}
+	}
+
+	function Click() {
+
+		flag = false;
+
+		let n = this.id.charAt(4);
+
+		for (let i = 0; i < n; i++) {
+
+			document.images[i - 1 + 2].src = "${pageContext.request.contextPath}/resources/images/chngstar.gif"
+			document.getElementById("str").innerHTML = "是否要給" + (i + 1) + "分";
+			document.getElementById("score").value = i + 1;
+		}
+
+	}
+
+function reportTarger(myObj) {
+
+		document.getElementById("target").value = myObj.value;
+	}
+
+	function scoreTarger(myObj) {
+
+		document.getElementById("scoretarget").value = myObj.value;
+	}
 
 
 </script>
@@ -156,6 +229,120 @@ $("#111").mouseclick(function(){
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
+	
+<!-- wade 檢舉和評價開始  -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"
+						style="margin-left: 180px;color: blue;" >檢舉會員</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+				
+					<form action="/shianghergo/frank/SaveRM" method="POST">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">檢舉類別:</label>
+							<select name="category_report_id" class="select">
+								<c:forEach var='items' items='${list}'>
+									<option value="${items.id}">${items.name}</option>
+								</c:forEach>
+							</select>
+						</div>
+
+						<input type=hidden value="${loginOK.id}" name="member_id"> 
+						<input type=hidden value="1"  id="target" name="target">
+						<div class="form-group">
+							<label for="message-text" class="col-form-label">檢舉內容:</label>
+							<textarea class="form-control" id="message-text" name="contents"></textarea>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">清除</button>
+							<button type="submit" class="btn btn-primary">確認檢舉</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<!-- 	評價功能   -->
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"
+	                     style="margin-left: 180px;color: blue;" >評價會員</h5>
+					<div class="form-group" style="text-align: center;">
+						<label for="recipient-name" class="col-form-label"></label>
+					</div>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+
+					<form action="/shianghergo/frank/evaluationMember" method="POST">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">評分:
+							</label> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star1" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star2" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star3" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star4" class="s1"> <img
+								src="${pageContext.request.contextPath}/resources/images/star.gif"
+								id="star5" class="s1">
+
+						</div>
+						<div>
+							<span class="c1" id="str"></span>
+						</div>
+
+					
+						<!--使用者會員ID -->
+						<input type=hidden value="${loginOK.id}" name="member_id">
+						<!--被評價的會員ID -->
+						<input type=hidden value="1" id="scoretarget" name="target">
+						<!--取的被選中的星星 -->
+						<input type=hidden value="1" name="score" id="score">
+
+						<div class="form-group">
+							<label for="message-text" class="col-form-label">評價內容:</label>
+							<textarea class="form-control" id="message-text" name="contents"></textarea>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">清除</button>
+							<button type="submit" class="btn btn-primary">確認評分</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+	<!-- wade 檢舉和評價結束  -->
+	
+	
 
 	<div class="f5">
 		<H1>${group.name}</H1>
@@ -169,9 +356,19 @@ $("#111").mouseclick(function(){
 				<td colspan="2"><img width='100px' height='100px'
 					style="display: block; margin: auto;"
 					src="<c:url value='/getmemberPicture/${group.memberBean.id }' />" />${group.memberBean.name}
-					<button type="button" class="btn btn-primary">☠檢舉</button>
-					<button type="button" class="btn btn-primary">📜評價</button>
-					<button type="button" class="btn btn-primary">📩留言給我</button></td>
+					
+					
+					<button class="btn btn-primary" onclick="reportTarger(this)"
+					data-toggle="modal" data-target="#exampleModal" value="${group.id}">☠檢舉</button>
+					<button class="btn btn-primary" onclick="scoreTarger(this)"
+					data-toggle="modal" data-target="#exampleModal1"
+					value="${group.id}">📜評價</button>
+				
+					
+					
+<!-- 					<a class="btn btn-primary" href="" role="button">☠檢舉</a> -->
+<!-- 					<a class="btn btn-primary" href="" role="button">📜評價</a> -->
+					<a class="btn btn-primary" href="${pageContext.request.contextPath}/sendMemberMessage?target=${group.memberBean.id}" role="button">📩留言給我</a></td>
 
 			</tr>
 
@@ -271,6 +468,7 @@ $("#111").mouseclick(function(){
 
 	</div>
 
+
 	<div id="two"
 		style="word-break: break-all; width: 1000px; margin: 0 auto; text-align: center;">
 
@@ -311,7 +509,7 @@ $("#111").mouseclick(function(){
 				<!-- 				</div > -->
 				<div style="float: left;">
 					<p>
-						會員：${commentmb.member_id}&nbsp;&nbsp;&nbsp;&nbsp; <img
+						會員：${commentmb.memberBean.name}(${commentmb.memberBean.account})&nbsp;&nbsp;&nbsp;&nbsp; <img
 							src="<c:url value='/resources/images/star_${commentmb.score }.gif' />">
 					</p>
 				</div>
@@ -320,6 +518,7 @@ $("#111").mouseclick(function(){
 				</div>
 				<br>
 				<div>${commentmb.contents }</div>
+
 
 				<!-- 			<div style="padding-left: 35%; padding-right: 35%"> -->
 				<!-- 				<hr style="color: gray;"> -->

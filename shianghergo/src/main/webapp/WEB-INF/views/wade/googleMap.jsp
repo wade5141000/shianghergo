@@ -10,8 +10,8 @@
 <title>饗合購地圖</title>
 <style>
 #map {
-	height: 650px;
-	width: 1000px;
+	height: 550px;
+	width: 900px;
 	margin:auto;
 	margin-left:450px
 }
@@ -37,10 +37,13 @@ html, body {
 }
 </style>
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="http://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+<!-- <script src="http://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script> -->
 
 <script>
 		var lastOne = 1;
+		var map;
+		var markers = [];
+		var position = [];
 
 
 // 		function getLatLong(addr) {
@@ -101,8 +104,8 @@ html, body {
 						    map: map,
 						    title:groupList[i].name, // 滑鼠移上去顯示資訊
 						    icon:"https://img.icons8.com/nolan/64/000000/halloween-candy.png",
-						    data:"<h5>團號：<a href=''>"+ groupList[i].id +"</a></h5>"+
-						    "<h5>團名：<a href=''>"+ groupList[i].name +"</a></h5>"+
+						    data:"<h5>團號：<a href='http://localhost:8080/shianghergo/frank/group?gid="+ gId +"'>"+ groupList[i].id +"</a></h5>"+
+						    "<h5>團名：<a href='http://localhost:8080/shianghergo/frank/group?gid="+ gId +"'>"+ groupList[i].name +"</a></h5>"+
 						    "<h6>截止時間："+groupList[i].end_time+"</h6>"+
 						    "<h6>面交地點：" + placeList[i].address+"</h6>"+
 						    "<h6>面交時間："+placeList[i].time+"</h6>"
@@ -116,6 +119,17 @@ html, body {
 							    infowindow.open(map, this);  
 							  });
 					}
+// 					alert(markers.length);
+					// 以下是叢集功能
+// 					var markerCluster = null;
+						
+// 					markerCluster =	new MarkerClusterer(map, markers,
+// 			                {
+// 			                    gridSize: 30,
+// //			                     maxZoom: 500,
+// 			                    imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+// 			                });
+					
 				}				
 			})
 		}
@@ -127,27 +141,10 @@ html, body {
 	        markers = [];   
 	    };  
 		
-	</script>
-</head>
-<body style="background-color: #fffaf4;">
-<jsp:include page="/WEB-INF/views/eric/header.jsp" ></jsp:include>
-<jsp:include page="/WEB-INF/views/wade/hotsell.jsp" ></jsp:include>
-	<div id="groupList">
-	
-		<div class="list-group">
-			  <button id="l1" onclick="changeMarker(1)" class="list-group-item list-group-item-action active bline">所有團購</button>
-			  <c:forEach var="group" items="${groups}">
-			  	<button id="l${group.id}" onclick="changeMarker(${group.id})" class="list-group-item list-group-item-action bline">&#187 ${group.name}</button>
-			</c:forEach> 
-		</div>
-	</div>
-
-	<div id="map"></div>
-	<script>
-	
-		var map;
-		var markers = [];
-		var position = [];
+	    
+// 	    var map;
+// 		var markers = [];
+// 		var position = [];
 	
 		function initMap() {
 			map = new google.maps.Map(document.getElementById('map'), {
@@ -169,8 +166,8 @@ html, body {
 				    title:"${place.groupsBean.name}", // 滑鼠移上去顯示資訊
 				    //icon https://sites.google.com/site/gmapsdevelopment/
 				    icon:"https://img.icons8.com/nolan/64/000000/halloween-candy.png",
-				    data:"<h5>團號：<a href=''>${place.groupsBean.id}</a></h5>"+
-				    "<h5>團名：<a href=''>${place.groupsBean.name}</a></h5>"+
+				    data:"<h5>團號：<a href='http://localhost:8080/shianghergo/frank/group?gid=${place.groupsBean.id}'>${place.groupsBean.id}</a></h5>"+
+				    "<h5>團名：<a href='http://localhost:8080/shianghergo/frank/group?gid=${place.groupsBean.id}'>${place.groupsBean.name}</a></h5>"+
 				    "<h6>截止時間：${place.groupsBean.end_time}</h6>"+
 				    "<h6>面交地點：${place.address}</h6>"+
 				    "<h6>面交時間：${place.time}</h6>"
@@ -192,14 +189,89 @@ html, body {
 				
 			</c:forEach>
 		
-		var markerCluster = new MarkerClusterer(map, markers,
-                {
-                    gridSize: 30,
-//                     maxZoom: 500,
-                    imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-                });
+// 		var markerCluster = new MarkerClusterer(map, markers,
+//                 {
+//                     gridSize: 30,
+// //                     maxZoom: 500,
+//                     imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+//                 });
 //			marker.setMap(map);
 		}
+	    
+	    
+	</script>
+</head>
+<body style="background-color: #fffaf4;">
+<jsp:include page="/WEB-INF/views/eric/header.jsp" ></jsp:include>
+<jsp:include page="/WEB-INF/views/wade/hotsell.jsp" ></jsp:include>
+	<div id="groupList">
+	
+		<div class="list-group">
+			  <button id="l1" onclick="changeMarker(1)" class="list-group-item list-group-item-action active bline">所有團購</button>
+			  <c:forEach var="group" items="${groups}">
+			  	<button id="l${group.id}" onclick="changeMarker(${group.id})" class="list-group-item list-group-item-action bline">&#187 ${group.name}</button>
+			</c:forEach> 
+		</div>
+	</div>
+
+	<div id="map"></div>
+	<script>
+	
+// 		var map;
+// 		var markers = [];
+// 		var position = [];
+	
+// 		function initMap() {
+// 			map = new google.maps.Map(document.getElementById('map'), {
+// 				center : {
+// 					lat: 25.033483,
+// 				    lng: 121.543499
+// 				},
+// 				zoom : 17
+// 			});
+			
+// 			<c:forEach var="place" items="${items}" varStatus="i">
+// 				position[${i.index}] = {lat:${place.latitude},lng:${place.longitude}};
+// 				var marker = new google.maps.Marker({
+// 				    position: {
+// 				      lat: position[${i.index}].lat,
+// 				      lng: position[${i.index}].lng
+// 				    },
+// 				    map: map,
+// 				    title:"${place.groupsBean.name}", // 滑鼠移上去顯示資訊
+// 				    //icon https://sites.google.com/site/gmapsdevelopment/
+// 				    icon:"https://img.icons8.com/nolan/64/000000/halloween-candy.png",
+// 				    data:"<h5>團號：<a href=''>${place.groupsBean.id}</a></h5>"+
+// 				    "<h5>團名：<a href=''>${place.groupsBean.name}</a></h5>"+
+// 				    "<h6>截止時間：${place.groupsBean.end_time}</h6>"+
+// 				    "<h6>面交地點：${place.address}</h6>"+
+// 				    "<h6>面交時間：${place.time}</h6>"
+// 				  });
+// 				  markers.push(marker);
+				  
+// 				  var infowindow = new google.maps.InfoWindow({
+// 	//				    content: contentString
+// 				  });
+				  
+// 				  marker.addListener('click', function() {  
+// 					    infowindow.setContent( this.data );  
+// 					    infowindow.open(map, this);  
+// 					  });
+				  
+// 	//				  google.maps.event.addListener(marker, 'click', function () {
+// 	//				        infowindow.open(map, marker);
+// 	//				    });
+				
+// 			</c:forEach>
+		
+// 		var markerCluster = new MarkerClusterer(map, markers,
+//                 {
+//                     gridSize: 30,
+// //                     maxZoom: 500,
+//                     imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+//                 });
+// //			marker.setMap(map);
+// 		}
 	
 	</script>
 

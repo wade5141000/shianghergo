@@ -9,18 +9,29 @@
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <title>Store</title>
-
+<style type="text/css">
+/* #DIV1 { */
+/* 	-moz-border-image: url("/`images/01.png") 30 30 round; /* 給 Firefox 看*/ */
+/* 	-webkit-border-image: url("/images/01.png") 30 30 round; */
+/* 	/* 給 Safari 與 Chrome 看*/ */
+/* 	border-image: url("/images/01.png") 30 30 round; */
+/* } */
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
 	<jsp:include page="../BlackLine.jsp" />
 
+	<%-- 	<img  src="<c:url value='/images/01.png' />" alt="..." > --%>
+
 	<div style="padding-bottom: 350px;">
-		<div style="padding-left: 350px; padding-right: 350px;"
-			class="card text-center">
-			<div class="card-header" style="margin-top: 25px; margin-top: 10px;">
-				<h1>商店資訊</h1>
+		<div style="padding-left: 350px; padding-right: 350px;" id="DIV1">
+			<div class="card-header" style="margin-top: 25px; margin-top: 10px;box-shadow:3px 3px 12px #FF7F24;width:1100px;line-height:100px;text-align:center;">
+				<h1 style="font-family: 微軟正黑體;"><img  src="<c:url value='/images/t02.jpg' />" alt="..." >&nbsp;商店資訊</h1>
 			</div>
+			<br>
+			<img src="<c:url value='/images/01.png' />" alt="...">
+			<br>
 			<div class="card-body">
 				<p class="card-text">商家編號：${store.id}</p>
 				<p class="card-text">商店名稱:${store.name}</p>
@@ -37,7 +48,10 @@
 						<p>商店狀態：關閉</p>
 					</c:if>
 			</div>
-			<div style="padding-left: 20px; padding-top: 30px;"
+			<br>
+			<img src="<c:url value='/images/01.png' />" alt="...">
+			<br>
+			<div style="padding-left: 20px; padding-top: 30px;box-shadow:3px 3px 12px #FF7F24;width:1100px;line-height:100px;text-align:center;"
 				class="card-footer text-muted">
 				<%-- 				<h3>商家編號：${store.id}</h3> --%>
 				<%-- 				<p>商店名稱:：${store.name}</p> --%>

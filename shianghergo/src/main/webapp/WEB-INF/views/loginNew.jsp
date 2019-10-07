@@ -92,6 +92,7 @@ input.highlight {
 	border: 1px solid #7abd54;
 }
 
+
 /* label.error, label.tip { */
 /* 	float: left; */
 /* 	height: 32px; */
@@ -120,7 +121,7 @@ input.highlight {
 <body>
 	<jsp:include page="eric/header.jsp" />
 	<div class="container" style="height: 750; margin-left: 500px;">
-		<form role="form" action="login.do" method="post" style="padding-top: 150px">
+		<form role="form" action="login.do" method="post" style="padding-top: 150px" >
 			<fieldset >
 				<h1 align="center">會員登入</h1>
 				<div class="form-group col-lg-5"align="center"style="padding-left: 15px;padding-right: 15px;left: 150px;">

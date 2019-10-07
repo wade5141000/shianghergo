@@ -29,16 +29,18 @@
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
 	<jsp:include page="../BlackLine.jsp" />
-
 <div  style="padding-bottom: 350px;">
 	<div style="padding-left: 290px; padding-right: 30px;">
 	
-		<div class="card-body">
-			<h1 class="card-title">商店名稱:${store.name}</h1>
+		<div class="card-body"style="font-family: 微軟正黑體;">
+			<h1 class="card-title"><img  src="<c:url value='/images/t02.jpg' />" alt="..." >&nbsp;商店名稱:${store.name}</h1>
 			<p class="card-text">${store.detail}</p>
 			<a href="${pageContext.request.contextPath}/hao/products/add" class="btn btn-primary">新增商品</a>
 		</div>
 	</div>
+	<br>
+	<img src="<c:url value='/images/01.png' />" alt="..." style="padding-left: 200px;" >
+	<br>
 	<!-- -------------------------- -->
 	<div style="padding-left: 290px; padding-right: 30px;">
 		<div class="card-deck">

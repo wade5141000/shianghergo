@@ -45,12 +45,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shianghergo.model.CategoryBean;
+import com.shianghergo.model.Category_ReportBean;
 import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.MemberBean;
 import com.shianghergo.model.PlaceBean;
 import com.shianghergo.model.SearchBean;
 import com.shianghergo.model.comment_member;
+import com.shianghergo.service.GBDBService;
 import com.shianghergo.service.GroupsService;
 import com.shianghergo.service.SearchService;
 
@@ -69,6 +71,9 @@ public class GroupsController {
 	HttpSession session;
 	@Autowired
 	SessionFactory factory;
+	
+	@Autowired
+	GBDBService GBDBservice;
 
 //	int temp = 0;
 
@@ -562,6 +567,14 @@ public class GroupsController {
 //		System.out.println("測試21"+gb.getMemberBean().getId());
 
 //		System.out.println("groups_id");
+		
+		//wade
+		List<Category_ReportBean> list = GBDBservice.getCategoryReport();
+		model.addAttribute("list", list);
+		
+		//wade
+		
+		
 		return "frank/group";
 	}
 

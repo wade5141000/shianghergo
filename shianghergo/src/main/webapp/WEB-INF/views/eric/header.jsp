@@ -57,51 +57,59 @@ var y = x+1;
 </script>
 <!-- 這段勿刪 wade -->
 <body>
-	<h2>header11:${header11} login:${loginOK.name}</h2>
+<%-- 	<h2>header11:${header11} login:${loginOK.name}</h2> --%>
 	<ul class="nav justify-content-end"
-		style="height: 50px; background-color: #ffa042;">
+		style="height: 65px; background-color: #ffa042;">
 
 
-		<li class="nav-item"><a class="nav-link active badge badge-light"
-			href="${pageContext.request.contextPath}/testgok">測試gok</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="${pageContext.request.contextPath}/testhead"
-			style="color: #ecffff;">測試head</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="${pageContext.request.contextPath}/testfoot"
-			style="color: #ecffff">測試foot</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="${pageContext.request.contextPath}/productfile.s"
-			style="color: #ecffff">訂購單</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="${pageContext.request.contextPath}/wade/showmap"
-			style="color: #ecffff">google map</a></li>
+<!-- 		<li class="nav-item"><a class="nav-link active badge badge-light" -->
+<%-- 			href="${pageContext.request.contextPath}/testgok">測試gok</a></li> --%>
+<!-- 		<li class="nav-item"><a class="nav-link" -->
+<%-- 			href="${pageContext.request.contextPath}/testhead" --%>
+<!-- 			style="color: #ecffff;">測試head</a></li> -->
+<!-- 		<li class="nav-item"><a class="nav-link" -->
+<%-- 			href="${pageContext.request.contextPath}/testfoot" --%>
+<!-- 			style="color: #ecffff">測試foot</a></li> -->
+<!-- 		<li class="nav-item"><a class="nav-link" -->
+<%-- 			href="${pageContext.request.contextPath}/productfile.s" --%>
+<!-- 			style="color: #ecffff">訂購單</a></li> -->
+<!-- 		<li class="nav-item"><a class="nav-link" -->
+<%-- 			href="${pageContext.request.contextPath}/wade/showmap" --%>
+<!-- 			style="color: #ecffff">google map</a></li> -->
 		<li class="nav-item"><a class="nav-link"
 			href="${pageContext.request.contextPath}/oldindex"
 			style="color: #ecffff">舊index</a></li>
-		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/testimg1">測試上傳</a></li>
-		<li class="nav-item"><a class="nav-link"></a></li>
-		<li class="nav-item"><a class="nav-link"></a></li>
-		<li class="nav-item"><a class="nav-link"></a></li>
-		<li class="nav-item"><a class="nav-link"></a></li>
-		<li class="nav-item"><a class="nav-link"></a></li>
+<%-- 		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/testimg1">測試上傳</a></li> --%>
+
+		<li class="nav-item"><a class="nav-link" ></a></li>
+		<li class="nav-item"><a class="nav-link" ></a></li>
+		<li class="nav-item"><a class="nav-link" ></a></li>
+		<li class="nav-item"><a class="nav-link" ></a></li>
+		<li class="nav-item"><a class="nav-link" ></a></li>
+		<li class="nav-item"><a class="nav-link" ></a></li>
+
+
+
+
 
 
 		<c:if test="${header11 != 2}">
-			<li class="nav-item"><a class="nav-link"
+			<li class="nav-item"><a class="btn btn-outline-info"
 				href="${pageContext.request.contextPath}/goRegisterPage"
-				style="color: #ecffff">註冊</a></li>
-			<li class="nav-item"><a class="nav-link"
+				style="color: #ecffff;margin-top:10px;border-style:none;font-size:20px;" role="button">註冊</a></li>
+			<li class="nav-item"><a class="btn btn-outline-info"
 				href="${pageContext.request.contextPath}/login"
-				style="color: #ecffff">登入</a></li>
+				style="color: #ecffff;margin-top:10px;border-style:none;font-size:20px;" role="button">登入</a></li>
+				
+				
 		</c:if>
 		<c:if test="${header11 == 2}">
 
 
 			<li class="nav-item dropdown"><a class="nav-link " href="#"
 				id="barnotification" role="button" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false" style="color: #ecffff">
-					通知 </a>
+				aria-haspopup="true" aria-expanded="false" style="font-size:30px;margin-right:20px;line-height: 1em;margin-top:8px;">
+					🔔 </a>
 				<div class="dropdown-menu" aria-labelledby="barnotification">
 					<c:forEach var="notis" items="${notification}">
 						<span class="dropdown-item" style="line-height: 2em;">${notis.contents}</span>
@@ -109,27 +117,37 @@ var y = x+1;
 				</div></li>
 
 
-			<li class="nav-item"><a class="navbar-brand"
-				href="${pageContext.request.contextPath}/memberPage"> <img
-					src="${pageContext.request.contextPath}/getmemberPicture/${loginOK.id}"
-					width="30" height="30" alt="">
+			<li class="nav-item">
+			<a class="navbar-brand" style="padding:0px;margin-right:3px;margin-top:8px;margin-left:8px" 
+				href="${pageContext.request.contextPath}/memberPage"> 
+				<img src="${pageContext.request.contextPath}/getmemberPicture/${loginOK.id} "width="50" height="50">
 			</a></li>
-			<li class="nav-item"><a class="nav-link"
+			<li class="nav-item" style="color:black;">
+			<a class="btn btn-outline-info"
 				href="${pageContext.request.contextPath}/memberPage"
-				style="color: #ecffff">${loginOK.name}</a></li>
+				style="color: #ecffff;border-style:none;font-size:20px;margin-top:10px;" role="button">${loginOK.name}</a>
+				</li>
 
 			<li class="nav-item">
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#cartt">
-					購物車<span id="its">${its}</span>件商品
+				<button type="button" class="btn btn-outline-success" data-toggle="modal"
+					data-target="#cartt" style="border-style:none;margin-top:10px;font-size:20px;">
+					🛒購物車 (<span id="its">${its}</span>) 件
 				</button>
 			</li>
 			<li class="nav-item">
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#gcartt">
-					團購物車<span id="gits">${gits}</span>件商品
+				<button type="button" class="btn btn-outline-primary" data-toggle="modal"
+					data-target="#gcartt" style="border-style:none;margin-top:10px;font-size:20px;">
+					🛒團購物車 (<span id="gits">${gits}</span>) 件
 				</button>
 			</li>
+			
+			<li class="nav-item">
+			<a class="btn btn-outline-info"
+				href="${pageContext.request.contextPath}/logout"
+				style="color: #ecffff;margin-top:10px;border-style:none;font-size:20px;" role="button">登出</a>
+				</li>
+				
+			
 		</c:if>
 	</ul>
 
@@ -173,9 +191,16 @@ var y = x+1;
 							href="${pageContext.request.contextPath}/frank/groups">所有團購</a>
 						<div class="dropdown-divider"></div>
 						<c:forEach var="category" items="${categoryList}">
-							<a class="dropdown-item" href="" style="line-height: 2em">${category.name}</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/frank/groupsByCategory?category_id=${category.id}" style="line-height: 2em">${category.name}</a>
 						</c:forEach>
 					</div></li>
+
+				<li class="nav-item"><a class="nav-link"
+					href="${pageContext.request.contextPath}/wade/showmap"
+					style="margin-right: 25px; font-weight: bold">地圖找團</a></li>
+
+
+
 
 				<li class="nav-item"><a class="nav-link"
 					href="${pageContext.request.contextPath}/frank/Groups1"
@@ -216,8 +241,11 @@ var y = x+1;
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content" style="text-align: center;">
 					<!--       <div class="modal-header"> -->
-					<h3 class="modal-title" id="exampleModalLabel"
-						style="margin-top: 20px">您的購物車</h3>
+					<h4 class="modal-title" id="exampleModalLabel"
+						style="margin-top: 20px">您的購物車</h4>
+					<hr>
+					<h6>饗合購讓你買越多賺越多，所有商品：</h6>
+					<h6 style="color:red">滿 18 件，享 7 折；滿 12 件，享 8 折；滿 6 件，享 9 折</h6>
 					<!--         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
 					<!--           <span aria-hidden="true">&times;</span> -->
 					<!--         </button> -->
@@ -236,7 +264,7 @@ var y = x+1;
 								<c:forEach var="item" items="${cartitems}">
 									<tr>
 										<td><img
-											src="${pageContext.request.contextPath}/wade/getPicture/${item.item_id}"
+											src="${pageContext.request.contextPath}/hao/getPicture/${item.item_id}"
 											width="50px" height="50px"></td>
 										<td>${item.name}</td>
 										<td><button class="btn btn-outline-danger btn1"
@@ -264,7 +292,7 @@ var y = x+1;
 												var resutl = smalls + " (滿6件，享9折)"
 												$("#"+${item.id}+"a").text(resutl);
 											}else {
-												smalls += cartitems[k].price * cartitems[k].amount;
+												smalls += ${item.price} * ${item.amount};
 												$("#"+${item.id}+"a").text(smalls);
 											}
 // 											$("#"+${item.id}+"a").text(a);
@@ -315,12 +343,10 @@ var y = x+1;
 					<!--       </div> -->
 					<div class="modal-body" style="padding: 0px;">
 
-
-
-
 						<div class="cartdiv" id="gtable">
 							<table class="tb">
 								<tr>
+									<th></th>
 									<th>我想團...</th>
 									<th>數量</th>
 									<th>單價</th>
@@ -329,6 +355,9 @@ var y = x+1;
 								</tr>
 								<c:forEach var="gitem" items="${gcartitems}">
 									<tr>
+										<td><img
+											src="${pageContext.request.contextPath}/frank/getPicture/${gitem.groups_item_id}"
+											width="50px" height="50px"></td>
 										<td id="giname">${gitem.name}</td>
 										<td><button class="btn btn-outline-danger btn1"
 												onclick="changeGroupAmount(${gitem.id},2)">-</button> <span
@@ -340,13 +369,14 @@ var y = x+1;
 										<td><button class="btn btn-danger"
 												onclick="gdeletetr(this,${gitem.id})">刪除</button></td>
 										<script>
-					var a = ${gitem.price} * ${gitem.amount};
-					$("#"+${gitem.id}+"a").text(a);
-					</script>
+											var a = ${gitem.price} * ${gitem.amount};
+											$("#"+${gitem.id}+"a").text(a);
+										</script>
 
 									</tr>
 								</c:forEach>
 								<tr>
+									<td />
 									<td />
 									<td />
 									<td />

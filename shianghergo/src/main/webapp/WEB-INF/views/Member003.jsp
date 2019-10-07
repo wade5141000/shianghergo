@@ -30,6 +30,7 @@
 thead {
 	background-color: lightblue;
 }
+
 </style>
 </head>
 <body>
@@ -39,7 +40,7 @@ thead {
 		<div style="padding-left: 290px;padding-right: 30px;">
 			<table class="table table-hover">
 				<tr id='borderA' height='50'>
-					<th id='borderA' align="center"colspan="8">由 ${loginOK.name}發起的合購團</th>
+					<th id='borderA' align="center"colspan="8"><img  src="<c:url value='/images/c02.png' />" alt="..." >&nbsp;由 ${loginOK.name}發起的合購團</th>
 				</tr>
 				<tr id='borderA' >
 					<th scope="col" id='borderA'style="padding-right: 10px;padding-left: 10px;">合購編號</th>
@@ -67,7 +68,7 @@ thead {
 						<c:if test="${anGroupsBean.payment==3}">
 						<TD id='borderA' align="center">面交付款、銀行匯款</TD>
 						</c:if>
-						<TD id='borderA' align="center"><a
+						<TD id='borderA' align="center" ><a
 							href="<c:url value='getMyGroupsPerson?groups_id=${anGroupsBean.id}' />">
 								<button type="button" class="btn btn-primary btn-sm">詳情</button> </a></TD>
 					<TD id='borderA' align="center"><a

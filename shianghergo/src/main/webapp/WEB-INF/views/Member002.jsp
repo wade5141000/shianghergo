@@ -35,7 +35,7 @@ thead {
 		<div style="padding-left: 290px; padding-right: 30px;">
 			<table class="table table-hover">
 				<tr id='borderA'>
-					<th id='borderA' colspan="7">${loginOK.name}的訂購紀錄</th>
+					<th id='borderA' colspan="7"><img  src="<c:url value='/images/c02.png' />" alt="..." >&nbsp;${loginOK.name}的訂購紀錄</th>
 				</tr>
 				<tr id='borderA'>
 					<th scope="col" id='borderA'>訂單編號</th>
@@ -62,7 +62,7 @@ thead {
 						<TD id='borderA'>${anOrderBean.pay_time}</TD>
 						</c:if>
 						<c:if test="${anOrderBean.status==2 }">
-							<TD><a href=""><button type="button" class="btn btn-danger">🛒點我付款去</button></a></TD>
+							<TD><a href="${pageContext.request.contextPath}/order/${anOrderBean.id}"><button type="button" class="btn btn-danger">🛒點我付款去</button></a></TD>
 						</c:if>
 
 						<TD id='borderA'><a

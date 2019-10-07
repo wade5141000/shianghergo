@@ -48,8 +48,6 @@ function changeAmount(id,types){
 //					$("#"+id+"a").text(list[3]); // 3是小記
 					
 					$("#total").text(itotal);
-					
-					
 				},
 			})
 		}
@@ -63,27 +61,28 @@ function changeAmount(id,types){
 				success:function(data){
 					
 					var gitems = JSON.parse(data);
-					var total = 0;
+					var atotal = 0;
 					var lens = gitems.length;
 //					for(var i=0; i<gitems.length ;i++){
-//						total += gitems[i].price * gitems[i].amount;
+//						atotal += gitems[i].price * gitems[i].amount;
 //					}
 					
-					for(var q=0  ; q<gitems.length ; q++){
-						if(gitems[q].amount >= 18) {
-							total += Math.round((gitems[q].price * gitems[q].amount) * 0.7);
-						}else if(cartitems[q].amount >= 12) {
-							total += Math.round((gitems[q].price * gitems[q].amount) * 0.8);
-						}else if(cartitems[q].amount >= 6) {
-							total += Math.round((gitems[q].price * gitems[q].amount) * 0.9);
-						}else {
-							total += gitems[q].price * gitems[q].amount;
+					for(var i=0; i<gitems.length ;i++){
+						if(gitems[i].amount >= 18){
+							atotal += Math.round((gitems[i].price * gitems[i].amount) * 0.7);
+						}else if(gitems[i].amount >= 12){
+							atotal += Math.round((gitems[i].price * gitems[i].amount) * 0.8);
+						}else if(gitems[i].amount >= 6){
+							atotal += Math.round((gitems[i].price * gitems[i].amount) * 0.9);
+						}else{
+							atotal += gitems[i].price * gitems[i].amount;
 						}
 					}
 					
 					$(it.parentNode.parentNode).remove();
-					$("#total").text(total);
+					$("#total").text(atotal);
 					$("#its").text(lens);
+					
 				},
 			})
 			

@@ -238,6 +238,7 @@ public class StoreProcessController {
 		HttpSession httpSession = re.getSession();
 		List<CartBean> list2 = cartService.getCartItems(mId);
 		httpSession.setAttribute("cartitems", list2);
+		
 		long total2 = 0;
 		for(CartBean ccb:list2) {
 			if(ccb.getAmount() >= 18) {
@@ -257,7 +258,6 @@ public class StoreProcessController {
 		ObjectMapper mapper = new ObjectMapper();
 		String result = "";
 		
-		
 		try {
 			result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(list2);
 			rp.getWriter().write(result);
@@ -270,8 +270,8 @@ public class StoreProcessController {
 	public String order(@PathVariable("orderid") Integer order_id,Model model,HttpServletRequest re,HttpServletResponse rp) {
 		AllInOne all = new AllInOne("");
 		AioCheckOutOneTime obj = new AioCheckOutOneTime();
-		int rdn = (int) (Math.random() * 100000);
-		String orderNumber = "TradeNumber" + rdn;
+//		int rdn = (int) (Math.random() * 100000);
+		String orderNumber = "TradeNumber" + order_id;
 		// 訂單編號
 		obj.setMerchantTradeNo(orderNumber);
 		
@@ -290,21 +290,22 @@ public class StoreProcessController {
 			
 			// 這裡要計算折扣總額
 			
+			if(ob.getAmount() >= 18) {
+				price += (int)((ob.getAmount()*ob.getPrice()) * 0.7f);
+			}else if(ob.getAmount() >= 12) {
+				price += (int)((ob.getAmount()*ob.getPrice()) * 0.8f);
+			}else if(ob.getAmount() >= 6) {
+				price += (int)((ob.getAmount()*ob.getPrice()) * 0.9f);
+			}else {
+				price += (ob.getAmount()*ob.getPrice());
+			}
 			
-			
-			
-			
-			price += (ob.getAmount()*ob.getPrice());
 			if(i==0) {
 				itemName += ob.getName() +" * "+ob.getAmount();
 			}else {
 				itemName += "#" + ob.getName()+" * "+ob.getAmount();
 			}
 		}
-		
-		
-		
-		
 		
 		
 		obj.setTotalAmount(String.valueOf(price));
@@ -354,10 +355,21 @@ public class StoreProcessController {
 		HttpSession httpSession = re.getSession();
 		List<CartBean> list2 = cartService.getCartItems(mId);
 		httpSession.setAttribute("cartitems", list2);
+		
 		long total2 = 0;
 		for(CartBean ccb:list2) {
-			total2 += ccb.getPrice()*ccb.getAmount();
+			if(ccb.getAmount() >= 18) {
+				total2 += (int)((ccb.getPrice()*ccb.getAmount()) * 0.7f);
+			}else if(ccb.getAmount() >= 12) {
+				total2 += (int)((ccb.getPrice()*ccb.getAmount()) * 0.8f);
+			}else if(ccb.getAmount() >= 6) {
+				total2 += (int)((ccb.getPrice()*ccb.getAmount()) * 0.9f);
+			}else {
+				total2 += ccb.getPrice()*ccb.getAmount();
+			}
 		}
+		
+		
 		httpSession.setAttribute("total",total2);
 		httpSession.setAttribute("its",list2.size());
 		
@@ -418,14 +430,17 @@ public class StoreProcessController {
 	}
 	
 	@RequestMapping("/productfile.s")
-	public void CreateExcel(HttpServletRequest request,HttpServletResponse response,Integer store_id) {
+	public void CreateExcel(HttpServletRequest request,HttpServletResponse response,@RequestParam("sId") Integer store_id) {
 		int id = store_id;
 		StoreBean sb = storeService.getStoreById(id);
 		Object[] items = sb.getItems().toArray();
-		File file = new File("C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\resources\\"+sb.getName()+".xls");
+//		File file = new File("C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\resources\\"+sb.getName()+".xls");
+		File file = new File("C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\resources\\"+sb.getName()+".xls");
+		
 		try {
 //			Workbook wb = Workbook.getWorkbook(new File("C:\\Project\\workspace\\jspExercise\\src\\main\\webapp\\resources\\template.xls"));
-			Workbook wb = Workbook.getWorkbook(new File("C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\resources\\template.xls"));
+//			Workbook wb = Workbook.getWorkbook(new File("C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\resources\\template.xls"));
+			Workbook wb = Workbook.getWorkbook(new File("C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\resources\\template.xls"));
 			WritableWorkbook wwb = Workbook.createWorkbook(file, wb);
 			WritableSheet sheet = wwb.getSheet(0);
 			WritableFont writeFont = new WritableFont(WritableFont.ARIAL, 12, WritableFont.BOLD);

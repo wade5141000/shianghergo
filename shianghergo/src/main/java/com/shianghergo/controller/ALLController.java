@@ -25,6 +25,7 @@ import com.shianghergo.model.comment_member;
 import com.shianghergo.model.comment_store;
 import com.shianghergo.service.GBDBService;
 import com.shianghergo.service.GroupsService;
+import com.shianghergo.service.MemberService;
 
 @Controller
 @SessionAttributes(value = "id") // member_id 放在session域讓類中方法都能使用
@@ -35,6 +36,9 @@ public class ALLController {
 
 	@Autowired
 	GroupsService gservice;
+	
+	@Autowired
+	MemberService mservice;
 
 //------------登入------------------------------------	
 
@@ -440,6 +444,46 @@ public class ALLController {
 
 		return "leopard/ReportevaluationMember";
 	}
+	
+	// wade
+	@RequestMapping("frank/SaveRM")
+	public String MreportMf(Report_MemberBean rm, Integer target, Model model,HttpServletRequest rq) {
+		
+		
+		Integer ogid = rm.getTarget();
+//		GroupsBean gb = gservice.getGroupById(ogid);
+		GroupsBean gb = service.getGroupById(ogid);
+		Integer mId = gb.getMemberBean().getId();
+		
+		rm.setTarget(mId);
+		
+//		Integer sid = service.getStoreId(mId);
+//		rm.setStore_id(sid);
+		
+		
+		service.saveReport(rm);
+
+		List<Category_ReportBean> list = service.getCategoryReport();
+
+		model.addAttribute("list", list);
+		
+		// ---------------------------------------
+
+		
+		List<comment_member> comment = gservice.getAllCommentByMember(mId);
+		List<GroupsBean> mygroups = gservice.getAllGroupsByMember(mId);
+//		
+		model.addAttribute("group", gb); // 取團的資料
+		model.addAttribute("items", gb.getGroupsitem()); // 取商品的資料
+		model.addAttribute("place", gb.getPlace()); // 取地址的資料
+		model.addAttribute("mygroups", mygroups);
+		model.addAttribute("commentmb", comment);
+
+		return "redirect:/frank/group?gid=" + gb.getId() ; // +gb.getId()
+	}
+	// wade
+	
+	
 
 	// 會員評價會員
 	@RequestMapping("leopard/evaluationMember")
@@ -453,8 +497,44 @@ public class ALLController {
 		model.addAttribute("Member", mem);
 
 		return "leopard/ReportevaluationMember";
-
 	}
+	
+	
+	
+	// wade
+	@RequestMapping("frank/evaluationMember")
+	public String evaluationMember22(comment_member cm, ModelMap m, Model model) {
+
+		Integer ogid = cm.getTarget();
+		GroupsBean gb = service.getGroupById(ogid);
+		Integer mId = gb.getMemberBean().getId();
+		cm.setTarget(mId);
+		
+		MemberBean mb = mservice.getMemberById(cm.getMember_id());
+		cm.setMemberBean(mb);
+		
+		service.savecomment_member(cm);
+
+		List<Category_ReportBean> list = service.getCategoryReport();
+		model.addAttribute("list", list);
+		
+		
+		List<comment_member> comment = gservice.getAllCommentByMember(mId);
+		List<GroupsBean> mygroups = gservice.getAllGroupsByMember(mId);
+//		
+		model.addAttribute("group", gb); // 取團的資料
+		model.addAttribute("items", gb.getGroupsitem()); // 取商品的資料
+		model.addAttribute("place", gb.getPlace()); // 取地址的資料
+		model.addAttribute("mygroups", mygroups);
+		model.addAttribute("commentmb", comment);
+
+		return "redirect:/frank/group?gid=" + gb.getId() ; // +gb.getId()
+	}
+	// wade
+	
+	
+	
+	
 
 //------------------會員檢舉評價商家--------------------------	
 
@@ -493,7 +573,7 @@ public class ALLController {
 	public String haoMreportS(Report_StoreBean rb, Model model) {
 
 		service.saveReport(rb);
-
+		
 		List<Category_ReportBean> list = service.getCategoryReport();
 		List<StoreBean> sto = service.getStore();
 		model.addAttribute("list", list);
@@ -501,6 +581,8 @@ public class ALLController {
 		Integer sd = rb.getStore_id();
 		return "redirect:/hao/getStoreByProduct?id=" + sd;
 	}
+	
+	
 
 	// 會員評價商家
 	@RequestMapping("leopard/evaluationStore")
@@ -521,6 +603,9 @@ public class ALLController {
 	@RequestMapping("/hao/evaluationStore")
 	public String evaluationStore3(comment_store cs, Model model) {
 
+		MemberBean mb = mservice.getMemberById(cs.getMember_id());
+		cs.setMemberBean(mb);
+		
 		service.savecomment_store(cs);
 
 		List<Category_ReportBean> list = service.getCategoryReport();

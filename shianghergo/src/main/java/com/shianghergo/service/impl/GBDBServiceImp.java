@@ -21,6 +21,7 @@ import com.shianghergo.dao.comment_itemDao;
 import com.shianghergo.dao.comment_memberDao;
 import com.shianghergo.dao.comment_storeDao;
 import com.shianghergo.model.Category_ReportBean;
+import com.shianghergo.model.GroupsBean;
 import com.shianghergo.model.Groups_ItemBean;
 import com.shianghergo.model.ItemBean;
 import com.shianghergo.model.MemberBean;
@@ -120,7 +121,7 @@ public class GBDBServiceImp implements GBDBService {
 
 		Date date = new Date();
 
-		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd/ HH:mm");
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
 		report.setTime(ft.format(date));
 		report.setStatus(1);
@@ -140,7 +141,7 @@ public class GBDBServiceImp implements GBDBService {
 
 		Date date = new Date();
 
-		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd/ HH:mm");
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
 		report.setStatus(1);
 		report.setTime(ft.format(date));
@@ -294,5 +295,10 @@ public class GBDBServiceImp implements GBDBService {
 	@Override
 	public List<comment_store> getComment_store(Integer store_id) {
 		return csdao.getComment_store(store_id);
+	}
+
+	@Override
+	public GroupsBean getGroupById(Integer gid) {
+		return gdao.getGroupById(gid);
 	}
 }

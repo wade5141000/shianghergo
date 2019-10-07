@@ -16,8 +16,8 @@ import com.shianghergo.model.PlaceBean;
 import com.shianghergo.model.comment_member;
 import com.shianghergo.service.GroupsService;
 
-@Transactional
 @Service
+@Transactional
 public class GroupsServiceImpl implements GroupsService{
 
 	@Autowired
