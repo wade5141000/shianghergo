@@ -95,7 +95,7 @@
 
 	function targer(myObj) {
 
-		document.getElementById("item_id").value = myObj.value;
+//		document.getElementById("item_id").value = myObj.value;
 	}
 	
 	
@@ -215,7 +215,7 @@
 						<!--使用者會員ID -->
 						<input type=hidden value="${loginOK.id}" name="member_id">
 						<!--被評價的商家ID -->
-						<input type=hidden value="1" name="item_id" id="item_id">
+						<input type=hidden value="${product.id }" name="item_id" id="item_id">
 						<!--取的被選中的星星 -->
 						<input type=hidden value="1" name="score" id="score">
 

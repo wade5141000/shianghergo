@@ -43,7 +43,6 @@ public class ALLController {
 	
 	@Autowired
 	ProductService pservice;
-
 //------------登入------------------------------------	
 
 	// 轉管理員登入頁面
@@ -649,13 +648,23 @@ public class ALLController {
 	}
 
 	@RequestMapping("/hao/evaluationitem")
-	public String evaluationitem3(comment_item ci, Model model) {
-
+	public String evaluationitem3(HttpServletRequest request, comment_item ci, Model model) {
+		MemberBean mb = (MemberBean)request.getSession().getAttribute("loginOK");
+		if (mb == null) {
+			return "redirect:../login";
+		}
+		ci.setMember_id(mb.getId());
+		ci.setMemberBean(mb);
 		service.savecomment_Item(ci);
 
-		List<ItemBean> list = service.getAllItem();
+
+		model.addAttribute("product", pservice.getProductById(ci.getItem_id()));
+
+		model.addAttribute("comment", service.getComment_item(ci.getItem_id()));
+//		List<ItemBean> list = service.getAllItem();
 //
-		model.addAttribute("item", list);
+//		model.addAttribute("item", list);
+
 		Integer pd = ci.getItem_id();
 		
 		
