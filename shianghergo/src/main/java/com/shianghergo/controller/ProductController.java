@@ -186,10 +186,11 @@ public class ProductController {
 
 	@RequestMapping("/hao/product")
 	public String getProductsById(@RequestParam("id") Integer id,
-			Model model,@ModelAttribute("loginOK") MemberBean mb) {
+			Model model) {
 		model.addAttribute("product", service.getProductById(id));
 //		model.addAttribute("store", service.getStoreNameByItemId(id));
 		model.addAttribute("comment", gbdbService.getComment_item(id));
+
 		return "hao/product";
 	}
 
