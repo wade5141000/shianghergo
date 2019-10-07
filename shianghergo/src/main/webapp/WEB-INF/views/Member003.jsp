@@ -30,6 +30,23 @@
 thead {
 	background-color: lightblue;
 }
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('images/bbg06.png') center center fixed ;　
+}
+td {
+  overflow : hidden;
+  text-overflow : ellipsis;
+/*    white-space : nowrap;  */
+  width : 20px;
+}
+#borderAA{
+width: 300px;
+padding: 10px;
+/* border: #ef5c28 2px solid; */
+
+}
 
 </style>
 </head>
@@ -47,7 +64,7 @@ thead {
 					<th scope="col" id='borderA'>開始時間</th>
 					<th scope="col" id='borderA'>截止時間</th>
 					<th scope="col" id='borderA'>團名</th>
-					<th scope="col" id='borderA'>簡介</th>
+					<th scope="col" id='borderAA'>簡介</th>
 					<th scope="col" id='borderA'>付款方式</th>
 					<th scope="col" id='borderA'>我的團員</th>
 					<th scope="col" id='borderA'>商品明細</th>
@@ -58,7 +75,7 @@ thead {
 						<TD id='borderA' align="center">${anGroupsBean.start_time}</TD>
 						<TD id='borderA' align="center">&nbsp;${anGroupsBean.end_time}</TD>
 						<TD id='borderA' align="center">${anGroupsBean.name}</TD>
-						<TD id='borderA' align="center" style="word-break:break-all">&nbsp;${anGroupsBean.detail}</TD>
+						<TD id='borderAA' align="center" style="word-break:break-all;">&nbsp;${anGroupsBean.detail}</TD>
 						<c:if test="${anGroupsBean.payment==1}">
 						<TD id='borderA' align="center">面交付款</TD>
 						</c:if>
@@ -82,6 +99,6 @@ thead {
 	</div>
 	
 	<jsp:include page="eric/foot.jsp" />
-
+<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>

@@ -68,6 +68,12 @@
 .contact-box button:hover {
 	background-color: #0f39cf;
 }
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('images/bbg06.png') center center fixed ;　
+}
 </style>
 <body>
 <div>
@@ -112,5 +118,6 @@
 	</div>
 	</div>
 	<jsp:include page="eric/foot.jsp" />
+	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>

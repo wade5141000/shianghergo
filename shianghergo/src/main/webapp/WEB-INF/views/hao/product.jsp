@@ -91,11 +91,12 @@
 		}
 
 		}
+	
 	}
 
 	function targer(myObj) {
 
-		document.getElementById("item_id").value = myObj.value;
+//		document.getElementById("item_id").value = myObj.value;
 	}
 	
 	
@@ -167,9 +168,18 @@
 		})
 	}
 	
+
+	
 	
 	
 </script>
+<style type="text/css">
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('../images/bbg06.png') center center fixed ;　
+}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
@@ -215,7 +225,7 @@
 						<!--使用者會員ID -->
 						<input type=hidden value="${loginOK.id}" name="member_id">
 						<!--被評價的商家ID -->
-						<input type=hidden value="1" name="item_id" id="item_id">
+						<input type=hidden value="${product.id }" name="item_id" id="item_id">
 						<!--取的被選中的星星 -->
 						<input type=hidden value="1" name="score" id="score">
 
@@ -327,5 +337,6 @@
 		</div>
 	</c:forEach>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
+	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>
