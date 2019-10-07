@@ -158,7 +158,7 @@ public class ProductController {
 
 	@RequestMapping("/hao/products")
 	public String list(Model model) {
-		List<ItemBean> list = service.getAllProducts();
+		List<ItemBean> list = service.getAllProductsByStoreStatus();
 		model.addAttribute("products", list);
 		
 //		List<Integer> list1 = service.getAllProductsId();
