@@ -45,6 +45,17 @@ public class GroupsDaoImpl implements GroupsDao {
 		list = session.createQuery(hql).getResultList();
 		return list;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<GroupsBean> getRGroups() {
+		String hql = "from GroupsBean order by newid()";
+		Session session = null;
+		List<GroupsBean> list = new ArrayList<>();
+		session = factory.getCurrentSession();
+		list = session.createQuery(hql).getResultList();
+		return list;
+	}
 
 	@Override
 	public Integer addGroups(GroupsBean group, Integer member_id, Integer category_id) {

@@ -41,9 +41,15 @@
 body {
 	margin: 0px;
 	padding: 0px;
-	background: #fff url('images/bbg06.png') center center fixed ;
-	　 
+	background: #fff url('images/bbg06.png') center center fixed;
 	　
+	　
+}
+
+.st1 {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 </style>
 </head>
@@ -101,7 +107,7 @@ body {
 	<!--       </div> -->
 	<!--     </div> -->
 	<div id="carouselExampleIndicators" class="carousel slide"
-		data-ride="carousel">
+		data-ride="carousel" style="width: 1500px; text-align: center; margin: 0 auto">
 		<ol class="carousel-indicators">
 			<li data-target="#carouselExampleIndicators" data-slide-to="0"
 				class="active"></li>
@@ -110,21 +116,21 @@ body {
 		</ol>
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<a href="${pageContext.request.contextPath}/eric/a" title="GO"><img
+				<a href="${pageContext.request.contextPath}/eric/b" title="GO"><img
 					class="d-block w-100"
-					src="${pageContext.request.contextPath}/res/static/img/1.png"
+					src="${pageContext.request.contextPath}/res/static/img/indexc.jpg"
 					alt="First slide"></a>
 			</div>
 			<div class="carousel-item">
-				<a href="${pageContext.request.contextPath}/eric/b" title="GO"><img
+				<a href="${pageContext.request.contextPath}/eric/a" title="GO"><img
 					class="d-block w-100"
-					src="${pageContext.request.contextPath}/res/static/img/2.png"
+					src="${pageContext.request.contextPath}/res/static/img/indexa.png"
 					alt="Second slide"></a>
 			</div>
 			<div class="carousel-item">
 				<a href="${pageContext.request.contextPath}/eric/c" title="GO"><img
 					class="d-block w-100"
-					src="${pageContext.request.contextPath}/res/static/img/3.png"
+					src="${pageContext.request.contextPath}/res/static/img/indexcc.png"
 					alt="Third slide"></a>
 			</div>
 		</div>
@@ -138,8 +144,8 @@ body {
 			class="sr-only">Next</span>
 		</a>
 	</div>
+	<div style="width: 1500px; text-align: center; margin: 0 auto">
 	<section class="text-center my-5">
-
 		<!-- Section heading -->
 		<h2 class="h1-responsive font-weight-bold text-center my-5">十月熱銷</h2>
 		<!-- Section description -->
@@ -151,9 +157,10 @@ body {
 					<div class="card align-items-center">
 						<!-- Card image -->
 						<div class="view overlay">
-							<a href="http://localhost:8080/shianghergo/hao/product?id=${product.id}"><img
+							<a
+								href="http://localhost:8080/shianghergo/hao/product?id=${product.id}"><img
 								src="<c:url value='/hao/getPicture/${product.id }' />"
-								class="card-img-top" alt=""></a> <a>
+								class="card-img-top" alt="" width='280px' height='280px'></a> <a>
 								<div class="mask rgba-white-slight"></div>
 							</a>
 						</div>
@@ -163,7 +170,7 @@ body {
 							<!-- Category & Title -->
 							<h5>
 								<strong> <a href="" class="dark-grey-text">${product.name }
-										<span class="badge badge-pill danger-color" style="color:red">HOT</span>
+										<span class="badge badge-pill danger-color" style="color: red">HOT</span>
 								</a>
 								</strong>
 							</h5>
@@ -188,30 +195,32 @@ body {
 		<div class="row">
 			<c:forEach var='group' items='${bbb}' begin="1" end="4">
 
-				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4" style="word-break: break-all;">
 					<!-- Card -->
 					<div class="card align-items-center">
 
 						<!-- Card image -->
 						<div class="view overlay">
-							<a href="http://localhost:8080/shianghergo/frank/product?id= ${group.memberBean.id}"><img
+							<a
+								href="http://localhost:8080/shianghergo/frank/product?id= ${group.memberBean.id}"><img
 								src="<c:url value='/frank/getPicture/ ${group.memberBean.id}' />"
 								class="card-img-top" alt=""></a> <a>
 								<div class="mask rgba-white-slight"></div>
 							</a>
-						</div>
+						</div> 
 						<!-- Card image -->
 						<!-- Card content -->
 						<div class="card-body text-center">
 							<!-- Category & Title -->
 							<h5>
-								<strong> <a href="" class="dark-grey-text"> ${group.memberBean.name}
-										<span class="badge badge-pill danger-color" style="color:red">HOT</span>
+								<strong> <a href="" class="dark-grey-text">
+										${group.memberBean.name} <span
+										class="badge badge-pill danger-color" style="color: red">HOT</span>
 								</a>
 								</strong>
 							</h5>
 							<h4 class="font-weight-bold blue-text">
-								<strong>${group.detail}</strong>
+								<strong class="st1">${group.detail}</strong>
 							</h4>
 						</div>
 						<!-- Card content -->
@@ -222,7 +231,7 @@ body {
 			</c:forEach>
 		</div>
 	</section>
-
+</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>

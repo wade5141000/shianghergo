@@ -16,6 +16,8 @@ public interface GroupsDao {
 	
 	List<GroupsBean> getAllGroups();
 	
+	List<GroupsBean> getRGroups();
+	
 	Set<Groups_ItemBean> getGroupItemsById(Integer group_id);
 	
 	// ---------------------------
@@ -46,5 +48,7 @@ public interface GroupsDao {
 	List<GroupsBean> getGroupsByCategory_id(Integer category_id);
 
 	List<comment_member> getAllCommentByTarget(Integer member_id);
+
+	
 	
 }

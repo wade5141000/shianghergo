@@ -158,7 +158,7 @@ public class ProductController {
 
 	@RequestMapping("/hao/products")
 	public String list(Model model) {
-		List<ItemBean> list = service.getAllProducts();
+		List<ItemBean> list = service.getAllProductsByStoreStatus();
 		model.addAttribute("products", list);
 		
 //		List<Integer> list1 = service.getAllProductsId();
@@ -198,12 +198,15 @@ public class ProductController {
 	public String getProductsByStore(@ModelAttribute("loginOK") MemberBean mb, Model model) {
 		List<ItemBean> list = service.getMyProducts(mb.getId());
 
+		if(list==null) {
+			return "redirect:/hao/buildStore";
+		}else {
 
 		model.addAttribute("products", list);
 		model.addAttribute("store", stservice.getStoreByMember_Id(mb.getId()));
 							
 		return "hao/myProducts";
-	}
+	}}
 
 	@RequestMapping(value = "/hao/myProducts", method = RequestMethod.POST)
 	public String getProductsByStorePost(@RequestParam("id") Integer id, Model model) {

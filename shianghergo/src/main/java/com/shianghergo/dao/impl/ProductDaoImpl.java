@@ -18,11 +18,22 @@ import com.shianghergo.model.StoreBean;
 public class ProductDaoImpl implements ProductDao {
 	@Autowired
 	SessionFactory factory;
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<ItemBean> getAllProducts() {
+		String hql = "FROM ItemBean";
+		Session session = null;
+		List<ItemBean> list = new ArrayList<>();
+		session = factory.getCurrentSession();
+		list = session.createQuery(hql).getResultList();
+		return list;
+	}
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<ItemBean> getAllProducts(){
-		String hql = "FROM ItemBean";
+	public List<ItemBean> getRProducts(){
+		String hql = "from ItemBean order by newid()";
 		Session session = null;
 		List<ItemBean> list = new ArrayList<>();
 		session = factory.getCurrentSession();
@@ -34,19 +45,19 @@ public class ProductDaoImpl implements ProductDao {
 	public ItemBean getProductById(int productId) {
 		Session session = factory.getCurrentSession();
 		ItemBean bb = session.get(ItemBean.class, productId);
-		if(bb == null)
+		if (bb == null)
 			throw new ProductNotFoundException("商品編號:" + productId + "找不到");
 		return bb;
 	}
 
 	@Override
-	public int addProduct(ItemBean product,Integer category_id) {
+	public int addProduct(ItemBean product, Integer category_id) {
 		Session session = factory.getCurrentSession();
 		CategoryBean y = getCategoryById(category_id);
-		StoreBean cb = getStoreById(product.getStore_id());	
+		StoreBean cb = getStoreById(product.getStore_id());
 		product.setStoreBean(cb);
 		product.setCategoryBean(y);
-		int id = (int)session.save(product);
+		int id = (int) session.save(product);
 		return id;
 	}
 
@@ -66,7 +77,7 @@ public class ProductDaoImpl implements ProductDao {
 		List<StoreBean> list = session.createQuery(hql).getResultList();
 		return list;
 	}
-	
+
 	@Override
 	public List<CategoryBean> getAllCategories() {
 		String hql = "FROM CategoryBean";
@@ -75,22 +86,22 @@ public class ProductDaoImpl implements ProductDao {
 		list = session.createQuery(hql).getResultList();
 		return list;
 	}
-	
+
 	@Override
 	public int updateItem(ItemBean product, Integer category_id) {
 		int count = 0;
-		
+
 		Session session = factory.getCurrentSession();
 		ItemBean x = session.get(ItemBean.class, product.getId());
-		
+
 		CategoryBean y = getCategoryById(category_id);
-		x.setCategoryBean(y);	
-		
+		x.setCategoryBean(y);
+
 		session.update(product);
 		count++;
 		return count;
 	}
-	
+
 	@Override
 	public CategoryBean getCategoryById(Integer category_id) {
 
@@ -98,7 +109,7 @@ public class ProductDaoImpl implements ProductDao {
 		CategoryBean cb = session.get(CategoryBean.class, category_id);
 		return cb;
 	}
-	
+
 	@Override
 	public int deleteProduct(int id) {
 		int n = 0;
@@ -109,7 +120,7 @@ public class ProductDaoImpl implements ProductDao {
 		n++;
 		return n;
 	}
-	
+
 	@Override
 	public String getStoreNameByMemberId(int member_id) {
 //		StoreBean cb = null;
@@ -121,7 +132,7 @@ public class ProductDaoImpl implements ProductDao {
 
 		return list;
 	}
-	
+
 	@Override
 	public String getStoreIdByName(String store_name) {
 //		StoreBean cb = null;
@@ -133,23 +144,29 @@ public class ProductDaoImpl implements ProductDao {
 
 		return list;
 	}
-	
+
 	@Override
 	public Integer getStoreIdByMemberId(Integer member_id) {
 		String hql = "select id from StoreBean where member_id=:member_id";
-		
+
 		Session session = factory.getCurrentSession();
 
 		Integer list = (Integer) session.createQuery(hql).setParameter("member_id", member_id).getSingleResult();
-		
+
 		return list;
 	}
-	
+
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<ItemBean> getMyProducts(int member_id){
+	public List<ItemBean> getMyProducts(int member_id) {
 		Session session = factory.getCurrentSession();
 		String hql1 = "select id FROM StoreBean where member_id=:member_id";
+		
+		List check = session.createQuery(hql1).setParameter("member_id", member_id).getResultList();
+		if(check.size()==0) {
+			return null;
+		}
+		
 		Integer store_id = (Integer) session.createQuery(hql1).setParameter("member_id", member_id).getSingleResult();
 		String hql2 = "from ItemBean where store_id=:store_id";
 		List<ItemBean> list = new ArrayList<>();
@@ -166,10 +183,10 @@ public class ProductDaoImpl implements ProductDao {
 		String store_name = (String) session.createQuery(hql2).setParameter("id", store_id).getSingleResult();
 		return store_name;
 	}
-	
+
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<ItemBean> getProductsByCategory(Integer category_id){
+	public List<ItemBean> getProductsByCategory(Integer category_id) {
 		String hql = "FROM ItemBean where category_id=:category_id";
 		Session session = null;
 		List<ItemBean> list = new ArrayList<>();
@@ -178,9 +195,8 @@ public class ProductDaoImpl implements ProductDao {
 		return list;
 	}
 
-	
 	@Override
-	public List<Integer> getAllProductsId(){
+	public List<Integer> getAllProductsId() {
 		String hql = "select id FROM ItemBean";
 		Session session = null;
 		List list = new ArrayList<>();
@@ -189,4 +205,27 @@ public class ProductDaoImpl implements ProductDao {
 		return list;
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<ItemBean> getAllProductsByStoreStatus() {
+		Session session = null;
+		session = factory.getCurrentSession();
+
+		String hql1 = "select id from StoreBean where status=1";
+		List<Integer> stores_id = new ArrayList<>();
+		stores_id = session.createQuery(hql1).getResultList();
+
+		List<ItemBean> list = new ArrayList<>();
+		List<ItemBean> result = new ArrayList<>();
+
+		for (int i = 0; i < stores_id.size(); i++) {
+			String hql2 = "FROM ItemBean where store_id=:store_id";
+			list = session.createQuery(hql2).setParameter("store_id", stores_id.get(i)).getResultList();
+			for (int j = 0; j < list.size(); j++) {
+				result.add(list.get(j));
+			}
+		}
+
+		return result;
+	}
 }

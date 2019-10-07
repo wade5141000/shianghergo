@@ -13,6 +13,7 @@ import com.shianghergo.model.comment_member;
 
 public interface GroupsService {
 	List<GroupsBean> getAllGroups();
+	List<GroupsBean> getRGroups();
 	Set<Groups_ItemBean> getGroupItemsById(Integer group_id);
 	//----------------以下士權------------------
 	Integer addGroups(GroupsBean gb , Integer member_id,Integer category_id);
@@ -39,6 +40,7 @@ public interface GroupsService {
 	List<GroupsBean> searchToGroups(String name); //查詢開團列表//9/27新增 
 	List<GroupsBean> getGroupsByCategory_id(Integer category_id);//團列表的分類顯示
 	List<comment_member> getAllCommentByTarget(Integer target);
+	
 	
 
 	
