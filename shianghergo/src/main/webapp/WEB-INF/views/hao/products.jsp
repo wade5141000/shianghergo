@@ -98,26 +98,30 @@
 				<div class="left-nav">
 					<div class="list-box" style="background-color: #FFE5B5">
 						<dl style="background-color: #FFE5B5">
-							<dd style="background-color: #FFB01C;text-align:center">
-								所有分類
-							</dd>
+							<dd style="background-color: #FFB01C; text-align: center">
+								所有分類</dd>
 							<dd>
 								<a href="${pageContext.request.contextPath}/hao/products">全品項</a>
 							</dd>
 							<dd>
-								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60001">團購美食</a>
+								<a
+									href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60001">團購美食</a>
 							</dd>
 							<dd>
-								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60002">保養美妝</a>
+								<a
+									href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60002">保養美妝</a>
 							</dd>
 							<dd>
-								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60003">服飾配件</a>
+								<a
+									href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60003">服飾配件</a>
 							</dd>
 							<dd>
-								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60004">育兒親子</a>
+								<a
+									href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60004">育兒親子</a>
 							</dd>
 							<dd>
-								<a href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60005">生鮮食品</a>
+								<a
+									href="${pageContext.request.contextPath}/hao/productsByCategory?category_id=60005">生鮮食品</a>
 							</dd>
 						</dl>
 					</div>
@@ -137,13 +141,25 @@
 										</a>
 									</div>
 									<div class="text">
+										<c:set var="score" scope="session" value="${product.score }" />
 										<p class="title">
-											<strong>&nbsp;&nbsp;&nbsp;&nbsp;${product.name }</strong> <span class="pri"
-												style="float: right; font-size: 20px; color: gray;"><del>${product.storeBean.id}元</del>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<strong>&nbsp;&nbsp;&nbsp;&nbsp;${product.name }</strong>
+											
+												<span class="pri"
+													style="float: right; font-size: 20px; color: black;">${product.score}<img
+													src="<c:url value='/resources/images/onestar.gif' />">&nbsp;&nbsp;&nbsp;&nbsp;
+												</span>
+											
+<%-- 											<c:otherwise> --%>
+<!-- 												<span class="pri" -->
+<!-- 													style="float: right; font-size: 20px; color: red;">未有評價！&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 												</span> -->
+<%-- 											</c:otherwise> --%>
 										</p>
 										<p class="price">
 											<button class="layui-btn  layui-btn-danger car-btn"
-												style="width: 140px; height: 40px; float: left;" onclick="goCart(${product.id})">
+												style="width: 140px; height: 40px; float: left;"
+												onclick="goCart(${product.id})">
 												<i class="layui-icon layui-icon-cart-simple"></i>加入購物車
 											</button>
 											<span class="pri" style="float: right; font-size: 20px;">${product.price }元起&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -151,12 +167,12 @@
 									</div>
 								</div>
 							</c:forEach>
-							
-							
-<%-- 							<c:forEach var="score" items="scores"> --%>
-<%-- 							</c:forEach> --%>
-							
-							
+
+
+							<%-- 							<c:forEach var="score" items="scores"> --%>
+							<%-- 							</c:forEach> --%>
+
+
 						</div>
 						<div id="demo0" style="text-align: center;"></div>
 					</div>
@@ -168,44 +184,44 @@
 
 
 
-<!-- 	<section> -->
-<!-- 		<div> -->
-<!-- 			<div class="container" style="text-align: center"> -->
-<!-- 				<h1>商品清單</h1> -->
-<!-- 				<a href="../cart">進入購物車</a> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</section> -->
-<!-- 	<hr -->
-<!-- 		style="height: 1px; border: none; color: #333; background-color: #333;"> -->
-<!-- 	<section class="container"> -->
-<%-- 		<c:forEach var='product' items='${products }'> --%>
-<!-- 			<div class="col-sm-6 col-md-3" style="width: 360px; height: 360px"> -->
-<!-- 				<div class="thumbnail" style="width: 320px; height: 340px"> -->
-<!-- 					<img width='100' height='200' -->
-<%-- 						src="<c:url value='/hao/getPicture/${product.id }' />" /> --%>
-<!-- 					<div class="caption"> -->
-<!-- 						<p> -->
-<%-- 							<b style='font-size: 16px;'>${product.name }</b> --%>
-<!-- 						</p> -->
-<%-- 						<p>價格：${product.price }</p> --%>
-<%-- 						<p>目前在庫數量：${product.reserve }</p> --%>
-<!-- 						<p> -->
-<%-- 							<a href="<spring:url value='/hao/product?id=${product.id }' />" --%>
-<!-- 								class="btn btn-primary"> <span -->
-<!-- 								class="glyphicon-info-sigh glyphicon"></span>詳細資料 -->
-<!-- 							</a> <a -->
-<%-- 								href="<spring:url value='/hao/product/Update?id=${product.id }' />" --%>
-<!-- 								class="btn btn-primary"> <span -->
-<!-- 								class="glyphicon-info-sigh glyphicon"></span>修改 -->
-<!-- 							</a> -->
-<%-- 							<button onclick="goCart(${product.id})">加入購物車</button> --%>
-<!-- 						</p> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<%-- 		</c:forEach> --%>
-<!-- 	</section> -->
+	<!-- 	<section> -->
+	<!-- 		<div> -->
+	<!-- 			<div class="container" style="text-align: center"> -->
+	<!-- 				<h1>商品清單</h1> -->
+	<!-- 				<a href="../cart">進入購物車</a> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!-- 	</section> -->
+	<!-- 	<hr -->
+	<!-- 		style="height: 1px; border: none; color: #333; background-color: #333;"> -->
+	<!-- 	<section class="container"> -->
+	<%-- 		<c:forEach var='product' items='${products }'> --%>
+	<!-- 			<div class="col-sm-6 col-md-3" style="width: 360px; height: 360px"> -->
+	<!-- 				<div class="thumbnail" style="width: 320px; height: 340px"> -->
+	<!-- 					<img width='100' height='200' -->
+	<%-- 						src="<c:url value='/hao/getPicture/${product.id }' />" /> --%>
+	<!-- 					<div class="caption"> -->
+	<!-- 						<p> -->
+	<%-- 							<b style='font-size: 16px;'>${product.name }</b> --%>
+	<!-- 						</p> -->
+	<%-- 						<p>價格：${product.price }</p> --%>
+	<%-- 						<p>目前在庫數量：${product.reserve }</p> --%>
+	<!-- 						<p> -->
+	<%-- 							<a href="<spring:url value='/hao/product?id=${product.id }' />" --%>
+	<!-- 								class="btn btn-primary"> <span -->
+	<!-- 								class="glyphicon-info-sigh glyphicon"></span>詳細資料 -->
+	<!-- 							</a> <a -->
+	<%-- 								href="<spring:url value='/hao/product/Update?id=${product.id }' />" --%>
+	<!-- 								class="btn btn-primary"> <span -->
+	<!-- 								class="glyphicon-info-sigh glyphicon"></span>修改 -->
+	<!-- 							</a> -->
+	<%-- 							<button onclick="goCart(${product.id})">加入購物車</button> --%>
+	<!-- 						</p> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<%-- 		</c:forEach> --%>
+	<!-- 	</section> -->
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
 </html>

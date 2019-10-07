@@ -161,12 +161,17 @@ public class ProductController {
 		List<ItemBean> list = service.getAllProducts();
 		model.addAttribute("products", list);
 		
-		List<Integer> list1 = service.getAllProductsId();
+//		List<Integer> list1 = service.getAllProductsId();
 //		double score = 0;
 //		for(Integer GG:list1) {	
 //			score = gbdbService.getAverageScoreByItemId(GG);
-			model.addAttribute("scores", list1);
+//			model.addAttribute("scores", list1);
 //		}
+		
+		for(ItemBean ib:list) {
+			double score = gbdbService.getAverageScoreByItemId(ib.getId());
+			ib.setScore(score);
+		}
 		
 		
 		return "hao/products";
@@ -181,7 +186,7 @@ public class ProductController {
 
 	@RequestMapping("/hao/product")
 	public String getProductsById(@RequestParam("id") Integer id,
-			Model model) {
+			Model model,@ModelAttribute("loginOK") MemberBean mb) {
 		model.addAttribute("product", service.getProductById(id));
 //		model.addAttribute("store", service.getStoreNameByItemId(id));
 		model.addAttribute("comment", gbdbService.getComment_item(id));
@@ -362,7 +367,7 @@ public class ProductController {
 		return "redirect:/hao/myProducts";
 	}
 
-	@RequestMapping(value = "/hao/product/Update/Delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/hao/product/Update/Delete")
 	public String ProductDelete(@RequestParam(value = "id", required = false) Integer id,
 			@ModelAttribute("itemBean") ItemBean bb, BindingResult result, HttpServletRequest request) {
 		bb.setId(id);
