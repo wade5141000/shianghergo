@@ -814,11 +814,12 @@ public class GroupsController {
 	// 顯示開團列表 --927新增
 	@RequestMapping("leopard/showGroups")
 	public String showGroups(String name, Model model, Integer sort) {
+		
 		if (sort == 1) {
 		
-			if (name.equals(null)) {
+			if (name.equals("")) {
 
-				return "login";
+				return "index";
 				
 			} else {
 				List<SearchBean> Searchlist = searchService.findSearchByName(name);
@@ -833,8 +834,8 @@ public class GroupsController {
 			}
 		} else {
 
-			if (name.equals(null)) {
-				return "login";
+			if (name.equals("")) {
+				return "index";
 			} else {
 				List<GroupsBean> list = service.searchToGroups(name);
 
