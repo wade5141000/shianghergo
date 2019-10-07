@@ -41,9 +41,15 @@
 body {
 	margin: 0px;
 	padding: 0px;
-	background: #fff url('images/bbg06.png') center center fixed ;
-	　 
+	background: #fff url('images/bbg06.png') center center fixed;
 	　
+	　
+}
+
+.st1 {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 </style>
 </head>
@@ -151,7 +157,8 @@ body {
 					<div class="card align-items-center">
 						<!-- Card image -->
 						<div class="view overlay">
-							<a href="http://localhost:8080/shianghergo/hao/product?id=${product.id}"><img
+							<a
+								href="http://localhost:8080/shianghergo/hao/product?id=${product.id}"><img
 								src="<c:url value='/hao/getPicture/${product.id }' />"
 								class="card-img-top" alt="" width='280px' height='280px'></a> <a>
 								<div class="mask rgba-white-slight"></div>
@@ -163,7 +170,7 @@ body {
 							<!-- Category & Title -->
 							<h5>
 								<strong> <a href="" class="dark-grey-text">${product.name }
-										<span class="badge badge-pill danger-color" style="color:red">HOT</span>
+										<span class="badge badge-pill danger-color" style="color: red">HOT</span>
 								</a>
 								</strong>
 							</h5>
@@ -188,30 +195,32 @@ body {
 		<div class="row">
 			<c:forEach var='group' items='${bbb}' begin="1" end="4">
 
-				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4" style="word-break: break-all;">
 					<!-- Card -->
 					<div class="card align-items-center">
 
 						<!-- Card image -->
 						<div class="view overlay">
-							<a href="http://localhost:8080/shianghergo/frank/product?id= ${group.memberBean.id}"><img
+							<a
+								href="http://localhost:8080/shianghergo/frank/product?id= ${group.memberBean.id}"><img
 								src="<c:url value='/frank/getPicture/ ${group.memberBean.id}' />"
 								class="card-img-top" alt=""></a> <a>
 								<div class="mask rgba-white-slight"></div>
 							</a>
-						</div>
+						</div> 
 						<!-- Card image -->
 						<!-- Card content -->
 						<div class="card-body text-center">
 							<!-- Category & Title -->
 							<h5>
-								<strong> <a href="" class="dark-grey-text"> ${group.memberBean.name}
-										<span class="badge badge-pill danger-color" style="color:red">HOT</span>
+								<strong> <a href="" class="dark-grey-text">
+										${group.memberBean.name} <span
+										class="badge badge-pill danger-color" style="color: red">HOT</span>
 								</a>
 								</strong>
 							</h5>
 							<h4 class="font-weight-bold blue-text">
-								<strong>${group.detail}</strong>
+								<strong class="st1">${group.detail}</strong>
 							</h4>
 						</div>
 						<!-- Card content -->
