@@ -61,10 +61,19 @@
 	margin: 20px 20px;
 }
 
+
+.s1 {
+	width: 35px;
+  }
+  
+
 .btn btn-outline-success {
 	color: yellow;
 }
 </style>
+
+
+
 <script>
 
 
@@ -153,7 +162,7 @@ $(document).ready(function(){
 
 // wade 以下檢舉和評價
 
-let flag = true;
+let flag = null;
 
 	document.addEventListener("DOMContentLoaded", function() {
 
@@ -177,9 +186,10 @@ let flag = true;
 		flag = true;
 
 		if (flag == true) {
-			for (let i = 0; i < n; i++) {
+			
+			for (let i=1; i<= n; i++) {
 
-				document.images[i - 1 + 2].src = '${pageContext.request.contextPath}/resources/images/chngstar.gif'
+				document.getElementById("star"+i).src ='${pageContext.request.contextPath}/resources/images/chngstar.gif'
 
 			}
 
@@ -188,29 +198,37 @@ let flag = true;
 	}
 	function mouseOut() {
 
-		if (flag) {
+		let n = this.id.charAt(4);
+		
+		if (flag == true) {
 
-			for (let i = 0; i < 5; i++) {
-
-				document.images[i - 1 + 2].src = "${pageContext.request.contextPath}/resources/images/star.gif"
-
+			for (let i=1; i<=n ; i++) {
+				
+				document.getElementById("star"+i).src ="${pageContext.request.contextPath}/resources/images/star.gif"
 			}
 		}
 	}
 
 	function Click() {
 
-		flag = false;
-
 		let n = this.id.charAt(4);
+		
+		flag = false
+		
+		
+		if(flag == false){
+		
+		for (let i = 1; i <= n; i++) {
 
-		for (let i = 0; i < n; i++) {
-
-			document.images[i - 1 + 2].src = "${pageContext.request.contextPath}/resources/images/chngstar.gif"
-			document.getElementById("str").innerHTML = "是否要給" + (i + 1) + "分";
-			document.getElementById("score").value = i + 1;
+			document.getElementById("star"+i).src ="${pageContext.request.contextPath}/resources/images/chngstar.gif"
+			
+			document.getElementById("str").innerHTML = "是否要給" + i+ "分";
+			document.getElementById("score").value = i;
+		    
+			
 		}
 
+		}
 	}
 
 function reportTarger(myObj) {
