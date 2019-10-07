@@ -85,7 +85,7 @@ body {
 				<c:if test="${(status.index+1) % 5 != 0}">
 					<c:forEach var='abc' items='${products}' varStatus="i">
 						<c:if test="${i.index < -(((status.index+1)%5) -5)}">
-							<div class="card" style="border: 1px solid white"></div>
+							<div class="card" style="border: 1px solid white;background-color: transparent;"></div>
 						</c:if>
 					</c:forEach>
 				</c:if>
