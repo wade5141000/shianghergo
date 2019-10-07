@@ -31,7 +31,7 @@
 		style="width: 1100px; margin-left: 320px; margin-top: 50px;">
 
 		<thead>
-		 <p style="margin-left:320px">查詢[${name}]取得${size}筆資料</p>
+		 <p style="margin-left:320px"> 查詢[ ${name}]取得${size}筆資料</p>
 			<tr>
 				<th class="alert alert-primary" role="alert">開團標題</th>
 				<th data-field="img" data-align="center" class="alert alert-primary" role="alert">商品</th>

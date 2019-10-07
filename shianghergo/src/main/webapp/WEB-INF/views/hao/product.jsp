@@ -91,7 +91,7 @@
 		}
 
 		}
-	
+	}
 
 	function targer(myObj) {
 
@@ -291,7 +291,8 @@
 						</div>
 
 						<div class="choose-btns">
-							<button class="layui-btn  layui-btn-danger car-btn" onclick="goCart(${product.id})">
+							<button class="layui-btn  layui-btn-danger car-btn"
+								onclick="goCart(${product.id})">
 								<i class="layui-icon layui-icon-cart-simple"></i>加入購物車
 							</button>
 							<input type="button" value="返回列表"
@@ -307,18 +308,23 @@
 			</div>
 		</div>
 	</div>
-	
-	<h2 style="text-align:center;padding-bottom:15px">評價滿意度</h2>
+
+	<h2 style="text-align: center; padding-bottom: 15px">評價滿意度</h2>
 	<c:forEach var='comment' items='${comment }'>
-	<div style="padding-left:35%; padding-right:35%;">
-		<div style="display:inline;"><img src="<c:url value='/resources/images/star_${comment.score }.gif' />"></div>
-		<div style="display:inline;"><p style="text-align:right">${comment.time }</p></div>
-		<p>會員：${comment.memberBean.name}(${comment.memberBean.account})</p>
-		<p style="text-align:left">${comment.contents }</p>
-	</div>
-	<div style="padding-left:35%; padding-right:35%">
-		<hr style="color:gray;">
-	</div>
+		<div style="padding-left: 35%; padding-right: 35%;">
+			<div style="display: inline;">
+				<img
+					src="<c:url value='/resources/images/star_${comment.score }.gif' />">
+			</div>
+			<div style="display: inline;">
+				<p style="text-align: right">${comment.time }</p>
+			</div>
+			<p>會員：${comment.memberBean.name}(${comment.memberBean.account})</p>
+			<p style="text-align: left">${comment.contents }</p>
+		</div>
+		<div style="padding-left: 35%; padding-right: 35%">
+			<hr style="color: gray;">
+		</div>
 	</c:forEach>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </body>
