@@ -6,184 +6,307 @@
 <head>
 <meta charset="UTF-8">
 <title>Document</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/static/css/footer.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/res/static/css/header.css">
-<link rel="stylesheet" type="text/css" href="../res/static/css/main.css">
-<!-- <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css"> -->
-<script type="text/javascript" src="../res/layui/layui.js"></script>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-
-<script src="https://code.jquery.com/jquery-3.4.1.js"
-	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
-
-<link rel="stylesheet"
-	href="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.css">
-<script
-	src="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.js"></script>
-<script
-	src="https://unpkg.com/bootstrap-table@1.15.4/dist/locale/bootstrap-table-zh-TW.min.js"></script>
-
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
 
 </head>
 <body>
-<!-- header fix -->
-<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
-<!-- Section: Blog v.1 -->
-<section class="my-5">
+	<!-- header fix -->
+	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
 
-  <!-- Section heading -->
-  <h2 class="h1-responsive font-weight-bold text-center my-5">推!!!響合購優質賣家</h2>
-  <!-- Section description -->
-  <p class="text-center w-responsive mx-auto mb-5"></p>
 
-  <!-- Grid row -->
-  <div class="row">
+	<div style="width: 1500px; text-align: center; margin: 0 auto">
+		<div>
+			<img class="img-fluid"
+				src="${pageContext.request.contextPath}/res/static/img/b000.jpg"
+				alt="Sample image"> <a>
+				<div class="mask rgba-white-slight"></div>
+			</a>
+		</div>
+		<pre> </pre>
+		<br>
 
-    <!-- Grid column -->
-    <div class="col-lg-5">
+		<!-- Grid row -->
+		<div class="row">
 
-      <!-- Featured image -->
-      <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4">
-        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg" alt="Sample image">
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
+			<!-- Grid column -->
+			<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+				<!-- Card -->
+				<div class="card align-items-center">
+					<!-- Card image -->
+					<div class="view overlay">
+						<img
+							src="${pageContext.request.contextPath}/res/static/img/b005.jpg"
+							class="card-img-top" alt=""> <a>
+							<div class="mask rgba-white-slight"></div>
+						</a>
+					</div>
+					<!-- Card image -->
+					<!-- Card content -->
+					<div class="card-body text-center">
+						<!-- Category & Title -->
+						<a href="" class="grey-text">
+							<h5>檸檬卡士達泡芙</h5>
+						</a>
+						<h5>
+							<strong> <a href="" class="dark-grey-text">6人成團價 <span
+									class="badge badge-pill danger-color">NEW</span>
+							</a>
+							</strong>
+						</h5>
+						<h4 class="font-weight-bold blue-text">
+							<strong>180$/盒</strong>
+						</h4>
+					</div>
+					<!-- Card content -->
+				</div>
+				<!-- Card -->
+			</div>
+			<!-- Grid column -->
 
-    </div>
-    <!-- Grid column -->
+			<!-- Grid column -->
+			<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+				<!-- Card -->
+				<div class="card align-items-center">
+					<!-- Card image -->
+					<div class="view overlay">
+						<img
+							src="${pageContext.request.contextPath}/res/static/img/b001.jpg"
+							class="card-img-top" alt=""> <a>
+							<div class="mask rgba-white-slight"></div>
+						</a>
+					</div>
+					<!-- Card image -->
+					<!-- Card content -->
+					<div class="card-body text-center">
+						<!-- Category & Title -->
+						<a href="" class="grey-text">
+							<h5>提拉米蘇</h5>
+						</a>
+						<h5>
+							<strong> <a href="" class="dark-grey-text">10人成團價</a>
+							</strong>
+						</h5>
+						<h4 class="font-weight-bold blue-text">
+							<strong>180$/個</strong>
+						</h4>
+					</div>
+					<!-- Card content -->
+				</div>
+				<!-- Card -->
+			</div>
+			<!-- Grid column -->
 
-    <!-- Grid column -->
-    <div class="col-lg-7">
+			<!-- Grid column -->
+			<div class="col-lg-3 col-md-6 mb-md-0 mb-4">
+				<!-- Card -->
+				<div class="card align-items-center">
+					<!-- Card image -->
+					<div class="view overlay">
+						<img
+							src="${pageContext.request.contextPath}/res/static/img/b003.jpg"
+							class="card-img-top" alt=""> <a>
+							<div class="mask rgba-white-slight"></div>
+						</a>
+					</div>
+					<!-- Card image -->
+					<!-- Card content -->
+					<div class="card-body text-center">
+						<!-- Category & Title -->
+						<a href="" class="grey-text">
+							<h5>檸檬塔</h5>
+						</a>
+						<h5>
+							<strong> <a href="" class="dark-grey-text">5人成團價<span
+									class="badge badge-pill primary-color">BEST</span>
+							</a>
+							</strong>
+						</h5>
+						<h4 class="font-weight-bold blue-text">
+							<strong>100$/個</strong>
+						</h4>
+					</div>
+					<!-- Card content -->
+				</div>
+				<!-- Card -->
+			</div>
+			<!-- Grid column -->
 
-      <!-- Category -->
-      <a href="#!" class="green-text">
-        <h6 class="font-weight-bold mb-3"><i class="fas fa-utensils pr-2"></i></h6>
-      </a>
-      <!-- Post title -->
-      <h3 class="font-weight-bold mb-3"><strong>秋冬服飾優質賣家</strong></h3>
-      <!-- Excerpt -->
-      <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-        placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis debitis.</p>
-      <!-- Post data -->
-      <p>by <a><strong>Carine Fox</strong></a>, 19/08/2018</p>
-      <!-- Read more button -->
-      <a class="btn btn-success btn-md">Read more</a>
+			<!-- Grid column -->
+			<div class="col-lg-3 col-md-6">
+				<!-- Card -->
+				<div class="card align-items-center">
+					<!-- Card image -->
+					<div class="view overlay">
+						<img
+							src="${pageContext.request.contextPath}/res/static/img/b004.jpg"
+							class="card-img-top" alt=""> <a>
+							<div class="mask rgba-white-slight"></div>
+						</a>
+					</div>
+					<!-- Card image -->
 
-    </div>
-    <!-- Grid column -->
+					<!-- Card content -->
+					<div class="card-body text-center">
+						<!-- Category & Title -->
+						<a href="" class="grey-text">
+							<h5>一口提拉米蘇</h5>
+						</a>
+						<h5>
+							<strong> <a href="" class="dark-grey-text">10人成團價</a>
+							</strong>
+						</h5>
+						<h4 class="font-weight-bold blue-text">
+							<strong>300$/盒</strong>
+						</h4>
+					</div>
+					<pre> </pre>
+					<br>
+					<!-- Card content -->
+				</div>
+				<!-- Card -->
+			</div>
+			<!-- Grid column -->
 
-  </div>
-  <!-- Grid row -->
+		</div>
+		<div class="row">
 
-  <hr class="my-5">
+			<!-- Grid column -->
+			<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+				<!-- Card -->
+				<div class="card align-items-center">
+					<!-- Card image -->
+					<div class="view overlay">
+						<img
+							src="${pageContext.request.contextPath}/res/static/img/b006.jpg"
+							class="card-img-top" alt=""> <a>
+							<div class="mask rgba-white-slight"></div>
+						</a>
+					</div>
+					<!-- Card image -->
+					<!-- Card content -->
+					<div class="card-body text-center">
+						<!-- Category & Title -->
+						<a href="" class="grey-text">
+							<h5>法式馬卡龍</h5>
+						</a>
+						<h5>
+							<strong> <a href="" class="dark-grey-text">Denim
+									shirt <span class="badge badge-pill danger-color">NEW</span>
+							</a>
+							</strong>
+						</h5>
+						<h4 class="font-weight-bold blue-text">
+							<strong>120$</strong>
+						</h4>
+					</div>
+					<!-- Card content -->
+				</div>
+				<!-- Card -->
+			</div>
+			<!-- Grid column -->
 
-  <!-- Grid row -->
-  <div class="row">
+			<!-- Grid column -->
+			<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+				<!-- Card -->
+				<div class="card align-items-center">
+					<!-- Card image -->
+					<div class="view overlay">
+						<img
+							src="${pageContext.request.contextPath}/res/static/img/b007.jpg"
+							class="card-img-top" alt=""> <a>
+							<div class="mask rgba-white-slight"></div>
+						</a>
+					</div>
+					<!-- Card image -->
+					<!-- Card content -->
+					<div class="card-body text-center">
+						<!-- Category & Title -->
+						<a href="" class="grey-text">
+							<h5>黑松露巧克力</h5>
+						</a>
+						<h5>
+							<strong> <a href="" class="dark-grey-text">7人成團價</a>
+							</strong>
+						</h5>
+						<h4 class="font-weight-bold blue-text">
+							<strong>250/盒</strong>
+						</h4>
+					</div>
+					<!-- Card content -->
+				</div>
+				<!-- Card -->
+			</div>
+			<!-- Grid column -->
 
-    <!-- Grid column -->
-    <div class="col-lg-7">
+			<!-- Grid column -->
+			<div class="col-lg-3 col-md-6 mb-md-0 mb-4">
+				<!-- Card -->
+				<div class="card align-items-center">
+					<!-- Card image -->
+					<div class="view overlay">
+						<img
+							src="${pageContext.request.contextPath}/res/static/img/b008.jpg"
+							class="card-img-top" alt=""> <a>
+							<div class="mask rgba-white-slight"></div>
+						</a>
+					</div>
+					<!-- Card image -->
+					<!-- Card content -->
+					<div class="card-body text-center">
+						<!-- Category & Title -->
+						<a href="" class="grey-text">
+							<h5>大甲芋頭捲</h5>
+						</a>
+						<h5>
+							<strong> <a href="" class="dark-grey-text">10人成團價 <span
+									class="badge badge-pill primary-color">BEST</span>
+							</a>
+							</strong>
+						</h5>
+						<h4 class="font-weight-bold blue-text">
+							<strong>400$/條</strong>
+						</h4>
+					</div>
+					<!-- Card content -->
+				</div>
+				<!-- Card -->
+			</div>
+			<!-- Grid column -->
 
-      <!-- Category -->
-      <a href="#!" class="pink-text">
-        <h6 class="font-weight-bold mb-3"><i class="fas fa-image pr-2"></i>Lifestyle</h6>
-      </a>
-      <!-- Post title -->
-      <h3 class="font-weight-bold mb-3"><strong>Title of the news</strong></h3>
-      <!-- Excerpt -->
-      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-        deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
-        provident.</p>
-      <!-- Post data -->
-      <p>by <a><strong>Carine Fox</strong></a>, 14/08/2018</p>
-      <!-- Read more button -->
-      <a class="btn btn-pink btn-md mb-lg-0 mb-4">Read more</a>
+			<!-- Grid column -->
+			<div class="col-lg-3 col-md-6">
+				<!-- Card -->
+				<div class="card align-items-center">
+					<!-- Card image -->
+					<div class="view overlay">
+						<img
+							src="${pageContext.request.contextPath}/res/static/img/b009.jpg"
+							class="card-img-top" alt=""> <a>
+							<div class="mask rgba-white-slight"></div>
+						</a>
+					</div>
+					<!-- Card image -->
+					<!-- Card content -->
+					<div class="card-body text-center">
+						<!-- Category & Title -->
+						<a href="" class="grey-text">
+							<h5>特濃草莓生乳酪蛋糕</h5>
+						</a>
+						<h5>
+							<strong> <a href="" class="dark-grey-text">5人成團價</a>
+							</strong>
+						</h5>
+						<h4 class="font-weight-bold blue-text">
+							<strong>800$/個</strong>
+						</h4>
+					</div>
+					<!-- Card content -->
+				</div>
+				<!-- Card -->
+			</div>
+			<!-- Grid column -->
 
-    </div>
-    <!-- Grid column -->
-
-    <!-- Grid column -->
-    <div class="col-lg-5">
-
-      <!-- Featured image -->
-      <div class="view overlay rounded z-depth-2">
-        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/img%20(34).jpg" alt="Sample image">
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-
-    </div>
-    <!-- Grid column -->
-
-  </div>
-  <!-- Grid row -->
-
-  <hr class="my-5">
-
-  <!-- Grid row -->
-  <div class="row">
-
-    <!-- Grid column -->
-    <div class="col-lg-5">
-
-      <!-- Featured image -->
-      <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4">
-        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/img (28).jpg" alt="Sample image">
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-
-    </div>
-    <!-- Grid column -->
-
-    <!-- Grid column -->
-    <div class="col-lg-7">
-
-      <!-- Category -->
-      <a href="#!" class="indigo-text">
-        <h6 class="font-weight-bold mb-3"><i class="fas fa-suitcase pr-2"></i>Travels</h6>
-      </a>
-      <!-- Post title -->
-      <h3 class="font-weight-bold mb-3"><strong>Title of the news</strong></h3>
-      <!-- Excerpt -->
-      <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-        magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro qui dolorem ipsum quia sit amet.</p>
-      <!-- Post data -->
-      <p>by <a><strong>Carine Fox</strong></a>, 11/08/2018</p>
-      <!-- Read more button -->
-      <a class="btn btn-indigo btn-md">Read more</a>
-
-    </div>
-    <!-- Grid column -->
-
-  </div>
-  <!-- Grid row -->
-
-</section>
-<!-- Section: Blog v.1 -->
-	
-	<!-- Section: Blog v.1 -->
-<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
+		</div>
+	</div>
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 </body>
 </html>

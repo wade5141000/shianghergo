@@ -65,12 +65,12 @@ public class HomeController {
 
 		List<CategoryBean> list = groupsService.getCategoryList();
 		httpSession.setAttribute("categoryList", list);
-		List<ItemBean> list2 = service.getAllProducts();
+		List<ItemBean> list2 = service.getRProducts();
 		model.addAttribute("aaa", list2);
 
 //		List<CategoryBean> list3 = groupsService.getCategoryList();
 //		httpSession.setAttribute("categoryList", list3);
-		List<GroupsBean> list4 = groupsService.getAllGroups();
+		List<GroupsBean> list4 = groupsService.getRGroups();
 		model.addAttribute("bbb", list4);
 
 		return "index";

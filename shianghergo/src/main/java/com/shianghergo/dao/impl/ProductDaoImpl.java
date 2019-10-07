@@ -29,6 +29,17 @@ public class ProductDaoImpl implements ProductDao {
 		list = session.createQuery(hql).getResultList();
 		return list;
 	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<ItemBean> getRProducts(){
+		String hql = "from ItemBean order by newid()";
+		Session session = null;
+		List<ItemBean> list = new ArrayList<>();
+		session = factory.getCurrentSession();
+		list = session.createQuery(hql).getResultList();
+		return list;
+	}
 
 	@Override
 	public ItemBean getProductById(int productId) {
