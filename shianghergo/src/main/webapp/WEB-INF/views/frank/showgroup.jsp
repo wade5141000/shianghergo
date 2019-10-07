@@ -163,7 +163,7 @@ body {
 		</div>
 
 
-		<div class="f2" style="width: 1000px;">
+		<div class="f2" style="width: 1200px;"> 
 			<c:forEach var="item" items="${updategroup.groupsitem}">
 
 				<div class="card"
