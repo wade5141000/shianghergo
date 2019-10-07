@@ -470,7 +470,7 @@ public class ALLController {
 		// ---------------------------------------
 
 		
-		List<comment_member> comment = gservice.getAllCommentByMember(mId);
+		List<comment_member> comment = gservice.getAllCommentByTarget(mId);
 		List<GroupsBean> mygroups = gservice.getAllGroupsByMember(mId);
 //		
 		model.addAttribute("group", gb); // 取團的資料
@@ -519,7 +519,7 @@ public class ALLController {
 		model.addAttribute("list", list);
 		
 		
-		List<comment_member> comment = gservice.getAllCommentByMember(mId);
+		List<comment_member> comment = gservice.getAllCommentByTarget(mId);
 		List<GroupsBean> mygroups = gservice.getAllGroupsByMember(mId);
 //		
 		model.addAttribute("group", gb); // 取團的資料

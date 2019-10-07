@@ -57,9 +57,9 @@ var y = x+1;
 </script>
 <!-- 這段勿刪 wade -->
 <body>
-	<h2>header11:${header11} login:${loginOK.name}</h2>
+<%-- 	<h2>header11:${header11} login:${loginOK.name}</h2> --%>
 	<ul class="nav justify-content-end"
-		style="height: 50px; background-color: #ffa042;">
+		style="height: 65px; background-color: #ffa042;">
 
 
 <!-- 		<li class="nav-item"><a class="nav-link active badge badge-light" -->
@@ -81,21 +81,34 @@ var y = x+1;
 			style="color: #ecffff">舊index</a></li>
 <%-- 		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/testimg1">測試上傳</a></li> --%>
 
+		<li class="nav-item"><a class="nav-link" ></a></li>
+		<li class="nav-item"><a class="nav-link" ></a></li>
+		<li class="nav-item"><a class="nav-link" ></a></li>
+		<li class="nav-item"><a class="nav-link" ></a></li>
+		<li class="nav-item"><a class="nav-link" ></a></li>
+		<li class="nav-item"><a class="nav-link" ></a></li>
+
+
+
+
+
 
 		<c:if test="${header11 != 2}">
-			<li class="nav-item"><a class="nav-link"
+			<li class="nav-item"><a class="btn btn-outline-info"
 				href="${pageContext.request.contextPath}/goRegisterPage"
-				style="color: #ecffff;margin-top:5px;">註冊</a></li>
-			<li class="nav-item"><a class="nav-link"
+				style="color: #ecffff;margin-top:10px;border-style:none;font-size:20px;" role="button">註冊</a></li>
+			<li class="nav-item"><a class="btn btn-outline-info"
 				href="${pageContext.request.contextPath}/login"
-				style="color: #ecffff;margin-top:5px;">登入</a></li>
+				style="color: #ecffff;margin-top:10px;border-style:none;font-size:20px;" role="button">登入</a></li>
+				
+				
 		</c:if>
 		<c:if test="${header11 == 2}">
 
 
 			<li class="nav-item dropdown"><a class="nav-link " href="#"
 				id="barnotification" role="button" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false" style="font-size:25px;margin-top:5px;">
+				aria-haspopup="true" aria-expanded="false" style="font-size:30px;margin-right:20px;line-height: 1em;margin-top:8px;">
 					🔔 </a>
 				<div class="dropdown-menu" aria-labelledby="barnotification">
 					<c:forEach var="notis" items="${notification}">
@@ -104,31 +117,36 @@ var y = x+1;
 				</div></li>
 
 
-			<li class="nav-item"><a class="navbar-brand"
-				href="${pageContext.request.contextPath}/memberPage"> <img
-					src="${pageContext.request.contextPath}/getmemberPicture/${loginOK.id}"
-					width="30" height="30" alt="" style="margin-top:5px;">
+			<li class="nav-item">
+			<a class="navbar-brand" style="padding:0px;margin-right:3px;margin-top:8px;margin-left:8px" 
+				href="${pageContext.request.contextPath}/memberPage"> 
+				<img src="${pageContext.request.contextPath}/getmemberPicture/${loginOK.id} "width="50" height="50">
 			</a></li>
-			<li class="nav-item"><a class="nav-link"
+			<li class="nav-item" style="color:black;">
+			<a class="btn btn-outline-info"
 				href="${pageContext.request.contextPath}/memberPage"
-				style="color: #ecffff;margin-top:5px;">${loginOK.name}</a></li>
+				style="color: #ecffff;border-style:none;font-size:20px;margin-top:10px;" role="button">${loginOK.name}</a>
+				</li>
 
 			<li class="nav-item">
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#cartt">
-					購物車<span id="its">${its}</span>件商品
+				<button type="button" class="btn btn-outline-success" data-toggle="modal"
+					data-target="#cartt" style="border-style:none;margin-top:10px;font-size:20px;">
+					🛒購物車 (<span id="its">${its}</span>) 件
 				</button>
 			</li>
 			<li class="nav-item">
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#gcartt">
-					團購物車<span id="gits">${gits}</span>件商品
+				<button type="button" class="btn btn-outline-primary" data-toggle="modal"
+					data-target="#gcartt" style="border-style:none;margin-top:10px;font-size:20px;">
+					🛒團購物車 (<span id="gits">${gits}</span>) 件
 				</button>
 			</li>
 			
-			<li class="nav-item"><a class="nav-link"
+			<li class="nav-item">
+			<a class="btn btn-outline-info"
 				href="${pageContext.request.contextPath}/logout"
-				style="color: #ecffff;margin-top:5px;">登出</a></li>
+				style="color: #ecffff;margin-top:10px;border-style:none;font-size:20px;" role="button">登出</a>
+				</li>
+				
 			
 		</c:if>
 	</ul>
@@ -328,7 +346,7 @@ var y = x+1;
 						<div class="cartdiv" id="gtable">
 							<table class="tb">
 								<tr>
-									<th/>
+									<th></th>
 									<th>我想團...</th>
 									<th>數量</th>
 									<th>單價</th>
@@ -351,9 +369,9 @@ var y = x+1;
 										<td><button class="btn btn-danger"
 												onclick="gdeletetr(this,${gitem.id})">刪除</button></td>
 										<script>
-					var a = ${gitem.price} * ${gitem.amount};
-					$("#"+${gitem.id}+"a").text(a);
-					</script>
+											var a = ${gitem.price} * ${gitem.amount};
+											$("#"+${gitem.id}+"a").text(a);
+										</script>
 
 									</tr>
 								</c:forEach>
