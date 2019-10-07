@@ -148,7 +148,7 @@ public class MemberController {
 			throw new RuntimeException("檔案上傳生異常:" + e.getMessage());
 		}
 
-		return "Member001";
+		return "redirect:loginNew";
 
 	}
 

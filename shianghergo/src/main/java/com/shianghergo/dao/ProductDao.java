@@ -42,4 +42,6 @@ public interface ProductDao {
 
 	List<Integer> getAllProductsId();
 
+	List<ItemBean> getAllProductsByStoreStatus();
+
 }

@@ -92,10 +92,11 @@
 
 		}
 	
+	}
 
 	function targer(myObj) {
 
-		document.getElementById("item_id").value = myObj.value;
+//		document.getElementById("item_id").value = myObj.value;
 	}
 	
 	
@@ -167,9 +168,18 @@
 		})
 	}
 	
+
+	
 	
 	
 </script>
+<style type="text/css">
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('../images/bbg06.png') center center fixed ;　
+}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
@@ -215,7 +225,7 @@
 						<!--使用者會員ID -->
 						<input type=hidden value="${loginOK.id}" name="member_id">
 						<!--被評價的商家ID -->
-						<input type=hidden value="1" name="item_id" id="item_id">
+						<input type=hidden value="${product.id }" name="item_id" id="item_id">
 						<!--取的被選中的星星 -->
 						<input type=hidden value="1" name="score" id="score">
 
@@ -291,7 +301,8 @@
 						</div>
 
 						<div class="choose-btns">
-							<button class="layui-btn  layui-btn-danger car-btn" onclick="goCart(${product.id})">
+							<button class="layui-btn  layui-btn-danger car-btn"
+								onclick="goCart(${product.id})">
 								<i class="layui-icon layui-icon-cart-simple"></i>加入購物車
 							</button>
 							<input type="button" value="返回列表"
@@ -307,19 +318,25 @@
 			</div>
 		</div>
 	</div>
-	
-	<h2 style="text-align:center;padding-bottom:15px">評價滿意度</h2>
+
+	<h2 style="text-align: center; padding-bottom: 15px">評價滿意度</h2>
 	<c:forEach var='comment' items='${comment }'>
-	<div style="padding-left:35%; padding-right:35%;">
-		<div style="display:inline;"><img src="<c:url value='/resources/images/star_${comment.score }.gif' />"></div>
-		<div style="display:inline;"><p style="text-align:right">${comment.time }</p></div>
-		<p>會員：${comment.memberBean.name}(${comment.memberBean.account})</p>
-		<p style="text-align:left">${comment.contents }</p>
-	</div>
-	<div style="padding-left:35%; padding-right:35%">
-		<hr style="color:gray;">
-	</div>
+		<div style="padding-left: 35%; padding-right: 35%;">
+			<div style="display: inline;">
+				<img
+					src="<c:url value='/resources/images/star_${comment.score }.gif' />">
+			</div>
+			<div style="display: inline;">
+				<p style="text-align: right">${comment.time }</p>
+			</div>
+			<p>會員：${comment.memberBean.name}(${comment.memberBean.account})</p>
+			<p style="text-align: left">${comment.contents }</p>
+		</div>
+		<div style="padding-left: 35%; padding-right: 35%">
+			<hr style="color: gray;">
+		</div>
 	</c:forEach>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
+	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>

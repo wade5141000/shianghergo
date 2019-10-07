@@ -40,6 +40,5 @@ public interface ProductService {
 
 	List<Integer> getAllProductsId();
 
-	
-
+	List<ItemBean> getAllProductsByStoreStatus();
 }

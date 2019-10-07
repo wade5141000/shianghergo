@@ -131,4 +131,9 @@ public class ProductServiceImpl implements ProductService {
 		return dao.getAllProductsId();
 	}
 
+	@Transactional
+	@Override
+	public List<ItemBean> getAllProductsByStoreStatus() {
+		return dao.getAllProductsByStoreStatus();
+	}
 }

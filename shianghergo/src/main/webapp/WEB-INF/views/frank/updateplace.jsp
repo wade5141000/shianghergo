@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('../images/bbg06.png') center center fixed ;　
+}
+</style>
 <body>
 
 
@@ -49,6 +56,7 @@
 	</form>
 	</div>
 	</div>
+	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </html>
