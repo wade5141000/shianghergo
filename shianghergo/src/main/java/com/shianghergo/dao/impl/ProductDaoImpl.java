@@ -29,6 +29,17 @@ public class ProductDaoImpl implements ProductDao {
 		list = session.createQuery(hql).getResultList();
 		return list;
 	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<ItemBean> getRProducts(){
+		String hql = "from ItemBean order by newid()";
+		Session session = null;
+		List<ItemBean> list = new ArrayList<>();
+		session = factory.getCurrentSession();
+		list = session.createQuery(hql).getResultList();
+		return list;
+	}
 
 	@Override
 	public ItemBean getProductById(int productId) {
@@ -150,6 +161,12 @@ public class ProductDaoImpl implements ProductDao {
 	public List<ItemBean> getMyProducts(int member_id) {
 		Session session = factory.getCurrentSession();
 		String hql1 = "select id FROM StoreBean where member_id=:member_id";
+		
+		List check = session.createQuery(hql1).setParameter("member_id", member_id).getResultList();
+		if(check.size()==0) {
+			return null;
+		}
+		
 		Integer store_id = (Integer) session.createQuery(hql1).setParameter("member_id", member_id).getSingleResult();
 		String hql2 = "from ItemBean where store_id=:store_id";
 		List<ItemBean> list = new ArrayList<>();

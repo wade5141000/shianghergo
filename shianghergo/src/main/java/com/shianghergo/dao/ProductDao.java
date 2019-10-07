@@ -10,6 +10,8 @@ import com.shianghergo.model.StoreBean;
 public interface ProductDao {
 	List<ItemBean> getAllProducts();
 	
+	List<ItemBean> getRProducts();
+	
 	public ItemBean getProductById(int productId);
 	
 	int addProduct(ItemBean product,Integer category_id);

@@ -151,53 +151,13 @@ body {
                 </div>
               {{# }); }}
             </script> -->
-						<div id="demo0" style="text-align: center;"></div>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script>
-		layui.config({
-			base : '../res/static/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
-		}).use([ 'mm', 'laypage', 'jquery' ], function() {
-			var laypage = layui.laypage, $ = layui.$, mm = layui.mm;
-			laypage.render({
-				elem : 'demo0',
-				count : 100
-			//数据总数
-			});
-
-			// 模版引擎导入
-			//  var html = demo.innerHTML;
-			//  var listCont = document.getElementById('list-cont');
-			//  // console.log(layui.router("#/about.html"))
-			// mm.request({
-			//     url: '../json/commodity.json',
-			//     success : function(res){
-			//       console.log(res)
-			//       listCont.innerHTML = mm.renderHtml(html,res)
-			//     },
-			//     error: function(res){
-			//       console.log(res);
-			//     }
-			//   })
-
-			$('.sort a').on('click', function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			})
-			$('.list-box dt').on('click', function() {
-				if ($(this).attr('off')) {
-					$(this).removeClass('active').siblings('dd').show()
-					$(this).attr('off', '')
-				} else {
-					$(this).addClass('active').siblings('dd').hide()
-					$(this).attr('off', true)
-				}
-			})
-
-		});
-	</script>
+	
 
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>

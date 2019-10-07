@@ -95,7 +95,7 @@ body {
 		}
 
 		}
-	}
+	} 
 
 	function reportTarger(myObj) {
 
