@@ -13,10 +13,10 @@
 	padding-left: 810px;
 }
 
-.gd3 {
-	margin: 0 auto;
-	float: left;
-}
+/* .gd33 { */
+/* 	margin: 0 auto; */
+/* 	float: left; */
+/* } */
 
 .f3 {
 	text-align: center;
@@ -152,15 +152,21 @@ table {
 		<%-- 							<p>說明:${item.detail}</p> --%>
 		<%-- 							<p>價格: ${item.price} 元</p> --%>
 
+		<div
+			style="margin: 0 auto; background-color: #FFE8BF; text-align: center;">
+			<h2>商品</h2>
+		</div>
+
 
 		<div class="f2" style="width: 1000px;">
 			<c:forEach var="item" items="${updategroup.groupsitem}">
 
-				<div class="card" style="width: 200px; display: inline-block;margin:0 20px;">
+				<div class="card"
+					style="width: 210px; display: inline-block; margin: 0 20px;">
 					<img width='200' height='150'
 						src="<c:url value='/frank/getPicture/${item.id }' />"
 						class="card-img-top" alt="...">
-					<div class="card-body"> 
+					<div class="card-body">
 						<h5 class="card-title">${item.name}</h5>
 
 						<p class="card-text">商品說明:${item.detail}</p>
@@ -186,11 +192,15 @@ table {
 
 
 	<hr>
+
+	<div
+		style="width:1100px;margin: 0 auto; background-color: #FFE8BF; text-align: center;">
+		<h2>面交地點</h2>
+	</div>
 	<section class="container">
 		<div>
 			<c:forEach var="places" items="${updategroup.place}">
-				<div class="gd3"
-					style="width: 250px; height: 200px; font-size: 16px;">
+				<div class="gd33" style="width: 250px; height: 200px; font-size: 16px;float: left;">
 					<p>地址:${places.address}</p>
 					<p>時間:${places.time}</p>
 					<input type="button" value="修改"

@@ -86,4 +86,5 @@
 	</div>
 
 </body>
+<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 </html>

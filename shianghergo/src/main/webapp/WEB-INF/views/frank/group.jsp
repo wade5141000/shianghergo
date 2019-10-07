@@ -61,14 +61,21 @@
 	margin: 20px 20px;
 }
 
+
 .s1 {
 	width: 35px;
+  }
+  
+
+.btn btn-outline-success {
+	color: yellow;
 }
 </style>
 
 
 
 <script>
+
 
 function addGroupCart(item_id,groups_id){
 	$.ajax({
@@ -150,6 +157,9 @@ $(document).ready(function(){
 	
 });
 
+
+
+
 // wade 以下檢舉和評價
 
 let flag = null;
@@ -230,6 +240,7 @@ function reportTarger(myObj) {
 
 		document.getElementById("scoretarget").value = myObj.value;
 	}
+
 
 </script>
 
@@ -419,24 +430,34 @@ function reportTarger(myObj) {
 		</table>
 	</div>
 	<div style="margin: 0 auto; text-align: center;">
-		<div class="btn-group" role="group" aria-label="Basic example"
-			style="width: 1000px">
-			<button type="button" class="btn btn-secondary" id="111">商品與說明</button>
-			<button type="button" class="btn btn-secondary" id="222">團主的評價</button>
-			<button type="button" class="btn btn-secondary" id="333">團主的其他合購</button>
+				<div class="btn-group" role="group" aria-label="Basic example"
+					style="width: 1000px">
+					<button type="button" class="btn btn-outline-success" id="111">商品與說明</button>
+					<button type="button" class="btn btn-outline-success" id="222">團主的評價</button>
+					<button type="button" class="btn btn-outline-success" id="333">團主的其他合購</button>
 
 
+				</div>
+	
 
-		</div>
 	</div>
+
+	
 	<div id="one">
+	<div
+		style="width: 1000px; margin: 0 auto; background-color: #FFE8BF; text-align: center;">
+		<h2>團購說明</h2>
+	</div>
 		<div style="word-break: break-all; width: 800px; margin: 0 auto;">
 			<img width='750' height='450'
-				src="<c:url value='/frank/getgroupPicture/${group.id }' />">
-
+				src="<c:url value='/frank/getgroupPicture/${group.id }' />"> <br>
+			<br>
+			<p style="font-size: 20px;">${group.detail}</p>
 		</div>
-		<div style="width: 1000px; margin: 0 auto;">
-			<h3>商品</h3>
+
+		<div
+			style="width: 1000px; margin: 0 auto; background-color: #FFE8BF; text-align: center;">
+			<h2>商品</h2>
 		</div>
 
 		<div class="f2" style="width: 1000px;">
@@ -465,74 +486,99 @@ function reportTarger(myObj) {
 
 	</div>
 
-	<div id="two">
-	
-	
-	
-	
-	
-	
-<table>
-			<tr>
-				<td>評價人</td>
-				<td>分數</td>
-				<td>評語</td>
-				<td>評價時間</td>
 
-			</tr>
+	<div id="two"
+		style="word-break: break-all; width: 1000px; margin: 0 auto; text-align: center;">
+
+		<!-- 			<tr> -->
+		<!-- 				<td style="width: 150px;">評價人</td> -->
+		<!-- 				<td style="width: 100px;">分數</td> -->
+		<!-- 				<td style="width: 350px;">評語</td> -->
+		<!-- 				<td style="width: 200px;">評價時間</td> -->
+
+		<!-- 			</tr> -->
 
 
-			<c:forEach var="commentmb" items="${commentmb}">
-				<tr>
-					<td>${commentmb.memberBean.name}(${commentmb.memberBean.account})</td>
-					<td>${commentmb.score}</td>
-					<td>${commentmb.contents}</td>
-					<td>${commentmb.time}</td>
-				
+		<%-- 		<c:forEach var="commentmb" items="${commentmb}"> --%>
+		<!-- 			<table style="border: 8px #FFD382 groove;"> -->
+		<!-- 				<tr> -->
+		<%-- 					<td style="width: 150px;">${commentmb.member_id}</td> --%>
+		<!-- 					<td style="width: 200px;"><img -->
+		<%-- 						src="<c:url value='/resources/images/star_${commentmb.score }.gif' />"></td> --%>
+		<%-- 					<td style="width: 500px;">${commentmb.time}</td> --%>
+		<!-- 				</tr> -->
+		<!-- 				<tr> -->
+		<%-- 					<td colspan="3">${commentmb.contents}</td> --%>
+		<!-- 				</tr> -->
+		<!-- 			</table> -->
+		<%-- 		</c:forEach> --%>
 
 
 
-				</tr>
-			</c:forEach>
+		<c:if test="i.index%2==0"></c:if>
+		<c:forEach var='commentmb' items='${commentmb }' varStatus="i">
+			<div id="divv"
+				<c:if test="${i.index%2==0}">style="word-break: break-all; width: 1000px; margin: 0 auto; text-align: center; background-color:#C9FFC9	;"</c:if>
+				<c:if test="${i.index%2==1}">style="word-break: break-all; width: 1000px; margin: 0 auto; text-align: center; background-color:#FFFFC9;"</c:if>>
 
-		</table>
-		
-			
+				<!-- <div id="divv"style="word-break: break-all; width: 800px; margin: 0 auto; text-align: center; background-color: yellow;"> -->
+				<!-- 				<div style="display: inline;"> -->
+				<%-- 					<p style="text-align: right">${commentmb.time }</p> --%>
+				<!-- 				</div > -->
+				<div style="float: left;">
+					<p>
+						會員：${commentmb.memberBean.name}(${commentmb.memberBean.account})&nbsp;&nbsp;&nbsp;&nbsp; <img
+							src="<c:url value='/resources/images/star_${commentmb.score }.gif' />">
+					</p>
+				</div>
+				<div style="float: right;">
+					<p>${commentmb.time }</p>
+				</div>
+				<br>
+				<div>${commentmb.contents }</div>
 
-</div>
 
-	<div id="three">
+				<!-- 			<div style="padding-left: 35%; padding-right: 35%"> -->
+				<!-- 				<hr style="color: gray;"> -->
+				<!-- 			</div> -->
+
+			</div>
+		</c:forEach>
+	</div>
+
+	<div id="three"
+		style="word-break: break-all; width:1000px; margin: 0 auto;">
 
 
 
 		<table>
-			<tr>
-				<td>合購編號</td>
-				<td>團名</td>
-				<td>簡介</td>
-				<td>付款方式</td>
+			<tr style="text-align: center;">
+
+				<th style="width: 150px;" class="td1">團名</th>
+				<th style="width: 200px;" class="td1">簡介</th>
+				<th style="width: 100px;" class="td1">付款方式</th>
 
 			</tr>
 
 
-			<c:forEach var="mygroups" items="${mygroups}">
-				<tr>
-					<td>${mygroups.id}</td>
-					<td>${mygroups.name}</td>
-					<td>${mygroups.detail}</td>
+			<c:forEach var="mygroups" items="${mygroups}" varStatus="i">
+				<tr
+					<c:if test="${i.index%2==0}">style="background-color:#C9FFC9"</c:if>
+					<c:if test="${i.index%2==1}">style="background-color:#D6D6FF"</c:if>>
+
+					<td><a href="<c:url value='group?gid=${mygroups.id}' />">${mygroups.name}</a></td>
+					<td style="">${mygroups.detail}</td>
 					<c:if test="${group.payment ==1}">
-						<td >面交付款</td>
+						<td>面交付款</td>
 					</c:if>
 					<c:if test="${group.payment ==2}">
-						<td >面交付款</td>
+						<td>面交付款</td>
 					</c:if>
 					<c:if test="${group.payment ==3}">
-						<td >面交付款、銀行匯款</td>
+						<td>面交付款、銀行匯款</td>
 					</c:if>
-
-
-
 				</tr>
+
 			</c:forEach>
 
 		</table>
@@ -541,8 +587,8 @@ function reportTarger(myObj) {
 
 
 	</div>
-	
-	
+
+
 
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 

@@ -551,7 +551,7 @@ public class GroupsController {
 		GroupsBean gb = service.getGroupById(gid);
 		Integer mId = gb.getMemberBean().getId();
 		
-		List<comment_member> comment = service.getAllCommentByMember(mId);
+		List<comment_member> comment = service.getAllCommentByTarget(mId);
 		List<GroupsBean> mygroups = service.getAllGroupsByMember(mId);
 		
 		model.addAttribute("group", gb); // 取團的資料
@@ -628,7 +628,8 @@ public class GroupsController {
 	public String updatetogroups(@RequestParam("name") String name, @RequestParam("end_time") String end_time,
 			@RequestParam("detail") String detail, @RequestParam("payment") String payment,
 			@RequestParam("id") Integer id,@RequestParam("categoryBean") Integer category_id,
-			@ModelAttribute("upgroupsBean") GroupsBean gb,BindingResult result, HttpServletRequest request) {
+			@ModelAttribute("upgroupsBean") GroupsBean gb,BindingResult result, HttpServletRequest request,
+			@RequestParam("banknumber") Integer banknumber) {
 			
 		if (gb.getProductImage() != null) {
 			MultipartFile productImage = gb.getProductImage();
@@ -654,6 +655,7 @@ public class GroupsController {
 			}
 		}
 		gb.setId(id);
+		gb.setBanknumber(banknumber);
 //		gb.setName(name);
 //		gb.setEnd_time(end_time);
 //		gb.setDetail(detail);

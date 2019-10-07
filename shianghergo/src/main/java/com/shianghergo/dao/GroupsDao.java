@@ -45,6 +45,6 @@ public interface GroupsDao {
 
 	List<GroupsBean> getGroupsByCategory_id(Integer category_id);
 
-	List<comment_member> getAllCommentByMember(Integer member_id);
+	List<comment_member> getAllCommentByTarget(Integer member_id);
 	
 }

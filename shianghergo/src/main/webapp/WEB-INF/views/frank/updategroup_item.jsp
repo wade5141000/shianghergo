@@ -16,7 +16,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp" />
-	<jsp:include page="../BlackLine.jsp" />
+	
 	<h3>團資料編輯</h3>
 	<br />
 	<br />
@@ -81,4 +81,5 @@
 		</div>
 	</div>
 </body>
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </html>
