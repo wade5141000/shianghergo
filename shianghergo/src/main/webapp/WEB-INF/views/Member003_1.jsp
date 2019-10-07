@@ -36,7 +36,7 @@ thead {
 <div style="padding-left: 290px;padding-right: 30px;">
 	<table class="table table-hover">
 		<tr id='borderA'  >
-			<th id='borderA' colspan="4">由${loginOK.name}建立合購團明細</th>
+			<th id='borderA' colspan="4"><img  src="<c:url value='/images/c02.png' />" alt="..." >&nbsp;由${loginOK.name}建立合購團明細</th>
 		</tr>
 		<tr id='borderA'  >
 			<th scope="col" id='borderA'>合購團編</th>

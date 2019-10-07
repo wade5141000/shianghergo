@@ -54,28 +54,28 @@ li {
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/Member002"
-				style="color: #ff8000; font-family: 微軟正黑體;">我購買的商品</a></li>
+				style="color: #ff8000; font-family: 微軟正黑體;"><img  src="<c:url value='/images/line01.png' />" alt="..." >&nbsp;我購買的商品</a></li>
 			<li
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/Member003"
-				style="color: #ff8000; font-family: 微軟正黑體;"> 我建立的合購</a></li>
+				style="color: #ff8000; font-family: 微軟正黑體;"><img  src="<c:url value='/images/line01.png' />" alt="..." >&nbsp;我建立的合購</a></li>
 			<li
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/Member004"
-				style="color: #ff8000; font-family: 微軟正黑體;"> 我參與的合購</a></li>
+				style="color: #ff8000; font-family: 微軟正黑體;"><img  src="<c:url value='/images/line01.png' />" alt="..." >&nbsp;我參與的合購</a></li>
 			<li
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/getMyMessage"
-				style="color: #ff8000; font-family: 微軟正黑體;"> 我的留言板</a></li>
+				style="color: #ff8000; font-family: 微軟正黑體;"><img  src="<c:url value='/images/line02.png' />" alt="..." >&nbsp;我的留言板</a></li>
 
 			<li
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/MyMessage"
-				style="color: #ff8000; font-family: 微軟正黑體;"> 寄件備份</a></li>
+				style="color: #ff8000; font-family: 微軟正黑體;"><img  src="<c:url value='/images/line02.png' />" alt="..." >&nbsp;寄件備份</a></li>
 			<!-- 			<li -->
 			<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
 			<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
@@ -88,7 +88,7 @@ li {
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/hao/buildStore"
-				style="color: #ff8000; font-family: 微軟正黑體;"> 我的商店</a></li>
+				style="color: #ff8000; font-family: 微軟正黑體;"><img  src="<c:url value='/images/line03.png' />" alt="..." >&nbsp; 我的商店</a></li>
 <!-- 			<li -->
 <!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
 <!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
@@ -98,17 +98,17 @@ li {
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/hao/myProducts"
-				style="color: #ff8000; font-family: 微軟正黑體;">我的商品列表</a></li>
+				style="color: #ff8000; font-family: 微軟正黑體;"><img  src="<c:url value='/images/line03.png' />" alt="..." >&nbsp;我的商品列表</a></li>
 			<li
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/getMynotification"
-				style="color: #ff8000; font-family: 微軟正黑體;">站內通知信</a></li>
+				style="color: #ff8000; font-family: 微軟正黑體;"><img  src="<c:url value='/images/line04.png' />" alt="..." >&nbsp;站內通知信</a></li>
 			<li
 				class="list-group-item list-group-item-action list-group-item-info"
 				style="background-color: #ffffdf; border-style: dashed;"><a
 				href="${pageContext.request.contextPath}/logout"
-				style="color: #ff8000; font-family: 微軟正黑體;"> 登出</a></li>
+				style="color: #ff8000; font-family: 微軟正黑體;"><img  src="<c:url value='/images/line05.png' />" alt="..." >&nbsp; 登出</a></li>
 			<!-- 			<li -->
 			<!-- 				class="list-group-item list-group-item-action list-group-item-info" -->
 			<!-- 				style="background-color: #ffffdf; border-style: dashed;"><a -->
