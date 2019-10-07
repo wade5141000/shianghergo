@@ -19,7 +19,7 @@ body {
 
 
 <jsp:include page="/WEB-INF/views/eric/header.jsp" />
-<jsp:include page="../BlackLine.jsp" />
+
 	<h3>團資料編輯</h3>
 	<div class="container">	
 	<div class="border border-success"style="padding-left: 300px;padding-right: 300px;">
@@ -58,4 +58,5 @@ body {
 	</div>
 	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
+	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 </html>

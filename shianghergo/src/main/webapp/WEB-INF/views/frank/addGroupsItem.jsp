@@ -59,4 +59,5 @@ body {
 </div>
 <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
+<jsp:include page="/WEB-INF/views/eric/foot.jsp"></jsp:include>
 </html>

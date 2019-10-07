@@ -118,17 +118,17 @@ body {
 							<c:forEach var="group" items="${groups}">	
 							<c:if test="${group.memberBean.status==1}">						
 								<div class="item" style="height: 400px;">
-									<div class="img">
+<!-- 									<div class="img"> -->
 										<a href="<spring:url value='group?gid=${group.id}'/>"> <img
 											width='275' height='250'
 											src="<c:url value='/frank/getgroupPicture/${group.id }' />">
-										</a>
-									</div>
-									<div class="text">
-										<p class="title">${group.name}</p>
+										
+<!-- 									</div> -->
+<!-- 									<div class="text"> -->
+										<p >${group.name}</p>
 										<p>團主: ${group.memberBean.account}</p>
 										<p>截止日期: ${group.end_time}</p>
-									</div>
+<!-- 									</div> --></a>
 								</div>
 								</c:if>
 							</c:forEach>

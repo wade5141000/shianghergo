@@ -11,6 +11,7 @@ function changeGroupAmount(id,types){
 					$("#gtotal").text(list[0]);
 					$("#"+list[2]).html(list[1]);
 					$("#"+id+"a").text(list[3]);
+					
 				},
 			})
 		}

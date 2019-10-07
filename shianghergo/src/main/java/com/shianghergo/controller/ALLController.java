@@ -26,6 +26,7 @@ import com.shianghergo.model.comment_store;
 import com.shianghergo.service.GBDBService;
 import com.shianghergo.service.GroupsService;
 import com.shianghergo.service.MemberService;
+import com.shianghergo.service.ProductService;
 
 @Controller
 @SessionAttributes(value = "id") // member_id 放在session域讓類中方法都能使用
@@ -39,7 +40,9 @@ public class ALLController {
 	
 	@Autowired
 	MemberService mservice;
-
+	
+	@Autowired
+	ProductService pservice;
 //------------登入------------------------------------	
 
 	// 轉管理員登入頁面
@@ -470,7 +473,7 @@ public class ALLController {
 		// ---------------------------------------
 
 		
-		List<comment_member> comment = gservice.getAllCommentByMember(mId);
+		List<comment_member> comment = gservice.getAllCommentByTarget(mId);
 		List<GroupsBean> mygroups = gservice.getAllGroupsByMember(mId);
 //		
 		model.addAttribute("group", gb); // 取團的資料
@@ -519,7 +522,7 @@ public class ALLController {
 		model.addAttribute("list", list);
 		
 		
-		List<comment_member> comment = gservice.getAllCommentByMember(mId);
+		List<comment_member> comment = gservice.getAllCommentByTarget(mId);
 		List<GroupsBean> mygroups = gservice.getAllGroupsByMember(mId);
 //		
 		model.addAttribute("group", gb); // 取團的資料
@@ -645,14 +648,27 @@ public class ALLController {
 	}
 
 	@RequestMapping("/hao/evaluationitem")
-	public String evaluationitem3(comment_item ci, Model model) {
-
+	public String evaluationitem3(HttpServletRequest request, comment_item ci, Model model) {
+		MemberBean mb = (MemberBean)request.getSession().getAttribute("loginOK");
+		if (mb == null) {
+			return "redirect:../login";
+		}
+		ci.setMember_id(mb.getId());
+		ci.setMemberBean(mb);
 		service.savecomment_Item(ci);
 
-		List<ItemBean> list = service.getAllItem();
 
-		model.addAttribute("item", list);
+		model.addAttribute("product", pservice.getProductById(ci.getItem_id()));
+
+		model.addAttribute("comment", service.getComment_item(ci.getItem_id()));
+//		List<ItemBean> list = service.getAllItem();
+//
+//		model.addAttribute("item", list);
+
 		Integer pd = ci.getItem_id();
+		
+		
+		
 		return "redirect:/hao/product?id=" + pd;
 
 	}

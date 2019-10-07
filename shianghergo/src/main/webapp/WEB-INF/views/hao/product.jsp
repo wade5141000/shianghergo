@@ -16,8 +16,15 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<style>
+.s1 {
+	width: 35px;
+}
+</style>
+
 <script>
-	let flag = true;
+	
+	let flag = null;
 
 	document.addEventListener("DOMContentLoaded", function() {
 
@@ -41,9 +48,10 @@
 		flag = true;
 
 		if (flag == true) {
-			for (let i = 0; i < n; i++) {
+			
+			for (let i=1; i<= n; i++) {
 
-				document.images[i - 1 + 3].src = '${pageContext.request.contextPath}/resources/images/chngstar.gif'
+				document.getElementById("star"+i).src ='${pageContext.request.contextPath}/resources/images/chngstar.gif'
 
 			}
 
@@ -52,34 +60,42 @@
 	}
 	function mouseOut() {
 
-		if (flag) {
+		let n = this.id.charAt(4);
+		
+		if (flag == true) {
 
-			for (let i = 0; i < 5; i++) {
-
-				document.images[i - 1 + 3].src = "${pageContext.request.contextPath}/resources/images/star.gif"
-
+			for (let i=1; i<=n ; i++) {
+				
+				document.getElementById("star"+i).src ="${pageContext.request.contextPath}/resources/images/star.gif"
 			}
 		}
 	}
 
 	function Click() {
 
-		flag = false;
-
 		let n = this.id.charAt(4);
+		
+		flag = false
+		
+		
+		if(flag == false){
+		
+		for (let i = 1; i <= n; i++) {
 
-		for (let i = 0; i < n; i++) {
-
-			document.images[i - 1 + 3].src = "${pageContext.request.contextPath}/resources/images/chngstar.gif"
-			document.getElementById("str").innerHTML = "給" + (i + 1) + "星";
-			document.getElementById("score").value = i + 1;
+			document.getElementById("star"+i).src ="${pageContext.request.contextPath}/resources/images/chngstar.gif"
+			
+			document.getElementById("str").innerHTML = "是否要給" + i+ "分";
+			document.getElementById("score").value = i;
+		    
+			
 		}
 
-	}
+		}
+	
 
 	function targer(myObj) {
 
-		document.getElementById("item_id").value = myObj.value;
+//		document.getElementById("item_id").value = myObj.value;
 	}
 	
 	
@@ -206,7 +222,7 @@ body {
 						<!--使用者會員ID -->
 						<input type=hidden value="${loginOK.id}" name="member_id">
 						<!--被評價的商家ID -->
-						<input type=hidden value="1" name="item_id" id="item_id">
+						<input type=hidden value="${product.id }" name="item_id" id="item_id">
 						<!--取的被選中的星星 -->
 						<input type=hidden value="1" name="score" id="score">
 

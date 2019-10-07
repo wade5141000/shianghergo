@@ -24,6 +24,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name="item")
 public class ItemBean implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	private Double score;
+	
+	
 	private Integer 	id ;
 	private String  	name;
 	private Integer  	category_id;
@@ -52,6 +56,17 @@ public class ItemBean implements Serializable {
 
 	public void setCategoryBean(CategoryBean categoryBean) {
 		this.categoryBean = categoryBean;
+	}
+
+	
+	
+	@Transient
+	public Double getScore() {
+		return score;
+	}
+
+	public void setScore(Double score) {
+		this.score = score;
 	}
 
 	@XmlTransient

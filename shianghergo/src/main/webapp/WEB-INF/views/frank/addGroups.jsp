@@ -52,9 +52,9 @@ body {
 		<div class="progress-bar bg-success" role="progressbar"
 			style="width: 50%" aria-valuenow="33" aria-valuemin="0"
 			aria-valuemax="100">第一步</div>
-			<div class="progress-bar bg-success" role="progressbar"
-			style="width: 100%;background-color:pink;" aria-valuenow="33" aria-valuemin="0"
-			aria-valuemax="100">第二步</div>
+<!-- 			<div class="progress-bar bg-success" role="progressbar" -->
+<!-- 			style="width: 100%;background-color:pink;" aria-valuenow="33" aria-valuemin="0" -->
+<!-- 			aria-valuemax="100">第二步</div> -->
 	</div>
 	
 	
