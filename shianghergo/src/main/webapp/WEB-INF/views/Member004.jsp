@@ -30,6 +30,11 @@
 thead {
 	background-color: lightblue;
 }
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('images/bbg06.png') center center fixed ;　
+}
 </style>
 </head>
 <body>
@@ -89,6 +94,7 @@ thead {
 		</div>
 	</div>
 	<jsp:include page="eric/foot.jsp" />
+	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>
 

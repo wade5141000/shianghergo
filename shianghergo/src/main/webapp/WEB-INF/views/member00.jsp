@@ -16,6 +16,11 @@
 	max-width: 1140px;
 	/*   // 隨螢幕尺寸而變，當螢幕尺寸 ≥ 1200px 時是 1140px。 */
 }
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('images/bbg06.png') center center fixed ;　
+}
 </style>
 </head>
 <body>
@@ -72,6 +77,7 @@
 	</div>
 	</div>
 	<jsp:include page="eric/foot.jsp" />
+	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </body>
 </html>

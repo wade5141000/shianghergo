@@ -7,7 +7,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<style>
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('../images/bbg06.png') center center fixed ;　
+}
+</style>
 <script>
 // function getLatLong() {
 // 	var apiKey = "AIzaSyDOg4gokNHM20oe8VUQN_O5HRQ9Nw6w3Yg";
@@ -84,6 +90,6 @@
 	</form:form>
 	</div>
 	</div>
-
+<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>

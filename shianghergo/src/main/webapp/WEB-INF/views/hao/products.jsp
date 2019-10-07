@@ -88,6 +88,14 @@
 		})
 	}
 </script>
+<style>
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('../images/bbg06.png') center center fixed ;　
+}
+
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
@@ -97,8 +105,8 @@
 			<div class="commod-cont w1200 layui-clear">
 				<div class="left-nav">
 					<div class="list-box" style="background-color: #FFE5B5">
-						<dl style="background-color: #FFE5B5">
-							<dd style="background-color: #FFB01C;text-align:center">
+						<dl >
+							<dd style="text-align:center">
 								所有分類
 							</dd>
 							<dd>
@@ -207,5 +215,6 @@
 <%-- 		</c:forEach> --%>
 <!-- 	</section> -->
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
+	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>
