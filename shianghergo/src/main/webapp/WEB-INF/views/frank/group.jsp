@@ -49,7 +49,7 @@
 .f5 {
 	text-align: center;
 	width: 1000px;
-	background-color: yellow;
+
 	margin: 0 auto;
 }
 
@@ -63,6 +63,17 @@
 
 .btn btn-outline-success {
 	color: yellow;
+}
+
+#main-table {
+	table-layout: fixed;
+	width: 100%;
+}
+
+#main-table td {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 </style>
 <script>
@@ -229,23 +240,23 @@ function reportTarger(myObj) {
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
-	
-<!-- wade 檢舉和評價開始  -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+	<!-- wade 檢舉和評價開始  -->
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel"
-						style="margin-left: 180px;color: blue;" >檢舉會員</h5>
+						style="margin-left: 180px; color: blue;">檢舉會員</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-				
+
 					<form action="/shianghergo/frank/SaveRM" method="POST">
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">檢舉類別:</label>
@@ -256,8 +267,8 @@ function reportTarger(myObj) {
 							</select>
 						</div>
 
-						<input type=hidden value="${loginOK.id}" name="member_id"> 
-						<input type=hidden value="1"  id="target" name="target">
+						<input type=hidden value="${loginOK.id}" name="member_id">
+						<input type=hidden value="1" id="target" name="target">
 						<div class="form-group">
 							<label for="message-text" class="col-form-label">檢舉內容:</label>
 							<textarea class="form-control" id="message-text" name="contents"></textarea>
@@ -273,16 +284,16 @@ function reportTarger(myObj) {
 			</div>
 		</div>
 	</div>
-	
-<!-- 	評價功能   -->
 
-<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+	<!-- 	評價功能   -->
+
+	<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel"
-	                     style="margin-left: 180px;color: blue;" >評價會員</h5>
+						style="margin-left: 180px; color: blue;">評價會員</h5>
 					<div class="form-group" style="text-align: center;">
 						<label for="recipient-name" class="col-form-label"></label>
 					</div>
@@ -296,8 +307,7 @@ function reportTarger(myObj) {
 
 					<form action="/shianghergo/frank/evaluationMember" method="POST">
 						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">評分:
-							</label> <img
+							<label for="recipient-name" class="col-form-label">評分: </label> <img
 								src="${pageContext.request.contextPath}/resources/images/star.gif"
 								id="star1" class="s1"> <img
 								src="${pageContext.request.contextPath}/resources/images/star.gif"
@@ -314,7 +324,7 @@ function reportTarger(myObj) {
 							<span class="c1" id="str"></span>
 						</div>
 
-					
+
 						<!--使用者會員ID -->
 						<input type=hidden value="${loginOK.id}" name="member_id">
 						<!--被評價的會員ID -->
@@ -339,10 +349,10 @@ function reportTarger(myObj) {
 	</div>
 
 
-	
+
 	<!-- wade 檢舉和評價結束  -->
-	
-	
+
+
 
 	<div class="f5">
 		<H1>${group.name}</H1>
@@ -356,19 +366,18 @@ function reportTarger(myObj) {
 				<td colspan="2"><img width='100px' height='100px'
 					style="display: block; margin: auto;"
 					src="<c:url value='/getmemberPicture/${group.memberBean.id }' />" />${group.memberBean.name}
-					
-					
+
+
 					<button class="btn btn-primary" onclick="reportTarger(this)"
-					data-toggle="modal" data-target="#exampleModal" value="${group.id}">☠檢舉</button>
+						data-toggle="modal" data-target="#exampleModal"
+						value="${group.id}">☠檢舉</button>
 					<button class="btn btn-primary" onclick="scoreTarger(this)"
-					data-toggle="modal" data-target="#exampleModal1"
-					value="${group.id}">📜評價</button>
-				
-					
-					
-<!-- 					<a class="btn btn-primary" href="" role="button">☠檢舉</a> -->
-<!-- 					<a class="btn btn-primary" href="" role="button">📜評價</a> -->
-					<a class="btn btn-primary" href="${pageContext.request.contextPath}/sendMemberMessage?target=${group.memberBean.id}" role="button">📩留言給我</a></td>
+						data-toggle="modal" data-target="#exampleModal1"
+						value="${group.id}">📜評價</button> <!-- 					<a class="btn btn-primary" href="" role="button">☠檢舉</a> -->
+					<!-- 					<a class="btn btn-primary" href="" role="button">📜評價</a> -->
+					<a class="btn btn-primary"
+					href="${pageContext.request.contextPath}/sendMemberMessage?target=${group.memberBean.id}"
+					role="button">📩留言給我</a></td>
 
 			</tr>
 
@@ -412,24 +421,24 @@ function reportTarger(myObj) {
 		</table>
 	</div>
 	<div style="margin: 0 auto; text-align: center;">
-				<div class="btn-group" role="group" aria-label="Basic example"
-					style="width: 1000px">
-					<button type="button" class="btn btn-outline-success" id="111">商品與說明</button>
-					<button type="button" class="btn btn-outline-success" id="222">團主的評價</button>
-					<button type="button" class="btn btn-outline-success" id="333">團主的其他合購</button>
+		<div class="btn-group" role="group" aria-label="Basic example"
+			style="width: 1000px">
+			<button type="button" class="btn btn-outline-success" id="111">商品與說明</button>
+			<button type="button" class="btn btn-outline-success" id="222">團主的評價</button>
+			<button type="button" class="btn btn-outline-success" id="333">團主的其他合購</button>
 
 
-				</div>
-	
+		</div>
+
 
 	</div>
 
-	
+
 	<div id="one">
-	<div
-		style="width: 1000px; margin: 0 auto; background-color: #FFE8BF; text-align: center;">
-		<h2>團購說明</h2>
-	</div>
+		<div
+			style="width: 1000px; margin: 0 auto; background-color: #FFE8BF; text-align: center;">
+			<h2>團購說明</h2>
+		</div>
 		<div style="word-break: break-all; width: 800px; margin: 0 auto;">
 			<img width='750' height='450'
 				src="<c:url value='/frank/getgroupPicture/${group.id }' />"> <br>
@@ -509,7 +518,8 @@ function reportTarger(myObj) {
 				<!-- 				</div > -->
 				<div style="float: left;">
 					<p>
-						會員：${commentmb.memberBean.name}(${commentmb.memberBean.account})&nbsp;&nbsp;&nbsp;&nbsp; <img
+						會員：${commentmb.memberBean.name}(${commentmb.memberBean.account})&nbsp;&nbsp;&nbsp;&nbsp;
+						<img
 							src="<c:url value='/resources/images/star_${commentmb.score }.gif' />">
 					</p>
 				</div>
@@ -529,16 +539,16 @@ function reportTarger(myObj) {
 	</div>
 
 	<div id="three"
-		style="word-break: break-all; width:1000px; margin: 0 auto;">
+		style="word-break: break-all; width: 1000px; margin: 0 auto;">
 
 
 
-		<table>
+		<table id="main-table">
 			<tr style="text-align: center;">
 
-				<th style="width: 150px;" class="td1">團名</th>
-				<th style="width: 200px;" class="td1">簡介</th>
-				<th style="width: 100px;" class="td1">付款方式</th>
+				<th style="width: 300px;" class="td1">團名</th>
+				<th style="width: 400px;" class="td1">簡介</th>
+				<th style="width: 300px;" class="td1">付款方式</th>
 
 			</tr>
 
@@ -548,16 +558,16 @@ function reportTarger(myObj) {
 					<c:if test="${i.index%2==0}">style="background-color:#C9FFC9"</c:if>
 					<c:if test="${i.index%2==1}">style="background-color:#D6D6FF"</c:if>>
 
-					<td><a href="<c:url value='group?gid=${mygroups.id}' />">${mygroups.name}</a></td>
-					<td style="">${mygroups.detail}</td>
+					<td style="text-align: center;"><a href="<c:url value='group?gid=${mygroups.id}' />">${mygroups.name}</a></td>
+					<td>${mygroups.detail}</td>
 					<c:if test="${group.payment ==1}">
-						<td>面交付款</td>
+						<td style="text-align: center;">面交付款</td>
 					</c:if>
 					<c:if test="${group.payment ==2}">
-						<td>面交付款</td>
+						<td style="text-align: center;">面交付款</td>
 					</c:if>
 					<c:if test="${group.payment ==3}">
-						<td>面交付款、銀行匯款</td>
+						<td style="text-align: center;">面交付款、銀行匯款</td>
 					</c:if>
 				</tr>
 
