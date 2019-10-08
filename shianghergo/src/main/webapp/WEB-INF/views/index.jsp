@@ -56,56 +56,6 @@ body {
 
 <body>
 	<jsp:include page="/WEB-INF/views/eric/header.jsp"></jsp:include>
-	<!-- id="list-cont" -->
-	<!--   <div class="site-nav-bg"> -->
-	<!--     <div class="site-nav w1200"> -->
-	<!--       <p class="sn-back-home"> -->
-	<!--         <i class="layui-icon layui-icon-home"></i> -->
-	<!--         <a href="index">首頁</a> -->
-	<!--       </p> -->
-	<!--       <div class="sn-quick-menu"> -->
-	<!--       	<div class="login"><a href="fortest">測試</a></div> -->
-	<!--       	<div class="login"><a href="productfile.s">訂購單</a></div> -->
-	<!--       	<div class="login"><a href="wade/showmap">google map</a></div> -->
-	<!--       	<div class="login"><a href="oldindex">舊index</a></div> -->
-	<!--       	<div class="login"><a href="goRegisterPage">註冊</a></div> -->
-	<!--         <div class="login"><a href="login">登入</a></div> -->
-	<!--         <div class="sp-cart"><a href="cart">購物車</a><span>2</span></div> -->
-	<!--       </div> -->
-	<!--     </div> -->
-	<!--   </div> -->
-	<!--   <div class="header"> -->
-	<!--     <div class="headerLayout w1200"> -->
-	<!--       <div class="headerCon"> -->
-	<!--         <h1 class="mallLogo"> -->
-	<!--           <a href="index"> -->
-	<%--             <img src="${pageContext.request.contextPath}/res/static/img/logo4.png" width="100" height="100"> --%>
-	<!--           </a> -->
-	<!--         </h1> -->
-	<!--         <div class="mallSearch"> -->
-	<%--         <form action='<c:url value="/Search.controller" />' method="get"  class="layui-form" novalidate> --%>
-	<%--             <input type="text" name="title" value="${param.title}" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="請輸入需要的商品" > --%>
-	<!--             <button class="layui-btn" lay-submit lay-filter="formDemo" type="submit"> -->
-	<!--                 <i class="layui-icon layui-icon-search"></i> -->
-	<!--             </button> -->
-	<!--             <input type="submit" name="" value=""> -->
-	<!--           </form> -->
-	<!--         </div> -->
-	<!--       </div> -->
-	<!--     </div> -->
-	<!--   </div> -->
-	<!--     <div class="main-nav"> -->
-	<!--       <div class="inner-cont0"> -->
-	<!--         <div class="inner-cont1 w1200"> -->
-	<!--           <div class="inner-cont2"> -->
-	<!--             <a href="hao/products" class="active">所有商品</a> -->
-	<!--             <a href="frank/groups">我要團購</a> -->
-	<!--             <a href="frank/Groups1">我要開團</a> -->
-	<!--             <a href="hao/stores">商家瀏覽(暫)</a> -->
-	<!--           </div> -->
-	<!--         </div> -->
-	<!--       </div> -->
-	<!--     </div> -->
 	<div id="carouselExampleIndicators" class="carousel slide"
 		data-ride="carousel" style="width: 1500px; text-align: center; margin: 0 auto">
 		<ol class="carousel-indicators">
@@ -169,7 +119,7 @@ body {
 						<div class="card-body text-center">
 							<!-- Category & Title -->
 							<h5>
-								<strong> <a href="" class="dark-grey-text">${product.name }
+								<strong> <a href="http://localhost:8080/shianghergo/hao/product?id=${product.id}" class="dark-grey-text">${product.name }
 										<span class="badge badge-pill danger-color" style="color: red">HOT</span>
 								</a>
 								</strong>
@@ -194,17 +144,16 @@ body {
 		<!-- Section description -->
 		<div class="row">
 			<c:forEach var='group' items='${bbb}' begin="1" end="4">
-
-				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4" style="word-break: break-all;">
+				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4" style="word-break: break-all ;">
 					<!-- Card -->
-					<div class="card align-items-center">
+					<div class="card align-items-center" >
 
 						<!-- Card image -->
 						<div class="view overlay">
 							<a
-								href="http://localhost:8080/shianghergo/frank/product?id= ${group.memberBean.id}"><img
-								src="<c:url value='/frank/getPicture/ ${group.memberBean.id}' />"
-								class="card-img-top" alt=""></a> <a>
+								href="http://localhost:8080/shianghergo/frank/group?gid=${group.id}"><img
+								src="<c:url value='/frank/getgroupPicture/${group.id}' />"
+								class="card-img-top" alt="" width='280px' height='280px'></a> <a>
 								<div class="mask rgba-white-slight"></div>
 							</a>
 						</div> 
@@ -213,14 +162,14 @@ body {
 						<div class="card-body text-center">
 							<!-- Category & Title -->
 							<h5>
-								<strong> <a href="" class="dark-grey-text">
+								<strong> <a href="http://localhost:8080/shianghergo/frank/group?gid=${group.id}" class="dark-grey-text">
 										${group.memberBean.name} <span
 										class="badge badge-pill danger-color" style="color: red">HOT</span>
 								</a>
 								</strong>
 							</h5>
 							<h4 class="font-weight-bold blue-text">
-								<strong class="st1">${group.detail}</strong>
+								<div>${group.detail}</div>
 							</h4>
 						</div>
 						<!-- Card content -->
