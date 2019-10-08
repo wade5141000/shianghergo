@@ -57,7 +57,7 @@ var y = x+1;
 </script>
 <!-- 這段勿刪 wade -->
 <body>
-	<h2>header11:${header11} login:${loginOK.name}</h2>
+<%-- 	<h2>header11:${header11} login:${loginOK.name}</h2> --%>
 	<ul class="nav justify-content-end"
 		style="height: 50px; background-color: #ffa042;">
 

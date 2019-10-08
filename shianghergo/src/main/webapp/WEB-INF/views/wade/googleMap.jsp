@@ -154,10 +154,11 @@ body {
 		function initMap() {
 			map = new google.maps.Map(document.getElementById('map'), {
 				center : {
-					lat: 25.033483,
-				    lng: 121.543499
+					lat: 25.053189,
+				    lng: 121.540471
+				    
 				},
-				zoom : 17
+				zoom : 13
 			});
 			
 			<c:forEach var="place" items="${items}" varStatus="i">
@@ -208,7 +209,6 @@ body {
 </head>
 <body >
 <jsp:include page="/WEB-INF/views/eric/header.jsp" ></jsp:include>
-<jsp:include page="/WEB-INF/views/wade/hotsell.jsp" ></jsp:include>
 	<div id="groupList">
 	
 		<div class="list-group">

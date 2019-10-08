@@ -40,7 +40,7 @@ body {
 	
 		<div class="card-body"style="font-family: 微軟正黑體;">
 			<h1 class="card-title"><img  src="<c:url value='/images/t02.jpg' />" alt="..." >&nbsp;商店名稱:${store.name}</h1>
-			<p class="card-text">${store.detail}</p>
+			<p class="text-justify">${store.detail}</p>
 			<a href="${pageContext.request.contextPath}/hao/products/add" class="btn btn-primary">新增商品</a>
 		</div>
 	</div>
@@ -85,7 +85,7 @@ body {
 				<c:if test="${(status.index+1) % 5 != 0}">
 					<c:forEach var='abc' items='${products}' varStatus="i">
 						<c:if test="${i.index < -(((status.index+1)%5) -5)}">
-							<div class="card" style="border: 1px solid white"></div>
+							<div class="card" style="border: 1px solid white;background-color: transparent;"></div>
 						</c:if>
 					</c:forEach>
 				</c:if>
