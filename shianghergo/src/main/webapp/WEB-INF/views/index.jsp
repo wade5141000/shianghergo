@@ -147,7 +147,7 @@ body {
 	<div style="width: 1500px; text-align: center; margin: 0 auto">
 	<section class="text-center my-5">
 		<!-- Section heading -->
-		<h2 class="h1-responsive font-weight-bold text-center my-5">十月熱銷</h2>
+		<h2 class="h1-responsive font-weight-bold text-center my-5">十月熱銷商品</h2>
 		<!-- Section description -->
 		<div class="row">
 			<c:forEach var='product' items='${aaa}' begin="1" end="4">
@@ -190,7 +190,7 @@ body {
 
 
 		<!-- Section heading -->
-		<h2 class="h1-responsive font-weight-bold text-center my-5">十月優質商家</h2>
+		<h2 class="h1-responsive font-weight-bold text-center my-5">超人氣優質團購</h2>
 		<!-- Section description -->
 		<div class="row">
 			<c:forEach var='group' items='${bbb}' begin="1" end="4">
