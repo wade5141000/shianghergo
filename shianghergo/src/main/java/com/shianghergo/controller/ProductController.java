@@ -204,7 +204,7 @@ public class ProductController {
 
 		model.addAttribute("products", list);
 		model.addAttribute("store", stservice.getStoreByMember_Id(mb.getId()));
-							
+		model.addAttribute("leng",list.size());
 		return "hao/myProducts";
 	}}
 

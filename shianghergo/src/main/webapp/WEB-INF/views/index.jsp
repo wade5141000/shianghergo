@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="images/logo4.ico"/>
+
 <meta charset="UTF-8">
 <title>饗合購</title>
 <!--     <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
@@ -169,7 +171,7 @@ body {
 								</strong>
 							</h5>
 							<h4 class="font-weight-bold blue-text">
-								<div>${group.detail}</div>
+								<div>${group.name}</div>
 							</h4>
 						</div>
 						<!-- Card content -->

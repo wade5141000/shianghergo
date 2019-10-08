@@ -66,7 +66,19 @@ public class MessageController {
 	
 	@RequestMapping("/MyMessage")//寄件備份
 	public String getMessage(MessageBean MesgB,Model model,@ModelAttribute("loginOK")MemberBean mb) {
-		model.addAttribute("MyMessage", service.MyMessage(mb.getId()));//根據memberid
+		List<MessageBean> list = service.MyMessage(mb.getId());
+		
+		
+		for(MessageBean msb : list) {
+			Integer tarid = msb.getTarget();
+			MemberBean mb2 = service.getMemberById(tarid);
+			msb.setTargetBean(mb2);
+		}
+		
+		model.addAttribute("MyMessage", list);//根據memberid
+		
+		
+		
 //		model.addAttribute("mym",service.getMemberById(MesgB.getMemberBean().getId()));
 //		System.out.println(":"+list);
 		return "MyMessage";

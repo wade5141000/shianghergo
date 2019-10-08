@@ -388,6 +388,15 @@ public class MemberDaoImpl implements MemberDao {
 			return mb;
 		}
 
+		@SuppressWarnings("unchecked")
+		@Override
+		public List<MessageBean> getMessageByTarget(Integer target) {
+			Session session = factory.getCurrentSession();
+			String hql = "from MessageBean where target=:tar";
+			List<MessageBean> list = session.createQuery(hql).setParameter("tar", target).getResultList();
+			return list;
+		}
+
 		
 	
 //		@Override

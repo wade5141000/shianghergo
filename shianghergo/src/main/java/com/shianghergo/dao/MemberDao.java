@@ -85,5 +85,7 @@ public interface MemberDao {
 
 	//用狀態碼查詢正常/停權會員 10/03 
 	List<MemberBean> getMemberUSEStatus(Integer status);
+	
+	List<MessageBean> getMessageByTarget(Integer target);
 
 }

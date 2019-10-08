@@ -75,7 +75,7 @@
 				<div class="col-md-9 col-sm-12" style="height: 270px">
 
 					<div class="col-md-3 col-sm-6 col-6 p-0 float-left mb-3">
-						<h5 class="mb-4 font-weight-bold text-uppercase">關於我們</h5>
+						<h5 class="mb-4 font-weight-bold text-uppercase">工作夥伴</h5>
 						<ul class="list-group">
 							<li class="list-group-item bg-transparent border-0 p-0 mb-2"><a
 								href="">Sales</a></li>

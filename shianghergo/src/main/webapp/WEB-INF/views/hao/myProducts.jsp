@@ -49,6 +49,8 @@ body {
 	<br>
 	<!-- -------------------------- -->
 	<div style="padding-left: 290px; padding-right: 30px;">
+	<c:choose>
+	<c:when test="${leng < 5}">
 		<div class="card-deck">
 			<c:forEach var='product' items='${products}' varStatus="status">
 				<div class="card">
@@ -76,10 +78,63 @@ body {
 						</form>
 					</div>
 				</div>
-				<c:if test="${(status.count % 5) == 0}">
-		</div>
-		<div class="card-deck">
-			</c:if>
+				
+<%-- 				<c:choose> --%>
+<%-- 					  <c:when test="${leng < 5}"> --%>
+					  	</c:forEach>
+					  	<c:if test="${leng == 1}">
+					  		<div class="card" style="border: 1px solid white;background-color: transparent;"></div>
+					  		<div class="card" style="border: 1px solid white;background-color: transparent;"></div>
+					  		<div class="card" style="border: 1px solid white;background-color: transparent;"></div>
+					  		<div class="card" style="border: 1px solid white;background-color: transparent;"></div>
+					  	</c:if>
+					  	<c:if test="${leng == 2}">
+					  		<div class="card" style="border: 1px solid white;background-color: transparent;"></div>
+					  		<div class="card" style="border: 1px solid white;background-color: transparent;"></div>
+					  		<div class="card" style="border: 1px solid white;background-color: transparent;"></div>
+					  	</c:if>
+					  	<c:if test="${leng == 3}">
+					  		<div class="card" style="border: 1px solid white;background-color: transparent;"></div>
+					  		<div class="card" style="border: 1px solid white;background-color: transparent;"></div>
+					  	</c:if>
+					  	<c:if test="${leng == 4}">
+					  		<div class="card" style="border: 1px solid white;background-color: transparent;"></div>
+					  	</c:if>
+					    </div>
+					  </c:when>
+		<c:otherwise>
+					  
+					<div class="card-deck">
+				<c:forEach var='product' items='${products}' varStatus="status">
+				<div class="card">
+					<img width='140' height='200'
+						src="<c:url value='/hao/getPicture/${product.id }' />"
+						class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">品名:${product.name }</h5>
+						<p class="card-text">單價：${product.price }</p>
+						<p class="card-text">說明：${product.detail }</p>
+						
+					</div>
+					<div class="card-footer">
+						<form action="/shianghergo/hao/product/Update/Delete"
+							method="POST">
+							<a
+								href="<spring:url value='/hao/product/Update?id=${product.id }' />"
+								class="btn btn-primary"> 修改 </a> <a
+								href="/shianghergo/hao/product/Update/Delete?id=${product.id }">
+								<input type="button" name="delete" value="刪除"
+								class='btn btn-primary' onclick="return confirmDelete()" />
+							</a> <input type="hidden" value="${product.id }" name="id">
+							<!-- 							<input type="submit"name="delete" value="刪除" class='btn btn-primary' -->
+							<!-- 							onclick="confirmDelete()" /> -->
+						</form>
+					</div>
+				</div>
+		<c:if test="${(status.count % 5) == 0}">
+			</div>
+			<div class="card-deck">
+		</c:if>
 
 			<c:if test="${status.last}">
 				<c:if test="${(status.index+1) % 5 != 0}">
@@ -92,8 +147,12 @@ body {
 			</c:if>
 			</c:forEach>
 			<!-- 		</div> -->
+			
 		</div>
+		</c:otherwise>
+		</c:choose>
 	</div>
+	
 	</div>
 	<jsp:include page="/WEB-INF/views/eric/foot.jsp" />
 	<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>

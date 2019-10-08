@@ -69,7 +69,7 @@ body {
 <!-- 			    </a> -->
 <!-- 			</TD> -->
 			<TD id='borderA' >${MyMesg.title}</TD>
-			<TD id='borderA' >${MyMesg.id}</TD>
+			<TD id='borderA' >${MyMesg.targetBean.name}</TD>
 			<TD id='borderA' >&nbsp;${MyMesg.contents}</TD>
 			<TD id='borderA' >${MyMesg.time}</TD>
 			<TD id='borderA'><a  href="<c:url value='deleteMesgByidtwo?id=${MyMesg.id}' />">
