@@ -41,8 +41,8 @@ public class AllInOneBase {
 
 //			String paymentConfPath = "C:\\GitVC\\repository\\shianghergo\\src\\main\\resources\\payment_conf.xml";
 			
-			String paymentConfPath = "C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\resources\\payment_conf.xml";
-
+//			String paymentConfPath = "C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\resources\\payment_conf.xml";
+			String paymentConfPath = "C:\\Users\\John\\git\\shianghergo\\shianghergo\\src\\main\\resources\\payment_conf.xml";
 
 			doc = EcpayFunction.xmlParser(paymentConfPath);
 			

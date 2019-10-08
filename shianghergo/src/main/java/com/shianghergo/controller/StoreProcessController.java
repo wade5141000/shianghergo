@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -315,7 +316,7 @@ public class StoreProcessController {
 		obj.setNeedExtraPaidInfo("N");
 		obj.setRedeem("N");
 		//  (返回商店按鈕 無付款結果)
-		obj.setClientBackURL("http:/localhost:8080/shianghergo/payResult?oId="+order_id);
+		obj.setClientBackURL("http:/localhost:8080/shianghergo/Member002");
 		// 直接重新導向 (有付款結果)
 		// obj.setOrderResultURL("http:/localhost:8080/mvcExercise/ECPayResult.do");
 		String form = all.aioCheckOut(obj, null);
@@ -378,38 +379,65 @@ public class StoreProcessController {
 	}
 	
 	@RequestMapping(value = "wade/getPicture/{id}", method = RequestMethod.GET)
-	public ResponseEntity<byte[]> getPicture(HttpServletRequest resp, @PathVariable Integer id) {
-		String filePath = "/resources/images/NoImage.jpg";
-		byte[] media = null;
-		HttpHeaders headers = new HttpHeaders();
-		String filename = "";
-		int len = 0;
-		ItemBean bean = pService.getProductById(id);
-		if (bean != null) {
-			Blob blob = bean.getCoverImage();
-			filename = bean.getFileName();
-			if (blob != null) {
-				try {
-					len = (int) blob.length();
-					media = blob.getBytes(1, len);
-				} catch (SQLException e) {
-					throw new RuntimeException("ProductController的getPicture()發生SQLException:" + e.getMessage());
-				}
-			} else {
-				media = toByteArray(filePath);
-				filename = filePath;
+	public void getPicture(HttpServletRequest resp, @PathVariable Integer id,HttpServletResponse rp) {
+//		String filePath = "/resources/images/NoImage.jpg";
+//		byte[] media = null;
+//		HttpHeaders headers = new HttpHeaders();
+//		String filename = "";
+//		int len = 0;
+//		ItemBean bean = pService.getProductById(id);
+//		if (bean != null) {
+//			Blob blob = bean.getCoverImage();
+//			filename = bean.getFileName();
+//			if (blob != null) {
+//				try {
+//					len = (int) blob.length();
+//					media = blob.getBytes(1, len);
+//				} catch (SQLException e) {
+//					throw new RuntimeException("ProductController的getPicture()發生SQLException:" + e.getMessage());
+//				}
+//			} else {
+//				media = toByteArray(filePath);
+//				filename = filePath;
+//			}
+//		} else {
+//			media = toByteArray(filePath);
+//			filename = filePath;
+//		}
+//		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+//		String mimeType = context.getMimeType(filename);
+//		MediaType mediaType = MediaType.valueOf(mimeType);
+//		System.out.println("mediaType = " + mediaType);
+//		headers.setContentType(mediaType);
+//		ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+//		return responseEntity;
+		
+//		String shianghergo = context.getRealPath("/");
+//		shianghergo += "images/storeItemImg/" + id +".jpg";
+		
+		String shianghergo = "C:\\Users\\John\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\images\\storeItemImg\\";
+		shianghergo += id + ".jpg";
+		File tempF = new File(shianghergo);
+		
+		if(tempF.exists()) {
+			try {
+				int n = 0;
+				byte[] bb = new byte[1024];
+				FileInputStream in = new FileInputStream(tempF);		
+				ServletOutputStream out = rp.getOutputStream();
+				
+				while ((n = in.read(bb)) != -1) {
+	                out.write(bb, 0, n);
+	            }
+
+	            out.close();
+	            in.close();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		} else {
-			media = toByteArray(filePath);
-			filename = filePath;
 		}
-		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-		String mimeType = context.getMimeType(filename);
-		MediaType mediaType = MediaType.valueOf(mimeType);
-		System.out.println("mediaType = " + mediaType);
-		headers.setContentType(mediaType);
-		ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
-		return responseEntity;
+		
 	}
 
 	private byte[] toByteArray(String filePath) {
@@ -435,12 +463,13 @@ public class StoreProcessController {
 		StoreBean sb = storeService.getStoreById(id);
 		Object[] items = sb.getItems().toArray();
 //		File file = new File("C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\resources\\"+sb.getName()+".xls");
-		File file = new File("C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\resources\\"+sb.getName()+".xls");
+//		File file = new File("C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\resources\\"+sb.getName()+".xls");
+		File file = new File("C:\\Users\\John\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\resources"+sb.getName()+".xls");
 		
 		try {
 //			Workbook wb = Workbook.getWorkbook(new File("C:\\Project\\workspace\\jspExercise\\src\\main\\webapp\\resources\\template.xls"));
 //			Workbook wb = Workbook.getWorkbook(new File("C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\resources\\template.xls"));
-			Workbook wb = Workbook.getWorkbook(new File("C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\resources\\template.xls"));
+			Workbook wb = Workbook.getWorkbook(new File("C:\\Users\\John\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\resources\\template.xls"));
 			WritableWorkbook wwb = Workbook.createWorkbook(file, wb);
 			WritableSheet sheet = wwb.getSheet(0);
 			WritableFont writeFont = new WritableFont(WritableFont.ARIAL, 12, WritableFont.BOLD);
