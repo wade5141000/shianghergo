@@ -464,7 +464,7 @@ public class StoreProcessController {
 		Object[] items = sb.getItems().toArray();
 //		File file = new File("C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\resources\\"+sb.getName()+".xls");
 //		File file = new File("C:\\Users\\User\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\resources\\"+sb.getName()+".xls");
-		File file = new File("C:\\Users\\John\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\resources"+sb.getName()+".xls");
+		File file = new File("C:\\Users\\John\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\resources\\"+sb.getName()+".xls");
 		
 		try {
 //			Workbook wb = Workbook.getWorkbook(new File("C:\\Project\\workspace\\jspExercise\\src\\main\\webapp\\resources\\template.xls"));
