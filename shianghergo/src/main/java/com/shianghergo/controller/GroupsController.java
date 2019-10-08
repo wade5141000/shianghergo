@@ -140,9 +140,13 @@ public class GroupsController {
 		if (productImage.isEmpty()) {
 			System.out.println("沒上傳圖片====================");
 		} else {
-			String shianghergo = context.getRealPath("/");
-			shianghergo += "images\\groupsImg\\" + id + ".jpg";
-
+//			String shianghergo = context.getRealPath("/");
+//			shianghergo += "images\\groupsImg\\" + id + ".jpg";
+			
+			String shianghergo = "C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\images\\groupsImg\\";
+			shianghergo += id + ".jpg";
+			
+			
 			File tempF = new File(shianghergo);
 			try {
 				if (!tempF.exists()) {
@@ -347,8 +351,12 @@ public class GroupsController {
 //			ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
 //			return responseEntity;
 
-		String shianghergo = context.getRealPath("/");
-		shianghergo += "images\\groupsImg\\" + id + ".jpg";
+//		String shianghergo = context.getRealPath("/");
+//		shianghergo += "images\\groupsImg\\" + id + ".jpg";
+		
+		String shianghergo = "C:\\GitVC\\repository\\shianghergo\\src\\main\\webapp\\images\\groupsImg\\";
+		shianghergo += id + ".jpg";
+		
 		File tempF = new File(shianghergo);
 		if (tempF.exists()) {
 			try {

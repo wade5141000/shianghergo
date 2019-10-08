@@ -76,17 +76,11 @@ var y = x+1;
 <!-- 		<li class="nav-item"><a class="nav-link" -->
 <%-- 			href="${pageContext.request.contextPath}/wade/showmap" --%>
 <!-- 			style="color: #ecffff">google map</a></li> -->
-		<li class="nav-item"><a class="nav-link"
-			href="${pageContext.request.contextPath}/oldindex"
-			style="color: #ecffff">舊index</a></li>
+<!-- 		<li class="nav-item"><a class="nav-link" -->
+<%-- 			href="${pageContext.request.contextPath}/oldindex" --%>
+<!-- 			style="color: #ecffff">舊index</a></li> -->
 <%-- 		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/testimg1">測試上傳</a></li> --%>
 
-		<li class="nav-item"><a class="nav-link" ></a></li>
-		<li class="nav-item"><a class="nav-link" ></a></li>
-		<li class="nav-item"><a class="nav-link" ></a></li>
-		<li class="nav-item"><a class="nav-link" ></a></li>
-		<li class="nav-item"><a class="nav-link" ></a></li>
-		<li class="nav-item"><a class="nav-link" ></a></li>
 
 
 
