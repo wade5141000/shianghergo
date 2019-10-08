@@ -119,7 +119,7 @@ body {
 						<div class="card-body text-center">
 							<!-- Category & Title -->
 							<h5>
-								<strong> <a href="" class="dark-grey-text">${product.name }
+								<strong> <a href="http://localhost:8080/shianghergo/hao/product?id=${product.id}" class="dark-grey-text">${product.name }
 										<span class="badge badge-pill danger-color" style="color: red">HOT</span>
 								</a>
 								</strong>
@@ -144,17 +144,16 @@ body {
 		<!-- Section description -->
 		<div class="row">
 			<c:forEach var='group' items='${bbb}' begin="1" end="4">
-
-				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4" style="word-break: break-all;">
+				<div class="col-lg-3 col-md-6 mb-lg-0 mb-4" style="word-break: break-all ;">
 					<!-- Card -->
-					<div class="card align-items-center">
+					<div class="card align-items-center" >
 
 						<!-- Card image -->
 						<div class="view overlay">
 							<a
-								href="http://localhost:8080/shianghergo/frank/product?id= ${group.memberBean.id}"><img
-								src="<c:url value='/frank/getPicture/ ${group.memberBean.id}' />"
-								class="card-img-top" alt=""></a> <a>
+								href="http://localhost:8080/shianghergo/frank/group?gid=${group.id}"><img
+								src="<c:url value='/frank/getgroupPicture/${group.id}' />"
+								class="card-img-top" alt="" width='280px' height='280px'></a> <a>
 								<div class="mask rgba-white-slight"></div>
 							</a>
 						</div> 
@@ -163,14 +162,14 @@ body {
 						<div class="card-body text-center">
 							<!-- Category & Title -->
 							<h5>
-								<strong> <a href="" class="dark-grey-text">
+								<strong> <a href="http://localhost:8080/shianghergo/frank/group?gid=${group.id}" class="dark-grey-text">
 										${group.memberBean.name} <span
 										class="badge badge-pill danger-color" style="color: red">HOT</span>
 								</a>
 								</strong>
 							</h5>
 							<h4 class="font-weight-bold blue-text">
-								<strong class="st1">${group.detail}</strong>
+								<div>${group.detail}</div>
 							</h4>
 						</div>
 						<!-- Card content -->
