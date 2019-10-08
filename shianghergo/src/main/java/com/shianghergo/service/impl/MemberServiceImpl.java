@@ -203,6 +203,11 @@ public class MemberServiceImpl implements MemberService {
 		dao.deletenotiByid(id);
 		
 	}
+
+	@Override
+	public List<MessageBean> getMessageByTarget(Integer target) {
+		return null;
+	}
 	
 	
 

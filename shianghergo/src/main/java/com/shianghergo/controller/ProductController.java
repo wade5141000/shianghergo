@@ -204,7 +204,7 @@ public class ProductController {
 
 		model.addAttribute("products", list);
 		model.addAttribute("store", stservice.getStoreByMember_Id(mb.getId()));
-							
+		model.addAttribute("leng",list.size());
 		return "hao/myProducts";
 	}}
 
@@ -243,8 +243,12 @@ public class ProductController {
 				System.out.println("沒上傳圖片");
 			} else {
 				
-				String shianghergo = context.getRealPath("/");
-				shianghergo += "images/storeItemImg/" + id +".jpg";
+//				String shianghergo = context.getRealPath("/");
+//				shianghergo += "images/storeItemImg/" + id +".jpg";
+				String shianghergo = "C:\\Users\\John\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\images\\storeItemImg\\";
+				shianghergo += id + ".jpg";
+				
+				
 				
 				File tempF = new File(shianghergo);
 				
@@ -341,8 +345,11 @@ public class ProductController {
 		if (productImage.isEmpty()) {
 			System.out.println("沒上傳圖片");
 		} else {
-			String shianghergo = context.getRealPath("/");
-			shianghergo += "images/storeItemImg/" + id +".jpg";
+//			String shianghergo = context.getRealPath("/");
+//			shianghergo += "images/storeItemImg/" + id +".jpg";
+			
+			String shianghergo = "C:\\Users\\John\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\images\\storeItemImg\\";
+			shianghergo += id + ".jpg";
 			System.out.println(shianghergo);
 			
 			File tempF = new File(shianghergo);
@@ -424,8 +431,11 @@ public class ProductController {
 //		ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
 //		return responseEntity;
 		
-		String shianghergo = context.getRealPath("/");
-		shianghergo += "images/storeItemImg/" + id +".jpg";
+//		String shianghergo = context.getRealPath("/");
+//		shianghergo += "images/storeItemImg/" + id +".jpg";
+		
+		String shianghergo = "C:\\Users\\John\\git\\shianghergo\\shianghergo\\src\\main\\webapp\\images\\storeItemImg\\";
+		shianghergo += id + ".jpg";
 		File tempF = new File(shianghergo);
 		
 		if(tempF.exists()) {

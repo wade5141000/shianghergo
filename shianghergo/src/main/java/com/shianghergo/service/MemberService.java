@@ -31,6 +31,8 @@ public interface MemberService {
 	public List<MemberBean> getPerson();
 
 	MemberBean getMemberById(Integer id);
+	
+	List<MessageBean> getMessageByTarget(Integer target);
 
 	// boolean validateAccount(String account);
 

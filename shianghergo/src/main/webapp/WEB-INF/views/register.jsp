@@ -20,8 +20,27 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script> -->
 <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script> -->
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+<!-- <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+
 <title>register</title>
 <script>
+
+function godata(){
+	
+	document.getElementById("account").value = "mem001";
+	document.getElementById("password").value = "mem001";
+	document.getElementById("repassword").value = "mem001";
+	document.getElementById("name").value = "野原新之助";
+	document.getElementById("address").value = "台北市松山區復興南路一段1號";
+	document.getElementById("phone").value = "0935778201";
+	document.getElementById("email").value = "mem01@gmail.com";
+	document.getElementById("birthday").value = "1996/06/21";
+	
+}
+
+
+
+
 	$(document)
 			.ready(
 					function() {
@@ -283,12 +302,14 @@ label.valid {
 			modelAttribute="memberbean">
 			<fieldset style="margin-left: 700px;margin-top: 100px;">
 				<h1 align="center">會員註冊</h1>
+				<button type="button" onclick="godata()" style="margin-left:50px;">一鍵填寫</button>
 				<div class="item">
 					<label for="account" class="item-label">帳號:</label>
 					<form:input type="text" id="account" name="account" path="account"
 						class="item-text" placeholder="請輸入帳號" autocomplete="off"
 						tip="請輸入帳號" />
 				</div>
+				
 				<div class="item">
 					<label for="password" class="item-label">密碼:</label>
 					<form:input type="password" id="password" name="password"
@@ -349,6 +370,7 @@ label.valid {
 				</div>
 			</fieldset>
 		</form:form>
+		
 	</div>
 
 

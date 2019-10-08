@@ -136,7 +136,7 @@
 
 								<!-- Excerpt -->
 								<p class="font-weight-bold dark-grey-text">澎湖大生蠔</p>
-								<p class="font-weight-bold dark-grey-text">天使蝦來自阿根廷,南部海域純淨無汙染,這種環境生長的天使紅蝦,營養豐富,口感鮮嫩</p>
+								<p class="font-weight-bold dark-grey-text">食用牡蠣的好處很多，牡蠣不僅味道鮮美，營養價值更是不在話下</p>
 								
 
 								
@@ -180,7 +180,7 @@
 
 								<!-- Excerpt -->
 								<p class="font-weight-bold dark-grey-text">北海道干貝</p>
-								<p class="font-weight-bold dark-grey-text">天使蝦來自阿根廷,南部海域純淨無汙染,這種環境生長的天使紅蝦,營養豐富,口感鮮嫩</p>
+								<p class="font-weight-bold dark-grey-text">嚴選日本北海道野生捕撈的巨大帶子,新鮮干貝捕撈上岸後,急速冷凍,保持鮮甜</p>
 								
 
 								

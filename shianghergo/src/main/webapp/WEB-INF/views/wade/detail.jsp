@@ -29,10 +29,14 @@ tr:last-child td:first-child{
 tr:last-child td:last-child{
   border-bottom-right-radius: 5px;
 }
-
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff url('http://localhost:8080/shianghergo/images/bbg06.png') center center fixed ;　
+}
 </style>
 </head>
-<body style="background-color: #fffaf4;">
+<body >
 
 <jsp:include page="/WEB-INF/views/eric/header.jsp" ></jsp:include>
 
@@ -89,5 +93,6 @@ tr:last-child td:last-child{
 	
 	
 <jsp:include page="/WEB-INF/views/eric/foot.jsp" ></jsp:include>
+<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>

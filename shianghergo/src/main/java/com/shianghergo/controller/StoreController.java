@@ -72,7 +72,7 @@ public class StoreController {
 			redirectAttributes.addFlashAttribute("success", "註冊成功");
 			sb.setStatus(1);
 			service.buildStore(sb);
-			return "redirect:/";
+			return "redirect:/hao/buildStore";
 		} else {
 			redirectAttributes.addFlashAttribute("error", "註冊失敗");
 			return "redirect:/hao/buildStore";
@@ -98,7 +98,7 @@ public class StoreController {
 		bb.setId(id);
 		service.updateStore(bb);
 
-		return "redirect:/hao/myProducts";
+		return "redirect:/hao/buildStore";
 	}
 	     
 	

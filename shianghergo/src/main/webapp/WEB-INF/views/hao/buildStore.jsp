@@ -15,7 +15,7 @@
 body {
 	margin: 0px;
 	padding: 0px;
-	background: #fff url('../images/bbg06.png') center center fixed ;　
+	background: #fff url('http://localhost:8080/shianghergo/images/bbg06.png') center center fixed ;　
 }
 </style>
 </head>

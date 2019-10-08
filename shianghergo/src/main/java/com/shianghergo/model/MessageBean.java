@@ -9,12 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "message")
 public class MessageBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	
+	private MemberBean targetBean;
+	
+	
 	private Integer id;
 	private String contents;
 	private String time;
@@ -40,7 +45,15 @@ public class MessageBean implements Serializable{
 		
 	}
 	
-	
+	@Transient
+	public MemberBean getTargetBean() {
+		return targetBean;
+	}
+
+	public void setTargetBean(MemberBean targetBean) {
+		this.targetBean = targetBean;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="member_id")
 	public MemberBean getMemberBean() {
