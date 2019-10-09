@@ -59,11 +59,11 @@ padding: 10px;
 				<tr id='borderA' height='50'>
 					<th id='borderA' align="center"colspan="8"><img  src="<c:url value='/images/c02.png' />" alt="..." >&nbsp;由 ${loginOK.name}發起的合購團</th>
 				</tr>
-				<tr id='borderA' >
+				<tr id='borderA' style="text-align: center;"> 
 					<th scope="col" id='borderA'style="padding-right: 10px;padding-left: 10px;">合購編號</th>
 					<th scope="col" id='borderA'>開始時間</th>
 					<th scope="col" id='borderA'>截止時間</th>
-					<th scope="col" id='borderA'>團名</th>
+					<th scope="col" id='borderA' style="width:150px;">團名</th>
 					<th scope="col" id='borderAA'>簡介</th>
 					<th scope="col" id='borderA'>付款方式</th>
 					<th scope="col" id='borderA'>我的團員</th>
