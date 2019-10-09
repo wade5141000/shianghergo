@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="images/logo4.ico"/>
 <style>
 body {
 	margin: 0px;

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" href="images/logo4.ico"/>
 <meta charset="UTF-8">
 <title>迪士尼專區</title>
 </head>

@@ -99,7 +99,7 @@ body {
 							</div></td>
 					</tr>
 					<tr>
-						<td><label for="detail" class="item-label">商品說明:</label></td>
+						<td><label for="detail" class="item-label">團購說明:</label></td>
 						<td><form:textarea style="width:300px;height:300px"
 								id="detail" name="detail" path="detail" /></td>
 					</tr>

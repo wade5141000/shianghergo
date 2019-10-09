@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="images/logo4.ico"/>
 <meta charset="UTF-8">
 <title>新增商品</title>
 <style>

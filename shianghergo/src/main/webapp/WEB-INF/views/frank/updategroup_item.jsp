@@ -5,8 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="images/logo4.ico"/>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>資料編輯</title>
 <style type="text/css">
 .table table-hover td{
 	width: 100px;

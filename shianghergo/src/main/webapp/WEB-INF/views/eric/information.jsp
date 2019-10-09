@@ -5,8 +5,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" href="images/logo4.ico"/>
 <meta charset="UTF-8">
-<title>Document</title>
+<title>搜尋結果</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/res/static/css/main.css">
 <link rel="stylesheet" type="text/css"

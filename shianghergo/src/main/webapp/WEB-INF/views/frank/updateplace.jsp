@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="images/logo4.ico"/>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>編輯</title>
 <style>
 body {
 	margin: 0px;

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="images/logo4.ico"/>
 <meta charset="UTF-8">
 <title>團資料更新</title>
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>

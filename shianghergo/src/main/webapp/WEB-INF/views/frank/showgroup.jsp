@@ -5,8 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="images/logo4.ico"/>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>團資料</title>
 <style>
 .gd2 {
 	margin: 0 auto;

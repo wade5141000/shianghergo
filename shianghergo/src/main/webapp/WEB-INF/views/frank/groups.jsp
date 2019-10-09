@@ -5,8 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="images/logo4.ico"/>
 <meta charset="UTF-8">
-<title>Group</title>
+<title>Groups</title>
 <style>
 .gsdiv{
 /*  border-radius: 20PX; */
